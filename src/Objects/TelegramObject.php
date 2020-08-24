@@ -2,10 +2,20 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Exceptions\TeleBotException;
+
 abstract class TelegramObject
 {
-    private $properties;
+    /**
+     * Array of object properties
+     * @var array
+     */
+    protected $properties;
 
+    /**
+     * This function should return a `$key => $value` representation of given object properties, where `$key` - is property name and `$value` - property type
+     * @return array 
+     */
     abstract protected function propertiesMap();
 
     public function __construct($object)
@@ -18,6 +28,13 @@ abstract class TelegramObject
         }
     }
 
+    /**
+     * Cast a `$value` to a given `$type`
+     * 
+     * @param mixed $value 
+     * @param array|string $type 
+     * @return mixed 
+     */
     private function castedType($value, $type)
     {
         if(is_array($type) && is_array($value))
@@ -46,13 +63,84 @@ abstract class TelegramObject
         return $value;
     }
 
-    public function __get($key)
+    /**
+     * Seek through object properties using dot notation
+     * Example: ```get('message.from.id')```
+     * @param String $property 
+     * @return mixed
+     */
+    public function get($property)
     {
-        return $this->properties[$key] ?? null;
+        $validate = "/(?:([a-z\_]+)(?:\[([0-9])\])?)/";
+        $properties = explode('.', $property);
+        $data = $this;
+        
+        foreach($properties as $prop)
+        {
+            if(preg_match($validate, $prop, $matches))
+            {
+                $key = $matches[1];
+                if(!isset($data->$key)) throw TeleBotException::undefinedOfset($key, get_class($data) ?? gettype($data));
+                $data = $data->$key;
+
+                if(isset($matches[2])) {
+                    $key = $matches[2];
+                    if(!isset($data[$key])) throw TeleBotException::undefinedOfset($key, get_class($data) ?? gettype($data));
+                    $data = $data[$key];
+                }
+            }
+        }
+
+        return $data;
     }
 
-    public function __set($key)
+    /**
+     * Get associative array representation of this object
+     * 
+     * @return array 
+     */
+    public function toArray()
     {
-        // We should not dot this...
+        return json_decode($this, true);
+    }
+
+    /**
+     * Get JSON representation of this object
+     * 
+     * @return string 
+     */
+    public function toJson()
+    {
+        return (string) $this;
+    }
+
+    public function __get($key)
+    {
+        return $this->properties[$key];
+    }
+
+    public function __set($key, $value)
+    {
+        throw TeleBotException::inaccessibleVariable($key, $value, self::class);
+    }
+
+    public function __isset($key)
+    {
+        return isset($this->properties[$key]);
+    }
+
+    public function __unset($key)
+    {
+        throw TeleBotException::inaccessibleUnsetVariable($key, self::class);
+    }
+
+    public function __toString()
+    {
+        return json_encode($this->properties);
+    }
+
+    public function __debugInfo()
+    {
+        return $this->properties;
     }
 }
