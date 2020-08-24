@@ -2,7 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Exceptions\TeleBotException;
+use Exception;
+use WeStacks\TeleBot\Exceptions\TeleBotObjectException;
 
 /**
  * Basic Telegram object class. All Telegram api objects should extend this class
@@ -41,30 +42,50 @@ abstract class TelegramObject
      */
     private function cast($value, $type)
     {
-        if(is_array($type) && is_array($value))
+        // Cast array
+        if(is_array($type))
         {
-            foreach ($value as $subKey => $subValue)
+            if(is_array($value))
             {
-                $value[$subKey] = $this->cast($subValue, $type[0]);
+                foreach ($value as $subKey => $subValue)
+                    $value[$subKey] = $this->cast($subValue, $type[0]);
+
+                return $value;
             }
-        }
-        else if(is_string($type)) switch ($type)
-        {
-            case 'int':
-            case 'integer':
-            case 'bool':
-            case 'boolean':
-            case 'float':
-            case 'double':
-            case 'string':
-                settype($value, $type);
-                break;
-            default:
-                if(is_subclass_of($type, TelegramObject::class)) $value = new $type($value);
-                break;
+            throw TeleBotObjectException::uncastableType(str_replace(" [0] => ","",print_r($type, true)), gettype($value));
         }
 
-        return $value;
+        $types = explode('|', $type) ?? [$type];
+        $value_type = gettype($value);
+        $simple_types = ['int', 'integer', 'bool', 'boolean', 'float', 'double', 'string'];
+        $complex_types = ['array', 'object'];
+
+        // Already casted
+        if(in_array($value_type, $types))
+            return $value;
+
+        if($value_type == 'object')
+            foreach ($types as $typeIter)
+                if(class_exists($typeIter) && $value instanceof $typeIter) return $value;
+
+
+        // Cast simple type
+        if(in_array($value_type, $simple_types))
+        {
+            $target_type = array_intersect($types, $simple_types);
+            if(isset($target_type[0]))
+            {
+                settype($value, $target_type[0]);
+                return $value;
+            }
+        }
+
+        // Cast object
+        if($value_type == 'array')
+            foreach ($types as $typeIter)
+                if(class_exists($typeIter)) return new $typeIter($value);
+
+        throw TeleBotObjectException::uncastableType($type, gettype($value));
     }
 
     /**
@@ -72,10 +93,10 @@ abstract class TelegramObject
      * Example: ```get('message.from.id')```
      * 
      * @param string $property String in dot notation.
-     * @param bool $exceprion If true, function will throm `TeleBotException` if property is not found, else return null.
+     * @param bool $exceprion If true, function will throm `TeleBotObjectException` if property is not found, else return null.
      * 
      * @return mixed
-     * @throws WeStacks\TeleBot\Exceptions\TeleBotException
+     * @throws WeStacks\TeleBot\Exceptions\TeleBotObjectException
      */
     public function get(string $property, bool $exceprion = false)
     {
@@ -89,24 +110,24 @@ abstract class TelegramObject
                 {
                     $key = $match[1];
                     if(!isset($data->$key)) 
-                        throw TeleBotException::undefinedOfset($key, get_class($data) ?? gettype($data));
+                        throw TeleBotObjectException::undefinedOfset($key, get_class($data) ?? gettype($data));
                     
                     $data = $data->$key;
         
                     if(isset($match[2])) {
                         $key = $match[2];
-                        if(!is_array($data)) 
-                            throw TeleBotException::undefinedOfset("[".$key."]", get_class($data) ?? gettype($data));
+                        if(!is_array($data) || !isset($data[$key]))
+                            throw TeleBotObjectException::undefinedOfset("[".$key."]", get_class($data) ?? gettype($data));
                         
                         $data = $data[$key];
                     }
                 }
             }
             else {
-                throw TeleBotException::invalidDotNotation($property);
+                throw TeleBotObjectException::invalidDotNotation($property);
             }
         }
-        catch (TeleBotException $e)
+        catch (TeleBotObjectException $e)
         {
             if($exceprion) throw $e;
             $data = null;
@@ -142,7 +163,7 @@ abstract class TelegramObject
 
     public function __set($key, $value)
     {
-        throw TeleBotException::inaccessibleVariable($key, $value, self::class);
+        throw TeleBotObjectException::inaccessibleVariable($key, $value, self::class);
     }
 
     public function __isset($key)
@@ -152,7 +173,7 @@ abstract class TelegramObject
 
     public function __unset($key)
     {
-        throw TeleBotException::inaccessibleUnsetVariable($key, self::class);
+        throw TeleBotObjectException::inaccessibleUnsetVariable($key, self::class);
     }
 
     public function __toString()

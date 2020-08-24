@@ -11,7 +11,10 @@
             "homepage": "https://github.com/PunyFlash"
         }
     ],
-    "require": {},
+    "require": {
+        "guzzlehttp/guzzle": "^7.0",
+        "guzzlehttp/psr7": "^1.6"
+    },
     "require-dev": {
         "phpunit/phpunit": "^9.3"
     },

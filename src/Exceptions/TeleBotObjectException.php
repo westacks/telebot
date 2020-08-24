@@ -3,9 +3,8 @@
 namespace WeStacks\TeleBot\Exceptions;
 
 use Exception;
-use Throwable;
 
-class TeleBotException extends Exception
+class TeleBotObjectException extends Exception
 {
     public static function inaccessibleVariable(string $key, $value, string $class)
     {
@@ -21,8 +20,14 @@ class TeleBotException extends Exception
     {
         return new static("Trying to access an undefined offset \"$key\" on \"$source\"", 404);
     }
+
     public static function invalidDotNotation(string $value)
     {
         return new static("The given string \"$value\" is not representing dot notation", 400);
+    }
+
+    public static function uncastableType(string $type, string $objectType)
+    {
+        return new static("Unable to cast variable to type \"$type\". \"$objectType\" given", 400);
     }
 }
