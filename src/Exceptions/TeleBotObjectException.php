@@ -30,4 +30,9 @@ class TeleBotObjectException extends Exception
     {
         return new static("Unable to cast variable to type \"$type\". \"$objectType\" given", 400);
     }
+
+    public static function configKeyIsRequired(string $key, string $class)
+    {
+        return new static("Required config key \"$key\" is not specified for class \"$class\"");
+    }
 }

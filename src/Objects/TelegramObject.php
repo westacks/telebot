@@ -40,7 +40,7 @@ abstract class TelegramObject
      * @param array|string $type 
      * @return mixed 
      */
-    private function cast($value, $type)
+    public static function cast($value, $type)
     {
         // Cast array
         if(is_array($type))
@@ -48,7 +48,7 @@ abstract class TelegramObject
             if(is_array($value))
             {
                 foreach ($value as $subKey => $subValue)
-                    $value[$subKey] = $this->cast($subValue, $type[0]);
+                    $value[$subKey] = static::cast($subValue, $type[0]);
 
                 return $value;
             }
@@ -58,7 +58,6 @@ abstract class TelegramObject
         $types = explode('|', $type) ?? [$type];
         $value_type = gettype($value);
         $simple_types = ['int', 'integer', 'bool', 'boolean', 'float', 'double', 'string'];
-        $complex_types = ['array', 'object'];
 
         // Already casted
         if(in_array($value_type, $types))
@@ -81,7 +80,7 @@ abstract class TelegramObject
         }
 
         // Cast object
-        if($value_type == 'array')
+        if($value_type == 'array') 
             foreach ($types as $typeIter)
                 if(class_exists($typeIter)) return new $typeIter($value);
 

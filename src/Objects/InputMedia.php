@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Objects\TelegramObject;
+use WeStacks\TeleBot\Objects\Object;
 
 /**
  * This object represents the content of a media message to be sent. It should be one of: InputMediaAnimation, InputMediaDocument, InputMediaAudio, InputMediaPhoto, InputMediaVideo
