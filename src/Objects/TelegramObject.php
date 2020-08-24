@@ -4,6 +4,11 @@ namespace WeStacks\TeleBot\Objects;
 
 use WeStacks\TeleBot\Exceptions\TeleBotException;
 
+/**
+ * Basic Telegram object class. All Telegram api objects should extend this class
+ * 
+ * @package WeStacks\TeleBot\Objects
+ */
 abstract class TelegramObject
 {
     /**
@@ -13,35 +18,34 @@ abstract class TelegramObject
     protected $properties;
 
     /**
-     * This function should return a `$key => $value` representation of given object properties, where `$key` - is property name and `$value` - property type
+     * This function should return an array representation of given object properties, where `$key` - is property name and `$value` - property type
      * @return array 
      */
-    abstract protected function propertiesMap();
+    abstract protected function relations();
 
     public function __construct($object)
     {
-        foreach ($this->propertiesMap() as $propName => $propType)
+        foreach ($this->relations() as $propName => $propType)
         {
             if(!isset($object[$propName])) continue;
-
-            $this->properties[$propName] = $this->castedType($object[$propName], $propType);
+            $this->properties[$propName] = $this->cast($object[$propName], $propType);
         }
     }
 
     /**
-     * Cast a `$value` to a given `$type`
+     * Casts a `$value` to a given `$type`
      * 
      * @param mixed $value 
      * @param array|string $type 
      * @return mixed 
      */
-    private function castedType($value, $type)
+    private function cast($value, $type)
     {
         if(is_array($type) && is_array($value))
         {
             foreach ($value as $subKey => $subValue)
             {
-                $value[$subKey] = $this->castedType($subValue, $type[0]);
+                $value[$subKey] = $this->cast($subValue, $type[0]);
             }
         }
         else if(is_string($type)) switch ($type)
@@ -66,29 +70,46 @@ abstract class TelegramObject
     /**
      * Seek through object properties using dot notation
      * Example: ```get('message.from.id')```
-     * @param String $property 
+     * 
+     * @param string $property String in dot notation.
+     * @param bool $exceprion If true, function will throm `TeleBotException` if property is not found, else return null.
+     * 
      * @return mixed
+     * @throws WeStacks\TeleBot\Exceptions\TeleBotException
      */
-    public function get($property)
+    public function get(string $property, bool $exceprion = false)
     {
-        $validate = "/(?:([a-z\_]+)(?:\[([0-9])\])?)/";
-        $properties = explode('.', $property);
+        $validate = "/(?:([^\s\.\[\]]+)(?:\[([0-9])\])?)/";
         $data = $this;
         
-        foreach($properties as $prop)
-        {
-            if(preg_match($validate, $prop, $matches))
+        try {
+            if(preg_match_all($validate, $property, $matches, PREG_SET_ORDER))
             {
-                $key = $matches[1];
-                if(!isset($data->$key)) throw TeleBotException::undefinedOfset($key, get_class($data) ?? gettype($data));
-                $data = $data->$key;
-
-                if(isset($matches[2])) {
-                    $key = $matches[2];
-                    if(!isset($data[$key])) throw TeleBotException::undefinedOfset($key, get_class($data) ?? gettype($data));
-                    $data = $data[$key];
+                foreach($matches as $match)
+                {
+                    $key = $match[1];
+                    if(!isset($data->$key)) 
+                        throw TeleBotException::undefinedOfset($key, get_class($data) ?? gettype($data));
+                    
+                    $data = $data->$key;
+        
+                    if(isset($match[2])) {
+                        $key = $match[2];
+                        if(!is_array($data)) 
+                            throw TeleBotException::undefinedOfset("[".$key."]", get_class($data) ?? gettype($data));
+                        
+                        $data = $data[$key];
+                    }
                 }
             }
+            else {
+                throw TeleBotException::invalidDotNotation($property);
+            }
+        }
+        catch (TeleBotException $e)
+        {
+            if($exceprion) throw $e;
+            $data = null;
         }
 
         return $data;

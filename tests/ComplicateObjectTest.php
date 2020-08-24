@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Tests;
 
 use PHPUnit\Framework\TestCase;
+use WeStacks\TeleBot\Exceptions\TeleBotException;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\User;
@@ -35,5 +36,32 @@ class ComplicateObjectTest extends TestCase
         $this->assertInstanceOf(Update::class, $this->object);
         $this->assertInstanceOf(Message::class, $this->object->message);
         $this->assertInstanceOf(User::class, $this->object->message->from);
+    }
+
+    public function testGetByDotNotation()
+    {
+        $data = $this->object->get('message.from.id');
+        $this->assertEquals($data, 3456789);
+
+        $data = $this->object->get('message.from[0].id.unaccessible');
+        $this->assertNull($data);
+
+        $this->expectException(TeleBotException::class);
+        $data = $this->object->get('some.undefined.variable', true);
+    }
+
+    public function testNullCoalescing()
+    {
+        $data = $this->object->message ?? null;
+        $this->assertInstanceOf(Message::class, $data);
+
+        $data = $this->object->message->unaccessible->another->unaccessible ?? null;
+        $this->assertNull($data);
+    }
+
+    public function testSetObjectProperties()
+    {
+        $this->expectException(TeleBotException::class);
+        $this->object->some_undefined_variable = 'test';
     }
 }

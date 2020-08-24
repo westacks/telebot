@@ -20,6 +20,9 @@ class TeleBotException extends Exception
     public static function undefinedOfset(string $key, string $source)
     {
         return new static("Trying to access an undefined offset \"$key\" on \"$source\"", 404);
-
+    }
+    public static function invalidDotNotation(string $value)
+    {
+        return new static("The given string \"$value\" is not representing dot notation", 400);
     }
 }
