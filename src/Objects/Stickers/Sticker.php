@@ -1,6 +1,8 @@
 <?php
 
-namespace WeStacks\TeleBot\Objects;
+namespace WeStacks\TeleBot\Objects\Stickers;
+
+use WeStacks\TeleBot\Objects\TelegramObject;
 
 /**
  * This object represents a sticker.
@@ -16,7 +18,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property MaskPosition          $mask_position        _Optional_. For mask stickers, the position where the mask should be placed
  * @property Integer               $file_size            _Optional_. File size
  * 
- * @package WeStacks\TeleBot\Objects
+ * @package WeStacks\TeleBot\Objects\Stickers
  */
 class Sticker extends TelegramObject
 {

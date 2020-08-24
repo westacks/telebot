@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Objects\Stickers\Sticker;
+
 /**
  * This object represents a message.
  * 

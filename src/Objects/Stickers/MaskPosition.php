@@ -1,6 +1,8 @@
 <?php
 
-namespace WeStacks\TeleBot\Objects;
+namespace WeStacks\TeleBot\Objects\Stickers;
+
+use WeStacks\TeleBot\Objects\TelegramObject;
 
 /**
  * This object describes the position on faces where a mask should be placed by default.
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property Float                $y_shift              Shift by Y-axis measured in heights of the mask scaled to the face size, from top to bottom. For example, 1.0 will place the mask just below the default mask position.
  * @property Float                $scale                Mask scaling coefficient. For example, 2.0 means double size.
  * 
- * @package WeStacks\TeleBot\Objects
+ * @package WeStacks\TeleBot\Objects\Stickers
  */
 class MaskPosition extends TelegramObject
 {

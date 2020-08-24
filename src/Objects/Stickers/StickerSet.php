@@ -1,6 +1,8 @@
 <?php
 
-namespace WeStacks\TeleBot\Objects;
+namespace WeStacks\TeleBot\Objects\Stickers;
+
+use WeStacks\TeleBot\Objects\TelegramObject;
 
 /**
  * This object represents a sticker set.
@@ -12,7 +14,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property Array<Sticker>        $stickers            List of all set stickers
  * @property PhotoSize             $thumb               _Optional_. Sticker set thumbnail in the .WEBP or .TGS format
  * 
- * @package WeStacks\TeleBot\Objects
+ * @package WeStacks\TeleBot\Objects\Stickers
  */
 class StickerSet extends TelegramObject
 {
