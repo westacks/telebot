@@ -1,8 +1,9 @@
 <?php
 
-namespace WeStacks\TeleBot\Objects;
+namespace WeStacks\TeleBot\Objects\InputMedia;
 
 use WeStacks\TeleBot\Exceptions\TeleBotFileException;
+use WeStacks\TeleBot\Objects\InputMedia;
 
 /**
  * This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.
@@ -12,7 +13,7 @@ use WeStacks\TeleBot\Exceptions\TeleBotFileException;
  * @property String|Resource        $contents       _Optional_. The contents of the file to upload.
  * @property String                 $filename       _Optional_. The name of uploaded file.
  * 
- * @package WeStacks\TeleBot\Objects
+ * @package WeStacks\TeleBot\Objects\InputMedia
  */
 class InputFile extends InputMedia
 {

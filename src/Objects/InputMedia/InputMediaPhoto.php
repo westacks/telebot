@@ -1,6 +1,8 @@
 <?php
 
-namespace WeStacks\TeleBot\Objects;
+namespace WeStacks\TeleBot\Objects\InputMedia;
+
+use WeStacks\TeleBot\Objects\InputMedia;
 
 /**
  * Represents a photo to be sent.
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property String                $caption             _Optional_. Caption of the photo to be sent, 0-1024 characters after entities parsing
  * @property String                $parse_mode          _Optional_. Mode for parsing entities in the photo caption
  * 
- * @package WeStacks\TeleBot\Objects
+ * @package WeStacks\TeleBot\Objects\InputMedia
  */
 class InputMediaPhoto extends InputMedia
 {

@@ -1,6 +1,8 @@
 <?php
 
-namespace WeStacks\TeleBot\Objects;
+namespace WeStacks\TeleBot\Objects\InputMedia;
+
+use WeStacks\TeleBot\Objects\InputMedia;
 
 /**
  * Represents a video to be sent.
@@ -15,7 +17,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property Integer               $duration                _Optional_. Video duration
  * @property Boolean               $supports_streaming      _Optional_. Pass True, if the uploaded video is suitable for streaming
  * 
- * @package WeStacks\TeleBot\Objects
+ * @package WeStacks\TeleBot\Objects\InputMedia
  */
 class InputMediaVideo extends InputMedia
 {

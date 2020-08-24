@@ -1,6 +1,8 @@
 <?php
 
-namespace WeStacks\TeleBot\Objects;
+namespace WeStacks\TeleBot\Objects\InputMedia;
+
+use WeStacks\TeleBot\Objects\InputMedia;
 
 /**
  * Represents a general file to be sent.
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property String                $caption             _Optional_. Caption of the document to be sent, 0-1024 characters after entities parsing
  * @property String                $parse_mode          _Optional_. Mode for parsing entities in the document caption
  * 
- * @package WeStacks\TeleBot\Objects
+ * @package WeStacks\TeleBot\Objects\InputMedia
  */
 class InputMediaDocument extends InputMedia
 {
