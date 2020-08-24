@@ -2,10 +2,20 @@
 
 namespace WeStacks\TeleBot;
 
+use Closure;
 use WeStacks\TeleBot\Exceptions\TeleBotMehtodException;
 use WeStacks\TeleBot\Exceptions\TeleBotObjectException;
 use WeStacks\TeleBot\Methods\GetMeMethod;
+use WeStacks\TeleBot\Objects\User;
+use GuzzleHttp\Promise\PromiseInterface;
 
+/**
+ * This class represents a bot instance. This is basicaly main controller for sending your Telegram requests.
+ * 
+ * @method User|PromiseInterface getMe(Closure $callback = null) A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
+ * 
+ * @package WeStacks\TeleBot
+ */
 class Bot
 {
     /**
@@ -13,6 +23,12 @@ class Bot
      * @var array
      */
     protected $properties;
+
+    /**
+     * The
+     * @var boolean|null
+     */
+    protected $async;
 
     /**
      * Create new instance of Telegram bot
@@ -29,6 +45,18 @@ class Bot
         $this->properties['name']       = $config['name'] ?? null;
         $this->properties['webhook']    = $config['webhook'] ?? null;
         $this->properties['handlers']   = $config['handlers'] ?? [];
+        $this->properties['async']      = $config['async'] ?? false;
+    }
+
+    /**
+     * Execute next requst asynchronously (or synchronously if 'false' passed)
+     * @param bool $is_async 
+     * @return self 
+     */
+    public function async($is_async = true)
+    {
+        $this->async = $is_async;
+        return $this;
     }
 
     /**
@@ -44,20 +72,12 @@ class Bot
         $methods = $this->methods();
         if(!isset($methods[$method])) throw TeleBotMehtodException::methodNotFound($method);
 
-        $method = new $methods[$method]($arguments, $this->token);
+        $async = $this->async ?? $this->properties['async'];
+        $this->async = null;
 
-        return $method->execute();
-    }
+        $method = new $methods[$method]($this->properties['token'], $arguments);
 
-    /**
-     * Get bot property
-     * 
-     * @param string $key 
-     * @return mixed 
-     */
-    public function __get($key)
-    {
-        return $this->properties[$key] ?? null;
+        return $method->execute($async);
     }
 
     /**
@@ -68,7 +88,7 @@ class Bot
     private function methods()
     {
         return [
-            GetMeMethod::name() => GetMeMethod::class
+            'getMe' => GetMeMethod::class,
         ];
     }
 }

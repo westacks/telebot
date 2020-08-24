@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\Tests;
 use Dotenv\Dotenv;
 use WeStacks\TeleBot\Bot;
 use PHPUnit\Framework\TestCase;
+use WeStacks\TeleBot\Exceptions\TeleBotMehtodException;
 use WeStacks\TeleBot\Objects\User;
 
 class BotMethodsTest extends TestCase
@@ -30,9 +31,22 @@ class BotMethodsTest extends TestCase
         $this->assertInstanceOf(Bot::class, $this->bot);
     }
 
+    public function testCallUndefinedMethod()
+    {
+        $this->expectException(TeleBotMehtodException::class);
+        $this->bot->getYou();
+    }
+
     public function testExecuteMethod()
     {
         $botUser = $this->bot->getMe();
         $this->assertInstanceOf(User::class, $botUser);
+    }
+
+    public function testExecuteAsyncMethod()
+    {
+        $promise = $this->bot->async(true)->getMe();
+        $result = $promise->wait();
+        $this->assertInstanceOf(User::class, $result);
     }
 }

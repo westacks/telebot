@@ -36,14 +36,15 @@ class ComplicateObjectTest extends TestCase
         $this->assertInstanceOf(Update::class, $this->object);
         $this->assertInstanceOf(Message::class, $this->object->message);
         $this->assertInstanceOf(User::class, $this->object->message->from);
+        $this->assertFalse($this->object->message->from->is_bot);
     }
 
     public function testGetByDotNotation()
     {
         $data = $this->object->get('message.from.id');
-        $this->assertEquals($data, 3456789);
+        $this->assertEquals(3456789, $data);
 
-        $data = $this->object->get('message.from[0].id.unaccessible');
+        $data = $this->object->get('some.undefined.variable');
         $this->assertNull($data);
 
         $this->expectException(TeleBotObjectException::class);

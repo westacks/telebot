@@ -6,17 +6,14 @@ use WeStacks\TeleBot\Objects\User;
 
 class GetMeMethod extends Method
 {
-    public static function name()
-    {
-        return 'getMe';
-    }
-
     protected function request()
     {
         return [
-            'type'      => 'GET',
+            'type'      => 'POST',
+            'url'       => "https://api.telegram.org/bot{$this->token}/getMe",
             'send'      => [],
-            'expect'    => User::class
+            'expect'    => User::class,
+            'callback'  => $this->callback
         ];
     }
 }

@@ -2,7 +2,10 @@
 
 namespace WeStacks\TeleBot\Methods;
 
+use Closure;
 use GuzzleHttp\Client;
+use Psr\Http\Message\ResponseInterface;
+use WeStacks\TeleBot\Exceptions\TeleBotRequestException;
 use WeStacks\TeleBot\Objects\TelegramObject;
 
 abstract class Method
@@ -14,16 +17,16 @@ abstract class Method
     protected $arguments;
 
     /**
-     * Method URI
+     * Bot API token
      * @var string
      */
-    protected $url;
+    protected $token;
 
     /**
-     * This function should return implemeted method name
-     * @return string 
+     * Method callback
+     * @var Closure|null
      */
-    abstract public static function name();
+    protected $callback;
 
     /**
      * This function should return HTTP configuration for given method
@@ -34,12 +37,17 @@ abstract class Method
     /**
      * Create new method instance
     */
-    public function __construct(array $data = null, $token)
+    public function __construct(string $token, array $data = null)
     {
-        if(is_null($data)) $data = [];
-        $this->arguments = $data;
+        $this->token = $token;
+        $this->arguments = $data ?? [];
 
-        $this->url = "https://api.telegram.org/bot{$token}/{$this->name()}";
+        $callback = end($this->arguments);
+        if(is_callable($callback))
+        {
+            $this->callback = $callback;
+            unset($this->arguments[array_key_last($this->arguments)]);
+        }
     }
 
     /**
@@ -48,14 +56,51 @@ abstract class Method
      * @param bool $async Execute async request
      * @return mixed 
      */
-    public function execute()
+    public function execute($async = false)
     {
         $config = $this->request();
         $client = new Client();
 
-        $res = $client->request($config['type'], $this->url, $this->arguments);
-        $res = json_decode($res->getBody(), true);
+        return $async ? $this->async($config, $client): 
+                        $this->sync($config, $client);
+    }
 
-        return TelegramObject::cast($res['result'], $config['expect']);
+    private function sync($config, $client)
+    {
+        $response = $client->request($config['type'], $config['url'], $config['send']);
+
+        $result = $this->handleResult()($response, $config['expect']);
+        if(is_callable($config['callback'])) $config['callback']($result);
+        return $result;
+    }
+
+    private function async($config, $client)
+    {
+        $resultHandler = $this->handleResult();
+
+        return $client->requestAsync($config['type'], $config['url'], $config['send'])
+            ->then(function (ResponseInterface $res) use ($config, $resultHandler) {
+
+                $result = $resultHandler($res, $config['expect']);
+                if(is_callable($config['callback'])) $config['callback']($result);
+                return $result;
+            });
+    }
+
+    private function handleResult()
+    {
+        return function (ResponseInterface $response, $expect)
+        {
+            $result = json_decode($response->getBody(), true);
+
+            if($result['ok']) $result = TelegramObject::cast($result['result'], $expect);
+            else throw TelebotRequestException::unsuccessfulRequest(
+                $result['description'],
+                $result['error_code'],
+                $result['parameters'] ?? null
+            );
+
+            return $result;
+        };
     }
 }
