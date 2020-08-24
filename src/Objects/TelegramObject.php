@@ -26,11 +26,9 @@ abstract class TelegramObject
 
     public function __construct($object)
     {
-        foreach ($this->relations() as $propName => $propType)
-        {
-            if(!isset($object[$propName])) continue;
-            $this->properties[$propName] = $this->cast($object[$propName], $propType);
-        }
+        if($object && $relations = $this->relations())
+            foreach ($object as $prop => $value)
+                if(isset($relations[$prop])) $this->properties[$prop] = $this->cast($value, $relations[$prop]);
     }
 
     /**
@@ -55,36 +53,24 @@ abstract class TelegramObject
             throw TeleBotObjectException::uncastableType(str_replace(" [0] => ","",print_r($type, true)), gettype($value));
         }
 
-        $types = explode('|', $type) ?? [$type];
         $value_type = gettype($value);
         $simple_types = ['int', 'integer', 'bool', 'boolean', 'float', 'double', 'string'];
+        $complicate_types = ['array', 'object'];
 
         // Already casted
-        if(in_array($value_type, $types))
-            return $value;
-
-        if($value_type == 'object')
-            foreach ($types as $typeIter)
-                if(class_exists($typeIter) && $value instanceof $typeIter) return $value;
-
+        if($value_type == $type || $value_type == 'object' && class_exists($type) && $value instanceof $type) return $value;
 
         // Cast simple type
-        if(in_array($value_type, $simple_types))
+        if(in_array($value_type, $simple_types) && in_array($type, $simple_types))
         {
-            $target_type = array_intersect($types, $simple_types);
-            if(isset($target_type[0]))
-            {
-                settype($value, $target_type[0]);
-                return $value;
-            }
+            settype($value, $type);
+            return $value;
         }
 
         // Cast object
-        if($value_type == 'array') 
-            foreach ($types as $typeIter)
-                if(class_exists($typeIter)) return new $typeIter($value);
+        if(in_array($value_type, $complicate_types) && class_exists($type)) return $type::create($value);
 
-        throw TeleBotObjectException::uncastableType($type, gettype($value));
+        throw TeleBotObjectException::uncastableType($type, $value_type);
     }
 
     /**
@@ -134,6 +120,17 @@ abstract class TelegramObject
 
         return $data;
     }
+
+    /**
+     * Create new object instance
+     * 
+     * @param mixed $object 
+     * @return static 
+     */
+    public static function create($object)
+    {
+        return new static($object);
+    } 
 
     /**
      * Get associative array representation of this object

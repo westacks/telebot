@@ -6,6 +6,7 @@ use Closure;
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
 use WeStacks\TeleBot\Exceptions\TeleBotRequestException;
+use WeStacks\TeleBot\Objects\ResponseParameters;
 use WeStacks\TeleBot\Objects\TelegramObject;
 
 abstract class Method
@@ -91,13 +92,13 @@ abstract class Method
     {
         return function (ResponseInterface $response, $expect)
         {
-            $result = json_decode($response->getBody(), true);
+            $result = json_decode($response->getBody());
 
-            if($result['ok']) $result = TelegramObject::cast($result['result'], $expect);
+            if($result->ok) $result = TelegramObject::cast($result->result, $expect);
             else throw TelebotRequestException::unsuccessfulRequest(
-                $result['description'],
-                $result['error_code'],
-                $result['parameters'] ?? null
+                $result->description,
+                $result->error_code,
+                ResponseParameters::create($result->parameters ?? null)
             );
 
             return $result;

@@ -4,6 +4,9 @@ namespace WeStacks\TeleBot\Tests;
 
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Exceptions\TeleBotObjectException;
+use WeStacks\TeleBot\Objects\InputMedia;
+use WeStacks\TeleBot\Objects\InputMedia\InputMediaAudio;
+use WeStacks\TeleBot\Objects\InputMedia\InputMediaDocument;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\User;
@@ -17,7 +20,7 @@ class ComplicateObjectTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->object = new Update([
+        $this->object = Update::create([
             'update_id' => 1234567,
             'message' => [
                 'message_id' => 2345678,
@@ -64,5 +67,16 @@ class ComplicateObjectTest extends TestCase
     {
         $this->expectException(TeleBotObjectException::class);
         $this->object->some_undefined_variable = 'test';
+    }
+
+    public function testInputMedia()
+    {
+        $data = ['type' => 'document'];
+        $object = InputMedia::create($data);
+        $this->assertInstanceOf(InputMediaDocument::class, $object);
+
+        $data = ['type' => 'audio'];
+        $object = InputMedia::create($data);
+        $this->assertInstanceOf(InputMediaAudio::class, $object);
     }
 }
