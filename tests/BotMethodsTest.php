@@ -17,9 +17,6 @@ class BotMethodsTest extends TestCase
 
     protected function setUp(): void
     {
-        $dotenv = Dotenv::createUnsafeImmutable(__DIR__.'/..');
-        $dotenv->load();
-
         $this->bot = new Bot([
             'token' => getenv('TELEGRAM_BOT_TOKEN'),
             'name'  => getenv('TELEGRAM_BOT_NAME')
