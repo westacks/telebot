@@ -1,5 +1,5 @@
 <p align="center">
-[![TeleBot](docs/assets/logo.svg)](https://github.com/westacks/php-telebot-sdk)
+<a href="https://github.com/westacks/php-telebot-sdk"><img src="./docs/assets/logo.svg" alt="Project Logo"></a>
 </p>
 
 <p align="center">
