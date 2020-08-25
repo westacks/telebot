@@ -2,21 +2,21 @@
 
 namespace WeStacks\TeleBot\Tests\Unit;
 
-use WeStacks\TeleBot\Bot;
+use WeStacks\TeleBot\TeleBot;
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Exceptions\TeleBotMehtodException;
-use WeStacks\TeleBot\Objects\User;
+use WeStacks\TeleBot\Exception\TeleBotMehtodException;
+use WeStacks\TeleBot\TelegramObject\User;
 
 class BotMethodsTest extends TestCase
 {
     /**
-     * @var Bot
+     * @var TeleBot
      */
     private $bot;
 
     protected function setUp(): void
     {
-        $this->bot = new Bot([
+        $this->bot = new TeleBot([
             'token' => getenv('TELEGRAM_BOT_TOKEN'),
             'name'  => getenv('TELEGRAM_BOT_NAME')
         ]);
@@ -24,7 +24,7 @@ class BotMethodsTest extends TestCase
 
     public function testBotCreated()
     {
-        $this->assertInstanceOf(Bot::class, $this->bot);
+        $this->assertInstanceOf(TeleBot::class, $this->bot);
     }
 
     public function testCallUndefinedMethod()
