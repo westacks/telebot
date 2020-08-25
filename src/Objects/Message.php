@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Objects\Payments\Invoice;
+use WeStacks\TeleBot\Objects\Payments\SuccessfulPayment;
 use WeStacks\TeleBot\Objects\Stickers\Sticker;
 
 /**
