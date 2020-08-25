@@ -17,7 +17,7 @@
         "guzzlehttp/psr7": "^1.6"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": ">=8.0"
     },
     "autoload": {
         "psr-4": {
@@ -30,7 +30,8 @@
         }
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "testdox": "phpunit --testdox"
     },
     "extra": {
         "branch-alias": {

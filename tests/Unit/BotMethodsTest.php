@@ -1,8 +1,7 @@
 <?php
 
-namespace WeStacks\TeleBot\Tests;
+namespace WeStacks\TeleBot\Tests\Unit;
 
-use Dotenv\Dotenv;
 use WeStacks\TeleBot\Bot;
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Exceptions\TeleBotMehtodException;

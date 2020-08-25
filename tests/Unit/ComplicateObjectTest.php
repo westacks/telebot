@@ -1,6 +1,6 @@
 <?php
 
-namespace WeStacks\TeleBot\Tests;
+namespace WeStacks\TeleBot\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Exceptions\TeleBotObjectException;
