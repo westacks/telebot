@@ -8,6 +8,6 @@ class TeleBotMehtodException extends Exception
 {
     public static function methodNotFound(string $method)
     {
-        return new static("Method \"$method\" is not exists", 404);
+        return new TeleBotMehtodException("Method \"$method\" is not exists", 404);
     }
 }
