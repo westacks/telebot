@@ -12,16 +12,6 @@
         </filter>
     </defs>
     <g>
-        <title>background</title>
-        <rect fill="#fff" id="canvas_background" height="152" width="632" y="-1" x="-1" />
-        <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
-            <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
-        </g>
-    </g>
-    <g>
-        <title>Layer 1</title>
-        <metadata transform="matrix(0.0790815142580783,0,0,0.0790815142580783,0,0) " id="svg_75">image/svg+xmlOfficial
-            PHP LogoColin ViebrockCopyright Colin Viebrock 1997 - All rights reserved.1997</metadata>
         <defs>
             <clipPath id="svg_63" clipPathUnits="userSpaceOnUse">
                 <path id="svg_74"
