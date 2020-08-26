@@ -16,7 +16,8 @@
         "guzzlehttp/guzzle": ">=6.5"
     },
     "require-dev": {
-        "phpunit/phpunit": ">=7.5"
+        "phpunit/phpunit": ">=7.5",
+        "psy/psysh": "^0.10.4"
     },
     "autoload": {
         "psr-4": {

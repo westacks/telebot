@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\TelegramObject;
 
 use WeStacks\TeleBot\TelegramObject;
 use WeStacks\TeleBot\TelegramObject\Games\Game;
+use WeStacks\TeleBot\TelegramObject\Keyboard\InlineKeyboardMarkup;
 use WeStacks\TeleBot\TelegramObject\Payments\Invoice;
 use WeStacks\TeleBot\TelegramObject\Payments\SuccessfulPayment;
 use WeStacks\TeleBot\TelegramObject\Stickers\Sticker;

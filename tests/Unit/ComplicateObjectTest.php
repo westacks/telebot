@@ -7,6 +7,7 @@ use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\TelegramObject\InputMedia;
 use WeStacks\TeleBot\TelegramObject\InputMedia\InputMediaAudio;
 use WeStacks\TeleBot\TelegramObject\InputMedia\InputMediaDocument;
+use WeStacks\TeleBot\TelegramObject\Keyboard;
 use WeStacks\TeleBot\TelegramObject\Message;
 use WeStacks\TeleBot\TelegramObject\Update;
 use WeStacks\TeleBot\TelegramObject\User;
@@ -78,5 +79,19 @@ class ComplicateObjectTest extends TestCase
         $data = ['type' => 'audio'];
         $object = InputMedia::create($data);
         $this->assertInstanceOf(InputMediaAudio::class, $object);
+    }
+
+    public function testKeyboard()
+    {
+        $keyboard = Keyboard::create([
+            'inline_keyboard' => [[
+                [
+                    'text' => 'Google',
+                    'url' => 'https://google.com/'
+                ]
+            ]]
+        ]);
+
+        $this->assertEquals('{"inline_keyboard":[[{"text":"Google","url":"https:\/\/google.com\/"}]]}', (string) $keyboard);
     }
 }

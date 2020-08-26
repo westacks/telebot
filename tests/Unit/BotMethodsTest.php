@@ -2,21 +2,23 @@
 
 namespace WeStacks\TeleBot\Tests\Unit;
 
-use WeStacks\TeleBot\TeleBot;
+use WeStacks\TeleBot\Bot;
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
+use WeStacks\TeleBot\TelegramObject\Keyboard;
+use WeStacks\TeleBot\TelegramObject\Message;
 use WeStacks\TeleBot\TelegramObject\User;
 
 class BotMethodsTest extends TestCase
 {
     /**
-     * @var TeleBot
+     * @var Bot
      */
     private $bot;
 
     protected function setUp(): void
     {
-        $this->bot = new TeleBot([
+        $this->bot = new Bot([
             'token' => getenv('TELEGRAM_BOT_TOKEN'),
             'name'  => getenv('TELEGRAM_BOT_NAME')
         ]);
@@ -24,7 +26,7 @@ class BotMethodsTest extends TestCase
 
     public function testBotCreated()
     {
-        $this->assertInstanceOf(TeleBot::class, $this->bot);
+        $this->assertInstanceOf(Bot::class, $this->bot);
     }
 
     public function testCallUndefinedMethod()
@@ -39,10 +41,23 @@ class BotMethodsTest extends TestCase
         $this->assertInstanceOf(User::class, $botUser);
     }
 
-    public function testExecuteAsyncMethod()
+    public function testSendMessage()
     {
-        $promise = $this->bot->async(true)->getMe();
-        $result = $promise->wait();
-        $this->assertInstanceOf(User::class, $result);
+        $message = $this->bot->sendMessage([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'text' => 'Unit test message',
+            'reply_markup' => Keyboard::create([
+                'inline_keyboard' => [
+                    [
+                        [
+                            'text' => 'Google',
+                            'url' => 'https://google.com/'
+                        ]
+                    ]
+                ]
+            ])
+        ]);
+
+        $this->assertInstanceOf(Message::class, $message);
     }
 }
