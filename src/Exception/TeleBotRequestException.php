@@ -2,12 +2,13 @@
 
 namespace WeStacks\TeleBot\Exception;
 
-use Exception;
+use WeStacks\TeleBot\TelegramObject\ResponseParameters;
 
-class TeleBotRequestException extends Exception
+class TeleBotRequestException extends TeleBotException
 {
-    public static function unsuccessfulRequest(string $message, int $status)
+    public static function requestError(object $result)
     {
-        return new TeleBotRequestException("The InutFile's contents is empty. Unable to create multipart data");
+        // $parameters = ResponseParameters::create($result->parameters ?? null);
+        return new TeleBotRequestException($result->description, $result->error_code);
     }
 }

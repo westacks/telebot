@@ -2,9 +2,7 @@
 
 namespace WeStacks\TeleBot\Exception;
 
-use Exception;
-
-class TeleBotMehtodException extends Exception
+class TeleBotMehtodException extends TeleBotException
 {
     public static function methodNotFound(string $method)
     {

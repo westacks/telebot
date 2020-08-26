@@ -13,8 +13,8 @@ use WeStacks\TeleBot\TelegramMethod\SendMessageMethod;
 /**
  * This class represents a bot instance. This is basicaly main controller for sending your Telegram requests.
  * 
- * @method User getMe(Closure $callback = null) A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
- * @method Message sendMessage(array $data, Closure $callback = null) Use this method to send text messages. On success, the sent Message is returned.
+ * @method User|False getMe(Closure $callback = null) A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
+ * @method Message|False sendMessage(array $data, Closure $callback = null) Use this method to send text messages. On success, the sent Message is returned.
  * 
  * @package WeStacks\TeleBot
  */
@@ -35,11 +35,12 @@ class Bot
      */
     public function __construct($config)
     {
+        if(is_string($config)) $config = ['token' => $config];
+        if(!is_array($config)) $config = [];
         if(!isset($config['token'])) throw TeleBotObjectException::configKeyIsRequired('token', self::class);
 
         $this->properties['token']      = $config['token'];
-        $this->properties['name']       = $config['name'] ?? null;
-        $this->properties['webhook']    = $config['webhook'] ?? null;
+        $this->properties['exceptions'] = $config['exceptions'] ?? true;
         $this->properties['handlers']   = $config['handlers'] ?? [];
     }
 
@@ -58,7 +59,7 @@ class Bot
 
         $method = new $methods[$method]($this->properties['token'], $arguments);
 
-        return $method->execute();
+        return $method->execute($this->properties['exceptions']);
     }
 
     /**

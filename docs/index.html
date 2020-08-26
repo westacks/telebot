@@ -23,15 +23,16 @@
         window.$docsify = {
             name: 'TeleBot',
             repo: 'https://github.com/westacks/php-telebot-sdk',
-            basePath: '/php-telebot-sdk/',
+            //basePath: '/php-telebot-sdk/',
             coverpage: true,
+            maxLevel: 4,
+            subMaxLevel: 2,
             loadNavbar: '_navbar.md',
             loadSidebar: '_sidebar.md',
             hideSidebar: false,
             auto2top: true,
             name: 'TeleBot',
             themeColor: '#35ACE0',
-            autoHeader: true,
             executeScript: true,
             noEmoji: false,
             copyCode: {
@@ -56,6 +57,7 @@
     <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
     <script src="//cdn.jsdelivr.net/npm/docsify-tabs"></script>
 
+    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-php.min.js"></script>
 </body>

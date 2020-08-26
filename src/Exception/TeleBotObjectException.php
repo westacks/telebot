@@ -2,9 +2,7 @@
 
 namespace WeStacks\TeleBot\Exception;
 
-use Exception;
-
-class TeleBotObjectException extends Exception
+class TeleBotObjectException extends TeleBotException
 {
     public static function inaccessibleVariable(string $key, $value, string $class)
     {

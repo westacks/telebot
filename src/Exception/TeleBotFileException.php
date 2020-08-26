@@ -2,9 +2,7 @@
 
 namespace WeStacks\TeleBot\Exception;
 
-use Exception;
-
-class TeleBotFileException extends Exception
+class TeleBotFileException extends TeleBotException
 {
     public static function fileContentsIsEmpty()
     {

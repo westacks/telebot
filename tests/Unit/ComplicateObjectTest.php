@@ -92,6 +92,8 @@ class ComplicateObjectTest extends TestCase
             ]]
         ]);
 
+        var_dump($keyboard); die();
+
         $this->assertEquals('{"inline_keyboard":[[{"text":"Google","url":"https:\/\/google.com\/"}]]}', (string) $keyboard);
     }
 }

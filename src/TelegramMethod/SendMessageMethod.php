@@ -20,9 +20,9 @@ class SendMessageMethod extends TelegramMethod
         ];
     }
 
-    private function parameters()
+    private function send()
     {
-        return [
+        $parameters = [
             'chat_id'                   => 'string',
             'text'                      => 'string',
             'parse_mode'                => 'string',
@@ -31,11 +31,9 @@ class SendMessageMethod extends TelegramMethod
             'reply_to_message_id'       => 'integer',
             'reply_markup'              => Keyboard::class
         ];
-    }
 
-    private function send()
-    {
-        $validObject = TypeCaster::castValues($this->arguments[0] ?? [], $this->parameters());
+        $validObject = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
+
         return [
             'json' => TypeCaster::stripArrays($validObject)
         ];

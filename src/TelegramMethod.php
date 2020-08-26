@@ -4,10 +4,9 @@ namespace WeStacks\TeleBot;
 
 use Closure;
 use GuzzleHttp\Client;
-use Psr\Http\Message\ResponseInterface;
+use WeStacks\TeleBot\Exception\TeleBotException;
 use WeStacks\TeleBot\Exception\TeleBotRequestException;
 use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\TelegramObject\ResponseParameters;
 
 abstract class TelegramMethod
 {
@@ -55,34 +54,35 @@ abstract class TelegramMethod
     /**
      * Execute method
      * 
-     * @param bool $async Execute async request
+     * @param bool $exceptions Throws exceptions if true
      * @return mixed 
      */
-    public function execute()
+    public function execute($exceptions = true)
     {
-        $config = $this->request();
-        $client = new Client();
+        try
+        {
+            $config = $this->request();
+            $client = new Client(['http_errors' => false]);
+    
+            $result = $client->request($config['type'], $config['url'], $config['send']);
+            $result = json_decode($result->getBody());
+    
+            if($result->ok) 
+            {
+                $result = TypeCaster::cast($result->result, $config['expect']);
+            }
+            else throw TeleBotRequestException::requestError($result);
 
-        $promise = $client->requestAsync($config['type'], $config['url'], $config['send'])
-            ->then(function (ResponseInterface $res) use ($config)
-                {
-                    $result = json_decode($res->getBody());
-                    if($result->ok) 
-                    {
-                        $result = TypeCaster::cast($result->result, $config['expect']);
-                    }
-                    else throw TelebotRequestException::unsuccessfulRequest(
-                        $result->description, $result->error_code, ResponseParameters::create($result->parameters ?? null)
-                    );
-
-                    if(is_callable($config['callback'])) 
-                    {
-                        $config['callback']($result);
-                    }
-                    return $result;
-                }
-            );
-
-        return $promise->wait();
+            if(is_callable($config['callback'])) 
+            {
+                $config['callback']($result);
+            }
+            return $result;
+        }
+        catch (TeleBotException $exception)
+        {
+            if($exceptions) throw $exception;
+            return false;
+        }
     }
 }
