@@ -18,4 +18,4 @@ install:
 script: composer test
 
 after_success:
-  - php vendor/bin/coveralls -v; fi;
+  - travis_retry php vendor/bin/php-coveralls -v
