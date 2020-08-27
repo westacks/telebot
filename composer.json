@@ -12,13 +12,12 @@
         }
     ],
     "require": {
-        "php": "^7.1",
-        "guzzlehttp/guzzle": "^6.0"
+        "php": ">=7.1",
+        "guzzlehttp/guzzle": ">=6.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5",
-        "psy/psysh": "^0.10.4",
-        "satooshi/php-coveralls": "^2.2"
+        "psy/psysh": "^0.10.4"
     },
     "autoload": {
         "psr-4": {

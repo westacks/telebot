@@ -1,3 +1,5 @@
+language: php
+
 branches:
   only:
     - master
@@ -14,7 +16,10 @@ jobs:
     - stage: Testing
       name: Running unit tests on PHP 7.1
       php: 7.1
-      script: composer test
+      script: 
+        - composer require satooshi/php-coveralls --dev
+        - composer test
+        - vendor/bin/php-coveralls -v
 
     - stage: Testing
       name: Running unit tests on PHP 7.2
@@ -29,4 +34,4 @@ jobs:
     - stage: Testing
       name: Running unit tests on PHP 7.4
       php: 7.4
-      script: composer test && vendor/bin/php-coveralls -v
+      script: composer test
