@@ -13,7 +13,8 @@
     ],
     "require": {
         "php": "^7.1",
-        "guzzlehttp/guzzle": "^6.0"
+        "guzzlehttp/guzzle": "^6.0",
+        "satooshi/php-coveralls": "^2.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5",
@@ -30,8 +31,8 @@
         }
     },
     "scripts": {
-        "test": "phpunit --coverage-clover clover.xml",
-        "testdox": "phpunit --testdox --coverage-clover clover.xml"
+        "test": "phpunit --coverage-clover build/logs/clover.xml",
+        "testdox": "phpunit --testdox --coverage-clover build/logs/clover.xml"
     },
     "extra": {
         "branch-alias": {
