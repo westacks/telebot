@@ -13,7 +13,6 @@ branches:
 install:
   - travis_retry composer self-update
   - composer install
-  - composer require satooshi/php-coveralls
 
 script: composer testdox
 
