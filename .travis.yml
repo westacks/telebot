@@ -14,7 +14,17 @@ install:
   - travis_retry composer self-update
   - composer install
 
-script: composer testdox
+stages:
+  - test
+  - coverage
 
-after_success:
-  - vendor/bin/php-coveralls -v
+jobs:
+  include:
+    - stage: test
+      name: Running unit tests
+      script: composer testdox
+
+    - stage: coverage
+      name: "Sending code coverage"
+      php: 7.4
+      script: vendor/bin/php-coveralls -v
