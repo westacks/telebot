@@ -31,8 +31,8 @@
         }
     },
     "scripts": {
-        "test": "phpunit --coverage-clover build/logs/clover.xml",
-        "testdox": "phpunit --testdox --coverage-clover build/logs/clover.xml"
+        "test": "phpunit",
+        "testdox": "phpunit --testdox"
     },
     "extra": {
         "branch-alias": {
