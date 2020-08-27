@@ -10,8 +10,12 @@ branches:
   only:
     - master
 
-before_install:
+install:
   - travis_retry composer self-update
   - composer install
+  - composer require satooshi/php-coveralls
 
 script: composer test
+
+after_success:
+  - php vendor/bin/coveralls -v; fi;

@@ -36,7 +36,6 @@ class BotMethodsTest extends TestCase
     public function testExecuteMethod()
     {
         $botUser = $this->bot->getMe();
-        var_dump($botUser->toArray());
         $this->assertInstanceOf(User::class, $botUser);
     }
 
