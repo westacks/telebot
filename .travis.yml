@@ -17,4 +17,4 @@ install:
 script: composer testdox
 
 after_success:
-  - sh -c 'if( [ "$TRAVIS_PHP_VERSION" != "7.4" ] ); then vendor/bin/php-coveralls -v
+  - vendor/bin/php-coveralls -v
