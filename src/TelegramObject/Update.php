@@ -3,6 +3,8 @@
 namespace WeStacks\TeleBot\TelegramObject;
 
 use WeStacks\TeleBot\TelegramObject;
+use WeStacks\TeleBot\TelegramObject\Payments\PreCheckoutQuery;
+use WeStacks\TeleBot\TelegramObject\Payments\ShippingQuery;
 
 /**
  * This object represents an incoming update.

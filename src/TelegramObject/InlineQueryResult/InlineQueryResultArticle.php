@@ -2,8 +2,8 @@
 
 namespace WeStacks\TeleBot\TelegramObject\InlineQueryResult;
 
-use WeStacks\TeleBot\TelegramObject\InlineKeyboardMarkup;
 use WeStacks\TeleBot\TelegramObject\InlineQueryResult;
+use WeStacks\TeleBot\TelegramObject\Keyboard\InlineKeyboardMarkup;
 
 /**
  * Represents a link to an article or web page.

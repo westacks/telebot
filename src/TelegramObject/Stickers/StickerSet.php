@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\TelegramObject\Stickers;
 
 use WeStacks\TeleBot\TelegramObject;
+use WeStacks\TeleBot\TelegramObject\PhotoSize;
 
 /**
  * This object represents a sticker set.
