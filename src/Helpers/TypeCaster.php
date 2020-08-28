@@ -36,37 +36,13 @@ class TypeCaster
      */
     public static function cast($value, $type)
     {
-        // Cast array
-        if(is_array($type))
-        {
-            if(is_array($value))
-            {
-                foreach ($value as $subKey => $subValue)
-                    $value[$subKey] = static::cast($subValue, $type[0]);
+        if(is_array($type)) 
+            return static::castArrayOfTypes($value, $type);
 
-                return $value;
-            }
-            throw TeleBotObjectException::uncastableType(gettype($type), gettype($value));
-        }
-
-        $value_type = gettype($value);
-        $simple_types = ['int', 'integer', 'bool', 'boolean', 'float', 'double', 'string'];
-        $complicate_types = ['array', 'object'];
-
-        // Already casted
-        if( $value_type == $type || $value_type == 'object' && class_exists($type) && ($value instanceof $type || is_subclass_of($value, $type))) return $value;
-
-        // Cast simple type
-        if(in_array($value_type, $simple_types) && in_array($type, $simple_types))
-        {
-            settype($value, $type);
+        if(static::isCasted($value, $type))
             return $value;
-        }
 
-        // Cast object
-        if(in_array($value_type, $complicate_types) && class_exists($type)) return $type::create($value);
-
-        throw TeleBotObjectException::uncastableType($type, $value_type);
+        return static::castDirect($value, $type);
     }
 
     /**
@@ -87,5 +63,41 @@ class TypeCaster
         }
 
         return $array;
+    }
+
+    private static function castArrayOfTypes($object, array $type)
+    {
+        if(!is_array($object)) throw TeleBotObjectException::uncastableType(gettype($type), gettype($object));
+
+        foreach ($object as $subKey => $subValue)
+            $object[$subKey] = static::cast($subValue, $type[0]);
+
+        return $object;
+    }
+
+    private static function isCasted($object, string $type)
+    {
+        $value_type = gettype($object);
+
+        return  $value_type == $type || 
+                $value_type == 'object' && class_exists($type) &&
+                ($object instanceof $type || is_subclass_of($object, $type));
+    }
+
+    private static function castDirect($object, string $type)
+    {
+        $simple = ['int', 'integer', 'bool', 'boolean', 'float', 'double', 'string'];
+        $complicate = ['array', 'object'];
+        $value_type = gettype($object);
+
+        if(in_array($value_type, $simple) && in_array($type, $simple))
+        {
+            settype($value, $type);
+            return $value;
+        }
+
+        if(in_array($value_type, $complicate) && class_exists($type)) return $type::create($object);
+
+        throw TeleBotObjectException::uncastableType($type, $value_type);
     }
 }
