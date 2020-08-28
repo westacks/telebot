@@ -79,11 +79,11 @@ foreach($update->message->from as $prop => $value)
     // last_name => 'Doe'
 }
 
-// Cast to string to get JSON representation
-$jsonUpdate = (string) $update; // same as `json_encode($data)`
+// Get object JSON representaition
+$jsonUpdate = $update->toJson();
 
-// Cast back to array
-$arrayUpdate = $update->toArray(); // same as `$data`
+// Get object associative array representaition
+$arrayUpdate = $update->toArray();
 ```
 
 <!-- tabs:end -->

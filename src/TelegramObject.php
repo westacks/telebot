@@ -69,6 +69,16 @@ abstract class TelegramObject implements IteratorAggregate
         return TypeCaster::stripArrays($this->properties);
     }
 
+    /**
+     * Get associative array representation of this object
+     * 
+     * @return array 
+     */
+    public function toJson()
+    {
+        return (string) $this;
+    }
+
     public function __get($key)
     {
         return $this->properties[$key];
