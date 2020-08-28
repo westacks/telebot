@@ -4,8 +4,8 @@ namespace WeStacks\TeleBot\Exception;
 
 class TeleBotFileException extends TeleBotException
 {
-    public static function fileContentsIsEmpty()
+    public static function unableToOpenFileOrResource()
     {
-        return new TeleBotFileException("The InutFile's contents is empty. Unable to create multipart data");
+        return new TeleBotFileException("Unable to read given file!");
     }
 }

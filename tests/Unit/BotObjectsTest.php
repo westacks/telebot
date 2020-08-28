@@ -12,7 +12,7 @@ use WeStacks\TeleBot\TelegramObject\Message;
 use WeStacks\TeleBot\TelegramObject\Update;
 use WeStacks\TeleBot\TelegramObject\User;
 
-class ComplicateObjectTest extends TestCase
+class BotObjectsTest extends TestCase
 {
     /**
      * @var Update

@@ -2,6 +2,7 @@
 
 namespace WeStacks\TeleBot\TelegramObject\InputMedia;
 
+use WeStacks\TeleBot\TelegramObject\InputFile;
 use WeStacks\TeleBot\TelegramObject\InputMedia;
 
 /**
