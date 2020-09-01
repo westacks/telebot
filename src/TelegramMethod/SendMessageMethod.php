@@ -15,8 +15,7 @@ class SendMessageMethod extends TelegramMethod
             'type'      => 'POST',
             'url'       => "https://api.telegram.org/bot{$this->token}/sendMessage",
             'send'      => $this->send(),
-            'expect'    => Message::class,
-            'callback'  => $this->callback
+            'expect'    => Message::class
         ];
     }
 

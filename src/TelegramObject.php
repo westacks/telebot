@@ -85,7 +85,7 @@ abstract class TelegramObject implements IteratorAggregate
     }
     public function __set($key, $value)
     {
-        throw TeleBotObjectException::inaccessibleVariable($key, $value, self::class);
+        throw TeleBotObjectException::inaccessibleVariable($key, self::class);
     }
     public function __isset($key)
     {

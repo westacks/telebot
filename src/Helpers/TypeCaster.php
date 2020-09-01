@@ -37,7 +37,7 @@ class TypeCaster
     public static function cast($value, $type)
     {
         if(is_array($type)) 
-            return static::castArrayOfTypes($value, $type);
+        return static::castArrayOfTypes($value, $type);
 
         if(static::isCasted($value, $type))
             return $value;
@@ -87,7 +87,6 @@ class TypeCaster
     private static function castDirect($object, string $type)
     {
         $simple = ['int', 'integer', 'bool', 'boolean', 'float', 'double', 'string'];
-        $complicate = ['array', 'object'];
         $value_type = gettype($object);
 
         if(in_array($value_type, $simple) && in_array($type, $simple))
@@ -96,7 +95,7 @@ class TypeCaster
             return $value;
         }
 
-        if(in_array($value_type, $complicate) && class_exists($type)) return $type::create($object);
+        if(class_exists($type)) return $type::create($object);
 
         throw TeleBotObjectException::uncastableType($type, $value_type);
     }

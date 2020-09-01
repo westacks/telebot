@@ -2,29 +2,38 @@
 
 namespace WeStacks\TeleBot;
 
-use Closure;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\TelegramObject\User;
 use WeStacks\TeleBot\TelegramObject\Message;
 use WeStacks\TeleBot\TelegramMethod\GetMeMethod;
 use WeStacks\TeleBot\TelegramMethod\SendMessageMethod;
+use WeStacks\TeleBot\TelegramMethod\SendPhotoMethod;
+use GuzzleHttp\Promise\PromiseInterface;
 
 /**
  * This class represents a bot instance. This is basicaly main controller for sending your Telegram requests.
  * 
- * @method User|False getMe(Closure $callback = null) A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
- * @method Message|False sendMessage(array $data, Closure $callback = null) Use this method to send text messages. On success, the sent Message is returned.
+ * @method User|PromiseInterface|False      getMe()                     A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
+ * @method Message|PromiseInterface|False   sendMessage(array $data)    Use this method to send text messages. On success, the sent Message is returned.
+ * @method Message|PromiseInterface|False   sendPhoto(array $data)      Use this method to send photos. On success, the sent Message is returned.
  * 
  * @package WeStacks\TeleBot
  */
 class Bot
 {
-    /**
-     * Array of bot properties
-     * @var array
-     */
-    protected $properties;
+    protected $properties = [];
+    protected $async = null;
+    protected $exceptions = null;
+
+    protected function methods()
+    {
+        return [
+            'getMe'             => GetMeMethod::class,
+            'sendMessage'       => SendMessageMethod::class,
+            'sendPhoto'         => SendPhotoMethod::class,
+        ];
+    }
 
     /**
      * Create new instance of Telegram bot
@@ -41,6 +50,7 @@ class Bot
 
         $this->properties['token']      = $config['token'];
         $this->properties['exceptions'] = $config['exceptions'] ?? true;
+        $this->properties['async']      = $config['async'] ?? false;
         $this->properties['handlers']   = $config['handlers'] ?? [];
     }
 
@@ -59,19 +69,34 @@ class Bot
 
         $method = new $methods[$method]($this->properties['token'], $arguments);
 
-        return $method->execute($this->properties['exceptions']);
+        $exceptions = $this->exceptions ?? $this->properties['exceptions'];
+        $async = $this->async ?? $this->properties['async'];
+
+        $this->exceptions = null;
+        $this->async = null;
+
+        return $method->execute($exceptions, $async);
     }
 
     /**
-     * Map of registered bot methods
-     * 
-     * @return string[] 
+     * Call next method asynchronously
+     * @param bool $async 
+     * @return self 
      */
-    private function methods()
+    public function async($async = true)
     {
-        return [
-            'getMe'             => GetMeMethod::class,
-            'sendMessage'       => SendMessageMethod::class,
-        ];
+        $this->async = $async;
+        return $this;
+    }
+
+    /**
+     * Turn exceptions on for next method
+     * @param bool $async 
+     * @return self 
+     */
+    public function exceptions($exceptions = true)
+    {
+        $this->exceptions = $exceptions;
+        return $this;
     }
 }

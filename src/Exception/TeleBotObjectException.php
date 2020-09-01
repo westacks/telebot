@@ -4,9 +4,9 @@ namespace WeStacks\TeleBot\Exception;
 
 class TeleBotObjectException extends TeleBotException
 {
-    public static function inaccessibleVariable(string $key, $value, string $class)
+    public static function inaccessibleVariable(string $key, string $class)
     {
-        return new TeleBotObjectException("You are not able to write property \"$key\" to the \"$class\" class. Given value: \"" . print_r($value, true)."\"", 403);
+        return new TeleBotObjectException("You are not able to write property \"$key\" to the \"$class\" object!", 403);
     }
 
     public static function inaccessibleUnsetVariable(string $key, string $class)
@@ -26,11 +26,16 @@ class TeleBotObjectException extends TeleBotException
 
     public static function uncastableType(string $type, string $objectType)
     {
-        return new TeleBotObjectException("Unable to cast variable to type \"$type\". \"$objectType\" given", 400);
+        return new TeleBotObjectException("Unable to cast \"$objectType\" variable to type \"$type\".", 400);
     }
 
     public static function configKeyIsRequired(string $key, string $class)
     {
-        return new TeleBotObjectException("Required config key \"$key\" is not specified for class \"$class\"");
+        return new TeleBotObjectException("Required key \"$key\" is not specified for \"$class\"");
+    }
+
+    public static function objectBuiltWrong(string $message, string $class)
+    {
+        return new TeleBotObjectException("Unable to create \"$class\" instance. ".$message, 400);
     }
 }

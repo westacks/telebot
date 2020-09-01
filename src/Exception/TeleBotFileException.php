@@ -4,8 +4,8 @@ namespace WeStacks\TeleBot\Exception;
 
 class TeleBotFileException extends TeleBotException
 {
-    public static function unableToOpenFileOrResource()
+    public static function fileCantBeNull()
     {
-        return new TeleBotFileException("Unable to read given file!");
+        return new TeleBotFileException("File can't be 'NULL'!", 404);
     }
 }
