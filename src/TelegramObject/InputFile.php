@@ -20,18 +20,25 @@ class InputFile
 
     public function __construct($file, string $filename = null)
     {
-        if(is_array($file)) {
+        if (is_array($file))
+        {
             $filename = $file['filename'] ?? null;
             $file = $file['file'] ?? null;
         }
 
-        if(is_null($file) || is_bool($file)) throw TeleBotFileException::fileCantBeNull();
+        if (is_null($file) || is_bool($file))
+        {
+            throw TeleBotFileException::fileCantBeNull();
+        }
 
         $this->filename = $filename ?? 'input_file';
 
-        if(is_resource($file) || !@is_file($file) && !filter_var($file, FILTER_VALIDATE_URL) || !$this->contents = @fopen($file, 'r'))
+        if (is_resource($file) || !@is_file($file) && !filter_var($file, FILTER_VALIDATE_URL) || !$contents = @fopen($file, 'r'))
         {
             $this->contents = $file;
+        }
+        else {
+            $this->contents = $contents;
         }
     }
 
