@@ -25,7 +25,7 @@ class InputFile
             $file = $file['file'] ?? null;
         }
 
-        if(is_null($file)) throw TeleBotFileException::fileCantBeNull();
+        if(is_null($file) || is_bool($file)) throw TeleBotFileException::fileCantBeNull();
 
         $this->filename = $filename ?? 'input_file';
 

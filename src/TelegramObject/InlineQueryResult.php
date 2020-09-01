@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\TelegramObject;
 use WeStacks\TeleBot\TelegramObject;
 use WeStacks\TeleBot\TelegramObject\InlineQueryResult\InlineQueryResultArticle;
 use WeStacks\TeleBot\TelegramObject\InlineQueryResult\InlineQueryResultAudio;
+use WeStacks\TeleBot\TelegramObject\InlineQueryResult\InlineQueryResultCachedPhoto;
 use WeStacks\TeleBot\TelegramObject\InlineQueryResult\InlineQueryResultContact;
 use WeStacks\TeleBot\TelegramObject\InlineQueryResult\InlineQueryResultDocument;
 use WeStacks\TeleBot\TelegramObject\InlineQueryResult\InlineQueryResultGame;
