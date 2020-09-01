@@ -11,7 +11,6 @@ use WeStacks\TeleBot\TelegramObject\Payments\ShippingQuery;
  * At most one of the optional parameters can be present in any given update.
  * 
  * @property Integer                $update_id                  The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you're using Webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially.
- * @property String                 $type                       The type of incoming update. One of these: message, edited_message, channel_post, edited_channel_post, inline_query, chosen_inline_result, callback_query, shipping_query, pre_checkout_query, poll, poll_answer
  * @property Message                $message                    _Optional_. New incoming message of any kind — text, photo, sticker, etc.
  * @property Message                $edited_message             _Optional_. New version of a message that is known to the bot and was edited
  * @property Message                $channel_post               _Optional_. New incoming channel post of any kind — text, photo, sticker, etc.
@@ -29,26 +28,8 @@ use WeStacks\TeleBot\TelegramObject\Payments\ShippingQuery;
 
 class Update extends TelegramObject
 {
-    public function __construct($object)
+    protected function relations()
     {
-        parent::__construct($object);
-
-        $this->properties['type'] = null;
-        $types = $this->relations();
-
-        unset($types['update_id']);
-        $types = array_keys($types);
-
-        foreach($types as $type)
-        {
-            if(isset($this->$type)) {
-                $this->properties['type'] = $type;
-                break;
-            }
-        }
-    }
-
-    protected function relations() {
         return [
             'update_id'             => 'integer',
             'message'               => Message::class,
