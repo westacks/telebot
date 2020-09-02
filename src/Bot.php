@@ -6,9 +6,9 @@ use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Objects\User;
 use WeStacks\TeleBot\Objects\Message;
-use WeStacks\TeleBot\TelegramMethod\GetMeMethod;
-use WeStacks\TeleBot\TelegramMethod\SendMessageMethod;
-use WeStacks\TeleBot\TelegramMethod\SendPhotoMethod;
+use WeStacks\TeleBot\Methods\GetMeMethod;
+use WeStacks\TeleBot\Methods\SendMessageMethod;
+use WeStacks\TeleBot\Methods\SendPhotoMethod;
 use GuzzleHttp\Promise\PromiseInterface;
 
 /**

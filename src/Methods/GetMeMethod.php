@@ -1,6 +1,6 @@
 <?php
 
-namespace WeStacks\TeleBot\TelegramMethod;
+namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Objects\User;
 use WeStacks\TeleBot\TelegramMethod;
