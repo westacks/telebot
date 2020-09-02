@@ -48,15 +48,6 @@ abstract class TelegramObject implements IteratorAggregate
     public static function create($object)
     {
         return new static($object);
-    } 
-
-    /**
-     * Recieve iterator
-     * @return Traversable 
-     */
-    public function getIterator()
-    {
-        return new ArrayIterator($this->properties);
     }
 
     /**
@@ -77,31 +68,6 @@ abstract class TelegramObject implements IteratorAggregate
     public function toJson()
     {
         return (string) $this;
-    }
-
-    public function __get($key)
-    {
-        return $this->properties[$key];
-    }
-    public function __set($key, $value)
-    {
-        throw TeleBotObjectException::inaccessibleVariable($key, self::class);
-    }
-    public function __isset($key)
-    {
-        return isset($this->properties[$key]);
-    }
-    public function __unset($key)
-    {
-        throw TeleBotObjectException::inaccessibleUnsetVariable($key, self::class);
-    }
-    public function __toString()
-    {
-        return json_encode($this->toArray());
-    }
-    public function __debugInfo()
-    {
-        return $this->properties;
     }
 
     /**
@@ -155,5 +121,44 @@ abstract class TelegramObject implements IteratorAggregate
         if(is_object($data) && isset($data->$key)) return $data = $data->$key;
 
         throw TeleBotObjectException::undefinedOfset($key, get_class($data) ?? gettype($data));
+    }
+
+    /**
+     * Recieve iterator
+     * @return Traversable 
+     */
+    public function getIterator()
+    {
+        return new ArrayIterator($this->properties);
+    }
+
+    public function __get($key)
+    {
+        return $this->properties[$key];
+    }
+
+    public function __set($key, $value)
+    {
+        throw TeleBotObjectException::inaccessibleVariable($key, self::class);
+    }
+
+    public function __isset($key)
+    {
+        return isset($this->properties[$key]);
+    }
+
+    public function __unset($key)
+    {
+        throw TeleBotObjectException::inaccessibleUnsetVariable($key, self::class);
+    }
+
+    public function __toString()
+    {
+        return json_encode($this->toArray());
+    }
+
+    public function __debugInfo()
+    {
+        return $this->properties;
     }
 }

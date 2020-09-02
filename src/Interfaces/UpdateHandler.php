@@ -5,10 +5,10 @@ namespace WeStacks\TeleBot\Interfaces;
 use WeStacks\TeleBot\Objects\Update;
 
 /**
- * Interface for creating Telegram update handlers
+ * Abstract class for creating Telegram update handlers
  * @package WeStacks\TeleBot\Interfaces
  */
-abstract class UpdateHandlerInterface
+abstract class UpdateHandler
 {
     /**
      * Update being processed
