@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\TelegramObject;
+use WeStacks\TeleBot\Interfaces\TelegramObject;
 use WeStacks\TeleBot\Objects\Games\Game;
 use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
 use WeStacks\TeleBot\Objects\Payments\Invoice;

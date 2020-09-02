@@ -1,6 +1,6 @@
 <?php
 
-namespace WeStacks\TeleBot;
+namespace WeStacks\TeleBot\Interfaces;
 
 use GuzzleHttp\Client;
 use WeStacks\TeleBot\Exception\TeleBotException;

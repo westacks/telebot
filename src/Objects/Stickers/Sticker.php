@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Objects\Stickers;
 
-use WeStacks\TeleBot\TelegramObject;
+use WeStacks\TeleBot\Interfaces\TelegramObject;
 use WeStacks\TeleBot\Objects\PhotoSize;
 
 /**

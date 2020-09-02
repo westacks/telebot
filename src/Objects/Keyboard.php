@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Objects;
 
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
-use WeStacks\TeleBot\TelegramObject;
+use WeStacks\TeleBot\Interfaces\TelegramObject;
 use WeStacks\TeleBot\Objects\Keyboard\ForceReply;
 use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
 use WeStacks\TeleBot\Objects\Keyboard\ReplyKeyboardMarkup;

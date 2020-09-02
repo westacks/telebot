@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\TelegramObject;
+use WeStacks\TeleBot\Interfaces\TelegramObject;
 
 /**
  * This object contains information about one member of a chat.

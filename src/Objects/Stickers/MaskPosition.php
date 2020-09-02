@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Objects\Stickers;
 
-use WeStacks\TeleBot\TelegramObject;
+use WeStacks\TeleBot\Interfaces\TelegramObject;
 
 /**
  * This object describes the position on faces where a mask should be placed by default.

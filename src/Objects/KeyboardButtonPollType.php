@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\TelegramObject;
+use WeStacks\TeleBot\Interfaces\TelegramObject;
 
 /**
  * This object represents type of a poll, which is allowed to be created and sent when the corresponding button is pressed.

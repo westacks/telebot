@@ -1,6 +1,6 @@
 <?php
 
-namespace WeStacks\TeleBot;
+namespace WeStacks\TeleBot\Interfaces;
 
 use ArrayIterator;
 use IteratorAggregate;
@@ -11,7 +11,7 @@ use WeStacks\TeleBot\Helpers\TypeCaster;
 /**
  * Basic Telegram object class. All Telegram api objects should extend this class
  * 
- * @package WeStacks\TeleBot
+ * @package WeStacks\TeleBot\Interfaces
  */
 abstract class TelegramObject implements IteratorAggregate
 {

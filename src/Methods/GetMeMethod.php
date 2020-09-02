@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Objects\User;
-use WeStacks\TeleBot\TelegramMethod;
+use WeStacks\TeleBot\Interfaces\TelegramMethod;
 
 class GetMeMethod extends TelegramMethod
 {

@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Objects\Games;
 
-use WeStacks\TeleBot\TelegramObject;
+use WeStacks\TeleBot\Interfaces\TelegramObject;
 use WeStacks\TeleBot\Objects\User;
 
 /**

@@ -40,7 +40,7 @@ object(WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup)#448 (1) {
 
 ## Features
 
-Each object of the library extends `\WeStacks\TeleBot\TelegramObject::class`, so the next things can be done with each library object:
+Each object of the library extends `\WeStacks\TeleBot\Interfaces\TelegramObject::class`, so the next things can be done with each library object:
 <!-- tabs:start -->
 
 #### ** Test data **

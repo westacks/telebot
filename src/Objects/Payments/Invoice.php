@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Objects\Payments;
 
-use WeStacks\TeleBot\TelegramObject;
+use WeStacks\TeleBot\Interfaces\TelegramObject;
 
 /**
  * This object contains basic information about an invoice.

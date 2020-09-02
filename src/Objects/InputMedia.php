@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Objects;
 
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
-use WeStacks\TeleBot\TelegramObject;
+use WeStacks\TeleBot\Interfaces\TelegramObject;
 use WeStacks\TeleBot\Objects\InputMedia\InputMediaAnimation;
 use WeStacks\TeleBot\Objects\InputMedia\InputMediaAudio;
 use WeStacks\TeleBot\Objects\InputMedia\InputMediaDocument;

@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Objects\Games;
 use WeStacks\TeleBot\Objects\Animation;
 use WeStacks\TeleBot\Objects\MessageEntity;
 use WeStacks\TeleBot\Objects\PhotoSize;
-use WeStacks\TeleBot\TelegramObject;
+use WeStacks\TeleBot\Interfaces\TelegramObject;
 
 /**
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
