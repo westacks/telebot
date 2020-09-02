@@ -68,8 +68,13 @@ class BotObjectsTest extends TestCase
         $this->assertNull($data);
 
         $this->expectException(TeleBotObjectException::class);
-        $data = $this->object->get('some.undefined.variable', true);
-        $data = $this->object->get('', true);
+        $this->object->get('some.undefined.variable', true);
+    }
+
+    public function testDotNotationWrongString()
+    {
+        $this->expectException(TeleBotObjectException::class);
+        $this->object->get('', true);
     }
 
     public function testNullCoalescing()
@@ -85,6 +90,11 @@ class BotObjectsTest extends TestCase
     {
         $this->expectException(TeleBotObjectException::class);
         $this->object->some_undefined_variable = 'test';
+    }
+
+    public function testUnetObjectProperties()
+    {
+        $this->expectException(TeleBotObjectException::class);
         unset($this->object->message);
     }
 }
