@@ -33,9 +33,4 @@ class TeleBotObjectException extends TeleBotException
     {
         return new TeleBotObjectException("Required key \"$key\" is not specified for \"$class\"");
     }
-
-    public static function objectBuiltWrong(string $message, string $class)
-    {
-        return new TeleBotObjectException("Unable to create \"$class\" instance. ".$message, 400);
-    }
 }

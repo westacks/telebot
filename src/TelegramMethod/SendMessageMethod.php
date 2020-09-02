@@ -4,8 +4,8 @@ namespace WeStacks\TeleBot\TelegramMethod;
 
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\TelegramMethod;
-use WeStacks\TeleBot\TelegramObject\Keyboard;
-use WeStacks\TeleBot\TelegramObject\Message;
+use WeStacks\TeleBot\Objects\Keyboard;
+use WeStacks\TeleBot\Objects\Message;
 
 class SendMessageMethod extends TelegramMethod
 {

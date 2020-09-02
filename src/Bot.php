@@ -4,8 +4,8 @@ namespace WeStacks\TeleBot;
 
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
-use WeStacks\TeleBot\TelegramObject\User;
-use WeStacks\TeleBot\TelegramObject\Message;
+use WeStacks\TeleBot\Objects\User;
+use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\TelegramMethod\GetMeMethod;
 use WeStacks\TeleBot\TelegramMethod\SendMessageMethod;
 use WeStacks\TeleBot\TelegramMethod\SendPhotoMethod;

@@ -9,7 +9,7 @@ The sub-object's types are automaticaly casted when you create a new object inst
 #### ** Input **
 
 ```php
-$keyboard = \WeStacks\TeleBot\TelegramObject\Keyboard::create([
+$keyboard = \WeStacks\TeleBot\Objects\Keyboard::create([
     'inline_keyboard' => [[
         [
             'text' => 'Google',
@@ -24,10 +24,10 @@ var_dump($keyboard);
 #### ** Output **
 
 ```php
-object(WeStacks\TeleBot\TelegramObject\Keyboard\InlineKeyboardMarkup)#448 (1) {
+object(WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup)#448 (1) {
   ["inline_keyboard"] => array(1) {
     [0] => array(1) {
-      [0] => object(WeStacks\TeleBot\TelegramObject\InlineKeyboardButton)#447 (2) {
+      [0] => object(WeStacks\TeleBot\Objects\InlineKeyboardButton)#447 (2) {
         ["text"] => string(6) "Google"
         ["url"] => string(19) "https://google.com/"
       }

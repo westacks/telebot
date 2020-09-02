@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\TelegramMethod;
 
-use WeStacks\TeleBot\TelegramObject\User;
+use WeStacks\TeleBot\Objects\User;
 use WeStacks\TeleBot\TelegramMethod;
 
 class GetMeMethod extends TelegramMethod

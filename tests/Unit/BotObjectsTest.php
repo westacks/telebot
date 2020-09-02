@@ -3,14 +3,11 @@
 namespace WeStacks\TeleBot\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
+use WeStacks\TeleBot\Bot;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
-use WeStacks\TeleBot\TelegramObject\InputMedia;
-use WeStacks\TeleBot\TelegramObject\InputMedia\InputMediaAudio;
-use WeStacks\TeleBot\TelegramObject\InputMedia\InputMediaDocument;
-use WeStacks\TeleBot\TelegramObject\Keyboard;
-use WeStacks\TeleBot\TelegramObject\Message;
-use WeStacks\TeleBot\TelegramObject\Update;
-use WeStacks\TeleBot\TelegramObject\User;
+use WeStacks\TeleBot\Objects\Message;
+use WeStacks\TeleBot\Objects\Update;
+use WeStacks\TeleBot\Objects\User;
 
 class BotObjectsTest extends TestCase
 {
@@ -19,20 +16,28 @@ class BotObjectsTest extends TestCase
      */
     private $object;
 
+    /**
+     * Json data
+     * @var string
+     */
+    private $json = '{"update_id":1234567,"message":{"message_id":2345678,"from":{"id":3456789,"is_bot":false,"first_name":"John","last_name":"Doe"}}}';
+
+    /**
+     * Data object
+     * @var (int|(int|(int|false|string)[])[])[]
+     */
+    private $data;
+
     protected function setUp(): void
     {
-        $this->object = Update::create([
-            'update_id' => 1234567,
-            'message' => [
-                'message_id' => 2345678,
-                'from' => [
-                    'id' => 3456789,
-                    'is_bot' => false,
-                    'first_name' => 'John',
-                    'last_name' => 'Doe'
-                ]
-            ]
-        ]);
+        $this->data = json_decode($this->json, true);
+        $this->object = Update::create($this->data);
+    }
+
+    public function testBotWithEmptyConfig()
+    {
+        $this->expectException(TeleBotObjectException::class);
+        new Bot([]);
     }
 
     public function testTypes()
@@ -41,6 +46,17 @@ class BotObjectsTest extends TestCase
         $this->assertInstanceOf(Message::class, $this->object->message);
         $this->assertInstanceOf(User::class, $this->object->message->from);
         $this->assertFalse($this->object->message->from->is_bot);
+    }
+
+    public function testHelpersAndMagickMethods()
+    {
+        $this->assertEquals($this->json, $this->object->toJson());
+        $this->assertEquals($this->data, $this->object->toArray());
+
+        ob_start();
+        var_dump($this->object);
+        $result = ob_get_clean();
+        $this->assertStringContainsString("class WeStacks\TeleBot\Objects\Update", $result);
     }
 
     public function testGetByDotNotation()
@@ -53,6 +69,7 @@ class BotObjectsTest extends TestCase
 
         $this->expectException(TeleBotObjectException::class);
         $data = $this->object->get('some.undefined.variable', true);
+        $data = $this->object->get('', true);
     }
 
     public function testNullCoalescing()
@@ -68,30 +85,6 @@ class BotObjectsTest extends TestCase
     {
         $this->expectException(TeleBotObjectException::class);
         $this->object->some_undefined_variable = 'test';
-    }
-
-    public function testInputMedia()
-    {
-        $data = ['type' => 'document'];
-        $object = InputMedia::create($data);
-        $this->assertInstanceOf(InputMediaDocument::class, $object);
-
-        $data = ['type' => 'audio'];
-        $object = InputMedia::create($data);
-        $this->assertInstanceOf(InputMediaAudio::class, $object);
-    }
-
-    public function testKeyboard()
-    {
-        $keyboard = Keyboard::create([
-            'inline_keyboard' => [[
-                [
-                    'text' => 'Google',
-                    'url' => 'https://google.com/'
-                ]
-            ]]
-        ]);
-
-        $this->assertEquals('{"inline_keyboard":[[{"text":"Google","url":"https:\/\/google.com\/"}]]}', (string) $keyboard);
+        unset($this->object->message);
     }
 }
