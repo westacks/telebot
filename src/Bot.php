@@ -2,6 +2,7 @@
 
 namespace WeStacks\TeleBot;
 
+use Closure;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Objects\User;
@@ -10,13 +11,17 @@ use WeStacks\TeleBot\Methods\GetMeMethod;
 use WeStacks\TeleBot\Methods\SendMessageMethod;
 use WeStacks\TeleBot\Methods\SendPhotoMethod;
 use GuzzleHttp\Promise\PromiseInterface;
+use WeStacks\TeleBot\Interfaces\UpdateHandler;
+use WeStacks\TeleBot\Methods\GetUpdatesMethod;
+use WeStacks\TeleBot\Objects\Update;
 
 /**
  * This class represents a bot instance. This is basicaly main controller for sending your Telegram requests.
  * 
- * @method User|PromiseInterface|False      getMe()                     A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
- * @method Message|PromiseInterface|False   sendMessage(array $data)    Use this method to send text messages. On success, the sent Message is returned.
- * @method Message|PromiseInterface|False   sendPhoto(array $data)      Use this method to send photos. On success, the sent Message is returned.
+ * @method User|PromiseInterface|False          getMe()                             A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
+ * @method Message|PromiseInterface|False       sendMessage(array $parameters = [])      Use this method to send text messages. On success, the sent Message is returned.
+ * @method Message|PromiseInterface|False       sendPhoto(array $parameters = [])        Use this method to send photos. On success, the sent Message is returned.
+ * @method Update[]|PromiseInterface|False      getUpdates(array $parameters = [])       Use this method to send photos. On success, the sent Message is returned.
  * 
  * @package WeStacks\TeleBot
  */
@@ -30,6 +35,7 @@ class Bot
     {
         return [
             'getMe'             => GetMeMethod::class,
+            'getUpdates'        => GetUpdatesMethod::class,
             'sendMessage'       => SendMessageMethod::class,
             'sendPhoto'         => SendPhotoMethod::class,
         ];
@@ -51,7 +57,9 @@ class Bot
         $this->properties['token']      = $config['token'];
         $this->properties['exceptions'] = $config['exceptions'] ?? true;
         $this->properties['async']      = $config['async'] ?? false;
-        $this->properties['handlers']   = $config['handlers'] ?? [];
+        $this->properties['handlers']   = [];
+
+        $this->addHandler($config['handlers'] ?? []);
     }
 
     /**
@@ -98,5 +106,56 @@ class Bot
     {
         $this->exceptions = $exceptions;
         return $this;
+    }
+
+    /**
+     * Get bot's update handlers
+     * @return (UpdateHandler|Closure)[] 
+     */
+    public function getHandlers()
+    {
+        return $this->properties['handlers'];
+    }
+    
+    /**
+     * Add new update handler(s) to the bot instance
+     * @param string|Closure|array $handler - string that representing `UpdateHandler` subclass resolution or closure function. You also may give an array to add multiple handlers.
+     * @return void 
+     * @throws TeleBotMehtodException 
+     */
+    public function addHandler($handler)
+    {
+        if (is_array($handler))
+        {
+            foreach ($handler as $sub)
+                $this->addHandler($sub);
+
+            return;
+        }
+
+        if (!@class_exists($handler) && !is_callable($handler)) 
+            throw TeleBotMehtodException::wrongHandlerType(is_string($handler) ? $handler : gettype($handler));
+
+        $this->properties['handlers'][] = $handler;
+    }
+
+    /**
+     * Handle given update
+     * @param Update $update 
+     * @return void 
+     */
+    public function handleUpdate(Update $update)
+    {
+        foreach ($this->properties['handlers'] as $handler)
+        {
+            if (is_callable($handler))
+            {
+                $handler($update);
+                continue;
+            }
+
+            if($handler::trigger($update))
+                (new $handler($this, $update))->handle();
+        }
     }
 }

@@ -35,14 +35,15 @@ abstract class UpdateHandler
     }
 
     /**
-     * This function should return `true` if this handler should handle given update
-     * @return mixed 
+     * This function should return `true` if this handler should handle given update, or `false` if should not
+     * @param Update $update
+     * @return boolean 
      */
     abstract public static function trigger(Update $update);
 
     /**
      * This function should handle updates
-     * @return mixed 
+     * @return void 
      */
     abstract public function handle();
 }
