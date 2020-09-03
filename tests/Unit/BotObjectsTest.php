@@ -48,6 +48,15 @@ class BotObjectsTest extends TestCase
         $this->assertFalse($this->object->message->from->is_bot);
     }
 
+    public function testCastWrogType()
+    {
+        $this->expectException(TeleBotObjectException::class);
+        new Update([
+            'update_id' => [1,4,5,1,5,6],
+            'message' => 4
+        ]);
+    }
+
     public function testHelpersAndMagickMethods()
     {
         $this->assertEquals($this->json, $this->object->toJson());

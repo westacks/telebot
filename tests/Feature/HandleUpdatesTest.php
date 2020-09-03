@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\Tests\Feature;
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Bot;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
+use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Tests\Helpers\StartCommandHandler;
 
@@ -54,5 +55,11 @@ class HandleUpdatesTest extends TestCase
 
         $this->expectException(TeleBotMehtodException::class);
         $this->bot->addHandler(Update::class);
+    }
+
+    public function testGetBotCommand()
+    {
+        $commands = StartCommandHandler::getBotCommand();
+        $this->assertContainsOnlyInstancesOf(BotCommand::class, $commands);
     }
 }

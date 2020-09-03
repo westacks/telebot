@@ -20,15 +20,12 @@ class InputFile
 
     public function __construct($file, string $filename = null)
     {
+        if (!$file) throw TeleBotFileException::fileCantBeNull();
+
         if (is_array($file))
         {
             $filename = $file['filename'] ?? null;
             $file = $file['file'] ?? null;
-        }
-
-        if (is_null($file) || is_bool($file))
-        {
-            throw TeleBotFileException::fileCantBeNull();
         }
 
         $this->filename = $filename;

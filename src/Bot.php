@@ -50,9 +50,9 @@ class Bot
      */
     public function __construct($config)
     {
-        if(is_string($config)) $config = ['token' => $config];
-        if(!is_array($config)) $config = [];
-        if(!isset($config['token'])) throw TeleBotObjectException::configKeyIsRequired('token', self::class);
+        if (is_string($config)) $config = ['token' => $config];
+        if (!is_array($config)) $config = [];
+        if (!isset($config['token'])) throw TeleBotObjectException::configKeyIsRequired('token', self::class);
 
         $this->properties['token']      = $config['token'];
         $this->properties['exceptions'] = $config['exceptions'] ?? true;
@@ -73,7 +73,7 @@ class Bot
     public function __call($method, $arguments)
     {
         $methods = $this->methods();
-        if(!isset($methods[$method])) throw TeleBotMehtodException::methodNotFound($method);
+        if (!isset($methods[$method])) throw TeleBotMehtodException::methodNotFound($method);
 
         $method = new $methods[$method]($this->properties['token'], $arguments);
 
@@ -120,11 +120,10 @@ class Bot
         {
             foreach ($handler as $sub)
                 $this->addHandler($sub);
-
             return;
         }
 
-        if ((!@class_exists($handler) || !is_subclass_of($handler, UpdateHandler::class)) && !is_callable($handler)) 
+        if (!is_callable($handler) && (!@class_exists($handler) || !is_subclass_of($handler, UpdateHandler::class))) 
             throw TeleBotMehtodException::wrongHandlerType(is_string($handler) ? $handler : gettype($handler));
 
         $this->properties['handlers'][] = $handler;
@@ -145,7 +144,7 @@ class Bot
                 continue;
             }
 
-            if($handler::trigger($update))
+            if ($handler::trigger($update))
                 (new $handler($this, $update))->handle();
         }
     }
