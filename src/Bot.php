@@ -11,6 +11,7 @@ use WeStacks\TeleBot\Methods\GetMeMethod;
 use WeStacks\TeleBot\Methods\SendMessageMethod;
 use WeStacks\TeleBot\Methods\SendPhotoMethod;
 use GuzzleHttp\Promise\PromiseInterface;
+use WeStacks\TeleBot\Handlers\CommandHandler;
 use WeStacks\TeleBot\Interfaces\UpdateHandler;
 use WeStacks\TeleBot\Methods\GetUpdatesMethod;
 use WeStacks\TeleBot\Objects\Update;
@@ -108,15 +109,6 @@ class Bot
         return $this;
     }
 
-    /**
-     * Get bot's update handlers
-     * @return (UpdateHandler|Closure)[] 
-     */
-    public function getHandlers()
-    {
-        return $this->properties['handlers'];
-    }
-    
     /**
      * Add new update handler(s) to the bot instance
      * @param string|Closure|array $handler - string that representing `UpdateHandler` subclass resolution or closure function. You also may give an array to add multiple handlers.

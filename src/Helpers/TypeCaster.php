@@ -91,8 +91,8 @@ class TypeCaster
 
         if(in_array($value_type, $simple) && in_array($type, $simple))
         {
-            settype($value, $type);
-            return $value;
+            settype($object, $type);
+            return $object;
         }
 
         if(class_exists($type)) return $type::create($object);

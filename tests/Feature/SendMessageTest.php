@@ -42,6 +42,7 @@ class SendMessageTest extends TestCase
             'text' => 'Unit test message'
         ]);
 
+        // Should be wrong cos Telegram is not accept empty messages.
         $promises[] = $this->bot->async(true)->exceptions(false)->sendMessage([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'text' => ''

@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Handlers;
 
 use WeStacks\TeleBot\Interfaces\UpdateHandler;
+use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\Update;
 
 /**
@@ -12,41 +13,34 @@ use WeStacks\TeleBot\Objects\Update;
 abstract class CommandHandler extends UpdateHandler
 {
     /**
-     * Bot command to trigger handler
-     * @var string|null
-     */
-    protected static $command = null;
-
-    /**
      * Command aliases
      * @var string[]
      */
     protected static $aliases = [];
-    
+
     /**
-     * Command description
-     * @var string|null
+     * Command descriptioin
+     * @var string
      */
     protected static $description = null;
 
     /**
-     * Command help message
-     * @var string|null
+     * Get BotCommand foreach command `aliases` and `description`
+     * @return BotCommand[]
      */
-    protected static $help = null;
-
-    /**
-     * Get array with command's `name`, `aliases`, `description` and `help` message
-     * @return array
-     */
-    public static function getComandData()
+    public static function getBotCommand()
     {
-        return [
-            'name' => static::$command,
-            'aliases' => static::$aliases,
-            'description' => static::$description,
-            'help' => static::$help
-        ];
+        $data = [];
+        
+        foreach (static::$aliases as $name)
+        {
+            $data[] = new BotCommand([
+                'command' => $name,
+                'description' => static::$description
+            ]);
+        }
+
+        return $data;
     }
 
     public static function trigger(Update $update)
@@ -57,10 +51,9 @@ abstract class CommandHandler extends UpdateHandler
         foreach ($entities as $entity)
         {
             if ($entity->type != 'bot_command') continue;
-            $aliases = array_merge(static::$aliases, [static::$command]);
 
             $command = substr($message->text, $entity->offset, $entity->length);
-            if (in_array($command, $aliases)) return true;
+            if (in_array($command, static::$aliases)) return true;
         }
 
         return false;

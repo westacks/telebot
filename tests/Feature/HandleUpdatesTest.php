@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\Tests\Feature;
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Bot;
 use WeStacks\TeleBot\Objects\Update;
+use WeStacks\TeleBot\Tests\Helpers\StartCommandHandler;
 
 class HandleUpdatesTest extends TestCase
 {
@@ -20,7 +21,9 @@ class HandleUpdatesTest extends TestCase
 
     public function testHandleUpdates()
     {
+        // Using array just to test is it works
         $this->bot->addHandler([function (Update $update) {
+            // This should echo update's JSON object
             echo $update;
         }]);
 
@@ -28,12 +31,24 @@ class HandleUpdatesTest extends TestCase
 
         foreach ($updates as $update)
         {
-            // We will store out handler JSON output into the buffer and then validate is it the same update
+            // We will store our handler JSON output into the output buffer and then validate is it the same update
             ob_start();
             $this->bot->handleUpdate($update);
             $result = new Update(json_decode(ob_get_clean()));
 
             $this->assertEquals($update->update_id, $result->update_id);
+        }
+    }
+
+    public function testHandleUpdatesUsingObject()
+    {
+        $this->expectNotToPerformAssertions(); // Check telegram output. You should get "Hello, World!" from StartCommandHandler::class
+        $this->bot->addHandler(StartCommandHandler::class);
+
+        $updates = $this->bot->getUpdates([]);
+        foreach ($updates as $update)
+        {
+            $this->bot->handleUpdate($update);
         }
     }
 }

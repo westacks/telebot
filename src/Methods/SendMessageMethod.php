@@ -22,7 +22,7 @@ class SendMessageMethod extends TelegramMethod
     private function send()
     {
         $parameters = [
-            'chat_id'                   => 'string',
+            'chat_id'                   => 'integer',
             'text'                      => 'string',
             'parse_mode'                => 'string',
             'disable_web_page_preview'  => 'boolean',
