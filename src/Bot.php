@@ -11,7 +11,6 @@ use WeStacks\TeleBot\Methods\GetMeMethod;
 use WeStacks\TeleBot\Methods\SendMessageMethod;
 use WeStacks\TeleBot\Methods\SendPhotoMethod;
 use GuzzleHttp\Promise\PromiseInterface;
-use WeStacks\TeleBot\Handlers\CommandHandler;
 use WeStacks\TeleBot\Interfaces\UpdateHandler;
 use WeStacks\TeleBot\Methods\GetUpdatesMethod;
 use WeStacks\TeleBot\Objects\Update;
@@ -125,7 +124,7 @@ class Bot
             return;
         }
 
-        if (!@class_exists($handler) && !is_callable($handler)) 
+        if ((!@class_exists($handler) || !is_subclass_of($handler, UpdateHandler::class)) && !is_callable($handler)) 
             throw TeleBotMehtodException::wrongHandlerType(is_string($handler) ? $handler : gettype($handler));
 
         $this->properties['handlers'][] = $handler;

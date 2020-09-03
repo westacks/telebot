@@ -4,8 +4,6 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\Keyboard;
-use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\Update;
 
 class GetUpdatesMethod extends TelegramMethod

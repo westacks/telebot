@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Bot;
+use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Tests\Helpers\StartCommandHandler;
 
@@ -42,7 +43,7 @@ class HandleUpdatesTest extends TestCase
 
     public function testHandleUpdatesUsingObject()
     {
-        $this->expectNotToPerformAssertions(); // Check telegram output. You should get "Hello, World!" from StartCommandHandler::class
+        // Check telegram output. You should get "Hello, World!" from StartCommandHandler::class
         $this->bot->addHandler(StartCommandHandler::class);
 
         $updates = $this->bot->getUpdates([]);
@@ -50,5 +51,8 @@ class HandleUpdatesTest extends TestCase
         {
             $this->bot->handleUpdate($update);
         }
+
+        $this->expectException(TeleBotMehtodException::class);
+        $this->bot->addHandler(Update::class);
     }
 }
