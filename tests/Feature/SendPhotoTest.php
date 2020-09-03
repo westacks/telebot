@@ -23,7 +23,13 @@ class SendPhotoTest extends TestCase
     {
         $message = $this->bot->sendPhoto([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'photo' => "https://picsum.photos/640"
+            'photo' => "https://picsum.photos/640",
+            'reply_markup' => [
+                'inline_keyboard' => [[[
+                    'text' => 'Google',
+                    'url' => 'https://google.com/'
+                ]]]
+            ]
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
