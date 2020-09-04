@@ -123,13 +123,16 @@ class Bot
             return;
         }
 
-        if (is_callable($handler) || is_string($handler) && class_exists($handler) && is_subclass_of($handler, UpdateHandler::class))
-        {
-            $this->properties['handlers'][] = $handler;
-            return;
-        }
+        if (!$this->isUpdateHandler($handler))
+            throw TeleBotMehtodException::wrongHandlerType(is_string($handler) ? $handler : gettype($handler));
 
-        throw TeleBotMehtodException::wrongHandlerType(is_string($handler) ? $handler : gettype($handler));
+        $this->properties['handlers'][] = $handler;
+    }
+
+    private function isUpdateHandler($handler)
+    {
+        return is_callable($handler) || 
+            is_string($handler) && class_exists($handler) && is_subclass_of($handler, UpdateHandler::class);
     }
 
     /**

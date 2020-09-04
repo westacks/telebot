@@ -7,7 +7,14 @@ use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Objects\InlineQueryResult;
 use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultArticle;
 use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultAudio;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedAudio;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedDocument;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedGif;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedMpeg4Gif;
 use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedPhoto;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedSticker;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedVideo;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedVoice;
 use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultContact;
 use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultDocument;
 use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultGame;
@@ -65,6 +72,27 @@ class InlineQueryResultTest extends TestCase
     {
         $object = InlineQueryResult::create(['type' => 'photo', 'photo_file_id' => 123123123]);
         $this->assertInstanceOf(InlineQueryResultCachedPhoto::class, $object);
+
+        $object = InlineQueryResult::create(['type' => 'gif', 'gif_file_id' => 123123123]);
+        $this->assertInstanceOf(InlineQueryResultCachedGif::class, $object);
+
+        $object = InlineQueryResult::create(['type' => 'mpeg4_gif', 'mpeg4_file_id' => 123123123]);
+        $this->assertInstanceOf(InlineQueryResultCachedMpeg4Gif::class, $object);
+
+        $object = InlineQueryResult::create(['type' => 'sticker', 'sticker_file_id' => 123123123]);
+        $this->assertInstanceOf(InlineQueryResultCachedSticker::class, $object);
+
+        $object = InlineQueryResult::create(['type' => 'document', 'document_file_id' => 123123123]);
+        $this->assertInstanceOf(InlineQueryResultCachedDocument::class, $object);
+
+        $object = InlineQueryResult::create(['type' => 'video', 'video_file_id' => 123123123]);
+        $this->assertInstanceOf(InlineQueryResultCachedVideo::class, $object);
+
+        $object = InlineQueryResult::create(['type' => 'voice', 'voice_file_id' => 123123123]);
+        $this->assertInstanceOf(InlineQueryResultCachedVoice::class, $object);
+
+        $object = InlineQueryResult::create(['type' => 'audio', 'audio_file_id' => 123123123]);
+        $this->assertInstanceOf(InlineQueryResultCachedAudio::class, $object);
     }
 
     public function testWrongInlineQueryResult()

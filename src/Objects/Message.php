@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\Objects;
 use WeStacks\TeleBot\Interfaces\TelegramObject;
 use WeStacks\TeleBot\Objects\Games\Game;
 use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
+use WeStacks\TeleBot\Objects\Passport\PassportData;
 use WeStacks\TeleBot\Objects\Payments\Invoice;
 use WeStacks\TeleBot\Objects\Payments\SuccessfulPayment;
 use WeStacks\TeleBot\Objects\Stickers\Sticker;
