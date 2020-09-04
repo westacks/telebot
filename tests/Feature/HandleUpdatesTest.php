@@ -29,6 +29,7 @@ class HandleUpdatesTest extends TestCase
             echo $update;
         }]);
 
+        // Please don't specify offset so I don't need to resend messages to my bot 
         $updates = $this->bot->getUpdates();
 
         foreach ($updates as $update)
@@ -61,5 +62,6 @@ class HandleUpdatesTest extends TestCase
     {
         $commands = StartCommandHandler::getBotCommand();
         $this->assertContainsOnlyInstancesOf(BotCommand::class, $commands);
+        $this->assertCount(2, $commands);
     }
 }
