@@ -38,7 +38,6 @@ abstract class TelegramMethod
 
     /**
      * Execute method
-     * 
      * @param bool $exceptions Throws exceptions if true
      * @param bool $async Execute request asynchronously
      * @return mixed 
@@ -47,18 +46,14 @@ abstract class TelegramMethod
     {
         $config = $this->request();
         $client = new Client(['http_errors' => false]);
-    
+
         $promise = $client->requestAsync($config['type'], $config['url'], $config['send'])
             ->then(function ($result) use ($config, $exceptions)
             {
-                try {
-                    $result = json_decode($result->getBody());
-                    if($result->ok) return TypeCaster::cast($result->result, $config['expect']);
-                    else throw TeleBotRequestException::requestError($result);
-                } catch (TeleBotException $exception) {
-                    if($exceptions) throw $exception;
-                    return false;
-                }
+                $result = json_decode($result->getBody());
+                if ($result->ok) return TypeCaster::cast($result->result, $config['expect']);
+                elseif ($exceptions) throw TeleBotRequestException::requestError($result);
+                else return false;
             });
 
         return $async ? $promise : $promise->wait();
