@@ -63,11 +63,11 @@ abstract class TelegramObject implements IteratorAggregate
     /**
      * Get associative array representation of this object
      * 
-     * @return array 
+     * @return string 
      */
     public function toJson()
     {
-        return json_encode($this->toArray());
+        return (string) $this;
     }
 
     /**
