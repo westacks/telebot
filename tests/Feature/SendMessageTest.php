@@ -6,6 +6,7 @@ use GuzzleHttp\Promise;
 use WeStacks\TeleBot\Bot;
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
+use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\User;
 
@@ -31,6 +32,12 @@ class SendMessageTest extends TestCase
     {
         $botUser = $this->bot->getMe();
         $this->assertInstanceOf(User::class, $botUser);
+    }
+
+    public function testSomethingRealyWrong()
+    {
+        $this->expectException(TeleBotObjectException::class);
+        $this->bot->sendMessage('test');
     }
 
     public function testSendMessageAsync()

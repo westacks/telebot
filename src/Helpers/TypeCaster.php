@@ -17,6 +17,8 @@ class TypeCaster
      */
     public static function castValues($object, array $relations)
     {
+        if (!is_array($object) && !is_object($object)) throw TeleBotObjectException::uncastableType('array', gettype($object));
+
         $result = [];
 
         foreach ( $object as $prop => $value ) if( isset($relations[$prop]) )
