@@ -7,6 +7,7 @@ use WeStacks\TeleBot\Bot;
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
+use WeStacks\TeleBot\Exception\TeleBotRequestException;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\User;
 
@@ -58,5 +59,11 @@ class SendMessageTest extends TestCase
         $responses = Promise\unwrap($promises);
         $this->assertInstanceOf(Message::class, $responses[0]);
         $this->assertFalse($responses[1]);
+
+        $this->expectException(TeleBotRequestException::class);
+        $this->bot->sendMessage([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'text' => ''
+        ]);
     }
 }
