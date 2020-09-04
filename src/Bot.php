@@ -91,7 +91,7 @@ class Bot
      * @param bool $async 
      * @return self 
      */
-    public function async($async = true)
+    public function async(bool $async = true)
     {
         $this->async = $async;
         return $this;
@@ -102,7 +102,7 @@ class Bot
      * @param bool $async 
      * @return self 
      */
-    public function exceptions($exceptions = true)
+    public function exceptions(bool $exceptions = true)
     {
         $this->exceptions = $exceptions;
         return $this;

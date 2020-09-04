@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Objects\InlineQueryResult;
 
 use WeStacks\TeleBot\Objects\InlineQueryResult;
+use WeStacks\TeleBot\Objects\InputMessageContent;
 use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
 
 /**

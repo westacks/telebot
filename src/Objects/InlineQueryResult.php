@@ -6,7 +6,14 @@ use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Interfaces\TelegramObject;
 use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultArticle;
 use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultAudio;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedAudio;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedDocument;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedGif;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedMpeg4Gif;
 use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedPhoto;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedSticker;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedVideo;
+use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedVoice;
 use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultContact;
 use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultDocument;
 use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultGame;
@@ -62,8 +69,14 @@ abstract class InlineQueryResult extends TelegramObject
                 'game'          => InlineQueryResultGame::class
             ],
             'cached' => [
-                // TODO: cached query results https://core.telegram.org/bots/api#inlinequeryresultcachedgif
-                'photo'         => InlineQueryResultCachedPhoto::class
+                'photo'         => InlineQueryResultCachedPhoto::class,
+                'gif'           => InlineQueryResultCachedGif::class,
+                'mpeg4_gif'     => InlineQueryResultCachedMpeg4Gif::class,
+                'sticker'       => InlineQueryResultCachedSticker::class,
+                'document'      => InlineQueryResultCachedDocument::class,
+                'video'         => InlineQueryResultCachedVideo::class,
+                'voice'         => InlineQueryResultCachedVoice::class,
+                'audio'         => InlineQueryResultCachedAudio::class,
             ]
         ];
     }
