@@ -157,7 +157,7 @@ class Bot
         return true;
     }
 
-    private function validUpdate(Update &$update)
+    private function validUpdate(&$update)
     {
         if (is_null($update))
         {
