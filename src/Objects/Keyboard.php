@@ -19,12 +19,12 @@ abstract class Keyboard extends TelegramObject
 {
     public static function create($object)
     {
-        if(is_object($object)) $object = (array) $object;
+        if (is_object($object)) $object = (array) $object;
 
-        if(isset($object['inline_keyboard']))       return new InlineKeyboardMarkup($object);
-        if(isset($object['keyboard']))              return new ReplyKeyboardMarkup($object);
-        if(isset($object['remove_keyboard']))       return new ReplyKeyboardRemove($object);
-        if(isset($object['force_reply']))           return new ForceReply($object);
+        if (isset($object['inline_keyboard']))       return new InlineKeyboardMarkup($object);
+        if (isset($object['keyboard']))              return new ReplyKeyboardMarkup($object);
+        if (isset($object['remove_keyboard']))       return new ReplyKeyboardRemove($object);
+        if (isset($object['force_reply']))           return new ForceReply($object);
 
         throw TeleBotObjectException::uncastableType(static::class, gettype($object));
     }

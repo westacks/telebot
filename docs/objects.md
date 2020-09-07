@@ -71,7 +71,7 @@ $chatId = $update->message->from->id; // 3456789
 $chatId = $update->get('message.from.is_bot'); // false
 
 // Iterating properties
-foreach($update->message->from as $prop => $value)
+foreach ($update->message->from as $prop => $value)
 {
     // id => 3456789
     // is_bot => false

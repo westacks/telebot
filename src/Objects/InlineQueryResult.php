@@ -89,7 +89,7 @@ abstract class InlineQueryResult extends TelegramObject
 
         foreach (array_keys($object) as $key)
         {
-            if(strpos($key, 'file_id') !== false) return true;
+            if (strpos($key, 'file_id') !== false) return true;
         }
 
         return false;

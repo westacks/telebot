@@ -87,11 +87,11 @@ abstract class TelegramObject implements IteratorAggregate
         
         try
         {
-            if(preg_match_all($validate, $property, $matches, PREG_SET_ORDER))
-                foreach($matches as $match)
+            if (preg_match_all($validate, $property, $matches, PREG_SET_ORDER))
+                foreach ($matches as $match)
                 {
                     unset($match[0]);
-                    foreach($match as $key)
+                    foreach ($match as $key)
                     {
                         $this->seek($data, $key);
                     }
@@ -101,7 +101,7 @@ abstract class TelegramObject implements IteratorAggregate
         
         catch (TeleBotObjectException $e)
         {
-            if($exception) throw $e;
+            if ($exception) throw $e;
             return null;
         }
         return $data;
@@ -116,9 +116,9 @@ abstract class TelegramObject implements IteratorAggregate
      */
     private function seek(&$data, string $key)
     {
-        if(is_array($data) && isset($data[$key])) return $data = $data[$key];
+        if (is_array($data) && isset($data[$key])) return $data = $data[$key];
 
-        if(is_object($data) && isset($data->$key)) return $data = $data->$key;
+        if (is_object($data) && isset($data->$key)) return $data = $data->$key;
 
         throw TeleBotObjectException::undefinedOfset($key, get_class($data) ?? gettype($data));
     }

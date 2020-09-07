@@ -22,7 +22,7 @@ class TypeCaster
 
         $result = [];
 
-        foreach ( $object as $prop => $value ) if( isset($relations[$prop]) )
+        foreach ( $object as $prop => $value ) if ( isset($relations[$prop]) )
         {
             $result[$prop] = static::cast($value, $relations[$prop]);
         }
@@ -39,10 +39,10 @@ class TypeCaster
      */
     public static function cast($value, $type)
     {
-        if(is_array($type)) 
+        if (is_array($type)) 
         return static::castArrayOfTypes($value, $type);
 
-        if(static::isCasted($value, $type))
+        if (static::isCasted($value, $type))
             return $value;
 
         return static::castDirect($value, $type);
@@ -61,7 +61,7 @@ class TypeCaster
 
         foreach ($object as $key => $value)
         {
-            if(is_object($value) || is_array($value)) $value = static::stripArrays($value);
+            if (is_object($value) || is_array($value)) $value = static::stripArrays($value);
             $array[$key] = $value;
         }
 
@@ -70,7 +70,7 @@ class TypeCaster
 
     private static function castArrayOfTypes($object, array $type)
     {
-        if(!is_array($object)) throw TeleBotObjectException::uncastableType(gettype($type), gettype($object));
+        if (!is_array($object)) throw TeleBotObjectException::uncastableType(gettype($type), gettype($object));
 
         foreach ($object as $subKey => $subValue)
             $object[$subKey] = static::cast($subValue, $type[0]);
@@ -92,13 +92,13 @@ class TypeCaster
         $simple = ['int', 'integer', 'bool', 'boolean', 'float', 'double', 'string'];
         $value_type = gettype($object);
 
-        if(in_array($value_type, $simple) && in_array($type, $simple))
+        if (in_array($value_type, $simple) && in_array($type, $simple))
         {
             settype($object, $type);
             return $object;
         }
 
-        if(class_exists($type)) return $type::create($object);
+        if (class_exists($type)) return $type::create($object);
 
         throw TeleBotObjectException::uncastableType($type, $value_type);
     }
@@ -114,7 +114,7 @@ class TypeCaster
 
         foreach ($object as $key => $value)
         {
-            if($value instanceof InputFile)
+            if ($value instanceof InputFile)
             {
                 $multipart[] = $value->toMultipart($key);
             }
