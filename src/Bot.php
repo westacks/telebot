@@ -140,12 +140,7 @@ class Bot
      */
     public function handleUpdate(Update $update = null)
     {
-        if (is_null($update))
-        {
-            $data = json_decode(file_get_contents('php://input'), true);
-            if (is_null($data) || !isset($data['update_id'])) return false;
-            $update = new Update($data);
-        }
+        if(!$this->validUpdate($update)) return false;
 
         foreach ($this->properties['handlers'] as $handler)
         {
@@ -157,6 +152,18 @@ class Bot
 
             if ($handler::trigger($update))
                 (new $handler($this, $update))->handle();
+        }
+
+        return true;
+    }
+
+    private function validUpdate(Update &$update)
+    {
+        if (is_null($update))
+        {
+            $data = json_decode(file_get_contents('php://input'), true);
+            if (is_null($data) || !isset($data['update_id'])) return false;
+            $update = new Update($data);
         }
 
         return true;
