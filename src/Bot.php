@@ -136,14 +136,14 @@ class Bot
     /**
      * Handle given update
      * @param Update $update - Telegram update object. Leave empty to try to get it from incoming POST request (for handling webhook)
-     * @return void 
+     * @return boolean 
      */
     public function handleUpdate(Update $update = null)
     {
         if (is_null($update))
         {
             $data = json_decode(file_get_contents('php://input'), true);
-            if (is_null($data) || !isset($data['update_id'])) return;
+            if (is_null($data) || !isset($data['update_id'])) return false;
             $update = new Update($data);
         }
 
@@ -158,6 +158,8 @@ class Bot
             if ($handler::trigger($update))
                 (new $handler($this, $update))->handle();
         }
+
+        return true;
     }
 
     /**
