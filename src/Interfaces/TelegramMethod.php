@@ -3,7 +3,6 @@
 namespace WeStacks\TeleBot\Interfaces;
 
 use GuzzleHttp\Client;
-use WeStacks\TeleBot\Exception\TeleBotException;
 use WeStacks\TeleBot\Exception\TeleBotRequestException;
 use WeStacks\TeleBot\Helpers\TypeCaster;
 

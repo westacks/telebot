@@ -12,17 +12,24 @@ use WeStacks\TeleBot\Methods\SendMessageMethod;
 use WeStacks\TeleBot\Methods\SendPhotoMethod;
 use GuzzleHttp\Promise\PromiseInterface;
 use WeStacks\TeleBot\Interfaces\UpdateHandler;
+use WeStacks\TeleBot\Methods\DeleteWebhookMethod;
 use WeStacks\TeleBot\Methods\GetUpdatesMethod;
+use WeStacks\TeleBot\Methods\GetWebhookInfoMethod;
+use WeStacks\TeleBot\Methods\SetWebhookMethod;
 use WeStacks\TeleBot\Objects\Update;
+use WeStacks\TeleBot\Objects\WebhookInfo;
 
 /**
  * This class represents a bot instance. This is basicaly main controller for sending your Telegram requests.
  * 
- * @method User|PromiseInterface|False          getMe()                             A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
+ * @method True|PromiseInterface|False          deleteWebhook()                          Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success. Requires no parameters.
+ * @method User|PromiseInterface|False          getMe()                                  A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
+ * @method Update[]|PromiseInterface|False      getUpdates(array $parameters = [])       Use this method to send photos. On success, the sent Message is returned.
+ * @method WebhookInfo|PromiseInterface|False   getWebhookInfo()                         Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.
  * @method Message|PromiseInterface|False       sendMessage(array $parameters = [])      Use this method to send text messages. On success, the sent Message is returned.
  * @method Message|PromiseInterface|False       sendPhoto(array $parameters = [])        Use this method to send photos. On success, the sent Message is returned.
- * @method Update[]|PromiseInterface|False      getUpdates(array $parameters = [])       Use this method to send photos. On success, the sent Message is returned.
- * 
+ * @method True|PromiseInterface|False          setWebhook(array $parameters = [])       Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
+ *  
  * @package WeStacks\TeleBot
  */
 class Bot
@@ -30,16 +37,6 @@ class Bot
     protected $properties = [];
     protected $async = null;
     protected $exceptions = null;
-
-    protected function methods()
-    {
-        return [
-            'getMe'             => GetMeMethod::class,
-            'getUpdates'        => GetUpdatesMethod::class,
-            'sendMessage'       => SendMessageMethod::class,
-            'sendPhoto'         => SendPhotoMethod::class,
-        ];
-    }
 
     /**
      * Create new instance of Telegram bot
@@ -153,5 +150,22 @@ class Bot
             if ($handler::trigger($update))
                 (new $handler($this, $update))->handle();
         }
+    }
+
+    /**
+     * Bot methods list for "call" magick
+     * @return string[] 
+     */
+    protected function methods()
+    {
+        return [
+            'deleteWebhook'     => DeleteWebhookMethod::class,
+            'getMe'             => GetMeMethod::class,
+            'getUpdates'        => GetUpdatesMethod::class,
+            'getWebhookInfo'    => GetWebhookInfoMethod::class,
+            'sendMessage'       => SendMessageMethod::class,
+            'sendPhoto'         => SendPhotoMethod::class,
+            'setWebhook'        => SetWebhookMethod::class,
+        ];
     }
 }

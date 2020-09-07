@@ -21,6 +21,7 @@ class HandleUpdatesTest extends TestCase
         $this->bot = new Bot(getenv('TELEGRAM_BOT_TOKEN'));
     }
 
+    // You should send any message to your bot in order to have at least one update
     public function testHandleUpdates()
     {
         // Using array just to test is it works

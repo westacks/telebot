@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Helpers;
 
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
+use WeStacks\TeleBot\Objects\InputFile;
 
 class TypeCaster
 {
@@ -100,5 +101,31 @@ class TypeCaster
         if(class_exists($type)) return $type::create($object);
 
         throw TeleBotObjectException::uncastableType($type, $value_type);
+    }
+
+    /**
+     * Create a multipart array for Guzzle request from array or object
+     * @param array|object $object 
+     * @return array 
+     */
+    public static function createMultipartArray($object)
+    {
+        $multipart = [];
+
+        foreach ($object as $key => $value)
+        {
+            if($value instanceof InputFile)
+            {
+                $multipart[] = $value->toMultipart($key);
+            }
+            else {
+                $multipart[] = [
+                    'name' => $key,
+                    'contents' => (string) $value
+                ];
+            }
+        }
+
+        return $multipart;
     }
 }

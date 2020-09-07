@@ -32,24 +32,7 @@ class SendPhotoMethod extends TelegramMethod
             'reply_markup'              => Keyboard::class 
         ];
 
-        $validObject = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        $multipart = [];
-
-        foreach ($validObject as $key => $value)
-        {
-            if($value instanceof InputFile)
-            {
-                $multipart[] = $value->toMultipart($key);
-            }
-            else {
-                $multipart[] = [
-                    'name' => $key,
-                    'contents' => (string) $value
-                ];
-            }
-        }
-
-        return [ 'multipart' => $multipart ];
+        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
+        return [ 'multipart' => TypeCaster::createMultipartArray($object) ];
     }
 }
