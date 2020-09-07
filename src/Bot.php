@@ -11,6 +11,7 @@ use WeStacks\TeleBot\Methods\GetMeMethod;
 use WeStacks\TeleBot\Methods\SendMessageMethod;
 use WeStacks\TeleBot\Methods\SendPhotoMethod;
 use GuzzleHttp\Promise\PromiseInterface;
+use WeStacks\TeleBot\Exception\TeleBotException;
 use WeStacks\TeleBot\Interfaces\UpdateHandler;
 use WeStacks\TeleBot\Methods\DeleteWebhookMethod;
 use WeStacks\TeleBot\Methods\GetUpdatesMethod;
@@ -134,11 +135,18 @@ class Bot
 
     /**
      * Handle given update
-     * @param Update $update 
+     * @param Update $update - Telegram update object. Leave empty to try to get it from incoming POST request (for handling webhook)
      * @return void 
      */
-    public function handleUpdate(Update $update)
+    public function handleUpdate(Update $update = null)
     {
+        if (is_null($update))
+        {
+            $data = json_decode(file_get_contents('php://input'), true);
+            if (is_null($data) || !isset($data['update_id'])) return;
+            $update = new Update($data);
+        }
+
         foreach ($this->properties['handlers'] as $handler)
         {
             if (is_callable($handler))
