@@ -38,7 +38,6 @@ class SendAudioTest extends TestCase
             ]
         ]);
         $this->assertInstanceOf(Message::class, $message);
-        // https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4
     }
 
     public function testSendVideo()
@@ -46,6 +45,15 @@ class SendAudioTest extends TestCase
         $message = $this->bot->sendVideo([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'video' => 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
+        ]);
+        $this->assertInstanceOf(Message::class, $message);
+    }
+
+    public function testSendAnimation()
+    {
+        $message = $this->bot->sendAnimation([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'animation' => 'https://media.giphy.com/media/xUPJPlup94kn4skee4/giphy.gif'
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
