@@ -14,6 +14,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 use WeStacks\TeleBot\Exception\TeleBotException;
 use WeStacks\TeleBot\Interfaces\UpdateHandler;
 use WeStacks\TeleBot\Methods\DeleteWebhookMethod;
+use WeStacks\TeleBot\Methods\ForwardMessageMethod;
 use WeStacks\TeleBot\Methods\GetUpdatesMethod;
 use WeStacks\TeleBot\Methods\GetWebhookInfoMethod;
 use WeStacks\TeleBot\Methods\SetWebhookMethod;
@@ -24,6 +25,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * This class represents a bot instance. This is basicaly main controller for sending your Telegram requests.
  * 
  * @method True|PromiseInterface|False          deleteWebhook()                          Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success. Requires no parameters.
+ * @method Message|PromiseInterface|False       forwardMessage(array $parameters = [])   Use this method to forward messages of any kind. On success, the sent Message is returned.
  * @method User|PromiseInterface|False          getMe()                                  A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
  * @method Update[]|PromiseInterface|False      getUpdates(array $parameters = [])       Use this method to send photos. On success, the sent Message is returned.
  * @method WebhookInfo|PromiseInterface|False   getWebhookInfo()                         Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.
@@ -177,6 +179,7 @@ class Bot
     {
         return [
             'deleteWebhook'     => DeleteWebhookMethod::class,
+            'forwardMessage'    => ForwardMessageMethod::class,
             'getMe'             => GetMeMethod::class,
             'getUpdates'        => GetUpdatesMethod::class,
             'getWebhookInfo'    => GetWebhookInfoMethod::class,

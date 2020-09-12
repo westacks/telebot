@@ -66,4 +66,21 @@ class SendMessageTest extends TestCase
             'text' => ''
         ]);
     }
+
+    public function testForwardMessage()
+    {
+        $message = $this->bot->sendMessage([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'text' => 'This message should be forwarded'
+        ]);
+
+        $forwarded = $this->bot->forwardMessage([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'from_chat_id' => getenv('TELEGRAM_USER_ID'),
+            'message_id' => $message->message_id
+        ]);
+
+        $this->assertInstanceOf(Message::class, $message);
+        $this->assertInstanceOf(Message::class, $forwarded);
+    }
 }
