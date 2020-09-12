@@ -5,6 +5,14 @@ namespace WeStacks\TeleBot\Objects\Passport;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Interfaces\TelegramObject;
 use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorDataField;
+use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorFile;
+use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorFiles;
+use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorFrontSide;
+use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorReverseSide;
+use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorSelfie;
+use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorTranslationFile;
+use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorTranslationFiles;
+use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorUnspecified;
 
 abstract class PassportElementError extends TelegramObject
 {
@@ -29,8 +37,15 @@ abstract class PassportElementError extends TelegramObject
     private static function types()
     {
         return [
-            'data' => PassportElementErrorDataField::class,
-            // TODO: https://core.telegram.org/bots/api#passportelementerrorfrontside and rest
+            'data'                  => PassportElementErrorDataField::class,
+            'front_side'            => PassportElementErrorFrontSide::class,
+            'reverse_side'          => PassportElementErrorReverseSide::class,
+            'selfie'                => PassportElementErrorSelfie::class,
+            'file'                  => PassportElementErrorFile::class,
+            'files'                 => PassportElementErrorFiles::class,
+            'translation_file'      => PassportElementErrorTranslationFile::class,
+            'translation_files'     => PassportElementErrorTranslationFiles::class,
+            'unspecified'           => PassportElementErrorUnspecified::class,
         ];
     }
 }

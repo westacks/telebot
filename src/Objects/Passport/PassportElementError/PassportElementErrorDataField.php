@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Objects\Passport\PassportElementError;
  * @property String                    $data_hash               Base64-encoded data hash
  * @property String                    $message                 Error message
  * 
- * @package WeStacks\TeleBot\Objects\Passport
+ * @package WeStacks\TeleBot\Objects\Passport\PassportElementError
  */
 class PassportElementErrorDataField extends PassportElementError
 {
