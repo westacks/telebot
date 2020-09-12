@@ -17,6 +17,7 @@ use WeStacks\TeleBot\Methods\ForwardMessageMethod;
 use WeStacks\TeleBot\Methods\GetUpdatesMethod;
 use WeStacks\TeleBot\Methods\GetWebhookInfoMethod;
 use WeStacks\TeleBot\Methods\SendAudioMethod;
+use WeStacks\TeleBot\Methods\SendDocumentMethod;
 use WeStacks\TeleBot\Methods\SetWebhookMethod;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\WebhookInfo;
@@ -30,6 +31,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * @method Update[]|PromiseInterface|False      getUpdates(array $parameters = [])       Use this method to send photos. On success, the sent Message is returned.
  * @method WebhookInfo|PromiseInterface|False   getWebhookInfo()                         Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.
  * @method Message|PromiseInterface|False       sendAudio(array $parameters = [])        Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future. For sending voice messages, use the sendVoice method instead.
+ * @method Message|PromiseInterface|False       sendDocument(array $parameters = [])     Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
  * @method Message|PromiseInterface|False       sendMessage(array $parameters = [])      Use this method to send text messages. On success, the sent Message is returned.
  * @method Message|PromiseInterface|False       sendPhoto(array $parameters = [])        Use this method to send photos. On success, the sent Message is returned.
  * @method True|PromiseInterface|False          setWebhook(array $parameters = [])       Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
@@ -185,6 +187,7 @@ class Bot
             'getUpdates'        => GetUpdatesMethod::class,
             'getWebhookInfo'    => GetWebhookInfoMethod::class,
             'sendAudio'         => SendAudioMethod::class,
+            'sendDocument'      => SendDocumentMethod::class,
             'sendMessage'       => SendMessageMethod::class,
             'sendPhoto'         => SendPhotoMethod::class,
             'setWebhook'        => SetWebhookMethod::class,

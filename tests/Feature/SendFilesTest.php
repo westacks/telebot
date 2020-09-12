@@ -27,4 +27,16 @@ class SendAudioTest extends TestCase
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
+
+    public function testSendDocument()
+    {
+        $message = $this->bot->sendDocument([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'document' => [
+                'file' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                'filename' => 'test-document.txt'
+            ]
+        ]);
+        $this->assertInstanceOf(Message::class, $message);
+    }
 }
