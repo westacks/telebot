@@ -65,5 +65,17 @@ class SendAudioTest extends TestCase
             'voice' => 'https://file-examples-com.github.io/uploads/2017/11/file_example_OOG_1MG.ogg'
         ]);
         $this->assertInstanceOf(Message::class, $message);
+        // https://raw.githubusercontent.com/TelegramBots/book/master/src/docs/video-waves.mp4
+    }
+
+    public function testSendVideoNote()
+    {
+        $message = $this->bot->sendVideoNote([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'video_note' => 'https://raw.githubusercontent.com/TelegramBots/book/master/src/docs/video-waves.mp4',
+            'length' => 360,
+            'duration' => 47
+        ]);
+        $this->assertInstanceOf(Message::class, $message);
     }
 }
