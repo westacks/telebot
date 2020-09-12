@@ -18,6 +18,7 @@ use WeStacks\TeleBot\Methods\GetUpdatesMethod;
 use WeStacks\TeleBot\Methods\GetWebhookInfoMethod;
 use WeStacks\TeleBot\Methods\SendAudioMethod;
 use WeStacks\TeleBot\Methods\SendDocumentMethod;
+use WeStacks\TeleBot\Methods\SendVideoMethod;
 use WeStacks\TeleBot\Methods\SetWebhookMethod;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\WebhookInfo;
@@ -34,6 +35,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * @method Message|PromiseInterface|False       sendDocument(array $parameters = [])     Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
  * @method Message|PromiseInterface|False       sendMessage(array $parameters = [])      Use this method to send text messages. On success, the sent Message is returned.
  * @method Message|PromiseInterface|False       sendPhoto(array $parameters = [])        Use this method to send photos. On success, the sent Message is returned.
+ * @method Message|PromiseInterface|False       sendVideo(array $parameters = [])        Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
  * @method True|PromiseInterface|False          setWebhook(array $parameters = [])       Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
  *  
  * @package WeStacks\TeleBot
@@ -190,6 +192,7 @@ class Bot
             'sendDocument'      => SendDocumentMethod::class,
             'sendMessage'       => SendMessageMethod::class,
             'sendPhoto'         => SendPhotoMethod::class,
+            'sendVideo'         => SendVideoMethod::class,
             'setWebhook'        => SetWebhookMethod::class,
         ];
     }
