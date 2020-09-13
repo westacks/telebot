@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Exception\TeleBotRequestException;
+use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\User;
 
@@ -97,14 +98,33 @@ class SendMessageTest extends TestCase
         $message = $this->bot->editMessageLiveLocation([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'message_id' => $message->message_id,
-            'latitude' => 50.451157,
-            'longitude' => 30.525191
+            'latitude' => 50.350157,
+            'longitude' => 30.424191,
+            'reply_markup' => [
+                'inline_keyboard' => [[[
+                    'text' => 'Google',
+                    'url' => 'http://google.com/'
+                ]]]
+            ]
         ]);
         $this->assertInstanceOf(Message::class, $message);
 
         $message = $this->bot->stopMessageLiveLocation([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'message_id' => $message->message_id
+        ]);
+        $this->assertInstanceOf(Message::class, $message);
+    }
+
+    public function testSendVenue()
+    {
+        $message = $this->bot->sendVenue([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'live_period' => 60,
+            'latitude' => 50.450157,
+            'longitude' => 30.524191,
+            'title' => 'Maidan Nezalezhnosti',
+            'address' => 'Kyiv'
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
