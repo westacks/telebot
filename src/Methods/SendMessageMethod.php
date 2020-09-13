@@ -31,10 +31,7 @@ class SendMessageMethod extends TelegramMethod
             'reply_markup'              => Keyboard::class
         ];
 
-        $validObject = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return [
-            'json' => TypeCaster::stripArrays($validObject)
-        ];
+        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
+        return [ 'json' => TypeCaster::stripArrays($object) ];
     }
 }

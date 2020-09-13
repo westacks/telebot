@@ -19,6 +19,7 @@ use WeStacks\TeleBot\Methods\GetWebhookInfoMethod;
 use WeStacks\TeleBot\Methods\SendAnimationMethod;
 use WeStacks\TeleBot\Methods\SendAudioMethod;
 use WeStacks\TeleBot\Methods\SendDocumentMethod;
+use WeStacks\TeleBot\Methods\SendLocationMethod;
 use WeStacks\TeleBot\Methods\SendMediaGroupMethod;
 use WeStacks\TeleBot\Methods\SendVideoMethod;
 use WeStacks\TeleBot\Methods\SendVideoNoteMethod;
@@ -38,6 +39,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * @method Message|PromiseInterface|False       sendAnimation(array $parameters = [])    Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
  * @method Message|PromiseInterface|False       sendAudio(array $parameters = [])        Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future. For sending voice messages, use the sendVoice method instead.
  * @method Message|PromiseInterface|False       sendDocument(array $parameters = [])     Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
+ * @method Message|PromiseInterface|False       sendLocation(array $parameters = [])     Use this method to send point on the map. On success, the sent Message is returned.
  * @method Message|PromiseInterface|False       sendMediaGroup(array $parameters = [])   Use this method to send a group of photos or videos as an album. On success, an array of the sent Messages is returned.
  * @method Message|PromiseInterface|False       sendMessage(array $parameters = [])      Use this method to send text messages. On success, the sent Message is returned.
  * @method Message|PromiseInterface|False       sendPhoto(array $parameters = [])        Use this method to send photos. On success, the sent Message is returned.
@@ -199,6 +201,7 @@ class Bot
             'sendAnimation'     => SendAnimationMethod::class,
             'sendAudio'         => SendAudioMethod::class,
             'sendDocument'      => SendDocumentMethod::class,
+            'sendLocation'      => SendLocationMethod::class,
             'sendMediaGroup'    => SendMediaGroupMethod::class,
             'sendMessage'       => SendMessageMethod::class,
             'sendPhoto'         => SendPhotoMethod::class,
@@ -206,7 +209,7 @@ class Bot
             'sendVideoNote'     => SendVideoNoteMethod::class,
             'sendVoice'         => SendVoiceMethod::class,
             'setWebhook'        => SetWebhookMethod::class,
-            // TODO: sendLocation method
+            // TODO: editMessageLiveLocation method
         ];
     }
 }

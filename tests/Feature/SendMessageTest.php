@@ -83,4 +83,14 @@ class SendMessageTest extends TestCase
         $this->assertInstanceOf(Message::class, $message);
         $this->assertInstanceOf(Message::class, $forwarded);
     }
+
+    public function testSendLocation()
+    {
+        $message = $this->bot->sendLocation([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'latitude' => 50.450157,
+            'longitude' => 30.524191
+        ]);
+        $this->assertInstanceOf(Message::class, $message);
+    }
 }

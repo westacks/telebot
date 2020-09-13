@@ -27,10 +27,7 @@ class GetUpdatesMethod extends TelegramMethod
             'allowed_updates'           => array('string')
         ];
 
-        $validObject = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return [
-            'json' => TypeCaster::stripArrays($validObject)
-        ];
+        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
+        return [ 'json' => TypeCaster::stripArrays($object) ];
     }
 }
