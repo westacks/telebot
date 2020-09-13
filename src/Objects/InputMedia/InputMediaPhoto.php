@@ -2,6 +2,7 @@
 
 namespace WeStacks\TeleBot\Objects\InputMedia;
 
+use WeStacks\TeleBot\Objects\InputFile;
 use WeStacks\TeleBot\Objects\InputMedia;
 
 /**
@@ -20,7 +21,7 @@ class InputMediaPhoto extends InputMedia
     {
         return [
             'type'       => 'string',
-            'media'      => 'string',
+            'media'      => InputFile::class,
             'caption'    => 'string',
             'parse_mode' => 'string'
         ];

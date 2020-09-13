@@ -28,7 +28,6 @@ class SendMediaGroupMethod extends TelegramMethod
             'reply_to_message_id'       => 'integer'
         ];
 
-        // FIXME: this method 'media' field should be serialized JSON array. Even when using multipart. Need to add some additional serializations'
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
         return [ 'multipart' => TypeCaster::flatten($object) ];
     }

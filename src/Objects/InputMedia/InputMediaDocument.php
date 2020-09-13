@@ -22,7 +22,7 @@ class InputMediaDocument extends InputMedia
     {
         return [
             'type'          => 'string',
-            'media'         => 'string',
+            'media'         => InputFile::class,
             'thumb'         => InputFile::class,
             'caption'       => 'string',
             'parse_mode'    => 'string'

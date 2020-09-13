@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Helpers;
 
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
+use WeStacks\TeleBot\Interfaces\TelegramObject;
 use WeStacks\TeleBot\Objects\InputFile;
 
 class TypeCaster
@@ -61,7 +62,10 @@ class TypeCaster
 
         foreach ($object as $key => $value)
         {
-            if (is_object($value) || is_array($value)) $value = static::stripArrays($value);
+            if ((is_object($value) && is_subclass_of($value, TelegramObject::class)) || is_array($value))
+            {
+                $value = static::stripArrays($value);
+            }
             $array[$key] = $value;
         }
 
@@ -104,30 +108,56 @@ class TypeCaster
     }
 
     /**
-     * Create a flat array for multipart Guzzle request from array or object
-     * @param array|object $object 
+     * Create a flat array for multipart Guzzle request from array of parameters
+     * @param array $object 
      * @return array 
      */
-    public static function flatten($object, $original = '')
+    public static function flatten($object)
     {
         $flat = [];
+        $files = [];
+        static::extractFiles($object, $files);
 
         foreach ($object as $key => $value)
         {
-            $_key = $original . (empty($original) ? $key : '['.$key.']');
-
-            if ($value instanceof InputFile)
-                $flat[] = $value->toMultipart($_key);
-
-            elseif (is_array($value) || is_object($value))
-                $flat = array_merge($flat, static::flatten($value, $_key));
-
-            else $flat[] = [
-                'name' => $_key,
-                'contents' => $value
+            $flat[] = [
+                'name' => $key,
+                'contents' => is_array($value) ? json_encode($value) : $value
             ];
         }
 
-        return $flat;
+        return array_merge($flat, $files);
+    }
+
+    /**
+     * Extract files from `$object` array and replace them with `attach://<file_attach_name>` string
+     * @param array $object 
+     * @param array $files 
+     * @return void 
+     */
+    private static function extractFiles(array &$object, array &$files)
+    {
+        foreach ($object as $key => $value)
+        {
+            if (is_object($value) && is_subclass_of($value, TelegramObject::class)) {
+                $value = $value->toArray();
+            }
+
+            if (is_array($value))
+                static::extractFiles($value, $files);
+
+            if($value instanceof InputFile) {
+                $fileKey = 'file_'.count($files);
+                $file = $value->toMultipart($fileKey);
+                if (isset($file['filename']) || is_resource($file['contents'])) {
+                    $files[] = $file;
+                    $value = "attach://$fileKey";
+                }
+                else {
+                    $value = $file['contents'];
+                }
+            }
+            $object[$key] = $value;
+        }
     }
 }

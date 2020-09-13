@@ -83,11 +83,11 @@ class SendFilesTest extends TestCase
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'media' => [
                 [
-                    'type' => 'photo',
-                    'media' => 'https://picsum.photos/640'
+                    'type' => 'video',
+                    'media' => 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
                 ],[
                     'type' => 'photo',
-                    'media' => 'https://picsum.photos/640'
+                    'media' => fopen('https://picsum.photos/640', 'r')
                 ]
             ]
         ]);

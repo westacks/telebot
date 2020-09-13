@@ -181,7 +181,7 @@ class Bot
             $update = new Update($data);
         }
 
-        return true;
+        return ($update instanceof Update);
     }
 
     /**
