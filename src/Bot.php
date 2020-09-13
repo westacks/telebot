@@ -7,29 +7,8 @@ use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Objects\User;
 use WeStacks\TeleBot\Objects\Message;
-use WeStacks\TeleBot\Methods\GetMeMethod;
-use WeStacks\TeleBot\Methods\SendMessageMethod;
-use WeStacks\TeleBot\Methods\SendPhotoMethod;
 use GuzzleHttp\Promise\PromiseInterface;
 use WeStacks\TeleBot\Interfaces\UpdateHandler;
-use WeStacks\TeleBot\Methods\DeleteWebhookMethod;
-use WeStacks\TeleBot\Methods\EditMessageLiveLocationMethod;
-use WeStacks\TeleBot\Methods\ForwardMessageMethod;
-use WeStacks\TeleBot\Methods\GetUpdatesMethod;
-use WeStacks\TeleBot\Methods\GetWebhookInfoMethod;
-use WeStacks\TeleBot\Methods\SendAnimationMethod;
-use WeStacks\TeleBot\Methods\SendAudioMethod;
-use WeStacks\TeleBot\Methods\SendContactMethod;
-use WeStacks\TeleBot\Methods\SendDocumentMethod;
-use WeStacks\TeleBot\Methods\SendLocationMethod;
-use WeStacks\TeleBot\Methods\SendMediaGroupMethod;
-use WeStacks\TeleBot\Methods\SendPollMethod;
-use WeStacks\TeleBot\Methods\SendVenueMethod;
-use WeStacks\TeleBot\Methods\SendVideoMethod;
-use WeStacks\TeleBot\Methods\SendVideoNoteMethod;
-use WeStacks\TeleBot\Methods\SendVoiceMethod;
-use WeStacks\TeleBot\Methods\SetWebhookMethod;
-use WeStacks\TeleBot\Methods\StopMessageLiveLocationMethod;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\WebhookInfo;
 
@@ -203,27 +182,27 @@ class Bot
     protected function methods()
     {
         return [
-            'deleteWebhook'             => DeleteWebhookMethod::class,
-            'editMessageLiveLocation'   => EditMessageLiveLocationMethod::class,
-            'forwardMessage'            => ForwardMessageMethod::class,
-            'getMe'                     => GetMeMethod::class,
-            'getUpdates'                => GetUpdatesMethod::class,
-            'getWebhookInfo'            => GetWebhookInfoMethod::class,
-            'sendAnimation'             => SendAnimationMethod::class,
-            'sendAudio'                 => SendAudioMethod::class,
-            'sendContact'               => SendContactMethod::class,
-            'sendDocument'              => SendDocumentMethod::class,
-            'sendLocation'              => SendLocationMethod::class,
-            'sendMediaGroup'            => SendMediaGroupMethod::class,
-            'sendMessage'               => SendMessageMethod::class,
-            'sendPhoto'                 => SendPhotoMethod::class,
-            'sendPoll'                  => SendPollMethod::class,
-            'sendVenue'                 => SendVenueMethod::class,
-            'sendVideo'                 => SendVideoMethod::class,
-            'sendVideoNote'             => SendVideoNoteMethod::class,
-            'sendVoice'                 => SendVoiceMethod::class,
-            'setWebhook'                => SetWebhookMethod::class,
-            'stopMessageLiveLocation'   => StopMessageLiveLocationMethod::class,
+            'deleteWebhook'             => \WeStacks\TeleBot\Methods\DeleteWebhookMethod::class,
+            'editMessageLiveLocation'   => \WeStacks\TeleBot\Methods\EditMessageLiveLocationMethod::class,
+            'forwardMessage'            => \WeStacks\TeleBot\Methods\ForwardMessageMethod::class,
+            'getMe'                     => \WeStacks\TeleBot\Methods\GetMeMethod::class,
+            'getUpdates'                => \WeStacks\TeleBot\Methods\GetUpdatesMethod::class,
+            'getWebhookInfo'            => \WeStacks\TeleBot\Methods\GetWebhookInfoMethod::class,
+            'sendAnimation'             => \WeStacks\TeleBot\Methods\SendAnimationMethod::class,
+            'sendAudio'                 => \WeStacks\TeleBot\Methods\SendAudioMethod::class,
+            'sendContact'               => \WeStacks\TeleBot\Methods\SendContactMethod::class,
+            'sendDocument'              => \WeStacks\TeleBot\Methods\SendDocumentMethod::class,
+            'sendLocation'              => \WeStacks\TeleBot\Methods\SendLocationMethod::class,
+            'sendMediaGroup'            => \WeStacks\TeleBot\Methods\SendMediaGroupMethod::class,
+            'sendMessage'               => \WeStacks\TeleBot\Methods\SendMessageMethod::class,
+            'sendPhoto'                 => \WeStacks\TeleBot\Methods\SendPhotoMethod::class,
+            'sendPoll'                  => \WeStacks\TeleBot\Methods\SendPollMethod::class,
+            'sendVenue'                 => \WeStacks\TeleBot\Methods\SendVenueMethod::class,
+            'sendVideo'                 => \WeStacks\TeleBot\Methods\SendVideoMethod::class,
+            'sendVideoNote'             => \WeStacks\TeleBot\Methods\SendVideoNoteMethod::class,
+            'sendVoice'                 => \WeStacks\TeleBot\Methods\SendVoiceMethod::class,
+            'setWebhook'                => \WeStacks\TeleBot\Methods\SetWebhookMethod::class,
+            'stopMessageLiveLocation'   => \WeStacks\TeleBot\Methods\StopMessageLiveLocationMethod::class,
             // TODO: sendDice method
         ];
     }
