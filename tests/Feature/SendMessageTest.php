@@ -128,4 +128,15 @@ class SendMessageTest extends TestCase
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
+
+    public function testSendContact()
+    {
+        $message = $this->bot->sendContact([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'phone_number' => '+1-541-754-3010',
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+        ]);
+        $this->assertInstanceOf(Message::class, $message);
+    }
 }

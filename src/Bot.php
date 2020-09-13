@@ -19,6 +19,7 @@ use WeStacks\TeleBot\Methods\GetUpdatesMethod;
 use WeStacks\TeleBot\Methods\GetWebhookInfoMethod;
 use WeStacks\TeleBot\Methods\SendAnimationMethod;
 use WeStacks\TeleBot\Methods\SendAudioMethod;
+use WeStacks\TeleBot\Methods\SendContactMethod;
 use WeStacks\TeleBot\Methods\SendDocumentMethod;
 use WeStacks\TeleBot\Methods\SendLocationMethod;
 use WeStacks\TeleBot\Methods\SendMediaGroupMethod;
@@ -42,6 +43,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * @method WebhookInfo|PromiseInterface|False   getWebhookInfo()                                    Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.
  * @method Message|PromiseInterface|False       sendAnimation(array $parameters = [])               Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
  * @method Message|PromiseInterface|False       sendAudio(array $parameters = [])                   Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future. For sending voice messages, use the sendVoice method instead.
+ * @method Message|PromiseInterface|False       sendContact(array $parameters = [])                 Use this method to send phone contacts. On success, the sent Message is returned.
  * @method Message|PromiseInterface|False       sendDocument(array $parameters = [])                Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
  * @method Message|PromiseInterface|False       sendLocation(array $parameters = [])                Use this method to send point on the map. On success, the sent Message is returned.
  * @method Message|PromiseInterface|False       sendMediaGroup(array $parameters = [])              Use this method to send a group of photos or videos as an album. On success, an array of the sent Messages is returned.
@@ -207,6 +209,7 @@ class Bot
             'getWebhookInfo'            => GetWebhookInfoMethod::class,
             'sendAnimation'             => SendAnimationMethod::class,
             'sendAudio'                 => SendAudioMethod::class,
+            'sendContact'               => SendContactMethod::class,
             'sendDocument'              => SendDocumentMethod::class,
             'sendLocation'              => SendLocationMethod::class,
             'sendMediaGroup'            => SendMediaGroupMethod::class,
