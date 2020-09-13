@@ -146,18 +146,23 @@ class TypeCaster
             if (is_array($value))
                 static::extractFiles($value, $files);
 
-            if($value instanceof InputFile) {
-                $fileKey = 'file_'.count($files);
-                $file = $value->toMultipart($fileKey);
-                if (isset($file['filename']) || is_resource($file['contents'])) {
-                    $files[] = $file;
-                    $value = "attach://$fileKey";
-                }
-                else {
-                    $value = $file['contents'];
-                }
-            }
+            if($value instanceof InputFile)
+                static::extractFile($value, $files);
+
             $object[$key] = $value;
+        }
+    }
+
+    private static function extractFile(InputFile &$file, array &$files)
+    {
+        $fileKey = 'file_'.count($files);
+        $extract = $file->toMultipart($fileKey);
+        if (isset($extract['filename']) || is_resource($extract['contents'])) {
+            $files[] = $extract;
+            $file = "attach://$fileKey";
+        }
+        else {
+            $file = $extract['contents'];
         }
     }
 }

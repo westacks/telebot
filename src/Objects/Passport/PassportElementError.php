@@ -16,7 +16,7 @@ use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorU
 
 abstract class PassportElementError extends TelegramObject
 {
-        /**
+    /**
      * Create new object instance
      * 
      * @param mixed $object 
