@@ -45,14 +45,13 @@ abstract class CommandHandler extends UpdateHandler
 
     public static function trigger(Update $update)
     {
-        if (!$message = $update->message) return false;
-        if (!$entities = $message->entities) return false;
+        if (!isset($update->message) || !isset($update->message->entities)) return false;
 
-        foreach ($entities as $entity)
+        foreach ($update->message->entities as $entity)
         {
             if ($entity->type != 'bot_command') continue;
 
-            $command = substr($message->text, $entity->offset, $entity->length);
+            $command = substr($update->message->text, $entity->offset, $entity->length);
             if (in_array($command, static::$aliases)) return true;
         }
 
