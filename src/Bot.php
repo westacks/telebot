@@ -23,6 +23,7 @@ use WeStacks\TeleBot\Methods\SendContactMethod;
 use WeStacks\TeleBot\Methods\SendDocumentMethod;
 use WeStacks\TeleBot\Methods\SendLocationMethod;
 use WeStacks\TeleBot\Methods\SendMediaGroupMethod;
+use WeStacks\TeleBot\Methods\SendPollMethod;
 use WeStacks\TeleBot\Methods\SendVenueMethod;
 use WeStacks\TeleBot\Methods\SendVideoMethod;
 use WeStacks\TeleBot\Methods\SendVideoNoteMethod;
@@ -49,6 +50,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * @method Message|PromiseInterface|False       sendMediaGroup(array $parameters = [])              Use this method to send a group of photos or videos as an album. On success, an array of the sent Messages is returned.
  * @method Message|PromiseInterface|False       sendMessage(array $parameters = [])                 Use this method to send text messages. On success, the sent Message is returned.
  * @method Message|PromiseInterface|False       sendPhoto(array $parameters = [])                   Use this method to send photos. On success, the sent Message is returned.
+ * @method Message|PromiseInterface|False       sendPoll(array $parameters = [])                    Use this method to send a native poll. On success, the sent Message is returned.
  * @method Message|PromiseInterface|False       sendVenue(array $parameters = [])                   Use this method to send information about a venue. On success, the sent Message is returned.
  * @method Message|PromiseInterface|False       sendVideo(array $parameters = [])                   Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
  * @method Message|PromiseInterface|False       sendVideoNote(array $parameters = [])               As of v.4.0, Telegram clients support rounded square mp4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned.
@@ -215,13 +217,14 @@ class Bot
             'sendMediaGroup'            => SendMediaGroupMethod::class,
             'sendMessage'               => SendMessageMethod::class,
             'sendPhoto'                 => SendPhotoMethod::class,
+            'sendPoll'                  => SendPollMethod::class,
             'sendVenue'                 => SendVenueMethod::class,
             'sendVideo'                 => SendVideoMethod::class,
             'sendVideoNote'             => SendVideoNoteMethod::class,
             'sendVoice'                 => SendVoiceMethod::class,
             'setWebhook'                => SetWebhookMethod::class,
             'stopMessageLiveLocation'   => StopMessageLiveLocationMethod::class,
-            // TODO: sendVenue method
+            // TODO: sendDice method
         ];
     }
 }

@@ -139,4 +139,18 @@ class SendMessageTest extends TestCase
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
+
+    public function testSendPoll()
+    {
+        $message = $this->bot->sendPoll([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'question' => 'What is love?',
+            'options' => [
+                'Baby, don\'t hurt me',
+                'Pain',
+                'Butterflies'
+            ]
+        ]);
+        $this->assertInstanceOf(Message::class, $message);
+    }
 }
