@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Objects;
 
 use WeStacks\TeleBot\Exception\TeleBotFileException;
+use WeStacks\TeleBot\Exception\TeleBotObjectException;
 
 class InputFile
 {

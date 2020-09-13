@@ -37,6 +37,6 @@ class SendAnimationMethod extends TelegramMethod
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-        return [ 'multipart' => TypeCaster::createMultipartArray($object) ];
+        return [ 'multipart' => TypeCaster::flatten($object) ];
     }
 }

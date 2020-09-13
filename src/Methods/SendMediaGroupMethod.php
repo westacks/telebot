@@ -4,17 +4,16 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\InputFile;
-use WeStacks\TeleBot\Objects\Keyboard;
+use WeStacks\TeleBot\Objects\InputMedia;
 use WeStacks\TeleBot\Objects\Message;
 
-class SendPhotoMethod extends TelegramMethod
+class SendMediaGroupMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/sendPhoto",
+            'url'       => "https://api.telegram.org/bot{$this->token}/sendMediaGroup",
             'send'      => $this->send(),
             'expect'    => Message::class
         ];
@@ -23,15 +22,13 @@ class SendPhotoMethod extends TelegramMethod
     private function send()
     {
         $parameters = [
-            'chat_id'                   => 'string',
-            'photo'                     => InputFile::class,
-            'caption'                   => 'string',
-            'parse_mode'                => 'string',
+            'chat_id'                   => 'integer',
+            'media'                     => array(InputMedia::class),
             'disable_notification'      => 'boolean',
-            'reply_to_message_id'       => 'integer',
-            'reply_markup'              => Keyboard::class 
+            'reply_to_message_id'       => 'integer'
         ];
 
+        // FIXME: this method 'media' field should be serialized JSON array. Even when using multipart. Need to add some additional serializations'
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
         return [ 'multipart' => TypeCaster::flatten($object) ];
     }

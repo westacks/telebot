@@ -4,10 +4,9 @@ namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Bot;
-use WeStacks\TeleBot\Exception\TeleBotFileException;
 use WeStacks\TeleBot\Objects\Message;
 
-class SendAudioTest extends TestCase
+class SendFilesTest extends TestCase
 {
     /**
      * @var Bot
@@ -65,7 +64,6 @@ class SendAudioTest extends TestCase
             'voice' => 'https://file-examples-com.github.io/uploads/2017/11/file_example_OOG_1MG.ogg'
         ]);
         $this->assertInstanceOf(Message::class, $message);
-        // https://raw.githubusercontent.com/TelegramBots/book/master/src/docs/video-waves.mp4
     }
 
     public function testSendVideoNote()
@@ -75,6 +73,23 @@ class SendAudioTest extends TestCase
             'video_note' => 'https://raw.githubusercontent.com/TelegramBots/book/master/src/docs/video-waves.mp4',
             'length' => 360,
             'duration' => 47
+        ]);
+        $this->assertInstanceOf(Message::class, $message);
+    }
+
+    public function testSendMediaGroup()
+    {
+        $message = $this->bot->sendMediaGroup([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'media' => [
+                [
+                    'type' => 'photo',
+                    'media' => 'https://picsum.photos/640'
+                ],[
+                    'type' => 'photo',
+                    'media' => 'https://picsum.photos/640'
+                ]
+            ]
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }

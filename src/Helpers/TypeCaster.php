@@ -104,28 +104,30 @@ class TypeCaster
     }
 
     /**
-     * Create a multipart array for Guzzle request from array or object
+     * Create a flat array for multipart Guzzle request from array or object
      * @param array|object $object 
      * @return array 
      */
-    public static function createMultipartArray($object)
+    public static function flatten($object, $original = '')
     {
-        $multipart = [];
+        $flat = [];
 
         foreach ($object as $key => $value)
         {
+            $_key = $original . (empty($original) ? $key : '['.$key.']');
+
             if ($value instanceof InputFile)
-            {
-                $multipart[] = $value->toMultipart($key);
-            }
-            else {
-                $multipart[] = [
-                    'name' => $key,
-                    'contents' => (string) $value
-                ];
-            }
+                $flat[] = $value->toMultipart($_key);
+
+            elseif (is_array($value) || is_object($value))
+                $flat = array_merge($flat, static::flatten($value, $_key));
+
+            else $flat[] = [
+                'name' => $_key,
+                'contents' => $value
+            ];
         }
 
-        return $multipart;
+        return $flat;
     }
 }
