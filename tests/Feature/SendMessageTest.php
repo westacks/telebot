@@ -153,4 +153,21 @@ class SendMessageTest extends TestCase
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
+
+    public function testSendDice()
+    {
+        $message = $this->bot->sendDice([
+            'chat_id' => getenv('TELEGRAM_USER_ID')
+        ]);
+        $this->assertInstanceOf(Message::class, $message);
+    }
+
+    public function testSendChatAction()
+    {
+        $message = $this->bot->sendChatAction([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'action' => 'typing'
+        ]);
+        $this->assertTrue($message);
+    }
 }

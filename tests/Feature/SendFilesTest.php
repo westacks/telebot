@@ -4,7 +4,9 @@ namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Bot;
+use WeStacks\TeleBot\Objects\File;
 use WeStacks\TeleBot\Objects\Message;
+use WeStacks\TeleBot\Objects\UserProfilePhotos;
 
 class SendFilesTest extends TestCase
 {
@@ -92,5 +94,18 @@ class SendFilesTest extends TestCase
             ]
         ]);
         $this->assertInstanceOf(Message::class, $message);
+    }
+
+    public function testGetFile()
+    {
+        $photos = $this->bot->getUserProfilePhotos([
+            'user_id' => getenv('TELEGRAM_USER_ID')
+        ]);
+        $this->assertInstanceOf(UserProfilePhotos::class, $photos);
+
+        $file = $this->bot->getFile([
+            'file_id' => $photos->photos[0][0]->file_id
+        ]);
+        $this->assertInstanceOf(File::class, $file);
     }
 }
