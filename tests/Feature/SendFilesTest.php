@@ -107,5 +107,7 @@ class SendFilesTest extends TestCase
             'file_id' => $photos->photos[0][0]->file_id
         ]);
         $this->assertInstanceOf(File::class, $file);
+
+        $this->assertNotFalse(filter_var($file->url(getenv('TELEGRAM_BOT_TOKEN'), FILTER_VALIDATE_URL)));
     }
 }
