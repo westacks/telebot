@@ -20,9 +20,15 @@ class WebhookTest extends TestCase
 
     public function testWebhook()
     {
-        // Check webhook
+        $webhook_set = $this->bot->setWebhook([
+            'url' => 'https://example.com/'
+        ]);
+        $this->assertTrue($webhook_set);
+
         $info = $this->bot->getWebhookInfo();
         $this->assertInstanceOf(WebhookInfo::class, $info);
-        $this->assertEquals('', $info->url);
+
+        $webhook_deleted = $this->bot->deleteWebhook();
+        $this->assertTrue($webhook_deleted);
     }
 }
