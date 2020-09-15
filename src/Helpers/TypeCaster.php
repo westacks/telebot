@@ -53,7 +53,6 @@ class TypeCaster
      * Cast all sub objects to arrays
      * 
      * @param array|object $object 
-     * @param array $relations 
      * @return array
      */
     public static function stripArrays($object)

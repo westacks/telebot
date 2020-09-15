@@ -37,14 +37,14 @@ abstract class TelegramMethod
 
     /**
      * Execute method
+     * @param Client $client Guzzle http client
      * @param bool $exceptions Throws exceptions if true
      * @param bool $async Execute request asynchronously
      * @return mixed 
      */
-    public function execute($exceptions = true, $async = false)
+    public function execute(Client &$client, $exceptions = true, $async = false)
     {
         $config = $this->request();
-        $client = new Client(['http_errors' => false]);
 
         $promise = $client->requestAsync($config['type'], $config['url'], $config['send'])
             ->then(function ($result) use ($config, $exceptions)
