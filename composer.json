@@ -1,8 +1,8 @@
 {
-    "name": "westacks/php-telebot-sdk",
-    "description": "PHP Telegram API wraper done right.",
+    "name": "westacks/telebot",
+    "description": "Easy way to create Telegram-bots in PHP",
     "type": "library",
-    "homepage": "https://github.com/WeStacks/php-telebot-sdk",
+    "homepage": "https://github.com/westacks/telebot",
     "license": "MIT",
     "authors": [
         {
