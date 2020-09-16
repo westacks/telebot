@@ -22,7 +22,7 @@ class SendMediaGroupMethod extends TelegramMethod
     private function send()
     {
         $parameters = [
-            'chat_id'                   => 'integer',
+            'chat_id'                   => 'string',
             'media'                     => array(InputMedia::class),
             'disable_notification'      => 'boolean',
             'reply_to_message_id'       => 'integer'

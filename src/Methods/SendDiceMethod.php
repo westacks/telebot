@@ -22,7 +22,7 @@ class SendDiceMethod extends TelegramMethod
     private function send()
     {
         $parameters = [
-            'chat_id'                   => 'integer',
+            'chat_id'                   => 'string',
             'emoji'                     => 'string',
             'disable_notification'      => 'boolean',
             'reply_to_message_id'       => 'integer',

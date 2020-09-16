@@ -21,7 +21,7 @@ class SendChatActionMethod extends TelegramMethod
     private function send()
     {
         $parameters = [
-            'chat_id'                   => 'integer',
+            'chat_id'                   => 'string',
             'action'                    => 'string'
         ];
 

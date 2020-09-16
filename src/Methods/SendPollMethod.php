@@ -22,7 +22,7 @@ class SendPollMethod extends TelegramMethod
     private function send()
     {
         $parameters = [
-            'chat_id'                   => 'integer',
+            'chat_id'                   => 'string',
             'question'                  => 'string',
             'options'                   => array('string'),
             'is_anonymous'              => 'boolean',

@@ -22,7 +22,7 @@ class SendLocationMethod extends TelegramMethod
     private function send()
     {
         $parameters = [
-            'chat_id'                   => 'integer',
+            'chat_id'                   => 'string',
             'latitude'                  => 'float',
             'longitude'                 => 'float',
             'live_period'               => 'integer',

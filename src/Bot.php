@@ -293,12 +293,6 @@ class Bot
             'editMessageReplyMarkup'                => \WeStacks\TeleBot\Methods\EditMessageReplyMarkupMethod::class,
             'stopPoll'                              => \WeStacks\TeleBot\Methods\StopPollMethod::class,
             'deleteMessage'                         => \WeStacks\TeleBot\Methods\DeleteMessageMethod::class,
-            // TODO: write tests for next methods
-            'kickChatMember'                        => \WeStacks\TeleBot\Methods\KickChatMemberMethod::class,
-            'unbanChatMember'                       => \WeStacks\TeleBot\Methods\UnbanChatMemberMethod::class,
-            'restrictChatMember'                    => \WeStacks\TeleBot\Methods\RestrictChatMemberMethod::class,
-            'promoteChatMember'                     => \WeStacks\TeleBot\Methods\PromoteChatMemberMethod::class,
-            'setChatAdministratorCustomTitle'       => \WeStacks\TeleBot\Methods\SetChatAdministratorCustomTitleMethod::class,
             'setChatPermissions'                    => \WeStacks\TeleBot\Methods\SetChatPermissionsMethod::class,
             'exportChatInviteLink'                  => \WeStacks\TeleBot\Methods\ExportChatInviteLinkMethod::class,
             'setChatPhoto'                          => \WeStacks\TeleBot\Methods\SetChatPhotoMethod::class,
@@ -307,16 +301,22 @@ class Bot
             'setChatDescription'                    => \WeStacks\TeleBot\Methods\SetChatDescriptionMethod::class,
             'pinChatMessage'                        => \WeStacks\TeleBot\Methods\PinChatMessageMethod::class,
             'unpinChatMessage'                      => \WeStacks\TeleBot\Methods\UnpinChatMessageMethod::class,
-            'leaveChat'                             => \WeStacks\TeleBot\Methods\LeaveChatMethod::class,
             'getChat'                               => \WeStacks\TeleBot\Methods\GetChatMethod::class,
             'getChatAdministrators'                 => \WeStacks\TeleBot\Methods\GetChatAdministratorsMethod::class,
             'getChatMembersCount'                   => \WeStacks\TeleBot\Methods\GetChatMembersCountMethod::class,
             'getChatMember'                         => \WeStacks\TeleBot\Methods\GetChatMemberMethod::class,
+            'setMyCommands'                         => \WeStacks\TeleBot\Methods\SetMyCommandsMethod::class,
+            'getMyCommands'                         => \WeStacks\TeleBot\Methods\GetMyCommandsMethod::class,
+            // TODO: write tests for next methods
+            'kickChatMember'                        => \WeStacks\TeleBot\Methods\KickChatMemberMethod::class,
+            'unbanChatMember'                       => \WeStacks\TeleBot\Methods\UnbanChatMemberMethod::class,
+            'restrictChatMember'                    => \WeStacks\TeleBot\Methods\RestrictChatMemberMethod::class,
+            'promoteChatMember'                     => \WeStacks\TeleBot\Methods\PromoteChatMemberMethod::class,
+            'setChatAdministratorCustomTitle'       => \WeStacks\TeleBot\Methods\SetChatAdministratorCustomTitleMethod::class,
+            'leaveChat'                             => \WeStacks\TeleBot\Methods\LeaveChatMethod::class,
             'setChatStickerSet'                     => \WeStacks\TeleBot\Methods\SetChatStickerSetMethod::class,
             'deleteChatStickerSet'                  => \WeStacks\TeleBot\Methods\DeleteChatStickerSetMethod::class,
             'answerCallbackQuery'                   => \WeStacks\TeleBot\Methods\AnswerCallbackQueryMethod::class,
-            'setMyCommands'                         => \WeStacks\TeleBot\Methods\SetMyCommandsMethod::class,
-            'getMyCommands'                         => \WeStacks\TeleBot\Methods\GetMyCommandsMethod::class,
             // TODO: sendSticker method
         ];
     }
