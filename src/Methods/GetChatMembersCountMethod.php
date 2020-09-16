@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Methods;
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
 
-class GetChatMethod extends TelegramMethod
+class GetChatMembersCountMethod extends TelegramMethod
 {
     protected function request()
     {
