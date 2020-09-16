@@ -26,7 +26,7 @@ abstract class CommandHandler extends UpdateHandler
 
     /**
      * Get BotCommand foreach command `aliases` and `description`
-     * @return BotCommand[]
+     * @return Array<BotCommand>
      */
     public static function getBotCommand()
     {

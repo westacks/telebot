@@ -52,10 +52,21 @@ class HandleUpdatesTest extends TestCase
         $this->bot->clearHandlers();
         $this->bot->addHandler(StartCommandHandler::class);
 
+        $commands = $this->bot->getInstaneCommands();
+        $commands_set = $this->bot->setMyCommands(['commands' => $commands]);
+        $this->assertTrue($commands_set);
+
         foreach ($this->updates as $update)
         {
             $this->bot->handleUpdate($update);
         }
+
+        $commands_api = $this->bot->getMyCommands();
+        $commands_set = $this->bot->setMyCommands(['commands' => $commands]);
+        
+        $this->assertTrue($commands_set);
+        $this->assertContainsOnlyInstancesOf(BotCommand::class, $commands_api);
+        $this->bot->setMyCommands(['commands' => []]);
 
         $this->expectException(TeleBotMehtodException::class);
         $this->bot->addHandler(Update::class);

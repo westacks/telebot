@@ -9,6 +9,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 use Spatie\GuzzleRateLimiterMiddleware\RateLimiterMiddleware;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
+use WeStacks\TeleBot\Handlers\CommandHandler;
 use WeStacks\TeleBot\Objects\User;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Interfaces\UpdateHandler;
@@ -233,6 +234,25 @@ class Bot
         }
 
         return ($update instanceof Update);
+    }
+
+    /**
+     * Get local bot instance commands registered by commands handlers
+     * @return Array<BotCommand> 
+     */
+    public function getInstaneCommands()
+    {
+        $commands = [];
+
+        foreach ($this->config['handlers'] as $handler)
+        {
+            if(is_string($handler) && class_exists($handler) && is_subclass_of($handler, CommandHandler::class))
+            {
+                $commands = array_merge($commands, $handler::getBotCommand());
+            }
+        }
+
+        return $commands;
     }
 
     /**
