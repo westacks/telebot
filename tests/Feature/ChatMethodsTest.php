@@ -71,7 +71,7 @@ class ChatMethodsTest extends TestCase
     {
         $set = $this->bot->setChatDescription([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
-            'description' => "PHP TeleBot Test"
+            'description' => "PHP TeleBot Test ".rand(0, 200)
         ]);
         $this->assertTrue($set);
     }
