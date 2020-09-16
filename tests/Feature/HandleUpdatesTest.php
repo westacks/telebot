@@ -16,24 +16,27 @@ class HandleUpdatesTest extends TestCase
      */
     private $bot;
 
+    /**
+     * @var Array<Update>
+     */
+    private $updates;
+
     protected function setUp(): void
     {
-        $this->bot = new Bot(getenv('TELEGRAM_BOT_TOKEN'));
+        global $bot;
+        $this->bot = $bot;
+        $this->updates = $this->bot->getUpdates([]);
     }
 
     // You should send any message to your bot in order to have at least one update
     public function testHandleUpdates()
     {
-        // Using array just to test is it works
+        $this->bot->clearHandlers();
         $this->bot->addHandler([function (Update $update) {
-            // This should echo update's JSON object
             echo $update;
         }]);
 
-        // Please don't specify offset so I don't need to resend messages to my bot 
-        $updates = $this->bot->getUpdates();
-
-        foreach ($updates as $update)
+        foreach ($this->updates as $update)
         {
             // We will store our handler JSON output into the output buffer and then validate is it the same update
             ob_start();
@@ -46,11 +49,10 @@ class HandleUpdatesTest extends TestCase
 
     public function testHandleUpdatesUsingObject()
     {
-        // Check telegram output. You should get "Hello, World!" from StartCommandHandler::class
+        $this->bot->clearHandlers();
         $this->bot->addHandler(StartCommandHandler::class);
 
-        $updates = $this->bot->getUpdates([]);
-        foreach ($updates as $update)
+        foreach ($this->updates as $update)
         {
             $this->bot->handleUpdate($update);
         }

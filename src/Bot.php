@@ -4,11 +4,13 @@ namespace WeStacks\TeleBot;
 
 use Closure;
 use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Promise\PromiseInterface;
+use Spatie\GuzzleRateLimiterMiddleware\RateLimiterMiddleware;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Objects\User;
 use WeStacks\TeleBot\Objects\Message;
-use GuzzleHttp\Promise\PromiseInterface;
 use WeStacks\TeleBot\Interfaces\UpdateHandler;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\WebhookInfo;
@@ -27,7 +29,7 @@ use WeStacks\TeleBot\Objects\BotCommand;
  * @method Message|PromiseInterface|False               forwardMessage(array $parameters = [])                          Use this method to forward messages of any kind. On success, the sent Message is returned.
  * @method File|PromiseInterface|False                  getFile(array $parameters = [])                                 Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
  * @method User|PromiseInterface|False                  getMe()                                                         A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
- * @method Update[]|PromiseInterface|False              getUpdates(array $parameters = [])                              Use this method to send photos. On success, the sent Message is returned.
+ * @method Update[]|PromiseInterface|False              getUpdates(array $parameters = [])                              Use this method to receive incoming updates using long polling (wiki). An Array of Update objects is returned.
  * @method UserProfilePhotos|PromiseInterface|False     getUserProfilePhotos(array $parameters = [])                    Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
  * @method WebhookInfo|PromiseInterface|False           getWebhookInfo()                                                Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.
  * @method Message|PromiseInterface|False               sendAnimation(array $parameters = [])                           Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
@@ -74,7 +76,7 @@ use WeStacks\TeleBot\Objects\BotCommand;
  */
 class Bot
 {
-    protected $properties = [];
+    protected $config = [];
     protected $client = null;
     protected $async = null;
     protected $exceptions = null;
@@ -92,12 +94,18 @@ class Bot
         if (!is_array($config)) $config = [];
         if (!isset($config['token'])) throw TeleBotObjectException::configKeyIsRequired('token', self::class);
 
-        $this->properties['token']      = $config['token'];
-        $this->properties['exceptions'] = $config['exceptions'] ?? true;
-        $this->properties['async']      = $config['async'] ?? false;
-        $this->properties['handlers']   = [];
+        $this->config['token']      = $config['token'];
+        $this->config['exceptions'] = $config['exceptions'] ?? true;
+        $this->config['async']      = $config['async'] ?? false;
+        $this->config['rate_limit'] = $config['rate_limit'] ?? true;
+        $this->config['handlers']   = [];
         
-        $this->client = new Client(['http_errors' => false]);
+        $stack = HandlerStack::create();
+
+        if ($this->config['rate_limit']) $stack->push(RateLimiterMiddleware::perSecond(1));
+        else $stack->push(RateLimiterMiddleware::perSecond(30));
+
+        $this->client = new Client(['http_errors' => false, 'handler' => $stack]);
 
         $this->addHandler($config['handlers'] ?? []);
     }
@@ -115,10 +123,10 @@ class Bot
         $methods = $this->methods();
         if (!isset($methods[$method])) throw TeleBotMehtodException::methodNotFound($method);
 
-        $method = new $methods[$method]($this->properties['token'], $arguments);
+        $method = new $methods[$method]($this->config['token'], $arguments);
 
-        $exceptions = $this->exceptions ?? $this->properties['exceptions'];
-        $async = $this->async ?? $this->properties['async'];
+        $exceptions = $this->exceptions ?? $this->config['exceptions'];
+        $async = $this->async ?? $this->config['async'];
 
         $this->exceptions = null;
         $this->async = null;
@@ -166,7 +174,16 @@ class Bot
         if (!$this->isUpdateHandler($handler))
             throw TeleBotMehtodException::wrongHandlerType(is_string($handler) ? $handler : gettype($handler));
 
-        $this->properties['handlers'][] = $handler;
+        $this->config['handlers'][] = $handler;
+    }
+
+    /**
+     * Remove all update handlers from bot instance
+     * @return void 
+     */
+    public function clearHandlers()
+    {
+        $this->config['handlers'] = [];
     }
 
     private function isUpdateHandler($handler)
@@ -184,7 +201,7 @@ class Bot
     {
         if(!$this->validUpdate($update)) return false;
 
-        foreach ($this->properties['handlers'] as $handler)
+        foreach ($this->config['handlers'] as $handler)
         {
             if (is_callable($handler))
             {

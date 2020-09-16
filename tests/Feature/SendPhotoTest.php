@@ -16,7 +16,8 @@ class SendPhotoTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->bot = new Bot(getenv('TELEGRAM_BOT_TOKEN'));
+        global $bot;
+        $this->bot = $bot;
     }
 
     public function testSendPhotoFromUrl()

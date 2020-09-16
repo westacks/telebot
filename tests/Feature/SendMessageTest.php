@@ -8,9 +8,11 @@ use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Exception\TeleBotRequestException;
-use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\User;
+use Faker\Factory as Faker;
+use Faker\Generator;
+use InvalidArgumentException;
 
 class SendMessageTest extends TestCase
 {
@@ -19,9 +21,16 @@ class SendMessageTest extends TestCase
      */
     private $bot;
 
+    /**
+     * @var Generator
+     */
+    private $faker;
+
     protected function setUp(): void
     {
-        $this->bot = new Bot(getenv('TELEGRAM_BOT_TOKEN'));
+        global $bot;
+        $this->bot = $bot;
+        $this->faker = Faker::create();
     }
 
     public function testCallUndefinedMethod()
@@ -133,9 +142,9 @@ class SendMessageTest extends TestCase
     {
         $message = $this->bot->sendContact([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'phone_number' => '+1-541-754-3010',
-            'first_name' => 'John',
-            'last_name' => 'Doe',
+            'phone_number' => $this->faker->phoneNumber,
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }

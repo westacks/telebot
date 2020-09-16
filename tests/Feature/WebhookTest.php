@@ -15,13 +15,14 @@ class WebhookTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->bot = new Bot(getenv('TELEGRAM_BOT_TOKEN'));
+        global $bot;
+        $this->bot = $bot;
     }
 
     public function testWebhook()
     {
         $webhook_set = $this->bot->setWebhook([
-            'url' => 'https://example.com/'
+            'url' => 'https://telebot.westacks.com.ua/webhook'
         ]);
         $this->assertTrue($webhook_set);
 
