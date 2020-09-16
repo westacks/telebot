@@ -19,6 +19,7 @@ use WeStacks\TeleBot\Objects\File;
 use WeStacks\TeleBot\Objects\ChatMember;
 use WeStacks\TeleBot\Objects\Chat;
 use WeStacks\TeleBot\Objects\BotCommand;
+use WeStacks\TeleBot\Objects\Poll;
 
 /**
  * This class represents a bot instance. This is basicaly main controller for sending and handling your Telegram requests.
@@ -71,6 +72,12 @@ use WeStacks\TeleBot\Objects\BotCommand;
  * @method True|PromiseInterface|False                  answerCallbackQuery(array $parameters = [])                     Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
  * @method True|PromiseInterface|False                  setMyCommands(array $parameters = [])                           Use this method to change the list of the bot's commands. Returns True on success.
  * @method Array<BotCommand>|PromiseInterface|False     getMyCommands()                                                 Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of BotCommand on success.
+ * @method Message|PromiseInterface|False               editMessageText(array $parameters = [])                         Use this method to edit text and game messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.
+ * @method Message|PromiseInterface|False               editMessageCaption(array $parameters = [])                      Use this method to edit captions of messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.
+ * @method Message|PromiseInterface|False               editMessageMedia(array $parameters = [])                        Use this method to edit animation, audio, document, photo, or video messages. If a message is a part of a message album, then it can be edited only to a photo or a video. Otherwise, message type can be changed arbitrarily. When inline message is edited, new file can't be uploaded. Use previously uploaded file via its file_id or specify a URL. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.
+ * @method Message|PromiseInterface|False               editMessageReplyMarkup(array $parameters = [])                  Use this method to edit only the reply markup of messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.
+ * @method Poll|PromiseInterface|False                  stopPoll(array $parameters = [])                                Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.
+ * @method True|PromiseInterface|False                  deleteMessage(array $parameters = [])                           Use this method to delete a message, including service messages. Returns True on success.
  *  
  * @package WeStacks\TeleBot
  */
@@ -260,6 +267,12 @@ class Bot
             'sendChatAction'                        => \WeStacks\TeleBot\Methods\SendChatActionMethod::class,
             'getUserProfilePhotos'                  => \WeStacks\TeleBot\Methods\GetUserProfilePhotosMethod::class,
             'getFile'                               => \WeStacks\TeleBot\Methods\GetFileMethod::class,
+            'editMessageText'                       => \WeStacks\TeleBot\Methods\EditMessageTextMethod::class,
+            'editMessageCaption'                    => \WeStacks\TeleBot\Methods\EditMessageCaptionMethod::class,
+            'editMessageMedia'                      => \WeStacks\TeleBot\Methods\EditMessageMediaMethod::class,
+            'editMessageReplyMarkup'                => \WeStacks\TeleBot\Methods\EditMessageReplyMarkupMethod::class,
+            'stopPoll'                              => \WeStacks\TeleBot\Methods\StopPollMethod::class,
+            'deleteMessage'                         => \WeStacks\TeleBot\Methods\DeleteMessageMethod::class,
             // TODO: write tests for next methods
             'kickChatMember'                        => \WeStacks\TeleBot\Methods\KickChatMemberMethod::class,
             'unbanChatMember'                       => \WeStacks\TeleBot\Methods\UnbanChatMemberMethod::class,
@@ -284,7 +297,7 @@ class Bot
             'answerCallbackQuery'                   => \WeStacks\TeleBot\Methods\AnswerCallbackQueryMethod::class,
             'setMyCommands'                         => \WeStacks\TeleBot\Methods\SetMyCommandsMethod::class,
             'getMyCommands'                         => \WeStacks\TeleBot\Methods\GetMyCommandsMethod::class,
-            // TODO: editMessageText method
+            // TODO: sendSticker method
         ];
     }
 }

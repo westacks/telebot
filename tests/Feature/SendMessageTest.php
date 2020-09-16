@@ -13,6 +13,7 @@ use WeStacks\TeleBot\Objects\User;
 use Faker\Factory as Faker;
 use Faker\Generator;
 use InvalidArgumentException;
+use WeStacks\TeleBot\Objects\Poll;
 
 class SendMessageTest extends TestCase
 {
@@ -160,7 +161,14 @@ class SendMessageTest extends TestCase
                 'Butterflies'
             ]
         ]);
+
+        $poll = $this->bot->stopPoll([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'message_id' => $message->message_id
+        ]);
+
         $this->assertInstanceOf(Message::class, $message);
+        $this->assertInstanceOf(Poll::class, $poll);
     }
 
     public function testSendDice()
