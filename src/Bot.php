@@ -105,13 +105,11 @@ class Bot
         if (!isset($methods[$method])) throw TeleBotMehtodException::methodNotFound($method);
 
         $method = new $methods[$method]($this->config['token'], $arguments);
-
         $exceptions = $this->exceptions ?? $this->config['exceptions'];
         $async = $this->async ?? $this->config['async'];
 
         $this->exceptions = null;
         $this->async = null;
-
         return $method->execute($this->client, $exceptions, $async);
     }
 }
