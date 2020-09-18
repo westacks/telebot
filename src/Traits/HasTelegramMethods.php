@@ -71,6 +71,7 @@ use WeStacks\TeleBot\Objects\Poll;
  * @method Message|PromiseInterface|False               editMessageReplyMarkup(array $parameters = [])                  Use this method to edit only the reply markup of messages. On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.
  * @method Poll|PromiseInterface|False                  stopPoll(array $parameters = [])                                Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.
  * @method True|PromiseInterface|False                  deleteMessage(array $parameters = [])                           Use this method to delete a message, including service messages. Returns True on success.
+ * @method Message|PromiseInterface|False               sendSticker(array $parameters = [])                             Use this method to send static .WEBP or animated .TGS stickers. On success, the sent Message is returned.
  * 
  * @package WeStacks\TeleBot\Traits
  */
@@ -128,7 +129,7 @@ trait HasTelegramMethods
             'getChatMember'                         => \WeStacks\TeleBot\Methods\GetChatMemberMethod::class,
             'setMyCommands'                         => \WeStacks\TeleBot\Methods\SetMyCommandsMethod::class,
             'getMyCommands'                         => \WeStacks\TeleBot\Methods\GetMyCommandsMethod::class,
-            // TODO: write tests for next methods
+            // FIXME: next methods are untested
             'kickChatMember'                        => \WeStacks\TeleBot\Methods\KickChatMemberMethod::class,
             'unbanChatMember'                       => \WeStacks\TeleBot\Methods\UnbanChatMemberMethod::class,
             'restrictChatMember'                    => \WeStacks\TeleBot\Methods\RestrictChatMemberMethod::class,
@@ -138,7 +139,8 @@ trait HasTelegramMethods
             'setChatStickerSet'                     => \WeStacks\TeleBot\Methods\SetChatStickerSetMethod::class,
             'deleteChatStickerSet'                  => \WeStacks\TeleBot\Methods\DeleteChatStickerSetMethod::class,
             'answerCallbackQuery'                   => \WeStacks\TeleBot\Methods\AnswerCallbackQueryMethod::class,
-            // TODO: sendSticker method
+            'sendSticker'                           => \WeStacks\TeleBot\Methods\Stickers\SendStickerMethod::class,
+            // TODO: getStickerSet method
         ];
     }
 }

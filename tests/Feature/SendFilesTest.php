@@ -109,6 +109,15 @@ class SendFilesTest extends TestCase
         ]);
         $this->assertInstanceOf(File::class, $file);
 
-        $this->assertNotFalse(filter_var($file->url(getenv('TELEGRAM_BOT_TOKEN'), FILTER_VALIDATE_URL)));
+        $this->assertNotFalse(filter_var($file->url(getenv('TELEGRAM_BOT_TOKEN')), FILTER_VALIDATE_URL));
+    }
+
+    public function testSendSticker()
+    {
+        $message = $this->bot->sendSticker([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'sticker' => 'https://file-examples-com.github.io/uploads/2020/03/file_example_WEBP_50kB.webp'
+        ]);
+        $this->assertInstanceOf(Message::class, $message);
     }
 }
