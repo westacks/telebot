@@ -1,19 +1,19 @@
 <?php
 
-namespace WeStacks\TeleBot\Methods\Stickers;
+namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
 use WeStacks\TeleBot\Objects\InputFile;
 use WeStacks\TeleBot\Objects\Stickers\MaskPosition;
 
-class CreateNewStickerSetMethod extends TelegramMethod
+class AddStickerToSetMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/createNewStickerSet",
+            'url'       => "https://api.telegram.org/bot{$this->token}/addStickerToSet",
             'send'      => $this->send(),
             'expect'    => 'boolean'
         ];
@@ -24,11 +24,9 @@ class CreateNewStickerSetMethod extends TelegramMethod
         $parameters = [
             'user_id'                   => 'integer',
             'name'                      => 'string',
-            'title'                     => 'string',
             'png_sticker'               => InputFile::class,
             'tgs_sticker'               => InputFile::class,
             'emojis'                    => 'string',
-            'contains_masks'            => 'boolean',
             'mask_position'             => MaskPosition::class
         ];
 

@@ -14,6 +14,10 @@ use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorT
 use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorTranslationFiles;
 use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorUnspecified;
 
+/**
+ * This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of: PassportElementErrorDataField, PassportElementErrorFrontSide, PassportElementErrorReverseSide, PassportElementErrorSelfie, PassportElementErrorFile, PassportElementErrorFiles, PassportElementErrorTranslationFile, PassportElementErrorTranslationFiles, PassportElementErrorUnspecified
+ * @package WeStacks\TeleBot\Objects\Passport
+ */
 abstract class PassportElementError extends TelegramObject
 {
     /**

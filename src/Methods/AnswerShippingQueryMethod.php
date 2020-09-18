@@ -1,17 +1,18 @@
 <?php
 
-namespace WeStacks\TeleBot\Methods\Stickers;
+namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
+use WeStacks\TeleBot\Objects\Payments\ShippingOption;
 
-class DeleteStickerFromSetMethod extends TelegramMethod
+class AnswerShippingQueryMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/deleteStickerFromSet",
+            'url'       => "https://api.telegram.org/bot{$this->token}/answerShippingQuery",
             'send'      => $this->send(),
             'expect'    => 'boolean'
         ];
@@ -20,7 +21,10 @@ class DeleteStickerFromSetMethod extends TelegramMethod
     private function send()
     {
         $parameters = [
-            'sticker'                   => 'string'
+            'shipping_query_id'             => 'string',
+            'ok'                            => 'boolean',
+            'shipping_options'              => array(ShippingOption::class),
+            'error_message'                 => 'string'
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

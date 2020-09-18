@@ -1,27 +1,27 @@
 <?php
 
-namespace WeStacks\TeleBot\Methods\Stickers;
+namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\Stickers\StickerSet;
 
-class GetStickerSetMethod extends TelegramMethod
+class SetStickerPositionInSetMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/getStickerSet",
+            'url'       => "https://api.telegram.org/bot{$this->token}/setStickerPositionInSet",
             'send'      => $this->send(),
-            'expect'    => StickerSet::class
+            'expect'    => 'boolean'
         ];
     }
 
     private function send()
     {
         $parameters = [
-            'name'                   => 'string'
+            'sticker'                   => 'string',
+            'position'                  => 'integer'
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
