@@ -4,7 +4,6 @@ namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Bot;
-use WeStacks\TeleBot\Exception\TeleBotRequestException;
 use WeStacks\TeleBot\Objects\Chat;
 use WeStacks\TeleBot\Objects\ChatMember;
 use WeStacks\TeleBot\Objects\Message;

@@ -13,6 +13,7 @@ use WeStacks\TeleBot\Objects\ChatMember;
 use WeStacks\TeleBot\Objects\Chat;
 use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\Poll;
+use WeStacks\TeleBot\Objects\Stickers\StickerSet;
 
 /**
  * This trait is a ralation layer to `TelegramMethod` classes
@@ -72,6 +73,8 @@ use WeStacks\TeleBot\Objects\Poll;
  * @method Poll|PromiseInterface|False                  stopPoll(array $parameters = [])                                Use this method to stop a poll which was sent by the bot. On success, the stopped Poll with the final results is returned.
  * @method True|PromiseInterface|False                  deleteMessage(array $parameters = [])                           Use this method to delete a message, including service messages. Returns True on success.
  * @method Message|PromiseInterface|False               sendSticker(array $parameters = [])                             Use this method to send static .WEBP or animated .TGS stickers. On success, the sent Message is returned.
+ * @method StickerSet|PromiseInterface|False            getStickerSet(array $parameters = [])                           Use this method to get a sticker set. On success, a StickerSet object is returned.
+ * @method True|PromiseInterface|False                  createNewStickerSet(array $parameters = [])                     Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. You must use exactly one of the fields png_sticker or tgs_sticker. Returns True on success.
  * 
  * @package WeStacks\TeleBot\Traits
  */
@@ -129,6 +132,8 @@ trait HasTelegramMethods
             'getChatMember'                         => \WeStacks\TeleBot\Methods\GetChatMemberMethod::class,
             'setMyCommands'                         => \WeStacks\TeleBot\Methods\SetMyCommandsMethod::class,
             'getMyCommands'                         => \WeStacks\TeleBot\Methods\GetMyCommandsMethod::class,
+            'sendSticker'                           => \WeStacks\TeleBot\Methods\Stickers\SendStickerMethod::class,
+            'getStickerSet'                         => \WeStacks\TeleBot\Methods\Stickers\GetStickerSetMethod::class,
             // FIXME: next methods are untested
             'kickChatMember'                        => \WeStacks\TeleBot\Methods\KickChatMemberMethod::class,
             'unbanChatMember'                       => \WeStacks\TeleBot\Methods\UnbanChatMemberMethod::class,
@@ -139,8 +144,8 @@ trait HasTelegramMethods
             'setChatStickerSet'                     => \WeStacks\TeleBot\Methods\SetChatStickerSetMethod::class,
             'deleteChatStickerSet'                  => \WeStacks\TeleBot\Methods\DeleteChatStickerSetMethod::class,
             'answerCallbackQuery'                   => \WeStacks\TeleBot\Methods\AnswerCallbackQueryMethod::class,
-            'sendSticker'                           => \WeStacks\TeleBot\Methods\Stickers\SendStickerMethod::class,
-            // TODO: getStickerSet method
+            'createNewStickerSet'                   => \WeStacks\TeleBot\Methods\Stickers\CreateNewStickerSetMethod::class,
+            // TODO: createNewStickerSet method
         ];
     }
 }
