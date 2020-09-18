@@ -8,7 +8,7 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
 
 /**
  * Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the contact.
- * 
+ *
  * @property String                        $type                      Type of the result, must be contact
  * @property String                        $id                        Unique identifier for this result, 1-64 Bytes
  * @property String                        $phone_number              Contact's phone number
@@ -20,7 +20,7 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
  * @property String                        $thumb_url                 _Optional_. Url of the thumbnail for the result
  * @property Integer                       $thumb_width               _Optional_. Thumbnail width
  * @property Integer                       $thumb_height              _Optional_. Thumbnail height
- * 
+ *
  * @package WeStacks\TeleBot\Objects\InlineQueryResult
  */
 class InlineQueryResultContact extends InlineQueryResult

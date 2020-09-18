@@ -34,9 +34,9 @@ abstract class InlineQueryResult extends TelegramObject
 {
     /**
      * Create new object instance
-     * 
-     * @param mixed $object 
-     * @return static 
+     *
+     * @param mixed $object
+     * @return static
      */
     public static function create($object)
     {
@@ -46,7 +46,9 @@ abstract class InlineQueryResult extends TelegramObject
 
         $type = $types[$key][$type] ?? null;
         
-        if ($type) return new $type($object);
+        if ($type) {
+            return new $type($object);
+        }
 
         throw TeleBotObjectException::uncastableType(static::class, gettype($object));
     }
@@ -83,13 +85,18 @@ abstract class InlineQueryResult extends TelegramObject
 
     private static function isCached($object)
     {
-        if (!is_array($object) && !is_object($object)) return false;
+        if (!is_array($object) && !is_object($object)) {
+            return false;
+        }
 
-        if (is_object($object)) $object = (array) $object;
+        if (is_object($object)) {
+            $object = (array) $object;
+        }
 
-        foreach (array_keys($object) as $key)
-        {
-            if (strpos($key, 'file_id') !== false) return true;
+        foreach (array_keys($object) as $key) {
+            if (strpos($key, 'file_id') !== false) {
+                return true;
+            }
         }
 
         return false;

@@ -6,7 +6,7 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
 
 /**
  * This object contains information about one member of a chat.
- * 
+ *
  * @property User                    $user                            Information about the user
  * @property String                  $status                          The member's status in the chat. Can be “creator”, “administrator”, “member”, “restricted”, “left” or “kicked”
  * @property String                  $custom_title                    _Optional_. Owner and administrators only. Custom title for this user
@@ -26,7 +26,7 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
  * @property Boolean                 $can_send_polls                  _Optional_. Restricted only. True, if the user is allowed to send polls
  * @property Boolean                 $can_send_other_messages         _Optional_. Restricted only. True, if the user is allowed to send animations, games, stickers and use inline bots
  * @property Boolean                 $can_add_web_page_previews       _Optional_. Restricted only. True, if the user is allowed to add web page previews to their messages
- * 
+ *
  * @package WeStacks\TeleBot\Objects
  */
 

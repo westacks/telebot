@@ -33,7 +33,7 @@ class SendAudioMethod extends TelegramMethod
             'thumb'                     => InputFile::class,
             'disable_notification'      => 'boolean',
             'reply_to_message_id'       => 'integer',
-            'reply_markup'              => Keyboard::class 
+            'reply_markup'              => Keyboard::class
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

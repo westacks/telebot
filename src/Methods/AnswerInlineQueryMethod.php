@@ -4,14 +4,15 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
+use WeStacks\TeleBot\Objects\InlineQueryResult;
 
-class AnswerCallbackQueryMethod extends TelegramMethod
+class AnswerInlineQueryMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/answerCallbackQuery",
+            'url'       => "https://api.telegram.org/bot{$this->token}/answerInlineQuery",
             'send'      => $this->send(),
             'expect'    => 'boolean'
         ];
@@ -20,11 +21,13 @@ class AnswerCallbackQueryMethod extends TelegramMethod
     private function send()
     {
         $parameters = [
-            'callback_query_id'         => 'string',
-            'text'                      => 'string',
-            'show_alert'                => 'boolean',
-            'url'                       => 'string',
+            'inline_query_id'           => 'string',
+            'results'                   => array(InlineQueryResult::class),
             'cache_time'                => 'integer',
+            'is_personal'               => 'boolean',
+            'next_offset'               => 'string',
+            'switch_pm_text'            => 'string',
+            'switch_pm_parameter'       => 'string'
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

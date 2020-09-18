@@ -30,7 +30,7 @@ class SendVoiceMethod extends TelegramMethod
             'duration'                  => 'integer',
             'disable_notification'      => 'boolean',
             'reply_to_message_id'       => 'integer',
-            'reply_markup'              => Keyboard::class 
+            'reply_markup'              => Keyboard::class
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

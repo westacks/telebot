@@ -8,7 +8,7 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
 
 /**
  * Represents a link to an MP3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
- * 
+ *
  * @property String                    $type                        Type of the result, must be audio
  * @property String                    $id                          Unique identifier for this result, 1-64 bytes
  * @property String                    $audio_url                   A valid URL for the audio file
@@ -19,7 +19,7 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
  * @property Integer                   $audio_duration              _Optional_. Audio duration in seconds
  * @property InlineKeyboardMarkup      $reply_markup                _Optional_. Inline keyboard attached to the message
  * @property InputMessageContent       $input_message_content       _Optional_. Content of the message to be sent instead of the audio
- * 
+ *
  * @package WeStacks\TeleBot\Objects\InlineQueryResult
  */
 class InlineQueryResultAudio extends InlineQueryResult

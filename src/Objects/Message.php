@@ -12,7 +12,7 @@ use WeStacks\TeleBot\Objects\Stickers\Sticker;
 
 /**
  * This object represents a message.
- * 
+ *
  * @property Integer                $message_id                 Unique message identifier inside this chat
  * @property User                   $from                       _Optional_. Sender, empty for messages sent to channels
  * @property Integer                $date                       Date the message was sent in Unix time
@@ -62,7 +62,7 @@ use WeStacks\TeleBot\Objects\Stickers\Sticker;
  * @property String                 $connected_website          _Optional_. The domain name of the website on which the user has logged in
  * @property PassportData           $passport_data              _Optional_. Telegram Passport data
  * @property InlineKeyboardMarkup   $reply_markup               _Optional_. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
- * 
+ *
  * @package WeStacks\TeleBot\Objects
  */
 

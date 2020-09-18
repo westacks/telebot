@@ -6,7 +6,7 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
 
 /**
  * A placeholder, currently holds no information. Use BotFather to set up your game.
- * 
+ *
  * @package WeStacks\TeleBot\Objects\Games
  */
 class CallbackGame extends TelegramObject

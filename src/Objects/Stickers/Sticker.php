@@ -7,7 +7,7 @@ use WeStacks\TeleBot\Objects\PhotoSize;
 
 /**
  * This object represents a sticker.
- * 
+ *
  * @property String                $file_id              Identifier for this file, which can be used to download or reuse the file
  * @property String                $file_unique_id       Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
  * @property Integer               $width                Sticker width
@@ -18,7 +18,7 @@ use WeStacks\TeleBot\Objects\PhotoSize;
  * @property String                $set_name             _Optional_. Name of the sticker set to which the sticker belongs
  * @property MaskPosition          $mask_position        _Optional_. For mask stickers, the position where the mask should be placed
  * @property Integer               $file_size            _Optional_. File size
- * 
+ *
  * @package WeStacks\TeleBot\Objects\Stickers
  */
 class Sticker extends TelegramObject

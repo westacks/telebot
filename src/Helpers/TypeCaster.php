@@ -8,24 +8,29 @@ use WeStacks\TeleBot\Objects\InputFile;
 
 class TypeCaster
 {
-    private function __construct() {}
+    private function __construct()
+    {
+    }
 
     /**
      * Casts each `$object` key to a given type in `$relations` array with a same key.
-     * 
+     *
      * @param array|object $object
-     * @param array $relations 
-     * @return array 
+     * @param array $relations
+     * @return array
      */
     public static function castValues($object, array $relations)
     {
-        if (!is_array($object) && !is_object($object)) throw TeleBotObjectException::uncastableType('array', gettype($object));
+        if (!is_array($object) && !is_object($object)) {
+            throw TeleBotObjectException::uncastableType('array', gettype($object));
+        }
 
         $result = [];
 
-        foreach ( $object as $prop => $value ) if ( isset($relations[$prop]) )
-        {
-            $result[$prop] = static::cast($value, $relations[$prop]);
+        foreach ($object as $prop => $value) {
+            if (isset($relations[$prop])) {
+                $result[$prop] = static::cast($value, $relations[$prop]);
+            }
         }
 
         return $result;
@@ -33,36 +38,36 @@ class TypeCaster
 
     /**
      * Casts a `$value` to a given `$type`
-     * 
-     * @param mixed $value 
-     * @param array|string $type 
-     * @return mixed 
+     *
+     * @param mixed $value
+     * @param array|string $type
+     * @return mixed
      */
     public static function cast($value, $type)
     {
-        if (is_array($type)) 
-        return static::castArrayOfTypes($value, $type);
+        if (is_array($type)) {
+            return static::castArrayOfTypes($value, $type);
+        }
 
-        if (static::isCasted($value, $type))
+        if (static::isCasted($value, $type)) {
             return $value;
+        }
 
         return static::castDirect($value, $type);
     }
 
     /**
      * Cast all sub objects to arrays
-     * 
-     * @param array|object $object 
+     *
+     * @param array|object $object
      * @return array
      */
     public static function stripArrays($object)
     {
         $array = [];
 
-        foreach ($object as $key => $value)
-        {
-            if ((is_object($value) && is_subclass_of($value, TelegramObject::class)) || is_array($value))
-            {
+        foreach ($object as $key => $value) {
+            if ((is_object($value) && is_subclass_of($value, TelegramObject::class)) || is_array($value)) {
                 $value = static::stripArrays($value);
             }
             $array[$key] = $value;
@@ -73,10 +78,13 @@ class TypeCaster
 
     private static function castArrayOfTypes($object, array $type)
     {
-        if (!is_array($object)) throw TeleBotObjectException::uncastableType(gettype($type), gettype($object));
+        if (!is_array($object)) {
+            throw TeleBotObjectException::uncastableType(gettype($type), gettype($object));
+        }
 
-        foreach ($object as $subKey => $subValue)
+        foreach ($object as $subKey => $subValue) {
             $object[$subKey] = static::cast($subValue, $type[0]);
+        }
 
         return $object;
     }
@@ -85,7 +93,7 @@ class TypeCaster
     {
         $value_type = gettype($object);
 
-        return  $value_type == $type || 
+        return  $value_type == $type ||
                 $value_type == 'object' && class_exists($type) &&
                 ($object instanceof $type || is_subclass_of($object, $type));
     }
@@ -95,21 +103,22 @@ class TypeCaster
         $simple = ['int', 'integer', 'bool', 'boolean', 'float', 'double', 'string'];
         $value_type = gettype($object);
 
-        if (in_array($value_type, $simple) && in_array($type, $simple))
-        {
+        if (in_array($value_type, $simple) && in_array($type, $simple)) {
             settype($object, $type);
             return $object;
         }
 
-        if (class_exists($type)) return $type::create($object);
+        if (class_exists($type)) {
+            return $type::create($object);
+        }
 
         throw TeleBotObjectException::uncastableType($type, $value_type);
     }
 
     /**
      * Create a flat array for multipart Guzzle request from array of parameters
-     * @param array $object 
-     * @return array 
+     * @param array $object
+     * @return array
      */
     public static function flatten($object)
     {
@@ -117,8 +126,7 @@ class TypeCaster
         $files = [];
         static::extractFiles($object, $files);
 
-        foreach ($object as $key => $value)
-        {
+        foreach ($object as $key => $value) {
             $flat[] = [
                 'name' => $key,
                 'contents' => is_array($value) ? json_encode($value) : $value
@@ -130,23 +138,24 @@ class TypeCaster
 
     /**
      * Extract files from `$object` array and replace them with `attach://<file_attach_name>` string
-     * @param array $object 
-     * @param array $files 
-     * @return void 
+     * @param array $object
+     * @param array $files
+     * @return void
      */
     private static function extractFiles(array &$object, array &$files)
     {
-        foreach ($object as $key => $value)
-        {
+        foreach ($object as $key => $value) {
             if (is_object($value) && is_subclass_of($value, TelegramObject::class)) {
                 $value = $value->toArray();
             }
 
-            if (is_array($value))
+            if (is_array($value)) {
                 static::extractFiles($value, $files);
+            }
 
-            if($value instanceof InputFile)
+            if ($value instanceof InputFile) {
                 static::extractFile($value, $files);
+            }
 
             $object[$key] = $value;
         }
@@ -159,8 +168,7 @@ class TypeCaster
         if (isset($extract['filename']) || is_resource($extract['contents'])) {
             $files[] = $extract;
             $file = "attach://$fileKey";
-        }
-        else {
+        } else {
             $file = $extract['contents'];
         }
     }

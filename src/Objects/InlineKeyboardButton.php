@@ -7,7 +7,7 @@ use WeStacks\TeleBot\Objects\Games\CallbackGame;
 
 /**
  * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
- * 
+ *
  * @property String            $text                                Label text on the button
  * @property String            $url                                 _Optional_. HTTP or tg:// url to be opened when button is pressed
  * @property LoginUrl          $login_url                           _Optional_. An HTTP URL used to automatically authorize the user. Can be used as a replacement for the Telegram Login Widget.
@@ -16,7 +16,7 @@ use WeStacks\TeleBot\Objects\Games\CallbackGame;
  * @property String            $switch_inline_query_current_chat    _Optional_. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. Can be empty, in which case only the bot's username will be inserted. This offers a quick way for the user to open your bot in inline mode in the same chat – good for selecting something from multiple options.
  * @property CallbackGame      $callback_game                       _Optional_. Description of the game that will be launched when the user presses the button. NOTE: This type of button must always be the first button in the first row.
  * @property Boolean           $pay                                 _Optional_. Specify True, to send a Pay button. NOTE: This type of button must always be the first button in the first row.
- * 
+ *
  * @package WeStacks\TeleBot\Objects
  */
 

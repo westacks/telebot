@@ -8,7 +8,7 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
 
 /**
  * Represents a link to a voice recording in an .OGG container encoded with OPUS. By default, this voice recording will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the the voice message.
- * 
+ *
  * @property String                        $type                      Type of the result, must be voice
  * @property String                        $id                        Unique identifier for this result, 1-64 bytes
  * @property String                        $voice_url                 A valid URL for the voice recording
@@ -18,7 +18,7 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
  * @property Integer                       $voice_duration            _Optional_. Recording duration in seconds
  * @property InlineKeyboardMarkup          $reply_markup              _Optional_. Inline keyboard attached to the message
  * @property InputMessageContent           $input_message_content     _Optional_. Content of the message to be sent instead of the voice recording
- * 
+ *
  * @package WeStacks\TeleBot\Objects\InlineQueryResult
  */
 class InlineQueryResultVoice extends InlineQueryResult

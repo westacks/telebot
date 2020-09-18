@@ -6,7 +6,7 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
 
 /**
  * This object represents a chat.
- * 
+ *
  * @property Integer            $id                         Unique identifier for this chat. This number may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier.
  * @property String             $type                       Type of chat, can be either “private”, “group”, “supergroup” or “channel”
  * @property String             $title                      _Optional_. Title, for supergroups, channels and group chats
@@ -21,7 +21,7 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
  * @property Integer            $slow_mode_delay            _Optional_. For supergroups, the minimum allowed delay between consecutive messages sent by each unpriviledged user. Returned only in getChat.
  * @property String             $sticker_set_name           _Optional_. For supergroups, name of group sticker set. Returned only in getChat.
  * @property Boolean            $can_set_sticker_set        _Optional_. True, if the bot can change the group sticker set. Returned only in getChat.
- * 
+ *
  * @package WeStacks\TeleBot\Objects
  */
 

@@ -17,7 +17,7 @@ use WeStacks\TeleBot\Objects\Stickers\StickerSet;
 
 /**
  * This trait is a ralation layer to `TelegramMethod` classes
- * 
+ *
  * @method True|PromiseInterface|False                  deleteWebhook()                                                 Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success. Requires no parameters.
  * @method True|PromiseInterface|False                  sendChatAction(array $parameters = [])                          Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.
  * @method Message|PromiseInterface|False               editMessageLiveLocation(array $parameters = [])                 Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message was sent by the bot, the edited Message is returned, otherwise True is returned.
@@ -75,14 +75,18 @@ use WeStacks\TeleBot\Objects\Stickers\StickerSet;
  * @method Message|PromiseInterface|False               sendSticker(array $parameters = [])                             Use this method to send static .WEBP or animated .TGS stickers. On success, the sent Message is returned.
  * @method StickerSet|PromiseInterface|False            getStickerSet(array $parameters = [])                           Use this method to get a sticker set. On success, a StickerSet object is returned.
  * @method True|PromiseInterface|False                  createNewStickerSet(array $parameters = [])                     Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. You must use exactly one of the fields png_sticker or tgs_sticker. Returns True on success.
- * 
+ * @method True|PromiseInterface|False                  addStickerToSet(array $parameters = [])                         Use this method to add a new sticker to a set created by the bot. You must use exactly one of the fields png_sticker or tgs_sticker. Animated stickers can be added to animated sticker sets and only to them. Animated sticker sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns True on success.
+ * @method True|PromiseInterface|False                  setStickerPositionInSet(array $parameters = [])                 Use this method to move a sticker in a set created by the bot to a specific position. Returns True on success.
+ * @method True|PromiseInterface|False                  deleteStickerFromSet(array $parameters = [])                    Use this method to delete a sticker from a set created by the bot. Returns True on success.
+ * @method True|PromiseInterface|False                  setStickerSetThumb(array $parameters = [])                      Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.
+ *
  * @package WeStacks\TeleBot\Traits
  */
 trait HasTelegramMethods
 {
     /**
      * Bot methods relations
-     * @return string[] 
+     * @return string[]
      */
     protected function methods()
     {
@@ -145,6 +149,11 @@ trait HasTelegramMethods
             'deleteChatStickerSet'                  => \WeStacks\TeleBot\Methods\DeleteChatStickerSetMethod::class,
             'answerCallbackQuery'                   => \WeStacks\TeleBot\Methods\AnswerCallbackQueryMethod::class,
             'createNewStickerSet'                   => \WeStacks\TeleBot\Methods\Stickers\CreateNewStickerSetMethod::class,
+            'addStickerToSet'                       => \WeStacks\TeleBot\Methods\Stickers\AddStickerToSetMethod::class,
+            'setStickerPositionInSet'               => \WeStacks\TeleBot\Methods\Stickers\SetStickerPositionInSetMethod::class,
+            'deleteStickerFromSet'                  => \WeStacks\TeleBot\Methods\Stickers\DeleteStickerFromSetMethod::class,
+            'setStickerSetThumb'                    => \WeStacks\TeleBot\Methods\Stickers\SetStickerSetThumbMethod::class,
+            'answerInlineQuery'                     => \WeStacks\TeleBot\Methods\AnswerInlineQueryMethod::class,
             // TODO: createNewStickerSet method
         ];
     }

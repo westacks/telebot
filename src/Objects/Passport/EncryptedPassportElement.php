@@ -6,7 +6,7 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
 
 /**
  * Contains information about documents or other Telegram Passport elements shared with the bot by the user.
- * 
+ *
  * @property String                    $type                    Element type. One of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”, “phone_number”, “email”.
  * @property String                    $data                    _Optional_. Base64-encoded encrypted Telegram Passport element data provided by the user, available for “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport” and “address” types. Can be decrypted and verified using the accompanying EncryptedCredentials.
  * @property String                    $phone_number            _Optional_. User's verified phone number, available only for “phone_number” type
@@ -17,7 +17,7 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
  * @property PassportFile              $selfie                  _Optional_. Encrypted file with the selfie of the user holding a document, provided by the user; available for “passport”, “driver_license”, “identity_card” and “internal_passport”. The file can be decrypted and verified using the accompanying EncryptedCredentials.
  * @property Array<PassportFile>       $translation             _Optional_. Array of encrypted files with translated versions of documents provided by the user. Available if requested for “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
  * @property String                    $hash                    Base64-encoded element hash for using in PassportElementErrorUnspecified
- * 
+ *
  * @package WeStacks\TeleBot\Objects\Passport
  */
 class EncryptedPassportElement extends TelegramObject

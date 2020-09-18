@@ -44,8 +44,8 @@ class Bot
 
     /**
      * Call next method asynchronously (bot method will return guzzle promise)
-     * @param bool $async 
-     * @return self 
+     * @param bool $async
+     * @return self
      */
     public function async(bool $async = true)
     {
@@ -55,8 +55,8 @@ class Bot
 
     /**
      * Throw exceptions on next method (bot method will throw `TeleBotRequestException` on request error)
-     * @param bool $async 
-     * @return self 
+     * @param bool $async
+     * @return self
      */
     public function exceptions(bool $exceptions = true)
     {
@@ -66,43 +66,52 @@ class Bot
 
     /**
      * Create new instance of Telegram bot
-     * 
+     *
      * @param mixed $config Bot config. Path telegram bot API token as string, or array of parameters
-     * @return void 
-     * @throws TeleBotObjectException 
+     * @return void
+     * @throws TeleBotObjectException
      */
     public function __construct($config)
     {
-        if (is_string($config)) $config = ['token' => $config];
-        if (!is_array($config)) $config = [];
-        if (!isset($config['token'])) throw TeleBotObjectException::configKeyIsRequired('token', self::class);
+        if (is_string($config)) {
+            $config = ['token' => $config];
+        }
+        if (!is_array($config)) {
+            $config = [];
+        }
+        if (!isset($config['token'])) {
+            throw TeleBotObjectException::configKeyIsRequired('token', self::class);
+        }
 
-        $this->config = [
-            'token' => $config['token'],
-            'exceptions' => $config['exceptions'] ?? true,
-            'async' => $config['async'] ?? false,
-            'rate_limit' => $config['rate_limit'] ?? true
-        ];
         $this->addHandler($config['handlers'] ?? []);
 
+        $this->config = [
+            'token'         => $config['token'],
+            'exceptions'    => $config['exceptions'] ?? true,
+            'async'         => $config['async'] ?? false,
+            'rate_limit'    => $config['rate_limit'] ?? 1
+        ];
+
         $stack = HandlerStack::create()
-            ->push(RateLimiterMiddleware::perSecond($this->config['rate_limit'] ? 1 : 30));
+            ->push(RateLimiterMiddleware::perSecond($this->config['rate_limit']));
 
         $this->client = new Client(['http_errors' => false, 'handler' => $stack]);
     }
 
     /**
      * Call bot method
-     * 
-     * @param string $method 
-     * @param mixed $arguments 
-     * @return mixed 
-     * @throws TeleBotMehtodException 
+     *
+     * @param string $method
+     * @param mixed $arguments
+     * @return mixed
+     * @throws TeleBotMehtodException
      */
     public function __call($method, $arguments)
     {
         $methods = $this->methods();
-        if (!isset($methods[$method])) throw TeleBotMehtodException::methodNotFound($method);
+        if (!isset($methods[$method])) {
+            throw TeleBotMehtodException::methodNotFound($method);
+        }
 
         $method = new $methods[$method]($this->config['token'], $arguments);
         $exceptions = $this->exceptions ?? $this->config['exceptions'];

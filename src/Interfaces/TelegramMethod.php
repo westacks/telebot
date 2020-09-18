@@ -22,7 +22,7 @@ abstract class TelegramMethod
 
     /**
      * This function should return HTTP configuration for given method
-     * @return array 
+     * @return array
      */
     abstract protected function request();
 
@@ -40,19 +40,22 @@ abstract class TelegramMethod
      * @param Client $client Guzzle http client
      * @param bool $exceptions Throws exceptions if true
      * @param bool $async Execute request asynchronously
-     * @return mixed 
+     * @return mixed
      */
     public function execute(Client &$client, $exceptions = true, $async = false)
     {
         $config = $this->request();
 
         $promise = $client->requestAsync($config['type'], $config['url'], $config['send'])
-            ->then(function ($result) use ($config, $exceptions)
-            {
+            ->then(function ($result) use ($config, $exceptions) {
                 $result = json_decode($result->getBody());
-                if ($result->ok) return TypeCaster::cast($result->result, $config['expect']);
-                elseif ($exceptions) throw TeleBotRequestException::requestError($result);
-                else return false;
+                if ($result->ok) {
+                    return TypeCaster::cast($result->result, $config['expect']);
+                } elseif ($exceptions) {
+                    throw TeleBotRequestException::requestError($result);
+                } else {
+                    return false;
+                }
             });
 
         return $async ? $promise : $promise->wait();

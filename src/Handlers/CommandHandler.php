@@ -32,8 +32,7 @@ abstract class CommandHandler extends UpdateHandler
     {
         $data = [];
         
-        foreach (static::$aliases as $name)
-        {
+        foreach (static::$aliases as $name) {
             $data[] = new BotCommand([
                 'command' => $name,
                 'description' => static::$description
@@ -45,14 +44,19 @@ abstract class CommandHandler extends UpdateHandler
 
     public static function trigger(Update $update)
     {
-        if (!isset($update->message) || !isset($update->message->entities)) return false;
+        if (!isset($update->message) || !isset($update->message->entities)) {
+            return false;
+        }
 
-        foreach ($update->message->entities as $entity)
-        {
-            if ($entity->type != 'bot_command') continue;
+        foreach ($update->message->entities as $entity) {
+            if ($entity->type != 'bot_command') {
+                continue;
+            }
 
             $command = substr($update->message->text, $entity->offset, $entity->length);
-            if (in_array($command, static::$aliases)) return true;
+            if (in_array($command, static::$aliases)) {
+                return true;
+            }
         }
 
         return false;

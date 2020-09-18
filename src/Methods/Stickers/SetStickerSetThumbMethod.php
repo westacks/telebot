@@ -1,17 +1,18 @@
 <?php
 
-namespace WeStacks\TeleBot\Methods;
+namespace WeStacks\TeleBot\Methods\Stickers;
 
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
+use WeStacks\TeleBot\Objects\InputFile;
 
-class DeleteChatStickerSetMethod extends TelegramMethod
+class SetStickerSetThumbMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/deleteChatStickerSet",
+            'url'       => "https://api.telegram.org/bot{$this->token}/setStickerSetThumb",
             'send'      => $this->send(),
             'expect'    => 'boolean'
         ];
@@ -20,10 +21,12 @@ class DeleteChatStickerSetMethod extends TelegramMethod
     private function send()
     {
         $parameters = [
-            'chat_id'                   => 'string'
+            'name'                 => 'string',
+            'user_id'              => 'integer',
+            'thumb'                => InputFile::class,
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-        return [ 'json' => TypeCaster::stripArrays($object) ];
+        return [ 'multipart' => TypeCaster::flatten($object) ];
     }
 }

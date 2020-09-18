@@ -25,8 +25,8 @@ abstract class UpdateHandler
 
     /**
      * Create new update handler instance
-     * @param Update $update 
-     * @return void 
+     * @param Update $update
+     * @return void
      */
     public function __construct(Bot $bot, Update $update)
     {
@@ -37,13 +37,13 @@ abstract class UpdateHandler
     /**
      * This function should return `true` if this handler should handle given update, or `false` if should not
      * @param Update $update
-     * @return boolean 
+     * @return boolean
      */
     abstract public static function trigger(Update $update);
 
     /**
      * This function should handle updates
-     * @return void 
+     * @return void
      */
     abstract public function handle();
 }

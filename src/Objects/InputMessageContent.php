@@ -11,19 +11,29 @@ use WeStacks\TeleBot\Objects\InputMessageContent\InputVenueMessageContent;
 
 /**
  * This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 4 types: InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent
- * 
+ *
  * @package WeStacks\TeleBot\Objects
  */
 abstract class InputMessageContent extends TelegramObject
 {
     public static function create($object)
     {
-        if (is_object($object)) $object = (array) $object;
+        if (is_object($object)) {
+            $object = (array) $object;
+        }
 
-        if (isset($object['message_text'])) return new InputTextMessageContent($object);
-        if (isset($object['address'])) return new InputVenueMessageContent($object);
-        if (isset($object['latitude'])) return new InputLocationMessageContent($object);
-        if (isset($object['phone_number'])) return new InputContactMessageContent($object);
+        if (isset($object['message_text'])) {
+            return new InputTextMessageContent($object);
+        }
+        if (isset($object['address'])) {
+            return new InputVenueMessageContent($object);
+        }
+        if (isset($object['latitude'])) {
+            return new InputLocationMessageContent($object);
+        }
+        if (isset($object['phone_number'])) {
+            return new InputContactMessageContent($object);
+        }
 
         throw TeleBotObjectException::uncastableType(static::class, gettype($object));
     }

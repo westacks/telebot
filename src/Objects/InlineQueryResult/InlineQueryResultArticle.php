@@ -8,7 +8,7 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
 
 /**
  * Represents a link to an article or web page.
- * 
+ *
  * @property String                    $type                        Type of the result, must be article
  * @property String                    $id                          Unique identifier for this result, 1-64 Bytes
  * @property String                    $title                       Title of the result
@@ -20,7 +20,7 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
  * @property String                    $thumb_url                   _Optional_. Url of the thumbnail for the result
  * @property Integer                   $thumb_width                 _Optional_. Thumbnail width
  * @property Integer                   $thumb_height                _Optional_. Thumbnail height
- * 
+ *
  * @package WeStacks\TeleBot\Objects\InlineQueryResult
  */
 class InlineQueryResultArticle extends InlineQueryResult

@@ -6,12 +6,12 @@ use WeStacks\TeleBot\Objects\Passport\PassportElementError;
 
 /**
  * Represents an issue with the selfie with a document. The error is considered resolved when the file with the selfie changes.
- * 
+ *
  * @property String                    $source                  Error source, must be selfie
  * @property String                    $type                    The section of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”
  * @property String                    $file_hash               Base64-encoded hash of the file with the selfie
  * @property String                    $message                 Error message
- * 
+ *
  * @package WeStacks\TeleBot\Objects\Passport\PassportElementError
  */
 class PassportElementErrorSelfie extends PassportElementError

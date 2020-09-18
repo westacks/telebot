@@ -7,4 +7,6 @@ use Exception;
 /**
  * Basic TeleBot exception type
  */
-abstract class TeleBotException extends Exception {}
+abstract class TeleBotException extends Exception
+{
+}

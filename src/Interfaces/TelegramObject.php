@@ -10,7 +10,7 @@ use WeStacks\TeleBot\Helpers\TypeCaster;
 
 /**
  * Basic Telegram object class. All Telegram api objects should extend this class
- * 
+ *
  * @package WeStacks\TeleBot\Interfaces
  */
 abstract class TelegramObject implements IteratorAggregate
@@ -23,14 +23,14 @@ abstract class TelegramObject implements IteratorAggregate
 
     /**
      * This function should return an array representation of given object properties, where `$key` - is property name and `$value` - property type
-     * @return array 
+     * @return array
      */
     abstract protected function relations();
 
     /**
      * Create new Telegram object instance
-     * 
-     * @param array|object $object 
+     *
+     * @param array|object $object
      * @throws TeleBotObjectException
      */
     public function __construct($object)
@@ -40,9 +40,9 @@ abstract class TelegramObject implements IteratorAggregate
 
     /**
      * Create new Telegram object instance
-     * 
-     * @param array|object $object 
-     * @throws TeleBotObjectException 
+     *
+     * @param array|object $object
+     * @throws TeleBotObjectException
      * @return TelegramObject
      */
     public static function create($object)
@@ -52,8 +52,8 @@ abstract class TelegramObject implements IteratorAggregate
 
     /**
      * Get associative array representation of this object
-     * 
-     * @return array 
+     *
+     * @return array
      */
     public function toArray()
     {
@@ -62,8 +62,8 @@ abstract class TelegramObject implements IteratorAggregate
 
     /**
      * Get associative array representation of this object
-     * 
-     * @return string 
+     *
+     * @return string
      */
     public function toJson()
     {
@@ -73,10 +73,10 @@ abstract class TelegramObject implements IteratorAggregate
     /**
      * Seek through object properties using dot notation
      * Example: ```get('message.from.id')```
-     * 
+     *
      * @param string $property String in dot notation.
      * @param bool $exceprion If true, function will throm `TeleBotObjectException` if property is not found, else return null.
-     * 
+     *
      * @return mixed
      * @throws WeStacks\TeleBot\Exception\TeleBotObjectException
      */
@@ -85,23 +85,21 @@ abstract class TelegramObject implements IteratorAggregate
         $validate = "/(?:([^\s\.\[\]]+)(?:\[([0-9])\])?)/";
         $data = $this;
         
-        try
-        {
-            if (preg_match_all($validate, $property, $matches, PREG_SET_ORDER))
-                foreach ($matches as $match)
-                {
+        try {
+            if (preg_match_all($validate, $property, $matches, PREG_SET_ORDER)) {
+                foreach ($matches as $match) {
                     unset($match[0]);
-                    foreach ($match as $key)
-                    {
+                    foreach ($match as $key) {
                         $this->seek($data, $key);
                     }
                 }
-            else throw TeleBotObjectException::invalidDotNotation($property);
-        }
-        
-        catch (TeleBotObjectException $e)
-        {
-            if ($exception) throw $e;
+            } else {
+                throw TeleBotObjectException::invalidDotNotation($property);
+            }
+        } catch (TeleBotObjectException $e) {
+            if ($exception) {
+                throw $e;
+            }
             return null;
         }
         return $data;
@@ -109,23 +107,27 @@ abstract class TelegramObject implements IteratorAggregate
 
     /**
      * Try to dive `$data` into the `$key` property / array key.
-     * 
-     * @param array|object $data 
-     * @param string $key 
-     * @return void 
+     *
+     * @param array|object $data
+     * @param string $key
+     * @return void
      */
     private function seek(&$data, string $key)
     {
-        if (is_array($data) && isset($data[$key])) return $data = $data[$key];
+        if (is_array($data) && isset($data[$key])) {
+            return $data = $data[$key];
+        }
 
-        if (is_object($data) && isset($data->$key)) return $data = $data->$key;
+        if (is_object($data) && isset($data->$key)) {
+            return $data = $data->$key;
+        }
 
         throw TeleBotObjectException::undefinedOfset($key, get_class($data) ?? gettype($data));
     }
 
     /**
      * Recieve iterator
-     * @return Traversable 
+     * @return Traversable
      */
     public function getIterator()
     {

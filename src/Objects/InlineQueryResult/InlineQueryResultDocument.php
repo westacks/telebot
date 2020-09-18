@@ -8,7 +8,7 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
 
 /**
  * Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.
- * 
+ *
  * @property String                        $type                      Type of the result, must be document
  * @property String                        $id                        Unique identifier for this result, 1-64 bytes
  * @property String                        $title                     Title for the result
@@ -22,7 +22,7 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
  * @property String                        $thumb_url                 _Optional_. URL of the thumbnail (jpeg only) for the file
  * @property Integer                       $thumb_width               _Optional_. Thumbnail width
  * @property Integer                       $thumb_height              _Optional_. Thumbnail height
- * 
+ *
  * @package WeStacks\TeleBot\Objects\InlineQueryResult
  */
 class InlineQueryResultDocument extends InlineQueryResult

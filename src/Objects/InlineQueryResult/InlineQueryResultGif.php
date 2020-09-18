@@ -8,7 +8,7 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
 
 /**
  * Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
- * 
+ *
  * @property String                    $type                    Type of the result, must be gif
  * @property String                    $id                      Unique identifier for this result, 1-64 bytes
  * @property String                    $gif_url                 A valid URL for the GIF file. File size must not exceed 1MB

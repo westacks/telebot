@@ -12,7 +12,7 @@ use WeStacks\TeleBot\Objects\InputMedia\InputMediaVideo;
 
 /**
  * This object represents the content of a media message to be sent. It should be one of: InputMediaAnimation, InputMediaDocument, InputMediaAudio, InputMediaPhoto, InputMediaVideo
- * 
+ *
  * @package WeStacks\TeleBot\Objects
  */
 
@@ -20,9 +20,9 @@ abstract class InputMedia extends TelegramObject
 {
     /**
      * Create new object instance
-     * 
-     * @param mixed $object 
-     * @return static 
+     *
+     * @param mixed $object
+     * @return static
      */
     public static function create($object)
     {
@@ -31,7 +31,9 @@ abstract class InputMedia extends TelegramObject
         
         $type = $types[$type] ?? null;
 
-        if ($type) return new $type($object);
+        if ($type) {
+            return new $type($object);
+        }
 
         throw TeleBotObjectException::uncastableType(static::class, gettype($object));
     }

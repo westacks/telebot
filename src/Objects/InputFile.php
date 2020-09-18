@@ -3,7 +3,6 @@
 namespace WeStacks\TeleBot\Objects;
 
 use WeStacks\TeleBot\Exception\TeleBotFileException;
-use WeStacks\TeleBot\Exception\TeleBotObjectException;
 
 class InputFile
 {
@@ -21,18 +20,18 @@ class InputFile
 
     public function __construct($file, string $filename = null)
     {
-        if (!$file) throw TeleBotFileException::fileCantBeNull();
+        if (!$file) {
+            throw TeleBotFileException::fileCantBeNull();
+        }
 
-        if (is_array($file))
-        {
+        if (is_array($file)) {
             $filename = $file['filename'] ?? null;
             $file = $file['file'] ?? null;
         }
 
         $this->filename = $filename;
 
-        if (is_resource($file) || !@is_file($file) || !$this->contents = @fopen($file, 'r'))
-        {
+        if (is_resource($file) || !@is_file($file) || !$this->contents = @fopen($file, 'r')) {
             $this->contents = $file;
         }
     }
@@ -49,8 +48,7 @@ class InputFile
             'contents' => $this->contents
         ];
 
-        if ($this->filename)
-        {
+        if ($this->filename) {
             $data['filename'] = $this->filename;
         }
 

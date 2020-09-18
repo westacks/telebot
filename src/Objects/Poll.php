@@ -6,7 +6,7 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
 
 /**
  * This object contains information about a poll.
- * 
+ *
  * @property String                  $id                          Unique poll identifier
  * @property String                  $question                    Poll question, 1-255 characters
  * @property Array<PollOption>       $options                     List of poll options
@@ -20,7 +20,7 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
  * @property Array<MessageEntity>    $explanation_entities        _Optional_. Special entities like usernames, URLs, bot commands, etc. that appear in the explanation
  * @property Integer                 $open_period                 _Optional_. Amount of time in seconds the poll will be active after creation
  * @property Integer                 $close_date                  _Optional_. Point in time (Unix timestamp) when the poll will be automatically closed
- * 
+ *
  * @package WeStacks\TeleBot\Objects
  */
 
