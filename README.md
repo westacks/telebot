@@ -29,7 +29,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Credits
 
 - [Dmytro Morozov](https://github.com/PunyFlash)
-- [All Contributors](link-contributors)
+- [All Contributors](https://github.com/westacks/telebot/graphs/contributors)
 
 ## License
 
