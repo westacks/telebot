@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": "^7.2",
-        "guzzlehttp/guzzle": "^7.0",
+        "guzzlehttp/guzzle": "^6.0 || ^7.0",
         "illuminate/support": "^6.0 || ^7.0 || ^8.0",
         "spatie/guzzle-rate-limiter-middleware": "^1.0"
     },
