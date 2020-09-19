@@ -67,7 +67,7 @@ class TeleBot
     /**
      * Create new instance of Telegram bot
      *
-     * @param mixed $config Bot config. Path telegram bot API token as string, or array of parameters
+     * @param string|array $config Bot config. Path telegram bot API token as string, or array of parameters
      * @return void
      * @throws TeleBotObjectException
      */
@@ -98,15 +98,7 @@ class TeleBot
         $this->client = new Client(['http_errors' => false, 'handler' => $stack]);
     }
 
-    /**
-     * Call bot method
-     *
-     * @param string $method
-     * @param mixed $arguments
-     * @return mixed
-     * @throws TeleBotMehtodException
-     */
-    public function __call($method, $arguments)
+    public function __call(string $method, array $arguments)
     {
         $methods = $this->methods();
         if (!isset($methods[$method])) {

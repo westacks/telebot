@@ -2,6 +2,7 @@
 
 namespace WeStacks\TeleBot;
 
+use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Traits\HasTelegramMethods;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\BotCommand;
@@ -14,7 +15,7 @@ use WeStacks\TeleBot\Objects\BotCommand;
  * @method void             addHandler($handler)                            Add new update handler(s) to the bot instance
  * @method void             clearHandlers()                                 Remove all update handlers from bot instance
  * @method boolean          handleUpdate(Update $update = null)             Handle given update
- * @method BotCommand[]     getInstaneCommands(Update $update = null)       Get local bot instance commands registered by commands handlers
+ * @method BotCommand[]     getLocalCommands()                              Get local bot instance commands registered by commands handlers
  * 
  * @package WeStacks\TeleBot
  */
@@ -34,43 +35,90 @@ class BotManager
      */
     protected $default = null;
 
-    public function __construct(array $config)
+    public function __construct(array $config = null)
     {
-        $this->default = $config['default'];
-
-        foreach ($config['bots'] as $bot => $botConfig)
+        foreach ($config['bots'] ?? [] as $bot => $botConfig)
         {
-            $this->addBot($bot, $botConfig);
+            $this->add($bot, $botConfig);
         }
+        $this->default($config['default'] ?? null);
     }
 
     /**
      * Get bot by name
-     * @param string $name 
+     * @param string $name bot name
      * @return TeleBot|null
+     * @throws TeleBotObjectException 
      */
     public function bot(string $name = null)
     {
-        return $this->bots[$name ?? $this->default] ?? null;
+        $bot = $name ?? $this->default;
+        
+        if (is_null($bot)) {
+            throw TeleBotObjectException::defaultBotIsNotSet();
+        }
+
+        if (!isset($this->bots[$bot])) {
+            throw TeleBotObjectException::botNotFound($bot);
+        }
+
+        return $this->bots[$bot];
     }
 
     /**
-     * Add bot to
-     * @param string $name 
-     * @param mixed $config 
+     * Get array of bot names attached to BotManager instance
+     * @return array 
+     */
+    public function bots()
+    {
+        return array_keys($this->bots);
+    }
+
+    /**
+     * Add bot to BotManager
+     * @param string $name bot name
+     * @param TeleBot|string|array $bot TeleBot instance or bot config
      * @return void 
      */
-    public function addBot(string $name, $config)
+    public function add(string $name, $bot)
     {
-        $this->bots[$name] = new TeleBot($config);
+        if ($bot instanceof TeleBot) {
+            $this->bots[$name] = $bot;
+        }
+        else {
+            $this->bots[$name] = new TeleBot($bot);
+        }
     }
 
-    public function deleteBot(string $name)
+    /**
+     * Delete bot from BotManager
+     * @param string $name bot name
+     * @return void 
+     */
+    public function delete(string $name)
     {
         unset($this->bots[$name]);
+        if ($this->default == $name) {
+            $this->default = null;
+        }
     }
 
-    public function __call($name, $arguments)
+    /**
+     * Set default bot name
+     * @param string $name bot name
+     * @return void 
+     */
+    public function default(string $name)
+    {
+        if (isset($this->bots[$name])) {
+            $this->default = $name;
+        }
+        else {
+            throw TeleBotObjectException::botNotFound($name);
+        }
+    }
+
+    public function __call(string $name, array $arguments)
     {
         return $this->bot()->$name($arguments[0] ?? []);
     }

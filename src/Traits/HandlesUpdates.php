@@ -101,7 +101,7 @@ trait HandlesUpdates
      * Get local bot instance commands registered by commands handlers
      * @return BotCommand[]
      */
-    public function getInstaneCommands()
+    public function getLocalCommands()
     {
         $commands = [];
         foreach ($this->handlers as $handler) {

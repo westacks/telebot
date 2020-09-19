@@ -14,7 +14,7 @@
     "require": {
         "php": "^7.2",
         "guzzlehttp/guzzle": "^6.0 || ^7.0",
-        "illuminate/support": "^6.0 || ^7.0 || ^8.0",
+        "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0",
         "spatie/guzzle-rate-limiter-middleware": "^1.0"
     },
     "require-dev": {
@@ -39,7 +39,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.0.x-dev"
+            "dev-master": "1.0.x-dev"
         },
         "laravel": {
             "providers": [

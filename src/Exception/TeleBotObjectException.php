@@ -33,4 +33,14 @@ class TeleBotObjectException extends TeleBotException
     {
         return new TeleBotObjectException("Required key \"$key\" is not specified for \"$class\"");
     }
+
+    public static function defaultBotIsNotSet()
+    {
+        return new TeleBotObjectException("Default bot is not set. Please specify default bot using \"default('name')\" method or access your bot using \"bot('name')\" method.");
+    }
+
+    public static function botNotFound(string $name)
+    {
+        return new TeleBotObjectException("Can't find a bot with name '$name'");
+    }
 }

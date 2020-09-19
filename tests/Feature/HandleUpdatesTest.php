@@ -52,7 +52,7 @@ class HandleUpdatesTest extends TestCase
         $this->bot->clearHandlers();
         $this->bot->addHandler(StartCommandHandler::class);
 
-        $commands = $this->bot->getInstaneCommands();
+        $commands = $this->bot->getLocalCommands();
         $commands_set = $this->bot->setMyCommands(['commands' => $commands]);
         $this->assertTrue($commands_set);
 

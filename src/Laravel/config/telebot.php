@@ -9,7 +9,8 @@ return [
     | your default bot for regular use.
     |
     */
-    'default' => 'mybot',
+
+    'default' => 'bot',
 
     /*-------------------------------------------------------------------------
     | Your Telegram Bots
@@ -44,8 +45,9 @@ return [
     |                           }
     |                       ]
     */
+
     'bots' => [
-        'mybot' => [
+        'bot' => [
             'token'         => env('TELEGRAM_BOT_TOKEN', '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'),
             'exceptions'    => true,
             'async'         => false,
@@ -55,8 +57,8 @@ return [
             ],
         ],
 
-        // 'secondbot' => [
-        //     'token'         => '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11',
+        // 'bot_2' => [
+        //     'token'         => env('TELEGRAM_BOT2_TOKEN', '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'),
         // ],
     ]
 ];
