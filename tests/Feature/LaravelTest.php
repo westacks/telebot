@@ -3,7 +3,7 @@
 namespace Westacks\Telebot\Tests;
 
 use Orchestra\Testbench\TestCase;
-use WeStacks\TeleBot\Bot;
+use WeStacks\TeleBot\TeleBot as Bot;
 use WeStacks\TeleBot\Laravel\TeleBot;
 use WeStacks\TeleBot\Laravel\TeleBotServiceProvider;
 use WeStacks\TeleBot\Objects\Message;

@@ -3,14 +3,14 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Bot;
+use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Exception\TeleBotFileException;
 use WeStacks\TeleBot\Objects\Message;
 
 class SendPhotoTest extends TestCase
 {
     /**
-     * @var Bot
+     * @var TeleBot
      */
     private $bot;
 

@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Bot;
+use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\Update;
@@ -37,13 +37,13 @@ class BotObjectsTest extends TestCase
     public function testBotWithEmptyConfig()
     {
         $this->expectException(TeleBotObjectException::class);
-        new Bot([]);
+        new TeleBot([]);
     }
 
     public function testBotWithWrongConfig()
     {
         $this->expectException(TeleBotObjectException::class);
-        new Bot(123);
+        new TeleBot(123);
     }
 
     public function testWrongObject()

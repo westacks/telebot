@@ -3,13 +3,13 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Bot;
+use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Objects\Stickers\StickerSet;
 
 class StickersTest extends TestCase
 {
     /**
-     * @var Bot
+     * @var TeleBot
      */
     private $bot;
 

@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Bot;
+use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Objects\Chat;
 use WeStacks\TeleBot\Objects\ChatMember;
 use WeStacks\TeleBot\Objects\Message;
@@ -11,7 +11,7 @@ use WeStacks\TeleBot\Objects\Message;
 class ChatMethodsTest extends TestCase
 {
     /**
-     * @var Bot
+     * @var TeleBot
      */
     private $bot;
 

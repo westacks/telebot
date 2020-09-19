@@ -7,10 +7,10 @@ use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\BotCommand;
 
 /**
- * Bot manager for comfortable management of multiple Bot instances
+ * Bot manager for comfortable management of multiple TeleBot instances
  * 
- * @method Bot              async(bool $async = true)                       Call next method asynchronously (bot method will return guzzle promise)
- * @method Bot              exceptions(bool $exceptions = true)             Throw exceptions on next method (bot method will throw `TeleBotRequestException` on request error)
+ * @method TeleBot          async(bool $async = true)                       Call next method asynchronously (bot method will return guzzle promise)
+ * @method TeleBot          exceptions(bool $exceptions = true)             Throw exceptions on next method (bot method will throw `TeleBotRequestException` on request error)
  * @method void             addHandler($handler)                            Add new update handler(s) to the bot instance
  * @method void             clearHandlers()                                 Remove all update handlers from bot instance
  * @method boolean          handleUpdate(Update $update = null)             Handle given update
@@ -24,7 +24,7 @@ class BotManager
 
     /**
      * Array of bot instances
-     * @var Bot[]
+     * @var TeleBot[]
      */
     protected $bots = [];
 
@@ -47,7 +47,7 @@ class BotManager
     /**
      * Get bot by name
      * @param string $name 
-     * @return Bot|null
+     * @return TeleBot|null
      */
     public function bot(string $name = null)
     {
@@ -62,7 +62,7 @@ class BotManager
      */
     public function addBot(string $name, $config)
     {
-        $this->bots[$name] = new Bot($config);
+        $this->bots[$name] = new TeleBot($config);
     }
 
     public function deleteBot(string $name)

@@ -2,4 +2,4 @@
 
 require 'vendor/autoload.php';
 
-$bot = new \WeStacks\TeleBot\Bot(getenv('TELEGRAM_BOT_TOKEN'));
+$bot = new \WeStacks\TeleBot\TeleBot(getenv('TELEGRAM_BOT_TOKEN'));

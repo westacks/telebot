@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Interfaces;
 
-use WeStacks\TeleBot\Bot;
+use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Objects\Update;
 
 /**
@@ -19,7 +19,7 @@ abstract class UpdateHandler
 
     /**
      * Bot instance
-     * @var Bot
+     * @var TeleBot
      */
     protected $bot;
 
@@ -28,7 +28,7 @@ abstract class UpdateHandler
      * @param Update $update
      * @return void
      */
-    public function __construct(Bot $bot, Update $update)
+    public function __construct(TeleBot $bot, Update $update)
     {
         $this->bot = $bot;
         $this->update = $update;

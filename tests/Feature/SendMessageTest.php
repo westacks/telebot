@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use GuzzleHttp\Promise;
-use WeStacks\TeleBot\Bot;
+use WeStacks\TeleBot\TeleBot;
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
@@ -12,13 +12,12 @@ use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\User;
 use Faker\Factory as Faker;
 use Faker\Generator;
-use InvalidArgumentException;
 use WeStacks\TeleBot\Objects\Poll;
 
 class SendMessageTest extends TestCase
 {
     /**
-     * @var Bot
+     * @var TeleBot
      */
     private $bot;
 

@@ -14,17 +14,12 @@ stages:
 jobs:
   include:
     - stage: Testing
-      name: Running unit tests on PHP 7.1
-      php: 7.1
+      name: Running unit tests on PHP 7.2
+      php: 7.2
       script: 
         - composer require satooshi/php-coveralls --dev
         - composer test
         - vendor/bin/php-coveralls -v
-
-    - stage: Testing
-      name: Running unit tests on PHP 7.2
-      php: 7.2
-      script: composer test
 
     - stage: Testing
       name: Running unit tests on PHP 7.3

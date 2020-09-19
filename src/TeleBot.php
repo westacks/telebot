@@ -14,7 +14,7 @@ use WeStacks\TeleBot\Traits\HasTelegramMethods;
  * This class represents a bot instance. This is basicaly main controller for sending and handling your Telegram requests.
  * @package WeStacks\TeleBot
  */
-class Bot
+class TeleBot
 {
     use HandlesUpdates, HasTelegramMethods;
 

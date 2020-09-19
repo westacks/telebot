@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Bot;
+use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Objects\File;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\UserProfilePhotos;
@@ -11,7 +11,7 @@ use WeStacks\TeleBot\Objects\UserProfilePhotos;
 class SendFilesTest extends TestCase
 {
     /**
-     * @var Bot
+     * @var TeleBot
      */
     private $bot;
 

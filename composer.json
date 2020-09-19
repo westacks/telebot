@@ -12,8 +12,8 @@
         }
     ],
     "require": {
-        "php": "^7.1",
-        "guzzlehttp/guzzle": ">=6.0",
+        "php": "^7.2",
+        "guzzlehttp/guzzle": "^7.0",
         "illuminate/support": "^6.0 || ^7.0 || ^8.0",
         "spatie/guzzle-rate-limiter-middleware": "^1.0"
     },
@@ -46,7 +46,7 @@
                 "WeStacks\\TeleBot\\Laravel\\TeleBotServiceProvider"
             ],
             "aliases": {
-                "TeleBot": "WeStacks\\TeleBot\\Laravel\\TeleBot"
+                "TeleBot": "WeStacks\\TeleBot\\Laravel\\TeleBotFacade"
             }
         }
     },
