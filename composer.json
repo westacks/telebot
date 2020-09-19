@@ -14,6 +14,7 @@
     "require": {
         "php": ">=7.1",
         "guzzlehttp/guzzle": ">=6.0",
+        "illuminate/support": ">=5.5",
         "spatie/guzzle-rate-limiter-middleware": "^1.0"
     },
     "require-dev": {
@@ -36,7 +37,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.0.x-dev"
+            "dev-master": "1.0.x-dev"
         }
     },
     "config": {
