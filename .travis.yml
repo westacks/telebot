@@ -17,7 +17,7 @@ jobs:
       name: Running unit tests on PHP 7.2
       php: 7.2
       script: 
-        - composer require satooshi/php-coveralls --dev
+        - composer require php-coveralls/php-coveralls --dev
         - composer test
         - vendor/bin/php-coveralls -v
 
