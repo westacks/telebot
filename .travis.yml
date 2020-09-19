@@ -16,10 +16,7 @@ jobs:
     - stage: Testing
       name: Running unit tests on PHP 7.2
       php: 7.2
-      script: 
-        - composer require php-coveralls/php-coveralls --dev
-        - composer test
-        - vendor/bin/php-coveralls -v
+      script: composer test
 
     - stage: Testing
       name: Running unit tests on PHP 7.3
@@ -29,4 +26,6 @@ jobs:
     - stage: Testing
       name: Running unit tests on PHP 7.4
       php: 7.4
-      script: composer test
+      script: 
+        - composer test
+        - vendor/bin/php-coveralls -v
