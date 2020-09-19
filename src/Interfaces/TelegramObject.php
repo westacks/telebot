@@ -114,14 +114,10 @@ abstract class TelegramObject implements IteratorAggregate
      */
     private function seek(&$data, string $key)
     {
-        if (is_array($data) && isset($data[$key])) {
-            return $data = $data[$key];
+        $seek = is_array($data) ? $data[$key] : $data->$key ?? null;
+        if ($seek) {
+            return $data = $seek;
         }
-
-        if (is_object($data) && isset($data->$key)) {
-            return $data = $data->$key;
-        }
-
         throw TeleBotObjectException::undefinedOfset($key, get_class($data) ?? gettype($data));
     }
 

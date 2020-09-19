@@ -1,10 +1,8 @@
 <?php
 
-namespace WeStacks\TeleBot\Laravel\Providers;
+namespace WeStacks\TeleBot\Laravel;
 
 use Illuminate\Support\ServiceProvider;
-use Laravel\Lumen\Application as LumenApplication;
-use Illuminate\Foundation\Application as LaravelApplication;
 use WeStacks\TeleBot\BotManager;
 
 class TeleBotServiceProvider extends ServiceProvider
@@ -24,13 +22,9 @@ class TeleBotServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/config/telebot.php', 'telebot');
 
-        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/config/telebot.php' => config_path('telebot.php'),
-            ]);
-        } elseif ($this->app instanceof LumenApplication) {
-            $this->app->configure('telebot');
-        }
+        $this->publishes([
+            __DIR__.'/config/telebot.php' => config_path('telebot.php'),
+        ]);
     }
 
     private function registerBindings()

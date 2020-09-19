@@ -47,11 +47,11 @@ class BotManager
     /**
      * Get bot by name
      * @param string $name 
-     * @return Bot
+     * @return Bot|null
      */
-    public function bot(string $name = null): Bot
+    public function bot(string $name = null)
     {
-        return $this->bots[$name ?? $this->default];
+        return $this->bots[$name ?? $this->default] ?? null;
     }
 
     /**
@@ -72,6 +72,6 @@ class BotManager
 
     public function __call($name, $arguments)
     {
-        return $this->bot()->$name($arguments);
+        return $this->bot()->$name($arguments[0] ?? []);
     }
 }

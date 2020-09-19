@@ -40,12 +40,32 @@ class BotObjectsTest extends TestCase
         new Bot([]);
     }
 
+    public function testBotWithWrongConfig()
+    {
+        $this->expectException(TeleBotObjectException::class);
+        new Bot(123);
+    }
+
+    public function testWrongObject()
+    {
+        $this->expectException(TeleBotObjectException::class);
+        new Message([
+            'entities' => 'string'
+        ]);
+    }
+
     public function testTypes()
     {
         $this->assertInstanceOf(Update::class, $this->object);
         $this->assertInstanceOf(Message::class, $this->object->message);
         $this->assertInstanceOf(User::class, $this->object->message->from);
         $this->assertFalse($this->object->message->from->is_bot);
+    }
+
+    public function testDebug()
+    {
+        $result = print_r($this->object, true);
+        $this->assertTrue(str_contains($result, 'WeStacks\TeleBot\Objects\User Object'));
     }
 
     public function testCastWrogType()

@@ -58,7 +58,7 @@ trait HandlesUpdates
     /**
      * Handle given update
      * @param Update $update - Telegram update object. Leave empty to try to get it from incoming POST request (for handling webhook)
-     * @return boolean
+     * @return false|Update
      */
     public function handleUpdate(Update $update = null)
     {
@@ -77,7 +77,7 @@ trait HandlesUpdates
             }
         }
 
-        return true;
+        return $update;
     }
 
     /**

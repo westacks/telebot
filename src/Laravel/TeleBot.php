@@ -1,6 +1,6 @@
 <?php
 
-namespace WeStacks\TeleBot\Laravel\Facades;
+namespace WeStacks\TeleBot\Laravel;
 
 use Illuminate\Support\Facades\Facade;
 use WeStacks\TeleBot\BotManager;

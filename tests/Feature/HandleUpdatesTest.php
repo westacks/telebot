@@ -78,4 +78,9 @@ class HandleUpdatesTest extends TestCase
         $this->assertContainsOnlyInstancesOf(BotCommand::class, $commands);
         $this->assertCount(2, $commands);
     }
+
+    public function testNoUpdates()
+    {
+        $this->assertFalse($this->bot->handleUpdate());
+    }
 }

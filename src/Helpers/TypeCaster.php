@@ -8,10 +8,6 @@ use WeStacks\TeleBot\Objects\InputFile;
 
 class TypeCaster
 {
-    private function __construct()
-    {
-    }
-
     /**
      * Casts each `$object` key to a given type in `$relations` array with a same key.
      *
