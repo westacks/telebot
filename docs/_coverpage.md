@@ -2,9 +2,10 @@
 
 > PHP Telegram API wrapper made right.
 
-- Simple and lightweight
-- Easy to extend
-- Async requests support
+- Simple and extendable
+- Writen on top of GuzzleHTTP
+- Async support 
+- Easy command handling
 
 [GitHub](https://github.com/westacks/php-telebot-sdk/)
 [Getting Started](#TeleBot)

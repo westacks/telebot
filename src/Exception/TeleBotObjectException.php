@@ -43,4 +43,9 @@ class TeleBotObjectException extends TeleBotException
     {
         return new TeleBotObjectException("Can't find a bot with name '$name'");
     }
+
+    public static function noBotsSpecified()
+    {
+        return new TeleBotObjectException('You should specify at least 1 bot to use BotManager');
+    }
 }

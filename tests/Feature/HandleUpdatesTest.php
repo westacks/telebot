@@ -62,9 +62,7 @@ class HandleUpdatesTest extends TestCase
         }
 
         $commands_api = $this->bot->getMyCommands();
-        $commands_set = $this->bot->setMyCommands(['commands' => $commands]);
-        
-        $this->assertTrue($commands_set);
+
         $this->assertContainsOnlyInstancesOf(BotCommand::class, $commands_api);
         $this->bot->setMyCommands(['commands' => []]);
 

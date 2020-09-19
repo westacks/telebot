@@ -1,5 +1,5 @@
-# TeleBot
-
+<p id="telebot" align="center">
+<a href="https://github.com/westacks/telebot"><img src="./assets/logo.svg" alt="Project Logo"></a><br>
 <a href="https://packagist.org/packages/westacks/telebot"><img src="https://poser.pugx.org/westacks/telebot/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://core.telegram.org/bots/api"><img src="https://img.shields.io/badge/Bot%20API-4.9-blue" alt="Bot API Version"></a>
 <a href="https://travis-ci.org/westacks/telebot"><img src="https://travis-ci.org/westacks/telebot.svg" alt="Build Status"></a>
@@ -13,40 +13,15 @@ TeleBot is a PHP library for telegram bots development. Supports Laravel out of 
 
 ## Installation
 
-You can install the package via composer:
-
-```bash
-composer require westacks/telebot
-```
-
-## Usage
-
-``` php
-$bot = new TeleBot('<your bot token>');
-$botUser = $bot->getMe();
-```
-
-Read the full [documentation](https://westacks.github.io/telebot/) for advanced usage.
-
-### Testing
-
-For working tests you should provide a `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` (group id) and `TELEGRAM_USER_ID` environment variables in your local `phpunit.xml`. Then simply run from your console:
-
-``` bash
-composer test
-```
+See [instalation](installation.md) section for more detail
 
 ### Changelog
 
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+Please see [changelog](changelog.md) for more information what has changed recently.
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-### Security
-
-If you discover any security related issues, please email puny.flash@gmail.com instead of using the issue tracker.
+Please see [contributing](contributing.md) for details.
 
 ## Credits
 
@@ -55,4 +30,4 @@ If you discover any security related issues, please email puny.flash@gmail.com i
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](license.md) for more information.

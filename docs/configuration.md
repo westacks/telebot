@@ -1,4 +1,4 @@
-## Creating a bot instance
+## Standalone
 
 The first​ step is to initialize the library. Once you do that, You'll get access to all the available API Methods to make requests to Telegram.
 
@@ -6,38 +6,123 @@ The first​ step is to initialize the library. Once you do that, You'll get acc
 
 #### ** Minimal **
 
-```php
-use WeStacks\TeleBot\Bot;
+See [config docs](configuration.md#bot-config) for detailed parameters specification.
 
-$bot = new Bot('<your bot token>');
+```php
+use WeStacks\TeleBot\TeleBot;
+
+$bot = new TeleBot([
+    'token'      => '<telegram api token>',
+    'exceptions' => true,
+    'async'      => false,
+    'rate_limit' => 1
+    'handlers'   => []
+]);
+
+$bot->getMe();
 ```
 
 #### ** Advanced **
 
-You may provide an array with bot configuration (default config provided in example):
+You may also use bot manager to work comfortable with multiple bots. See [config docs](configuration.md#bot-manager-config) for help.
 
 ```php
-use WeStacks\TeleBot\Bot;
+use WeStacks\TeleBot\BotManager;
 
-$bot = new Bot([
-    'token'      => '<your bot token>',    // Telegram API access token. Token is the only required field.
-    'exceptions' => true,                  // Set `false` to completly turn off bot exceptions. Bot methods will return `false` on any kind of error
-    'handlers'   => []                     // Array of update handlers (closure functions or UpdateHandlerInterface objects)
-])
+$bot = new BotManager([
+    'default' => 'bot1',
+    'bots' => [
+        'bot1' => new TeleBot('<telegram api token>'),
+        'bot2' => '<telegram api token>'
+    ]
+]);
+
+$bot->getMe();                  // Will be executed by 'bot1' as a default bot
+$bot->bot('bot2')->getMe();     // Will be executed by 'bot2'
 ```
 
 <!-- tabs:end -->
 
-## Is it working?
+## Laravel
 
----
+If you are using Laravel, you can interact with bot library using `TeleBot` Facade after specifying a [bot manager config](configuration.md#bot-manager-config) in `config/telebot.php`
 
-To test it out you can execute a [getMe](https://core.telegram.org/bots/api#getme) method:
+<!-- tabs:start -->
+
+#### ** Config **
 
 ```php
-$res = $bot->getMe();
+// config/telebot.php
 
-echo $res->id;          // 1234567890
-echo $res->first_name;  // Test Bot
-echo $res;              // {"id":1234567890,"is_bot":true,"first_name":"Test Bot","username":"test_bot", ...}
+return [
+    'default' => 'bot1',
+    'bots' => [
+        'bot1' => [
+            'token'         => env('TELEGRAM_BOT_TOKEN', '<telegram api token>'),
+            'exceptions'    => true,
+            'async'         => false,
+            'rate_limit'    => 1,
+            'handlers'      => []
+        ],
+        'bot2' => '<telegram api token>'
+    ]
+];
 ```
+
+#### ** Usage **
+
+```php
+use WeStacks\TeleBot\Laravel\TeleBot as Bot;
+
+Bot::getMe();                  // Will be executed by 'bot1' as a default bot
+Bot::bot('bot2')->getMe();     // Will be executed by 'bot2'
+```
+
+<!-- tabs:end -->
+
+## Config parameters
+
+### Bot config
+
+Bot config may be represented as:
+* array of `key => value` pairs, where `key` - is parameter name, and `value` - parameter value
+* `token` string
+
+#### `token` (string)
+
+* `Required`
+* Your telegram bot token. See official Telegram [documentation](https://core.telegram.org/bots/api#authorizing-your-bot).
+
+#### `exceptions` (boolean)
+
+* Default: `true`
+* By default, bot throws `TeleBotRequestException` on telegram request errors. You may set this parameter `false`. In this case bot methods will return `false` instead of throwing exception.
+
+#### `async` (boolean)
+
+* Default: `false`
+* If you set this parameter `true`, bot methods will return Guzzle Promises, which you can handle mannualy.
+
+#### `rate_limit` (integer)
+
+* Default: `1`
+* Limit of requests/second bot will make. See more [here](https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this)
+
+#### `handlers` (array)
+
+* Default: `[]`
+* Array of your update handlers (closure functions or `UpdateHandler`, `CommandHandler` resolution objects). See more detaile in [Handling updates](updates.md) section
+
+### Bot Manager config
+
+Bot config represented as a array of `key => value` pairs, where `key` - is parameter name, and `value` - parameter value.
+
+#### `default` (string)
+
+* `Optional`
+* Default bot name. If you execute a bot method on `BotManager` istance, it will be hanled by this bot. If not specified the first specified bot is used.
+
+#### `bots` (array)
+
+* `Required`
+* Bots array. At least one bot should be specified. Each bot should be represented as array of `key => value` pairs, where `key` - is bot name, and `value` - [bot config](configuration.md#bot-config) or existing `TeleBot` instance

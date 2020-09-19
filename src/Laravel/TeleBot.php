@@ -93,15 +93,15 @@ use WeStacks\TeleBot\TeleBot as Bot;
  * 
  * @method static Bot                                               bot(string $name = null)                                    Get bot by name
  * @method static array                                             bots()                                                      Get array of bot names attached to BotManager instance
- * @method static void                                              add(string $name, Bot|string|array $bot)                    Add bot to BotManager
+ * @method static Bot                                               add(string $name, Bot|string|array $bot)                    Add bot to BotManager
  * @method static void                                              delete(string $name)                                        Delete bot from BotManager
- * @method static void                                              default(string $name)                                       Set default bot name
+ * @method static Bot                                               default(string $name)                                       Set default bot name
 
  * @method static Bot                                               async(bool $async = true)                                   Call next method asynchronously (bot method will return guzzle promise)
  * @method static Bot                                               exceptions(bool $exceptions = true)                         Throw exceptions on next method (bot method will throw `TeleBotRequestException` on request error)
  * @method static void                                              addHandler($handler)                                        Add new update handler(s) to the bot instance
  * @method static void                                              clearHandlers()                                             Remove all update handlers from bot instance
- * @method static boolean                                           handleUpdate(Update $update = null)                         Handle given update
+ * @method static Update|False                                      handleUpdate(Update $update = null)                         Handle given update
  * @method static BotCommand[]                                      getLocalCommands()                                          Get local bot instance commands registered by commands handlers
  */
 class TeleBot extends Facade

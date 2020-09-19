@@ -1,23 +1,26 @@
-## Requirments
+### Requirements
 
----
-
-- PHP 7.1+
+- PHP 7.2+
 - Composer
-- Telegram bot API access token (see official Telegram [documentation](https://core.telegram.org/bots/api#authorizing-your-bot))
+- Telegram bot token ([what is it?](https://core.telegram.org/bots/api#authorizing-your-bot))
 
-## How to install?
+## Installing package
 
----
-
-The recommended way to install `php-telebot-sdk` is using [composer](https://getcomposer.org/):
+You can install the package via composer:
 
 ```bash
-composer require westacks/php-telebot-sdk
+composer require westacks/telebot
 ```
 
-After installing, you need to require Composer's autoloader if you want to use the library standalone:
+## Laravel
 
-```php
-require 'vendor/autoload.php';
+If you are using Laravel, the library will self-register its ServiceProvider and Facade using Laravel's auto-discovery. Only Laravel version 5.5+ supported by the library.
+
+### Publish Configuration File
+
+Open your terminal window and fire the following command to publish config file to your config directory:
+
+```bash
+php artisan vendor:publish --provider="WeStacks\TeleBot\Laravel\TeleBotServiceProvider"
 ```
+Now you can find your bots config on `config/telebot.php` file.

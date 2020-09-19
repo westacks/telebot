@@ -1,9 +1,10 @@
 - Getting started
-  - [Installation](installation.md)
   - [Contributing](contributing.md)
+  - [Changelog](changelog.md)
   - [License](license.md)
 
 - Usage
+  - [Installation](installation.md)
   - [Configuration](configuration.md)
   - [Objects](objects.md)
   - [Methods](methods.md)
