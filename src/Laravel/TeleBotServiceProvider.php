@@ -3,6 +3,9 @@
 namespace WeStacks\TeleBot\Laravel;
 
 use Illuminate\Support\ServiceProvider;
+use Telegram\Bot\Laravel\Artisan\CommandsCommand;
+use Telegram\Bot\Laravel\Artisan\LongPollCommad;
+use Telegram\Bot\Laravel\Artisan\WebhookCommand;
 use WeStacks\TeleBot\BotManager;
 
 class TeleBotServiceProvider extends ServiceProvider
@@ -14,7 +17,10 @@ class TeleBotServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->publishConfig();
+        if ($this->app->runningInConsole()) {
+            $this->publishConfig();
+            $this->registerCommands();
+        }
         $this->registerBindings();
     }
 
@@ -34,4 +40,19 @@ class TeleBotServiceProvider extends ServiceProvider
         });
         $this->app->alias(BotsManager::class, 'telebot');
     }
+
+    private function registerCommands()
+    {
+        $this->commands([
+            WebhookCommand::class,
+            LongPollCommad::class,
+            CommandsCommand::class
+        ]);
+    }
+
+    public function provides()
+    {
+        return [BotManager::class, 'telebot'];
+    }
+    
 }
