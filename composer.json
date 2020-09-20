@@ -43,7 +43,7 @@
                 "WeStacks\\TeleBot\\Laravel\\TeleBotServiceProvider"
             ],
             "aliases": {
-                "TeleBot": "WeStacks\\TeleBot\\Laravel\\TeleBotFacade"
+                "TeleBot": "WeStacks\\TeleBot\\Laravel\\TeleBot"
             }
         }
     },
