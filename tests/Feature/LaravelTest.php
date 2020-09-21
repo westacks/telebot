@@ -80,6 +80,6 @@ class LaravelTest extends TestCase
 
     public function testLongPollCommand()
     {
-        $this->artisan('telebot:long-poll -O')->assertExitCode(0);
+        $this->artisan('telebot:polling -O')->assertExitCode(0);
     }
 }
