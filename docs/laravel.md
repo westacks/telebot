@@ -1,15 +1,111 @@
 # Laravel Features
 
-TeleBot library in addition to Facade, provides some more artisan commands, for setting your bots webhook, bots commands and even performing long-polling (very usefull for local development).
+TeleBot library in addition to [Facade](configuration.md#laravel), provides some more artisan commands, for setting your bots webhook, bots commands and even performing long-polling (very usefull for local development).
 
 ## Webhook
 
-You may set, remove or display your bots info using `php artisan telebot:webhook` command. For that you need to specify your webhook config for your bot in `config/telebot.php`:
+You may set, remove or display your bots webhook using `telebot:webhook` command. For that you need to specify your [setWebhook method parameters](https://core.telegram.org/bots/api#setwebhook) for your bot in `config/telebot.php`:
 
 <!-- tabs:start -->
 
-#### ** Config
+#### ** Webhook usage **
+
+```bash
+php artisan telebot:webhook --help
+```
+
+#### ** Webhook config **
 
 ```php
+// config/telebot.php
 
+<?php
+
+return [
+
+  'default' => 'bot',
+
+  'bots' => [
+    'bot'   => [
+      'token'   => env('TELEGRAM_BOT_TOKEN'),
+      'webhook' => [
+        'url'               => env('TELEGRAM_BOT_WEBHOOK_URL', 'https://telebot.westacks.com.ua/webhook'),
+        // 'certificate'       => env('TELEGRAM_BOT_CERT_PATH', storage_path('app/ssl/public.pem')),
+        // 'max_connections'   => 40,
+        // 'allowed_updates'   => ["message", "edited_channel_post", "callback_query"]
+      ]
+    ]
+];
 ```
+<!-- tabs:end -->
+
+## Long Polling
+
+You may run bot polling from console using `telebot:polling` command. You may specify your [getUpdates method parameters](https://core.telegram.org/bots/api#getupdates) for your bot in `config/telebot.php`:
+
+<!-- tabs:start -->
+
+#### ** Polling usage **
+
+```bash
+php artisan telebot:polling --help
+```
+
+#### ** Polling config **
+
+```php
+// config/telebot.php
+
+<?php
+
+return [
+
+  'default' => 'bot',
+
+  'bots' => [
+    'bot'   => [
+      'token'   => env('TELEGRAM_BOT_TOKEN'),
+      'poll'    => [
+        // 'limit'             => 100,
+        // 'timeout'           => 0,
+        // 'allowed_updates'   => ["message", "edited_channel_post", "callback_query"]
+      ],
+    ]
+];
+```
+<!-- tabs:end -->
+
+
+## Bot commands
+
+You may send your localy registered bot commands into Telegram API for user's autocompletion using `telebot:commands` command. All registered commands in bot config will be sent.
+
+<!-- tabs:start -->
+
+#### ** Commands usage **
+
+```bash
+php artisan telebot:commands --help
+```
+
+#### ** Commands config **
+
+```php
+// config/telebot.php
+
+<?php
+
+return [
+
+  'default' => 'bot',
+
+  'bots' => [
+    'bot'   => [
+      'token'     => env('TELEGRAM_BOT_TOKEN'),
+      'handlers'  => [
+          \App\Services\Telegram\Commands\StartCommand::class
+      ],
+    ]
+];
+```
+<!-- tabs:end -->

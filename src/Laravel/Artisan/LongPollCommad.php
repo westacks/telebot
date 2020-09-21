@@ -3,14 +3,16 @@
 namespace WeStacks\TeleBot\Laravel\Artisan;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 use WeStacks\TeleBot\BotManager;
 use WeStacks\TeleBot\Objects\Update;
 
 class LongPollCommad extends Command
 {
-    protected $signature = 'telebot:long-poll
+    protected $signature = 'telebot:polling
                 {bot? : The bot name defined in the config file.}
-                {--A|all : Perform actions on all your bots.} 
+                {--A|all : Perform actions on all your bots.}
+                {--L|log : Write updates into Laravel log.}
                 {--O|once : Poll only one time (for debug purposes).}';
 
     protected $description = 'Ease the Process of polling for bot updates.';
@@ -31,6 +33,7 @@ class LongPollCommad extends Command
 
         $poll = true;
 
+        $this->info('Polling telegram updates...');
         while ($poll) {
             foreach ($bots as $bot => $offset) {
                 $updates = $this->bot->bot($bot)
@@ -41,18 +44,19 @@ class LongPollCommad extends Command
                     ]));
 
                 foreach ($updates as $update) {
-                    $this->info("Bot: $bot. Update: $update->update_id. Type: '".$this->getUpdateType($update)."'");
+                    $this->info("Bot: '$bot'; update: $update->update_id; type: '".$this->getUpdateType($update)."'");
+                    if ($this->option('log')) Log::debug("Bot: '$bot'; Update: $update");
                     $this->bot->bot($bot)->handleUpdate($update);
-                    $offset = $update->update_id;
+                    $bots[$bot] = $update->update_id;
                 }
             }
-            if ($this->hasOption('once')) $poll = false;
+            if ($this->option('once')) $poll = false;
         }
         return 0;
     }
 
     private function getUpdateType(Update $update)
     {
-        return collect(array_keys($update->toArray()))->except('update_id')->first();
+        return collect(array_keys($update->toArray()))->last();
     }
 }

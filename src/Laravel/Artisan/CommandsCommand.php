@@ -85,7 +85,7 @@ class CommandsCommand extends Command
 
     private function getCommands($bots)
     {
-        $this->alert('Webhook Info');
+        $this->alert('Bot Commands');
 
         $promises = [];
         foreach ($bots as $bot) {
@@ -104,7 +104,9 @@ class CommandsCommand extends Command
     private function makeTable(array $commands, string $bot)
     {
         $rows = collect($commands)->map(function (BotCommand $command) {
-            return [$command->command => $command->description];
+            $key = '/'.$command->command;
+            $value = $command->description;
+            return compact('key', 'value');
         })->toArray();
 
         return $this->table([
