@@ -19,7 +19,7 @@ class CommandsCommand extends TeleBotCommand
 
     public function handle()
     {
-        if ($error = true !== $this->validOptions()) {
+        if (true !== ($error = $this->validOptions())) {
             $this->error($error);
 
             return 1;
