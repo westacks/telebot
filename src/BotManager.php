@@ -42,11 +42,7 @@ class BotManager
         if (count($bots) < 1) {
             throw TeleBotObjectException::noBotsSpecified();
         }
-
-        foreach ($bots as $bot => $botConfig) {
-            $this->add($bot, $botConfig);
-        }
-
+        $this->bots = $bots;
         $this->default($config['default'] ?? array_keys($this->bots)[0]);
     }
 
@@ -66,6 +62,10 @@ class BotManager
 
         if (!isset($this->bots[$bot])) {
             throw TeleBotObjectException::botNotFound($bot);
+        }
+
+        if (!($this->bots[$bot] instanceof TeleBot)) {
+            $this->bots[$bot] = new TeleBot($this->bots[$bot]);
         }
 
         return $this->bots[$bot];
