@@ -8,6 +8,7 @@ use WeStacks\TeleBot\TeleBot as Bot;
 use WeStacks\TeleBot\Laravel\TeleBot;
 use WeStacks\TeleBot\Laravel\TeleBotServiceProvider;
 use WeStacks\TeleBot\Objects\Message;
+use WeStacks\TeleBot\Tests\Helpers\StartCommandHandler;
 
 class LaravelTest extends TestCase
 {
@@ -42,10 +43,10 @@ class LaravelTest extends TestCase
         catch (TeleBotObjectException $e) {
             $this->assertInstanceOf(TeleBotObjectException::class, $e);
         }
-        TeleBot::add('bot', getenv('TELEGRAM_BOT_TOKEN'));
-        TeleBot::add('someMoreBot', new Bot(getenv('TELEGRAM_BOT_TOKEN')));
 
+        TeleBot::add('bot', getenv('TELEGRAM_BOT_TOKEN'));
         TeleBot::default('bot');
+
         $this->assertInstanceOf(Bot::class, TeleBot::bot());
     }
 
@@ -62,5 +63,23 @@ class LaravelTest extends TestCase
     {
         $this->expectException(TeleBotObjectException::class);
         TeleBot::default('some_wrong_bot');
+    }
+
+    public function testCommandsCommand()
+    {
+        TeleBot::addHandler(StartCommandHandler::class);
+        $this->artisan('telebot:commands -S -I')->assertExitCode(0);
+        $this->artisan('telebot:commands -R')->assertExitCode(0);
+    }
+
+    public function testWebhookCommand()
+    {
+        $this->artisan('telebot:webhook -S -I')->assertExitCode(0);
+        $this->artisan('telebot:webhook -R')->assertExitCode(0);
+    }
+
+    public function testLongPollCommand()
+    {
+        $this->artisan('telebot:long-poll -O')->assertExitCode(0);
     }
 }

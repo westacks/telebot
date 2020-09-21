@@ -45,7 +45,7 @@ $bot->bot('bot2')->getMe();     // Will be executed by 'bot2'
 
 ## Laravel
 
-If you are using Laravel, you can interact with bot library using `TeleBot` Facade after specifying a [bot manager config](configuration.md#bot-manager-config) in `config/telebot.php`
+If you are using Laravel, you can interact with bot library using `TeleBot` Facade after specifying a [bot manager config](configuration.md#bot-manager-config) in `config/telebot.php`. Also you may specify a `webhook` and `poll` parameter here for [webhook and long-polling](https://core.telegram.org/bots/api#getting-updates) setup using artisan commands. See more details in [Laravel features](laravel.md) section.
 
 <!-- tabs:start -->
 
@@ -64,7 +64,9 @@ return [
             'rate_limit'    => 1,
             'handlers'      => []
         ],
-        'bot2' => '<telegram api token>'
+        'bot2' => [
+            'token'         => env('TELEGRAM_BOT2_TOKEN', '<telegram api token>')
+        ]
     ]
 ];
 ```

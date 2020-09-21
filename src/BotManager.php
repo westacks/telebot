@@ -128,6 +128,6 @@ class BotManager
 
     public function __call(string $name, array $arguments)
     {
-        return $this->bot()->$name($arguments[0] ?? []);
+        return $this->bot()->$name(...($arguments ?? []));
     }
 }
