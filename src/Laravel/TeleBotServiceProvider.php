@@ -3,10 +3,10 @@
 namespace WeStacks\TeleBot\Laravel;
 
 use Illuminate\Support\ServiceProvider;
-use Telegram\Bot\Laravel\Artisan\CommandsCommand;
-use Telegram\Bot\Laravel\Artisan\LongPollCommad;
-use Telegram\Bot\Laravel\Artisan\WebhookCommand;
 use WeStacks\TeleBot\BotManager;
+use WeStacks\TeleBot\Laravel\Artisan\CommandsCommand;
+use WeStacks\TeleBot\Laravel\Artisan\LongPollCommad;
+use WeStacks\TeleBot\Laravel\Artisan\WebhookCommand;
 
 class TeleBotServiceProvider extends ServiceProvider
 {
