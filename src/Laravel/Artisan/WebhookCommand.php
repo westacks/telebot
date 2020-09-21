@@ -1,6 +1,6 @@
 <?php
 
-namespace Telegram\Bot\Laravel\Artisan;
+namespace WeStacks\TeleBot\Laravel\Artisan;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;

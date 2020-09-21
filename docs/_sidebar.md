@@ -9,3 +9,4 @@
   - [Objects](objects.md)
   - [Methods](methods.md)
   - [Handling updates](updates.md)
+  - [Laravel features](laravel.md)
