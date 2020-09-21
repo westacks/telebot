@@ -2,14 +2,11 @@
 
 namespace WeStacks\TeleBot\Laravel\Artisan;
 
-use Illuminate\Console\Command;
+use function GuzzleHttp\Promise\all;
 use Symfony\Component\Console\Helper\TableCell;
-use WeStacks\TeleBot\BotManager;
 use WeStacks\TeleBot\Objects\BotCommand;
 
-use function GuzzleHttp\Promise\all;
-
-class CommandsCommand extends Command
+class CommandsCommand extends TeleBotCommand
 {
     protected $signature = 'telebot:commands
         {bot? : The bot name defined in the config file.}
@@ -19,21 +16,16 @@ class CommandsCommand extends Command
         {--I|info : Get the information about your current bot commands on Telegram servers.}';
 
     protected $description = 'Ease the Process of setting up and removing bot commands.';
-    protected $bot;
-
-    public function __construct(BotManager $bot)
-    {
-        parent::__construct();
-        $this->bot = $bot;
-    }
 
     public function handle()
     {
-        if (!$this->option('setup') && !$this->option('remove') && !$this->option('info')) {
-            return $this->error('No task specified!');
+        if ($error = true !== $this->validOptions()) {
+            $this->error($error);
+
+            return 1;
         }
 
-        $bots = $this->hasOption('all') ? $this->bot->bots() : [$this->argument('bot') ?? config('telebot.default')];
+        $bots = $this->botsList();
 
         if ($this->option('setup')) {
             $this->setupCommands($bots);
@@ -46,6 +38,7 @@ class CommandsCommand extends Command
         if ($this->option('info')) {
             $this->getCommands($bots);
         }
+
         return 0;
     }
 
@@ -57,12 +50,16 @@ class CommandsCommand extends Command
                 ->async(true)
                 ->exceptions(true)
                 ->setMyCommands([
-                    'commands' => $this->bot->bot($bot)->getLocalCommands()
+                    'commands' => $this->bot->bot($bot)->getLocalCommands(),
                 ])
-                ->then(function(bool $result) use($bot) {
-                    if ($result) $this->info("Success! Bot commands has been set for '$bot' bot!");
+                ->then(function (bool $result) use ($bot) {
+                    if ($result) {
+                        $this->info("Success! Bot commands has been set for '{$bot}' bot!");
+                    }
+
                     return $result;
-                });
+                })
+            ;
         }
         all($promises)->wait();
     }
@@ -74,11 +71,15 @@ class CommandsCommand extends Command
             $promises[] = $this->bot->bot($bot)
                 ->async(true)
                 ->exceptions(true)
-                ->setMyCommands([ 'commands' => [] ])
-                ->then(function(bool $result) use($bot) {
-                    if ($result) $this->info("Success! Bot commands has been removed for '$bot' bot!");
+                ->setMyCommands(['commands' => []])
+                ->then(function (bool $result) use ($bot) {
+                    if ($result) {
+                        $this->info("Success! Bot commands has been removed for '{$bot}' bot!");
+                    }
+
                     return $result;
-                });
+                })
+            ;
         }
         all($promises)->wait();
     }
@@ -93,10 +94,12 @@ class CommandsCommand extends Command
                 ->async(true)
                 ->exceptions(true)
                 ->getMyCommands()
-                ->then(function(array $commands) use($bot) {
+                ->then(function (array $commands) use ($bot) {
                     $this->makeTable($commands, $bot);
+
                     return $commands;
-                });
+                })
+            ;
         }
         all($promises)->wait();
     }
@@ -106,6 +109,7 @@ class CommandsCommand extends Command
         $rows = collect($commands)->map(function (BotCommand $command) {
             $key = '/'.$command->command;
             $value = $command->description;
+
             return compact('key', 'value');
         })->toArray();
 

@@ -7,14 +7,16 @@ use WeStacks\TeleBot\Exception\TeleBotFileException;
 class InputFile
 {
     /**
-     * File name
-     * @var string|null
+     * File name.
+     *
+     * @var null|string
      */
     protected $filename;
 
     /**
-     * File contents
-     * @var string|resource|bool
+     * File contents.
+     *
+     * @var bool|resource|string
      */
     protected $contents;
 
@@ -45,7 +47,7 @@ class InputFile
     {
         $data = [
             'name' => $name,
-            'contents' => $this->contents
+            'contents' => $this->contents,
         ];
 
         if ($this->filename) {

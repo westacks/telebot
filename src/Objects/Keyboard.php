@@ -10,11 +10,8 @@ use WeStacks\TeleBot\Objects\Keyboard\ReplyKeyboardMarkup;
 use WeStacks\TeleBot\Objects\Keyboard\ReplyKeyboardRemove;
 
 /**
- * This object represents the keyboard / reply markup of the message to be sent. It should be one of: InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply
- *
- * @package WeStacks\TeleBot\Objects
+ * This object represents the keyboard / reply markup of the message to be sent. It should be one of: InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply.
  */
-
 abstract class Keyboard extends TelegramObject
 {
     public static function create($object)

@@ -11,22 +11,23 @@ class GetUserProfilePhotosMethod extends TelegramMethod
     protected function request()
     {
         return [
-            'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/getUserProfilePhotos",
-            'send'      => $this->send(),
-            'expect'    => UserProfilePhotos::class
+            'type' => 'POST',
+            'url' => "https://api.telegram.org/bot{$this->token}/getUserProfilePhotos",
+            'send' => $this->send(),
+            'expect' => UserProfilePhotos::class,
         ];
     }
 
     private function send()
     {
         $parameters = [
-            'user_id'                   => 'integer',
-            'offset'                    => 'integer',
-            'limit'                     => 'integer'
+            'user_id' => 'integer',
+            'offset' => 'integer',
+            'limit' => 'integer',
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-        return [ 'json' => TypeCaster::stripArrays($object) ];
+
+        return ['json' => TypeCaster::stripArrays($object)];
     }
 }

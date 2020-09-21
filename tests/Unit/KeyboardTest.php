@@ -12,15 +12,13 @@ use WeStacks\TeleBot\Objects\Keyboard\ReplyKeyboardRemove;
 
 class KeyboardTest extends TestCase
 {
-    
-
     public function testInlineKeyboard()
     {
         $keyboard = Keyboard::create([
             'inline_keyboard' => [[[
                 'text' => 'Google',
-                'url' => 'https://google.com/'
-            ]]]
+                'url' => 'https://google.com/',
+            ]]],
         ]);
         $this->assertInstanceOf(InlineKeyboardMarkup::class, $keyboard);
     }
@@ -29,7 +27,7 @@ class KeyboardTest extends TestCase
     {
         $keyboard = Keyboard::create([
             'keyboard' => [[[
-                'text' => 'Test Keyboard Buttun'
+                'text' => 'Test Keyboard Buttun',
             ]]],
         ]);
         $this->assertInstanceOf(ReplyKeyboardMarkup::class, $keyboard);
@@ -38,7 +36,7 @@ class KeyboardTest extends TestCase
     public function testForceReply()
     {
         $keyboard = Keyboard::create([
-            'force_reply' => true
+            'force_reply' => true,
         ]);
         $this->assertInstanceOf(ForceReply::class, $keyboard);
     }
@@ -46,7 +44,7 @@ class KeyboardTest extends TestCase
     public function testRemoveKeyboard()
     {
         $keyboard = Keyboard::create([
-            'remove_keyboard' => true
+            'remove_keyboard' => true,
         ]);
         $this->assertInstanceOf(ReplyKeyboardRemove::class, $keyboard);
     }
@@ -55,7 +53,7 @@ class KeyboardTest extends TestCase
     {
         $this->expectException(TeleBotObjectException::class);
         Keyboard::create([
-            'asdflkjdsglskdfjg' => true
+            'asdflkjdsglskdfjg' => true,
         ]);
     }
 }

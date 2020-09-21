@@ -3,10 +3,10 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Objects\File;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\UserProfilePhotos;
+use WeStacks\TeleBot\TeleBot;
 
 class SendFilesTest extends TestCase
 {
@@ -25,7 +25,7 @@ class SendFilesTest extends TestCase
     {
         $message = $this->bot->sendAudio([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'audio' => "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3"
+            'audio' => 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3',
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -36,8 +36,8 @@ class SendFilesTest extends TestCase
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'document' => [
                 'file' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                'filename' => 'test-document.txt'
-            ]
+                'filename' => 'test-document.txt',
+            ],
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -46,7 +46,7 @@ class SendFilesTest extends TestCase
     {
         $message = $this->bot->sendVideo([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'video' => 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
+            'video' => 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4',
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -55,7 +55,7 @@ class SendFilesTest extends TestCase
     {
         $message = $this->bot->sendAnimation([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'animation' => 'https://media.giphy.com/media/xUPJPlup94kn4skee4/giphy.gif'
+            'animation' => 'https://media.giphy.com/media/xUPJPlup94kn4skee4/giphy.gif',
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -64,7 +64,7 @@ class SendFilesTest extends TestCase
     {
         $message = $this->bot->sendVoice([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'voice' => 'https://file-examples-com.github.io/uploads/2017/11/file_example_OOG_1MG.ogg'
+            'voice' => 'https://file-examples-com.github.io/uploads/2017/11/file_example_OOG_1MG.ogg',
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -75,7 +75,7 @@ class SendFilesTest extends TestCase
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'video_note' => 'https://raw.githubusercontent.com/TelegramBots/book/master/src/docs/video-waves.mp4',
             'length' => 360,
-            'duration' => 47
+            'duration' => 47,
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -87,12 +87,12 @@ class SendFilesTest extends TestCase
             'media' => [
                 [
                     'type' => 'video',
-                    'media' => 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
-                ],[
+                    'media' => 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4',
+                ], [
                     'type' => 'photo',
-                    'media' => fopen('https://picsum.photos/640', 'r')
-                ]
-            ]
+                    'media' => fopen('https://picsum.photos/640', 'r'),
+                ],
+            ],
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -100,12 +100,12 @@ class SendFilesTest extends TestCase
     public function testGetFile()
     {
         $photos = $this->bot->getUserProfilePhotos([
-            'user_id' => getenv('TELEGRAM_USER_ID')
+            'user_id' => getenv('TELEGRAM_USER_ID'),
         ]);
         $this->assertInstanceOf(UserProfilePhotos::class, $photos);
 
         $file = $this->bot->getFile([
-            'file_id' => $photos->photos[0][0]->file_id
+            'file_id' => $photos->photos[0][0]->file_id,
         ]);
         $this->assertInstanceOf(File::class, $file);
 
@@ -116,7 +116,7 @@ class SendFilesTest extends TestCase
     {
         $message = $this->bot->sendSticker([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'sticker' => 'https://file-examples-com.github.io/uploads/2020/03/file_example_WEBP_50kB.webp'
+            'sticker' => 'https://file-examples-com.github.io/uploads/2020/03/file_example_WEBP_50kB.webp',
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }

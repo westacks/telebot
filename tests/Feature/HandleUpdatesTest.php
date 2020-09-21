@@ -3,10 +3,10 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\Update;
+use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Tests\Helpers\StartCommandHandler;
 
 class HandleUpdatesTest extends TestCase
@@ -36,8 +36,7 @@ class HandleUpdatesTest extends TestCase
             echo $update;
         }]);
 
-        foreach ($this->updates as $update)
-        {
+        foreach ($this->updates as $update) {
             // We will store our handler JSON output into the output buffer and then validate is it the same update
             ob_start();
             $this->bot->handleUpdate($update);
@@ -56,8 +55,7 @@ class HandleUpdatesTest extends TestCase
         $commands_set = $this->bot->setMyCommands(['commands' => $commands]);
         $this->assertTrue($commands_set);
 
-        foreach ($this->updates as $update)
-        {
+        foreach ($this->updates as $update) {
             $this->bot->handleUpdate($update);
         }
 

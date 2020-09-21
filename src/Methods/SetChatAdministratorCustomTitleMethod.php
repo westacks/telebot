@@ -10,22 +10,23 @@ class SetChatAdministratorCustomTitleMethod extends TelegramMethod
     protected function request()
     {
         return [
-            'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/setChatAdministratorCustomTitle",
-            'send'      => $this->send(),
-            'expect'    => 'boolean'
+            'type' => 'POST',
+            'url' => "https://api.telegram.org/bot{$this->token}/setChatAdministratorCustomTitle",
+            'send' => $this->send(),
+            'expect' => 'boolean',
         ];
     }
 
     private function send()
     {
         $parameters = [
-            'chat_id'                   => 'string',
-            'user_id'                   => 'integer',
-            'custom_title'              => 'string',
+            'chat_id' => 'string',
+            'user_id' => 'integer',
+            'custom_title' => 'string',
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-        return [ 'json' => TypeCaster::stripArrays($object) ];
+
+        return ['json' => TypeCaster::stripArrays($object)];
     }
 }

@@ -12,63 +12,45 @@ use WeStacks\TeleBot\Traits\HasTelegramMethods;
 
 /**
  * This class represents a bot instance. This is basicaly main controller for sending and handling your Telegram requests.
- * @package WeStacks\TeleBot
  */
 class TeleBot
 {
-    use HandlesUpdates, HasTelegramMethods;
+    use HandlesUpdates;
+    use HasTelegramMethods;
 
     /**
-     * Bot config
+     * Bot config.
+     *
      * @var mixed
      */
     protected $config = [];
-    
+
     /**
-     * Guzzle HTTP client
+     * Guzzle HTTP client.
+     *
      * @var Client
      */
     protected $client;
 
     /**
-     * Async trigger
-     * @var bool
-     */
-    protected $async = null;
-
-    /**
-     * Exception trigger
-     * @var bool
-     */
-    protected $exceptions = null;
-
-    /**
-     * Call next method asynchronously (bot method will return guzzle promise)
-     * @param bool $async
-     * @return self
-     */
-    public function async(bool $async = true)
-    {
-        $this->async = $async;
-        return $this;
-    }
-
-    /**
-     * Throw exceptions on next method (bot method will throw `TeleBotRequestException` on request error)
-     * @param bool $async
-     * @return self
-     */
-    public function exceptions(bool $exceptions = true)
-    {
-        $this->exceptions = $exceptions;
-        return $this;
-    }
-
-    /**
-     * Create new instance of Telegram bot
+     * Async trigger.
      *
-     * @param string|array $config Bot config. Path telegram bot API token as string, or array of parameters
-     * @return void
+     * @var bool
+     */
+    protected $async;
+
+    /**
+     * Exception trigger.
+     *
+     * @var bool
+     */
+    protected $exceptions;
+
+    /**
+     * Create new instance of Telegram bot.
+     *
+     * @param array|string $config Bot config. Path telegram bot API token as string, or array of parameters
+     *
      * @throws TeleBotObjectException
      */
     public function __construct($config)
@@ -86,14 +68,15 @@ class TeleBot
         $this->addHandler($config['handlers'] ?? []);
 
         $this->config = [
-            'token'         => $config['token'],
-            'exceptions'    => $config['exceptions'] ?? true,
-            'async'         => $config['async'] ?? false,
-            'rate_limit'    => $config['rate_limit'] ?? 1
+            'token' => $config['token'],
+            'exceptions' => $config['exceptions'] ?? true,
+            'async' => $config['async'] ?? false,
+            'rate_limit' => $config['rate_limit'] ?? 1,
         ];
 
         $stack = HandlerStack::create()
-            ->push(RateLimiterMiddleware::perSecond($this->config['rate_limit']));
+            ->push(RateLimiterMiddleware::perSecond($this->config['rate_limit']))
+        ;
 
         $this->client = new Client(['http_errors' => false, 'handler' => $stack]);
     }
@@ -111,6 +94,33 @@ class TeleBot
 
         $this->exceptions = null;
         $this->async = null;
+
         return $method->execute($this->client, $exceptions, $async);
+    }
+
+    /**
+     * Call next method asynchronously (bot method will return guzzle promise).
+     *
+     * @return self
+     */
+    public function async(bool $async = true)
+    {
+        $this->async = $async;
+
+        return $this;
+    }
+
+    /**
+     * Throw exceptions on next method (bot method will throw `TeleBotRequestException` on request error).
+     *
+     * @param bool $async
+     *
+     * @return self
+     */
+    public function exceptions(bool $exceptions = true)
+    {
+        $this->exceptions = $exceptions;
+
+        return $this;
     }
 }

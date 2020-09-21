@@ -2,15 +2,12 @@
 
 namespace WeStacks\TeleBot\Laravel\Artisan;
 
-use Illuminate\Console\Command;
+use function GuzzleHttp\Promise\all;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Helper\TableCell;
-use WeStacks\TeleBot\BotManager;
 use WeStacks\TeleBot\Objects\WebhookInfo;
 
-use function GuzzleHttp\Promise\all;
-
-class WebhookCommand extends Command
+class WebhookCommand extends TeleBotCommand
 {
     protected $signature = 'telebot:webhook
                 {bot? : The bot name defined in the config file.}
@@ -20,21 +17,16 @@ class WebhookCommand extends Command
                 {--I|info : Get the information about your current webhook on Telegram servers.}';
 
     protected $description = 'Ease the Process of setting up and removing webhooks.';
-    protected $bot;
-
-    public function __construct(BotManager $bot)
-    {
-        parent::__construct();
-        $this->bot = $bot;
-    }
 
     public function handle()
     {
-        if (!$this->option('setup') && !$this->option('remove') && !$this->option('info')) {
-            return $this->error('No task specified!');
+        if ($error = true !== $this->validOptions()) {
+            $this->error($error);
+
+            return 1;
         }
 
-        $bots = $this->hasOption('all') ? $this->bot->bots() : [$this->argument('bot') ?? config('telebot.default')];
+        $bots = $this->botsList();
 
         if ($this->option('setup')) {
             $this->setupWebhook($bots);
@@ -47,6 +39,7 @@ class WebhookCommand extends Command
         if ($this->option('info')) {
             $this->getInfo($bots);
         }
+
         return 0;
     }
 
@@ -57,11 +50,15 @@ class WebhookCommand extends Command
             $promises[] = $this->bot->bot($bot)
                 ->async(true)
                 ->exceptions(true)
-                ->setWebhook(config("telebot.bots.$bot.webhook", []))
-                ->then(function(bool $result) use($bot) {
-                    if ($result) $this->info("Success! Webhook has been set for '$bot' bot!");
+                ->setWebhook(config("telebot.bots.{$bot}.webhook", []))
+                ->then(function (bool $result) use ($bot) {
+                    if ($result) {
+                        $this->info("Success! Webhook has been set for '{$bot}' bot!");
+                    }
+
                     return $result;
-                });
+                })
+            ;
         }
         all($promises)->wait();
     }
@@ -74,10 +71,14 @@ class WebhookCommand extends Command
                 ->async(true)
                 ->exceptions(true)
                 ->deleteWebhook()
-                ->then(function(bool $result) use($bot) {
-                    if ($result) $this->info("Success! Webhook has been removed for '$bot' bot!");
+                ->then(function (bool $result) use ($bot) {
+                    if ($result) {
+                        $this->info("Success! Webhook has been removed for '{$bot}' bot!");
+                    }
+
                     return $result;
-                });
+                })
+            ;
         }
         all($promises)->wait();
     }
@@ -92,10 +93,12 @@ class WebhookCommand extends Command
                 ->async(true)
                 ->exceptions(true)
                 ->getWebhookInfo()
-                ->then(function(WebhookInfo $info) use($bot) {
+                ->then(function (WebhookInfo $info) use ($bot) {
                     $this->makeTable($info, $bot);
+
                     return $info;
-                });
+                })
+            ;
         }
         all($promises)->wait();
     }
@@ -105,6 +108,7 @@ class WebhookCommand extends Command
         $rows = collect($info->toArray())->map(function ($value, $key) {
             $key = Str::title(str_replace('_', ' ', $key));
             $value = is_bool($value) ? ($value ? 'Yes' : 'No') : $value;
+
             return compact('key', 'value');
         })->toArray();
 

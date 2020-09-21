@@ -11,23 +11,24 @@ class SetWebhookMethod extends TelegramMethod
     protected function request()
     {
         return [
-            'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/setWebhook",
-            'send'      => $this->send(),
-            'expect'    => 'boolean'
+            'type' => 'POST',
+            'url' => "https://api.telegram.org/bot{$this->token}/setWebhook",
+            'send' => $this->send(),
+            'expect' => 'boolean',
         ];
     }
 
     private function send()
     {
         $parameters = [
-            'url'                       => 'string',
-            'certificate'               => InputFile::class,
-            'max_connections'           => 'integer',
-            'allowed_updates'           => array('string')
+            'url' => 'string',
+            'certificate' => InputFile::class,
+            'max_connections' => 'integer',
+            'allowed_updates' => ['string'],
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-        return [ 'multipart' => TypeCaster::flatten($object) ];
+
+        return ['multipart' => TypeCaster::flatten($object)];
     }
 }

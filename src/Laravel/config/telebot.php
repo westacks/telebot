@@ -24,22 +24,22 @@ return [
 
     'bots' => [
         'bot' => [
-            'token'         => env('TELEGRAM_BOT_TOKEN', '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'),
-            'exceptions'    => true,
-            'async'         => false,
-            'rate_limit'    => 1,
-            'webhook'       => [
-                'url'               => env('TELEGRAM_BOT_WEBHOOK_URL', 'https://telebot.westacks.com.ua/webhook'),
+            'token' => env('TELEGRAM_BOT_TOKEN', '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'),
+            'exceptions' => true,
+            'async' => false,
+            'rate_limit' => 1,
+            'webhook' => [
+                'url' => env('TELEGRAM_BOT_WEBHOOK_URL', 'https://telebot.westacks.com.ua/webhook'),
                 // 'certificate'       => env('TELEGRAM_BOT_CERT_PATH', storage_path('app/ssl/public.pem')),
                 // 'max_connections'   => 40,
                 // 'allowed_updates'   => ["message", "edited_channel_post", "callback_query"]
             ],
-            'poll'          => [
+            'poll' => [
                 // 'limit'             => 100,
                 // 'timeout'           => 0,
                 // 'allowed_updates'   => ["message", "edited_channel_post", "callback_query"]
             ],
-            'handlers'      => [
+            'handlers' => [
                 // Your update handlers
             ],
         ],
@@ -47,5 +47,5 @@ return [
         // 'second_bot' => [
         //     'token'         => env('TELEGRAM_BOT2_TOKEN', '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'),
         // ],
-    ]
+    ],
 ];

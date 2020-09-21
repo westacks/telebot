@@ -12,8 +12,6 @@ class TeleBotServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
     public function register()
     {
@@ -22,6 +20,11 @@ class TeleBotServiceProvider extends ServiceProvider
             $this->registerCommands();
         }
         $this->registerBindings();
+    }
+
+    public function provides()
+    {
+        return [BotManager::class, 'telebot'];
     }
 
     private function publishConfig()
@@ -46,13 +49,7 @@ class TeleBotServiceProvider extends ServiceProvider
         $this->commands([
             WebhookCommand::class,
             LongPollCommad::class,
-            CommandsCommand::class
+            CommandsCommand::class,
         ]);
     }
-
-    public function provides()
-    {
-        return [BotManager::class, 'telebot'];
-    }
-    
 }

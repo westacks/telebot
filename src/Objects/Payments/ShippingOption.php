@@ -7,20 +7,18 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
 /**
  * This object represents one shipping option.
  *
- * @property String                    $id                    Shipping option identifier
- * @property String                    $title                 Option title
- * @property Array<LabeledPrice>       $prices                List of price portions
- *
- * @package WeStacks\TeleBot\Objects\Payments
+ * @property string              $id     Shipping option identifier
+ * @property string              $title  Option title
+ * @property Array<LabeledPrice> $prices List of price portions
  */
 class ShippingOption extends TelegramObject
 {
     protected function relations()
     {
         return [
-            'id'        => 'string',
-            'title'     => 'string',
-            'prices'    => array(LabeledPrice::class)
+            'id' => 'string',
+            'title' => 'string',
+            'prices' => [LabeledPrice::class],
         ];
     }
 }

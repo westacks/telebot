@@ -19,17 +19,17 @@ class InputMessageContentTest extends TestCase
 
         $object = InputMessageContent::create([
             'address' => 'Test',
-            'latitude' => 23.043235
+            'latitude' => 23.043235,
         ]);
         $this->assertInstanceOf(InputVenueMessageContent::class, $object);
 
         $object = InputMessageContent::create([
-            'latitude' => 23.043235
+            'latitude' => 23.043235,
         ]);
         $this->assertInstanceOf(InputLocationMessageContent::class, $object);
 
         $object = InputMessageContent::create([
-            'phone_number' => '+380111111111'
+            'phone_number' => '+380111111111',
         ]);
         $this->assertInstanceOf(InputContactMessageContent::class, $object);
     }
