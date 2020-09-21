@@ -11,23 +11,24 @@ class AnswerShippingQueryMethod extends TelegramMethod
     protected function request()
     {
         return [
-            'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/answerShippingQuery",
-            'send'      => $this->send(),
-            'expect'    => 'boolean'
+            'type' => 'POST',
+            'url' => "https://api.telegram.org/bot{$this->token}/answerShippingQuery",
+            'send' => $this->send(),
+            'expect' => 'boolean',
         ];
     }
 
     private function send()
     {
         $parameters = [
-            'shipping_query_id'             => 'string',
-            'ok'                            => 'boolean',
-            'shipping_options'              => array(ShippingOption::class),
-            'error_message'                 => 'string'
+            'shipping_query_id' => 'string',
+            'ok' => 'boolean',
+            'shipping_options' => [ShippingOption::class],
+            'error_message' => 'string',
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-        return [ 'json' => TypeCaster::stripArrays($object) ];
+
+        return ['json' => TypeCaster::stripArrays($object)];
     }
 }

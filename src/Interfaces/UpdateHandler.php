@@ -2,31 +2,30 @@
 
 namespace WeStacks\TeleBot\Interfaces;
 
-use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Objects\Update;
+use WeStacks\TeleBot\TeleBot;
 
 /**
- * Abstract class for creating Telegram update handlers
- * @package WeStacks\TeleBot\Interfaces
+ * Abstract class for creating Telegram update handlers.
  */
 abstract class UpdateHandler
 {
     /**
-     * Update being processed
+     * Update being processed.
+     *
      * @var Update
      */
     protected $update;
 
     /**
-     * Bot instance
+     * Bot instance.
+     *
      * @var TeleBot
      */
     protected $bot;
 
     /**
-     * Create new update handler instance
-     * @param Update $update
-     * @return void
+     * Create new update handler instance.
      */
     public function __construct(TeleBot $bot, Update $update)
     {
@@ -35,15 +34,14 @@ abstract class UpdateHandler
     }
 
     /**
-     * This function should return `true` if this handler should handle given update, or `false` if should not
-     * @param Update $update
-     * @return boolean
+     * This function should return `true` if this handler should handle given update, or `false` if should not.
+     *
+     * @return bool
      */
     abstract public static function trigger(Update $update);
 
     /**
-     * This function should handle updates
-     * @return void
+     * This function should handle updates.
      */
     abstract public function handle();
 }

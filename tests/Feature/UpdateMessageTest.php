@@ -3,8 +3,8 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Objects\Message;
+use WeStacks\TeleBot\TeleBot;
 
 class UpdateMessageTest extends TestCase
 {
@@ -23,13 +23,13 @@ class UpdateMessageTest extends TestCase
     {
         $message = $this->bot->sendMessage([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'text' => 'Update message test'
+            'text' => 'Update message test',
         ]);
 
         $message = $this->bot->editMessageText([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'message_id' => $message->message_id,
-            'text' => 'Message text updated!'
+            'text' => 'Message text updated!',
         ]);
 
         $this->assertInstanceOf(Message::class, $message);
@@ -39,20 +39,20 @@ class UpdateMessageTest extends TestCase
     {
         $message = $this->bot->sendPhoto([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'photo' => "https://picsum.photos/640",
+            'photo' => 'https://picsum.photos/640',
             'caption' => 'Update message test',
             'reply_markup' => [
                 'inline_keyboard' => [[[
                     'text' => 'Google',
-                    'url' => 'https://google.com/'
-                ]]]
-            ]
+                    'url' => 'https://google.com/',
+                ]]],
+            ],
         ]);
 
         $message = $this->bot->editMessageCaption([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'message_id' => $message->message_id,
-            'caption' => 'Message caption updated!'
+            'caption' => 'Message caption updated!',
         ]);
 
         $message = $this->bot->editMessageMedia([
@@ -60,8 +60,8 @@ class UpdateMessageTest extends TestCase
             'message_id' => $message->message_id,
             'media' => [
                 'type' => 'photo',
-                'media' => fopen('https://picsum.photos/640', 'r')
-            ]
+                'media' => fopen('https://picsum.photos/640', 'r'),
+            ],
         ]);
 
         $message = $this->bot->editMessageReplyMarkup([
@@ -70,14 +70,14 @@ class UpdateMessageTest extends TestCase
             'reply_markup' => [
                 'inline_keyboard' => [[[
                     'text' => 'Yahoo',
-                    'url' => 'https://yahoo.com/'
-                ]]]
-            ]
+                    'url' => 'https://yahoo.com/',
+                ]]],
+            ],
         ]);
 
         $deleted = $this->bot->deleteMessage([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'message_id' => $message->message_id
+            'message_id' => $message->message_id,
         ]);
 
         $this->assertInstanceOf(Message::class, $message);

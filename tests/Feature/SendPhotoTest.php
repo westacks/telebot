@@ -3,9 +3,9 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Exception\TeleBotFileException;
 use WeStacks\TeleBot\Objects\Message;
+use WeStacks\TeleBot\TeleBot;
 
 class SendPhotoTest extends TestCase
 {
@@ -24,13 +24,13 @@ class SendPhotoTest extends TestCase
     {
         $message = $this->bot->sendPhoto([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'photo' => "https://picsum.photos/640",
+            'photo' => 'https://picsum.photos/640',
             'reply_markup' => [
                 'inline_keyboard' => [[[
                     'text' => 'Google',
-                    'url' => 'https://google.com/'
-                ]]]
-            ]
+                    'url' => 'https://google.com/',
+                ]]],
+            ],
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -41,8 +41,8 @@ class SendPhotoTest extends TestCase
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'photo' => [
                 'file' => fopen('https://picsum.photos/640', 'r'),
-                'filename' => 'test-image.jpg'
-            ]
+                'filename' => 'test-image.jpg',
+            ],
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -53,7 +53,7 @@ class SendPhotoTest extends TestCase
 
         $message = $this->bot->sendPhoto([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'photo' => __DIR__.'/test-image.jpg'
+            'photo' => __DIR__.'/test-image.jpg',
         ]);
         $this->assertInstanceOf(Message::class, $message);
 
@@ -65,7 +65,7 @@ class SendPhotoTest extends TestCase
         $this->expectException(TeleBotFileException::class);
         $this->bot->sendPhoto([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'photo' => null
+            'photo' => null,
         ]);
     }
 }

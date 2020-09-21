@@ -12,7 +12,7 @@ class TypeCaster
      * Casts each `$object` key to a given type in `$relations` array with a same key.
      *
      * @param array|object $object
-     * @param array $relations
+     *
      * @return array
      */
     public static function castValues($object, array $relations)
@@ -33,10 +33,11 @@ class TypeCaster
     }
 
     /**
-     * Casts a `$value` to a given `$type`
+     * Casts a `$value` to a given `$type`.
      *
-     * @param mixed $value
+     * @param mixed        $value
      * @param array|string $type
+     *
      * @return mixed
      */
     public static function cast($value, $type)
@@ -53,9 +54,10 @@ class TypeCaster
     }
 
     /**
-     * Cast all sub objects to arrays
+     * Cast all sub objects to arrays.
      *
      * @param array|object $object
+     *
      * @return array
      */
     public static function stripArrays($object)
@@ -70,6 +72,29 @@ class TypeCaster
         }
 
         return $array;
+    }
+
+    /**
+     * Create a flat array for multipart Guzzle request from array of parameters.
+     *
+     * @param array $object
+     *
+     * @return array
+     */
+    public static function flatten($object)
+    {
+        $flat = [];
+        $files = [];
+        static::extractFiles($object, $files);
+
+        foreach ($object as $key => $value) {
+            $flat[] = [
+                'name' => $key,
+                'contents' => is_array($value) ? json_encode($value) : $value,
+            ];
+        }
+
+        return array_merge($flat, $files);
     }
 
     private static function castArrayOfTypes($object, array $type)
@@ -90,7 +115,7 @@ class TypeCaster
         $value_type = gettype($object);
 
         return  $value_type == $type ||
-                $value_type == 'object' && class_exists($type) &&
+                'object' == $value_type && class_exists($type) &&
                 ($object instanceof $type || is_subclass_of($object, $type));
     }
 
@@ -101,6 +126,7 @@ class TypeCaster
 
         if (in_array($value_type, $simple) && in_array($type, $simple)) {
             settype($object, $type);
+
             return $object;
         }
 
@@ -112,31 +138,7 @@ class TypeCaster
     }
 
     /**
-     * Create a flat array for multipart Guzzle request from array of parameters
-     * @param array $object
-     * @return array
-     */
-    public static function flatten($object)
-    {
-        $flat = [];
-        $files = [];
-        static::extractFiles($object, $files);
-
-        foreach ($object as $key => $value) {
-            $flat[] = [
-                'name' => $key,
-                'contents' => is_array($value) ? json_encode($value) : $value
-            ];
-        }
-
-        return array_merge($flat, $files);
-    }
-
-    /**
-     * Extract files from `$object` array and replace them with `attach://<file_attach_name>` string
-     * @param array $object
-     * @param array $files
-     * @return void
+     * Extract files from `$object` array and replace them with `attach://<file_attach_name>` string.
      */
     private static function extractFiles(array &$object, array &$files)
     {
@@ -163,7 +165,7 @@ class TypeCaster
         $extract = $file->toMultipart($fileKey);
         if (isset($extract['filename']) || is_resource($extract['contents'])) {
             $files[] = $extract;
-            $file = "attach://$fileKey";
+            $file = "attach://{$fileKey}";
         } else {
             $file = $extract['contents'];
         }

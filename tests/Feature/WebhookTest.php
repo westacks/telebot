@@ -3,8 +3,8 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Objects\WebhookInfo;
+use WeStacks\TeleBot\TeleBot;
 
 class WebhookTest extends TestCase
 {
@@ -22,7 +22,7 @@ class WebhookTest extends TestCase
     public function testWebhook()
     {
         $webhook_set = $this->bot->setWebhook([
-            'url' => 'https://telebot.westacks.com.ua/webhook'
+            'url' => 'https://telebot.westacks.com.ua/webhook',
         ]);
         $this->assertTrue($webhook_set);
 

@@ -11,20 +11,21 @@ class GetStickerSetMethod extends TelegramMethod
     protected function request()
     {
         return [
-            'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/getStickerSet",
-            'send'      => $this->send(),
-            'expect'    => StickerSet::class
+            'type' => 'POST',
+            'url' => "https://api.telegram.org/bot{$this->token}/getStickerSet",
+            'send' => $this->send(),
+            'expect' => StickerSet::class,
         ];
     }
 
     private function send()
     {
         $parameters = [
-            'name'                   => 'string'
+            'name' => 'string',
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-        return [ 'json' => TypeCaster::stripArrays($object) ];
+
+        return ['json' => TypeCaster::stripArrays($object)];
     }
 }

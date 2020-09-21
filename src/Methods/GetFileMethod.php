@@ -11,10 +11,10 @@ class GetFileMethod extends TelegramMethod
     protected function request()
     {
         return [
-            'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/getFile",
-            'send'      => $this->send(),
-            'expect'    => File::class
+            'type' => 'POST',
+            'url' => "https://api.telegram.org/bot{$this->token}/getFile",
+            'send' => $this->send(),
+            'expect' => File::class,
         ];
     }
 
@@ -25,6 +25,7 @@ class GetFileMethod extends TelegramMethod
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-        return [ 'json' => TypeCaster::stripArrays($object) ];
+
+        return ['json' => TypeCaster::stripArrays($object)];
     }
 }

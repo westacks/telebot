@@ -12,23 +12,24 @@ class SendMediaGroupMethod extends TelegramMethod
     protected function request()
     {
         return [
-            'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/sendMediaGroup",
-            'send'      => $this->send(),
-            'expect'    => Message::class
+            'type' => 'POST',
+            'url' => "https://api.telegram.org/bot{$this->token}/sendMediaGroup",
+            'send' => $this->send(),
+            'expect' => Message::class,
         ];
     }
 
     private function send()
     {
         $parameters = [
-            'chat_id'                   => 'string',
-            'media'                     => array(InputMedia::class),
-            'disable_notification'      => 'boolean',
-            'reply_to_message_id'       => 'integer'
+            'chat_id' => 'string',
+            'media' => [InputMedia::class],
+            'disable_notification' => 'boolean',
+            'reply_to_message_id' => 'integer',
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-        return [ 'multipart' => TypeCaster::flatten($object) ];
+
+        return ['multipart' => TypeCaster::flatten($object)];
     }
 }

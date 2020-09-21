@@ -3,11 +3,11 @@
 namespace WeStacks\TeleBot\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\User;
+use WeStacks\TeleBot\TeleBot;
 
 class BotObjectsTest extends TestCase
 {
@@ -17,13 +17,15 @@ class BotObjectsTest extends TestCase
     private $object;
 
     /**
-     * Json data
+     * Json data.
+     *
      * @var string
      */
     private $json = '{"update_id":1234567,"message":{"message_id":2345678,"from":{"id":3456789,"is_bot":false,"first_name":"John","last_name":"Doe"}}}';
 
     /**
-     * Data object
+     * Data object.
+     *
      * @var (int|(int|(int|false|string)[])[])[]
      */
     private $data;
@@ -50,7 +52,7 @@ class BotObjectsTest extends TestCase
     {
         $this->expectException(TeleBotObjectException::class);
         new Message([
-            'entities' => 'string'
+            'entities' => 'string',
         ]);
     }
 
@@ -72,8 +74,8 @@ class BotObjectsTest extends TestCase
     {
         $this->expectException(TeleBotObjectException::class);
         new Update([
-            'update_id' => [1,4,5,1,5,6],
-            'message' => 4
+            'update_id' => [1, 4, 5, 1, 5, 6],
+            'message' => 4,
         ]);
     }
 
@@ -85,7 +87,7 @@ class BotObjectsTest extends TestCase
         ob_start();
         var_dump($this->object);
         $result = ob_get_clean();
-        $this->assertStringContainsString("class WeStacks\TeleBot\Objects\Update", $result);
+        $this->assertStringContainsString('class WeStacks\\TeleBot\\Objects\\Update', $result);
     }
 
     public function testGetByDotNotation()

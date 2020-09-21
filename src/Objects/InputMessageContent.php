@@ -10,9 +10,7 @@ use WeStacks\TeleBot\Objects\InputMessageContent\InputTextMessageContent;
 use WeStacks\TeleBot\Objects\InputMessageContent\InputVenueMessageContent;
 
 /**
- * This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 4 types: InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent
- *
- * @package WeStacks\TeleBot\Objects
+ * This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 4 types: InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent.
  */
 abstract class InputMessageContent extends TelegramObject
 {

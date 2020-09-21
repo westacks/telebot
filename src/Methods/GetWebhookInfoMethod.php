@@ -10,10 +10,10 @@ class GetWebhookInfoMethod extends TelegramMethod
     protected function request()
     {
         return [
-            'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/getWebhookInfo",
-            'send'      => [],
-            'expect'    => WebhookInfo::class
+            'type' => 'POST',
+            'url' => "https://api.telegram.org/bot{$this->token}/getWebhookInfo",
+            'send' => [],
+            'expect' => WebhookInfo::class,
         ];
     }
 }

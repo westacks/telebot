@@ -28,7 +28,6 @@ use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultVoice;
 
 class InlineQueryResultTest extends TestCase
 {
-
     public function testInlineQueryResultDefault()
     {
         $object = InlineQueryResult::create(['type' => 'photo']);

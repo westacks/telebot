@@ -14,9 +14,10 @@ trait HandlesUpdates
     private $handlers = [];
 
     /**
-     * Add new update handler(s) to the bot instance
-     * @param string|Closure|array $handler - string that represents `UpdateHandler` subclass resolution or closure function. You also may give an array to add multiple handlers.
-     * @return void
+     * Add new update handler(s) to the bot instance.
+     *
+     * @param array|Closure|string $handler - string that represents `UpdateHandler` subclass resolution or closure function. You also may give an array to add multiple handlers.
+     *
      * @throws TeleBotMehtodException
      */
     public function addHandler($handler)
@@ -25,6 +26,7 @@ trait HandlesUpdates
             foreach ($handler as $sub) {
                 $this->addHandler($sub);
             }
+
             return;
         }
 
@@ -36,8 +38,7 @@ trait HandlesUpdates
     }
 
     /**
-     * Remove all update handlers from bot instance
-     * @return void
+     * Remove all update handlers from bot instance.
      */
     public function clearHandlers()
     {
@@ -45,19 +46,10 @@ trait HandlesUpdates
     }
 
     /**
-     * Check if `$handler` is a valid update handler`
-     * @param mixed $handler - update handler
-     * @return bool
-     */
-    private function isUpdateHandler($handler)
-    {
-        return is_callable($handler) ||
-            is_string($handler) && class_exists($handler) && is_subclass_of($handler, UpdateHandler::class);
-    }
-
-    /**
-     * Handle given update
+     * Handle given update.
+     *
      * @param Update $update - Telegram update object. Leave empty to try to get it from incoming POST request (for handling webhook)
+     *
      * @return false|Update
      */
     public function handleUpdate(Update $update = null)
@@ -69,6 +61,7 @@ trait HandlesUpdates
         foreach ($this->handlers as $handler) {
             if (is_callable($handler)) {
                 $handler($update);
+
                 continue;
             }
 
@@ -81,8 +74,40 @@ trait HandlesUpdates
     }
 
     /**
-     * Check if update is a valid telegram update
+     * Get local bot instance commands registered by commands handlers.
+     *
+     * @return BotCommand[]
+     */
+    public function getLocalCommands()
+    {
+        $commands = [];
+        foreach ($this->handlers as $handler) {
+            if (is_string($handler) && class_exists($handler) && is_subclass_of($handler, CommandHandler::class)) {
+                $commands = array_merge($commands, $handler::getBotCommand());
+            }
+        }
+
+        return $commands;
+    }
+
+    /**
+     * Check if `$handler` is a valid update handler`.
+     *
+     * @param mixed $handler - update handler
+     *
+     * @return bool
+     */
+    private function isUpdateHandler($handler)
+    {
+        return is_callable($handler) ||
+            is_string($handler) && class_exists($handler) && is_subclass_of($handler, UpdateHandler::class);
+    }
+
+    /**
+     * Check if update is a valid telegram update.
+     *
      * @param mixed $update - Telegram update object. Leave empty to try to get it from incoming POST request (for handling webhook)
+     *
      * @return bool
      */
     private function validUpdate(&$update = null)
@@ -94,21 +119,7 @@ trait HandlesUpdates
             }
             $update = new Update($data);
         }
-        return ($update instanceof Update);
-    }
 
-    /**
-     * Get local bot instance commands registered by commands handlers
-     * @return BotCommand[]
-     */
-    public function getLocalCommands()
-    {
-        $commands = [];
-        foreach ($this->handlers as $handler) {
-            if (is_string($handler) && class_exists($handler) && is_subclass_of($handler, CommandHandler::class)) {
-                $commands = array_merge($commands, $handler::getBotCommand());
-            }
-        }
-        return $commands;
+        return $update instanceof Update;
     }
 }

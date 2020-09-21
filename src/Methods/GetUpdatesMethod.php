@@ -11,23 +11,24 @@ class GetUpdatesMethod extends TelegramMethod
     protected function request()
     {
         return [
-            'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/getUpdates",
-            'send'      => $this->send(),
-            'expect'    => array(Update::class)
+            'type' => 'POST',
+            'url' => "https://api.telegram.org/bot{$this->token}/getUpdates",
+            'send' => $this->send(),
+            'expect' => [Update::class],
         ];
     }
 
     private function send()
     {
         $parameters = [
-            'offset'                    => 'integer',
-            'limit'                     => 'integer',
-            'timeout'                   => 'integer',
-            'allowed_updates'           => array('string')
+            'offset' => 'integer',
+            'limit' => 'integer',
+            'timeout' => 'integer',
+            'allowed_updates' => ['string'],
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-        return [ 'json' => TypeCaster::stripArrays($object) ];
+
+        return ['json' => TypeCaster::stripArrays($object)];
     }
 }

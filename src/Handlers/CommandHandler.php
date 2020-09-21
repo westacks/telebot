@@ -7,35 +7,37 @@ use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\Update;
 
 /**
- * Abstract class for creating Telegram command handlers
- * @package WeStacks\TeleBot\Handlers
+ * Abstract class for creating Telegram command handlers.
  */
 abstract class CommandHandler extends UpdateHandler
 {
     /**
-     * Command aliases
+     * Command aliases.
+     *
      * @var string[]
      */
     protected static $aliases = [];
 
     /**
-     * Command descriptioin
+     * Command descriptioin.
+     *
      * @var string
      */
     protected static $description = null;
 
     /**
-     * Get BotCommand foreach command `aliases` and `description`
+     * Get BotCommand foreach command `aliases` and `description`.
+     *
      * @return Array<BotCommand>
      */
     public static function getBotCommand()
     {
         $data = [];
-        
+
         foreach (static::$aliases as $name) {
             $data[] = new BotCommand([
                 'command' => $name,
-                'description' => static::$description
+                'description' => static::$description,
             ]);
         }
 
@@ -49,7 +51,7 @@ abstract class CommandHandler extends UpdateHandler
         }
 
         foreach ($update->message->entities as $entity) {
-            if ($entity->type != 'bot_command') {
+            if ('bot_command' != $entity->type) {
                 continue;
             }
 

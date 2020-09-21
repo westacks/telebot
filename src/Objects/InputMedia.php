@@ -11,24 +11,22 @@ use WeStacks\TeleBot\Objects\InputMedia\InputMediaPhoto;
 use WeStacks\TeleBot\Objects\InputMedia\InputMediaVideo;
 
 /**
- * This object represents the content of a media message to be sent. It should be one of: InputMediaAnimation, InputMediaDocument, InputMediaAudio, InputMediaPhoto, InputMediaVideo
- *
- * @package WeStacks\TeleBot\Objects
+ * This object represents the content of a media message to be sent. It should be one of: InputMediaAnimation, InputMediaDocument, InputMediaAudio, InputMediaPhoto, InputMediaVideo.
  */
-
 abstract class InputMedia extends TelegramObject
 {
     /**
-     * Create new object instance
+     * Create new object instance.
      *
      * @param mixed $object
+     *
      * @return static
      */
     public static function create($object)
     {
         $types = static::types();
         $type = $object->type ?? $object['type'] ?? '__undefined';
-        
+
         $type = $types[$type] ?? null;
 
         if ($type) {
@@ -41,11 +39,11 @@ abstract class InputMedia extends TelegramObject
     private static function types()
     {
         return [
-            'photo'         => InputMediaPhoto::class,
-            'video'         => InputMediaVideo::class,
-            'animation'     => InputMediaAnimation::class,
-            'audio'         => InputMediaAudio::class,
-            'document'      => InputMediaDocument::class
+            'photo' => InputMediaPhoto::class,
+            'video' => InputMediaVideo::class,
+            'animation' => InputMediaAnimation::class,
+            'audio' => InputMediaAudio::class,
+            'document' => InputMediaDocument::class,
         ];
     }
 }

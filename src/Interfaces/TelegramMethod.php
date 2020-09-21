@@ -9,26 +9,22 @@ use WeStacks\TeleBot\Helpers\TypeCaster;
 abstract class TelegramMethod
 {
     /**
-     * Method arguments
+     * Method arguments.
+     *
      * @var array
      */
     protected $arguments;
 
     /**
-     * Bot API token
+     * Bot API token.
+     *
      * @var string
      */
     protected $token;
 
     /**
-     * This function should return HTTP configuration for given method
-     * @return array
+     * Create new method instance.
      */
-    abstract protected function request();
-
-    /**
-     * Create new method instance
-    */
     public function __construct(string $token, array $data = null)
     {
         $this->token = $token;
@@ -36,10 +32,12 @@ abstract class TelegramMethod
     }
 
     /**
-     * Execute method
-     * @param Client $client Guzzle http client
-     * @param bool $exceptions Throws exceptions if true
-     * @param bool $async Execute request asynchronously
+     * Execute method.
+     *
+     * @param Client $client     Guzzle http client
+     * @param bool   $exceptions Throws exceptions if true
+     * @param bool   $async      Execute request asynchronously
+     *
      * @return mixed
      */
     public function execute(Client &$client, $exceptions = true, $async = false)
@@ -51,13 +49,22 @@ abstract class TelegramMethod
                 $result = json_decode($result->getBody());
                 if ($result->ok) {
                     return TypeCaster::cast($result->result, $config['expect']);
-                } elseif ($exceptions) {
-                    throw TeleBotRequestException::requestError($result);
-                } else {
-                    return false;
                 }
-            });
+                if ($exceptions) {
+                    throw TeleBotRequestException::requestError($result);
+                }
+
+                return false;
+            })
+        ;
 
         return $async ? $promise : $promise->wait();
     }
+
+    /**
+     * This function should return HTTP configuration for given method.
+     *
+     * @return array
+     */
+    abstract protected function request();
 }

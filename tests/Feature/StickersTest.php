@@ -3,8 +3,8 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Objects\Stickers\StickerSet;
+use WeStacks\TeleBot\TeleBot;
 
 class StickersTest extends TestCase
 {
@@ -22,7 +22,7 @@ class StickersTest extends TestCase
     public function testGetStickerSet()
     {
         $set = $this->bot->getStickerSet([
-            'name' => 'pappy_fox'
+            'name' => 'pappy_fox',
         ]);
 
         $this->assertInstanceOf(StickerSet::class, $set);

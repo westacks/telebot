@@ -9,10 +9,10 @@ class DeleteWebhookMethod extends TelegramMethod
     protected function request()
     {
         return [
-            'type'      => 'POST',
-            'url'       => "https://api.telegram.org/bot{$this->token}/deleteWebhook",
-            'send'      => [],
-            'expect'    => 'boolean'
+            'type' => 'POST',
+            'url' => "https://api.telegram.org/bot{$this->token}/deleteWebhook",
+            'send' => [],
+            'expect' => 'boolean',
         ];
     }
 }
