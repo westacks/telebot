@@ -8,5 +8,5 @@ All notable changes to `telebot` will be documented here
 
 ## 1.1 - 2020-09-21
 
-- added usefull laravel commands for bot development
+- added useful Laravel commands for bot development
 - docs updated, fixed some typos
