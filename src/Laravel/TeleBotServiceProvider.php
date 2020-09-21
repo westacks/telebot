@@ -41,7 +41,7 @@ class TeleBotServiceProvider extends ServiceProvider
         $this->app->singleton(BotManager::class, function ($app) {
             return new BotManager(config('telebot'));
         });
-        $this->app->alias(BotsManager::class, 'telebot');
+        $this->app->alias(BotManager::class, 'telebot');
     }
 
     private function registerCommands()
