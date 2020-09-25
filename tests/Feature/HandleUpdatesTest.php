@@ -8,6 +8,7 @@ use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Tests\Helpers\StartCommandHandler;
+use WeStacks\TeleBot\Tests\Helpers\TestUpdateHandler;
 
 class HandleUpdatesTest extends TestCase
 {
@@ -73,6 +74,19 @@ class HandleUpdatesTest extends TestCase
         $commands = StartCommandHandler::getBotCommand();
         $this->assertContainsOnlyInstancesOf(BotCommand::class, $commands);
         $this->assertCount(2, $commands);
+    }
+
+    public function testCallHandlerForce()
+    {
+        ob_start();
+        $this->bot->callHandler(TestUpdateHandler::class, new Update([]), true);
+        $this->assertEquals('TestUpdateHandler', ob_get_clean());
+    }
+
+    public function testCallWrongHandler()
+    {
+        $this->expectException(TeleBotMehtodException::class);
+        $this->bot->callHandler('something wrong', new Update([]), true);
     }
 
     public function testNoUpdates()

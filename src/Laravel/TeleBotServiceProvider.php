@@ -22,11 +22,6 @@ class TeleBotServiceProvider extends ServiceProvider
         $this->registerBindings();
     }
 
-    public function provides()
-    {
-        return [BotManager::class, 'telebot'];
-    }
-
     private function publishConfig()
     {
         $this->mergeConfigFrom(__DIR__.'/config/telebot.php', 'telebot');

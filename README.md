@@ -18,6 +18,30 @@ TeleBot is a PHP library for telegram bots development. Supports Laravel out of 
 
 Documentation for the library can be found on the [website](https://westacks.github.io/telebot/).
 
+## Bot Manager
+
+Work easily with multiple bots using `BotManager`:
+```php
+$manager->getMe(); // Fired by default bot specified in BotManager
+$manager->bot('bot2')->getMe(); // Fired by `bot2` specified in BotManager
+```
+
+## Laravel Support
+
+Library provides a Facade and artisan commands to simplify the development process of your bot, if you are using Laravel:
+
+```php
+TeleBot::getMe();
+TeleBot::bot('bot2')->getMe(); 
+```
+
+```bash
+# Fire command with `--help` flag to get command info
+$ php artisan telebot:webhook --help
+$ php artisan telebot:polling --help
+$ php artisan telebot:commands --help
+```
+
 ### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.

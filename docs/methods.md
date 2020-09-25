@@ -82,6 +82,13 @@ Additional library methods:
     * `$handler` - closure function or `UpdateHandler` class resolution.
     * Returns: `void`
 
+* **`callHandler($handler, $update, $force = false)`**
+    * Run update handler.
+    * `$handler` - closure function or `UpdateHandler` class resolution.
+    * `$update` - Telegram update.
+    * `$force` - Run handler unconditionally.
+    * Returns: `void`
+
 * **`clearHandlers()`**
     * Remove all update handlers from bot instance
     * Returns: `void`

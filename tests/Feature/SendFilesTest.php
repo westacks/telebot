@@ -73,7 +73,7 @@ class SendFilesTest extends TestCase
     {
         $message = $this->bot->sendVideoNote([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'video_note' => 'https://raw.githubusercontent.com/TelegramBots/book/master/src/docs/video-waves.mp4',
+            'video_note' => fopen('https://raw.githubusercontent.com/TelegramBots/book/master/src/docs/video-waves.mp4', 'r'),
             'length' => 360,
             'duration' => 47,
         ]);

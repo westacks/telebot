@@ -1,50 +1,3 @@
-## Handling updates
-
-Handling [updates](https://core.telegram.org/bots/api#getting-updates) from Telegram is easy as pathing them to 1 method 🙂
-
-<!-- tabs:start -->
-
-#### ** Adding handlers **
-
-```php
-$bot = new TeleBot([
-    'token' => '<your bot token>',
-    'handlers' => [] // Your update handlers
-]);
-
-// Delete all handlers from bot instance
-$bot->clearHandlers();
-
-// Mannualy adding update handler
-// You may give array of handlers - each will be registered
-$bot->addHandler(/* Your handlers */);
-```
-
-#### ** Handling updates from webhook**
-
-```php
-// To handle update from webhook, run `handleUpdate` method with no parameters
-// Update will be created from incoming POST request
-$update = $bot->handleUpdate();
-```
-
-#### ** Handling updates using long polling**
-
-```php
-$last_offset = 0;
-while (true) {
-    $updates = $bot->getUpdates([
-        'offset' => $last_offset + 1
-    ]);
-    foreach ($updates as $update) {
-        $bot->handleUpdate($update);
-        $last_offset = $update->update_id;
-    }
-}
-```
-
-<!-- tabs:end -->
-
 ## Creating handlers
 
 The library supports 2 ways to handle updates:
@@ -119,9 +72,46 @@ $bot->addHandler(\Somewhere\InYour\App\YourUpdateHandler::class);
 
 <!-- tabs:end -->
 
+## Handling updates
+
+You may run all registered handlers using `handleUpdate()` method
+
+<!-- tabs:start -->
+
+#### ** Handling updates from webhook**
+
+```php
+// To handle update from webhook, run `handleUpdate` method with no parameters
+// Update will be created from incoming POST request
+$update = $bot->handleUpdate();
+```
+
+#### ** Handling updates using long polling**
+
+```php
+$last_offset = 0;
+while (true) {
+    $updates = $bot->getUpdates([
+        'offset' => $last_offset + 1
+    ]);
+    foreach ($updates as $update) {
+        $bot->handleUpdate($update);
+        $last_offset = $update->update_id;
+    }
+}
+```
+
+<!-- tabs:end -->
+
+In case you want to run one particular handler for an update you may use [`callHandler()`](methods.md#telebot-methods) method. It's not a point is it registered handler, or not.
+
+```php
+    $bot->callHandler(\Somewhere\InYour\App\YourUpdateHandler::class, $update);
+```
+
 ## Handling bot commands
 
-Bot commands is quite used feature of Telegram. The library proviedes an `UpdateHandler` expecially for bot commands, so you could work with them more efficiently:
+Bot commands is quite used feature of Telegram. The library proviedes an `UpdateHandler` expecially for bot commands, so you could work with them more efficiently. All `CommandHandler` classes should be registered to be avaliable for the library, but you still able to call them using [`callHandler()`](methods.md#telebot-methods) method, passing `$force = true` method property.
 
 <!-- tabs:start -->
 

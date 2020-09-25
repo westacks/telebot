@@ -21,6 +21,13 @@ class LaravelTest extends TestCase
         $this->assertInstanceOf(Message::class, $message);
     }
 
+    public function testAddExistingBotToBotManager()
+    {
+        TeleBot::add('test_existing', TeleBot::bot());
+        $this->assertEquals(TeleBot::bot(), TeleBot::bot('test_existing'));
+        TeleBot::delete('test_existing');
+    }
+
     public function testBotManagerAddAndDelete()
     {
         TeleBot::delete('bot');
@@ -55,19 +62,25 @@ class LaravelTest extends TestCase
     public function testCommandsCommand()
     {
         TeleBot::addHandler(StartCommandHandler::class);
+        $this->artisan('telebot:commands')->assertExitCode(1);
+        $this->artisan('telebot:commands -S -R')->assertExitCode(1);
+
         $this->artisan('telebot:commands -S -I')->assertExitCode(0);
         $this->artisan('telebot:commands -R')->assertExitCode(0);
     }
 
     public function testWebhookCommand()
     {
+        $this->artisan('telebot:webhook')->assertExitCode(1);
+        $this->artisan('telebot:webhook -S -R')->assertExitCode(1);
+
         $this->artisan('telebot:webhook -S -I')->assertExitCode(0);
         $this->artisan('telebot:webhook -R')->assertExitCode(0);
     }
 
     public function testLongPollCommand()
     {
-        $this->artisan('telebot:polling -O')->assertExitCode(0);
+        $this->artisan('telebot:polling -O -L')->assertExitCode(0);
     }
 
     protected function getPackageProviders($app)

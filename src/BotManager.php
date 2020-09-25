@@ -10,12 +10,13 @@ use WeStacks\TeleBot\Traits\HasTelegramMethods;
 /**
  * Bot manager for comfortable management of multiple TeleBot instances.
  *
- * @method TeleBot      async(bool $async = true)                       Call next method asynchronously (bot method will return guzzle promise)
- * @method TeleBot      exceptions(bool $exceptions = true)             Throw exceptions on next method (bot method will throw `TeleBotRequestException` on request error)
- * @method void         addHandler($handler)                            Add new update handler(s)                                                                          to the bot instance
- * @method void         clearHandlers()                                                                                                                                    Remove all update handlers from bot instance
- * @method false|Update handleUpdate(Update $update = null)                                                                                                                Handle given update
- * @method BotCommand[] getLocalCommands()                                                                                                                                 Get local bot instance commands registered by commands handlers
+ * @method TeleBot      async(bool $async = true)                                       Call next method asynchronously (bot method will return guzzle promise)
+ * @method TeleBot      exceptions(bool $exceptions = true)                             Throw exceptions on next method (bot method will throw `TeleBotRequestException` on request error)
+ * @method void         addHandler($handler)                                            Add new update handler(s) to the bot instance
+ * @method void         clearHandlers()                                                 Remove all update handlers from bot instance
+ * @method false|Update handleUpdate(Update $update = null)                             Handle given update
+ * @method BotCommand[] getLocalCommands()                                              Get local bot instance commands registered by commands handlers
+ * @method void         callHandler($handler, Update $update, bool $force = false)      Run update handler.
  */
 class BotManager
 {

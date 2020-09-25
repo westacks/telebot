@@ -16,7 +16,7 @@ trait HandlesUpdates
     /**
      * Add new update handler(s) to the bot instance.
      *
-     * @param array|Closure|string $handler - string that represents `UpdateHandler` subclass resolution or closure function. You also may give an array to add multiple handlers.
+     * @param array|Closure|string $handler string that represents `UpdateHandler` subclass resolution or closure function. You also may give an array to add multiple handlers.
      *
      * @throws TeleBotMehtodException
      */
@@ -59,18 +59,32 @@ trait HandlesUpdates
         }
 
         foreach ($this->handlers as $handler) {
-            if (is_callable($handler)) {
-                $handler($update);
-
-                continue;
-            }
-
-            if ($handler::trigger($update)) {
-                (new $handler($this, $update))->handle();
-            }
+            $this->callHandler($handler, $update);
         }
 
         return $update;
+    }
+
+    /**
+     * Run update handler.
+     *
+     * @param Closure|string $handler string that represents `UpdateHandler` subclass resolution or closure function. You also may give an array to add multiple handlers.
+     * @param Update         $update  Telegram Update
+     * @param bool           $force   run handler unconditionally
+     *
+     * @throws TeleBotMehtodException
+     */
+    public function callHandler($handler, Update $update, bool $force = false)
+    {
+        if (!$this->isUpdateHandler($handler)) {
+            throw TeleBotMehtodException::wrongHandlerType(is_string($handler) ? $handler : gettype($handler));
+        }
+
+        if (is_callable($handler)) {
+            $handler($update, $force);
+        } elseif ($force || $handler::trigger($update)) {
+            (new $handler($this, $update))->handle();
+        }
     }
 
     /**
