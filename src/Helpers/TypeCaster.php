@@ -2,6 +2,7 @@
 
 namespace WeStacks\TeleBot\Helpers;
 
+use Exception;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Interfaces\TelegramObject;
 use WeStacks\TeleBot\Objects\InputFile;
@@ -44,6 +45,19 @@ class TypeCaster
     {
         if (is_array($type)) {
             return static::castArrayOfTypes($value, $type);
+        }
+
+        $types = explode('|', $type);
+
+        if (count($types) > 1) {
+            foreach ($types as $_type) {
+                try {
+                    return static::cast($value, $_type);
+                }
+                catch (Exception $e) {}
+            }
+
+            TeleBotObjectException::uncastableType($type, gettype($value));
         }
 
         if (static::isCasted($value, $type)) {

@@ -3,11 +3,15 @@
 namespace WeStacks\TeleBot\Interfaces;
 
 use GuzzleHttp\Client;
+use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotRequestException;
 use WeStacks\TeleBot\Helpers\TypeCaster;
+use WeStacks\TeleBot\Traits\HasTelegramMethods;
 
 abstract class TelegramMethod
 {
+    use HasTelegramMethods;
+
     /**
      * Method arguments.
      *
@@ -29,6 +33,26 @@ abstract class TelegramMethod
     {
         $this->token = $token;
         $this->arguments = $data ?? [];
+    }
+
+    /**
+     * Create new method instance.
+     * 
+     * @param string $method
+     * @param string $token
+     * @param array|null $data
+     * 
+     * @return TelegramMethod
+     * 
+     * @throws TeleBotMehtodException
+     */
+    public static function create(string $method, string $token, array $data = null)
+    {
+        if (!$Method = static::method($method)) {
+            throw TeleBotMehtodException::methodNotFound($method);
+        }
+
+        return new $Method($token, $data);
     }
 
     /**

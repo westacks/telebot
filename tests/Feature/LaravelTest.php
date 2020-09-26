@@ -2,6 +2,7 @@
 
 namespace Westacks\Telebot\Tests;
 
+use Illuminate\Support\Facades\Notification;
 use Orchestra\Testbench\TestCase;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Laravel\TeleBot;
@@ -9,6 +10,8 @@ use WeStacks\TeleBot\Laravel\TeleBotServiceProvider;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\TeleBot as Bot;
 use WeStacks\TeleBot\Tests\Helpers\StartCommandHandler;
+use WeStacks\TeleBot\Tests\Helpers\TelegramNotification;
+use WeStacks\TeleBot\Tests\Helpers\TestNotifiable;
 
 class LaravelTest extends TestCase
 {
@@ -81,6 +84,12 @@ class LaravelTest extends TestCase
     public function testLongPollCommand()
     {
         $this->artisan('telebot:polling -O -L')->assertExitCode(0);
+    }
+
+    public function testNotification()
+    {
+        $this->expectNotToPerformAssertions();
+        Notification::send(new TestNotifiable, new TelegramNotification);
     }
 
     protected function getPackageProviders($app)
