@@ -109,3 +109,36 @@ return [
 ];
 ```
 <!-- tabs:end -->
+
+## Notification Channel
+
+You may send notifications to your users using TeleBot's notification channel for Laravel. See [official Laravel docs](https://laravel.com/docs/notifications) for more details.
+
+```php
+<?php
+
+namespace App\Notifications;
+
+use Illuminate\Notifications\Notification;
+use WeStacks\TeleBot\Laravel\TelegramChannel;
+
+class TelegramNotification extends Notification
+{
+    public function via($notifiable)
+    {
+        return [TelegramChannel::class];
+    }
+
+    public function toTelegram($notifiable): array
+    {
+        return [
+            'bot'       => 'bot',           // Optional. Bot name to send notification. Default bot used if not specified
+            'method'    => 'sendMessage',   // Optional. Telebram Bot API method to send notification. Default: `sendMessage`
+            'data'      => [                // Method parameters
+                'chat_id'   => $notifiable->telegram_chat_id,
+                'text'      => "Hello, from Laravel's notifications!" 
+            ]
+        ];
+    }
+}
+```

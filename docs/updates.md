@@ -2,75 +2,78 @@
 
 The library supports 2 ways to handle updates:
 
-1. **Using `Closure`**. It is recommended to use closures when handler task is small, so it will not turn your project in total mess:
+1. **Using `Closure`**
 
-```php
-$handler = function(Update $update) {
-    // Do something with your update, for example:
-    if (!isset($update->message)) return;   // Handle only regular messages
-    Log::info($update);                     // Write it to log
-};
-$bot->addHandler($handler);
-```
+    It is recommended to use closures when handler task is small, so it will not turn your project in total mess:
 
-2. **Using `UpdateHandler`** class resolution. It is recommended to use, when you know that given task will be quite complex:
+    ```php
+    $bot->addHandler(function(Update $update) {
+        // Do something with your update, for example:
+        if (!isset($update->message)) return;   // Handle only regular messages
+        Log::info($update);                     // Write it to log
+    });
+    ```
 
-<!-- tabs:start -->
+2. **Using `UpdateHandler`**
 
-#### ** Creating handler **
+    It is recommended to use `UpdateHandler`, when you know that given task will be quite complex:
 
-```php
-// YourUpdateHandler.php
+    <!-- tabs:start -->
 
-<?php
+    #### ** Creating handler **
 
-namespace Somewhere\InYour\App;
+    ```php
+    // YourUpdateHandler.php
 
-use WeStacks\TeleBot\Interfaces\UpdateHandler;
+    <?php
 
-class YourUpdateHandler extends UpdateHandler
-{
-    /**
-     * This function should return `true` if this handler
-     * should handle given update, or `false` if should not
-     * 
-     * @param Update $update
-     * @return boolean
-     */
-    public static function trigger(Update $update)
+    namespace Somewhere\InYour\App;
+
+    use WeStacks\TeleBot\Interfaces\UpdateHandler;
+
+    class YourUpdateHandler extends UpdateHandler
     {
-        return isset($update->callback_query); // handle callback queries (example)
+        /**
+         * This function should return `true` if this handler
+         * should handle given update, or `false` if should not
+         * 
+         * @param Update $update
+         * @return boolean
+         */
+        public static function trigger(Update $update)
+        {
+            return isset($update->callback_query); // handle callback queries (example)
+        }
+
+        /**
+         * This function should handle updates
+         * @return void
+         */
+        public function handle()
+        {
+            $update = $this->update;
+            $bot = $this->bot;
+            // Do stuff
+        }
     }
+    ```
 
-    /**
-     * This function should handle updates
-     * @return void
-     */
-    public function handle()
-    {
-        $update = $this->update;
-        $bot = $this->bot;
-        // Do stuff
-    }
-}
-```
+    #### ** Registering handler **
 
-#### ** Registering handler **
+    ```php
+    // On initialization
+    $bot = new TeleBot([
+        'token' => '<your bot token>',
+        'handlers' => [
+            \Somewhere\InYour\App\YourUpdateHandler::class
+        ]
+    ]);
 
-```php
-// On initialization
-$bot = new TeleBot([
-    'token' => '<your bot token>',
-    'handlers' => [
-        \Somewhere\InYour\App\YourUpdateHandler::class
-    ]
-]);
+    // On existing bot instance
+    $bot->addHandler(\Somewhere\InYour\App\YourUpdateHandler::class);
+    ```
 
-// On existing bot instance
-$bot->addHandler(\Somewhere\InYour\App\YourUpdateHandler::class);
-```
-
-<!-- tabs:end -->
+    <!-- tabs:end -->
 
 ## Handling updates
 
@@ -106,7 +109,7 @@ while (true) {
 In case you want to run one particular handler for an update you may use [`callHandler()`](methods.md#telebot-methods) method. It's not a point is it registered handler, or not.
 
 ```php
-    $bot->callHandler(\Somewhere\InYour\App\YourUpdateHandler::class, $update);
+$bot->callHandler(\Somewhere\InYour\App\YourUpdateHandler::class, $update);
 ```
 
 ## Handling bot commands

@@ -12,13 +12,14 @@
 <a href="https://packagist.org/packages/westacks/telebot"><img src="https://poser.pugx.org/westacks/telebot/license.svg" alt="License"></a>
 </p>
 
-TeleBot is a PHP library for telegram bots development. Supports Laravel out of the box with some additional features, has an easy, clean and extendable way to handle telegram Updates.
+TeleBot is a PHP library for telegram bots development. Rich Laravel support out of the box. Has an easy, clean, and extendable way to handle telegram Updates.
 
 ## Documentation
 
 Documentation for the library can be found on the [website](https://westacks.github.io/telebot/).
 
-## Bot Manager
+## Features
+### Bot Manager
 
 Work easily with multiple bots using `BotManager`:
 ```php
@@ -26,15 +27,17 @@ $manager->getMe(); // Fired by default bot specified in BotManager
 $manager->bot('bot2')->getMe(); // Fired by `bot2` specified in BotManager
 ```
 
-## Laravel Support
+### Laravel Support
 
-Library provides a Facade and artisan commands to simplify the development process of your bot, if you are using Laravel:
+Library provides a Facade, artisan commands and notification channel to simplify the development process of your bot, if you are using Laravel:
 
+##### Facade
 ```php
 TeleBot::getMe();
 TeleBot::bot('bot2')->getMe(); 
 ```
 
+##### Commands
 ```bash
 # Fire command with `--help` flag to get command info
 $ php artisan telebot:webhook --help
@@ -42,7 +45,38 @@ $ php artisan telebot:polling --help
 $ php artisan telebot:commands --help
 ```
 
-### Changelog
+##### Notification channel
+
+```php
+<?php
+
+namespace App\Notifications;
+
+use Illuminate\Notifications\Notification;
+use WeStacks\TeleBot\Laravel\TelegramChannel;
+
+class TelegramNotification extends Notification
+{
+    public function via($notifiable)
+    {
+        return [TelegramChannel::class];
+    }
+
+    public function toTelegram($notifiable): array
+    {
+        return [
+            'bot'       => 'bot',
+            'method'    => 'sendMessage',
+            'data'      => [
+                'chat_id'   => $notifiable->telegram_chat_id,
+                'text'      => "Hello, from Laravel's notifications!" 
+            ]
+        ];
+    }
+}
+```
+
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
