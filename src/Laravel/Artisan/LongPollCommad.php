@@ -25,8 +25,8 @@ class LongPollCommad extends TeleBotCommand
 
         $this->info('Polling telegram updates...');
         while ($poll) {
-            foreach ($bots as $bot => $offset) {
-                $this->handleUpdates($bot, $offset);
+            foreach (array_keys($bots) as $bot) {
+                $this->handleUpdates($bot, $bots[$bot]);
             }
             if ($this->option('once')) {
                 $poll = false;
@@ -36,7 +36,7 @@ class LongPollCommad extends TeleBotCommand
         return 0;
     }
 
-    private function handleUpdates(string $bot, int $offset)
+    private function handleUpdates(string $bot, int &$offset)
     {
         $updates = $this->bot->bot($bot)
             ->async(false)
@@ -49,7 +49,7 @@ class LongPollCommad extends TeleBotCommand
         foreach ($updates as $update) {
             $this->logUpdate($bot, $update);
             $this->bot->bot($bot)->handleUpdate($update);
-            $bots[$bot] = $update->update_id;
+            $offset = $update->update_id;
         }
     }
 
