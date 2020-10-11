@@ -11,8 +11,7 @@ class StartCommandHandler extends CommandHandler
 
     public function handle()
     {
-        $this->bot->sendMessage([
-            'chat_id' => $this->update->message->chat->id,
+        $this->sendMessage([
             'text' => 'Hello, World!',
         ]);
     }

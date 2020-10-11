@@ -47,6 +47,15 @@ class HandleUpdatesTest extends TestCase
         }
     }
 
+    public function testUpdateType()
+    {
+        $type = $this->updates[0]->is('message');
+        $this->assertIsBool($type);
+
+        $type = $this->updates[0]->type();
+        $this->assertIsString($type);
+    }
+
     public function testHandleUpdatesUsingObject()
     {
         $this->bot->clearHandlers();
