@@ -42,4 +42,54 @@ class Update extends TelegramObject
             'poll_answer' => PollAnswer::class,
         ];
     }
+
+    /**
+     * Check `Update` is given `$type`
+     * @param string $type 
+     * @return bool 
+     */
+    public function is(string $type): bool
+    {
+        return isset($this->$type);
+    }
+
+    /**
+     * Get the type of given `Update`
+     * @return string|null 
+     */
+    public function type()
+    {
+        $types = ['message', 'edited_message', 'channel_post', 'edited_channel_post', 'inline_query', 'chosen_inline_result', 'callback_query', 'shipping_query', 'pre_checkout_query', 'poll', 'poll_answer'];
+        foreach ($this as $key => $value) {
+            if (in_array($key, $types)) return $key;
+        }
+        return null;
+    }
+
+    /**
+     * Get the `Message` object instance from update
+     * @return Message|null 
+     */
+    public function message()
+    {
+        return $this->message ?? $this->edited_message ?? $this->channel_post ?? $this->edited_channel_post ?? $this->callback_query->message ?? null;
+    }
+
+    /**
+     * Get the `Chat` (where sended) object instance from update
+     * @return Chat|null 
+     */
+    public function chat()
+    {
+        return $this->message()->chat ?? null;
+    }
+
+    /**
+     * Get the `User` (sender) object instance from update
+     * @return User|null 
+     */
+    public function user()
+    {
+        return $this->message->from ?? $this->edited_message->from ?? $this->channel_post->from ?? $this->edited_channel_post->from ?? $this->inline_query->from ?? $this->chosen_inline_result->from ?? $this->callback_query->from ?? $this->shipping_query->from ?? $this->pre_checkout_query->from ?? $this->poll_answer->user ?? null;
+    }
 }

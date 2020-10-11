@@ -4,9 +4,11 @@ namespace Westacks\Telebot\Tests;
 
 use Illuminate\Support\Facades\Notification;
 use Orchestra\Testbench\TestCase;
+use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Laravel\TeleBot;
 use WeStacks\TeleBot\Laravel\TeleBotServiceProvider;
+use WeStacks\TeleBot\Laravel\TelegramChannel;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\TeleBot as Bot;
 use WeStacks\TeleBot\Tests\Helpers\StartCommandHandler;
@@ -88,8 +90,9 @@ class LaravelTest extends TestCase
 
     public function testNotification()
     {
-        $this->expectNotToPerformAssertions();
-        Notification::send(new TestNotifiable, new TelegramNotification);
+        $channel = new TelegramChannel();
+        $res = $channel->send(new TestNotifiable, new TelegramNotification);
+        $this->assertInstanceOf(Message::class, $res);
     }
 
     protected function getPackageProviders($app)

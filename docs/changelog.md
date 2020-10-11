@@ -21,3 +21,9 @@ All notable changes to `telebot` will be documented here
 - Added `TelegramChannel` for Laravel's Notifications
 - Refactored method call system
 - Updated docs
+
+## 1.4 - 2020-10-11
+
+- Fixed phpdoc for `InlineQueryResult`
+- Added helpers functions to `Update` object to get some parameters without validation
+- Add reply functionality to `UpdateHandler` - firing bot methods on class instance will specify default values for parameters using incoming `Update` - `chat_id`, `user_id`, `message_id`, `callback_query_id`, `inline_message_id`, `inline_query_id`, `shipping_query_id`, `pre_checkout_query_id`. So the developers now not required to validate bunch of parameters to fire specific bot methods.

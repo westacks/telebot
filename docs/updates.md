@@ -53,7 +53,17 @@ The library supports 2 ways to handle updates:
         {
             $update = $this->update;
             $bot = $this->bot;
-            // Do stuff
+
+            /**
+             *  If you fire bot method on UpdateHandler instance, the default values for parameters: 'chat_id', 'user_id',
+             *  'message_id', 'callback_query_id', 'inline_message_id', 'inline_query_id', 'shipping_query_id',
+             *  'pre_checkout_query_id' - will be taken from incoming Update object. You still may override them pathing them
+             *  to array of parameters:
+             */
+
+            $this->sendMessage([
+                'text' => 'Hello, World!'
+            ]);
         }
     }
     ```
@@ -146,8 +156,14 @@ class StartCommand extends CommandHandler
      */
     public function handle()
     {
-        $this->bot->sendMessage([
-            'chat_id' => $this->update->message->chat->id,
+        /**
+         *  If you fire bot method on UpdateHandler instance, the default values for parameters: 'chat_id', 'user_id',
+         *  'message_id', 'callback_query_id', 'inline_message_id', 'inline_query_id', 'shipping_query_id',
+         *  'pre_checkout_query_id' - will be taken from incoming Update object. You still may override them pathing them
+         *  to array of parameters:
+         */
+
+        $this->sendMessage([
             'text' => 'Hello, World!'
         ]);
     }
