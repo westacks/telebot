@@ -120,19 +120,18 @@ You may send notifications to your users using TeleBot's notification channel fo
 namespace App\Notifications;
 
 use Illuminate\Notifications\Notification;
-use WeStacks\TeleBot\Laravel\TelegramChannel;
 
 class TelegramNotification extends Notification
 {
     public function via($notifiable)
     {
-        return [TelegramChannel::class];
+        return ['telegram'];
     }
 
     public function toTelegram($notifiable): array
     {
         return [
-            'bot'       => 'bot',           // Optional. Bot name to send notification. Default bot used if not specified
+            'bot'       => 'bot_name',      // Optional. Bot name to send notification. Default bot used if not specified
             'method'    => 'sendMessage',   // Optional. Telebram Bot API method to send notification. Default: `sendMessage`
             'data'      => [                // Method parameters
                 'chat_id'   => $notifiable->telegram_chat_id,
