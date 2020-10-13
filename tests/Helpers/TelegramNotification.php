@@ -9,7 +9,7 @@ class TelegramNotification extends Notification
 {
     public function via($notifiable)
     {
-        return [TelegramChannel::class];
+        return ['telegram'];
     }
 
     public function toTelegram($notifiable)

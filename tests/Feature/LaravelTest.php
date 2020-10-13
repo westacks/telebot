@@ -90,9 +90,12 @@ class LaravelTest extends TestCase
 
     public function testNotification()
     {
-        $channel = new TelegramChannel();
-        $res = $channel->send(new TestNotifiable, new TelegramNotification);
-        $this->assertInstanceOf(Message::class, $res);
+        $to = new TestNotifiable;
+        Notification::send($to, new TelegramNotification);
+
+        Notification::fake();
+        Notification::send($to, new TelegramNotification);
+        Notification::assertSentTo($to, TelegramNotification::class);
     }
 
     protected function getPackageProviders($app)

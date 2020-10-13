@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Laravel;
 
+use Illuminate\Notifications\ChannelManager;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\ServiceProvider;
 use WeStacks\TeleBot\BotManager;
 use WeStacks\TeleBot\Laravel\Artisan\CommandsCommand;
@@ -20,6 +22,7 @@ class TeleBotServiceProvider extends ServiceProvider
             $this->registerCommands();
         }
         $this->registerBindings();
+        $this->registerNotificationDriver();
     }
 
     private function publishConfig()
@@ -46,5 +49,14 @@ class TeleBotServiceProvider extends ServiceProvider
             LongPollCommad::class,
             CommandsCommand::class,
         ]);
+    }
+
+    private function registerNotificationDriver()
+    {
+        Notification::resolved(function (ChannelManager $service) {
+            $service->extend('telegram', function () {
+                return new TelegramChannel(app('telebot'));
+            });
+        });
     }
 }
