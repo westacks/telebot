@@ -3,13 +3,12 @@
 namespace WeStacks\TeleBot\Tests\Helpers;
 
 use Illuminate\Notifications\Notification;
-use WeStacks\TeleBot\Laravel\TelegramChannel;
 
 class TelegramNotification extends Notification
 {
     public function via($notifiable)
     {
-        return [TelegramChannel::class];
+        return ['telegram'];
     }
 
     public function toTelegram($notifiable)

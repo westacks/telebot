@@ -12,11 +12,11 @@ class TelegramChannel
     /**
      * @var BotManager
      */
-    protected $bot; 
+    protected $botmanager; 
 
-    public function __construct()
+    public function __construct(BotManager $botmanager)
     {
-        $this->bot = TeleBot::getFacadeRoot();
+        $this->botmanager = $botmanager;
     }
 
     /**
@@ -36,6 +36,6 @@ class TelegramChannel
         $method = $message['method'] ?? 'sendMessage';
         $data = $message['data'] ?? [];
 
-        return $this->bot->bot($bot)->async(false)->exceptions(true)->$method($data);
+        return $this->botmanager->bot($bot)->async(false)->exceptions(true)->$method($data);
     }
 }

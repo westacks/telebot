@@ -2,9 +2,11 @@
 
 namespace WeStacks\TeleBot\Tests\Helpers;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Notifiable;
 
-class TestNotifiable
+class TestNotifiable extends AnonymousNotifiable
 {
     use Notifiable;
 

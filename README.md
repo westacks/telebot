@@ -53,19 +53,18 @@ $ php artisan telebot:commands --help
 namespace App\Notifications;
 
 use Illuminate\Notifications\Notification;
-use WeStacks\TeleBot\Laravel\TelegramChannel;
 
 class TelegramNotification extends Notification
 {
     public function via($notifiable)
     {
-        return [TelegramChannel::class];
+        return ['telegram'];
     }
 
     public function toTelegram($notifiable): array
     {
         return [
-            'bot'       => 'bot',
+            'bot'       => 'bot_name',
             'method'    => 'sendMessage',
             'data'      => [
                 'chat_id'   => $notifiable->telegram_chat_id,
