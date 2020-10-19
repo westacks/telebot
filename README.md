@@ -63,14 +63,10 @@ class TelegramNotification extends Notification
 
     public function toTelegram($notifiable): array
     {
-        return [
-            'bot'       => 'bot_name',
-            'method'    => 'sendMessage',
-            'data'      => [
-                'chat_id'   => $notifiable->telegram_chat_id,
-                'text'      => "Hello, from Laravel's notifications!" 
-            ]
-        ];
+        return (new TelegramMessage)->bot('bot')->sendMessage([
+            'chat_id'   => $notifiable->telegram_chat_id,
+            'text'      => 'Hello, from Laravel\'s notifications!'
+        ]);
     }
 }
 ```

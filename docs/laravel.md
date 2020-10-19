@@ -130,14 +130,10 @@ class TelegramNotification extends Notification
 
     public function toTelegram($notifiable): array
     {
-        return [
-            'bot'       => 'bot_name',      // Optional. Bot name to send notification. Default bot used if not specified
-            'method'    => 'sendMessage',   // Optional. Telebram Bot API method to send notification. Default: `sendMessage`
-            'data'      => [                // Method parameters
-                'chat_id'   => $notifiable->telegram_chat_id,
-                'text'      => "Hello, from Laravel's notifications!" 
-            ]
-        ];
+        return (new TelegramMessage)->bot('bot')->sendMessage([
+            'chat_id'   => $notifiable->telegram_chat_id,
+            'text'      => 'Hello, from Laravel\'s notifications!'
+        ]);
     }
 }
 ```
