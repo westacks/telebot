@@ -62,7 +62,10 @@ return [
             'exceptions'    => true,
             'async'         => false,
             'rate_limit'    => 1,
-            'handlers'      => []
+            'handlers'      => [
+                //Add/Register Your Handlers & Commands Here
+                 \Some\Path\To\Your\Commands\StartCommand::class
+            ]
         ],
         'bot2' => [
             'token'         => env('TELEGRAM_BOT2_TOKEN', '<telegram api token>')
