@@ -47,10 +47,21 @@ class WebhookCommand extends TeleBotCommand
     {
         $promises = [];
         foreach ($bots as $bot) {
+            $config = config("telebot.bots.{$bot}");
+            $webhook = $config['webhook'] ?? [];
+            $token = $config['token'] ?? $config ?? null;
+
+            if (!isset($webhook['url'])) {
+                $webhook['url'] = route('telebot.webhook', [
+                    'bot' => $bot,
+                    'token' => $token
+                ]);
+            }
+
             $promises[] = $this->bot->bot($bot)
                 ->async(true)
                 ->exceptions(true)
-                ->setWebhook(config("telebot.bots.{$bot}.webhook", []))
+                ->setWebhook($webhook)
                 ->then(function (bool $result) use ($bot) {
                     if ($result) {
                         $this->info("Success! Webhook has been set for '{$bot}' bot!");
