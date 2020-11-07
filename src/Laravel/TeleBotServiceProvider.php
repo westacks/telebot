@@ -4,17 +4,22 @@ namespace WeStacks\TeleBot\Laravel;
 
 use Illuminate\Notifications\ChannelManager;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use WeStacks\TeleBot\BotManager;
 use WeStacks\TeleBot\Laravel\Artisan\CommandsCommand;
 use WeStacks\TeleBot\Laravel\Artisan\LongPollCommad;
 use WeStacks\TeleBot\Laravel\Artisan\WebhookCommand;
+use WeStacks\TeleBot\Laravel\Controllers\WebhookController;
 
 class TeleBotServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
+
+    public function boot()
+    {
+        Route::post('/telebot/webhook/{bot}/{token}', WebhookController::class)->middleware('api')->name('telebot.webhook');
+    }
+
     public function register()
     {
         if ($this->app->runningInConsole()) {

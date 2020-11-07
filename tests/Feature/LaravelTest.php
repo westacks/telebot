@@ -4,11 +4,9 @@ namespace Westacks\Telebot\Tests;
 
 use Illuminate\Support\Facades\Notification;
 use Orchestra\Testbench\TestCase;
-use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Laravel\TeleBot;
 use WeStacks\TeleBot\Laravel\TeleBotServiceProvider;
-use WeStacks\TeleBot\Laravel\TelegramChannel;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\TeleBot as Bot;
 use WeStacks\TeleBot\Tests\Helpers\StartCommandHandler;
@@ -98,6 +96,23 @@ class LaravelTest extends TestCase
         Notification::assertSentTo($to, TelegramNotification::class);
     }
 
+    public function testWebhookRoute()
+    {
+        $urls = [];
+
+        foreach (config('telebot.bots', []) as $bot => $config) {
+            $urls[] = "/telebot/webhook/$bot/".($config['token'] ?? $config ?? '');
+        }
+
+        $update = '{"update_id":1234567,"message":{"message_id":2345678,"from":{"id":3456789,"is_bot":false,"first_name":"John","last_name":"Doe"}}}';
+
+        foreach ($urls as $url) {
+            $this->post($url, json_decode($update, true))->assertStatus(200);
+        }
+
+        $this->post("/telebot/webhook/wrong_bot/123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11")->assertStatus(404);
+    }
+
     protected function getPackageProviders($app)
     {
         return [TeleBotServiceProvider::class];
@@ -106,7 +121,7 @@ class LaravelTest extends TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'TeleBot' => TeleBot::class,
+            'TeleBot' => TeleBot::class
         ];
     }
 }

@@ -28,17 +28,20 @@ return [
             'exceptions' => true,
             'async' => false,
             'rate_limit' => 1,
+
             'webhook' => [
-                'url' => env('TELEGRAM_BOT_WEBHOOK_URL', 'https://telebot.westacks.com.ua/webhook'),
+                // 'url' => env('TELEGRAM_BOT_WEBHOOK_URL', 'https://telebot.westacks.com.ua/webhook'),
                 // 'certificate'       => env('TELEGRAM_BOT_CERT_PATH', storage_path('app/ssl/public.pem')),
                 // 'max_connections'   => 40,
                 // 'allowed_updates'   => ["message", "edited_channel_post", "callback_query"]
             ],
+
             'poll' => [
                 // 'limit'             => 100,
                 // 'timeout'           => 0,
                 // 'allowed_updates'   => ["message", "edited_channel_post", "callback_query"]
             ],
+
             'handlers' => [
                 // Your update handlers
             ],
