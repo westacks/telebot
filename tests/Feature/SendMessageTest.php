@@ -10,6 +10,7 @@ use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Exception\TeleBotRequestException;
 use WeStacks\TeleBot\Objects\Message;
+use WeStacks\TeleBot\Objects\MessageId;
 use WeStacks\TeleBot\Objects\Poll;
 use WeStacks\TeleBot\Objects\User;
 use WeStacks\TeleBot\TeleBot;
@@ -90,8 +91,15 @@ class SendMessageTest extends TestCase
             'message_id' => $message->message_id,
         ]);
 
+        $copied = $this->bot->copyMessage([
+            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'from_chat_id' => getenv('TELEGRAM_USER_ID'),
+            'message_id' => $message->message_id,
+        ]);
+
         $this->assertInstanceOf(Message::class, $message);
         $this->assertInstanceOf(Message::class, $forwarded);
+        $this->assertInstanceOf(MessageId::class, $copied);
     }
 
     public function testSendLocation()

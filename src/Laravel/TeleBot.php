@@ -17,6 +17,7 @@ use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\User;
 use WeStacks\TeleBot\Objects\UserProfilePhotos;
 use WeStacks\TeleBot\Objects\WebhookInfo;
+use WeStacks\TeleBot\Objects\MessageId;
 use WeStacks\TeleBot\TeleBot as Bot;
 
 /**
@@ -90,6 +91,12 @@ use WeStacks\TeleBot\TeleBot as Bot;
  * @method static UserProfilePhotos|PromiseInterface|False          getUserProfilePhotos(array $parameters = [])                                                                                                                   Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
  * @method static User|PromiseInterface|False                       getMe()                                                                                                                                                        A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
  * @method static WebhookInfo|PromiseInterface|False                getWebhookInfo()                                                                                                                                               Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty. *
+ * 
+ * @method static false|PromiseInterface|true                       close()                                                 Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns True on success. Requires no parameters.
+ * @method static false|PromiseInterface|true                       logOut()                                                Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.
+ * @method static false|PromiseInterface|MessageId                  copyMessage(array $parameters = [])                     Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.
+ * @method static false|PromiseInterface|true                       unpinAllChatMessages(array $parameters = [])            Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' admin right in a supergroup or 'can_edit_messages' admin right in a channel. Returns True on success.
+ * 
  * @method static Bot                                               bot(string $name = null)                                                                                                                                       Get bot by name
  * @method static array                                             bots()                                                                                                                                                         Get array of bot names attached to BotManager instance
  * @method static Bot                                               add(string $name, array|Bot|string $bot)                                                                                                                       Add bot to BotManager

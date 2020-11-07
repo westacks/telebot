@@ -25,9 +25,13 @@ class SendLocationMethod extends TelegramMethod
             'chat_id' => 'string',
             'latitude' => 'float',
             'longitude' => 'float',
+            'horizontal_accuracy' => 'float',
             'live_period' => 'integer',
+            'heading' => 'integer',
+            'proximity_alert_radius' => 'integer',
             'disable_notification' => 'boolean',
             'reply_to_message_id' => 'integer',
+            'allow_sending_without_reply' => 'boolean',
             'reply_markup' => Keyboard::class,
         ];
 

@@ -7,6 +7,7 @@ use WeStacks\TeleBot\Interfaces\TelegramMethod;
 use WeStacks\TeleBot\Objects\InputFile;
 use WeStacks\TeleBot\Objects\Keyboard;
 use WeStacks\TeleBot\Objects\Message;
+use WeStacks\TeleBot\Objects\MessageEntity;
 
 class SendDocumentMethod extends TelegramMethod
 {
@@ -28,8 +29,11 @@ class SendDocumentMethod extends TelegramMethod
             'thumb' => InputFile::class,
             'caption' => 'string',
             'parse_mode' => 'string',
+            'caption_entities' => [MessageEntity::class],
+            'disable_content_type_detection' => 'boolean',
             'disable_notification' => 'boolean',
             'reply_to_message_id' => 'integer',
+            'allow_sending_without_reply' => 'boolean',
             'reply_markup' => Keyboard::class,
         ];
 

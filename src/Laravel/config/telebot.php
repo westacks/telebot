@@ -24,14 +24,15 @@ return [
 
     'bots' => [
         'bot' => [
-            'token' => env('TELEGRAM_BOT_TOKEN', '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'),
+            'token' => env('TELEGRAM_BOT_TOKEN'),
             'exceptions' => true,
             'async' => false,
             'rate_limit' => 1,
 
             'webhook' => [
-                // 'url' => env('TELEGRAM_BOT_WEBHOOK_URL', 'https://telebot.westacks.com.ua/webhook'),
+                // 'url'               => env('TELEGRAM_BOT_WEBHOOK_URL', env('APP_URL').'/telebot/webhook/bot/'.env('TELEGRAM_BOT_TOKEN')),,
                 // 'certificate'       => env('TELEGRAM_BOT_CERT_PATH', storage_path('app/ssl/public.pem')),
+                // 'ip_address'        => '8.8.8.8',
                 // 'max_connections'   => 40,
                 // 'allowed_updates'   => ["message", "edited_channel_post", "callback_query"]
             ],

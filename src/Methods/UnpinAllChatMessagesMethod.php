@@ -4,18 +4,16 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\Keyboard;
-use WeStacks\TeleBot\Objects\Message;
 
-class EditMessageCaptionMethod extends TelegramMethod
+class UnpinAllChatMessagesMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/editMessageCaption",
+            'url' => "https://api.telegram.org/bot{$this->token}/unpinAllChatMessages",
             'send' => $this->send(),
-            'expect' => Message::class,
+            'expect' => 'boolean',
         ];
     }
 
@@ -23,12 +21,6 @@ class EditMessageCaptionMethod extends TelegramMethod
     {
         $parameters = [
             'chat_id' => 'string',
-            'message_id' => 'integer',
-            'inline_message_id' => 'string',
-            'caption' => 'string',
-            'parse_mode' => 'string',
-            'caption_entities' => [MessageEntity::class],
-            'reply_markup' => Keyboard::class,
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

@@ -26,6 +26,7 @@ class SendMediaGroupMethod extends TelegramMethod
             'media' => [InputMedia::class],
             'disable_notification' => 'boolean',
             'reply_to_message_id' => 'integer',
+            'allow_sending_without_reply' => 'boolean',
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

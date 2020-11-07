@@ -12,6 +12,7 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
  * @property int       $duration       Duration of the audio in seconds as defined by sender
  * @property string    $performer      _Optional_. Performer of the audio as defined by sender or by audio tags
  * @property string    $title          _Optional_. Title of the audio as defined by sender or by audio tags
+ * @property string    $file_name      _Optional_. Original filename as defined by sender
  * @property string    $mime_type      _Optional_. MIME type of the file as defined by sender
  * @property int       $file_size      _Optional_. File size
  * @property PhotoSize $thumb          _Optional_. Thumbnail of the album cover to which the music file belongs
@@ -26,6 +27,7 @@ class Audio extends TelegramObject
             'duration' => 'integer',
             'performer' => 'string',
             'title' => 'string',
+            'file_name' => 'string',
             'mime_type' => 'string',
             'file_size' => 'integer',
             'thumb' => PhotoSize::class,

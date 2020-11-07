@@ -13,6 +13,7 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
  * @property int       $height         Video height as defined by sender
  * @property int       $duration       Duration of the video in seconds as defined by sender
  * @property PhotoSize $thumb          _Optional_. Video thumbnail
+ * @property string    $file_name      _Optional_. Original filename as defined by sender
  * @property string    $mime_type      _Optional_. Mime type of a file as defined by sender
  * @property int       $file_size      _Optional_. File size
  */

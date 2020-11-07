@@ -4,14 +4,15 @@ TeleBot library in addition to [Facade](configuration.md#laravel), provides some
 
 ## Webhook
 
-You may set, remove or display your bots webhook using `telebot:webhook` command. For that you need to specify your [setWebhook method parameters](https://core.telegram.org/bots/api#setwebhook) for your bot in `config/telebot.php`:
+You may set, remove or display your bots webhook using `telebot:webhook` command. Webhook route is automaticaly generated for all registered bots in config. If your app runs over self-signed SSL or you want to create a custom route for a webhook, you need to customize [webhook](https://core.telegram.org/bots/api#setwebhook) parameters for your bot in `config/telebot.php`. When you configured webhook config, you may use this command to manage your webhook on telegram servers:
 
 <!-- tabs:start -->
 
 #### ** Webhook usage **
 
 ```bash
-php artisan telebot:webhook --help
+# Run command with --help flag to see more details
+php artisan telebot:webhook
 ```
 
 #### ** Webhook config **
@@ -29,9 +30,10 @@ return [
     'bot'   => [
       'token'   => env('TELEGRAM_BOT_TOKEN'),
       'webhook' => [
-        'url'               => env('TELEGRAM_BOT_WEBHOOK_URL', 'https://telebot.westacks.com.ua/webhook'),
+        // 'url'               => env('TELEGRAM_BOT_WEBHOOK_URL', env('APP_URL').'/telebot/webhook/bot/'.env('TELEGRAM_BOT_TOKEN')),
         // 'certificate'       => env('TELEGRAM_BOT_CERT_PATH', storage_path('app/ssl/public.pem')),
         // 'max_connections'   => 40,
+        // 'ip_address'        => '8.8.8.8',
         // 'allowed_updates'   => ["message", "edited_channel_post", "callback_query"]
       ]
     ]
@@ -41,14 +43,15 @@ return [
 
 ## Long Polling
 
-You may run bot polling from console using `telebot:polling` command. You may specify your [getUpdates method parameters](https://core.telegram.org/bots/api#getupdates) for your bot in `config/telebot.php`:
+You may run long polling proccess from console using `telebot:polling` command. You may specify your [poll](https://core.telegram.org/bots/api#getupdates) parameters for your bot in `config/telebot.php`:
 
 <!-- tabs:start -->
 
 #### ** Polling usage **
 
 ```bash
-php artisan telebot:polling --help
+# Run command with --help flag to see more details
+php artisan telebot:polling
 ```
 
 #### ** Polling config **
@@ -78,14 +81,15 @@ return [
 
 ## Bot commands
 
-You may send your localy registered bot commands into Telegram API for user's autocompletion using `telebot:commands` command. All registered commands in bot config will be sent.
+You may send your localy registered bot commands into Telegram API for user's autocompletion using `telebot:commands` command. All *registered* commands in bot config will be sent.
 
 <!-- tabs:start -->
 
 #### ** Commands usage **
 
 ```bash
-php artisan telebot:commands --help
+# Run command with --help flag to see more details
+php artisan telebot:commands
 ```
 
 #### ** Commands config **
@@ -103,7 +107,10 @@ return [
     'bot'   => [
       'token'     => env('TELEGRAM_BOT_TOKEN'),
       'handlers'  => [
-          \App\Services\Telegram\Commands\StartCommand::class
+          // All bot commands should extend WeStacks\TeleBot\Handlers\CommandHandler class
+          // and should be registered here
+
+          \App\Services\Telegram\Commands\StartCommand::class // app/Services/Telegram/Commands/StartCommand.php
       ],
     ]
 ];
@@ -131,8 +138,8 @@ class TelegramNotification extends Notification
     public function toTelegram($notifiable): array
     {
         return (new TelegramMessage)->bot('bot')->sendMessage([
-            'chat_id'   => $notifiable->telegram_chat_id,
-            'text'      => 'Hello, from Laravel\'s notifications!'
+            'chat_id' => $notifiable->telegram_chat_id,
+            'text'    => 'Hello, from Laravel\'s notifications!'
         ]);
     }
 }

@@ -31,11 +31,13 @@ class SendPollMethod extends TelegramMethod
             'correct_option_id' => 'integer',
             'explanation' => 'string',
             'explanation_parse_mode' => 'string',
+            'explanation_entities' => [MessageEntity::class],
             'open_period' => 'integer',
             'close_date' => 'integer',
             'is_closed' => 'boolean',
             'disable_notification' => 'boolean',
             'reply_to_message_id' => 'integer',
+            'allow_sending_without_reply' => 'boolean',
             'reply_markup' => Keyboard::class,
         ];
 

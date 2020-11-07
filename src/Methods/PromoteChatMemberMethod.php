@@ -22,6 +22,7 @@ class PromoteChatMemberMethod extends TelegramMethod
         $parameters = [
             'chat_id' => 'string',
             'user_id' => 'integer',
+            'is_anonymous' => 'boolean',
             'can_change_info' => 'boolean',
             'can_post_messages' => 'boolean',
             'can_edit_messages' => 'boolean',

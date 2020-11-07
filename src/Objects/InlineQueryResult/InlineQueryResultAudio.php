@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\Objects\InlineQueryResult;
 use WeStacks\TeleBot\Objects\InlineQueryResult;
 use WeStacks\TeleBot\Objects\InputMessageContent;
 use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
+use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
  * Represents a link to an MP3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
@@ -15,6 +16,7 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
  * @property string               $title                 Title
  * @property string               $caption               _Optional_. Caption, 0-1024 characters after entities parsing
  * @property string               $parse_mode            _Optional_. Mode for parsing entities in the audio caption. See formatting options for more details.
+ * @property Array<MessageEntity> $caption_entities      _Optional_. List of special entities that appear in the caption, which can be specified instead of parse_mode
  * @property string               $performer             _Optional_. Performer
  * @property int                  $audio_duration        _Optional_. Audio duration in seconds
  * @property InlineKeyboardMarkup $reply_markup          _Optional_. Inline keyboard attached to the message
@@ -31,6 +33,7 @@ class InlineQueryResultAudio extends InlineQueryResult
             'title' => 'string',
             'caption' => 'string',
             'parse_mode' => 'string',
+            'caption_entities' => [MessageEntity::class],
             'performer' => 'string',
             'audio_duration' => 'integer',
             'reply_markup' => InlineKeyboardMarkup::class,

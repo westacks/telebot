@@ -31,8 +31,10 @@ class SendAnimationMethod extends TelegramMethod
             'thumb' => InputFile::class,
             'caption' => 'string',
             'parse_mode' => 'string',
+            'caption_entities' => [MessageEntity::class],
             'disable_notification' => 'boolean',
             'reply_to_message_id' => 'integer',
+            'allow_sending_without_reply' => 'boolean',
             'reply_markup' => Keyboard::class,
         ];
 

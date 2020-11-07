@@ -25,6 +25,8 @@ class SetWebhookMethod extends TelegramMethod
             'certificate' => InputFile::class,
             'max_connections' => 'integer',
             'allowed_updates' => ['string'],
+            'ip_address' => 'string',
+            'drop_pending_updates' => 'boolean'
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

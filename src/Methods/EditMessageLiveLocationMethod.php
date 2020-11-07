@@ -27,6 +27,9 @@ class EditMessageLiveLocationMethod extends TelegramMethod
             'inline_message_id' => 'string',
             'latitude' => 'float',
             'longitude' => 'float',
+            'horizontal_accuracy' => 'float',
+            'heading' => 'integer',
+            'proximity_alert_radius' => 'integer',
             'reply_markup' => InlineKeyboardMarkup::class,
         ];
 
