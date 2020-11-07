@@ -2,6 +2,7 @@
 
 namespace Westacks\Telebot\Tests;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Notification;
 use Orchestra\Testbench\TestCase;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
@@ -77,8 +78,11 @@ class LaravelTest extends TestCase
         $this->artisan('telebot:webhook')->assertExitCode(1);
         $this->artisan('telebot:webhook -S -R')->assertExitCode(1);
 
+        Config::set('telebot.bots.bot.webhook.url', 'https://telebot.westacks.com.ua/webhook');
         $this->artisan('telebot:webhook -S -I')->assertExitCode(0);
         $this->artisan('telebot:webhook -R')->assertExitCode(0);
+        
+        Config::set('telebot.bots.bot.webhook.url', null);
     }
 
     public function testLongPollCommand()
