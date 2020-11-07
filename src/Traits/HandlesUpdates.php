@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Traits;
 
 use Closure;
+use Exception;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
 use WeStacks\TeleBot\Handlers\CommandHandler;
 use WeStacks\TeleBot\Interfaces\UpdateHandler;
@@ -127,7 +128,13 @@ trait HandlesUpdates
     private function validUpdate(&$update = null)
     {
         if (is_null($update)) {
-            $data = json_decode(file_get_contents('php://input'), true);
+            try {
+                $data = json_decode(file_get_contents('php://input'), true) ?? request()->all();
+            }
+            catch (Exception $e) {
+                $data = null;
+            }
+
             if (is_null($data) || !isset($data['update_id'])) {
                 return false;
             }

@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\Objects\InlineQueryResult;
 use WeStacks\TeleBot\Objects\InlineQueryResult;
 use WeStacks\TeleBot\Objects\InputMessageContent;
 use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
+use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
  * Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
@@ -18,6 +19,7 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
  * @property string               $title                 Title for the result
  * @property string               $caption               _Optional_. Caption of the video to be sent, 0-1024 characters after entities parsing
  * @property string               $parse_mode            _Optional_. Mode for parsing entities in the video caption. See formatting options for more details.
+ * @property Array<MessageEntity> $caption_entities      _Optional_. List of special entities that appear in the caption, which can be specified instead of parse_mode
  * @property int                  $video_width           _Optional_. Video width
  * @property int                  $video_height          _Optional_. Video height
  * @property int                  $video_duration        _Optional_. Video duration in seconds
@@ -38,6 +40,7 @@ class InlineQueryResultVideo extends InlineQueryResult
             'title' => 'string',
             'caption' => 'string',
             'parse_mode' => 'string',
+            'caption_entities' => [MessageEntity::class],
             'video_width' => 'integer',
             'video_height' => 'integer',
             'video_duration' => 'integer',

@@ -11,6 +11,7 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
  * @property string $status                    The member's status in the chat. Can be “creator”, “administrator”, “member”, “restricted”, “left” or “kicked”
  * @property string $custom_title              _Optional_. Owner and administrators only. Custom title for this user
  * @property int    $until_date                _Optional_. Restricted and kicked only. Date when restrictions will be lifted for this user; unix time
+ * @property bool   $is_anonymous              _Optional_. Owner and administrators only. True, if the user's presence in the chat is hidden
  * @property bool   $can_be_edited             _Optional_. Administrators only. True, if the bot is allowed to edit administrator privileges of that user
  * @property bool   $can_post_messages         _Optional_. Administrators only. True, if the administrator can post in the channel; channels only
  * @property bool   $can_edit_messages         _Optional_. Administrators only. True, if the administrator can edit messages of other users and can pin messages; channels only
@@ -36,6 +37,7 @@ class ChatMember extends TelegramObject
             'status' => 'string',
             'custom_title' => 'string',
             'until_date' => 'integer',
+            'is_anonymous' => 'boolean',
             'can_be_edited' => 'boolean',
             'can_post_messages' => 'boolean',
             'can_edit_messages' => 'boolean',

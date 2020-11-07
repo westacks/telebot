@@ -27,6 +27,7 @@ class EditMessageTextMethod extends TelegramMethod
             'inline_message_id' => 'string',
             'text' => 'string',
             'parse_mode' => 'string',
+            'entities' => [MessageEntity::class],
             'disable_web_page_preview' => 'boolean',
             'reply_markup' => Keyboard::class,
         ];

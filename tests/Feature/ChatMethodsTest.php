@@ -91,6 +91,12 @@ class ChatMethodsTest extends TestCase
 
         $unpinned = $this->bot->unpinChatMessage([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
+            'message_id' => $message->message_id
+        ]);
+        $this->assertTrue($unpinned);
+
+        $unpinned = $this->bot->unpinAllChatMessages([
+            'chat_id' => getenv('TELEGRAM_CHAT_ID')
         ]);
         $this->assertTrue($unpinned);
     }

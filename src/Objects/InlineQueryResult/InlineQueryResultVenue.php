@@ -17,6 +17,8 @@ use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
  * @property string               $address               Address of the venue
  * @property string               $foursquare_id         _Optional_. Foursquare identifier of the venue if known
  * @property string               $foursquare_type       _Optional_. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+ * @property string               $google_place_id       _Optional_. Google Places identifier of the venue
+ * @property string               $google_place_type     _Optional_. Google Places type of the venue
  * @property InlineKeyboardMarkup $reply_markup          _Optional_. Inline keyboard attached to the message
  * @property InputMessageContent  $input_message_content _Optional_. Content of the message to be sent instead of the venue
  * @property string               $thumb_url             _Optional_. Url of the thumbnail for the result
@@ -36,6 +38,8 @@ class InlineQueryResultVenue extends InlineQueryResult
             'address' => 'string',
             'foursquare_id' => 'string',
             'foursquare_type' => 'string',
+            'google_place_id' => 'string',
+            'google_place_type' => 'string',
             'reply_markup' => InlineKeyboardMarkup::class,
             'input_message_content' => InputMessageContent::class,
             'thumb_url' => 'string',

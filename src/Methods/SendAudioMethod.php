@@ -27,12 +27,14 @@ class SendAudioMethod extends TelegramMethod
             'audio' => InputFile::class,
             'caption' => 'string',
             'parse_mode' => 'string',
+            'caption_entities' => [MessageEntity::class],
             'duration' => 'integer',
             'performer' => 'string',
             'title' => 'string',
             'thumb' => InputFile::class,
             'disable_notification' => 'boolean',
             'reply_to_message_id' => 'integer',
+            'allow_sending_without_reply' => 'boolean',
             'reply_markup' => Keyboard::class,
         ];
 

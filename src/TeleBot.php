@@ -9,6 +9,20 @@ use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
 use WeStacks\TeleBot\Traits\HandlesUpdates;
 use WeStacks\TeleBot\Traits\HasTelegramMethods;
+use WeStacks\TeleBot\Objects\MessageId;
+use GuzzleHttp\Promise\PromiseInterface;
+use WeStacks\TeleBot\Objects\BotCommand;
+use WeStacks\TeleBot\Objects\Chat;
+use WeStacks\TeleBot\Objects\ChatMember;
+use WeStacks\TeleBot\Objects\File;
+use WeStacks\TeleBot\Objects\Games\GameHighScore;
+use WeStacks\TeleBot\Objects\Message;
+use WeStacks\TeleBot\Objects\Poll;
+use WeStacks\TeleBot\Objects\Stickers\StickerSet;
+use WeStacks\TeleBot\Objects\Update;
+use WeStacks\TeleBot\Objects\User;
+use WeStacks\TeleBot\Objects\UserProfilePhotos;
+use WeStacks\TeleBot\Objects\WebhookInfo;
 
 /**
  * This class represents a bot instance. This is basicaly main controller for sending and handling your Telegram requests.
@@ -81,6 +95,11 @@ use WeStacks\TeleBot\Traits\HasTelegramMethods;
  * @method false|PromiseInterface|UserProfilePhotos    getUserProfilePhotos(array $parameters = [])            Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
  * @method false|PromiseInterface|User                 getMe()                                                 A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of a User object.
  * @method false|PromiseInterface|WebhookInfo          getWebhookInfo()                                        Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.
+ * 
+ * @method false|PromiseInterface|true                 close()                                                 Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns True on success. Requires no parameters.
+ * @method false|PromiseInterface|true                 logOut()                                                Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.
+ * @method false|PromiseInterface|MessageId            copyMessage(array $parameters = [])                                                Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.
+ * @method false|PromiseInterface|true                 unpinAllChatMessages(array $parameters = [])            Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' admin right in a supergroup or 'can_edit_messages' admin right in a channel. Returns True on success.
  */
 class TeleBot
 {

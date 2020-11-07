@@ -25,9 +25,11 @@ class SendMessageMethod extends TelegramMethod
             'chat_id' => 'string',
             'text' => 'string',
             'parse_mode' => 'string',
+            'entities' => [MessageEntity::class],
             'disable_web_page_preview' => 'boolean',
             'disable_notification' => 'boolean',
             'reply_to_message_id' => 'integer',
+            'allow_sending_without_reply' => 'boolean',
             'reply_markup' => Keyboard::class,
         ];
 

@@ -21,6 +21,7 @@ class UnpinChatMessageMethod extends TelegramMethod
     {
         $parameters = [
             'chat_id' => 'string',
+            'message_id' => 'integer',
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

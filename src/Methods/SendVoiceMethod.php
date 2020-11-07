@@ -27,9 +27,11 @@ class SendVoiceMethod extends TelegramMethod
             'voice' => InputFile::class,
             'caption' => 'string',
             'parse_mode' => 'string',
+            'caption_entities' => [MessageEntity::class],
             'duration' => 'integer',
             'disable_notification' => 'boolean',
             'reply_to_message_id' => 'integer',
+            'allow_sending_without_reply' => 'boolean',
             'reply_markup' => Keyboard::class,
         ];
 
