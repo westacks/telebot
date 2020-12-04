@@ -28,7 +28,6 @@ return [
             'api_url' => 'https://api.telegram.org',
             'exceptions' => true,
             'async' => false,
-            'rate_limit' => 1,
 
             'webhook' => [
                 // 'url'               => env('TELEGRAM_BOT_WEBHOOK_URL', env('APP_URL').'/telebot/webhook/bot/'.env('TELEGRAM_BOT_TOKEN')),,

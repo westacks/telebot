@@ -16,7 +16,6 @@ $bot = new TeleBot([
     'api_url'    => 'https://api.telegram.org'
     'exceptions' => true,
     'async'      => false,
-    'rate_limit' => 1
     'handlers'   => []
 ]);
 
@@ -63,7 +62,6 @@ return [
             'api_url'       => 'https://api.telegram.org',
             'exceptions'    => true,
             'async'         => false,
-            'rate_limit'    => 1,
             'handlers'      => []
         ],
         'bot2' => [
@@ -111,11 +109,6 @@ Bot config may be represented as:
 
 * Default: `false`
 * If you set this parameter `true`, bot methods will return Guzzle Promises, which you can handle mannualy.
-
-#### `rate_limit` (integer)
-
-* Default: `1`
-* Limit of requests/second bot will make. See more [here](https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this)
 
 #### `handlers` (array)
 
