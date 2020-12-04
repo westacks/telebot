@@ -13,7 +13,7 @@ class EditMessageLiveLocationMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/editMessageLiveLocation",
+            'url' => "{$this->api}/bot{$this->token}/editMessageLiveLocation",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

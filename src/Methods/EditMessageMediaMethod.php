@@ -14,7 +14,7 @@ class EditMessageMediaMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/editMessageMedia",
+            'url' => "{$this->api}/bot{$this->token}/editMessageMedia",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

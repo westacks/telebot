@@ -12,7 +12,7 @@ class StopPollMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/stopPoll",
+            'url' => "{$this->api}/bot{$this->token}/stopPoll",
             'send' => $this->send(),
             'expect' => Poll::class,
         ];

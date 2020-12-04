@@ -11,7 +11,7 @@ class SetChatTitleMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/setChatTitle",
+            'url' => "{$this->api}/bot{$this->token}/setChatTitle",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

@@ -11,7 +11,7 @@ class SendChatActionMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/sendChatAction",
+            'url' => "{$this->api}/bot{$this->token}/sendChatAction",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

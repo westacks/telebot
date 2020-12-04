@@ -12,7 +12,7 @@ class SetMyCommandsMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/setMyCommands",
+            'url' => "{$this->api}/bot{$this->token}/setMyCommands",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

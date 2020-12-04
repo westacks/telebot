@@ -160,6 +160,7 @@ class TeleBot
             'exceptions' => $config['exceptions'] ?? true,
             'async' => $config['async'] ?? false,
             'rate_limit' => $config['rate_limit'] ?? 1,
+            'api_url' => $config['api_url'] ?? 'https://api.telegram.org'
         ];
 
         $stack = HandlerStack::create()
@@ -170,7 +171,7 @@ class TeleBot
 
     public function __call(string $method, array $arguments)
     {
-        $method = TelegramMethod::create($method, $this->config['token'], $arguments);
+        $method = TelegramMethod::create($method, $this->config['api_url'], $this->config['token'], $arguments);
         $exceptions = $this->exceptions ?? $this->config['exceptions'];
         $async = $this->async ?? $this->config['async'];
 

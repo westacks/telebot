@@ -13,7 +13,7 @@ class SendMediaGroupMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/sendMediaGroup",
+            'url' => "{$this->api}/bot{$this->token}/sendMediaGroup",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

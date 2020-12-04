@@ -27,10 +27,18 @@ abstract class TelegramMethod
     protected $token;
 
     /**
+     * API URL
+     * 
+     * @var string
+     */
+    protected $api;
+
+    /**
      * Create new method instance.
      */
-    public function __construct(string $token, array $data = null)
+    public function __construct(string $api, string $token, array $data = null)
     {
+        $this->api = $api;
         $this->token = $token;
         $this->arguments = $data ?? [];
     }
@@ -39,6 +47,7 @@ abstract class TelegramMethod
      * Create new method instance.
      * 
      * @param string $method
+     * @param string $api
      * @param string $token
      * @param array|null $data
      * 
@@ -46,13 +55,13 @@ abstract class TelegramMethod
      * 
      * @throws TeleBotMehtodException
      */
-    public static function create(string $method, string $token, array $data = null)
+    public static function create(string $method, string $api, string $token, array $data = null)
     {
         if (!$Method = static::method($method)) {
             throw TeleBotMehtodException::methodNotFound($method);
         }
 
-        return new $Method($token, $data);
+        return new $Method($api, $token, $data);
     }
 
     /**

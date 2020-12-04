@@ -11,7 +11,7 @@ class GetMyCommandsMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/getMyCommands",
+            'url' => "{$this->api}/bot{$this->token}/getMyCommands",
             'send' => [],
             'expect' => [BotCommand::class],
         ];

@@ -12,7 +12,7 @@ class GetGameHighScoresMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/getGameHighScores",
+            'url' => "{$this->api}/bot{$this->token}/getGameHighScores",
             'send' => $this->send(),
             'expect' => [GameHighScore::class],
         ];

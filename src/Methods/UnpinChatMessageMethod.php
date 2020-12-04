@@ -11,7 +11,7 @@ class UnpinChatMessageMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/unpinChatMessage",
+            'url' => "{$this->api}/bot{$this->token}/unpinChatMessage",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

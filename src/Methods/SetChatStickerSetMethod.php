@@ -11,7 +11,7 @@ class SetChatStickerSetMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/setChatStickerSet",
+            'url' => "{$this->api}/bot{$this->token}/setChatStickerSet",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

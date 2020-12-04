@@ -13,6 +13,7 @@ use WeStacks\TeleBot\TeleBot;
 
 $bot = new TeleBot([
     'token'      => '<telegram api token>',
+    'api_url'    => 'https://api.telegram.org'
     'exceptions' => true,
     'async'      => false,
     'rate_limit' => 1
@@ -59,6 +60,7 @@ return [
     'bots' => [
         'bot1' => [
             'token'         => env('TELEGRAM_BOT_TOKEN', '<telegram api token>'),
+            'api_url'       => 'https://api.telegram.org',
             'exceptions'    => true,
             'async'         => false,
             'rate_limit'    => 1,
@@ -94,6 +96,11 @@ Bot config may be represented as:
 
 * `Required`
 * Your telegram bot token. See official Telegram [documentation](https://core.telegram.org/bots/api#authorizing-your-bot).
+
+#### `api_url` (string)
+
+* Default: `https://api.telegram.org`
+* API URL which will be used by library's HTTP client (don't confuse with [webhook url](laravel.md#webhook)). If you want to have self hosted Telegram bot API server, you may learn how to do it [here](https://github.com/tdlib/telegram-bot-api).
 
 #### `exceptions` (boolean)
 

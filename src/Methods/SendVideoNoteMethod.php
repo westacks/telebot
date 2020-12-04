@@ -14,7 +14,7 @@ class SendVideoNoteMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/sendVideoNote",
+            'url' => "{$this->api}/bot{$this->token}/sendVideoNote",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

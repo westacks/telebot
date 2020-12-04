@@ -12,7 +12,7 @@ class GetUpdatesMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/getUpdates",
+            'url' => "{$this->api}/bot{$this->token}/getUpdates",
             'send' => $this->send(),
             'expect' => [Update::class],
         ];

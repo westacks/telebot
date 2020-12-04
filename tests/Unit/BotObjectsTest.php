@@ -94,7 +94,7 @@ class BotObjectsTest extends TestCase
         ob_start();
         var_dump($this->object);
         $result = ob_get_clean();
-        $this->assertStringContainsString('class WeStacks\\TeleBot\\Objects\\Update', $result);
+        $this->assertStringContainsString('WeStacks\\TeleBot\\Objects\\Update', $result);
     }
 
     public function testGetByDotNotation()

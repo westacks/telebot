@@ -11,7 +11,7 @@ class DeleteStickerFromSetMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/deleteStickerFromSet",
+            'url' => "{$this->api}/bot{$this->token}/deleteStickerFromSet",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

@@ -14,7 +14,7 @@ class SendStickerMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/sendSticker",
+            'url' => "{$this->api}/bot{$this->token}/sendSticker",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

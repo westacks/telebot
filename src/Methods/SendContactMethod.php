@@ -13,7 +13,7 @@ class SendContactMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/sendContact",
+            'url' => "{$this->api}/bot{$this->token}/sendContact",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

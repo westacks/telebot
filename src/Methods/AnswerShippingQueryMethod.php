@@ -12,7 +12,7 @@ class AnswerShippingQueryMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/answerShippingQuery",
+            'url' => "{$this->api}/bot{$this->token}/answerShippingQuery",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

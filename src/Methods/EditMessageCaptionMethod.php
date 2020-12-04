@@ -13,7 +13,7 @@ class EditMessageCaptionMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/editMessageCaption",
+            'url' => "{$this->api}/bot{$this->token}/editMessageCaption",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

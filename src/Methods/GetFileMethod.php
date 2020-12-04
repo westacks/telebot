@@ -12,7 +12,7 @@ class GetFileMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/getFile",
+            'url' => "{$this->api}/bot{$this->token}/getFile",
             'send' => $this->send(),
             'expect' => File::class,
         ];

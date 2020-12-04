@@ -11,7 +11,7 @@ class AnswerPreCheckoutQueryMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/answerPreCheckoutQuery",
+            'url' => "{$this->api}/bot{$this->token}/answerPreCheckoutQuery",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

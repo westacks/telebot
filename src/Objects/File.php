@@ -22,9 +22,9 @@ class File extends TelegramObject
      *
      * @return string
      */
-    public function url(string $token)
+    public function url(string $token, string $api = 'https://api.telegram.org')
     {
-        return "https://api.telegram.org/file/bot{$token}/{$this->file_path}";
+        return "{$api}/file/bot{$token}/{$this->file_path}";
     }
 
     protected function relations()

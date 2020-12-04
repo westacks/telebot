@@ -15,7 +15,7 @@ class SendDocumentMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/sendDocument",
+            'url' => "{$this->api}/bot{$this->token}/sendDocument",
             'send' => $this->send(),
             'expect' => Message::class,
         ];
