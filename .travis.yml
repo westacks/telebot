@@ -28,4 +28,10 @@ jobs:
       php: 7.4
       script: 
         - composer test
+
+    - stage: Testing
+      name: Running unit tests on PHP 8.0
+      php: 8.0
+      script: 
+        - composer test
         - vendor/bin/php-coveralls -v

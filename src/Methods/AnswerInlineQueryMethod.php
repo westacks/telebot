@@ -12,7 +12,7 @@ class AnswerInlineQueryMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/answerInlineQuery",
+            'url' => "{$this->api}/bot{$this->token}/answerInlineQuery",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

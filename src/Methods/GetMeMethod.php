@@ -11,7 +11,7 @@ class GetMeMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/getMe",
+            'url' => "{$this->api}/bot{$this->token}/getMe",
             'send' => [],
             'expect' => User::class,
         ];

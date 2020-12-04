@@ -14,7 +14,7 @@ class SendPhotoMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/sendPhoto",
+            'url' => "{$this->api}/bot{$this->token}/sendPhoto",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

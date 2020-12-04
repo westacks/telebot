@@ -11,7 +11,7 @@ class CloseMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/close",
+            'url' => "{$this->api}/bot{$this->token}/close",
             'send' => [],
             'expect' => 'boolean',
         ];

@@ -12,7 +12,7 @@ class RestrictChatMemberMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/restrictChatMember",
+            'url' => "{$this->api}/bot{$this->token}/restrictChatMember",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

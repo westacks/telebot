@@ -13,7 +13,7 @@ class SendDiceMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/sendDice",
+            'url' => "{$this->api}/bot{$this->token}/sendDice",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

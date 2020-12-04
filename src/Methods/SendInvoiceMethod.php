@@ -14,7 +14,7 @@ class SendInvoiceMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/sendInvoice",
+            'url' => "{$this->api}/bot{$this->token}/sendInvoice",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

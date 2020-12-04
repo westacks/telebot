@@ -12,7 +12,7 @@ class SetGameScoreMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/setGameScore",
+            'url' => "{$this->api}/bot{$this->token}/setGameScore",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

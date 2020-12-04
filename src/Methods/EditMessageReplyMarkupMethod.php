@@ -13,7 +13,7 @@ class EditMessageReplyMarkupMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/editMessageReplyMarkup",
+            'url' => "{$this->api}/bot{$this->token}/editMessageReplyMarkup",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

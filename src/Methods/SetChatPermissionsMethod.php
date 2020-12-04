@@ -12,7 +12,7 @@ class SetChatPermissionsMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/setChatPermissions",
+            'url' => "{$this->api}/bot{$this->token}/setChatPermissions",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

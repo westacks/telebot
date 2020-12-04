@@ -11,7 +11,7 @@ class AnswerCallbackQueryMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/answerCallbackQuery",
+            'url' => "{$this->api}/bot{$this->token}/answerCallbackQuery",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

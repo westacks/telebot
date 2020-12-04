@@ -11,7 +11,7 @@ class UnbanChatMemberMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/unbanChatMember",
+            'url' => "{$this->api}/bot{$this->token}/unbanChatMember",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

@@ -11,7 +11,7 @@ class LeaveChatMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/leaveChat",
+            'url' => "{$this->api}/bot{$this->token}/leaveChat",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];
