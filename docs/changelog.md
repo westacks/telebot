@@ -34,3 +34,10 @@ All notable changes to `telebot` will be documented here
 - Added automatic route generation for webhook in Laravel's service provider
 - Bot API v5.0
 - Updated dev package compatibility
+
+## 1.6 - 2020-12-04
+
+- Rate limit feature was droped as it is not working accurate with webhook requests - it's not comfortable to store last request time from already dead php process without any data storage. In case you want to slow down your bot requests you should figure it out by yourself.
+- Droped `spatie/guzzle-rate-limiter-middleware` dependence.
+- Added ability to change Bot API URL (in case you have [self hosted bot api](https://github.com/tdlib/telegram-bot-api))
+- PHP 8 is now supported

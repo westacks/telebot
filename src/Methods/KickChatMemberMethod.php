@@ -11,7 +11,7 @@ class KickChatMemberMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/kickChatMember",
+            'url' => "{$this->api}/bot{$this->token}/kickChatMember",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

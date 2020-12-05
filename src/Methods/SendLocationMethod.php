@@ -13,7 +13,7 @@ class SendLocationMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/sendLocation",
+            'url' => "{$this->api}/bot{$this->token}/sendLocation",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

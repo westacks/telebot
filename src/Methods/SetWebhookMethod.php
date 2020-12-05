@@ -12,7 +12,7 @@ class SetWebhookMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/setWebhook",
+            'url' => "{$this->api}/bot{$this->token}/setWebhook",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

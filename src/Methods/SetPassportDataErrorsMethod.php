@@ -12,7 +12,7 @@ class SetPassportDataErrorsMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/setPassportDataErrors",
+            'url' => "{$this->api}/bot{$this->token}/setPassportDataErrors",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

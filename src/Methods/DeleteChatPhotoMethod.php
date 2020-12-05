@@ -11,7 +11,7 @@ class DeleteChatPhotoMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/deleteChatPhoto",
+            'url' => "{$this->api}/bot{$this->token}/deleteChatPhoto",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

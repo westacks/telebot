@@ -3,14 +3,12 @@
 namespace WeStacks\TeleBot;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\HandlerStack;
-use Spatie\GuzzleRateLimiterMiddleware\RateLimiterMiddleware;
+use GuzzleHttp\Promise\PromiseInterface;
 use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
 use WeStacks\TeleBot\Traits\HandlesUpdates;
 use WeStacks\TeleBot\Traits\HasTelegramMethods;
 use WeStacks\TeleBot\Objects\MessageId;
-use GuzzleHttp\Promise\PromiseInterface;
 use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\Chat;
 use WeStacks\TeleBot\Objects\ChatMember;
@@ -159,18 +157,15 @@ class TeleBot
             'token' => $config['token'],
             'exceptions' => $config['exceptions'] ?? true,
             'async' => $config['async'] ?? false,
-            'rate_limit' => $config['rate_limit'] ?? 1,
+            'api_url' => $config['api_url'] ?? 'https://api.telegram.org'
         ];
 
-        $stack = HandlerStack::create()
-            ->push(RateLimiterMiddleware::perSecond($this->config['rate_limit']));
-
-        $this->client = new Client(['http_errors' => false, 'handler' => $stack]);
+        $this->client = new Client(['http_errors' => false]);
     }
 
     public function __call(string $method, array $arguments)
     {
-        $method = TelegramMethod::create($method, $this->config['token'], $arguments);
+        $method = TelegramMethod::create($method, $this->config['api_url'], $this->config['token'], $arguments);
         $exceptions = $this->exceptions ?? $this->config['exceptions'];
         $async = $this->async ?? $this->config['async'];
 

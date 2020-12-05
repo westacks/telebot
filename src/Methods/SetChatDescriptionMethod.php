@@ -11,7 +11,7 @@ class SetChatDescriptionMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/setChatDescription",
+            'url' => "{$this->api}/bot{$this->token}/setChatDescription",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

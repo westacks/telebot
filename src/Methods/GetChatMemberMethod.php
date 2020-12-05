@@ -12,7 +12,7 @@ class GetChatMemberMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/getChatMember",
+            'url' => "{$this->api}/bot{$this->token}/getChatMember",
             'send' => $this->send(),
             'expect' => ChatMember::class,
         ];

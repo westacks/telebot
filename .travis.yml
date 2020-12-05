@@ -1,4 +1,7 @@
 language: php
+dist: focal
+os:
+  - linux
 
 branches:
   only:
@@ -26,6 +29,12 @@ jobs:
     - stage: Testing
       name: Running unit tests on PHP 7.4
       php: 7.4
+      script: 
+        - composer test
+
+    - stage: Testing
+      name: Running unit tests on PHP 8.0
+      php: 8.0.0
       script: 
         - composer test
         - vendor/bin/php-coveralls -v

@@ -13,7 +13,7 @@ class StopMessageLiveLocationMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/stopMessageLiveLocation",
+            'url' => "{$this->api}/bot{$this->token}/stopMessageLiveLocation",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

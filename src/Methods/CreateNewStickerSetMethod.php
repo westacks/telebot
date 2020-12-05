@@ -13,7 +13,7 @@ class CreateNewStickerSetMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/createNewStickerSet",
+            'url' => "{$this->api}/bot{$this->token}/createNewStickerSet",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

@@ -11,7 +11,7 @@ class ExportChatInviteLinkMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/exportChatInviteLink",
+            'url' => "{$this->api}/bot{$this->token}/exportChatInviteLink",
             'send' => $this->send(),
             'expect' => 'string',
         ];

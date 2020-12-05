@@ -13,9 +13,9 @@ use WeStacks\TeleBot\TeleBot;
 
 $bot = new TeleBot([
     'token'      => '<telegram api token>',
+    'api_url'    => 'https://api.telegram.org'
     'exceptions' => true,
     'async'      => false,
-    'rate_limit' => 1
     'handlers'   => []
 ]);
 
@@ -59,9 +59,9 @@ return [
     'bots' => [
         'bot1' => [
             'token'         => env('TELEGRAM_BOT_TOKEN', '<telegram api token>'),
+            'api_url'       => 'https://api.telegram.org',
             'exceptions'    => true,
             'async'         => false,
-            'rate_limit'    => 1,
             'handlers'      => []
         ],
         'bot2' => [
@@ -95,6 +95,11 @@ Bot config may be represented as:
 * `Required`
 * Your telegram bot token. See official Telegram [documentation](https://core.telegram.org/bots/api#authorizing-your-bot).
 
+#### `api_url` (string)
+
+* Default: `https://api.telegram.org`
+* API URL which will be used by library's HTTP client (don't confuse with [webhook url](laravel.md#webhook)). If you want to have self hosted Telegram bot API server, you may learn how to do it [here](https://github.com/tdlib/telegram-bot-api).
+
 #### `exceptions` (boolean)
 
 * Default: `true`
@@ -104,11 +109,6 @@ Bot config may be represented as:
 
 * Default: `false`
 * If you set this parameter `true`, bot methods will return Guzzle Promises, which you can handle mannualy.
-
-#### `rate_limit` (integer)
-
-* Default: `1`
-* Limit of requests/second bot will make. See more [here](https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this)
 
 #### `handlers` (array)
 

@@ -11,7 +11,7 @@ class DeleteMessageMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/deleteMessage",
+            'url' => "{$this->api}/bot{$this->token}/deleteMessage",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

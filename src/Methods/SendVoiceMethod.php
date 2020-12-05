@@ -14,7 +14,7 @@ class SendVoiceMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/sendVoice",
+            'url' => "{$this->api}/bot{$this->token}/sendVoice",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

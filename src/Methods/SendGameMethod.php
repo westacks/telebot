@@ -13,7 +13,7 @@ class SendGameMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/sendGame",
+            'url' => "{$this->api}/bot{$this->token}/sendGame",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

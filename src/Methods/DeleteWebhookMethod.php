@@ -11,7 +11,7 @@ class DeleteWebhookMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/deleteWebhook",
+            'url' => "{$this->api}/bot{$this->token}/deleteWebhook",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

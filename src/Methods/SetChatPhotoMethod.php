@@ -12,7 +12,7 @@ class SetChatPhotoMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/setChatPhoto",
+            'url' => "{$this->api}/bot{$this->token}/setChatPhoto",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

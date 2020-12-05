@@ -12,7 +12,7 @@ class GetUserProfilePhotosMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/getUserProfilePhotos",
+            'url' => "{$this->api}/bot{$this->token}/getUserProfilePhotos",
             'send' => $this->send(),
             'expect' => UserProfilePhotos::class,
         ];

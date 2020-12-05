@@ -14,7 +14,7 @@ class CopyMessageMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/copyMessage",
+            'url' => "{$this->api}/bot{$this->token}/copyMessage",
             'send' => $this->send(),
             'expect' => MessageId::class,
         ];

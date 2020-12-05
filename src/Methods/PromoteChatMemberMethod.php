@@ -11,7 +11,7 @@ class PromoteChatMemberMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/promoteChatMember",
+            'url' => "{$this->api}/bot{$this->token}/promoteChatMember",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

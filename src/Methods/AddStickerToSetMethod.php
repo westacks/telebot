@@ -13,7 +13,7 @@ class AddStickerToSetMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/addStickerToSet",
+            'url' => "{$this->api}/bot{$this->token}/addStickerToSet",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

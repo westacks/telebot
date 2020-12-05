@@ -11,7 +11,7 @@ class GetChatMembersCountMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/getChatMembersCount",
+            'url' => "{$this->api}/bot{$this->token}/getChatMembersCount",
             'send' => $this->send(),
             'expect' => 'integer',
         ];

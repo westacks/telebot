@@ -12,7 +12,7 @@ class ForwardMessageMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/forwardMessage",
+            'url' => "{$this->api}/bot{$this->token}/forwardMessage",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

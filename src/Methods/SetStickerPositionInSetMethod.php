@@ -11,7 +11,7 @@ class SetStickerPositionInSetMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/setStickerPositionInSet",
+            'url' => "{$this->api}/bot{$this->token}/setStickerPositionInSet",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

@@ -14,7 +14,7 @@ class SendVideoMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/sendVideo",
+            'url' => "{$this->api}/bot{$this->token}/sendVideo",
             'send' => $this->send(),
             'expect' => Message::class,
         ];

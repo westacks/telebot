@@ -11,7 +11,7 @@ class PinChatMessageMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/pinChatMessage",
+            'url' => "{$this->api}/bot{$this->token}/pinChatMessage",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];

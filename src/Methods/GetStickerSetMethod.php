@@ -12,7 +12,7 @@ class GetStickerSetMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/getStickerSet",
+            'url' => "{$this->api}/bot{$this->token}/getStickerSet",
             'send' => $this->send(),
             'expect' => StickerSet::class,
         ];

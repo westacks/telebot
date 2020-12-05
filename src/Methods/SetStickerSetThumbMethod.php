@@ -12,7 +12,7 @@ class SetStickerSetThumbMethod extends TelegramMethod
     {
         return [
             'type' => 'POST',
-            'url' => "https://api.telegram.org/bot{$this->token}/setStickerSetThumb",
+            'url' => "{$this->api}/bot{$this->token}/setStickerSetThumb",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];
