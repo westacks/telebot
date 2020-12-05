@@ -2,8 +2,6 @@
 
 namespace WeStacks\TeleBot\Tests\Feature;
 
-use Faker\Factory as Faker;
-use Faker\Generator;
 use GuzzleHttp\Promise;
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
@@ -31,7 +29,6 @@ class SendMessageTest extends TestCase
     {
         global $bot;
         $this->bot = $bot;
-        $this->faker = Faker::create();
     }
 
     public function testCallUndefinedMethod()
@@ -150,9 +147,9 @@ class SendMessageTest extends TestCase
     {
         $message = $this->bot->exceptions(false)->sendContact([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'phone_number' => $this->faker->phoneNumber,
-            'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
+            'phone_number' => '+380111111111',
+            'first_name' => 'John',
+            'last_name' => 'Doe',
         ]);
         $this->assertNotNull($message);
     }
