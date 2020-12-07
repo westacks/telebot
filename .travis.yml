@@ -18,23 +18,23 @@ jobs:
   include:
     - stage: Testing
       name: Running unit tests on PHP 7.2
-      php: 7.2
+      php: 7.2.34
       script: composer test
 
     - stage: Testing
       name: Running unit tests on PHP 7.3
-      php: 7.3
+      php: 7.3.25
       script: composer test
 
     - stage: Testing
       name: Running unit tests on PHP 7.4
-      php: 7.4
+      php: 7.4.13
       script: 
         - composer test
+        - vendor/bin/php-coveralls -v
 
     - stage: Testing
       name: Running unit tests on PHP 8.0
       php: 8.0.0
       script: 
         - composer test
-        - vendor/bin/php-coveralls -v
