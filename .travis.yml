@@ -1,7 +1,4 @@
 language: php
-dist: focal
-os:
-  - linux
 
 branches:
   only:
@@ -18,17 +15,17 @@ jobs:
   include:
     - stage: Testing
       name: Running unit tests on PHP 7.2
-      php: 7.2.34
+      php: 7.2
       script: composer test
 
     - stage: Testing
       name: Running unit tests on PHP 7.3
-      php: 7.3.25
+      php: 7.3
       script: composer test
 
     - stage: Testing
       name: Running unit tests on PHP 7.4
-      php: 7.4.13
+      php: 7.4
       script: 
         - composer test
         - vendor/bin/php-coveralls -v
