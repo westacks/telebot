@@ -37,12 +37,27 @@ TeleBot::getMe();
 TeleBot::bot('bot2')->getMe(); 
 ```
 
-##### Commands
+##### Automatic webhook generation
+
+After you insert your bot token, to create a webhook you need only to fire the following command:
 ```bash
-# Fire command with `--help` flag to get command info
-$ php artisan telebot:webhook --help
-$ php artisan telebot:polling --help
-$ php artisan telebot:commands --help
+$ php artisan telebot:webhook --setup
+```
+Route for handling updates is generated automaticaly for your `APP_URL`
+
+
+##### Long polling
+
+If you are not using webhook, or want to use bot in local or test environment, you may start long polling by only firyng this command:
+```bash
+$ php artisan telebot:polling
+```
+
+##### Setup commands autocompletion
+
+The following command will automaticaly setup autocompletion for all registered bot commands on Telegram servers: 
+```bash
+$ php artisan telebot:commands --setup
 ```
 
 ##### Notification channel
