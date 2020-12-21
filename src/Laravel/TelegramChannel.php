@@ -2,6 +2,7 @@
 
 namespace WeStacks\TeleBot\Laravel;
 
+use Exception;
 use Illuminate\Notifications\Notification;
 use WeStacks\TeleBot\BotManager;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
@@ -30,12 +31,30 @@ class TelegramChannel
      */
     public function send($notifiable, Notification $notification)
     {
-        $message = $notification->toTelegram($notifiable);
+        if (!method_exists($notification, 'toTelegram')) {
+            return null;
+        }
 
-        $bot = $message['bot'] ?? null;
-        $method = $message['method'] ?? 'sendMessage';
-        $data = $message['data'] ?? [];
+        try {
+            $data = $notification->toTelegram($notifiable);
+            if (is_string($data)) {
+                $data = new TelegramNotification($data);
+            }
+            $data = $data->jsonSerialize();
 
-        return $this->botmanager->bot($bot)->async(false)->exceptions(true)->$method($data);
+            $bot = $data['bot'];
+            $res = [];
+
+            foreach ($data['actions'] as $action) {
+                $method = $action['method'];
+                $arguments = $action['arguments'];
+                $res[] = $this->botmanager->bot($bot)->async(false)->exceptions(true)->$method($arguments);
+            }
+
+            return $res;
+        }
+        catch (Exception $e) {
+            return null;
+        }
     }
 }

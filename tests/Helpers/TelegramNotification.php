@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Tests\Helpers;
 
 use Illuminate\Notifications\Notification;
-use WeStacks\TeleBot\Laravel\TelegramMessage;
+use WeStacks\TeleBot\Laravel\TelegramNotification as TNotification;
 
 class TelegramNotification extends Notification
 {
@@ -14,9 +14,14 @@ class TelegramNotification extends Notification
 
     public function toTelegram($notifiable)
     {
-        return (new TelegramMessage)->bot('bot')->sendMessage([
-            'chat_id'   => $notifiable->telegram_chat_id,
-            'text'      => 'Hello, from Laravel\'s notifications!'
-        ]);
+        return (new TNotification)->bot('bot')
+            ->sendMessage([
+                'chat_id' => $notifiable->telegram_chat_id,
+                'text'    => 'Hello, from Laravel\'s notifications!'
+            ])
+            ->sendMessage([
+                'chat_id' => $notifiable->telegram_chat_id,
+                'text'    => 'Second message'
+            ]);
     }
 }

@@ -41,3 +41,9 @@ All notable changes to `telebot` will be documented in this file
 - Droped `spatie/guzzle-rate-limiter-middleware` dependence.
 - Added ability to change Bot API URL (in case you have [self hosted bot api](https://github.com/tdlib/telegram-bot-api))
 - PHP 8 is now supported
+
+## 1.7 - 2020-12-21
+
+- `WeStacks\TeleBot\Laravel\TelegramMessage` renamed to `WeStacks\TeleBot\Laravel\TelegramNotification`.
+- Telegram notification now can be sent only using `WeStacks\TeleBot\Laravel\TelegramNotification` object. Old array system is dropped
+- When sending notification using `WeStacks\TeleBot\Laravel\TelegramNotification`, methods could be chained to send multiple messages in a row

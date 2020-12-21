@@ -127,6 +127,7 @@ You may send notifications to your users using TeleBot's notification channel fo
 namespace App\Notifications;
 
 use Illuminate\Notifications\Notification;
+use WeStacks\TeleBot\Laravel\TelegramNotification;
 
 class TelegramNotification extends Notification
 {
@@ -135,12 +136,17 @@ class TelegramNotification extends Notification
         return ['telegram'];
     }
 
-    public function toTelegram($notifiable): array
+    public function toTelegram($notifiable)
     {
-        return (new TelegramMessage)->bot('bot')->sendMessage([
-            'chat_id' => $notifiable->telegram_chat_id,
-            'text'    => 'Hello, from Laravel\'s notifications!'
-        ]);
+        return (new TelegramNotification)->bot('bot')
+            ->sendMessage([
+                'chat_id' => $notifiable->telegram_chat_id,
+                'text'    => 'Hello, from Laravel\'s notifications!'
+            ])
+            ->sendMessage([
+                'chat_id' => $notifiable->telegram_chat_id,
+                'text'    => 'Second message'
+            ]);
     }
 }
 ```
