@@ -47,3 +47,7 @@ All notable changes to `telebot` will be documented in this file
 - `WeStacks\TeleBot\Laravel\TelegramMessage` renamed to `WeStacks\TeleBot\Laravel\TelegramNotification`.
 - Telegram notification now can be sent only using `WeStacks\TeleBot\Laravel\TelegramNotification` object. Old array system is dropped
 - When sending notification using `WeStacks\TeleBot\Laravel\TelegramNotification`, methods could be chained to send multiple messages in a row
+## 1.7.1 - 2021-02-01
+
+- Added `getConfig()` method to the `WeStacks\TeleBot\TeleBot` instance. It will return the passsed to the constructor config. [#8](https://github.com/westacks/telebot/issues/8)
+- Added ability to [change](https://westacks.github.io/telebot/#/configuration?id=standalone) `WeStacks\TeleBot\TeleBot`'s config parameters "on the go" using get/set syntax.
