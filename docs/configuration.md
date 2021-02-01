@@ -19,7 +19,16 @@ $bot = new TeleBot([
     'handlers'   => []
 ]);
 
-$bot->getMe();
+/** @var User */
+$user = $bot->getMe();
+
+// You may change all config parameters "on the go" using get/set syntax
+$bot->async = true; // Now bot uses A+ promises
+
+$bot->getMe()->then(function (User $user) {
+    var_dump($user);
+})->wait();
+
 ```
 
 #### ** Advanced **

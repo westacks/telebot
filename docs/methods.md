@@ -73,6 +73,10 @@ Additional library methods:
     * Throw exceptions on next method, ignoring config parameter (bot method will throw `TeleBotRequestException` on request error)
     * Returns: `self`
 
+* **`getConfig()`**
+    * Get config that was used to create this bot instance
+    * Returns: `mixed`
+
 * **`handleUpdate(Update $update = null)`**
     * Handle Telegram [Update](https://core.telegram.org/bots/api#update) using registered update handlers. If given update is `null`, the library will try to create update from incoming `POST` request (in case you are using webhook). See more details in [Handling updates](updates.md) section
     * Returns: `Update|False` - given update, or `false` in case `Update` was not valid.

@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
+use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\TeleBot;
@@ -101,5 +102,25 @@ class HandleUpdatesTest extends TestCase
     public function testNoUpdates()
     {
         $this->assertFalse($this->bot->handleUpdate());
+    }
+
+    public function testGetConfig()
+    {
+        $this->assertEquals(getenv('TELEGRAM_BOT_TOKEN'), $this->bot->getConfig());
+    }
+
+    public function testUpdateConfigOnGo()
+    {
+        $this->assertTrue($this->bot->exceptions);
+
+        $this->bot->exceptions = false;
+        $this->assertFalse($this->bot->exceptions);
+
+        $this->bot->exceptions = true;
+        $this->assertTrue($this->bot->exceptions);
+
+        $this->assertTrue(isset($this->bot->exceptions));
+        $this->expectException(TeleBotObjectException::class);
+        unset($this->bot->exceptions);
     }
 }

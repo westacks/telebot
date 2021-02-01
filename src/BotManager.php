@@ -103,6 +103,13 @@ use WeStacks\TeleBot\Objects\MessageId;
  * @method false|Update         handleUpdate(Update $update = null)                             Handle given update
  * @method BotCommand[]         getLocalCommands()                                              Get local bot instance commands registered by commands handlers
  * @method void                 callHandler($handler, Update $update, bool $force = false)      Run update handler.
+ * 
+ * 
+ * @method mixed                getConfig()                                                     Get config that was used to create this bot instance
+ * @property string $token Your telegram bot token.
+ * @property string $api_url API URL which will be used by library's HTTP client.
+ * @property bool $exceptions By default, bot throws TeleBotRequestException on telegram request errors. You may set this parameter false. In this case bot methods will return false instead of throwing exception.
+ * @property bool $async If you set this parameter true, bot methods will return Guzzle's A+ `PromiseInterface` object, which you can handle mannualy.
  */
 class BotManager
 {
@@ -136,6 +143,30 @@ class BotManager
     public function __call(string $name, array $arguments)
     {
         return $this->bot()->{$name}(...($arguments ?? []));
+    }
+
+    public function __get(string $name)
+    {
+        return $this->bot()->$name;
+    }
+
+    public function __set(string $name, $value)
+    {
+        if (!in_array($name, ['token', 'exceptions', 'async', 'api_url'])) {
+            throw TeleBotObjectException::inaccessibleVariable($name, self::class);
+        }
+
+        return $this->bot()->$name = $value;
+    }
+
+    public function __isset(string $key)
+    {
+        return isset($this->bot()->$key);
+    }
+
+    public function __unset(string $key)
+    {
+        throw TeleBotObjectException::inaccessibleUnsetVariable($key, self::class);
     }
 
     /**
