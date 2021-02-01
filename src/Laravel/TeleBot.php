@@ -109,7 +109,9 @@ use WeStacks\TeleBot\TeleBot as Bot;
  * @method static void                                              callHandler($handler, Update $update, bool $force = false)                                                                                                     Run update handler.
  * @method static Update|False                                      handleUpdate(Update $update = null)                                                                                                                            Handle given update
  * @method static BotCommand[]                                      getLocalCommands()                                                                                                                                             Get local bot instance commands registered by commands handlers
- */
+ * 
+ * @method static mixed                                             getConfig()                                                                                                                                                    Get config that was used to create this bot instance
+*/
 class TeleBot extends Facade
 {
     /**

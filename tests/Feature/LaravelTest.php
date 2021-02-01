@@ -13,6 +13,7 @@ use WeStacks\TeleBot\TeleBot as Bot;
 use WeStacks\TeleBot\Tests\Helpers\StartCommandHandler;
 use WeStacks\TeleBot\Tests\Helpers\TelegramNotification;
 use WeStacks\TeleBot\Tests\Helpers\TestNotifiable;
+use WeStacks\TeleBot\BotManager;
 
 class LaravelTest extends TestCase
 {
@@ -55,6 +56,24 @@ class LaravelTest extends TestCase
         }
         $this->expectException(TeleBotObjectException::class);
         TeleBot::bot('some_wrong_bot');
+    }
+
+    public function testBotManagerConfigs()
+    {
+        /** @var BotManager */
+        $manager = TeleBot::getFacadeRoot();
+        $this->assertTrue($manager->exceptions);
+
+        $manager->exceptions = false;
+        $this->assertFalse($manager->exceptions);
+
+        $manager->exceptions = true;
+        $this->assertTrue($manager->exceptions);
+
+        $this->assertTrue(isset($manager->exceptions));
+
+        $this->expectException(TeleBotObjectException::class);
+        unset($manager->exceptions);
     }
 
     public function testBotMenagerDefaultWrong()

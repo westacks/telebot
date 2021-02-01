@@ -98,6 +98,11 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * @method false|PromiseInterface|true                 logOut()                                                Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.
  * @method false|PromiseInterface|MessageId            copyMessage(array $parameters = [])                     Use this method to copy messages of any kind. The method is analogous to the method forwardMessages, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
  * @method false|PromiseInterface|true                 unpinAllChatMessages(array $parameters = [])            Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' admin right in a supergroup or 'can_edit_messages' admin right in a channel. Returns True on success.
+ * 
+ * @property string $token Your telegram bot token.
+ * @property string $api_url API URL which will be used by library's HTTP client.
+ * @property bool $exceptions By default, bot throws TeleBotRequestException on telegram request errors. You may set this parameter false. In this case bot methods will return false instead of throwing exception.
+ * @property bool $async If you set this parameter true, bot methods will return Guzzle's A+ `PromiseInterface` object, which you can handle mannualy.
  */
 class TeleBot
 {
@@ -105,42 +110,44 @@ class TeleBot
     use HasTelegramMethods;
 
     /**
-     * Bot config.
-     *
+     * Config that was used to create this bot instance
      * @var mixed
+     */
+    protected $input_config = [];
+
+    /**
+     * Actual bot config.
+     * @var array
      */
     protected $config = [];
 
     /**
      * Guzzle HTTP client.
-     *
      * @var Client
      */
     protected $client;
 
     /**
      * Async trigger.
-     *
      * @var bool
      */
     protected $async;
 
     /**
      * Exception trigger.
-     *
      * @var bool
      */
     protected $exceptions;
 
     /**
      * Create new instance of Telegram bot.
-     *
      * @param array|string $config Bot config. Path telegram bot API token as string, or array of parameters
-     *
      * @throws TeleBotObjectException
      */
     public function __construct($config)
     {
+        $this->input_config = $config;
+
         if (is_string($config)) {
             $config = ['token' => $config];
         }
@@ -175,31 +182,58 @@ class TeleBot
         return $method->execute($this->client, $exceptions, $async);
     }
 
+    public function __get(string $name)
+    {
+        return $this->config[$name];
+    }
+
+    public function __set(string $name, $value)
+    {
+        if (!in_array($name, ['token', 'exceptions', 'async', 'api_url'])) {
+            throw TeleBotObjectException::inaccessibleVariable($name, self::class);
+        }
+
+        return $this->config[$name] = $value;
+    }
+
+    public function __isset(string $key)
+    {
+        return isset($this->config[$key]);
+    }
+
+    public function __unset(string $key)
+    {
+        throw TeleBotObjectException::inaccessibleUnsetVariable($key, self::class);
+    }
+
+    /**
+     * Get config that was used to create this bot instance 
+     * @return mixed 
+     */
+    public function getConfig()
+    {
+        return $this->input_config;
+    }
+
     /**
      * Call next method asynchronously (bot method will return guzzle promise).
-     *
      * @param bool $async
-     * 
      * @return self
      */
     public function async(bool $async = true)
     {
         $this->async = $async;
-
         return $this;
     }
 
     /**
      * Throw exceptions on next method (bot method will throw `TeleBotRequestException` on request error).
-     *
      * @param bool $exceptions
-     *
      * @return self
      */
     public function exceptions(bool $exceptions = true)
     {
         $this->exceptions = $exceptions;
-
         return $this;
     }
 }
