@@ -56,7 +56,9 @@ abstract class CommandHandler extends UpdateHandler
             }
 
             $command = substr($update->message->text, $entity->offset, $entity->length);
-            if (in_array($command, static::$aliases)) {
+            preg_match("/^(\/\S+)(\@\S+)|(\/\S+)$/", $command, $match);
+
+            if (count(array_intersect(static::$aliases, $match)) > 0) {
                 return true;
             }
         }
