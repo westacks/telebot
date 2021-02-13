@@ -30,6 +30,8 @@ The library supports 2 ways to handle updates:
     namespace Somewhere\InYour\App;
 
     use WeStacks\TeleBot\Interfaces\UpdateHandler;
+    use WeStacks\TeleBot\Objects\Update;
+    use WeStacks\TeleBot\TeleBot;
 
     class YourUpdateHandler extends UpdateHandler
     {
@@ -40,7 +42,8 @@ The library supports 2 ways to handle updates:
          * @param Update $update
          * @return boolean
          */
-        public static function trigger(Update $update)
+        
+        public static function trigger(Update $update, TeleBot $bot)
         {
             return isset($update->callback_query); // handle callback queries (example)
         }

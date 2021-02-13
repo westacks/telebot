@@ -132,7 +132,7 @@ abstract class UpdateHandler
      *
      * @return bool
      */
-    abstract public static function trigger(Update $update);
+    abstract public static function trigger(Update $update, TeleBot $bot);
 
     /**
      * This function should handle updates.

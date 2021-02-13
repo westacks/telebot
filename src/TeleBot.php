@@ -110,12 +110,6 @@ class TeleBot
     use HasTelegramMethods;
 
     /**
-     * Config that was used to create this bot instance
-     * @var mixed
-     */
-    protected $input_config = [];
-
-    /**
      * Actual bot config.
      * @var array
      */
@@ -146,8 +140,6 @@ class TeleBot
      */
     public function __construct($config)
     {
-        $this->input_config = $config;
-
         if (is_string($config)) {
             $config = ['token' => $config];
         }
@@ -158,14 +150,18 @@ class TeleBot
             throw TeleBotObjectException::configKeyIsRequired('token', self::class);
         }
 
-        $this->addHandler($config['handlers'] ?? []);
-
         $this->config = [
             'token' => $config['token'],
+            'name' => $config['name'] ?? null,
             'exceptions' => $config['exceptions'] ?? true,
             'async' => $config['async'] ?? false,
-            'api_url' => $config['api_url'] ?? 'https://api.telegram.org'
+            'api_url' => $config['api_url'] ?? 'https://api.telegram.org',
+            'webhook' => $config['webhook'] ?? [],
+            'poll' => $config['poll'] ?? [],
+            'handlers' => $config['handlers'] ?? []
         ];
+
+        $this->addHandler($this->config['handlers'] ?? []);
 
         $this->client = new Client(['http_errors' => false]);
     }
@@ -184,6 +180,10 @@ class TeleBot
 
     public function __get(string $name)
     {
+        if (!in_array($name, ['token', 'exceptions', 'async', 'api_url'])) {
+            throw TeleBotObjectException::inaccessibleVariable($name, self::class);
+        }
+
         return $this->config[$name];
     }
 
@@ -207,12 +207,12 @@ class TeleBot
     }
 
     /**
-     * Get config that was used to create this bot instance 
+     * Get bot config
      * @return mixed 
      */
     public function getConfig()
     {
-        return $this->input_config;
+        return $this->config;
     }
 
     /**
