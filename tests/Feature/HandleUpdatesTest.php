@@ -106,7 +106,7 @@ class HandleUpdatesTest extends TestCase
 
     public function testGetConfig()
     {
-        $this->assertEquals(getenv('TELEGRAM_BOT_TOKEN'), $this->bot->getConfig());
+        $this->assertEquals(getenv('TELEGRAM_BOT_TOKEN'), $this->bot->getConfig()['token']);
     }
 
     public function testUpdateConfigOnGo()

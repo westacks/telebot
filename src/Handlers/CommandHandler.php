@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\Handlers;
 use WeStacks\TeleBot\Interfaces\UpdateHandler;
 use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\Update;
+use WeStacks\TeleBot\TeleBot;
 
 /**
  * Abstract class for creating Telegram command handlers.
@@ -44,7 +45,7 @@ abstract class CommandHandler extends UpdateHandler
         return $data;
     }
 
-    public static function trigger(Update $update)
+    public static function trigger(Update $update, TeleBot $bot)
     {
         if (!isset($update->message) || !isset($update->message->entities)) {
             return false;
@@ -56,11 +57,23 @@ abstract class CommandHandler extends UpdateHandler
             }
 
             $command = substr($update->message->text, $entity->offset, $entity->length);
-            if (in_array($command, static::$aliases)) {
+
+            if (in_array($command, static::getSignedAliases($bot))) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    private static function getSignedAliases(TeleBot $bot): array
+    {
+        if (!$name = $bot->getConfig()['name']) {
+            return static::$aliases;
+        }
+
+        return array_merge(array_map(function ($alias) use ($name) {
+            return "$alias@$name";
+        }, static::$aliases), static::$aliases);
     }
 }

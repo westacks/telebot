@@ -2,7 +2,7 @@
 
 The `WeStacks\TeleBot\TeleBot` instance can execute all methods which provided in official Telegram API [documentstion](https://core.telegram.org/bots/api#available-methods).
 
-If you need some working examples always feel free to see our [tests](https://github.com/westacks/telebot/tree/master/tests)
+If you need some working examples always feel free to see our [tests](https://github.com/WeStacks\TeleBot\tree/master/tests)
 
 <!-- tabs:start -->
 
@@ -61,7 +61,7 @@ $message = $bot->sendPhoto([
 
 ## TeleBot methods
 
-* `TeleBot` supports all methods form official Telegram API [documentation](https://core.telegram.org/bots/api#available-methods).
+* `WeStacks\TeleBot\TeleBot` supports all methods form official Telegram API [documentation](https://core.telegram.org/bots/api#available-methods).
 
 Additional library methods:
 
@@ -104,7 +104,7 @@ Additional library methods:
 
 ## BotManager methods
 
-* `BotManager` supports all `TeleBot` methods, passing them to your [default](configuration.md#default-string) bot.
+* `WeStacks\TeleBot\BotManager` supports all `WeStacks\TeleBot\TeleBot` methods, passing them to your [default](configuration.md#default-string) bot.
 
 Additional library methods:
 
@@ -130,4 +130,4 @@ Additional library methods:
 
 ## Laravel TeleBot Facade
 
-`WeStacks\TeleBot\Laravel\TeleBot` - is a [facade](https://refactoring.guru/design-patterns/facade/php/example) for `BotManager` instance. It supports all `BotManager` methods statically. 
+`WeStacks\TeleBot\Laravel\TeleBot` is a [facade](https://laravel.com/docs/facades) for `WeStacks\TeleBot\BotManager` instance. It supports all `BotManager` methods statically (config is used from `config/telebot.php`).
