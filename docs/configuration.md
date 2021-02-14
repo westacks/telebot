@@ -83,10 +83,10 @@ return [
 #### ** Usage **
 
 ```php
-use WeStacks\TeleBot\Laravel\TeleBot as Bot;
+use WeStacks\TeleBot\Laravel\TeleBot;
 
-Bot::getMe();                  // Will be executed by 'bot1' as a default bot
-Bot::bot('bot2')->getMe();     // Will be executed by 'bot2'
+TeleBot::getMe();                  // Will be executed by 'bot1' as a default bot
+TeleBot::bot('bot2')->getMe();     // Will be executed by 'bot2'
 ```
 
 <!-- tabs:end -->
@@ -104,6 +104,11 @@ Bot config may be represented as:
 * `Required`
 * Your telegram bot token. See official Telegram [documentation](https://core.telegram.org/bots/api#authorizing-your-bot).
 
+#### `name` (string)
+
+* Default: `null`
+* Your telegram bot username (ex.: `MyCoolBot`). Used to sign incoming bot commands. If you plan to use bot on group chat with multiple bots, you should set this parameter, or bot will not be able to recognize incoming commands with syntax `/example@MyCoolBot`.
+
 #### `api_url` (string)
 
 * Default: `https://api.telegram.org`
@@ -118,6 +123,16 @@ Bot config may be represented as:
 
 * Default: `false`
 * If you set this parameter `true`, bot methods will return Guzzle Promises, which you can handle mannualy.
+
+#### `webhook` (array)
+
+* Default: `[]`
+* [`setWebhook()`](https://core.telegram.org/bots/api#setwebhook) parameters. Used only by Laravel for `telebot:webhook` command.
+
+#### `poll` (array)
+
+* Default: `[]`
+* [`getUpdates()`](https://core.telegram.org/bots/api#getupdates) parameters. Used only by Laravel for `telebot:polling` command.
 
 #### `handlers` (array)
 
