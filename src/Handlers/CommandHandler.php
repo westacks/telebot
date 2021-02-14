@@ -69,7 +69,7 @@ abstract class CommandHandler extends UpdateHandler
     private static function getSignedAliases(TeleBot $bot): array
     {
         if (!$name = $bot->getConfig()['name']) {
-            return [];
+            return static::$aliases;
         }
 
         return array_merge(array_map(function ($alias) use ($name) {
