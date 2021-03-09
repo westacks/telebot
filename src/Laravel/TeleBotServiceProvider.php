@@ -14,10 +14,12 @@ use WeStacks\TeleBot\Laravel\Controllers\WebhookController;
 
 class TeleBotServiceProvider extends ServiceProvider
 {
-
     public function boot()
     {
-        Route::post('/telebot/webhook/{bot}/{token}', WebhookController::class)->middleware('api')->name('telebot.webhook');
+        Route::post('/telebot/webhook/{bot}/{token}', [
+            'as' => 'telebot.webhook',
+            'uses' => WebhookController::class
+        ]);
     }
 
     public function register()
