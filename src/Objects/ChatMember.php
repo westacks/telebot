@@ -39,6 +39,7 @@ class ChatMember extends TelegramObject
             'until_date' => 'integer',
             'is_anonymous' => 'boolean',
             'can_be_edited' => 'boolean',
+            'can_manage_chat' => 'boolean',
             'can_post_messages' => 'boolean',
             'can_edit_messages' => 'boolean',
             'can_delete_messages' => 'boolean',

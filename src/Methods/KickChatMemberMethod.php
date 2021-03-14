@@ -23,6 +23,7 @@ class KickChatMemberMethod extends TelegramMethod
             'chat_id' => 'string',
             'user_id' => 'integer',
             'until_date' => 'integer',
+            'revoke_messages' => 'boolean',
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

@@ -112,6 +112,7 @@ class Message extends TelegramObject
             'group_chat_created' => 'boolean',
             'supergroup_chat_created' => 'boolean',
             'channel_chat_created' => 'boolean',
+            'message_auto_delete_timer_changed' => MessageAutoDeleteTimerChanged::class,
             'migrate_to_chat_id' => 'integer',
             'migrate_from_chat_id' => 'integer',
             'pinned_message' => Message::class,
