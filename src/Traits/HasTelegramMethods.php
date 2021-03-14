@@ -76,6 +76,9 @@ trait HasTelegramMethods
             'getMyCommands'                     => \WeStacks\TeleBot\Methods\GetMyCommandsMethod::class,
             'sendSticker'                       => \WeStacks\TeleBot\Methods\SendStickerMethod::class,
             'getStickerSet'                     => \WeStacks\TeleBot\Methods\GetStickerSetMethod::class,
+            'createChatInviteLink'              => \WeStacks\TeleBot\Methods\CreateChatInviteLinkMethod::class,
+            'editChatInviteLink'                => \WeStacks\TeleBot\Methods\EditChatInviteLinkMethod::class,
+            'revokeChatInviteLink'              => \WeStacks\TeleBot\Methods\RevokeChatInviteLinkMethod::class,
             // FIXME: next methods are untested
             'kickChatMember'                    => \WeStacks\TeleBot\Methods\KickChatMemberMethod::class,
             'unbanChatMember'                   => \WeStacks\TeleBot\Methods\UnbanChatMemberMethod::class,

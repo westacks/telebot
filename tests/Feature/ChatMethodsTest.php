@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\Objects\Chat;
+use WeStacks\TeleBot\Objects\ChatInviteLink;
 use WeStacks\TeleBot\Objects\ChatMember;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\TeleBot;
@@ -123,5 +124,25 @@ class ChatMethodsTest extends TestCase
             'user_id' => getenv('TELEGRAM_USER_ID'),
         ]);
         $this->assertInstanceOf(ChatMember::class, $member);
+    }
+
+    public function testInviteLinks()
+    {
+        $link = $this->bot->createChatInviteLink([
+            'chat_id' => getenv('TELEGRAM_CHAT_ID'),
+        ]);
+
+        $link = $this->bot->editChatInviteLink([
+            'chat_id' => getenv('TELEGRAM_CHAT_ID'),
+            'invite_link' => $link->invite_link,
+            'member_limit' => 1
+        ]);
+
+        $link = $this->bot->revokeChatInviteLink([
+            'chat_id' => getenv('TELEGRAM_CHAT_ID'),
+            'invite_link' => $link->invite_link,
+        ]);
+
+        $this->assertInstanceOf(ChatInviteLink::class, $link);
     }
 }

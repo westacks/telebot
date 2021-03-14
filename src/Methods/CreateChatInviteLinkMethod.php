@@ -4,27 +4,26 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\Games\GameHighScore;
+use WeStacks\TeleBot\Objects\ChatInviteLink;
 
-class GetGameHighScoresMethod extends TelegramMethod
+class CreateChatInviteLinkMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/getGameHighScores",
+            'url' => "{$this->api}/bot{$this->token}/createChatInviteLink",
             'send' => $this->send(),
-            'expect' => [GameHighScore::class],
+            'expect' => ChatInviteLink::class,
         ];
     }
 
     private function send()
     {
         $parameters = [
-            'user_id' => 'integer',
             'chat_id' => 'string',
-            'message_id' => 'integer',
-            'inline_message_id' => 'string',
+            'expire_date' => 'integer',
+            'member_limit' => 'integer',
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

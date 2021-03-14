@@ -25,7 +25,7 @@ class SetGameScoreMethod extends TelegramMethod
             'score' => 'integer',
             'force' => 'boolean',
             'disable_edit_message' => 'boolean',
-            'chat_id' => 'integer',
+            'chat_id' => 'string',
             'message_id' => 'integer',
             'inline_message_id' => 'string',
         ];
