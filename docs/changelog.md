@@ -50,10 +50,13 @@ All notable changes to `telebot` will be documented here
 ## 1.7.1 - 2021-02-01
 
 - Added `getConfig()` method to the `WeStacks\TeleBot\TeleBot` instance. It will return the passsed to the constructor config. [#8](https://github.com/westacks/telebot/issues/8)
-- Added ability to [change](http://localhost:3000/#/configuration?id=standalone) `WeStacks\TeleBot\TeleBot`'s config parameters "on the go" using get/set syntax.
+- Added ability to [change](https://westacks.github.io/telebot/#/configuration?id=standalone) `WeStacks\TeleBot\TeleBot`'s config parameters "on the go" using get/set syntax.
 
 ## 1.8.0 - 2021-02-14
 - `TeleBot::getConfig()` now returns only parameters that is used for library initialization.
 - Added optional `name` parameter for `TeleBot` initialization. It is used to sign incoming bot commands from public groups/chats (ex.: `/start@CoolBot`).
 - `UpdateHandler::trigger()` function now accepts `TeleBot` instance as second argument (breaking change).
 - Added more details to the docs about `CommandHandler` usage.
+
+## 1.9.0 - 2021-03-14
+- Updated [Bot API](https://core.telegram.org/bots/api) to version 5.1

@@ -57,3 +57,6 @@ All notable changes to `telebot` will be documented in this file
 - Added optional `name` parameter for `TeleBot` initialization. It is used to sign incoming bot commands from public groups/chats (ex.: `/start@CoolBot`).
 - `UpdateHandler::trigger()` function now accepts `TeleBot` instance as second argument (breaking change).
 - Added more details to the docs about `CommandHandler` usage.
+
+## 1.9.0 - 2021-03-14
+- Updated [Bot API](https://core.telegram.org/bots/api) to version 5.1
