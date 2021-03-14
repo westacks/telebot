@@ -37,8 +37,17 @@ class TeleBotServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/config/telebot.php', 'telebot');
 
         $this->publishes([
-            __DIR__.'/config/telebot.php' => config_path('telebot.php'),
+            __DIR__.'/config/telebot.php' => $this->getConfigPath('telebot.php'),
         ]);
+    }
+
+    private function getConfigPath($path = '')
+    {
+        if (function_exists('config_path')) {
+            return config_path($path);
+        }
+
+        return app()->basePath() . '/config' . ($path ? '/' . $path : $path);
     }
 
     private function registerBindings()
