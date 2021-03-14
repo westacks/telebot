@@ -120,6 +120,9 @@ class Message extends TelegramObject
             'connected_website' => 'string',
             'passport_data' => PassportData::class,
             'proximity_alert_triggered' => ProximityAlertTriggered::class,
+            'voice_chat_started' => VoiceChatStarted::class,
+            'voice_chat_ended' => VoiceChatEnded::class,
+            'voice_chat_participants_invited' => VoiceChatParticipantsInvited::class,
             'reply_markup' => InlineKeyboardMarkup::class,
         ];
     }
