@@ -60,3 +60,6 @@ All notable changes to `telebot` will be documented in this file
 
 ## 1.9.0 - 2021-03-14
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 5.1
+
+## 1.9.1 - 2021-03-19
+- Fix minor and major severity issues
