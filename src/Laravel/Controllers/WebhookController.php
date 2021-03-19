@@ -13,7 +13,7 @@ class WebhookController extends Controller
         $realToken = $config['token'] ?? $config;
 
         if ($realToken !== $token) {
-            return abort(404);
+            abort(404);
         }
 
         TeleBot::bot($bot)->handleUpdate();

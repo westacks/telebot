@@ -71,7 +71,7 @@ class TeleBotServiceProvider extends ServiceProvider
     {
         Notification::resolved(function (ChannelManager $service) {
             $service->extend('telegram', function () {
-                return new TelegramChannel(app('telebot'));
+                return new TelegramChannel(TeleBot::getFacadeRoot());
             });
         });
     }

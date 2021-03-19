@@ -7,6 +7,7 @@ use WeStacks\TeleBot\Interfaces\TelegramMethod;
 use WeStacks\TeleBot\Objects\InputFile;
 use WeStacks\TeleBot\Objects\Keyboard;
 use WeStacks\TeleBot\Objects\Message;
+use WeStacks\TeleBot\Objects\MessageEntity;
 
 class SendAudioMethod extends TelegramMethod
 {

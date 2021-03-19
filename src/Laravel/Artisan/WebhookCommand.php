@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Laravel\Artisan;
 
-use function GuzzleHttp\Promise\all;
+use GuzzleHttp\Promise\Utils;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Helper\TableCell;
 use WeStacks\TeleBot\Objects\WebhookInfo;
@@ -71,7 +71,7 @@ class WebhookCommand extends TeleBotCommand
                 })
             ;
         }
-        all($promises)->wait();
+        Utils::all($promises)->wait();
     }
 
     private function removeWebhook(array $bots)
@@ -91,7 +91,7 @@ class WebhookCommand extends TeleBotCommand
                 })
             ;
         }
-        all($promises)->wait();
+        Utils::all($promises)->wait();
     }
 
     private function getInfo(array $bots)
@@ -111,7 +111,7 @@ class WebhookCommand extends TeleBotCommand
                 })
             ;
         }
-        all($promises)->wait();
+        Utils::all($promises)->wait();
     }
 
     private function makeTable(WebhookInfo $info, string $bot)
@@ -123,7 +123,7 @@ class WebhookCommand extends TeleBotCommand
             return compact('key', 'value');
         })->toArray();
 
-        return $this->table([
+        $this->table([
             [new TableCell('Bot: '.$bot, ['colspan' => 2])],
             ['Key', 'Info'],
         ], $rows);
