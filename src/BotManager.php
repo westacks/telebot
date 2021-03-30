@@ -122,14 +122,12 @@ class BotManager
 
     /**
      * Array of bot instances.
-     *
-     * @var TeleBot[]
+     * @var array
      */
     protected $bots = [];
 
     /**
      * Default bot name.
-     *
      * @var string
      */
     protected $default;
@@ -142,7 +140,7 @@ class BotManager
             throw TeleBotObjectException::noBotsSpecified();
         }
         $this->bots = $bots;
-        $this->default($config['default'] ?? array_keys($this->bots)[0]);
+        $this->default($config['default'] ?? array_keys($bots)[0]);
     }
 
     public function __call(string $name, array $arguments)
@@ -176,20 +174,13 @@ class BotManager
 
     /**
      * Get bot by name.
-     *
      * @param string $name bot name
-     *
      * @throws TeleBotObjectException
-     *
      * @return null|TeleBot
      */
     public function bot(string $name = null)
     {
         $bot = $name ?? $this->default;
-
-        if (is_null($bot)) {
-            throw TeleBotObjectException::defaultBotIsNotSet();
-        }
 
         if (!isset($this->bots[$bot])) {
             throw TeleBotObjectException::botNotFound($bot);
@@ -214,10 +205,8 @@ class BotManager
 
     /**
      * Add bot to BotManager.
-     *
      * @param string               $name bot name
      * @param array|string|TeleBot $bot  TeleBot instance or bot config
-     *
      * @return TeleBot added bot
      */
     public function add(string $name, $bot)
@@ -233,7 +222,6 @@ class BotManager
 
     /**
      * Delete bot from BotManager.
-     *
      * @param string $name bot name
      */
     public function delete(string $name)
@@ -246,9 +234,7 @@ class BotManager
 
     /**
      * Set default bot name.
-     *
      * @param string $name bot name
-     *
      * @return TeleBot default bot
      */
     public function default(string $name)

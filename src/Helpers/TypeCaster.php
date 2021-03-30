@@ -54,7 +54,9 @@ class TypeCaster
                 try {
                     return static::cast($value, $_type);
                 }
-                catch (Exception $e) {}
+                catch (Exception $e) {
+                    // We need to check eash avaliable type, so just skip exception.
+                }
             }
 
             TeleBotObjectException::uncastableType($type, gettype($value));

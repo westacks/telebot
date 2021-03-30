@@ -163,6 +163,6 @@ abstract class TelegramObject implements IteratorAggregate
             return $data = $seek;
         }
 
-        throw TeleBotObjectException::undefinedOfset($key, get_class($data) ?? gettype($data));
+        throw TeleBotObjectException::undefinedOfset($key, is_array($data) ? gettype($data) : get_class($data));
     }
 }

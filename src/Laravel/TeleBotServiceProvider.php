@@ -16,6 +16,8 @@ class TeleBotServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        $this->publishConfig();
+
         Route::post('/telebot/webhook/{bot}/{token}', [
             'as' => 'telebot.webhook',
             'uses' => WebhookController::class
@@ -24,10 +26,7 @@ class TeleBotServiceProvider extends ServiceProvider
 
     public function register()
     {
-        if ($this->app->runningInConsole()) {
-            $this->publishConfig();
-            $this->registerCommands();
-        }
+        $this->registerCommands();
         $this->registerBindings();
         $this->registerNotificationDriver();
     }
@@ -38,7 +37,7 @@ class TeleBotServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/config/telebot.php' => $this->getConfigPath('telebot.php'),
-        ]);
+        ], 'telebot');
     }
 
     private function getConfigPath($path = '')
@@ -47,12 +46,12 @@ class TeleBotServiceProvider extends ServiceProvider
             return config_path($path);
         }
 
-        return app()->basePath() . '/config' . ($path ? '/' . $path : $path);
+        return $this->app->basePath() . '/config' . ($path ? '/' . $path : $path);
     }
 
     private function registerBindings()
     {
-        $this->app->singleton(BotManager::class, function ($app) {
+        $this->app->singleton(BotManager::class, function () {
             return new BotManager(config('telebot'));
         });
         $this->app->alias(BotManager::class, 'telebot');

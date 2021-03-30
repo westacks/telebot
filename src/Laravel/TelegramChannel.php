@@ -33,13 +33,14 @@ class TelegramChannel
     public function send($notifiable, Notification $notification)
     {
         try {
+            /** @scrutinizer ignore-call */ 
             $data = $notification->toTelegram($notifiable);
             if (is_string($data)) {
                 $data = new TelegramNotification($data);
             }
             $data = $data->jsonSerialize();
 
-            $bot = $data['bot'];
+            $bot = $data['bot']; 
             $res = [];
 
             foreach ($data['actions'] as $action) {
