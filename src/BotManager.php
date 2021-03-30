@@ -140,7 +140,7 @@ class BotManager
             throw TeleBotObjectException::noBotsSpecified();
         }
         $this->bots = $bots;
-        $this->default($config['default'] ?? array_keys($bots)[0]);
+        $this->default($config['default'] ?? $this->bots()[0]);
     }
 
     public function __call(string $name, array $arguments)
@@ -180,7 +180,7 @@ class BotManager
      */
     public function bot(string $name = null)
     {
-        $bot = $name ?? $this->default;
+        $bot = $name ?? $this->default ?? $this->bots()[0];
 
         if (!isset($this->bots[$bot])) {
             throw TeleBotObjectException::botNotFound($bot);
