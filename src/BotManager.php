@@ -128,7 +128,7 @@ class BotManager
 
     /**
      * Default bot name.
-     * @var string
+     * @var string|null
      */
     protected $default;
 
@@ -180,7 +180,11 @@ class BotManager
      */
     public function bot(string $name = null)
     {
-        $bot = $name ?? $this->default ?? $this->bots()[0];
+        $bot = $name ?? $this->default ?? null;
+
+        if (is_null($bot)) {
+            throw TeleBotObjectException::defaultBotIsNotSet();
+        }
 
         if (!isset($this->bots[$bot])) {
             throw TeleBotObjectException::botNotFound($bot);
