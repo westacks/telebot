@@ -31,6 +31,8 @@ class SendInvoiceMethod extends TelegramMethod
             'start_parameter' => 'string',
             'currency' => 'string',
             'prices' => [LabeledPrice::class],
+            'max_tip_amount' => 'integer',
+            'suggested_tip_amounts' => array('integer'),
             'provider_data' => 'string',
             'photo_url' => 'string',
             'photo_size' => 'integer',
