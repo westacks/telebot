@@ -115,12 +115,14 @@ abstract class UpdateHandler
             'pre_checkout_query_id' => $this->update->pre_checkout_query->id ?? null
         ];
 
+        $data = $arguments[0] ?? [];
+
         foreach ($custom as $key => $val) {
             if (is_null($val)) {
                 continue;
             }
-            if (!array_key_exists($key, $arguments[0])) {
-                $arguments[0][$key] = $val;
+            if (!array_key_exists($key, $data)) {
+                $data[$key] = $val;
             }
         }
 

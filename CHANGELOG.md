@@ -63,3 +63,9 @@ All notable changes to `telebot` will be documented in this file
 
 ## 1.9.1 - 2021-03-19
 - Fix minor and major severity issues
+
+## 1.10.0 - 2021-04-28
+- Updated [Bot API](https://core.telegram.org/bots/api) to version 5.2
+
+## 1.10.1 - 2021-05-05
+- Hotfix. Array of parameters is now has a default value as empty array when calling a bot method on UpdateHandler instance
