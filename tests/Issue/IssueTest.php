@@ -1,6 +1,6 @@
 <?php
 
-namespace WeStacks\TeleBot\Tests\Unit;
+namespace WeStacks\TeleBot\Tests\Issue;
 
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\TeleBot;
