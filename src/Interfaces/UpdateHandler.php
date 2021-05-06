@@ -126,6 +126,7 @@ abstract class UpdateHandler
             }
         }
 
+        $arguments[0] = $data;
         return $this->bot->$name(...$arguments);
     }
 
