@@ -103,7 +103,7 @@ trait HasTelegramMethods
             'setGameScore'                      => \WeStacks\TeleBot\Methods\SetGameScoreMethod::class,
             'getGameHighScores'                 => \WeStacks\TeleBot\Methods\GetGameHighScoresMethod::class,
 
-            'close'                             => \WeStacks\TeleBot\Methods\CloseMethods::class,
+            'close'                             => \WeStacks\TeleBot\Methods\CloseMethod::class,
             'logOut'                            => \WeStacks\TeleBot\Methods\LogOutMethod::class,
             'copyMessage'                       => \WeStacks\TeleBot\Methods\CopyMessageMethod::class,
             'unpinAllChatMessages'              => \WeStacks\TeleBot\Methods\UnpinAllChatMessagesMethod::class,

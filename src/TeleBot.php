@@ -148,9 +148,6 @@ class TeleBot
         if (is_string($config)) {
             $config = ['token' => $config];
         }
-        if (!is_array($config)) {
-            $config = [];
-        }
         if (!isset($config['token'])) {
             throw TeleBotObjectException::configKeyIsRequired('token', self::class);
         }

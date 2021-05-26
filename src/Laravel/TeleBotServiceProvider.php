@@ -70,8 +70,15 @@ class TeleBotServiceProvider extends ServiceProvider
     {
         Notification::resolved(function (ChannelManager $service) {
             $service->extend('telegram', function () {
-                return new TelegramChannel(TeleBot::getFacadeRoot());
+                /** @var BotManager */
+                $bot = TeleBot::getFacadeRoot() ?? new BotManager(config('telebot'));
+                return new TelegramChannel($bot);
             });
         });
+    }
+
+    public function provides()
+    {
+        return [BotManager::class, 'telebot'];
     }
 }

@@ -83,7 +83,7 @@ trait HandlesUpdates
 
         if (is_callable($handler)) {
             $handler($update, $force);
-        } elseif ($force || $handler::trigger($update, $this)) {
+        } elseif ($force || method_exists($handler, 'trigger') && $handler::trigger($update, $this)) {
             (new $handler($this, $update))->handle();
         }
     }
