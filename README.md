@@ -105,6 +105,17 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 - [Dmytro Morozov](https://github.com/PunyFlash)
 - [All Contributors](https://github.com/westacks/telebot/graphs/contributors)
 
+## Dontations
+
+Support this project by sending us a tip.
+
+| Currency | Wallet                                 |
+| -------- | -------------------------------------- |
+| BTC | bc1qfqn93hczerczjj76kcn62nv0c5kt2xqar355g7  |
+| ETH | 0xf3762Fdaf4dC0FD623433070F34c2eDC5224724b  |
+| BCH | qz23y9vjn8xzgz5j9ztllv6pxflal4p94s87e47edc  |
+| LTC | ltc1qu9pdvvh4u5z6a97mevhnueszcu6m5zmx2lsplp |
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
