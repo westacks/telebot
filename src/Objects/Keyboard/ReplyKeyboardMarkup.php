@@ -21,7 +21,7 @@ class ReplyKeyboardMarkup extends Keyboard
             'keyboard' => [[KeyboardButton::class]],
             'resize_keyboard' => 'boolean',
             'one_time_keyboard' => 'boolean',
-            'selective' => 'bookean',
+            'selective' => 'boolean',
         ];
     }
 }
