@@ -5,13 +5,13 @@ namespace WeStacks\TeleBot\Methods;
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
 
-class KickChatMemberMethod extends TelegramMethod
+class DeleteMyCommandsMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/kickChatMember",
+            'url' => "{$this->api}/bot{$this->token}/deleteMyCommands",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];
@@ -20,10 +20,8 @@ class KickChatMemberMethod extends TelegramMethod
     private function send()
     {
         $parameters = [
-            'chat_id' => 'string',
-            'user_id' => 'integer',
-            'until_date' => 'integer',
-            'revoke_messages' => 'boolean',
+            'scope' => BotCommandScope::class,
+            'language_code' => 'string',
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

@@ -4,25 +4,26 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\BotCommand;
 
-class GetMyCommandsMethod extends TelegramMethod
+class BanChatMemberMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/getMyCommands",
+            'url' => "{$this->api}/bot{$this->token}/banChatMember",
             'send' => $this->send(),
-            'expect' => [BotCommand::class],
+            'expect' => 'boolean',
         ];
     }
 
     private function send()
     {
         $parameters = [
-            'scope' => BotCommandScope::class,
-            'language_code' => 'string',
+            'chat_id' => 'string',
+            'user_id' => 'integer',
+            'until_date' => 'integer',
+            'revoke_messages' => 'boolean',
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

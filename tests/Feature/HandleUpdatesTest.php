@@ -73,7 +73,8 @@ class HandleUpdatesTest extends TestCase
         $commands_api = $this->bot->getMyCommands();
 
         $this->assertContainsOnlyInstancesOf(BotCommand::class, $commands_api);
-        $this->bot->setMyCommands(['commands' => []]);
+        $commands_set = $this->bot->deleteMyCommands();
+        $this->assertTrue($commands_set);
 
         $this->expectException(TeleBotMehtodException::class);
         $this->bot->addHandler(Update::class);

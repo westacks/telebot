@@ -5,13 +5,13 @@ namespace WeStacks\TeleBot\Methods;
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
 
-class GetChatMembersCountMethod extends TelegramMethod
+class GetChatMemberCountMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/getChatMembersCount",
+            'url' => "{$this->api}/bot{$this->token}/getChatMemberCount",
             'send' => $this->send(),
             'expect' => 'integer',
         ];

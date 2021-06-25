@@ -30,6 +30,8 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
  */
 class ChatMember extends TelegramObject
 {
+    # WARN: The docs for chat member object was updated on 5.3 https://core.telegram.org/bots/api#chatmember
+    # This still works though.
     protected function relations()
     {
         return [
