@@ -69,3 +69,6 @@ All notable changes to `telebot` will be documented in this file
 
 ## 1.10.1 - 2021-05-05
 - Hotfix. Array of parameters is now has a default value as empty array when calling a bot method on UpdateHandler instance
+
+## 1.11.0 - 2021-06-26
+- Updated [Bot API](https://core.telegram.org/bots/api) to version 5.3
