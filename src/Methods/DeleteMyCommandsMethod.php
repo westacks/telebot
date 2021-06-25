@@ -4,17 +4,16 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\BotCommand;
 
-class GetMyCommandsMethod extends TelegramMethod
+class DeleteMyCommandsMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/getMyCommands",
+            'url' => "{$this->api}/bot{$this->token}/deleteMyCommands",
             'send' => $this->send(),
-            'expect' => [BotCommand::class],
+            'expect' => 'boolean',
         ];
     }
 

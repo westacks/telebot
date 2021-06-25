@@ -74,6 +74,7 @@ trait HasTelegramMethods
             'getChatMember'                     => \WeStacks\TeleBot\Methods\GetChatMemberMethod::class,
             'setMyCommands'                     => \WeStacks\TeleBot\Methods\SetMyCommandsMethod::class,
             'getMyCommands'                     => \WeStacks\TeleBot\Methods\GetMyCommandsMethod::class,
+            'deleteMyCommands'                  => \WeStacks\TeleBot\Methods\DeleteMyCommandsMethod::class,
             'sendSticker'                       => \WeStacks\TeleBot\Methods\SendStickerMethod::class,
             'getStickerSet'                     => \WeStacks\TeleBot\Methods\GetStickerSetMethod::class,
             'createChatInviteLink'              => \WeStacks\TeleBot\Methods\CreateChatInviteLinkMethod::class,
