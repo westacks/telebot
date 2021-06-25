@@ -5,13 +5,13 @@ namespace WeStacks\TeleBot\Methods;
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
 
-class KickChatMemberMethod extends TelegramMethod
+class BanChatMemberMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/kickChatMember",
+            'url' => "{$this->api}/bot{$this->token}/banChatMember",
             'send' => $this->send(),
             'expect' => 'boolean',
         ];
