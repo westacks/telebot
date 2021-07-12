@@ -46,7 +46,7 @@ class Handler extends AbstractProcessingHandler
 
         // define variables for text message
         $this->app = config('app.name');
-        $this->emv = config('app.env');
+        $this->env = config('app.env');
     }
 
     /**
