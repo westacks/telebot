@@ -16,7 +16,16 @@ class TeleBotServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->publishConfig();
+        $this->loadViewsFrom(__DIR__.'/views', 'telebot');
+        $this->mergeConfigFrom(__DIR__.'/config/telebot.php', 'telebot');
+
+        $this->publishes([
+            __DIR__.'/config/telebot.php' => $this->getConfigPath('telebot.php'),
+        ], 'telebot');
+
+        $this->publishes([
+            __DIR__.'/views' => $this->getResourcePath('views/vendor/telebot'),
+        ], 'telebot-views');
 
         Route::post('/telebot/webhook/{bot}/{token}', [
             'as' => 'telebot.webhook',
@@ -31,15 +40,6 @@ class TeleBotServiceProvider extends ServiceProvider
         $this->registerNotificationDriver();
     }
 
-    private function publishConfig()
-    {
-        $this->mergeConfigFrom(__DIR__.'/config/telebot.php', 'telebot');
-
-        $this->publishes([
-            __DIR__.'/config/telebot.php' => $this->getConfigPath('telebot.php'),
-        ], 'telebot');
-    }
-
     private function getConfigPath($path = '')
     {
         if (function_exists('config_path')) {
@@ -47,6 +47,15 @@ class TeleBotServiceProvider extends ServiceProvider
         }
 
         return $this->app->basePath() . '/config' . ($path ? '/' . $path : $path);
+    }
+
+    private function getResourcePath($path = '')
+    {
+        if (function_exists('resource_path')) {
+            return resource_path($path);
+        }
+
+        return $this->app->basePath() . '/resources' . ($path ? '/' . $path : $path);
     }
 
     private function registerBindings()
