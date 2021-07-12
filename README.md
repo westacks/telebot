@@ -92,6 +92,20 @@ class TelegramNotification extends Notification
 }
 ```
 
+##### Log driver
+
+You may log your application errors by sending them to some Telegram chat. Simply add new log driver to a `config/logging.php`:
+
+```php
+'telegram' => [
+    'driver'    => 'custom',
+    'via'       => \WeStacks\TeleBot\Laravel\Log\TelegramLogger::class,
+    'level'     => 'debug',
+    'bot'       => 'bot',
+    'chat_id'   => env('TELEGRAM_LOG_CHAT_ID') // Any chat where bot can write messages.
+]
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
