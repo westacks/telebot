@@ -46,20 +46,23 @@ class CommandsCommand extends TeleBotCommand
     {
         $promises = [];
         foreach ($bots as $bot) {
-            $promises[] = $this->bot->bot($bot)
-                ->async(true)
-                ->exceptions(true)
-                ->setMyCommands([
-                    'commands' => $this->bot->bot($bot)->getLocalCommands(),
-                ])
-                ->then(function (bool $result) use ($bot) {
-                    if ($result) {
-                        $this->info("Success! Bot commands has been set for '{$bot}' bot!");
-                    }
+            foreach ($this->bot->bot($bot)->getLocalCommandsDatasets() as $dataset) {
+                $promises[] = $this->bot->bot($bot)
+                    ->async(true)
+                    ->exceptions(true)
+                    ->setMyCommands([
+                        'commands' => $this->bot->bot($bot)->getLocalCommands()
+                    ])
+                    ->then(function (bool $result) use ($bot, $dataset) {
+                        $scope = $dataset['scope']['type'];
+                        if ($result) {
+                            $this->info("Success! Bot commands with scope '{$scope}' has been set for '{$bot}' bot!");
+                        }
 
-                    return $result;
-                })
-            ;
+                        return $result;
+                    })
+                ;
+            }
         }
         Utils::all($promises)->wait();
     }
@@ -68,18 +71,21 @@ class CommandsCommand extends TeleBotCommand
     {
         $promises = [];
         foreach ($bots as $bot) {
-            $promises[] = $this->bot->bot($bot)
-                ->async(true)
-                ->exceptions(true)
-                ->setMyCommands(['commands' => []])
-                ->then(function (bool $result) use ($bot) {
-                    if ($result) {
-                        $this->info("Success! Bot commands has been removed for '{$bot}' bot!");
-                    }
+            foreach ($this->bot->bot($bot)->getLocalCommandsDatasets() as $dataset) {
+                $promises[] = $this->bot->bot($bot)
+                    ->async(true)
+                    ->exceptions(true)
+                    ->deleteMyCommands($dataset)
+                    ->then(function (bool $result) use ($bot, $dataset) {
+                        $scope = $dataset['scope']['type'];
+                        if ($result) {
+                            $this->info("Success! Bot commands with scope '{$scope}' has been set for '{$bot}' bot!");
+                        }
 
-                    return $result;
-                })
-            ;
+                        return $result;
+                    })
+                ;
+            }
         }
         Utils::all($promises)->wait();
     }

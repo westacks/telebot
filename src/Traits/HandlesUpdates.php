@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\Traits;
 use Closure;
 use Exception;
 use WeStacks\TeleBot\Exception\TeleBotMehtodException;
+use WeStacks\TeleBot\HandlerKernel;
 use WeStacks\TeleBot\Handlers\CommandHandler;
 use WeStacks\TeleBot\Interfaces\UpdateHandler;
 use WeStacks\TeleBot\Objects\BotCommand;
@@ -12,7 +13,12 @@ use WeStacks\TeleBot\Objects\Update;
 
 trait HandlesUpdates
 {
-    private $handlers = [];
+    /**
+     * Kernel of
+     * 
+     * @var HandlerKernel
+     */
+    private $kernel;
 
     /**
      * Add new update handler(s) to the bot instance.
@@ -23,19 +29,7 @@ trait HandlesUpdates
      */
     public function addHandler($handler)
     {
-        if (is_array($handler)) {
-            foreach ($handler as $sub) {
-                $this->addHandler($sub);
-            }
-
-            return;
-        }
-
-        if (!$this->isUpdateHandler($handler)) {
-            throw TeleBotMehtodException::wrongHandlerType(is_string($handler) ? $handler : gettype($handler));
-        }
-
-        $this->handlers[] = $handler;
+        $this->kernel->addHandler($handler);
     }
 
     /**
@@ -43,7 +37,7 @@ trait HandlesUpdates
      */
     public function clearHandlers()
     {
-        $this->handlers = [];
+        $this->kernel = new (get_class($this->kernel));
     }
 
     /**
@@ -59,7 +53,7 @@ trait HandlesUpdates
             return false;
         }
 
-        foreach ($this->handlers as $handler) {
+        foreach ($this->kernel->handlers() as $handler) {
             $this->callHandler($handler, $update);
         }
 
@@ -90,19 +84,31 @@ trait HandlesUpdates
 
     /**
      * Get local bot instance commands registered by commands handlers.
+     * 
+     * @param string $scope Commands scope.
      *
      * @return BotCommand[]
      */
-    public function getLocalCommands()
+    public function getLocalCommands(string $scope = 'default')
     {
-        $commands = [];
-        foreach ($this->handlers as $handler) {
-            if (is_string($handler) && class_exists($handler) && is_subclass_of($handler, CommandHandler::class)) {
-                $commands = array_merge($commands, $handler::getBotCommand());
-            }
-        }
+        return $this->kernel->getCommands($scope);
+    }
 
-        return $commands;
+    public function getLocalCommandsDatasets()
+    {
+        return $this->kernel->commandsDatasets();
+    }
+
+    /**
+     * Get scope with registered commands.
+     * 
+     * @param string $scope Commands scope.
+     *
+     * @return BotCommand[]|BotCommand[][]|BotCommand[][][]
+     */
+    public function getScope(string $scope = 'default')
+    {
+        return $this->kernel->getScope($scope);
     }
 
     /**

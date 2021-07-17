@@ -166,10 +166,15 @@ class TeleBot
             'api_url' => $config['api_url'] ?? 'https://api.telegram.org',
             'webhook' => $config['webhook'] ?? [],
             'poll' => $config['poll'] ?? [],
-            'handlers' => $config['handlers'] ?? []
+            'handlers' => $config['handlers'] ?? null
         ];
 
-        $this->addHandler($this->config['handlers'] ?? []);
+        if (is_subclass_of($hanlers = $this->config['handlers'] ?? [], HandlerKernel::class)) {
+            $this->kernel = new $hanlers;
+        }
+        else {
+            $this->kernel = new HandlerKernel($hanlers);
+        }
 
         $this->client = new Client(['http_errors' => false]);
     }
