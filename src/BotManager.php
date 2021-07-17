@@ -182,7 +182,7 @@ class BotManager
      * Get bot by name.
      * @param string $name bot name
      * @throws TeleBotObjectException
-     * @return null|TeleBot
+     * @return TeleBot
      */
     public function bot(string $name = null)
     {
