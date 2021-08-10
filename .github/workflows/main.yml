@@ -7,7 +7,7 @@ on:
     branches: [ develop-v2 ]
 
 jobs:
-  php-7.2:
+  php-72:
     runs-on: ubuntu-latest
     steps:
     - name: Chekout repository
@@ -25,7 +25,7 @@ jobs:
         TELEGRAM_LOG_CHAT_ID: ${{ secrets.TELEGRAM_LOG_CHAT_ID }}
       run: vendor/bin/phpunit --testdox
 
-  php-7.3:
+  php-73:
     runs-on: ubuntu-latest
     steps:
     - name: Chekout repository
@@ -44,7 +44,7 @@ jobs:
       run: vendor/bin/phpunit --testdox
 
 
-  php-7.4:
+  php-74:
     runs-on: ubuntu-latest
     steps:
     - name: Chekout repository
@@ -62,7 +62,7 @@ jobs:
         TELEGRAM_LOG_CHAT_ID: ${{ secrets.TELEGRAM_LOG_CHAT_ID }}
       run: vendor/bin/phpunit --testdox
 
-  php-8.0:
+  php-80:
     runs-on: ubuntu-latest
     steps:
     - name: Chekout repository
