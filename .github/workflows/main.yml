@@ -2,9 +2,9 @@ name: PHPUnit
 
 on:
   push:
-    branches: [ develop-2 ]
+    branches: [ develop-v2 ]
   pull_request:
-    branches: [ develop-2 ]
+    branches: [ develop-v2 ]
 
 jobs:
   php-7.2:
