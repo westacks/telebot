@@ -22,10 +22,13 @@ class ChatInviteLink extends TelegramObject
         return [
             'invite_link' => 'string',
             'creator' => User::class,
+            'creates_join_request' => 'boolean',
             'is_primary' => 'boolean',
             'is_revoked' => 'boolean',
+            'name' => 'string',
             'expire_date' => 'integer',
             'member_limit' => 'integer',
+            'pending_join_request_count' => 'integer',
         ];
     }
 }

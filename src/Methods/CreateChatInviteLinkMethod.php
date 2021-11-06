@@ -22,8 +22,10 @@ class CreateChatInviteLinkMethod extends TelegramMethod
     {
         $parameters = [
             'chat_id' => 'string',
+            'name' => 'string',
             'expire_date' => 'integer',
             'member_limit' => 'integer',
+            'creates_join_request' => 'boolean'
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

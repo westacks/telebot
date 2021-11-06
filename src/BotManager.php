@@ -104,6 +104,9 @@ use WeStacks\TeleBot\Objects\MessageId;
  * @method false|PromiseInterface|ChatInviteLink       editChatInviteLink(array $parameters = [])              Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the edited invite link as a ChatInviteLink object.
  * @method false|PromiseInterface|ChatInviteLink       revokeChatInviteLink(array $parameters = [])            Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the revoked invite link as ChatInviteLink object.
  * 
+ * @method true|PromiseInterface       approveChatJoinRequest(array $parameters = [])            Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
+ * @method true|PromiseInterface       declineChatJoinRequest(array $parameters = [])            Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
+ * 
  * @method TeleBot              async(bool $async = true)                                       Call next method asynchronously (bot method will return guzzle promise)
  * @method TeleBot              exceptions(bool $exceptions = true)                             Throw exceptions on next method (bot method will throw `TeleBotRequestException` on request error)
  * @method void                 addHandler($handler)                                            Add new update handler(s) to the bot instance

@@ -107,6 +107,9 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * @method false|PromiseInterface|ChatInviteLink       editChatInviteLink(array $parameters = [])              Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the edited invite link as a ChatInviteLink object.
  * @method false|PromiseInterface|ChatInviteLink       revokeChatInviteLink(array $parameters = [])            Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the revoked invite link as ChatInviteLink object.
  * 
+ * @method true|PromiseInterface       approveChatJoinRequest(array $parameters = [])            Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
+ * @method true|PromiseInterface       declineChatJoinRequest(array $parameters = [])            Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
+ * 
  * @property string $token Your telegram bot token.
  * @property string $api_url API URL which will be used by library's HTTP client.
  * @property bool $exceptions By default, bot throws TeleBotRequestException on telegram request errors. You may set this parameter false. In this case bot methods will return false instead of throwing exception.

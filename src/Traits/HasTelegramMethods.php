@@ -81,6 +81,8 @@ trait HasTelegramMethods
             'createChatInviteLink'              => \WeStacks\TeleBot\Methods\CreateChatInviteLinkMethod::class,
             'editChatInviteLink'                => \WeStacks\TeleBot\Methods\EditChatInviteLinkMethod::class,
             'revokeChatInviteLink'              => \WeStacks\TeleBot\Methods\RevokeChatInviteLinkMethod::class,
+            'approveChatJoinRequest'            => \WeStacks\TeleBot\Methods\ApproveChatJoinRequestMethod::class,
+            'declineChatJoinRequest'            => \WeStacks\TeleBot\Methods\DeclineChatJoinRequestMethod::class,
             // FIXME: next methods are untested
             'kickChatMember'                    => \WeStacks\TeleBot\Methods\BanChatMemberMethod::class,
             'banChatMember'                     => \WeStacks\TeleBot\Methods\BanChatMemberMethod::class,

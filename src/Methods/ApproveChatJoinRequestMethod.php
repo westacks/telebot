@@ -4,17 +4,16 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\ChatInviteLink;
 
-class EditChatInviteLinkMethod extends TelegramMethod
+class ApproveChatJoinRequestMethod extends TelegramMethod
 {
     protected function request()
     {
         return [
             'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/editChatInviteLink",
+            'url' => "{$this->api}/bot{$this->token}/approveChatJoinRequest",
             'send' => $this->send(),
-            'expect' => ChatInviteLink::class,
+            'expect' => 'boolean',
         ];
     }
 
@@ -22,11 +21,7 @@ class EditChatInviteLinkMethod extends TelegramMethod
     {
         $parameters = [
             'chat_id' => 'string',
-            'name' => 'string',
-            'invite_link' => 'string',
-            'expire_date' => 'integer',
-            'member_limit' => 'integer',
-            'creates_join_request' => 'boolean'
+            'user_id' => 'string',
         ];
 
         $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);

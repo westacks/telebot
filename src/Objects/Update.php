@@ -44,6 +44,7 @@ class Update extends TelegramObject
             'poll_answer' => PollAnswer::class,
             'my_chat_member' => ChatMemberUpdated::class,
             'chat_member' => ChatMemberUpdated::class,
+            'chat_join_request' => ChatJoinRequest::class,
         ];
     }
 

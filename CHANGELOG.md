@@ -75,3 +75,6 @@ All notable changes to `telebot` will be documented in this file
 
 ## 1.12.0 - 2021-07-12
 - Added logger to log application errors to selected Telegram chat.
+
+## 1.13.0 - 2021-11-06
+- Updated [Bot API](https://core.telegram.org/bots/api) to version 5.4
