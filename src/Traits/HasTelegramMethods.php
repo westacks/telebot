@@ -112,6 +112,8 @@ trait HasTelegramMethods
             'logOut'                            => \WeStacks\TeleBot\Methods\LogOutMethod::class,
             'copyMessage'                       => \WeStacks\TeleBot\Methods\CopyMessageMethod::class,
             'unpinAllChatMessages'              => \WeStacks\TeleBot\Methods\UnpinAllChatMessagesMethod::class,
+            'banChatSenderChat'                 => \WeStacks\TeleBot\Methods\BanChatSenderChatMethod::class,
+            'unbanChatSenderChat'               => \WeStacks\TeleBot\Methods\UnbanChatSenderChatMethod::class,
         ];
         return $relations[$method] ?? null;
     }

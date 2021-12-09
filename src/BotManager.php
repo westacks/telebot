@@ -107,6 +107,9 @@ use WeStacks\TeleBot\Objects\MessageId;
  * @method true|PromiseInterface       approveChatJoinRequest(array $parameters = [])            Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
  * @method true|PromiseInterface       declineChatJoinRequest(array $parameters = [])            Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
  * 
+ * @method true|PromiseInterface       banChatSenderChat(array $parameters = [])                Use this method to ban a channel chat in a supergroup or a channel. Until the chat is unbanned, the owner of the banned chat won't be able to send messages on behalf of any of their channels. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns True on success.
+ * @method true|PromiseInterface       unbanChatSenderChat(array $parameters = [])              Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns True on success.
+ * 
  * @method TeleBot              async(bool $async = true)                                       Call next method asynchronously (bot method will return guzzle promise)
  * @method TeleBot              exceptions(bool $exceptions = true)                             Throw exceptions on next method (bot method will throw `TeleBotRequestException` on request error)
  * @method void                 addHandler($handler)                                            Add new update handler(s) to the bot instance
