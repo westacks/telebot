@@ -24,9 +24,11 @@ use WeStacks\TeleBot\Objects\Stickers\Sticker;
  * @property string                     $forward_signature                    _Optional_. For messages forwarded from channels, signature of the post author if present
  * @property string                     $forward_sender_name                  _Optional_. Sender's name for messages forwarded from users who disallow adding a link to their account in forwarded messages
  * @property int                        $forward_date                         _Optional_. For forwarded messages, date the original message was sent in Unix time
+ * @property bool                       $is_automatic_forward                 _Optional_. True, if the message is a channel post that was automatically forwarded to the connected discussion group
  * @property Message                    $reply_to_message                     _Optional_. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
  * @property User                       $via_bot                              _Optional_. Bot through which the message was sent
  * @property int                        $edit_date                            _Optional_. Date the message was last edited in Unix time
+ * @property bool                       $has_protected_content                _Optional_. True, if the message can't be forwarded
  * @property string                     $media_group_id                       _Optional_. The unique identifier of a media message group this message belongs to
  * @property string                     $author_signature                     _Optional_. Signature of the post author for messages in channels, or the custom title of an anonymous group administrator
  * @property string                     $text                                 _Optional_. For text messages, the actual UTF-8 text of the message, 0-4096 characters
@@ -81,9 +83,11 @@ class Message extends TelegramObject
             'forward_signature' => 'string',
             'forward_sender_name' => 'string',
             'forward_date' => 'integer',
+            'is_automatic_forward' => 'boolean',
             'reply_to_message' => Message::class,
             'via_bot' => User::class,
             'edit_date' => 'integer',
+            'has_protected_content' => 'boolean',
             'media_group_id' => 'string',
             'author_signature' => 'string',
             'text' => 'string',
