@@ -12,8 +12,7 @@ class LongPollCommad extends TeleBotCommand implements SignalableCommandInterfac
     protected $signature = 'telebot:polling
                 {bot? : The bot name defined in the config file.}
                 {--A|all : Perform actions on all your bots.}
-                {--O|once : Poll only one time (for debug purposes).}
-                {--V|verbose : Display detailed info about incoming updates.}';
+                {--O|once : Poll only one time (for debug purposes).}';
 
     protected $description = 'Ease the Process of polling for bot updates.';
 
@@ -55,9 +54,14 @@ class LongPollCommad extends TeleBotCommand implements SignalableCommandInterfac
 
     private function logUpdate(string $bot, Update $update)
     {
-        if ($this->option('verbose')) {
+        $output = $this->getOutput();
+
+        if ($output->isQuiet()) return;
+
+        else if ($output->isVerbose() || $output->isVeryVerbose() || $output->isDebug()) {
             $this->info("Bot: '{$bot}'; Update: {$update}");
         }
+
         else {
             $this->info("Bot: '{$bot}'; Update: {$update->update_id}; Type: '".$update->type()."'");
         }
@@ -65,7 +69,7 @@ class LongPollCommad extends TeleBotCommand implements SignalableCommandInterfac
 
     public function getSubscribedSignals(): array
     {
-        return [SIGINT, SIGTERM, SIGQUIT, SIGKILL];
+        return [SIGINT, SIGTERM, SIGQUIT];
     }
 
     public function handleSignal(int $signal): void
