@@ -2,16 +2,18 @@
 
 namespace WeStacks\TeleBot\Laravel\Artisan;
 
-use Illuminate\Support\Facades\Log;
+use Symfony\Component\Console\Command\SignalableCommandInterface;
 use WeStacks\TeleBot\Objects\Update;
 
-class LongPollCommad extends TeleBotCommand
+class LongPollCommad extends TeleBotCommand implements SignalableCommandInterface
 {
+    protected $poll = true;
+
     protected $signature = 'telebot:polling
                 {bot? : The bot name defined in the config file.}
                 {--A|all : Perform actions on all your bots.}
-                {--L|log : Write updates into Laravel log.}
-                {--O|once : Poll only one time (for debug purposes).}';
+                {--O|once : Poll only one time (for debug purposes).}
+                {--V|verbose : Display detailed info about incoming updates.}';
 
     protected $description = 'Ease the Process of polling for bot updates.';
 
@@ -21,15 +23,13 @@ class LongPollCommad extends TeleBotCommand
             return [$key => 0];
         })->collapse()->toArray();
 
-        $poll = true;
-
         $this->info('Polling telegram updates...');
-        while ($poll) {
+        while ($this->poll) {
             foreach (array_keys($bots) as $bot) {
                 $this->handleUpdates($bot, $bots[$bot]);
             }
             if ($this->option('once')) {
-                $poll = false;
+                $this->poll = false;
             }
         }
 
@@ -55,14 +55,22 @@ class LongPollCommad extends TeleBotCommand
 
     private function logUpdate(string $bot, Update $update)
     {
-        $this->info("Bot: '{$bot}'; update: {$update->update_id}; type: '".$this->getUpdateType($update)."'");
-        if ($this->option('log')) {
-            Log::debug("Bot: '{$bot}'; Update: {$update}");
+        if ($this->option('verbose')) {
+            $this->info("Bot: '{$bot}'; Update: {$update}");
+        }
+        else {
+            $this->info("Bot: '{$bot}'; Update: {$update->update_id}; Type: '".$update->type()."'");
         }
     }
 
-    private function getUpdateType(Update $update)
+    public function getSubscribedSignals(): array
     {
-        return collect(array_keys($update->toArray()))->last();
+        return [SIGINT, SIGTERM, SIGQUIT, SIGKILL];
+    }
+
+    public function handleSignal(int $signal): void
+    {
+        $this->warn('Shutting down Telegram polling...');
+        $this->poll = false;
     }
 }
