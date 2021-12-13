@@ -212,6 +212,20 @@ php artisan telebot:polling
 
 <!-- tabs:end -->
 
+If you are using Laravel Sail as your dev-environment or handle commands by long polling in production, this will be smart to add process to your `supervisor.d` configuration:
+
+```conf
+[program:telebot-polling]
+command=php /var/www/html/artisan telebot:polling
+autostart=true
+autorestart=true
+user=sail
+redirect_stderr=true
+stdout_logfile=/var/www/html/storage/logs/telebot.log
+stopwaitsecs=3600
+
+```
+
 In case you want to run one particular handler for an update you may use [`callHandler()`](methods.md#telebot-methods) method on the bot instance. It's not a point is it registered handler, or not.
 
 ```php
