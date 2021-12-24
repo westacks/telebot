@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\Methods;
 use WeStacks\TeleBot\Helpers\TypeCaster;
 use WeStacks\TeleBot\Interfaces\TelegramMethod;
 use WeStacks\TeleBot\Objects\BotCommand;
+use WeStacks\TeleBot\Objects\BotCommandScope;
 
 class GetMyCommandsMethod extends TelegramMethod
 {
