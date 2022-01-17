@@ -71,9 +71,9 @@ class LongPollCommad extends TeleBotCommand implements SignalableCommandInterfac
     {
         $signals = [];
 
-        if (defined(SIGINT)) $signals[] = SIGINT;
-        if (defined(SIGTERM)) $signals[] = SIGTERM;
-        if (defined(SIGQUIT)) $signals[] = SIGQUIT;
+        if (defined("SIGINT")) $signals[] = SIGINT;
+        if (defined("SIGTERM")) $signals[] = SIGTERM;
+        if (defined("SIGQUIT")) $signals[] = SIGQUIT;
 
         return $signals;
     }
