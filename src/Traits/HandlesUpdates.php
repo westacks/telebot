@@ -37,7 +37,8 @@ trait HandlesUpdates
      */
     public function clearHandlers()
     {
-        $this->kernel = new get_class($this->kernel);
+        $kernel = get_class($this->kernel);
+        $this->kernel = new $kernel;
     }
 
     /**
