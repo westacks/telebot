@@ -2,30 +2,22 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 
+/**
+ * Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
+ *
+ * @property string $chat_id __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property string $title   __Required: Yes__. New chat title, 1-255 characters
+ */
 class SetChatTitleMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/setChatTitle",
-            'send' => $this->send(),
-            'expect' => 'boolean',
-        ];
-    }
+    protected string $method = 'setChatTitle';
 
-    private function send()
-    {
-        $parameters = [
-            'chat_id' => 'string',
-            'title' => 'string',
-        ];
+    protected string $expect = 'boolean';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['json' => TypeCaster::stripArrays($object)];
-    }
+    protected array $parameters = [
+        'chat_id' => 'string',
+        'title' => 'string',
+    ];
 }

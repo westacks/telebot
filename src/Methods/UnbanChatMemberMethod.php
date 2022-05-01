@@ -2,30 +2,24 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 
+/**
+ * Use this method to unban a previously banned user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success.
+ *
+ * @property string $chat_id        __Required: Yes__. Unique identifier for the target group or username of the target supergroup or channel (in the format @username)
+ * @property int    $user_id        __Required: Yes__. Unique identifier of the target user
+ * @property bool   $only_if_banned __Required: Optional__. Do nothing if the user is not banned
+ */
 class UnbanChatMemberMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/unbanChatMember",
-            'send' => $this->send(),
-            'expect' => 'boolean',
-        ];
-    }
+    protected string $method = 'unbanChatMember';
 
-    private function send()
-    {
-        $parameters = [
-            'chat_id' => 'string',
-            'user_id' => 'integer',
-        ];
+    protected string $expect = 'boolean';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['json' => TypeCaster::stripArrays($object)];
-    }
+    protected array $parameters = [
+        'chat_id' => 'string',
+        'user_id' => 'string',
+        'only_if_banned' => 'boolean',
+    ];
 }

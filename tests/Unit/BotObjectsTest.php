@@ -4,7 +4,7 @@ namespace WeStacks\TeleBot\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use WeStacks\TeleBot\BotManager;
-use WeStacks\TeleBot\Exception\TeleBotObjectException;
+use WeStacks\TeleBot\Exceptions\TeleBotException;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\User;
@@ -39,25 +39,25 @@ class BotObjectsTest extends TestCase
 
     public function testBotWithEmptyConfig()
     {
-        $this->expectException(TeleBotObjectException::class);
+        $this->expectException(TeleBotException::class);
         new TeleBot([]);
     }
 
     public function testBotManagerNoBots()
     {
-        $this->expectException(TeleBotObjectException::class);
+        $this->expectException(TeleBotException::class);
         new BotManager();
     }
 
     public function testBotWithWrongConfig()
     {
-        $this->expectException(TeleBotObjectException::class);
+        $this->expectException(TeleBotException::class);
         new TeleBot(123);
     }
 
     public function testWrongObject()
     {
-        $this->expectException(TeleBotObjectException::class);
+        $this->expectError();
         new Message([
             'entities' => 'string',
         ]);
@@ -77,9 +77,9 @@ class BotObjectsTest extends TestCase
         $this->assertTrue(str_contains($result, 'WeStacks\TeleBot\Objects\User Object'));
     }
 
-    public function testCastWrogType()
+    public function testCastWrongType()
     {
-        $this->expectException(TeleBotObjectException::class);
+        $this->expectException(TeleBotException::class);
         new Update([
             'update_id' => [1, 4, 5, 1, 5, 6],
             'message' => 4,
@@ -94,7 +94,9 @@ class BotObjectsTest extends TestCase
         ob_start();
         var_dump($this->object);
         $result = ob_get_clean();
-        $this->assertStringContainsString('WeStacks\\TeleBot\\Objects\\Update', $result);
+        $this->assertStringContainsString(Update::class, $result);
+        $this->assertStringContainsString(Message::class, $result);
+        $this->assertStringContainsString(User::class, $result);
     }
 
     public function testGetByDotNotation()
@@ -105,14 +107,8 @@ class BotObjectsTest extends TestCase
         $data = $this->object->get('some.undefined.variable');
         $this->assertNull($data);
 
-        $this->expectException(TeleBotObjectException::class);
-        $this->object->get('some.undefined.variable', true);
-    }
-
-    public function testDotNotationWrongString()
-    {
-        $this->expectException(TeleBotObjectException::class);
-        $this->object->get('', true);
+        $data = $this->object->get('some.undefined.variable', true);
+        $this->assertTrue($data);
     }
 
     public function testNullCoalescing()
@@ -126,13 +122,13 @@ class BotObjectsTest extends TestCase
 
     public function testSetObjectProperties()
     {
-        $this->expectException(TeleBotObjectException::class);
+        $this->expectException(TeleBotException::class);
         $this->object->some_undefined_variable = 'test';
     }
 
-    public function testUnetObjectProperties()
+    public function testUnsetObjectProperties()
     {
-        $this->expectException(TeleBotObjectException::class);
         unset($this->object->message);
+        $this->assertTrue(empty($this->object->message));
     }
 }

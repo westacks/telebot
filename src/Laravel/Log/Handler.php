@@ -4,32 +4,32 @@ namespace WeStacks\TeleBot\Laravel\Log;
 
 use Monolog\Formatter\FormatterInterface;
 use Monolog\Formatter\LineFormatter;
-use Monolog\Logger;
 use Monolog\Handler\AbstractProcessingHandler;
+use Monolog\Logger;
 use WeStacks\TeleBot\TeleBot;
 
 class Handler extends AbstractProcessingHandler
 {
     /**
-     * Bot instance
+     * Bot instance.
      * @var TeleBot
      */
     protected $bot;
 
     /**
-     * Chat id to send log message
+     * Chat id to send log message.
      * @var string
      */
     protected $chat_id;
-    
+
     /**
-     * App name
+     * App name.
      * @var string
      */
     protected $app;
 
     /**
-     * App env
+     * App env.
      * @var string
      */
     protected $env;
@@ -62,7 +62,7 @@ class Handler extends AbstractProcessingHandler
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected function getDefaultFormatter(): FormatterInterface
     {
@@ -70,7 +70,7 @@ class Handler extends AbstractProcessingHandler
     }
 
     /**
-     * @param array $record
+     * @param  array  $record
      * @return string
      */
     private function formatText(array $record): string
@@ -82,7 +82,7 @@ class Handler extends AbstractProcessingHandler
     }
 
     /**
-     * @param  string  $text
+     * @param string $text
      */
     private function sendMessage(string $text): void
     {

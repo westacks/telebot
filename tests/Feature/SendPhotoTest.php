@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Exception\TeleBotFileException;
+use WeStacks\TeleBot\Exceptions\TeleBotException;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\TeleBot;
 
@@ -16,8 +16,7 @@ class SendPhotoTest extends TestCase
 
     protected function setUp(): void
     {
-        global $bot;
-        $this->bot = $bot;
+        $this->bot = new TeleBot(getenv('TELEGRAM_BOT_TOKEN'));
     }
 
     public function testSendPhotoFromUrl()
@@ -62,7 +61,7 @@ class SendPhotoTest extends TestCase
 
     public function testSendPhotoNull()
     {
-        $this->expectException(TeleBotFileException::class);
+        $this->expectException(TeleBotException::class);
         $this->bot->sendPhoto([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'photo' => null,

@@ -3,12 +3,12 @@
 namespace WeStacks\TeleBot\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Exception\TeleBotObjectException;
+use WeStacks\TeleBot\Exceptions\TeleBotException;
+use WeStacks\TeleBot\Objects\InputContactMessageContent;
+use WeStacks\TeleBot\Objects\InputLocationMessageContent;
 use WeStacks\TeleBot\Objects\InputMessageContent;
-use WeStacks\TeleBot\Objects\InputMessageContent\InputContactMessageContent;
-use WeStacks\TeleBot\Objects\InputMessageContent\InputLocationMessageContent;
-use WeStacks\TeleBot\Objects\InputMessageContent\InputTextMessageContent;
-use WeStacks\TeleBot\Objects\InputMessageContent\InputVenueMessageContent;
+use WeStacks\TeleBot\Objects\InputTextMessageContent;
+use WeStacks\TeleBot\Objects\InputVenueMessageContent;
 
 class InputMessageContentTest extends TestCase
 {
@@ -36,7 +36,7 @@ class InputMessageContentTest extends TestCase
 
     public function testWrongInputMessageContent()
     {
-        $this->expectException(TeleBotObjectException::class);
+        $this->expectException(TeleBotException::class);
         InputMessageContent::create(['something_wrong' => 'some_wrong_type']);
     }
 }

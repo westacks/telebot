@@ -2,33 +2,25 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\Keyboard;
-use WeStacks\TeleBot\Objects\Poll;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
 
+/**
+ * Use this method to stop a poll which was sent by the bot. On success, the stopped [Poll](https://core.telegram.org/bots/api#poll) is returned.
+ *
+ * @property string               $chat_id      __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int                  $message_id   __Required: Yes__. Identifier of the original message with the poll
+ * @property InlineKeyboardMarkup $reply_markup __Required: Optional__. A JSON-serialized object for a new message inline keyboard.
+ */
 class StopPollMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/stopPoll",
-            'send' => $this->send(),
-            'expect' => Poll::class,
-        ];
-    }
+    protected string $method = 'stopPoll';
 
-    private function send()
-    {
-        $parameters = [
-            'chat_id' => 'string',
-            'message_id' => 'integer',
-            'reply_markup' => Keyboard::class,
-        ];
+    protected string $expect = 'Poll';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['json' => TypeCaster::stripArrays($object)];
-    }
+    protected array $parameters = [
+        'chat_id' => 'string',
+        'message_id' => 'integer',
+        'reply_markup' => 'InlineKeyboardMarkup',
+    ];
 }

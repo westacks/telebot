@@ -14,9 +14,10 @@
     "require": {
         "php": "^7.2 || ^8.0",
         "guzzlehttp/guzzle": "^6.0 || ^7.0",
-        "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
+        "illuminate/support": "^9.6"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.8",
         "orchestra/testbench": "^3.5 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
         "php-coveralls/php-coveralls": "^2.2",
         "phpunit/phpunit": "^8.0 || ^9.0"
@@ -38,7 +39,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "WeStacks\\TeleBot\\Laravel\\TeleBotServiceProvider"
+                "WeStacks\\TeleBot\\Laravel\\Providers\\TeleBotServiceProvider"
             ],
             "aliases": {
                 "TeleBot": "WeStacks\\TeleBot\\Laravel\\TeleBot"

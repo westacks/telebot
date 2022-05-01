@@ -2,30 +2,22 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 
+/**
+ * Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
+ *
+ * @property string $chat_id     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property string $description __Required: Optional__. New chat description, 0-255 characters
+ */
 class SetChatDescriptionMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/setChatDescription",
-            'send' => $this->send(),
-            'expect' => 'boolean',
-        ];
-    }
+    protected string $method = 'setChatDescription';
 
-    private function send()
-    {
-        $parameters = [
-            'chat_id' => 'string',
-            'description' => 'string',
-        ];
+    protected string $expect = 'boolean';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['json' => TypeCaster::stripArrays($object)];
-    }
+    protected array $parameters = [
+        'chat_id' => 'string',
+        'description' => 'string',
+    ];
 }

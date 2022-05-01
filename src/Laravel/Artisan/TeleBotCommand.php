@@ -22,7 +22,7 @@ abstract class TeleBotCommand extends Command
      */
     protected function validOptions()
     {
-        if (!$this->option('setup') && !$this->option('remove') && !$this->option('info')) {
+        if (! $this->option('setup') && ! $this->option('remove') && ! $this->option('info')) {
             return 'No task specified!';
         }
 

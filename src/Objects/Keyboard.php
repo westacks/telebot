@@ -2,37 +2,38 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Exception\TeleBotObjectException;
-use WeStacks\TeleBot\Interfaces\TelegramObject;
-use WeStacks\TeleBot\Objects\Keyboard\ForceReply;
-use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
-use WeStacks\TeleBot\Objects\Keyboard\ReplyKeyboardMarkup;
-use WeStacks\TeleBot\Objects\Keyboard\ReplyKeyboardRemove;
+use WeStacks\TeleBot\Contracts\TelegramObject;
+use WeStacks\TeleBot\Exceptions\TeleBotException;
 
 /**
- * This object represents the keyboard / reply markup of the message to be sent. It should be one of: InlineKeyboardMarkup, ReplyKeyboardMarkup, ReplyKeyboardRemove, ForceReply.
+ * This object represents the keyboard / reply markup of the message to be sent. It should be one of:.
+ *
+ * - [InlineKeyboardMarkup](https://core.telegram.org/bots/api#inlinekeyboardmarkup)
+ * - [ReplyKeyboardMarkup](https://core.telegram.org/bots/api#replykeyboardmarkup)
+ * - [ReplyKeyboardRemove](https://core.telegram.org/bots/api#replykeyboardremove)
+ * - [ForceReply](https://core.telegram.org/bots/api#forcereply)
  */
 abstract class Keyboard extends TelegramObject
 {
+    private static $types = [
+        'inline_keyboard' => InlineKeyboardMarkup::class,
+        'keyboard' => ReplyKeyboardMarkup::class,
+        'remove_keyboard' => ReplyKeyboardRemove::class,
+        'force_reply' => ForceReply::class,
+    ];
+
     public static function create($object)
     {
-        if (is_object($object)) {
-            $object = (array) $object;
+        $object = (array) $object;
+
+        foreach (static::$types as $type => $class) {
+            if (! isset($object[$type])) {
+                continue;
+            }
+
+            return new $class($object);
         }
 
-        if (isset($object['inline_keyboard'])) {
-            return new InlineKeyboardMarkup($object);
-        }
-        if (isset($object['keyboard'])) {
-            return new ReplyKeyboardMarkup($object);
-        }
-        if (isset($object['remove_keyboard'])) {
-            return new ReplyKeyboardRemove($object);
-        }
-        if (isset($object['force_reply'])) {
-            return new ForceReply($object);
-        }
-
-        throw TeleBotObjectException::uncastableType(static::class, gettype($object));
+        throw new TeleBotException('Cannot cast value of type '.gettype($object).' to type '.static::class);
     }
 }

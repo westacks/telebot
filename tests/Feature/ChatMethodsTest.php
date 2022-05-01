@@ -18,8 +18,7 @@ class ChatMethodsTest extends TestCase
 
     protected function setUp(): void
     {
-        global $bot;
-        $this->bot = $bot;
+        $this->bot = new TeleBot(getenv('TELEGRAM_BOT_TOKEN'));
     }
 
     public function testSetChatPermissions()
@@ -92,12 +91,12 @@ class ChatMethodsTest extends TestCase
 
         $unpinned = $this->bot->unpinChatMessage([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
-            'message_id' => $message->message_id
+            'message_id' => $message->message_id,
         ]);
         $this->assertTrue($unpinned);
 
         $unpinned = $this->bot->unpinAllChatMessages([
-            'chat_id' => getenv('TELEGRAM_CHAT_ID')
+            'chat_id' => getenv('TELEGRAM_CHAT_ID'),
         ]);
         $this->assertTrue($unpinned);
     }
@@ -114,10 +113,10 @@ class ChatMethodsTest extends TestCase
         ]);
         $this->assertContainsOnlyInstancesOf(ChatMember::class, $members);
 
-        $total = $this->bot->getChatMembersCount([
+        $total = $this->bot->getChatMemberCount([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
         ]);
-        $this->assertTrue(is_integer($total));
+        $this->assertTrue(is_int($total));
 
         $member = $this->bot->getChatMember([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
@@ -135,7 +134,7 @@ class ChatMethodsTest extends TestCase
         $link = $this->bot->editChatInviteLink([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
             'invite_link' => $link->invite_link,
-            'member_limit' => 1
+            'member_limit' => 1,
         ]);
 
         $link = $this->bot->revokeChatInviteLink([

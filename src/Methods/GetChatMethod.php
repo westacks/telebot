@@ -2,30 +2,20 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\Chat;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 
+/**
+ * Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a [Chat](https://core.telegram.org/bots/api#chat) object on success.
+ *
+ * @property string $chat_id __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+ */
 class GetChatMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/getChat",
-            'send' => $this->send(),
-            'expect' => Chat::class,
-        ];
-    }
+    protected string $method = 'getChat';
 
-    private function send()
-    {
-        $parameters = [
-            'chat_id' => 'string',
-        ];
+    protected string $expect = 'Chat';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['json' => TypeCaster::stripArrays($object)];
-    }
+    protected array $parameters = [
+        'chat_id' => 'string',
+    ];
 }

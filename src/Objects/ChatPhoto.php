@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Interfaces\TelegramObject;
+use WeStacks\TeleBot\Contracts\TelegramObject;
 
 /**
  * This object represents a chat photo.
@@ -14,13 +14,10 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
  */
 class ChatPhoto extends TelegramObject
 {
-    protected function relations()
-    {
-        return [
-            'small_file_id' => 'string',
-            'small_file_unique_id' => 'string',
-            'big_file_id' => 'string',
-            'big_file_unique_id' => 'string',
-        ];
-    }
+    protected $attributes = [
+        'small_file_id' => 'string',
+        'small_file_unique_id' => 'string',
+        'big_file_id' => 'string',
+        'big_file_unique_id' => 'string',
+    ];
 }

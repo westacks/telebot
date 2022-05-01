@@ -2,29 +2,20 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 
+/**
+ * Use this method to get the number of members in a chat. Returns Int on success.
+ *
+ * @property string $chat_id __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+ */
 class GetChatMemberCountMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/getChatMemberCount",
-            'send' => $this->send(),
-            'expect' => 'integer',
-        ];
-    }
+    protected string $method = 'getChatMemberCount';
 
-    private function send()
-    {
-        $parameters = [
-            'chat_id' => 'string',
-        ];
+    protected string $expect = 'integer';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['json' => TypeCaster::stripArrays($object)];
-    }
+    protected array $parameters = [
+        'chat_id' => 'string',
+    ];
 }

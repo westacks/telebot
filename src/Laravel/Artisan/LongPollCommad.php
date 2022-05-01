@@ -42,8 +42,7 @@ class LongPollCommad extends TeleBotCommand implements SignalableCommandInterfac
             ->exceptions(true)
             ->getUpdates(array_merge(config("telebot.bots.{$bot}.poll", []), [
                 'offset' => $offset + 1,
-            ]))
-        ;
+            ]));
 
         foreach ($updates as $update) {
             $this->logUpdate($bot, $update);
@@ -56,13 +55,11 @@ class LongPollCommad extends TeleBotCommand implements SignalableCommandInterfac
     {
         $output = $this->getOutput();
 
-        if ($output->isQuiet()) return;
-
-        else if ($output->isVerbose() || $output->isVeryVerbose() || $output->isDebug()) {
+        if ($output->isQuiet()) {
+            return;
+        } elseif ($output->isVerbose() || $output->isVeryVerbose() || $output->isDebug()) {
             $this->info("Bot: '{$bot}'; Update: {$update}");
-        }
-
-        else {
+        } else {
             $this->info("Bot: '{$bot}'; Update: {$update->update_id}; Type: '".$update->type()."'");
         }
     }
@@ -71,9 +68,15 @@ class LongPollCommad extends TeleBotCommand implements SignalableCommandInterfac
     {
         $signals = [];
 
-        if (defined("SIGINT")) $signals[] = SIGINT;
-        if (defined("SIGTERM")) $signals[] = SIGTERM;
-        if (defined("SIGQUIT")) $signals[] = SIGQUIT;
+        if (defined('SIGINT')) {
+            $signals[] = SIGINT;
+        }
+        if (defined('SIGTERM')) {
+            $signals[] = SIGTERM;
+        }
+        if (defined('SIGQUIT')) {
+            $signals[] = SIGQUIT;
+        }
 
         return $signals;
     }

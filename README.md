@@ -14,10 +14,6 @@
 
 TeleBot is a PHP library for telegram bots development. Rich Laravel support out of the box. Has an easy, clean, and extendable way to handle telegram Updates.
 
-> Русский военный корабль, иди нах*й!
-
-> Glory to Ukraine! 🇺🇦 
-
 ## Documentation
 
 Documentation for the library can be found on the [website](https://westacks.github.io/telebot/).

@@ -2,13 +2,11 @@
 
 namespace WeStacks\TeleBot\Tests\Helpers;
 
-use WeStacks\TeleBot\Interfaces\UpdateHandler;
-use WeStacks\TeleBot\Objects\Update;
-use WeStacks\TeleBot\TeleBot;
+use WeStacks\TeleBot\Abstract\UpdateHandler;
 
 class TestUpdateHandler extends UpdateHandler
 {
-    public static function trigger(Update $update, TeleBot $bot)
+    public function trigger()
     {
         return false;
     }

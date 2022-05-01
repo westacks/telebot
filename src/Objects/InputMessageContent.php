@@ -2,37 +2,39 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Exception\TeleBotObjectException;
-use WeStacks\TeleBot\Interfaces\TelegramObject;
-use WeStacks\TeleBot\Objects\InputMessageContent\InputContactMessageContent;
-use WeStacks\TeleBot\Objects\InputMessageContent\InputLocationMessageContent;
-use WeStacks\TeleBot\Objects\InputMessageContent\InputTextMessageContent;
-use WeStacks\TeleBot\Objects\InputMessageContent\InputVenueMessageContent;
+use WeStacks\TeleBot\Contracts\TelegramObject;
+use WeStacks\TeleBot\Exceptions\TeleBotException;
 
 /**
- * This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 4 types: InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent.
+ * This object represents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 5 types:.
+ *
+ * - [InputTextMessageContent](https://core.telegram.org/bots/api#inputtextmessagecontent)
+ * - [InputLocationMessageContent](https://core.telegram.org/bots/api#inputlocationmessagecontent)
+ * - [InputVenueMessageContent](https://core.telegram.org/bots/api#inputvenuemessagecontent)
+ * - [InputContactMessageContent](https://core.telegram.org/bots/api#inputcontactmessagecontent)
+ * - [InputInvoiceMessageContent](https://core.telegram.org/bots/api#inputinvoicemessagecontent)
  */
 abstract class InputMessageContent extends TelegramObject
 {
+    private static $types = [
+        'message_text' => InputTextMessageContent::class,
+        'address' => InputVenueMessageContent::class,
+        'latitude' => InputLocationMessageContent::class,
+        'phone_number' => InputContactMessageContent::class,
+    ];
+
     public static function create($object)
     {
-        if (is_object($object)) {
-            $object = (array) $object;
+        $object = (array) $object;
+
+        foreach (static::$types as $type => $class) {
+            if (! isset($object[$type])) {
+                continue;
+            }
+
+            return new $class($object);
         }
 
-        if (isset($object['message_text'])) {
-            return new InputTextMessageContent($object);
-        }
-        if (isset($object['address'])) {
-            return new InputVenueMessageContent($object);
-        }
-        if (isset($object['latitude'])) {
-            return new InputLocationMessageContent($object);
-        }
-        if (isset($object['phone_number'])) {
-            return new InputContactMessageContent($object);
-        }
-
-        throw TeleBotObjectException::uncastableType(static::class, gettype($object));
+        throw new TeleBotException('Cannot cast value of type '.gettype($object).' to type '.static::class);
     }
 }

@@ -2,33 +2,27 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\ChatPermissions;
 
+/**
+ * Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass True for all permissions to lift restrictions from a user. Returns True on success.
+ *
+ * @property string          $chat_id     __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * @property int             $user_id     __Required: Yes__. Unique identifier of the target user
+ * @property ChatPermissions $permissions __Required: Yes__. A JSON-serialized object for new user permissions
+ * @property int             $until_date  __Required: Optional__. Date when restrictions will be lifted for the user, unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever
+ */
 class RestrictChatMemberMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/restrictChatMember",
-            'send' => $this->send(),
-            'expect' => 'boolean',
-        ];
-    }
+    protected string $method = 'restrictChatMember';
 
-    private function send()
-    {
-        $parameters = [
-            'chat_id' => 'string',
-            'user_id' => 'integer',
-            'permissions' => ChatPermissions::class,
-            'until_date' => 'integer',
-        ];
+    protected string $expect = 'boolean';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['json' => TypeCaster::stripArrays($object)];
-    }
+    protected array $parameters = [
+        'chat_id' => 'string',
+        'user_id' => 'string',
+        'permissions' => 'ChatPermissions',
+        'until_date' => 'integer',
+    ];
 }

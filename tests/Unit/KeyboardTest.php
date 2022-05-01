@@ -3,12 +3,12 @@
 namespace WeStacks\TeleBot\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Exception\TeleBotObjectException;
+use WeStacks\TeleBot\Exceptions\TeleBotException;
+use WeStacks\TeleBot\Objects\ForceReply;
+use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
 use WeStacks\TeleBot\Objects\Keyboard;
-use WeStacks\TeleBot\Objects\Keyboard\ForceReply;
-use WeStacks\TeleBot\Objects\Keyboard\InlineKeyboardMarkup;
-use WeStacks\TeleBot\Objects\Keyboard\ReplyKeyboardMarkup;
-use WeStacks\TeleBot\Objects\Keyboard\ReplyKeyboardRemove;
+use WeStacks\TeleBot\Objects\ReplyKeyboardMarkup;
+use WeStacks\TeleBot\Objects\ReplyKeyboardRemove;
 
 class KeyboardTest extends TestCase
 {
@@ -51,7 +51,7 @@ class KeyboardTest extends TestCase
 
     public function testWrongKeyboard()
     {
-        $this->expectException(TeleBotObjectException::class);
+        $this->expectException(TeleBotException::class);
         Keyboard::create([
             'asdflkjdsglskdfjg' => true,
         ]);

@@ -3,28 +3,28 @@
 namespace WeStacks\TeleBot\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Exception\TeleBotObjectException;
+use WeStacks\TeleBot\Exceptions\TeleBotException;
 use WeStacks\TeleBot\Objects\InlineQueryResult;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultArticle;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultAudio;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedAudio;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedDocument;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedGif;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedMpeg4Gif;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedPhoto;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedSticker;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedVideo;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultCachedVoice;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultContact;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultDocument;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultGame;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultGif;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultLocation;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultMpeg4Gif;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultPhoto;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultVenue;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultVideo;
-use WeStacks\TeleBot\Objects\InlineQueryResult\InlineQueryResultVoice;
+use WeStacks\TeleBot\Objects\InlineQueryResultArticle;
+use WeStacks\TeleBot\Objects\InlineQueryResultAudio;
+use WeStacks\TeleBot\Objects\InlineQueryResultCachedAudio;
+use WeStacks\TeleBot\Objects\InlineQueryResultCachedDocument;
+use WeStacks\TeleBot\Objects\InlineQueryResultCachedGif;
+use WeStacks\TeleBot\Objects\InlineQueryResultCachedMpeg4Gif;
+use WeStacks\TeleBot\Objects\InlineQueryResultCachedPhoto;
+use WeStacks\TeleBot\Objects\InlineQueryResultCachedSticker;
+use WeStacks\TeleBot\Objects\InlineQueryResultCachedVideo;
+use WeStacks\TeleBot\Objects\InlineQueryResultCachedVoice;
+use WeStacks\TeleBot\Objects\InlineQueryResultContact;
+use WeStacks\TeleBot\Objects\InlineQueryResultDocument;
+use WeStacks\TeleBot\Objects\InlineQueryResultGame;
+use WeStacks\TeleBot\Objects\InlineQueryResultGif;
+use WeStacks\TeleBot\Objects\InlineQueryResultLocation;
+use WeStacks\TeleBot\Objects\InlineQueryResultMpeg4Gif;
+use WeStacks\TeleBot\Objects\InlineQueryResultPhoto;
+use WeStacks\TeleBot\Objects\InlineQueryResultVenue;
+use WeStacks\TeleBot\Objects\InlineQueryResultVideo;
+use WeStacks\TeleBot\Objects\InlineQueryResultVoice;
 
 class InlineQueryResultTest extends TestCase
 {
@@ -96,7 +96,7 @@ class InlineQueryResultTest extends TestCase
 
     public function testWrongInlineQueryResult()
     {
-        $this->expectException(TeleBotObjectException::class);
+        $this->expectException(TeleBotException::class);
         InlineQueryResult::create(['type' => 'some_wrong_type']);
     }
 }

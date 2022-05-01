@@ -2,29 +2,20 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 
+/**
+ * Use this method to delete a sticker from a set created by the bot. Returns True on success.
+ *
+ * @property string $sticker __Required: Yes__. File identifier of the sticker
+ */
 class DeleteStickerFromSetMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/deleteStickerFromSet",
-            'send' => $this->send(),
-            'expect' => 'boolean',
-        ];
-    }
+    protected string $method = 'deleteStickerFromSet';
 
-    private function send()
-    {
-        $parameters = [
-            'sticker' => 'string',
-        ];
+    protected string $expect = 'boolean';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['json' => TypeCaster::stripArrays($object)];
-    }
+    protected array $parameters = [
+        'sticker' => 'string',
+    ];
 }

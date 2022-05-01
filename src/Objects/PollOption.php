@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Interfaces\TelegramObject;
+use WeStacks\TeleBot\Contracts\TelegramObject;
 
 /**
  * This object contains information about one answer option in a poll.
@@ -12,11 +12,8 @@ use WeStacks\TeleBot\Interfaces\TelegramObject;
  */
 class PollOption extends TelegramObject
 {
-    protected function relations()
-    {
-        return [
-            'text' => 'string',
-            'voter_count' => 'integer',
-        ];
-    }
+    protected $attributes = [
+        'text' => 'string',
+        'voter_count' => 'integer',
+    ];
 }

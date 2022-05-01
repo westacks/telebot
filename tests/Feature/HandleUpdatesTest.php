@@ -3,46 +3,121 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Exception\TeleBotMehtodException;
-use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Tests\Helpers\StartCommandHandler;
-use WeStacks\TeleBot\Tests\Helpers\TestUpdateHandler;
 
 class HandleUpdatesTest extends TestCase
 {
     /**
-     * @var TeleBot
-     */
-    private $bot;
-
-    /**
-     * @var Array<Update>
+     * @var array<Update>
      */
     private $updates;
 
     protected function setUp(): void
     {
-        global $bot;
-        $this->bot = $bot;
-        $this->updates = $this->bot->getUpdates([]);
+        $from = [
+            'id' => getenv('TELEGRAM_USER_ID'),
+            'is_bot' => false,
+            'first_name' => 'Test',
+            'last_name' => 'Test',
+            'username' => 'Test',
+            'language_code' => 'en',
+        ];
+
+        $chat = [
+            'id' => getenv('TELEGRAM_USER_ID'),
+            'first_name' => 'Test',
+            'last_name' => 'Test',
+            'username' => 'Test',
+            'type' => 'private',
+        ];
+
+        $this->updates = [
+            new Update([
+                'update_id' => 1,
+                'message' => [
+                    'message_id' => 1,
+                    'from' => $from,
+                    'chat' => $chat,
+                    'date' => now()->seconds(-5)->timestamp,
+                    'text' => '/start',
+                    'entities' => [
+                        [
+                            'offset' => 0,
+                            'length' => 6,
+                            'type' => 'bot_command',
+                        ],
+                    ],
+                ],
+            ]),
+            new Update([
+                'update_id' => 2,
+                'message' => [
+                    'message_id' => 2,
+                    'from' => $from,
+                    'chat' => $chat,
+                    'date' => now()->seconds(-4)->timestamp,
+                    'text' => '/test',
+                    'entities' => [
+                        [
+                            'offset' => 0,
+                            'length' => 5,
+                            'type' => 'bot_command',
+                        ],
+                    ],
+                ],
+            ]),
+            new Update([
+                'update_id' => 3,
+                'message' => [
+                    'message_id' => 3,
+                    'from' => $from,
+                    'chat' => $chat,
+                    'date' => now()->seconds(-3)->timestamp,
+                    'text' => 'help',
+                ],
+            ]),
+            new Update([
+                'update_id' => 4,
+                'message' => [
+                    'message_id' => 4,
+                    'from' => $from,
+                    'chat' => $chat,
+                    'date' => now()->seconds(-2)->timestamp,
+                    'text' => '#help',
+                    'entities' => [
+                        [
+                            'offset' => 0,
+                            'length' => 5,
+                            'type' => 'hashtag',
+                        ],
+                    ],
+                ],
+            ]),
+        ];
     }
 
     // You should send any message to your bot in order to have at least one update
-    public function testHandleUpdates()
+    public function testHandleUpdatesSimple()
     {
-        $this->bot->clearHandlers();
-        $this->bot->addHandler([function (Update $update) {
-            echo $update;
-        }]);
+        $bot = new TeleBot([
+            'token' => getenv('TELEGRAM_BOT_TOKEN'),
+            'handlers' => [
+                function (TeleBot $bot, Update $update, $next) {
+                    echo $update;
+
+                    return $next();
+                },
+            ],
+        ]);
 
         foreach ($this->updates as $update) {
             // We will store our handler JSON output into the output buffer and then validate is it the same update
             ob_start();
-            $this->bot->handleUpdate($update);
-            $result = new Update(json_decode(ob_get_clean()));
+            $bot->handleUpdate($update);
+            $result = new Update(json_decode(ob_get_clean(), true));
 
             $this->assertEquals($update->update_id, $result->update_id);
         }
@@ -59,25 +134,25 @@ class HandleUpdatesTest extends TestCase
 
     public function testHandleUpdatesUsingObject()
     {
-        $this->bot->clearHandlers();
-        $this->bot->addHandler(StartCommandHandler::class);
+        $bot = new TeleBot([
+            'token' => getenv('TELEGRAM_BOT_TOKEN'),
+            'handlers' => [
+                StartCommandHandler::class,
+            ],
+        ]);
 
-        $commands = $this->bot->getLocalCommands();
-        $commands_set = $this->bot->setMyCommands(['commands' => $commands]);
+        $commands_set = $bot->setLocalCommands();
         $this->assertTrue($commands_set);
+
+        $current_commands = $bot->getMyCommands();
+        $this->assertContainsOnlyInstancesOf(BotCommand::class, $current_commands);
+
+        $commands_removed = $bot->deleteMyCommands();
+        $this->assertTrue($commands_removed);
 
         foreach ($this->updates as $update) {
-            $this->bot->handleUpdate($update);
+            $bot->handleUpdate($update);
         }
-
-        $commands_api = $this->bot->getMyCommands();
-
-        $this->assertContainsOnlyInstancesOf(BotCommand::class, $commands_api);
-        $commands_set = $this->bot->deleteMyCommands();
-        $this->assertTrue($commands_set);
-
-        $this->expectException(TeleBotMehtodException::class);
-        $this->bot->addHandler(Update::class);
     }
 
     public function testGetBotCommand()
@@ -87,41 +162,9 @@ class HandleUpdatesTest extends TestCase
         $this->assertCount(2, $commands);
     }
 
-    public function testCallHandlerForce()
-    {
-        ob_start();
-        $this->bot->callHandler(TestUpdateHandler::class, new Update([]), true);
-        $this->assertEquals('TestUpdateHandler', ob_get_clean());
-    }
-
-    public function testCallWrongHandler()
-    {
-        $this->expectException(TeleBotMehtodException::class);
-        $this->bot->callHandler('something wrong', new Update([]), true);
-    }
-
-    public function testNoUpdates()
-    {
-        $this->assertFalse($this->bot->handleUpdate());
-    }
-
     public function testGetConfig()
     {
-        $this->assertEquals(getenv('TELEGRAM_BOT_TOKEN'), $this->bot->getConfig()['token']);
-    }
-
-    public function testUpdateConfigOnGo()
-    {
-        $this->assertTrue($this->bot->exceptions);
-
-        $this->bot->exceptions = false;
-        $this->assertFalse($this->bot->exceptions);
-
-        $this->bot->exceptions = true;
-        $this->assertTrue($this->bot->exceptions);
-
-        $this->assertTrue(isset($this->bot->exceptions));
-        $this->expectException(TeleBotObjectException::class);
-        unset($this->bot->exceptions);
+        $bot = new TeleBot(getenv('TELEGRAM_BOT_TOKEN'));
+        $this->assertEquals(getenv('TELEGRAM_BOT_TOKEN'), $bot->config('token'));
     }
 }

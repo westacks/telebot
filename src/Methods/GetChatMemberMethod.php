@@ -2,31 +2,22 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\ChatMember;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 
+/**
+ * Use this method to get information about a member of a chat. Returns a [ChatMember](https://core.telegram.org/bots/api#chatmember) object on success.
+ *
+ * @property string $chat_id __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+ * @property int    $user_id __Required: Yes__. Unique identifier of the target user
+ */
 class GetChatMemberMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/getChatMember",
-            'send' => $this->send(),
-            'expect' => ChatMember::class,
-        ];
-    }
+    protected string $method = 'getChatMember';
 
-    private function send()
-    {
-        $parameters = [
-            'chat_id' => 'string',
-            'user_id' => 'integer',
-        ];
+    protected string $expect = 'ChatMember';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['json' => TypeCaster::stripArrays($object)];
-    }
+    protected array $parameters = [
+        'chat_id' => 'string',
+        'user_id' => 'string',
+    ];
 }

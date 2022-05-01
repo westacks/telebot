@@ -2,30 +2,22 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 
+/**
+ * Use this method to move a sticker in a set created by the bot to a specific position. Returns True on success.
+ *
+ * @property string $sticker  __Required: Yes__. File identifier of the sticker
+ * @property int    $position __Required: Yes__. New sticker position in the set, zero-based
+ */
 class SetStickerPositionInSetMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/setStickerPositionInSet",
-            'send' => $this->send(),
-            'expect' => 'boolean',
-        ];
-    }
+    protected string $method = 'setStickerPositionInSet';
 
-    private function send()
-    {
-        $parameters = [
-            'sticker' => 'string',
-            'position' => 'integer',
-        ];
+    protected string $expect = 'boolean';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['json' => TypeCaster::stripArrays($object)];
-    }
+    protected array $parameters = [
+        'sticker' => 'string',
+        'position' => 'integer',
+    ];
 }

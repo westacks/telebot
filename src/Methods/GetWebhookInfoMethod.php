@@ -2,18 +2,16 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\WebhookInfo;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 
+/**
+ * Use this method to get current webhook status. Requires no parameters. On success, returns a [WebhookInfo](https://core.telegram.org/bots/api#webhookinfo) object. If the bot is using [getUpdates](https://core.telegram.org/bots/api#getupdates), will return an object with the url field empty.
+ */
 class GetWebhookInfoMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/getWebhookInfo",
-            'send' => [],
-            'expect' => WebhookInfo::class,
-        ];
-    }
+    protected string $method = 'getWebhookInfo';
+
+    protected string $expect = 'WebhookInfo';
+
+    protected array $parameters = [];
 }

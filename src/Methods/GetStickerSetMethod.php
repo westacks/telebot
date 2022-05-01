@@ -2,30 +2,20 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\Stickers\StickerSet;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 
+/**
+ * Use this method to get a sticker set. On success, a [StickerSet](https://core.telegram.org/bots/api#stickerset) object is returned.
+ *
+ * @property string $name __Required: Yes__. Name of the sticker set
+ */
 class GetStickerSetMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/getStickerSet",
-            'send' => $this->send(),
-            'expect' => StickerSet::class,
-        ];
-    }
+    protected string $method = 'getStickerSet';
 
-    private function send()
-    {
-        $parameters = [
-            'name' => 'string',
-        ];
+    protected string $expect = 'StickerSet';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['json' => TypeCaster::stripArrays($object)];
-    }
+    protected array $parameters = [
+        'name' => 'string',
+    ];
 }

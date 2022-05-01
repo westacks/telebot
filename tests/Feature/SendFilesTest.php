@@ -17,8 +17,7 @@ class SendFilesTest extends TestCase
 
     protected function setUp(): void
     {
-        global $bot;
-        $this->bot = $bot;
+        $this->bot = new TeleBot(getenv('TELEGRAM_BOT_TOKEN'));
     }
 
     public function testSendAudioFromUrl()
@@ -82,7 +81,7 @@ class SendFilesTest extends TestCase
 
     public function testSendMediaGroup()
     {
-        $message = $this->bot->sendMediaGroup([
+        $messages = $this->bot->sendMediaGroup([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'media' => [
                 [
@@ -94,7 +93,7 @@ class SendFilesTest extends TestCase
                 ],
             ],
         ]);
-        $this->assertInstanceOf(Message::class, $message);
+        $this->assertContainsOnlyInstancesOf(Message::class, $messages);
     }
 
     public function testGetFile()

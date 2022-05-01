@@ -2,31 +2,23 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InputFile;
 
+/**
+ * Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
+ *
+ * @property string    $chat_id __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property InputFile $photo   __Required: Yes__. New chat photo, uploaded using multipart/form-data
+ */
 class SetChatPhotoMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/setChatPhoto",
-            'send' => $this->send(),
-            'expect' => 'boolean',
-        ];
-    }
+    protected string $method = 'setChatPhoto';
 
-    private function send()
-    {
-        $parameters = [
-            'chat_id' => 'string',
-            'photo' => InputFile::class,
-        ];
+    protected string $expect = 'boolean';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['multipart' => TypeCaster::flatten($object)];
-    }
+    protected array $parameters = [
+        'chat_id' => 'string',
+        'photo' => 'InputFile',
+    ];
 }

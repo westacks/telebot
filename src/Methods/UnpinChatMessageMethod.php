@@ -2,30 +2,22 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 
+/**
+ * Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
+ *
+ * @property string $chat_id    __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int    $message_id __Required: Optional__. Identifier of a message to unpin. If not specified, the most recent pinned message (by sending date) will be unpinned.
+ */
 class UnpinChatMessageMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/unpinChatMessage",
-            'send' => $this->send(),
-            'expect' => 'boolean',
-        ];
-    }
+    protected string $method = 'unpinChatMessage';
 
-    private function send()
-    {
-        $parameters = [
-            'chat_id' => 'string',
-            'message_id' => 'integer',
-        ];
+    protected string $expect = 'boolean';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['json' => TypeCaster::stripArrays($object)];
-    }
+    protected array $parameters = [
+        'chat_id' => 'string',
+        'message_id' => 'integer',
+    ];
 }

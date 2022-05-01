@@ -2,19 +2,16 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Interfaces\TelegramObject;
+use WeStacks\TeleBot\Contracts\TelegramObject;
 
 /**
  * This object represents a service message about a change in auto-delete timer settings.
  *
- * @property integer    $message_auto_delete_time       New auto-delete time for messages in the chat
+ * @property int $message_auto_delete_time New auto-delete time for messages in the chat; in seconds
  */
 class MessageAutoDeleteTimerChanged extends TelegramObject
 {
-    protected function relations()
-    {
-        return [
-            'message_auto_delete_time' => 'integer',
-        ];
-    }
+    protected $attributes = [
+        'message_auto_delete_time' => 'integer',
+    ];
 }

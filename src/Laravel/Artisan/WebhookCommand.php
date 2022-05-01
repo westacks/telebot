@@ -51,10 +51,10 @@ class WebhookCommand extends TeleBotCommand
             $webhook = $config['webhook'] ?? [];
             $token = $config['token'] ?? $config ?? null;
 
-            if (!isset($webhook['url'])) {
+            if (! isset($webhook['url'])) {
                 $webhook['url'] = route('telebot.webhook', [
                     'bot' => $bot,
-                    'token' => $token
+                    'token' => $token,
                 ]);
             }
 
@@ -68,8 +68,7 @@ class WebhookCommand extends TeleBotCommand
                     }
 
                     return $result;
-                })
-            ;
+                });
         }
         Utils::all($promises)->wait();
     }
@@ -88,8 +87,7 @@ class WebhookCommand extends TeleBotCommand
                     }
 
                     return $result;
-                })
-            ;
+                });
         }
         Utils::all($promises)->wait();
     }
@@ -108,8 +106,7 @@ class WebhookCommand extends TeleBotCommand
                     $this->makeTable($info, $bot);
 
                     return $info;
-                })
-            ;
+                });
         }
         Utils::all($promises)->wait();
     }

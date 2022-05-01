@@ -3,17 +3,17 @@
 namespace WeStacks\TeleBot\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Exception\TeleBotObjectException;
-use WeStacks\TeleBot\Objects\Passport\PassportElementError;
-use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorDataField;
-use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorFile;
-use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorFiles;
-use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorFrontSide;
-use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorReverseSide;
-use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorSelfie;
-use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorTranslationFile;
-use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorTranslationFiles;
-use WeStacks\TeleBot\Objects\Passport\PassportElementError\PassportElementErrorUnspecified;
+use WeStacks\TeleBot\Exceptions\TeleBotException;
+use WeStacks\TeleBot\Objects\PassportElementError;
+use WeStacks\TeleBot\Objects\PassportElementErrorDataField;
+use WeStacks\TeleBot\Objects\PassportElementErrorFile;
+use WeStacks\TeleBot\Objects\PassportElementErrorFiles;
+use WeStacks\TeleBot\Objects\PassportElementErrorFrontSide;
+use WeStacks\TeleBot\Objects\PassportElementErrorReverseSide;
+use WeStacks\TeleBot\Objects\PassportElementErrorSelfie;
+use WeStacks\TeleBot\Objects\PassportElementErrorTranslationFile;
+use WeStacks\TeleBot\Objects\PassportElementErrorTranslationFiles;
+use WeStacks\TeleBot\Objects\PassportElementErrorUnspecified;
 
 class PassportElementErrorTest extends TestCase
 {
@@ -49,7 +49,7 @@ class PassportElementErrorTest extends TestCase
 
     public function testWrongPassportElementError()
     {
-        $this->expectException(TeleBotObjectException::class);
+        $this->expectException(TeleBotException::class);
         PassportElementError::create(['source' => 'some_wrong_type']);
     }
 }

@@ -2,9 +2,7 @@
 
 namespace WeStacks\TeleBot\Handlers;
 
-use WeStacks\TeleBot\Interfaces\UpdateHandler;
 use WeStacks\TeleBot\Objects\BotCommand;
-use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\TeleBot;
 
 /**
@@ -20,45 +18,41 @@ abstract class CommandHandler extends UpdateHandler
     protected static $aliases = [];
 
     /**
-     * Command descriptioin.
+     * Command description.
      *
      * @var string
      */
     protected static $description = null;
 
     /**
-     * Get BotCommand foreach command `aliases` and `description`.
+     * Get array of Telegram` BotCommand` objects for each command alias.
      *
-     * @return Array<BotCommand>
+     * @return BotCommand[]
      */
-    public static function getBotCommand()
+    final public static function getBotCommand()
     {
-        $data = [];
-
-        foreach (static::$aliases as $name) {
-            $data[] = new BotCommand([
+        return array_map(function ($name) {
+            return new BotCommand([
                 'command' => $name,
                 'description' => static::$description,
             ]);
-        }
-
-        return $data;
+        }, static::$aliases);
     }
 
-    public static function trigger(Update $update, TeleBot $bot)
+    final public function trigger()
     {
-        if (!isset($update->message) || !isset($update->message->entities)) {
+        if (! isset($this->update->message) || ! isset($this->update->message->entities)) {
             return false;
         }
 
-        foreach ($update->message->entities as $entity) {
+        foreach ($this->update->message->entities as $entity) {
             if ('bot_command' != $entity->type) {
                 continue;
             }
 
-            $command = substr($update->message->text, $entity->offset, $entity->length);
+            $command = substr($this->update->message->text, $entity->offset, $entity->length);
 
-            if (in_array($command, static::getSignedAliases($bot))) {
+            if (in_array($command, static::getSignedAliases($this->bot))) {
                 return true;
             }
         }
@@ -68,7 +62,7 @@ abstract class CommandHandler extends UpdateHandler
 
     private static function getSignedAliases(TeleBot $bot): array
     {
-        if (!$name = $bot->getConfig()['name']) {
+        if (! $name = $bot->config('name')) {
             return static::$aliases;
         }
 

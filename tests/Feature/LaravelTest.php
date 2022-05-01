@@ -1,19 +1,18 @@
 <?php
 
-namespace Westacks\Telebot\Tests;
+namespace WeStacks\TeleBot\Tests\Feature;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Notification;
 use Orchestra\Testbench\TestCase;
-use WeStacks\TeleBot\Exception\TeleBotObjectException;
 use WeStacks\TeleBot\Laravel\TeleBot;
-use WeStacks\TeleBot\Laravel\TeleBotServiceProvider;
+use WeStacks\TeleBot\Laravel\Providers\TeleBotServiceProvider;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\TeleBot as Bot;
 use WeStacks\TeleBot\Tests\Helpers\StartCommandHandler;
 use WeStacks\TeleBot\Tests\Helpers\TelegramNotification;
 use WeStacks\TeleBot\Tests\Helpers\TestNotifiable;
-use WeStacks\TeleBot\BotManager;
+use WeStacks\TeleBot\Exceptions\TeleBotException;
 
 class LaravelTest extends TestCase
 {
@@ -39,8 +38,8 @@ class LaravelTest extends TestCase
 
         try {
             TeleBot::bot();
-        } catch (TeleBotObjectException $e) {
-            $this->assertInstanceOf(TeleBotObjectException::class, $e);
+        } catch (TeleBotException $e) {
+            $this->assertInstanceOf(TeleBotException::class, $e);
         }
 
         TeleBot::add('bot', getenv('TELEGRAM_BOT_TOKEN'));
@@ -54,31 +53,13 @@ class LaravelTest extends TestCase
         foreach (TeleBot::bots() as $name) {
             $this->assertInstanceOf(Bot::class, TeleBot::bot($name));
         }
-        $this->expectException(TeleBotObjectException::class);
+        $this->expectException(TeleBotException::class);
         TeleBot::bot('some_wrong_bot');
     }
 
-    public function testBotManagerConfigs()
+    public function testBotManagerDefaultWrong()
     {
-        /** @var BotManager */
-        $manager = TeleBot::getFacadeRoot();
-        $this->assertTrue($manager->exceptions);
-
-        $manager->exceptions = false;
-        $this->assertFalse($manager->exceptions);
-
-        $manager->exceptions = true;
-        $this->assertTrue($manager->exceptions);
-
-        $this->assertTrue(isset($manager->exceptions));
-
-        $this->expectException(TeleBotObjectException::class);
-        unset($manager->exceptions);
-    }
-
-    public function testBotMenagerDefaultWrong()
-    {
-        $this->expectException(TeleBotObjectException::class);
+        $this->expectException(TeleBotException::class);
         TeleBot::default('some_wrong_bot');
     }
 
@@ -100,13 +81,13 @@ class LaravelTest extends TestCase
         Config::set('telebot.bots.bot.webhook.url', 'https://telebot.westacks.com.ua/webhook');
         $this->artisan('telebot:webhook -S -I')->assertExitCode(0);
         $this->artisan('telebot:webhook -R')->assertExitCode(0);
-        
+
         Config::set('telebot.bots.bot.webhook.url', null);
     }
 
     public function testLongPollCommand()
     {
-        $this->artisan('telebot:polling -O -L')->assertExitCode(0);
+        $this->artisan('telebot:polling -O')->assertExitCode(0);
     }
 
     public function testNotification()

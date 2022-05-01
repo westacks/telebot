@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Tests\Helpers;
 
 use Illuminate\Notifications\Notification;
-use WeStacks\TeleBot\Laravel\TelegramNotification as TNotification;
+use WeStacks\TeleBot\Laravel\Notifications\TelegramNotification as TNotification;
 
 class TelegramNotification extends Notification
 {

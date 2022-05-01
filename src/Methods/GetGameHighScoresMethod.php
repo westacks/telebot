@@ -2,33 +2,28 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Helpers\TypeCaster;
-use WeStacks\TeleBot\Interfaces\TelegramMethod;
-use WeStacks\TeleBot\Objects\Games\GameHighScore;
+use WeStacks\TeleBot\Contracts\TelegramMethod;
 
+/**
+ * Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. On success, returns an Array of [GameHighScore](https://core.telegram.org/bots/api#gamehighscore) objects.
+ *
+ * > This method will currently return scores for the target user, plus two of their closest neighbors on each side. Will also return the top three users if the user and his neighbors are not among them. Please note that this behavior is subject to change.
+ *
+ * @property int    $user_id           __Required: Yes__. Target user id
+ * @property int    $chat_id           __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat
+ * @property int    $message_id        __Required: Optional__. Required if inline_message_id is not specified. Identifier of the sent message
+ * @property string $inline_message_id __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
+ */
 class GetGameHighScoresMethod extends TelegramMethod
 {
-    protected function request()
-    {
-        return [
-            'type' => 'POST',
-            'url' => "{$this->api}/bot{$this->token}/getGameHighScores",
-            'send' => $this->send(),
-            'expect' => [GameHighScore::class],
-        ];
-    }
+    protected string $method = 'getGameHighScores';
 
-    private function send()
-    {
-        $parameters = [
-            'user_id' => 'integer',
-            'chat_id' => 'string',
-            'message_id' => 'integer',
-            'inline_message_id' => 'string',
-        ];
+    protected string $expect = 'GameHighScore[]';
 
-        $object = TypeCaster::castValues($this->arguments[0] ?? [], $parameters);
-
-        return ['json' => TypeCaster::stripArrays($object)];
-    }
+    protected array $parameters = [
+        'user_id' => 'string',
+        'chat_id' => 'integer',
+        'message_id' => 'integer',
+        'inline_message_id' => 'string',
+    ];
 }

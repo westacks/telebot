@@ -3,19 +3,20 @@
 namespace WeStacks\TeleBot\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Exception\TeleBotObjectException;
-use WeStacks\TeleBot\Helpers\TypeCaster;
+use WeStacks\TeleBot\Exceptions\TeleBotException;
+use WeStacks\TeleBot\Helpers\Type;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\Update;
 
 class CasterTest extends TestCase
 {
-    public function testCastMultipleTypes() {
-        $false1 = TypeCaster::cast(false, Message::class."|boolean");
-        $false2 = TypeCaster::cast(false, "boolean|".Message::class);
+    public function testCastMultipleTypes()
+    {
+        $false1 = Type::cast(false, Message::class.'|boolean');
+        $false2 = Type::cast(false, 'boolean|'.Message::class);
 
-        $message1 = TypeCaster::cast(['message_id' => 123456], Message::class."|boolean");
-        $message2 = TypeCaster::cast(['message_id' => 123456], "boolean|".Message::class);
+        $message1 = Type::cast(['message_id' => 123456], 'Message|boolean');
+        $message2 = Type::cast(['message_id' => 123456], 'boolean|Message');
 
         $this->assertFalse($false1);
         $this->assertFalse($false2);
@@ -23,8 +24,9 @@ class CasterTest extends TestCase
         $this->assertInstanceOf(Message::class, $message2);
     }
 
-    public function testCastWrongMultiple() {
-        $this->expectException(TeleBotObjectException::class);
-        TypeCaster::cast(12334242, Message::class.'|'.Update::class);
+    public function testCastWrongMultiple()
+    {
+        $this->expectException(TeleBotException::class);
+        Type::cast(12334242, Message::class.'|'.Update::class);
     }
 }

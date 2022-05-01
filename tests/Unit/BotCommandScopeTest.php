@@ -3,15 +3,15 @@
 namespace WeStacks\TeleBot\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Exception\TeleBotObjectException;
+use WeStacks\TeleBot\Exceptions\TeleBotException;
 use WeStacks\TeleBot\Objects\BotCommandScope;
-use WeStacks\TeleBot\Objects\BotCommandScope\BotCommandScopeAllChatAdministrators;
-use WeStacks\TeleBot\Objects\BotCommandScope\BotCommandScopeAllGroupChats;
-use WeStacks\TeleBot\Objects\BotCommandScope\BotCommandScopeAllPrivateChats;
-use WeStacks\TeleBot\Objects\BotCommandScope\BotCommandScopeChat;
-use WeStacks\TeleBot\Objects\BotCommandScope\BotCommandScopeChatAdministrators;
-use WeStacks\TeleBot\Objects\BotCommandScope\BotCommandScopeChatMember;
-use WeStacks\TeleBot\Objects\BotCommandScope\BotCommandScopeDefault;
+use WeStacks\TeleBot\Objects\BotCommandScopeAllChatAdministrators;
+use WeStacks\TeleBot\Objects\BotCommandScopeAllGroupChats;
+use WeStacks\TeleBot\Objects\BotCommandScopeAllPrivateChats;
+use WeStacks\TeleBot\Objects\BotCommandScopeChat;
+use WeStacks\TeleBot\Objects\BotCommandScopeChatAdministrators;
+use WeStacks\TeleBot\Objects\BotCommandScopeChatMember;
+use WeStacks\TeleBot\Objects\BotCommandScopeDefault;
 
 class BotCommandScopeTest extends TestCase
 {
@@ -41,7 +41,7 @@ class BotCommandScopeTest extends TestCase
 
     public function testWrongBotCommandScope()
     {
-        $this->expectException(TeleBotObjectException::class);
+        $this->expectException(TeleBotException::class);
         BotCommandScope::create(['type' => 'some_wrong_type']);
     }
 }

@@ -15,8 +15,7 @@ class WebhookTest extends TestCase
 
     protected function setUp(): void
     {
-        global $bot;
-        $this->bot = $bot;
+        $this->bot = new TeleBot(getenv('TELEGRAM_BOT_TOKEN'));
     }
 
     public function testWebhook()
