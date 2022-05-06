@@ -1,5 +1,7 @@
 ## Creating handlers
 
+When the bot receives an update, the library kernel will pass it through pipline of registered handlers. All handlers should have check if they need to handle the update and then possibly stop handling proccess if this necessary.
+
 The library supports 2 ways to handle updates:
 
 
@@ -9,19 +11,24 @@ The library supports 2 ways to handle updates:
 It is recommended to use closures when handler task is small, so it will not turn your project in total mess:
 
 ```php
-$handler = function(Update $update) {
-    // Do something with your update, for example:
-    if (!isset($update->message)) return;   // Handle only regular messages
-    Log::info($update);                     // Write it to log
+$handler = function(TeleBot $bot, Update $update, $next) {
+    if ($update->message->text === '/start') {
+        return $bot->sendMessage([
+            'chat_id' => $update->chat()->id,
+            'text' => 'Hello, World!'
+        ]);
+    }
+
+    return $next();
 };
 ```
 #### ** Using UpdateHandler **
 
 It is recommended to use `UpdateHandler`, when you know that given task will be quite complex. You need to describe 2 methods for each handler you create:
 
-- `public static trigger(Update, TeleBot): bool`
+- `public trigger(): bool`
 
-    Determines if this handler should handle incoming update (true - should, false - should not). This method will be ignored if you call `TeleBot::callHandler` with `$force = true` flag.
+    Determines if this handler should handle incoming update (true - should, false - should not).
 
 
 - `public handle()`
@@ -29,6 +36,8 @@ It is recommended to use `UpdateHandler`, when you know that given task will be 
     Your handler function
 
 If you fire [bot method](methods#telebot-methods) on `UpdateHandler` instance, the default values for parameters: `chat_id`, `user_id`, `message_id`, `callback_query_id`, `inline_message_id`, `inline_query_id`, `shipping_query_id`, `pre_checkout_query_id` - will be taken from incoming `Update` object. You still may override them pathing them to array of parameters.
+
+If function end up having non-void return value, handling proccess will be stopped and it will be returned to the caller. In case update need to be proccessed by some other handler, you should left this function without return value.
 
 ##### Example handler:
 
@@ -56,7 +65,7 @@ class YourUpdateHandler extends UpdateHandler
         $bot = $this->bot;
 
         // chat_id => $this->update->message->chat->id
-        $this->sendMessage([
+        return $this->sendMessage([
             'text' => 'Hello, World!'
         ]);
     }
@@ -64,9 +73,9 @@ class YourUpdateHandler extends UpdateHandler
 ```
 
 <!-- tabs:end -->
-## Registering handlers 
+## Registering handlers
 
-As you created your handler, you should register it in the bot istance. Bot will automaticaly execute all handlers in order of registration on any incoming update.
+As you created your handler, you should register it in the bot instance. Bot will automatically execute all handlers in order of registration on any incoming update.
 
 ```php
 // Adding handlers on initialization
@@ -85,7 +94,7 @@ $bot->addHandler($handler);
 
 ## Bot commands
 
-The library proviedes an `UpdateHandler` expecially for bot commands, so you could work with them more efficiently. All `CommandHandler` classes should be registered to be avaliable for the `getLocalCommands()` method which is handy for [`setMyCommands()`](https://core.telegram.org/bots/api#setmycommands) method. 
+The library proviedes an `UpdateHandler` specially for bot commands, so you could work with them more efficiently. All `CommandHandler` classes should be registered to be avaliable for the `setLocalCommands()` method which is handy for registering all bot commands for your bot.
 
 <!-- tabs:start -->
 
@@ -107,7 +116,7 @@ class StartCommand extends CommandHandler
 
     public function handle()
     {
-        $this->sendMessage([
+        return $this->sendMessage([
             'text' => 'Hello, World!'
         ]);
     }
@@ -135,14 +144,10 @@ $bot->addHandler(\Somewhere\InYour\App\StartCommand::class);
 
 ```php
 // Registering commands on Telegram API for user's autocompletion
-$bot->setMyCommands([
-    'commands' => $bot->getLocalCommands()
-]);
+$bot->setLocalCommands();
 
 // Removing all commands from Telegram API
-$bot->setMyCommands([
-    'commands' => []
-]);
+$bot->deleteLocalCommands();
 ```
 
 ##### Laravel:
@@ -157,7 +162,7 @@ php artisan telebot:commands --remove
 <!-- tabs:end -->
 ## Handling updates
 
-You may run all registered handlers using `handleUpdate()` method
+You may run start handling proccess using `handleUpdate()` method
 
 <!-- tabs:start -->
 
@@ -171,14 +176,15 @@ $bot->setWebhook([
     'url' => 'https://example.com/webhook.php'
 ])
 
-// To handle update from webhook, run `handleUpdate` method with no parameters
-// Update will be created from incoming POST request
-$update = $bot->handleUpdate();
+// To handle update from webhook, run `handleUpdate`
+$bot->handleUpdate(
+    new Update(file_get_contents('php://input'))
+);
 ```
 
 ##### Laravel:
 
-Library automaticaly creates a route for handling your webhook. You need only register it:
+Library automatically creates a route for handling your webhook. You need only register it:
 
 ```bash
 ## Register webhook route
@@ -187,7 +193,7 @@ php artisan telebot:webhook --setup
 
 #### ** Handling updates using long polling**
 
-Long polling is not that optimal sollution as a webhook and works much slower. But it's realy usefull for local development if you don't want to deploy your bot each time to test your whole application.
+Long polling is not that optimal solution as a webhook and works much slower. But it's really usefull for local development if you don't want to deploy your bot each time to test your whole application.
 ##### Standalone:
 
 ```php
@@ -226,9 +232,55 @@ stopwaitsecs=3600
 
 ```
 
-In case you want to run one particular handler for an update you may use [`callHandler()`](methods.md#telebot-methods) method on the bot instance. It's not a point is it registered handler, or not.
+## Customizing proccess
+
+There is quite chance that you may want your handlers to depend on the state or your application and not be same every request. Or attach commands scopes to your handlers. Or want to extend handling proccess with some custom logic. This is possible by oweriding `Kernel` class.
 
 ```php
-$bot->callHandler(\Somewhere\InYour\App\YourUpdateHandler::class, $update);
+<?php
+
+namespace Somewhere\InYour\App;
+
+use WeStacks\TeleBot\Kernel as TeleBotKernel;
+use WeStacks\TeleBot\TeleBot;
+
+class Kernel extends TeleBotKernel
+{
+    protected $handlers = [
+        \Somewhere\InYour\App\YourUpdateHandler::class,
+    ];
+
+    public function __construct(array $handlers = [])
+    {
+        // Modify your handlers here or declare directly on the class
+    }
+
+    public function setCommands(TeleBot &$bot)
+    {
+        // Set bot commands for any scope you want
+
+        return $bot->setMyCommands([
+            'commands' => $this->getLocalCommands(),
+            'scope' => 'default'
+        ]);
+    }
+
+    public function deleteCommands(TeleBot &$bot)
+    {
+        // Delete bot commands for any scope you want
+
+        return $bot->deleteMyCommands([
+            'scope' => 'default'
+        ]);
+    }
+}
 ```
 
+When you're done, you can easily use your custom kernel in your bot instance:
+```php
+// Adding handlers on initialization
+$bot = new TeleBot([
+    'token' => '<your bot token>',
+    'handlers' => \Somewhere\InYour\App\Kernel::class
+]);
+```

@@ -4,10 +4,7 @@
 
 <p align="center">
 <a href="https://packagist.org/packages/westacks/telebot"><img src="https://poser.pugx.org/westacks/telebot/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://core.telegram.org/bots/api"><img src="https://img.shields.io/badge/Bot%20API-5.5-blue" alt="Bot API Version"></a>
-<a href="https://travis-ci.org/westacks/telebot"><img src="https://travis-ci.org/westacks/telebot.svg" alt="Build Status"></a>
-<a href='https://coveralls.io/github/westacks/telebot'><img src='https://coveralls.io/repos/github/westacks/telebot/badge.svg' alt='Coverage Status' /></a>
-<a href="https://scrutinizer-ci.com/g/westacks/telebot/"><img alt="Code quality" src="https://img.shields.io/scrutinizer/quality/g/westacks/telebot"></a>
+<a href="https://core.telegram.org/bots/api"><img src="https://img.shields.io/badge/Bot%20API-6.0-blue" alt="Bot API Version"></a>
 <a href="https://packagist.org/packages/westacks/telebot"><img src="https://poser.pugx.org/westacks/telebot/d/total.svg" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/westacks/telebot"><img src="https://poser.pugx.org/westacks/telebot/license.svg" alt="License"></a>
 </p>
@@ -27,6 +24,37 @@ $manager->getMe(); // Fired by default bot specified in BotManager
 $manager->bot('bot2')->getMe(); // Fired by `bot2` specified in BotManager
 ```
 
+### Object oriented and functional handlers
+
+```php
+// Functional handler
+$handler = function(TeleBot $bot, Update $update, $next) {
+    if ($update->message->text === '/start') {
+        return $bot->sendMessage([
+            'chat_id' => $update->chat()->id,
+            'text' => 'Hello, World!'
+        ]);
+    }
+
+    return $next();
+};
+
+
+// Object oriented handler
+class YourUpdateHandler extends CommandHandler
+{
+    protected static $aliases = ['/start'];
+    protected static $description = 'Your description';
+
+    public function handle()
+    {
+        return $this->sendMessage([
+            'text' => 'Hello, World!'
+        ]);
+    }
+}
+```
+
 ### Laravel Support
 
 Library provides a Facade, artisan commands and notification channel to simplify the development process of your bot, if you are using Laravel:
@@ -34,7 +62,7 @@ Library provides a Facade, artisan commands and notification channel to simplify
 ##### Facade
 ```php
 TeleBot::getMe();
-TeleBot::bot('bot2')->getMe(); 
+TeleBot::bot('bot2')->getMe();
 ```
 
 ##### Automatic webhook generation
@@ -43,7 +71,7 @@ After you insert your bot token, to create a webhook you need only to fire the f
 ```bash
 $ php artisan telebot:webhook --setup
 ```
-Route for handling updates is generated automaticaly for your `APP_URL`
+Route for handling updates is generated automatically for your `APP_URL`
 
 
 ##### Long polling
@@ -55,7 +83,7 @@ $ php artisan telebot:polling
 
 ##### Setup commands autocompletion
 
-The following command will automaticaly setup autocompletion for all registered bot commands on Telegram servers: 
+The following command will automatically setup autocompletion for all registered bot commands on Telegram servers:
 ```bash
 $ php artisan telebot:commands --setup
 ```
@@ -118,17 +146,6 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 - [Dmytro Morozov](https://github.com/PunyFlash)
 - [All Contributors](https://github.com/westacks/telebot/graphs/contributors)
-
-## Dontations
-
-Support this project by sending us a tip.
-
-| Currency | Wallet                                 |
-| -------- | -------------------------------------- |
-| BTC | bc1qfqn93hczerczjj76kcn62nv0c5kt2xqar355g7  |
-| ETH | 0xf3762Fdaf4dC0FD623433070F34c2eDC5224724b  |
-| BCH | qz23y9vjn8xzgz5j9ztllv6pxflal4p94s87e47edc  |
-| LTC | ltc1qu9pdvvh4u5z6a97mevhnueszcu6m5zmx2lsplp |
 
 ## License
 

@@ -81,3 +81,10 @@ All notable changes to `telebot` will be documented in this file
 
 ## 1.14.0 - 2021-12-09
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 5.5
+
+## 2.0.0 - 2022-06-06
+- Updated [Bot API](https://core.telegram.org/bots/api) to version 6.0
+- Refactored and optimized codebase. Updated all methods and objects along with latest Bot API. Some classes changed namespaces such as `CommandHandler`, `UpdateHandler`. Be aware during migration to the newer version.
+- Added customizable Kernel for handling updates and registering bot commands
+- Removed various library exceptions. Now only using `TeleBotException`
+- Version `1.x` is dropped out of official support. Hovever pull requests are welcome to the `1.x` branch.

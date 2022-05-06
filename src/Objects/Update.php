@@ -60,9 +60,8 @@ class Update extends TelegramObject
      */
     public function type()
     {
-        $types = ['message', 'edited_message', 'channel_post', 'edited_channel_post', 'inline_query', 'chosen_inline_result', 'callback_query', 'shipping_query', 'pre_checkout_query', 'poll', 'poll_answer', 'my_chat_member', 'chat_member'];
         foreach ($this as $key => $value) {
-            if (in_array($key, $types)) {
+            if ($key !== 'update_id') {
                 return $key;
             }
         }
@@ -76,7 +75,12 @@ class Update extends TelegramObject
      */
     public function message()
     {
-        return $this->message ?? $this->edited_message ?? $this->channel_post ?? $this->edited_channel_post ?? $this->callback_query->message ?? null;
+        return  $this->message ??
+                $this->edited_message ??
+                $this->channel_post ??
+                $this->edited_channel_post ??
+                $this->callback_query->message ??
+                null;
     }
 
     /**
@@ -85,7 +89,11 @@ class Update extends TelegramObject
      */
     public function chat()
     {
-        return $this->message()->chat ?? $this->chat_member->chat ?? $this->my_chat_member->chat ?? null;
+        return  $this->message()->chat ??
+                $this->chat_member->chat ??
+                $this->my_chat_member->chat ??
+                $this->chat_join_request->chat ??
+                null;
     }
 
     /**
@@ -94,6 +102,19 @@ class Update extends TelegramObject
      */
     public function user()
     {
-        return $this->message->from ?? $this->edited_message->from ?? $this->channel_post->from ?? $this->edited_channel_post->from ?? $this->inline_query->from ?? $this->chosen_inline_result->from ?? $this->callback_query->from ?? $this->shipping_query->from ?? $this->pre_checkout_query->from ?? $this->poll_answer->user ?? $this->chat_member->from ?? $this->my_chat_member->from ?? null;
+        return  $this->message->from ??
+                $this->edited_message->from ??
+                $this->channel_post->from ??
+                $this->edited_channel_post->from ??
+                $this->inline_query->from ??
+                $this->chosen_inline_result->from ??
+                $this->callback_query->from ??
+                $this->shipping_query->from ??
+                $this->pre_checkout_query->from ??
+                $this->poll_answer->user ??
+                $this->chat_member->from ??
+                $this->my_chat_member->from ??
+                $this->chat_join_request->from ??
+                null;
     }
 }

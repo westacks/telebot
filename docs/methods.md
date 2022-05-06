@@ -70,36 +70,33 @@ Additional library methods:
     * Returns: `self`
 
 * **`exceptions(bool $exceptions = true)`**
-    * Throw exceptions on next method, ignoring config parameter (bot method will throw `TeleBotRequestException` on request error)
+    * Throw exceptions on next method, ignoring config parameter (bot method will throw `TeleBotException` on request error)
     * Returns: `self`
 
-* **`getConfig()`**
-    * Get config that was used to create this bot instance
+* **`config($value = null)`**
+    * Get config that was used to create this bot instance. Passed key as argument will return only selected value instead of whole config.
     * Returns: `mixed`
 
-* **`handleUpdate(Update $update = null)`**
-    * Handle Telegram [Update](https://core.telegram.org/bots/api#update) using registered update handlers. If given update is `null`, the library will try to create update from incoming `POST` request (in case you are using webhook). See more details in [Handling updates](updates.md) section
-    * Returns: `Update|False` - given update, or `false` in case `Update` was not valid.
+* **`handleUpdate(Update $update)`**
+    * Handle Telegram [Update](https://core.telegram.org/bots/api#update) using registered update handlers. See more details in [Handling updates](updates.md) section.
+    * Returns: `mixed` - result of handled update
 
 * **`addHandler($handler)`**
     * Add new update handler(s) to the bot instance. See more details in [Handling updates](updates.md) section
     * `$handler` - closure function or `UpdateHandler` class resolution.
     * Returns: `void`
 
-* **`callHandler($handler, $update, $force = false)`**
-    * Run update handler.
-    * `$handler` - closure function or `UpdateHandler` class resolution.
-    * `$update` - Telegram update.
-    * `$force` - Run handler unconditionally.
-    * Returns: `void`
-
 * **`clearHandlers()`**
     * Remove all update handlers from bot instance
     * Returns: `void`
 
-* **`getLocalCommands()`**
-    * Get local bot instance commands registered by commands handlers. See more details in [Handling commands](updates.md#commands) section
-    * Returns: `BotCommand[]` - Array of bot commands, ready to be used by [setMyCommands](https://core.telegram.org/bots/api#setmycommands) method.
+* **`setLocalCommands()`**
+    * Sets locally registered bot commands on Telegram API server. See [Handling commands](updates.md#commands) section for more details. Can be customized by custom Kernel.
+    * Returns: `mixed` - By default returns `true` if commands were set.
+
+* **`deleteLocalCommands()`**
+    * Deletes locally registered bot commands from Telegram API server. See [Handling commands](updates.md#commands) section for more details. Can be customized by custom Kernel.
+    * Returns: `mixed` - By default returns `true` if commands were deleted.
 
 
 ## BotManager methods
