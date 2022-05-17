@@ -86,6 +86,6 @@ abstract class UpdateHandler
             $result = $this->handle();
         }
 
-        return $result ?? $next();
+        return $result ?? (is_callable($next) ? $next() : null);
     }
 }
