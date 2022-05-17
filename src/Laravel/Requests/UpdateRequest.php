@@ -37,7 +37,7 @@ class UpdateRequest extends FormRequest
 
     public function update()
     {
-        if (!$this->update) {
+        if (empty($this->update)) {
             $this->update = new Update($this->validated());
         }
         return $this->update;
