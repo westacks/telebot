@@ -38,11 +38,11 @@ class Kernel
             $runner->next();
 
             return $runner->valid() ?
-                $runner->current()($update, $pipeline()) :
+                $runner->current()($update, $pipeline) :
                 $runner->getReturn();
         };
 
-        return $start($update, $pipeline());
+        return $start($update, $pipeline);
     }
 
     public function setCommands(TeleBot &$bot)
