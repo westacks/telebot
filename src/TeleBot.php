@@ -3,6 +3,8 @@
 namespace WeStacks\TeleBot;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Middleware;
 use WeStacks\TeleBot\Exceptions\TeleBotException;
 use WeStacks\TeleBot\Traits\HandlesUpdates;
 use WeStacks\TeleBot\Traits\HasTelegramMethods;
@@ -48,6 +50,12 @@ class TeleBot
     protected $exceptions;
 
     /**
+     * History.
+     * @var array
+     */
+    protected $history = [];
+
+    /**
      * Create new instance of Telegram bot.
      * @param  array|string     $config Bot config. Path telegram bot API token as string, or array of parameters
      * @throws TeleBotException
@@ -72,9 +80,14 @@ class TeleBot
             'handlers' => $config['handlers'] ?? null,
         ];
 
+        $history = Middleware::history($this->history);
+        $handlerStack = HandlerStack::create();
+        $handlerStack->push($history);
+
         $this->client = new Client([
             'base_uri' => $this->config['api_url'].'/bot'.$this->config['token'].'/',
             'http_errors' => false,
+            'handler' => $handlerStack,
         ]);
 
         if (is_subclass_of($handlers = $this->config['handlers'] ?? [], Kernel::class)) {
@@ -93,13 +106,24 @@ class TeleBot
         $method = new $Method(
             $this->client,
             $this->exceptions ?? $this->config['exceptions'],
-            $this->async ?? $this->config['async']
+            $this->async ?? $this->config['async'],
+            $this->fake ?? false
         );
 
         $this->exceptions = null;
         $this->async = null;
+        $this->fake = null;
 
         return $method(...$arguments);
+    }
+
+    /**
+     * Get bot request history.
+     * @return array
+     */
+    public function history()
+    {
+        return $this->history;
     }
 
     /**
@@ -123,6 +147,18 @@ class TeleBot
     public function async(bool $async = true)
     {
         $this->async = $async;
+
+        return $this;
+    }
+
+    /**
+     * Call next method fake.
+     * @param  bool $async
+     * @return self
+     */
+    public function fake(bool $fake = true)
+    {
+        $this->fake = $fake;
 
         return $this;
     }
