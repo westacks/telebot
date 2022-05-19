@@ -31,4 +31,9 @@ class SetWebhookMethod extends TelegramMethod
         'allowed_updates' => 'string[]',
         'drop_pending_updates' => 'boolean',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

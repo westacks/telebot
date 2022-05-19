@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\Message;
 
 /**
  * Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Messages](https://core.telegram.org/bots/api#message) that were sent is returned.
@@ -28,4 +29,31 @@ class SendMediaGroupMethod extends TelegramMethod
         'reply_to_message_id' => 'integer',
         'allow_sending_without_reply' => 'boolean',
     ];
+
+    public function mock($arguments)
+    {
+        return [
+            new Message([
+                'message_id' => '123456789',
+                'from' => [
+                    'id' => '123456789',
+                    'first_name' => 'First',
+                    'last_name' => 'Last',
+                    'username' => 'username',
+                ],
+                'chat' => [
+                    'id' => '123456789',
+                    'first_name' => 'First',
+                    'last_name' => 'Last',
+                    'type' => 'private',
+                ],
+                'date' => '1479168447',
+                'photo' => [
+                    'file_id' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                    'width' => '640',
+                    'height' => '640',
+                ],
+            ]),
+        ];
+    }
 }

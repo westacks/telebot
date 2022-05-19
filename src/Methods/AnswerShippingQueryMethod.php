@@ -25,4 +25,9 @@ class AnswerShippingQueryMethod extends TelegramMethod
         'shipping_options' => 'ShippingOption[]',
         'error_message' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

@@ -21,4 +21,9 @@ class DeleteMyCommandsMethod extends TelegramMethod
         'scope' => 'BotCommandScope',
         'language_code' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

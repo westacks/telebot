@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
+use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
@@ -32,4 +33,21 @@ class EditMessageCaptionMethod extends TelegramMethod
         'caption_entities' => 'MessageEntity[]',
         'reply_markup' => 'InlineKeyboardMarkup',
     ];
+
+    public function mock($arguments)
+    {
+        if (isset($arguments['inline_message_id'])) {
+            return true;
+        }
+
+        return new Message([
+            'chat' => [
+                'id' => $arguments['chat_id'],
+            ],
+            'message_id' => $arguments['message_id'],
+            'text' => $arguments['caption'] ?? 'Test',
+            'reply_markup' => $arguments['reply_markup'] ?? [],
+            'entities' => $arguments['caption_entities'] ?? [],
+        ]);
+    }
 }

@@ -18,4 +18,9 @@ class DeleteWebhookMethod extends TelegramMethod
     protected array $parameters = [
         'drop_pending_updates' => 'boolean',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InputFile;
+use WeStacks\TeleBot\Objects\Message;
 
 /**
  * As of [v.4.0](https://telegram.org/blog/video-messages-and-telescope), Telegram clients support rounded square mp4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
@@ -37,4 +38,32 @@ class SendVideoNoteMethod extends TelegramMethod
         'allow_sending_without_reply' => 'boolean',
         'reply_markup' => 'Keyboard',
     ];
+
+    public function mock($arguments)
+    {
+        return new Message([
+            'message_id' => mt_rand(1, 100),
+            'from' => [
+                'id' => mt_rand(1, 100),
+                'is_bot' => false,
+                'first_name' => '',
+                'last_name' => '',
+                'username' => '',
+                'language_code' => '',
+            ],
+            'chat' => [
+                'id' => $arguments['chat_id'],
+                'type' => 'private',
+            ],
+            'date' => time(),
+            'video_note' => [
+                'file_id' => '',
+                'file_unique_id' => '',
+                'duration' => mt_rand(1, 60),
+                'length' => mt_rand(1, 100),
+                'mime_type' => 'video/mp4',
+                'file_size' => mt_rand(1, 100),
+            ],
+        ]);
+    }
 }

@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\UserProfilePhotos;
 
 /**
  * Use this method to get a list of profile pictures for a user. Returns a [UserProfilePhotos](https://core.telegram.org/bots/api#userprofilephotos) object.
@@ -22,4 +23,19 @@ class GetUserProfilePhotosMethod extends TelegramMethod
         'offset' => 'integer',
         'limit' => 'integer',
     ];
+
+    public function mock($arguments)
+    {
+        return new UserProfilePhotos([
+            'total_count' => 1,
+            'photos' => [
+                [[
+                    'file_id' => 'file_id',
+                    'file_size' => rand(1, 100),
+                    'width' => rand(1, 100),
+                    'height' => rand(1, 100),
+                ]],
+            ],
+        ]);
+    }
 }

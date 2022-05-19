@@ -18,4 +18,9 @@ class DeleteStickerFromSetMethod extends TelegramMethod
     protected array $parameters = [
         'sticker' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

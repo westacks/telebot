@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\Message;
 
 /**
  * Use this method to send phone contacts. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
@@ -36,4 +37,29 @@ class SendContactMethod extends TelegramMethod
         'allow_sending_without_reply' => 'boolean',
         'reply_markup' => 'Keyboard',
     ];
+
+    public function mock($arguments)
+    {
+        return new Message([
+            'message_id' => '123456789',
+            'from' => [
+                'id' => '123456789',
+                'first_name' => 'First',
+                'last_name' => 'Last',
+                'username' => 'username',
+            ],
+            'chat' => [
+                'id' => '123456789',
+                'first_name' => 'First',
+                'last_name' => 'Last',
+                'type' => 'private',
+            ],
+            'date' => '1479168447',
+            'contact' => [
+                'phone_number' => '+123456789',
+                'first_name' => 'First',
+                'last_name' => 'Last',
+            ],
+        ]);
+    }
 }

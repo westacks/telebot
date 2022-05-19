@@ -20,4 +20,9 @@ class SetChatStickerSetMethod extends TelegramMethod
         'chat_id' => 'string',
         'sticker_set_name' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

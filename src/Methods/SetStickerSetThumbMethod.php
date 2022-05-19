@@ -23,4 +23,9 @@ class SetStickerSetThumbMethod extends TelegramMethod
         'user_id' => 'string',
         'thumb' => 'InputFile',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

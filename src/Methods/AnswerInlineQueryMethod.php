@@ -32,4 +32,9 @@ class AnswerInlineQueryMethod extends TelegramMethod
         'switch_pm_text' => 'string',
         'switch_pm_parameter' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

@@ -42,4 +42,9 @@ class PromoteChatMemberMethod extends TelegramMethod
         'can_invite_users' => 'boolean',
         'can_pin_messages' => 'boolean',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

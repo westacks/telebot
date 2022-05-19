@@ -24,4 +24,9 @@ class SendChatActionMethod extends TelegramMethod
         'chat_id' => 'string',
         'action' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

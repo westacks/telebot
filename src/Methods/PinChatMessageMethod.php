@@ -22,4 +22,9 @@ class PinChatMessageMethod extends TelegramMethod
         'message_id' => 'integer',
         'disable_notification' => 'boolean',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

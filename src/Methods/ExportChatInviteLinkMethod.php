@@ -18,4 +18,9 @@ class ExportChatInviteLinkMethod extends TelegramMethod
     protected array $parameters = [
         'chat_id' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return 'https://telegram.me/joinchat/test';
+    }
 }

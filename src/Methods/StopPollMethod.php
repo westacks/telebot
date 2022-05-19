@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
+use WeStacks\TeleBot\Objects\Poll;
 
 /**
  * Use this method to stop a poll which was sent by the bot. On success, the stopped [Poll](https://core.telegram.org/bots/api#poll) is returned.
@@ -23,4 +24,22 @@ class StopPollMethod extends TelegramMethod
         'message_id' => 'integer',
         'reply_markup' => 'InlineKeyboardMarkup',
     ];
+
+    public function mock($arguments)
+    {
+        return new Poll([
+            'id' => rand(1, 100),
+            'question' => 'Question',
+            'options' => [
+                [
+                    'text' => 'Option 1',
+                    'voter_count' => rand(1, 100),
+                ],
+                [
+                    'text' => 'Option 2',
+                    'voter_count' => rand(1, 100),
+                ],
+            ],
+        ]);
+    }
 }

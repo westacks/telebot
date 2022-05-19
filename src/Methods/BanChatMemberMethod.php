@@ -24,4 +24,9 @@ class BanChatMemberMethod extends TelegramMethod
         'until_date' => 'integer',
         'revoke_messages' => 'boolean',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

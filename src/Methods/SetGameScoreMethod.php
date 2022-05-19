@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\Message;
 
 /**
  * Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.
@@ -30,4 +31,19 @@ class SetGameScoreMethod extends TelegramMethod
         'message_id' => 'integer',
         'inline_message_id' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        if (isset($arguments['inline_message_id'])) {
+            return true;
+        }
+
+        return new Message([
+            'message_id' => rand(1, 100),
+            'chat' => [
+                'id' => rand(1, 100),
+                'type' => 'private',
+            ],
+        ]);
+    }
 }

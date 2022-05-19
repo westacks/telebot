@@ -21,4 +21,9 @@ class SetChatMenuButtonMethod extends TelegramMethod
         'chat_id' => 'string',
         'menu_button' => 'MenuButton',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

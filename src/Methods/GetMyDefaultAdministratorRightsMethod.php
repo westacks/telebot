@@ -19,4 +19,22 @@ class GetMyDefaultAdministratorRightsMethod extends TelegramMethod
     protected array $parameters = [
         'for_channels' => 'boolean',
     ];
+
+    public function mock($arguments)
+    {
+        return new ChatAdministratorRights([
+            'can_change_info' => true,
+            'can_post_messages' => true,
+            'can_edit_messages' => true,
+            'can_delete_messages' => true,
+            'can_invite_users' => true,
+            'can_restrict_members' => true,
+            'can_pin_messages' => true,
+            'can_promote_members' => true,
+            'can_send_messages' => true,
+            'can_send_media_messages' => true,
+            'can_send_other_messages' => true,
+            'can_add_web_page_previews' => true,
+        ]);
+    }
 }

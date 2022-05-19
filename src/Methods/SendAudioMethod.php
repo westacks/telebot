@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InputFile;
+use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
@@ -48,4 +49,27 @@ class SendAudioMethod extends TelegramMethod
         'allow_sending_without_reply' => 'boolean',
         'reply_markup' => 'Keyboard',
     ];
+
+    public function mock($arguments)
+    {
+        return new Message([
+            'message_id' => rand(1, 100),
+            'from' => [
+                'id' => rand(1, 100),
+                'is_bot' => true,
+                'first_name' => 'Bot',
+            ],
+            'chat' => [
+                'id' => $arguments['chat_id'],
+                'type' => 'private',
+            ],
+            'date' => time(),
+            'audio' => [
+                'file_id' => 'test',
+                'duration' => rand(1, 100),
+                'mime_type' => 'audio/mpeg',
+                'file_size' => rand(1, 100),
+            ],
+        ]);
+    }
 }

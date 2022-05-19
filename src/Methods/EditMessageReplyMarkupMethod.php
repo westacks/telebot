@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
+use WeStacks\TeleBot\Objects\Message;
 
 /**
  * Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned.
@@ -25,4 +26,19 @@ class EditMessageReplyMarkupMethod extends TelegramMethod
         'inline_message_id' => 'string',
         'reply_markup' => 'InlineKeyboardMarkup',
     ];
+
+    public function mock($arguments)
+    {
+        if (isset($arguments['inline_message_id'])) {
+            return true;
+        }
+
+        return new Message([
+            'chat' => [
+                'id' => $arguments['chat_id'],
+            ],
+            'message_id' => $arguments['message_id'],
+            'reply_markup' => $arguments['reply_markup'] ?? [],
+        ]);
+    }
 }

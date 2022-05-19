@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\StickerSet;
 
 /**
  * Use this method to get a sticker set. On success, a [StickerSet](https://core.telegram.org/bots/api#stickerset) object is returned.
@@ -18,4 +19,26 @@ class GetStickerSetMethod extends TelegramMethod
     protected array $parameters = [
         'name' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return new StickerSet([
+            'name' => $arguments['name'],
+            'title' => 'title',
+            'contains_masks' => false,
+            'stickers' => [
+                [
+                    'file_id' => 'file_id',
+                    'width' => 100,
+                    'height' => 100,
+                    'is_animated' => false,
+                    'thumb' => [
+                        'file_id' => 'file_id',
+                        'width' => 100,
+                        'height' => 100,
+                    ],
+                ],
+            ],
+        ]);
+    }
 }

@@ -34,7 +34,12 @@ abstract class TelegramMethod
     ) {
     }
 
-    public function __invoke($arguments = [])
+    /**
+     * Mock fake result for testing.
+     */
+    abstract protected function mock($arguments);
+
+    public function __invoke($arguments = [], $fake = false)
     {
         $data = Type::flatten($arguments, $this->parameters);
         $data = empty($data) ? [] : ['multipart' => $data];

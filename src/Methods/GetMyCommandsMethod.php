@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\BotCommandScope;
 
 /**
@@ -21,4 +22,14 @@ class GetMyCommandsMethod extends TelegramMethod
         'scope' => 'BotCommandScope',
         'language_code' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return [
+            new BotCommand([
+                'command' => 'command',
+                'description' => 'description'
+            ]),
+        ];
+    }
 }

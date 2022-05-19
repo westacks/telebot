@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\File;
 use WeStacks\TeleBot\Objects\InputFile;
 use WeStacks\TeleBot\Objects\MaskPosition;
 
@@ -32,4 +33,14 @@ class AddStickerToSetMethod extends TelegramMethod
         'emojis' => 'string',
         'mask_position' => 'MaskPosition',
     ];
+
+    public function mock($arguments)
+    {
+        return new File([
+            'file_id' => 'mock-file-id',
+            'file_unique_id' => 'mock-file-unique-id',
+            'file_size' => 12345,
+            'file_path' => 'mock-file-path',
+        ]);
+    }
 }

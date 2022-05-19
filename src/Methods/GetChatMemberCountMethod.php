@@ -18,4 +18,9 @@ class GetChatMemberCountMethod extends TelegramMethod
     protected array $parameters = [
         'chat_id' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return rand(1, 100);
+    }
 }

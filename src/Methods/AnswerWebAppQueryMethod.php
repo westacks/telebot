@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InlineQueryResult;
+use WeStacks\TeleBot\Objects\SentWebAppMessage;
 
 /**
  * Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned.
@@ -21,4 +22,11 @@ class AnswerWebAppQueryMethod extends TelegramMethod
         'web_app_query_id' => 'string',
         'result' => 'InlineQueryResult',
     ];
+
+    public function mock($arguments)
+    {
+        return new SentWebAppMessage([
+            'inline_message_id' => '1234567890',
+        ]);
+    }
 }

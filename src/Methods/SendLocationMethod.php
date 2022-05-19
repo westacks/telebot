@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\Message;
 
 /**
  * Use this method to send point on the map. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
@@ -40,4 +41,25 @@ class SendLocationMethod extends TelegramMethod
         'allow_sending_without_reply' => 'boolean',
         'reply_markup' => 'Keyboard',
     ];
+
+    public function mock($arguments)
+    {
+        return new Message([
+            'message_id' => mt_rand(1, 100),
+            'from' => [
+                'id' => mt_rand(1, 100),
+                'is_bot' => false,
+                'first_name' => 'First Name',
+            ],
+            'chat' => [
+                'id' => $arguments['chat_id'],
+                'type' => 'private',
+            ],
+            'date' => time(),
+            'location' => [
+                'latitude' => $arguments['latitude'],
+                'longitude' => $arguments['longitude'],
+            ],
+        ]);
+    }
 }
