@@ -21,9 +21,9 @@ abstract class AskInputHandler extends UpdateHandler
         $statePath = __DIR__ . "/../../storage/" . $bot->config('token') . ".json";
         $state = file_exists($statePath) ? json_decode(file_get_contents($statePath), true) : [];
 
-        $state[static::class][$update->chat()->id][] = $update->user()->id;
+        $state[$update->chat()->id] = static::class;
 
-        file_put_contents($statePath, json_encode($state));
+        return !!file_put_contents($statePath, json_encode($state));
     }
 
     public function trigger()
@@ -31,17 +31,19 @@ abstract class AskInputHandler extends UpdateHandler
         $statePath = __DIR__ . "/../../storage/" . $this->bot->config('token') . ".json";
         $this->state = file_exists($statePath) ? json_decode(file_get_contents($statePath), true) : [];
 
-        return  $this->update->message()->text ?? false &&
-                isset($this->state[static::class][$this->update->chat()->id]) &&
-                in_array($this->update->user()->id, $this->state[static::class][$this->update->chat()->id]);
+        return  ($this->update->message()->text ?? false) &&
+                static::class == ($this->state[$this->update->chat()->id] ?? null);
     }
 
     protected function answered()
     {
-        $this->state[static::class][$this->update->chat()->id] = array_filter(
-            $this->state[static::class][$this->update->chat()->id],
-            fn ($id) => $id !== $this->update->user()->id
-        );
-        file_put_contents(__DIR__ . "/../../storage/" . $this->bot->config('token') . ".json", json_encode($this->state));
+        $statePath = __DIR__ . "/../../storage/" . $this->bot->config('token') . ".json";
+        unset($this->state[$this->update->chat()->id]);
+        return !!file_put_contents($statePath, json_encode($this->state));
+    }
+
+    public function __invoke($next)
+    {
+        return $this->trigger() ? $this->handle() : $next();
     }
 }

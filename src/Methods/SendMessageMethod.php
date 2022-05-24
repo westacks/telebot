@@ -42,29 +42,23 @@ class SendMessageMethod extends TelegramMethod
     public function mock($arguments)
     {
         return new Message([
-            'message_id' => '123456789',
+            'message_id' => '-1',
             'from' => [
-                'id' => '123456789',
+                'id' => '-1',
                 'first_name' => 'First',
                 'last_name' => 'Last',
                 'username' => 'username',
+                'is_bot' => true,
             ],
             'chat' => [
-                'id' => '123456789',
+                'id' => $arguments['chat_id'] ?? '-1',
                 'first_name' => 'First',
                 'last_name' => 'Last',
                 'type' => 'private',
             ],
-            'date' => '1479168447',
-            'text' => 'Hello World',
-            'entities' => [
-                [
-                    'type' => 'text_link',
-                    'offset' => 0,
-                    'length' => 11,
-                    'url' => 'https://example.com',
-                ],
-            ],
+            'date' => now()->timestamp,
+            'text' => $arguments['text'] ?? 'Test message',
+            'entities' => $arguments['entities'] ?? [],
         ]);
     }
 }

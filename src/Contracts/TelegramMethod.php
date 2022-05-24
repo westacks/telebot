@@ -43,9 +43,8 @@ abstract class TelegramMethod
     public function __invoke($arguments = [])
     {
         if ($this->fake) {
-            $promise = new Promise(function () use ($arguments) {
-                return $this->mock(Type::cast($arguments, $this->parameters));
-            });
+            $promise = new Promise;
+            $promise->resolve($this->mock(Type::cast($arguments, $this->parameters)));
         }
 
         else {

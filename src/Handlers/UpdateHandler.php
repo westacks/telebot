@@ -8,6 +8,8 @@ use WeStacks\TeleBot\Traits\HasTelegramMethods;
 
 /**
  * Abstract class for creating Telegram update handlers.
+ *
+ * @mixin \WeStacks\TeleBot\TeleBot Passes all calls to the bot.
  */
 abstract class UpdateHandler
 {
@@ -38,6 +40,10 @@ abstract class UpdateHandler
 
     public function __call($name, $arguments)
     {
+        if (!$this->method($name)) {
+            return $this->bot->{$name}(...$arguments);
+        }
+
         $custom = [
             'chat_id' => $this->update->chat()->id ?? null,
             'user_id' => $this->update->user()->id ?? null,
@@ -59,7 +65,7 @@ abstract class UpdateHandler
 
         $arguments[0] = $data;
 
-        return $this->bot->$name(...$arguments);
+        return $this->bot->{$name}(...$arguments);
     }
 
     /**
