@@ -21,7 +21,7 @@ abstract class AskInputHandler extends UpdateHandler
         $statePath = __DIR__ . "/../../storage/" . $bot->config('token') . ".json";
         $state = file_exists($statePath) ? json_decode(file_get_contents($statePath), true) : [];
 
-        $state[$update->chat()->id] = static::class;
+        $state[$update->user()->id] = static::class;
 
         return !!file_put_contents($statePath, json_encode($state));
     }
@@ -32,13 +32,13 @@ abstract class AskInputHandler extends UpdateHandler
         $this->state = file_exists($statePath) ? json_decode(file_get_contents($statePath), true) : [];
 
         return  ($this->update->message()->text ?? false) &&
-                static::class == ($this->state[$this->update->chat()->id] ?? null);
+                static::class == ($this->state[$this->update->user()->id] ?? null);
     }
 
     protected function answered()
     {
         $statePath = __DIR__ . "/../../storage/" . $this->bot->config('token') . ".json";
-        unset($this->state[$this->update->chat()->id]);
+        unset($this->state[$this->update->user()->id]);
         return !!file_put_contents($statePath, json_encode($this->state));
     }
 
