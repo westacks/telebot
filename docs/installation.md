@@ -23,7 +23,7 @@ If you are using Laravel, the library will self-register its ServiceProvider and
     /*
      * Package Service Providers...
      */
-    WeStacks\TeleBot\Laravel\TeleBotServiceProvider::class,
+    WeStacks\TeleBot\Laravel\Providers\TeleBotServiceProvider::class,
 ],
 'aliases' => [
     'TeleBot' => WeStacks\TeleBot\Laravel\TeleBot::class,
