@@ -11,6 +11,25 @@ use WeStacks\TeleBot\Helpers\Type;
 abstract class TelegramMethod
 {
     /**
+     * @var Client
+     */
+    protected $client;
+
+    /**
+     * @var bool
+     */
+    protected $exceptions;
+
+    /**
+     * @var bool
+     */
+    protected $async;
+
+    /**
+     * @var bool
+     */
+    protected $fake;
+    /**
      * Method name.
      */
     protected string $method;
@@ -28,12 +47,13 @@ abstract class TelegramMethod
     /**
      * Create new method instance.
      */
-    public function __construct(
-        protected Client &$client,
-        protected bool $exceptions,
-        protected bool $async,
-        protected bool $fake,
-    ) {}
+    public function __construct(Client &$client, bool $exceptions, bool $async, bool $fake)
+    {
+        $this->client = $client;
+        $this->exceptions = $exceptions;
+        $this->async = $async;
+        $this->fake = $fake;
+    }
 
     /**
      * Mock fake result for testing.
@@ -53,7 +73,7 @@ abstract class TelegramMethod
 
             $promise = $this->client->postAsync($this->method, $data)
                 ->then(function (ResponseInterface $result) {
-                    $result = json_decode($result->getBody(), true);
+                    $result = json_decode($result->getBody()->getContents(), true);
 
                     if (! $result['ok'] && $this->exceptions) {
                         throw TeleBotException::requestError($result);

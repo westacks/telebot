@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Tests\Feature;
 
 use GuzzleHttp\Promise;
 use PHPUnit\Framework\TestCase;
+use TypeError;
 use WeStacks\TeleBot\Exceptions\TeleBotException;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageId;
@@ -42,7 +43,7 @@ class SendMessageTest extends TestCase
 
     public function testSomethingReallyWrong()
     {
-        $this->expectError();
+        $this->expectException(TypeError::class);
         $this->bot->sendMessage('test');
     }
 

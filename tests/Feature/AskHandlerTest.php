@@ -32,6 +32,9 @@ class AskHandlerTest extends TestCase
 
         $update = new Update([
             'message' => [
+                'from' => [
+                    'id' => '-1',
+                ],
                 'chat' => [
                     'id' => '-1',
                 ],
@@ -41,6 +44,9 @@ class AskHandlerTest extends TestCase
 
         $wrongName = new Update([
             'message' => [
+                'from' => [
+                    'id' => '-1',
+                ],
                 'chat' => [
                     'id' => '-1',
                 ],
@@ -50,6 +56,9 @@ class AskHandlerTest extends TestCase
 
         $correctName = new Update([
             'message' => [
+                'from' => [
+                    'id' => '-1',
+                ],
                 'chat' => [
                     'id' => '-1',
                 ],

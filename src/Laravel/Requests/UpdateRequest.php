@@ -11,7 +11,13 @@ class UpdateRequest extends FormRequest
 
     public function authorize()
     {
-        return $this->isMethod('post') && $this->isJson();
+        $bot = $this->route('bot');
+        $token = $this->route('token');
+
+        $config = config("telebot.bots.$bot");
+        $realToken = $config['token'] ?? $config;
+
+        return $this->isMethod('post') && $this->isJson() && $token === $realToken;
     }
 
     public function rules()

@@ -111,10 +111,10 @@ class LaravelTest extends TestCase
         $update = '{"update_id":1234567,"message":{"message_id":2345678,"from":{"id":3456789,"is_bot":false,"first_name":"John","last_name":"Doe"}}}';
 
         foreach ($urls as $url) {
-            $this->post($url, json_decode($update, true))->assertStatus(200);
+            $this->postJson($url, json_decode($update, true))->assertStatus(200);
         }
 
-        $this->post("/telebot/webhook/wrong_bot/123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11")->assertStatus(404);
+        $this->postJson("/telebot/webhook/wrong_bot/123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11")->assertStatus(403);
     }
 
     protected function getPackageProviders($app)

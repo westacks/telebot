@@ -147,7 +147,8 @@ class TelegramNotification implements JsonSerializable
         return $this;
     }
 
-    public function jsonSerialize(): mixed
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize()
     {
         return $this->data;
     }
