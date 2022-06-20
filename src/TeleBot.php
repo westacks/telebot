@@ -74,7 +74,7 @@ class TeleBot
             'name' => $config['name'] ?? null,
             'exceptions' => $config['exceptions'] ?? true,
             'async' => $config['async'] ?? false,
-            'api_url' => $config['api_url'] ?? 'https://api.telegram.org',
+            'api_url' => $config['api_url'] ?? 'https://api.telegram.org/bot{TOKEN}/{METHOD}',
             'webhook' => $config['webhook'] ?? [],
             'poll' => $config['poll'] ?? [],
             'handlers' => $config['handlers'] ?? null,
@@ -85,7 +85,6 @@ class TeleBot
         $handlerStack->push($history);
 
         $this->client = new Client([
-            'base_uri' => $this->config['api_url'].'/bot'.$this->config['token'].'/',
             'http_errors' => false,
             'handler' => $handlerStack,
         ]);
@@ -105,6 +104,8 @@ class TeleBot
 
         $method = new $Method(
             $this->client,
+            $this->config['api_url'],
+            $this->config['token'],
             $this->exceptions ?? $this->config['exceptions'],
             $this->async ?? $this->config['async'],
             $this->fake ?? false

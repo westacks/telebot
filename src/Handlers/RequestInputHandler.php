@@ -2,18 +2,23 @@
 
 namespace WeStacks\TeleBot\Handlers;
 
-use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\TeleBot;
 
 /**
  * Abstract class for creating Telegram update handlers.
  */
-abstract class AskInputHandler extends UpdateHandler
+abstract class RequestInputHandler extends UpdateHandler
 {
-    private static function updateState(TeleBot $bot, callable $callback)
+    protected static function getState(TeleBot $bot)
     {
         $statePath = __DIR__ . "/../../storage/" . $bot->config('token') . ".json";
-        $state = file_exists($statePath) ? json_decode(file_get_contents($statePath), true) : [];
+        return file_exists($statePath) ? json_decode(file_get_contents($statePath), true) : [];
+    }
+
+    protected static function updateState(TeleBot $bot, callable $callback)
+    {
+        $statePath = __DIR__ . "/../../storage/" . $bot->config('token') . ".json";
+        $state = static::getState($bot);
 
         $state = $callback($state);
 
@@ -30,11 +35,8 @@ abstract class AskInputHandler extends UpdateHandler
 
     public function trigger()
     {
-        $statePath = __DIR__ . "/../../storage/" . $this->bot->config('token') . ".json";
-        $state = file_exists($statePath) ? json_decode(file_get_contents($statePath), true) : [];
-
         return  ($this->update->message()->text ?? false) &&
-                static::class == ($state[$this->update->user()->id] ?? null);
+                static::class == (static::getState($this->bot)[$this->update->user()->id] ?? null);
     }
 
     protected function acceptInput()

@@ -2,12 +2,30 @@
 
 namespace WeStacks\TeleBot\Laravel\Requests;
 
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use WeStacks\TeleBot\Objects\Update;
 
 class UpdateRequest extends FormRequest
 {
     protected Update $update;
+
+    private array $types = [
+        'message',
+        'edited_message',
+        'channel_post',
+        'edited_channel_post',
+        'inline_query',
+        'chosen_inline_result',
+        'callback_query',
+        'shipping_query',
+        'pre_checkout_query',
+        'poll',
+        'poll_answer',
+        'my_chat_member',
+        'chat_member',
+        'chat_join_request',
+    ];
 
     public function authorize()
     {
@@ -20,25 +38,18 @@ class UpdateRequest extends FormRequest
         return $this->isMethod('post') && $this->isJson() && $token === $realToken;
     }
 
+    private function onlyOnePresent(string $type)
+    {
+        $types = implode(",", array_filter($this->types, fn($value) => $value !== $type));
+        return "required_without_all:$types|prohibits:$types";
+    }
+
     public function rules()
     {
-        return [
-            'update_id'             => ['required', 'numeric'],
-            'message'               => ['sometimes', 'array'],
-            'edited_message'        => ['sometimes', 'array'],
-            'channel_post'          => ['sometimes', 'array'],
-            'edited_channel_post'   => ['sometimes', 'array'],
-            'inline_query'          => ['sometimes', 'array'],
-            'chosen_inline_result'  => ['sometimes', 'array'],
-            'callback_query'        => ['sometimes', 'array'],
-            'shipping_query'        => ['sometimes', 'array'],
-            'pre_checkout_query'    => ['sometimes', 'array'],
-            'poll'                  => ['sometimes', 'array'],
-            'poll_answer'           => ['sometimes', 'array'],
-            'my_chat_member'        => ['sometimes', 'array'],
-            'chat_member'           => ['sometimes', 'array'],
-            'chat_join_request'     => ['sometimes', 'array'],
-        ];
+        return collect($this->types)
+            ->mapWithKeys(fn($type) => [$type => [$this->onlyOnePresent($type), 'array']])
+            ->prepend(['required', 'numeric'], 'update_id')
+            ->toArray();
     }
 
     public function update()

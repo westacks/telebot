@@ -9,7 +9,5 @@ use WeStacks\TeleBot\Laravel\Controllers\WebhookController;
 |--------------------------------------------------------------------------
 */
 
-Route::post('/telebot/webhook/{bot}/{token}', [
-    'as' => 'telebot.webhook',
-    'uses' => WebhookController::class,
-]);
+Route::post('/telebot/webhook/{bot}/{token}', WebhookController::class)
+    ->name('telebot.webhook');

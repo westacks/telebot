@@ -29,6 +29,17 @@ abstract class TelegramMethod
      * @var bool
      */
     protected $fake;
+
+    /**
+     * @var string
+     */
+    protected $url;
+
+    /**
+     * @var string
+     */
+    protected $token;
+
     /**
      * Method name.
      */
@@ -47,12 +58,22 @@ abstract class TelegramMethod
     /**
      * Create new method instance.
      */
-    public function __construct(Client &$client, bool $exceptions, bool $async, bool $fake)
+    public function __construct(Client &$client, string $url, string $token, bool $exceptions, bool $async, bool $fake)
     {
         $this->client = $client;
+        $this->url = $url;
+        $this->token = $token;
         $this->exceptions = $exceptions;
         $this->async = $async;
         $this->fake = $fake;
+    }
+
+    private function url()
+    {
+        $url = str_replace('{TOKEN}', $this->token, $this->url);
+        $url = str_replace('{METHOD}', $this->method, $url);
+
+        return $url;
     }
 
     /**
@@ -71,7 +92,7 @@ abstract class TelegramMethod
             $data = Type::flatten($arguments, $this->parameters);
             $data = empty($data) ? [] : ['multipart' => $data];
 
-            $promise = $this->client->postAsync($this->method, $data)
+            $promise = $this->client->postAsync($this->url(), $data)
                 ->then(function (ResponseInterface $result) {
                     $result = json_decode($result->getBody()->getContents(), true);
 

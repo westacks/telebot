@@ -11,7 +11,7 @@ jobs:
   php-74:
     runs-on: ubuntu-latest
     steps:
-    - name: Chekout repository
+    - name: Checkout repository
       uses: actions/checkout@v2
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -29,7 +29,7 @@ jobs:
   php-80:
     runs-on: ubuntu-latest
     steps:
-    - name: Chekout repository
+    - name: Checkout repository
       uses: actions/checkout@v2
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -47,7 +47,7 @@ jobs:
   php-81:
     runs-on: ubuntu-latest
     steps:
-    - name: Chekout repository
+    - name: Checkout repository
       uses: actions/checkout@v2
     - name: Setup PHP
       uses: shivammathur/setup-php@v2

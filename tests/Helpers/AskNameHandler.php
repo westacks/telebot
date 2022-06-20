@@ -2,9 +2,9 @@
 
 namespace WeStacks\TeleBot\Tests\Helpers;
 
-use WeStacks\TeleBot\Handlers\AskInputHandler;
+use WeStacks\TeleBot\Handlers\RequestInputHandler;
 
-class AskNameHandler extends AskInputHandler
+class AskNameHandler extends RequestInputHandler
 {
     public function handle()
     {
