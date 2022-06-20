@@ -20,7 +20,7 @@ class AskHandlerTest extends TestCase
                         return $next();
                     }
 
-                    AskNameHandler::requestInput($bot, $update);
+                    AskNameHandler::requestInput($bot, $update->user()->id);
 
                     return $bot->fake()->sendMessage([
                         'chat_id' => $update->chat()->id,

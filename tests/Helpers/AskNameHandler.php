@@ -14,7 +14,7 @@ class AskNameHandler extends AskInputHandler
             ]);
         }
 
-        $this->answered();
+        $this->acceptInput();
 
         return $this->fake()->sendMessage([
             'text' => "Hello, $name!",

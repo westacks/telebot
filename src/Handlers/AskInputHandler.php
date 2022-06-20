@@ -10,36 +10,39 @@ use WeStacks\TeleBot\TeleBot;
  */
 abstract class AskInputHandler extends UpdateHandler
 {
-    /**
-     * Current handler state.
-     * @var array
-     */
-    protected $state;
-
-    public static function requestInput(TeleBot $bot, Update $update)
+    private static function updateState(TeleBot $bot, callable $callback)
     {
         $statePath = __DIR__ . "/../../storage/" . $bot->config('token') . ".json";
         $state = file_exists($statePath) ? json_decode(file_get_contents($statePath), true) : [];
 
-        $state[$update->user()->id] = static::class;
+        $state = $callback($state);
 
         return !!file_put_contents($statePath, json_encode($state));
+    }
+
+    public static function requestInput(TeleBot $bot, string $user_id)
+    {
+        return static::updateState($bot, function ($state) use ($user_id) {
+            $state[$user_id] = static::class;
+            return $state;
+        });
     }
 
     public function trigger()
     {
         $statePath = __DIR__ . "/../../storage/" . $this->bot->config('token') . ".json";
-        $this->state = file_exists($statePath) ? json_decode(file_get_contents($statePath), true) : [];
+        $state = file_exists($statePath) ? json_decode(file_get_contents($statePath), true) : [];
 
         return  ($this->update->message()->text ?? false) &&
-                static::class == ($this->state[$this->update->user()->id] ?? null);
+                static::class == ($state[$this->update->user()->id] ?? null);
     }
 
-    protected function answered()
+    protected function acceptInput()
     {
-        $statePath = __DIR__ . "/../../storage/" . $this->bot->config('token') . ".json";
-        unset($this->state[$this->update->user()->id]);
-        return !!file_put_contents($statePath, json_encode($this->state));
+        return static::updateState($this->bot, function ($state) {
+            unset($state[$this->update->user()->id]);
+            return $state;
+        });
     }
 
     public function __invoke($next)
