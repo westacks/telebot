@@ -18,8 +18,7 @@ class LaravelTest extends TestCase
 {
     protected function getEnvironmentSetUp($app)
     {
-        global $config;
-        $app['config']->set('telebot.bot', $config);
+        $app['config']->set('telebot.bot', get_config());
     }
 
     public function testFacade()
@@ -48,9 +47,7 @@ class LaravelTest extends TestCase
             $this->assertInstanceOf(TeleBotException::class, $e);
         }
 
-        global $config;
-
-        TeleBot::add('bot', $config);
+        TeleBot::add('bot', get_config());
         TeleBot::default('bot');
 
         $this->assertInstanceOf(Bot::class, TeleBot::bot());

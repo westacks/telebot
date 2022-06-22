@@ -102,9 +102,7 @@ class HandleUpdatesTest extends TestCase
     // You should send any message to your bot in order to have at least one update
     public function testHandleUpdatesSimple()
     {
-        global $config;
-
-        $bot = new TeleBot(array_merge($config, [
+        $bot = new TeleBot(array_merge(get_config(), [
             'handlers' => [
                 function (TeleBot $bot, Update $update, $next) {
                     echo $update;
@@ -135,9 +133,7 @@ class HandleUpdatesTest extends TestCase
 
     public function testHandleUpdatesUsingObject()
     {
-        global $config;
-
-        $bot = new TeleBot(array_merge($config, [
+        $bot = new TeleBot(array_merge(get_config(), [
             'handlers' => [
                 StartCommandHandler::class,
             ],
@@ -166,7 +162,7 @@ class HandleUpdatesTest extends TestCase
 
     public function testGetConfig()
     {
-        global $config;
+        $config = get_config();
         $bot = new TeleBot($config);
         $this->assertEquals($config['token'], $bot->config('token'));
     }

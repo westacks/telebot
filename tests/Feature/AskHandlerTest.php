@@ -11,9 +11,7 @@ class AskHandlerTest extends TestCase
 {
     public function testAskHandler()
     {
-        global $config;
-
-        $bot = new TeleBot(array_merge($config, [
+        $bot = new TeleBot(array_merge(get_config(), [
             'handlers' => [
                 AskNameHandler::class,
                 function ($bot, $update, $next) {

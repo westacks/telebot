@@ -15,8 +15,7 @@ class IssueTest extends TestCase
 
     protected function setUp(): void
     {
-        global $bot;
-        $this->bot = $bot;
+        $this->bot = get_bot();
     }
 
     public function testIssue15() // https://github.com/westacks/telebot/issues/15

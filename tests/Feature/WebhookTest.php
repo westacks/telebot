@@ -15,8 +15,7 @@ class WebhookTest extends TestCase
 
     protected function setUp(): void
     {
-        global $bot;
-        $this->bot = $bot;
+        $this->bot = get_bot();
     }
 
     public function testWebhook()
