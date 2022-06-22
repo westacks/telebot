@@ -16,6 +16,7 @@ use WeStacks\TeleBot\Objects\InputFile;
  * @property int       $max_connections      __Required: Optional__. Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to 40. Use lower values to limit the load on your bot's server, and higher values to increase your bot's throughput.
  * @property string[]  $allowed_updates      __Required: Optional__. A JSON-serialized list of the update types you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time.
  * @property bool      $drop_pending_updates __Required: Optional__. Pass True to drop all pending updates
+ * @property string    $secret_token         __Required: Optional__. A secret token to be sent in a header “X-Telegram-Bot-Api-Secret-Token” in every webhook request, 1-256 characters. Only characters A-Z, a-z, 0-9, _ and - are allowed. The header is useful to ensure that the request comes from a webhook set by you.
  */
 class SetWebhookMethod extends TelegramMethod
 {
@@ -30,6 +31,7 @@ class SetWebhookMethod extends TelegramMethod
         'max_connections' => 'integer',
         'allowed_updates' => 'string[]',
         'drop_pending_updates' => 'boolean',
+        'secret_token' => 'string',
     ];
 
     public function mock($arguments)

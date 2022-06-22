@@ -2,7 +2,6 @@
 
 namespace WeStacks\TeleBot\Laravel\Requests;
 
-use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use WeStacks\TeleBot\Objects\Update;
 
@@ -35,10 +34,21 @@ class UpdateRequest extends FormRequest
         $config = config("telebot.bots.$bot");
         $realToken = $config['token'] ?? $config;
 
-        return $this->isMethod('post') && $this->isJson() && $token === $realToken;
+        return  $this->isMethod('post') &&
+                $this->isJson() &&
+                $this->validSecret($bot) &&
+                $token === $realToken;
     }
 
-    private function onlyOnePresent(string $type)
+    private function validSecret(string $bot)
+    {
+        $secret = $this->header('X-Telegram-Bot-Api-Secret-Token');
+        $token = config("telebot.bots.$bot.webhook.secret_token");
+
+        return $secret === $token;
+    }
+
+    protected function onlyOnePresent(string $type)
     {
         $types = implode(",", array_filter($this->types, fn($value) => $value !== $type));
         return "required_without_all:$types|prohibits:$types";
