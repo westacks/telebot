@@ -92,6 +92,65 @@ $bot->addHandler(\Somewhere\InYour\App\YourUpdateHandler::class);
 $bot->addHandler($handler);
 ```
 
+## Requesting user input
+
+Library have inbuilt state machine to handle user input. It is possible to request user input by creating `RequestInputHandler`.
+
+<!-- tabs:start -->
+
+#### ** Creating handler **
+
+```php
+<?php
+
+namespace Somewhere\InYour\App;
+
+use WeStacks\TeleBot\Handlers\RequestInputHandler;
+
+class AskNameHandler extends RequestInputHandler
+{
+    public function handle()
+    {
+        $data = $this->update->message()->toArray();
+        $validator = Validator::make($data, [
+            'text' => 'required|string|max:255'
+        ]);
+
+        if ($validator->fails()) {
+            return $this->sendMessage([
+                'text' => 'Invalid input!'
+            ]);
+        }
+
+        $this->acceptInput();
+        $name = $validator->validated()['text'];
+
+        return $this->sendMessage([
+            'text' => "Hello, $name!",
+        ]);
+    }
+}
+```
+#### ** Requesting user input **
+
+```php
+
+$handler = function ($bot, $update, $next) {
+    if ('/test' !== $update->message()->text ?? null) {
+        return $next();
+    }
+
+    AskNameHandler::requestInput($bot, $update->user()->id);
+
+    return $bot->sendMessage([
+        'chat_id' => $update->chat()->id,
+        'text' => 'Please, type your name.',
+    ]);
+},
+
+```
+
+<!-- tabs:end -->
 ## Bot commands
 
 The library proviedes an `UpdateHandler` specially for bot commands, so you could work with them more efficiently. All `CommandHandler` classes should be registered to be avaliable for the `setLocalCommands()` method which is handy for registering all bot commands for your bot.

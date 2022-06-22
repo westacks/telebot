@@ -21,4 +21,9 @@ class SetMyDefaultAdministratorRightsMethod extends TelegramMethod
         'rights' => 'ChatAdministratorRights',
         'for_channels' => 'boolean',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

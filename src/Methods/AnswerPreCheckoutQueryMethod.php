@@ -22,4 +22,9 @@ class AnswerPreCheckoutQueryMethod extends TelegramMethod
         'ok' => 'boolean',
         'error_message' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

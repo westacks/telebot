@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
+use WeStacks\TeleBot\Objects\Message;
 
 /**
  * Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to [stopMessageLiveLocation](https://core.telegram.org/bots/api#stopmessagelivelocation). On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned.
@@ -35,4 +36,28 @@ class EditMessageLiveLocationMethod extends TelegramMethod
         'proximity_alert_radius' => 'integer',
         'reply_markup' => 'InlineKeyboardMarkup',
     ];
+
+    public function mock($arguments)
+    {
+        if (isset($arguments['inline_message_id'])) {
+            return true;
+        }
+
+        return new Message([
+            'chat' => [
+                'id' => $arguments['chat_id'],
+            ],
+            'message_id' => $arguments['message_id'],
+            'text' => 'Test',
+            'location' => [
+                'latitude' => $arguments['latitude'],
+                'longitude' => $arguments['longitude'],
+                'horizontal_accuracy' => $arguments['horizontal_accuracy'] ?? null,
+                'live_period' => now()->timestamp,
+                'heading' => $arguments['heading'] ?? null,
+                'proximity_alert_radius' => $arguments['proximity_alert_radius'] ?? null,
+            ],
+            'reply_markup' => $arguments['reply_markup'] ?? [],
+        ]);
+    }
 }

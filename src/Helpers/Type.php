@@ -64,7 +64,7 @@ class Type
                 ($object instanceof $type || is_subclass_of($object, $type));
     }
 
-    private static function castMany(array|object $values, $types)
+    private static function castMany(iterable $values, $types)
     {
         $data = [];
 

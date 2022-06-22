@@ -66,14 +66,13 @@ class TeleBot
             'name' => $config['name'] ?? null,
             'exceptions' => $config['exceptions'] ?? true,
             'async' => $config['async'] ?? false,
-            'api_url' => $config['api_url'] ?? 'https://api.telegram.org',
+            'api_url' => $config['api_url'] ?? 'https://api.telegram.org/bot{TOKEN}/{METHOD}',
             'webhook' => $config['webhook'] ?? [],
             'poll' => $config['poll'] ?? [],
             'handlers' => $config['handlers'] ?? null,
         ];
 
         $this->client = new Client([
-            'base_uri' => $this->config['api_url'].'/bot'.$this->config['token'].'/',
             'http_errors' => false,
         ]);
 
@@ -92,12 +91,16 @@ class TeleBot
 
         $method = new $Method(
             $this->client,
+            $this->config['api_url'],
+            $this->config['token'],
             $this->exceptions ?? $this->config['exceptions'],
-            $this->async ?? $this->config['async']
+            $this->async ?? $this->config['async'],
+            $this->fake ?? false
         );
 
         $this->exceptions = null;
         $this->async = null;
+        $this->fake = null;
 
         return $method(...$arguments);
     }
@@ -123,6 +126,18 @@ class TeleBot
     public function async(bool $async = true)
     {
         $this->async = $async;
+
+        return $this;
+    }
+
+    /**
+     * Call next method fake.
+     * @param  bool $async
+     * @return self
+     */
+    public function fake(bool $fake = true)
+    {
+        $this->fake = $fake;
 
         return $this;
     }

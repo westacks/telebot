@@ -22,4 +22,9 @@ class SetChatAdministratorCustomTitleMethod extends TelegramMethod
         'user_id' => 'string',
         'custom_title' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

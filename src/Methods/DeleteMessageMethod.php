@@ -28,4 +28,9 @@ class DeleteMessageMethod extends TelegramMethod
         'chat_id' => 'string',
         'message_id' => 'integer',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

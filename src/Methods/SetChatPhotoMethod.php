@@ -21,4 +21,9 @@ class SetChatPhotoMethod extends TelegramMethod
         'chat_id' => 'string',
         'photo' => 'InputFile',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

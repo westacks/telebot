@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\MessageEntity;
+use WeStacks\TeleBot\Objects\MessageId;
 
 /**
  * Use this method to copy messages of any kind. Service messages and invoice messages can't be copied. The method is analogous to the method [forwardMessage](https://core.telegram.org/bots/api#forwardmessage), but the copied message doesn't have a link to the original message. Returns the [MessageId](https://core.telegram.org/bots/api#messageid) of the sent message on success.
@@ -39,4 +40,11 @@ class CopyMessageMethod extends TelegramMethod
         'allow_sending_without_reply' => 'boolean',
         'reply_markup' => 'Keyboard',
     ];
+
+    public function mock($arguments)
+    {
+        return new MessageId([
+            'message_id' => $arguments['message_id'],
+        ]);
+    }
 }

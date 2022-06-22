@@ -15,7 +15,7 @@ class IssueTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->bot = new TeleBot(getenv('TELEGRAM_BOT_TOKEN'));
+        $this->bot = get_bot();
     }
 
     public function testIssue15() // https://github.com/westacks/telebot/issues/15

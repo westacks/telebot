@@ -21,4 +21,9 @@ class SetChatPermissionsMethod extends TelegramMethod
         'chat_id' => 'string',
         'permissions' => 'ChatPermissions',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

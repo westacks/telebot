@@ -20,4 +20,9 @@ class BanChatSenderChatMethod extends TelegramMethod
         'chat_id' => 'string',
         'sender_chat_id' => 'integer',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

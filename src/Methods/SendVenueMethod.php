@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\Message;
 
 /**
  * Use this method to send information about a venue. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
@@ -44,4 +45,28 @@ class SendVenueMethod extends TelegramMethod
         'allow_sending_without_reply' => 'boolean',
         'reply_markup' => 'Keyboard',
     ];
+
+    public function mock($arguments)
+    {
+        return new Message([
+            'message_id' => rand(1, 100),
+            'date' => time(),
+            'chat' => [
+                'id' => $arguments['chat_id'],
+                'type' => 'private',
+            ],
+            'venue' => [
+                'location' => [
+                    'latitude' => $arguments['latitude'],
+                    'longitude' => $arguments['longitude'],
+                ],
+                'title' => $arguments['title'],
+                'address' => $arguments['address'],
+                'foursquare_id' => $arguments['foursquare_id'],
+                'foursquare_type' => $arguments['foursquare_type'],
+                'google_place_id' => $arguments['google_place_id'],
+                'google_place_type' => $arguments['google_place_type'],
+            ],
+        ]);
+    }
 }

@@ -68,7 +68,7 @@ return [
     'bots' => [
         'bot1' => [
             'token'         => env('TELEGRAM_BOT_TOKEN', '<telegram api token>'),
-            'api_url'       => 'https://api.telegram.org',
+            'api_url'       => 'https://api.telegram.org/bot{TOKEN}/{METHOD}',
             'exceptions'    => true,
             'async'         => false,
             'handlers'      => []
@@ -111,7 +111,7 @@ Bot config may be represented as:
 
 #### `api_url` (string)
 
-* Default: `https://api.telegram.org`
+* Default: `https://api.telegram.org/bot{TOKEN}/{METHOD}`
 * API URL which will be used by library's HTTP client (don't confuse with [webhook url](laravel.md#webhook)). If you want to have self hosted Telegram bot API server, you may learn how to do it [here](https://github.com/tdlib/telegram-bot-api).
 
 #### `exceptions` (boolean)

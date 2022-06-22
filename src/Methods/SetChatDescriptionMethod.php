@@ -20,4 +20,9 @@ class SetChatDescriptionMethod extends TelegramMethod
         'chat_id' => 'string',
         'description' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

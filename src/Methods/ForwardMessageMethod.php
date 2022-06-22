@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\Message;
 
 /**
  * Use this method to forward messages of any kind. Service messages can't be forwarded. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
@@ -26,4 +27,14 @@ class ForwardMessageMethod extends TelegramMethod
         'protect_content' => 'boolean',
         'message_id' => 'integer',
     ];
+
+    public function mock($arguments)
+    {
+        return new Message([
+            'chat' => [
+                'id' => $arguments['chat_id'],
+            ],
+            'message_id' => '1234567890',
+        ]);
+    }
 }

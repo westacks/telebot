@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InputFile;
+use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
@@ -38,4 +39,35 @@ class SendPhotoMethod extends TelegramMethod
         'allow_sending_without_reply' => 'boolean',
         'reply_markup' => 'Keyboard',
     ];
+
+    public function mock($arguments)
+    {
+        return new Message([
+            'message_id' => mt_rand(1, 100),
+            'from' => [
+                'id' => mt_rand(1, 100),
+                'is_bot' => false,
+                'first_name' => '',
+                'last_name' => '',
+                'username' => '',
+                'language_code' => '',
+            ],
+            'chat' => [
+                'id' => $arguments['chat_id'],
+                'type' => 'private',
+                'title' => '',
+                'username' => '',
+                'first_name' => '',
+                'last_name' => '',
+                'all_members_are_administrators' => false,
+            ],
+            'date' => time(),
+            'photo' => [
+                'file_id' => '',
+                'width' => mt_rand(1, 100),
+                'height' => mt_rand(1, 100),
+                'file_size' => mt_rand(1, 100),
+            ],
+        ]);
+    }
 }

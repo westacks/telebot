@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InputFile;
+use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
@@ -48,4 +49,29 @@ class SendVideoMethod extends TelegramMethod
         'allow_sending_without_reply' => 'boolean',
         'reply_markup' => 'Keyboard',
     ];
+
+    public function mock($arguments)
+    {
+        return new Message([
+            'message_id' => mt_rand(1, 100),
+            'chat' => [
+                'id' => $arguments['chat_id'],
+                'type' => 'private',
+            ],
+            'date' => time(),
+            'video' => [
+                'file_id' => 'video_file_id',
+                'duration' => mt_rand(1, 100),
+                'width' => mt_rand(1, 100),
+                'height' => mt_rand(1, 100),
+                'thumb' => [
+                    'file_id' => 'thumb_file_id',
+                    'width' => mt_rand(1, 100),
+                    'height' => mt_rand(1, 100),
+                ],
+                'mime_type' => 'video/mp4',
+                'file_size' => mt_rand(1, 100),
+            ],
+        ]);
+    }
 }

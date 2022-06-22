@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\Update;
 
 /**
  * Use this method to receive incoming updates using long polling ([wiki](https://en.wikipedia.org/wiki/Push_technology#Long_polling)). An Array of [Update](https://core.telegram.org/bots/api#update) objects is returned.
@@ -24,4 +25,33 @@ class GetUpdatesMethod extends TelegramMethod
         'timeout' => 'integer',
         'allowed_updates' => 'string[]',
     ];
+
+    public function mock($arguments)
+    {
+        return [
+            new Update([
+                'update_id' => $arguments['offset'] ? $arguments['offset'] + 1 : 1,
+                'message' => [
+                    'message_id' => 1,
+                    'from' => [
+                        'id' => 1,
+                        'is_bot' => true,
+                        'first_name' => 'First',
+                        'last_name' => 'Last',
+                        'username' => 'username',
+                        'language_code' => 'en-US',
+                    ],
+                    'chat' => [
+                        'id' => 1,
+                        'first_name' => 'First',
+                        'last_name' => 'Last',
+                        'username' => 'username',
+                        'type' => 'private',
+                    ],
+                    'date' => 1,
+                    'text' => 'text',
+                ],
+            ]),
+        ];
+    }
 }

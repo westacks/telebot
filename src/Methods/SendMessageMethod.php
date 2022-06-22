@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
@@ -37,4 +38,27 @@ class SendMessageMethod extends TelegramMethod
         'allow_sending_without_reply' => 'boolean',
         'reply_markup' => 'Keyboard',
     ];
+
+    public function mock($arguments)
+    {
+        return new Message([
+            'message_id' => '-1',
+            'from' => [
+                'id' => '-1',
+                'first_name' => 'First',
+                'last_name' => 'Last',
+                'username' => 'username',
+                'is_bot' => true,
+            ],
+            'chat' => [
+                'id' => $arguments['chat_id'] ?? '-1',
+                'first_name' => 'First',
+                'last_name' => 'Last',
+                'type' => 'private',
+            ],
+            'date' => now()->timestamp,
+            'text' => $arguments['text'] ?? 'Test message',
+            'entities' => $arguments['entities'] ?? [],
+        ]);
+    }
 }

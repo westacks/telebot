@@ -16,6 +16,8 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property ChatPhoto       $photo                    Optional. Chat photo. Returned only in getChat.
  * @property string          $bio                      Optional. Bio of the other party in a private chat. Returned only in getChat.
  * @property bool            $has_private_forwards     Optional. True, if privacy settings of the other party in the private chat allows to use tg://user?id= links only in chats with the user. Returned only in getChat.
+ * @property bool            $join_to_send_messages    Optional. True, if users need to join the supergroup before they can send messages. Returned only in getChat.
+ * @property bool            $join_by_request          Optional. True, if all users directly joining the supergroup need to be approved by supergroup administrators. Returned only in getChat.
  * @property string          $description              Optional. Description, for groups, supergroups and channel chats. Returned only in getChat.
  * @property string          $invite_link              Optional. Primary invite link, for groups, supergroups and channel chats. Returned only in getChat.
  * @property Message         $pinned_message           Optional. The most recent pinned message (by sending date). Returned only in getChat.
@@ -40,6 +42,8 @@ class Chat extends TelegramObject
         'photo' => 'ChatPhoto',
         'bio' => 'string',
         'has_private_forwards' => 'boolean',
+        'join_to_send_messages' => 'boolean',
+        'join_by_request' => 'boolean',
         'description' => 'string',
         'invite_link' => 'string',
         'pinned_message' => 'Message',

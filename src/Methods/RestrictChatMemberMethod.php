@@ -25,4 +25,9 @@ class RestrictChatMemberMethod extends TelegramMethod
         'permissions' => 'ChatPermissions',
         'until_date' => 'integer',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

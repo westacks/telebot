@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\GameHighScore;
 
 /**
  * Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. On success, returns an Array of [GameHighScore](https://core.telegram.org/bots/api#gamehighscore) objects.
@@ -26,4 +27,24 @@ class GetGameHighScoresMethod extends TelegramMethod
         'message_id' => 'integer',
         'inline_message_id' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return [
+            new GameHighScore([
+                'user' => [
+                    'id' => $arguments['user_id'],
+                ],
+                'score' => '2000',
+                'position' => 1,
+            ]),
+            new GameHighScore([
+                'user' => [
+                    'id' => $arguments['user_id'],
+                ],
+                'score' => '1000',
+                'position' => 2,
+            ]),
+        ];
+    }
 }

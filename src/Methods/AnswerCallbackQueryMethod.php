@@ -28,4 +28,9 @@ class AnswerCallbackQueryMethod extends TelegramMethod
         'url' => 'string',
         'cache_time' => 'integer',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

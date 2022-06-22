@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
+use TypeError;
 use WeStacks\TeleBot\BotManager;
 use WeStacks\TeleBot\Exceptions\TeleBotException;
 use WeStacks\TeleBot\Objects\Message;
@@ -57,7 +58,7 @@ class BotObjectsTest extends TestCase
 
     public function testWrongObject()
     {
-        $this->expectError();
+        $this->expectException(TypeError::class);
         new Message([
             'entities' => 'string',
         ]);

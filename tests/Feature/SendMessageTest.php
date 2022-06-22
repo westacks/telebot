@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Tests\Feature;
 
 use GuzzleHttp\Promise;
 use PHPUnit\Framework\TestCase;
+use TypeError;
 use WeStacks\TeleBot\Exceptions\TeleBotException;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageId;
@@ -18,14 +19,9 @@ class SendMessageTest extends TestCase
      */
     private $bot;
 
-    /**
-     * @var Generator
-     */
-    private $faker;
-
     protected function setUp(): void
     {
-        $this->bot = new TeleBot(getenv('TELEGRAM_BOT_TOKEN'));
+        $this->bot = get_bot();
     }
 
     public function testCallUndefinedMethod()
@@ -42,7 +38,7 @@ class SendMessageTest extends TestCase
 
     public function testSomethingReallyWrong()
     {
-        $this->expectError();
+        $this->expectException(TypeError::class);
         $this->bot->sendMessage('test');
     }
 

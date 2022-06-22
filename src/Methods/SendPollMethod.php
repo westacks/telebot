@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
@@ -53,4 +54,32 @@ class SendPollMethod extends TelegramMethod
         'allow_sending_without_reply' => 'boolean',
         'reply_markup' => 'Keyboard',
     ];
+
+    public function mock($arguments)
+    {
+        return new Message([
+            'message_id' => rand(1, 100),
+            'date' => time(),
+            'chat' => [
+                'id' => $arguments['chat_id'],
+                'type' => 'private',
+            ],
+            'poll' => [
+                'id' => rand(1, 100),
+                'question' => $arguments['question'],
+                'options' => $arguments['options'],
+                'is_anonymous' => $arguments['is_anonymous'] ?? true,
+                'type' => $arguments['type'] ?? 'regular',
+                'allows_multiple_answers' => $arguments['allows_multiple_answers'] ?? false,
+                'correct_option_id' => $arguments['correct_option_id'] ?? null,
+                'explanation' => $arguments['explanation'] ?? null,
+                'explanation_parse_mode' => $arguments['explanation_parse_mode'] ?? null,
+                'explanation_entities' => $arguments['explanation_entities'] ?? null,
+                'open_period' => $arguments['open_period'] ?? null,
+                'close_date' => $arguments['close_date'] ?? null,
+                'is_closed' => $arguments['is_closed'] ?? false,
+            ],
+            'reply_markup' => $arguments['reply_markup'] ?? null,
+        ]);
+    }
 }

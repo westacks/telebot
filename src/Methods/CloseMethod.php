@@ -14,4 +14,9 @@ class CloseMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

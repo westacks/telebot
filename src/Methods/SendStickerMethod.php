@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InputFile;
+use WeStacks\TeleBot\Objects\Message;
 
 /**
  * Use this method to send static .WEBP or [animated](https://telegram.org/blog/animated-stickers) .TGS stickers. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
@@ -31,4 +32,43 @@ class SendStickerMethod extends TelegramMethod
         'allow_sending_without_reply' => 'boolean',
         'reply_markup' => 'Keyboard',
     ];
+
+    public function mock($arguments)
+    {
+        return new Message([
+            'message_id' => '123456789',
+            'from' => [
+                'id' => '123456789',
+                'first_name' => 'First',
+                'last_name' => 'Last',
+                'username' => 'username',
+            ],
+            'chat' => [
+                'id' => '123456789',
+                'first_name' => 'First',
+                'last_name' => 'Last',
+                'type' => 'private',
+            ],
+            'date' => '1479168447',
+            'sticker' => [
+                'file_id' => '123456789',
+                'width' => '123',
+                'height' => '123',
+                'thumb' => [
+                    'file_id' => '123456789',
+                    'width' => '123',
+                    'height' => '123',
+                ],
+                'emoji' => 'emoji',
+                'set_name' => 'set_name',
+                'mask_position' => [
+                    'point' => 'point',
+                    'x_shift' => '123',
+                    'y_shift' => '123',
+                    'scale' => '123',
+                ],
+                'file_size' => '123',
+            ],
+        ]);
+    }
 }

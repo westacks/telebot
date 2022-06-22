@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InputFile;
+use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
@@ -42,4 +43,32 @@ class SendDocumentMethod extends TelegramMethod
         'allow_sending_without_reply' => 'boolean',
         'reply_markup' => 'Keyboard',
     ];
+
+    public function mock($arguments)
+    {
+        return new Message([
+            'message_id' => rand(1, 100),
+            'from' => [
+                'id' => rand(1, 100),
+                'is_bot' => false,
+                'first_name' => 'Bot',
+            ],
+            'chat' => [
+                'id' => $arguments['chat_id'],
+                'type' => 'private',
+            ],
+            'date' => time(),
+            'document' => [
+                'file_id' => 'test',
+                'thumb' => [
+                    'file_id' => 'test',
+                    'width' => 0,
+                    'height' => 0,
+                ],
+                'file_name' => 'test',
+                'mime_type' => 'test',
+                'file_size' => 0,
+            ],
+        ]);
+    }
 }

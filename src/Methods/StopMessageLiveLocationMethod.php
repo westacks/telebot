@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
+use WeStacks\TeleBot\Objects\Message;
 
 /**
  * Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned.
@@ -25,4 +26,19 @@ class StopMessageLiveLocationMethod extends TelegramMethod
         'inline_message_id' => 'string',
         'reply_markup' => 'InlineKeyboardMarkup',
     ];
+
+    public function mock($arguments)
+    {
+        if (isset($arguments['inline_message_id'])) {
+            return true;
+        }
+
+        return new Message([
+            'message_id' => rand(1, 100),
+            'chat' => [
+                'id' => rand(1, 100),
+                'type' => 'private',
+            ],
+        ]);
+    }
 }

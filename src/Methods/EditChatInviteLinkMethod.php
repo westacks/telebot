@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\ChatInviteLink;
 
 /**
  * Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a [ChatInviteLink](https://core.telegram.org/bots/api#chatinvitelink) object.
@@ -28,4 +29,24 @@ class EditChatInviteLinkMethod extends TelegramMethod
         'member_limit' => 'integer',
         'creates_join_request' => 'boolean',
     ];
+
+    public function mock($arguments)
+    {
+        return new ChatInviteLink([
+            'invite_link' => 'https://telegram.me/joinchat/test',
+            'creator' => [
+                'id' => 1,
+                'first_name' => 'First',
+                'last_name' => 'Last',
+                'username' => 'username',
+            ],
+            'creates_join_request' => $arguments['creates_join_request'] ?? false,
+            'is_primary' => false,
+            'is_revoked' => false,
+            'name' => $arguments['name'] ?? null,
+            'expire_date' => $arguments['expire_date'] ?? null,
+            'member_limit' => $arguments['member_limit'] ?? null,
+            'pending_join_request_count' => 0,
+        ]);
+    }
 }

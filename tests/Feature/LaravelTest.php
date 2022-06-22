@@ -4,6 +4,8 @@ namespace WeStacks\TeleBot\Tests\Feature;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
 use WeStacks\TeleBot\Laravel\TeleBot;
 use WeStacks\TeleBot\Laravel\Providers\TeleBotServiceProvider;
@@ -16,6 +18,11 @@ use WeStacks\TeleBot\Exceptions\TeleBotException;
 
 class LaravelTest extends TestCase
 {
+    protected function getEnvironmentSetUp($app)
+    {
+        $app['config']->set('telebot.bot', get_config());
+    }
+
     public function testFacade()
     {
         $message = TeleBot::sendMessage([
@@ -42,7 +49,7 @@ class LaravelTest extends TestCase
             $this->assertInstanceOf(TeleBotException::class, $e);
         }
 
-        TeleBot::add('bot', getenv('TELEGRAM_BOT_TOKEN'));
+        TeleBot::add('bot', get_config());
         TeleBot::default('bot');
 
         $this->assertInstanceOf(Bot::class, TeleBot::bot());
@@ -111,10 +118,16 @@ class LaravelTest extends TestCase
         $update = '{"update_id":1234567,"message":{"message_id":2345678,"from":{"id":3456789,"is_bot":false,"first_name":"John","last_name":"Doe"}}}';
 
         foreach ($urls as $url) {
-            $this->post($url, json_decode($update, true))->assertStatus(200);
+            $this->postJson($url, json_decode($update, true))->assertStatus(200);
         }
 
-        $this->post("/telebot/webhook/wrong_bot/123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11")->assertStatus(404);
+        $this->postJson("/telebot/webhook/wrong_bot/123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11")->assertStatus(403);
+    }
+
+    public function testWebAppTemplate()
+    {
+        $html = View::file(__DIR__.'/../Helpers/views/webapp-example.blade.php')->render();
+        $this->assertStringContainsString('<script src="https://telegram.org/js/telegram-web-app.js"></script>', $html);
     }
 
     protected function getPackageProviders($app)

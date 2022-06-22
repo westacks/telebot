@@ -20,4 +20,9 @@ class ApproveChatJoinRequestMethod extends TelegramMethod
         'chat_id' => 'string',
         'user_id' => 'string',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

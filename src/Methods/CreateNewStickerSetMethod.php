@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\File;
 use WeStacks\TeleBot\Objects\InputFile;
 use WeStacks\TeleBot\Objects\MaskPosition;
 
@@ -23,7 +24,7 @@ class CreateNewStickerSetMethod extends TelegramMethod
 {
     protected string $method = 'createNewStickerSet';
 
-    protected string $expect = 'File';
+    protected string $expect = 'boolean';
 
     protected array $parameters = [
         'user_id' => 'string',
@@ -36,4 +37,9 @@ class CreateNewStickerSetMethod extends TelegramMethod
         'contains_masks' => 'boolean',
         'mask_position' => 'MaskPosition',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

@@ -20,4 +20,9 @@ class SetStickerPositionInSetMethod extends TelegramMethod
         'sticker' => 'string',
         'position' => 'integer',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

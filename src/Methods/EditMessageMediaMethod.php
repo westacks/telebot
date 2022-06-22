@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\Methods;
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
 use WeStacks\TeleBot\Objects\InputMedia;
+use WeStacks\TeleBot\Objects\Message;
 
 /**
  * Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned.
@@ -28,4 +29,21 @@ class EditMessageMediaMethod extends TelegramMethod
         'media' => 'InputMedia',
         'reply_markup' => 'InlineKeyboardMarkup',
     ];
+
+    public function mock($arguments)
+    {
+        if (isset($arguments['inline_message_id'])) {
+            return true;
+        }
+
+        return new Message([
+            'chat' => [
+                'id' => $arguments['chat_id'],
+            ],
+            'message_id' => $arguments['message_id'],
+            'text' => 'Test',
+            'reply_markup' => $arguments['reply_markup'] ?? [],
+            // TODO: mock media
+        ]);
+    }
 }

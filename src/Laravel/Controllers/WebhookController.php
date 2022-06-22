@@ -8,13 +8,8 @@ use WeStacks\TeleBot\Laravel\TeleBot;
 
 class WebhookController extends Controller
 {
-    public function __invoke(string $bot, string $token, UpdateRequest $request)
+    public function __invoke(UpdateRequest $request)
     {
-        $config = config("telebot.bots.$bot");
-        $realToken = $config['token'] ?? $config;
-
-        abort_if($realToken !== $token, 404);
-
-        TeleBot::bot($bot)->handleUpdate($request->update());
+        TeleBot::bot($request->route('bot'))->handleUpdate($request->update());
     }
 }

@@ -22,4 +22,9 @@ class UnbanChatMemberMethod extends TelegramMethod
         'user_id' => 'string',
         'only_if_banned' => 'boolean',
     ];
+
+    public function mock($arguments)
+    {
+        return true;
+    }
 }

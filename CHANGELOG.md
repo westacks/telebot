@@ -88,3 +88,12 @@ All notable changes to `telebot` will be documented in this file
 - Added customizable Kernel for handling updates and registering bot commands
 - Removed various library exceptions. Now only using `TeleBotException`
 - Version `1.x` is dropped out of official support. Hovever pull requests are welcome to the `1.x` branch.
+
+## 2.1.0 - 2022-06-22
+- Updated [Bot API](https://core.telegram.org/bots/api) to version 6.1
+- **Breaking**. `api_url` inside bot config now is a template string with `{TOKEN}` and `{METHOD}` placeholder (ex.: `https://api.telegram.org/bot{TOKEN}/{METHOD}`). This is useful when you have self hosted bot api or using Telegram's official testing Bot API.
+- Created the view `telebot::webapp` which might be extended to build Telegram web apps easier.
+- Fixed support for PHP 7.4
+- Added ability to fake requests to Telegram bot api using `$bot->fake()->sendMessage(...)`
+- Added new handler type `RequestInputHandler` which implements simplest state machine to request user input (e.g. #44). More details in documentation.
+- Increased security of Laravel's webhook with stricter validation and implemented in Bot API v6.1 `secret_token` feature.
