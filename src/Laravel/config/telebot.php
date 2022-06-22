@@ -26,7 +26,7 @@ return [
         'bot' => [
             'token' => env('TELEGRAM_BOT_TOKEN'),
             'name' => env('TELEGRAM_BOT_NAME', null),
-            'api_url' => 'https://api.telegram.org/bot{TOKEN}/{METHOD}',
+            'api_url' => env('TELEGRAM_API_URL', 'https://api.telegram.org/bot{TOKEN}/{METHOD}'),
             'exceptions' => true,
             'async' => false,
 

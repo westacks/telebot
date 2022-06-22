@@ -11,8 +11,9 @@ class AskHandlerTest extends TestCase
 {
     public function testAskHandler()
     {
-        $bot = new TeleBot([
-            'token' => getenv('TELEGRAM_BOT_TOKEN'),
+        global $config;
+
+        $bot = new TeleBot(array_merge($config, [
             'handlers' => [
                 AskNameHandler::class,
                 function ($bot, $update, $next) {
@@ -28,7 +29,7 @@ class AskHandlerTest extends TestCase
                     ]);
                 },
             ],
-        ]);
+        ]));
 
         $update = new Update([
             'message' => [

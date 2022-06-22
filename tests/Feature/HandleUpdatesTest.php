@@ -102,8 +102,9 @@ class HandleUpdatesTest extends TestCase
     // You should send any message to your bot in order to have at least one update
     public function testHandleUpdatesSimple()
     {
-        $bot = new TeleBot([
-            'token' => getenv('TELEGRAM_BOT_TOKEN'),
+        global $config;
+
+        $bot = new TeleBot(array_merge($config, [
             'handlers' => [
                 function (TeleBot $bot, Update $update, $next) {
                     echo $update;
@@ -111,7 +112,7 @@ class HandleUpdatesTest extends TestCase
                     return $next();
                 },
             ],
-        ]);
+        ]));
 
         foreach ($this->updates as $update) {
             // We will store our handler JSON output into the output buffer and then validate is it the same update
@@ -134,12 +135,13 @@ class HandleUpdatesTest extends TestCase
 
     public function testHandleUpdatesUsingObject()
     {
-        $bot = new TeleBot([
-            'token' => getenv('TELEGRAM_BOT_TOKEN'),
+        global $config;
+
+        $bot = new TeleBot(array_merge($config, [
             'handlers' => [
                 StartCommandHandler::class,
             ],
-        ]);
+        ]));
 
         $commands_set = $bot->setLocalCommands();
         $this->assertTrue($commands_set);
@@ -164,7 +166,8 @@ class HandleUpdatesTest extends TestCase
 
     public function testGetConfig()
     {
-        $bot = new TeleBot(getenv('TELEGRAM_BOT_TOKEN'));
-        $this->assertEquals(getenv('TELEGRAM_BOT_TOKEN'), $bot->config('token'));
+        global $config;
+        $bot = new TeleBot($config);
+        $this->assertEquals($config['token'], $bot->config('token'));
     }
 }

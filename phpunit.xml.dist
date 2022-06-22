@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit 
+
+<phpunit
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/latest/phpunit.xsd"
-    backupGlobals="false"
-    backupStaticAttributes="false"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+    backupGlobals="false" backupStaticAttributes="false"
     colors="true"
     verbose="true"
     convertErrorsToExceptions="true"
@@ -12,25 +12,27 @@
     processIsolation="false"
     stopOnFailure="false"
 >
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./src</directory>
+        </include>
+        <report>
+            <clover outputFile="build/logs/clover.xml" />
+            <html outputDirectory="build/coverage" />
+            <text outputFile="build/coverage.txt" />
+        </report>
+    </coverage>
+
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
-
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src</directory>
-        </whitelist>
-    </filter>
+    <logging />
 
-    <logging>
-        <log type="coverage-html" target="build/coverage"/>
-        <log type="coverage-text" target="build/coverage.txt"/>
-        <log type="coverage-clover" target="build/logs/clover.xml"/>
-    </logging>
 </phpunit>

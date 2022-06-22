@@ -17,7 +17,8 @@ class SendFilesTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->bot = new TeleBot(getenv('TELEGRAM_BOT_TOKEN'));
+        global $bot;
+        $this->bot = $bot;
     }
 
     public function testSendAudioFromUrl()

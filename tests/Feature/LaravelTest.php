@@ -16,6 +16,12 @@ use WeStacks\TeleBot\Exceptions\TeleBotException;
 
 class LaravelTest extends TestCase
 {
+    protected function getEnvironmentSetUp($app)
+    {
+        global $config;
+        $app['config']->set('telebot.bot', $config);
+    }
+
     public function testFacade()
     {
         $message = TeleBot::sendMessage([
@@ -42,7 +48,9 @@ class LaravelTest extends TestCase
             $this->assertInstanceOf(TeleBotException::class, $e);
         }
 
-        TeleBot::add('bot', getenv('TELEGRAM_BOT_TOKEN'));
+        global $config;
+
+        TeleBot::add('bot', $config);
         TeleBot::default('bot');
 
         $this->assertInstanceOf(Bot::class, TeleBot::bot());
