@@ -11,6 +11,7 @@
     convertWarningsToExceptions="false"
     processIsolation="false"
     stopOnFailure="false"
+    bootstrap="tests/bootstrap.php"
 >
 
     <coverage processUncoveredFiles="true">
