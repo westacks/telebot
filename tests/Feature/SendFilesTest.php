@@ -24,7 +24,7 @@ class SendFilesTest extends TestCase
     {
         $message = $this->bot->sendAudio([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'audio' => 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3',
+            'audio' => 'https://file-examples.com/storage/fe88505b6162b2538a045ce/2017/11/file_example_MP3_700KB.mp3',
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -45,7 +45,7 @@ class SendFilesTest extends TestCase
     {
         $message = $this->bot->sendVideo([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'video' => 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4',
+            'video' => 'https://file-examples.com/storage/fe88505b6162b2538a045ce/2017/04/file_example_MP4_480_1_5MG.mp4',
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -63,7 +63,7 @@ class SendFilesTest extends TestCase
     {
         $message = $this->bot->sendVoice([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'voice' => 'https://file-examples-com.github.io/uploads/2017/11/file_example_OOG_1MG.ogg',
+            'voice' => 'https://file-examples.com/storage/fe88505b6162b2538a045ce/2017/11/file_example_OOG_1MG.ogg',
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -86,7 +86,7 @@ class SendFilesTest extends TestCase
             'media' => [
                 [
                     'type' => 'video',
-                    'media' => 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4',
+                    'media' => 'https://file-examples.com/storage/fe88505b6162b2538a045ce/2017/04/file_example_MP4_480_1_5MG.mp4',
                 ], [
                     'type' => 'photo',
                     'media' => fopen('https://picsum.photos/640', 'r'),
@@ -115,7 +115,7 @@ class SendFilesTest extends TestCase
     {
         $message = $this->bot->sendSticker([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'sticker' => 'https://file-examples-com.github.io/uploads/2020/03/file_example_WEBP_50kB.webp',
+            'sticker' => 'https://file-examples.com/storage/fe88505b6162b2538a045ce/2020/03/file_example_WEBP_50kB.webp',
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
