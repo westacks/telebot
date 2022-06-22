@@ -137,6 +137,31 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_   `$creates_join_request` __Required: Optional__. True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified
  *
  *
+ * @method ChatInviteLink|PromiseInterface createInvoiceLink(array $parameters = []) Use this method to create a link for an invoice. Returns the created invoice link as String on success.
+ *
+ * Parameters:
+ * - _string_          `$title`                         __Required: Yes__.	Product name, 1-32 characters
+ * - _string_          `$description`                   __Required: Yes__.	Product description, 1-255 characters
+ * - _string_          `$payload`                       __Required: Yes__.	Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
+ * - _string_          `$provider_token`                __Required: Yes__.	Payment provider token, obtained via BotFather
+ * - _string_          `$currency`                      __Required: Yes__.	Three-letter ISO 4217 currency code, see more on currencies
+ * - _LabeledPrice[]_  `$prices`                        __Required: Yes__.	Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)
+ * - _integer_         `$max_tip_amount`                __Required: Optional__.	The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount 
+ * - _integer_         `$suggested_tip_amounts`	        __Required: Optional__.	A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specifie
+ * - _string_          `$provider_data`                 __Required: Optional__.	JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed description of required fields should be provided by the payment pro
+ * - _string_          `$photo_url`                     __Required: Optional__.	URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a service.
+ * - _integer_         `$photo_size`                    __Required: Optional__.	Photo size in bytes
+ * - _integer_         `$photo_width`                   __Required: Optional__.	Photo width
+ * - _integer_         `$photo_height`                  __Required: Optional__.	Photo height
+ * - _boolean_         `$need_name`                     __Required: Optional__.	Pass True, if you require the user's full name to complete the order
+ * - _boolean_         `$need_phone_number`             __Required: Optional__.	Pass True, if you require the user's phone number to complete the order
+ * - _boolean_         `$need_email`                    __Required: Optional__.	Pass True, if you require the user's email address to complete the order
+ * - _boolean_         `$need_shipping_address`         __Required: Optional__.	Pass True, if you require the user's shipping address to complete the order
+ * - _boolean_         `$send_phone_number_to_provider` __Required: Optional__.	Pass True, if the user's phone number should be sent to the provider
+ * - _boolean_         `$send_email_to_provider`        __Required: Optional__.	Pass True, if the user's email address should be sent to the provider
+ * - _boolean_         `$is_flexible`                   __Required: Optional__.	Pass True, if the final price depends on the shipping method
+ *
+ *
  * @method File|PromiseInterface createNewStickerSet(array $parameters = []) Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. You must use exactly one of the fields png_sticker or tgs_sticker. Returns True on success.
  *
  * Parameters:
