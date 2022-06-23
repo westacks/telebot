@@ -39,7 +39,7 @@ abstract class CommandHandler extends UpdateHandler
         }, static::$aliases);
     }
 
-    final public function trigger()
+    public function trigger()
     {
         if (! isset($this->update->message) || ! isset($this->update->message->entities)) {
             return false;
