@@ -16,8 +16,8 @@ use WeStacks\TeleBot\Objects\MaskPosition;
  * @property InputFile    $png_sticker    __Required: Optional__. PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
  * @property InputFile    $tgs_sticker    __Required: Optional__. TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
  * @property InputFile    $webm_sticker   __Required: Optional__. WEBM video with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/stickers#video-sticker-requirements for technical requirements
+ * @property string       $sticker_type   __Required: Optional__. Type of stickers in the set, pass “regular” or “mask”. Custom emoji sticker sets can't be created via the Bot API at the moment. By default, a regular sticker set is created.
  * @property string       $emojis         __Required: Yes__. One or more emoji corresponding to the sticker
- * @property bool         $contains_masks __Required: Optional__. Pass True, if a set of mask stickers should be created
  * @property MaskPosition $mask_position  __Required: Optional__. A JSON-serialized object for position where the mask should be placed on faces
  */
 class CreateNewStickerSetMethod extends TelegramMethod
@@ -33,8 +33,9 @@ class CreateNewStickerSetMethod extends TelegramMethod
         'png_sticker'    => 'InputFile',
         'tgs_sticker'    => 'InputFile',
         'webm_sticker'   => 'InputFile',
+        'sticker_type'   => 'string',
         'emojis'         => 'string',
-        'contains_masks' => 'boolean',
+        'contains_masks' => 'boolean', // DEPRECATED
         'mask_position'  => 'MaskPosition',
     ];
 

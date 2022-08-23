@@ -18,6 +18,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property string       $set_name             Optional. Name of the sticker set to which the sticker belongs
  * @property File         $premium_animation    Optional. Premium animation for the sticker, if the sticker is premium
  * @property MaskPosition $mask_position        Optional. For mask stickers, the position where the mask should be placed
+ * @property string       $custom_emoji_id      Optional. For custom emoji stickers, unique identifier of the custom emoji
  * @property int          $file_size            Optional. File size in bytes
  */
 class Sticker extends TelegramObject
@@ -34,6 +35,7 @@ class Sticker extends TelegramObject
         'set_name'          => 'string',
         'premium_animation' => 'File',
         'mask_position'     => 'MaskPosition',
+        'custom_emoji_id'   => 'string',
         'file_size'         => 'integer',
     ];
 }

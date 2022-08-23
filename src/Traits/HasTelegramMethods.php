@@ -15,6 +15,7 @@ use WeStacks\TeleBot\Objects\MenuButton;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageId;
 use WeStacks\TeleBot\Objects\SentWebAppMessage;
+use WeStacks\TeleBot\Objects\Sticker;
 use WeStacks\TeleBot\Objects\StickerSet;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\User;
@@ -171,8 +172,8 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _InputFile-    `$png_sticker`    __Required: Optional__. PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
  * - _InputFile-    `$tgs_sticker`    __Required: Optional__. TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
  * - _InputFile-    `$webm_sticker`   __Required: Optional__. WEBM video with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/stickers#video-sticker-requirements for technical requirements
+ * - _string_       `$sticker_type`   __Required: Optional__. Type of stickers in the set, pass “regular” or “mask”. Custom emoji sticker sets can't be created via the Bot API at the moment. By default, a regular sticker set is created.
  * - _string_       `$emojis`         __Required: Yes__. One or more emoji corresponding to the sticker
- * - _bool_         `$contains_masks` __Required: Optional__. Pass True, if a set of mask stickers should be created
  * - _MaskPosition_ `$mask_position`  __Required: Optional__. A JSON-serialized object for position where the mask should be placed on faces
  *
  *
