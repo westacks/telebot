@@ -86,9 +86,7 @@ abstract class TelegramMethod
         if ($this->fake) {
             $promise = new Promise;
             $promise->resolve($this->mock(Type::cast($arguments, $this->parameters)));
-        }
-
-        else {
+        } else {
             $data = Type::flatten($arguments, $this->parameters);
             $data = empty($data) ? [] : ['multipart' => $data];
 

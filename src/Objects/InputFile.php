@@ -47,7 +47,7 @@ class InputFile
     public function toMultipart(string $name)
     {
         $data = [
-            'name' => $name,
+            'name'     => $name,
             'contents' => $this->contents,
         ];
 

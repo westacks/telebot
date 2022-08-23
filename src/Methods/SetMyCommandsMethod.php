@@ -20,8 +20,8 @@ class SetMyCommandsMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'commands' => 'BotCommand[]',
-        'scope' => 'BotCommandScope',
+        'commands'      => 'BotCommand[]',
+        'scope'         => 'BotCommandScope',
         'language_code' => 'string',
     ];
 

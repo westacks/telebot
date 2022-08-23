@@ -25,22 +25,22 @@ class AddStickerToSetMethod extends TelegramMethod
     protected string $expect = 'File';
 
     protected array $parameters = [
-        'user_id' => 'string',
-        'name' => 'string',
-        'png_sticker' => 'InputFile',
-        'tgs_sticker' => 'InputFile',
-        'webm_sticker' => 'InputFile',
-        'emojis' => 'string',
+        'user_id'       => 'string',
+        'name'          => 'string',
+        'png_sticker'   => 'InputFile',
+        'tgs_sticker'   => 'InputFile',
+        'webm_sticker'  => 'InputFile',
+        'emojis'        => 'string',
         'mask_position' => 'MaskPosition',
     ];
 
     public function mock($arguments)
     {
         return new File([
-            'file_id' => 'mock-file-id',
+            'file_id'        => 'mock-file-id',
             'file_unique_id' => 'mock-file-unique-id',
-            'file_size' => 12345,
-            'file_path' => 'mock-file-path',
+            'file_size'      => 12345,
+            'file_path'      => 'mock-file-path',
         ]);
     }
 }

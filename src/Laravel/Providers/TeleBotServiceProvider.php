@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\ServiceProvider;
 use WeStacks\TeleBot\BotManager;
 use WeStacks\TeleBot\Laravel\Notifications\TelegramChannel;
-use WeStacks\TeleBot\Laravel\TeleBot;
 
 class TeleBotServiceProvider extends ServiceProvider
 {

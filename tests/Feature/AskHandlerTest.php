@@ -23,7 +23,7 @@ class AskHandlerTest extends TestCase
 
                     return $bot->fake()->sendMessage([
                         'chat_id' => $update->chat()->id,
-                        'text' => 'Please, type your name.',
+                        'text'    => 'Please, type your name.',
                     ]);
                 },
             ],

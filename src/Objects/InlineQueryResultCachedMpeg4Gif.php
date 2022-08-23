@@ -18,14 +18,14 @@ namespace WeStacks\TeleBot\Objects;
 class InlineQueryResultCachedMpeg4Gif extends InlineQueryResult
 {
     protected $attributes = [
-        'type' => 'string',
-        'id' => 'string',
-        'mpeg4_file_id' => 'string',
-        'title' => 'string',
-        'caption' => 'string',
-        'parse_mode' => 'string',
-        'caption_entities' => 'MessageEntity[]',
-        'reply_markup' => 'InlineKeyboardMarkup',
+        'type'                  => 'string',
+        'id'                    => 'string',
+        'mpeg4_file_id'         => 'string',
+        'title'                 => 'string',
+        'caption'               => 'string',
+        'parse_mode'            => 'string',
+        'caption_entities'      => 'MessageEntity[]',
+        'reply_markup'          => 'InlineKeyboardMarkup',
         'input_message_content' => 'InputMessageContent',
     ];
 }

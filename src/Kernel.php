@@ -2,7 +2,6 @@
 
 namespace WeStacks\TeleBot;
 
-use GuzzleHttp\Promise\PromiseInterface;
 use WeStacks\TeleBot\Exceptions\TeleBotException;
 use WeStacks\TeleBot\Handlers\CommandHandler;
 use WeStacks\TeleBot\Handlers\UpdateHandler;
@@ -30,7 +29,7 @@ class Kernel
         $runner = $this->runner($bot);
 
         if (!$runner->valid()) {
-            return null;
+            return;
         }
 
         $start = $runner->current();
@@ -75,7 +74,7 @@ class Kernel
         }
 
         return function () {
-            return null;
+            return;
         };
     }
 

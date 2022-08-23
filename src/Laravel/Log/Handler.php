@@ -87,9 +87,9 @@ class Handler extends AbstractProcessingHandler
     private function sendMessage(string $text): void
     {
         $this->bot->exceptions(false)->async(false)->sendMessage([
-            'chat_id' => $this->chat_id,
+            'chat_id'    => $this->chat_id,
             'parse_mode' => 'html',
-            'text' => $text,
+            'text'       => $text,
         ]);
     }
 }

@@ -20,23 +20,23 @@ class StopPollMethod extends TelegramMethod
     protected string $expect = 'Poll';
 
     protected array $parameters = [
-        'chat_id' => 'string',
-        'message_id' => 'integer',
+        'chat_id'      => 'string',
+        'message_id'   => 'integer',
         'reply_markup' => 'InlineKeyboardMarkup',
     ];
 
     public function mock($arguments)
     {
         return new Poll([
-            'id' => rand(1, 100),
+            'id'       => rand(1, 100),
             'question' => 'Question',
-            'options' => [
+            'options'  => [
                 [
-                    'text' => 'Option 1',
+                    'text'        => 'Option 1',
                     'voter_count' => rand(1, 100),
                 ],
                 [
-                    'text' => 'Option 2',
+                    'text'        => 'Option 2',
                     'voter_count' => rand(1, 100),
                 ],
             ],

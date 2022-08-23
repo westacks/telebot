@@ -23,7 +23,7 @@ class GetChatMenuButtonMethod extends TelegramMethod
     public function mock($arguments)
     {
         return new MenuButton([
-            'type' => 'default'
+            'type' => 'default',
         ]);
     }
 }

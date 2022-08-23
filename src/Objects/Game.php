@@ -17,11 +17,11 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class Game extends TelegramObject
 {
     protected $attributes = [
-        'title' => 'string',
-        'description' => 'string',
-        'photo' => 'PhotoSize[]',
-        'text' => 'string',
+        'title'         => 'string',
+        'description'   => 'string',
+        'photo'         => 'PhotoSize[]',
+        'text'          => 'string',
         'text_entities' => 'MessageEntity[]',
-        'animation' => 'Animation',
+        'animation'     => 'Animation',
     ];
 }

@@ -27,21 +27,21 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class Update extends TelegramObject
 {
     protected $attributes = [
-        'update_id' => 'integer',
-        'message' => 'Message',
-        'edited_message' => 'Message',
-        'channel_post' => 'Message',
-        'edited_channel_post' => 'Message',
-        'inline_query' => 'InlineQuery',
+        'update_id'            => 'integer',
+        'message'              => 'Message',
+        'edited_message'       => 'Message',
+        'channel_post'         => 'Message',
+        'edited_channel_post'  => 'Message',
+        'inline_query'         => 'InlineQuery',
         'chosen_inline_result' => 'ChosenInlineResult',
-        'callback_query' => 'CallbackQuery',
-        'shipping_query' => 'ShippingQuery',
-        'pre_checkout_query' => 'PreCheckoutQuery',
-        'poll' => 'Poll',
-        'poll_answer' => 'PollAnswer',
-        'my_chat_member' => 'ChatMemberUpdated',
-        'chat_member' => 'ChatMemberUpdated',
-        'chat_join_request' => 'ChatJoinRequest',
+        'callback_query'       => 'CallbackQuery',
+        'shipping_query'       => 'ShippingQuery',
+        'pre_checkout_query'   => 'PreCheckoutQuery',
+        'poll'                 => 'Poll',
+        'poll_answer'          => 'PollAnswer',
+        'my_chat_member'       => 'ChatMemberUpdated',
+        'chat_member'          => 'ChatMemberUpdated',
+        'chat_join_request'    => 'ChatJoinRequest',
     ];
 
     /**
@@ -66,7 +66,7 @@ class Update extends TelegramObject
             }
         }
 
-        return null;
+        return;
     }
 
     /**

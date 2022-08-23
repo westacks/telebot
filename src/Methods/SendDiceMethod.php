@@ -23,30 +23,30 @@ class SendDiceMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
-        'chat_id' => 'string',
-        'emoji' => 'string',
-        'disable_notification' => 'boolean',
-        'protect_content' => 'boolean',
-        'reply_to_message_id' => 'integer',
+        'chat_id'                     => 'string',
+        'emoji'                       => 'string',
+        'disable_notification'        => 'boolean',
+        'protect_content'             => 'boolean',
+        'reply_to_message_id'         => 'integer',
         'allow_sending_without_reply' => 'boolean',
-        'reply_markup' => 'Keyboard',
+        'reply_markup'                => 'Keyboard',
     ];
 
     public function mock($arguments)
     {
         return new Message([
             'message_id' => '123456789',
-            'from' => [
-                'id' => '123456789',
+            'from'       => [
+                'id'         => '123456789',
                 'first_name' => 'First',
-                'last_name' => 'Last',
-                'username' => 'username',
+                'last_name'  => 'Last',
+                'username'   => 'username',
             ],
             'chat' => [
-                'id' => '123456789',
+                'id'         => '123456789',
                 'first_name' => 'First',
-                'last_name' => 'Last',
-                'type' => 'private',
+                'last_name'  => 'Last',
+                'type'       => 'private',
             ],
             'date' => '1479168447',
             'dice' => [

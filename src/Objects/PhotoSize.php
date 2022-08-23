@@ -16,10 +16,10 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class PhotoSize extends TelegramObject
 {
     protected $attributes = [
-        'file_id' => 'string',
+        'file_id'        => 'string',
         'file_unique_id' => 'string',
-        'width' => 'integer',
-        'height' => 'integer',
-        'file_size' => 'integer',
+        'width'          => 'integer',
+        'height'         => 'integer',
+        'file_size'      => 'integer',
     ];
 }

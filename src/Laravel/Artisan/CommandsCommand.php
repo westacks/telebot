@@ -46,7 +46,7 @@ class CommandsCommand extends TeleBotCommand
     {
         $promises = [];
         foreach ($bots as $bot) {
-                $promises[] = $this->bot->bot($bot)
+            $promises[] = $this->bot->bot($bot)
                     ->async()
                     ->exceptions()
                     ->setLocalCommands()
@@ -66,7 +66,7 @@ class CommandsCommand extends TeleBotCommand
     {
         $promises = [];
         foreach ($bots as $bot) {
-                $promises[] = $this->bot->bot($bot)
+            $promises[] = $this->bot->bot($bot)
                     ->async()
                     ->exceptions()
                     ->deleteLocalCommands()

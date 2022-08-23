@@ -13,9 +13,9 @@ namespace WeStacks\TeleBot\Objects;
 class InlineQueryResultGame extends InlineQueryResult
 {
     protected $attributes = [
-        'type' => 'string',
-        'id' => 'string',
+        'type'            => 'string',
+        'id'              => 'string',
         'game_short_name' => 'string',
-        'reply_markup' => 'InlineKeyboardMarkup',
+        'reply_markup'    => 'InlineKeyboardMarkup',
     ];
 }

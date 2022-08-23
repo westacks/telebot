@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class PassportData extends TelegramObject
 {
     protected $attributes = [
-        'data' => 'EncryptedPassportElement[]',
+        'data'        => 'EncryptedPassportElement[]',
         'credentials' => 'EncryptedCredentials',
     ];
 }

@@ -15,11 +15,11 @@ namespace WeStacks\TeleBot\Objects;
 class InputLocationMessageContent extends InputMessageContent
 {
     protected $attributes = [
-        'latitude' => 'double',
-        'longitude' => 'double',
-        'horizontal_accuracy' => 'double',
-        'live_period' => 'integer',
-        'heading' => 'integer',
+        'latitude'               => 'double',
+        'longitude'              => 'double',
+        'horizontal_accuracy'    => 'double',
+        'live_period'            => 'integer',
+        'heading'                => 'integer',
         'proximity_alert_radius' => 'integer',
     ];
 }

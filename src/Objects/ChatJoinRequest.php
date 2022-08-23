@@ -16,10 +16,10 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class ChatJoinRequest extends TelegramObject
 {
     protected $attributes = [
-        'chat' => 'Chat',
-        'from' => 'User',
-        'date' => 'integer',
-        'bio' => 'string',
+        'chat'        => 'Chat',
+        'from'        => 'User',
+        'date'        => 'integer',
+        'bio'         => 'string',
         'invite_link' => 'ChatInviteLink',
     ];
 }

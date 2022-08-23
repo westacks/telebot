@@ -26,10 +26,10 @@ class GetChatMemberMethod extends TelegramMethod
     {
         return ChatMember::create([
             'user' => [
-                'id' => $arguments['user_id'],
+                'id'         => $arguments['user_id'],
                 'first_name' => 'First',
-                'last_name' => 'Last',
-                'username' => 'username',
+                'last_name'  => 'Last',
+                'username'   => 'username',
             ],
             'status' => [
                 'creator', 'administrator', 'member', 'restricted', 'left', 'kicked',

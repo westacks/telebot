@@ -45,13 +45,13 @@ abstract class UpdateHandler
         }
 
         $custom = [
-            'chat_id' => $this->update->chat()->id ?? null,
-            'user_id' => $this->update->user()->id ?? null,
-            'message_id' => $this->update->message()->message_id ?? null,
-            'callback_query_id' => $this->update->callback_query->id ?? null,
-            'inline_message_id' => $this->update->chosen_inline_result->inline_message_id ?? null,
-            'inline_query_id' => $this->update->inline_query->id ?? null,
-            'shipping_query_id' => $this->update->shipping_query->id ?? null,
+            'chat_id'               => $this->update->chat()->id ?? null,
+            'user_id'               => $this->update->user()->id ?? null,
+            'message_id'            => $this->update->message()->message_id ?? null,
+            'callback_query_id'     => $this->update->callback_query->id ?? null,
+            'inline_message_id'     => $this->update->chosen_inline_result->inline_message_id ?? null,
+            'inline_query_id'       => $this->update->inline_query->id ?? null,
+            'shipping_query_id'     => $this->update->shipping_query->id ?? null,
             'pre_checkout_query_id' => $this->update->pre_checkout_query->id ?? null,
         ];
 

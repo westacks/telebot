@@ -105,7 +105,7 @@ class Type
 
         foreach ($object as $key => $value) {
             $flat[] = [
-                'name' => $key,
+                'name'     => $key,
                 'contents' => is_iterable($value) ?
                     json_encode(static::strip($value)) : $value,
             ];

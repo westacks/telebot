@@ -4,7 +4,6 @@ namespace WeStacks\TeleBot\Tests\Feature;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
 use WeStacks\TeleBot\Laravel\TeleBot;
@@ -27,7 +26,7 @@ class LaravelTest extends TestCase
     {
         $message = TeleBot::sendMessage([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'text' => 'Hello from Laravel!',
+            'text'    => 'Hello from Laravel!',
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -138,7 +137,7 @@ class LaravelTest extends TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'TeleBot' => TeleBot::class
+            'TeleBot' => TeleBot::class,
         ];
     }
 }

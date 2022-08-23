@@ -18,12 +18,12 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class CallbackQuery extends TelegramObject
 {
     protected $attributes = [
-        'id' => 'string',
-        'from' => 'User',
-        'message' => 'Message',
+        'id'                => 'string',
+        'from'              => 'User',
+        'message'           => 'Message',
         'inline_message_id' => 'string',
-        'chat_instance' => 'string',
-        'data' => 'string',
-        'game_short_name' => 'string',
+        'chat_instance'     => 'string',
+        'data'              => 'string',
+        'game_short_name'   => 'string',
     ];
 }

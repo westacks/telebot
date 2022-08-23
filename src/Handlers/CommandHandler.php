@@ -33,7 +33,7 @@ abstract class CommandHandler extends UpdateHandler
     {
         return array_map(function ($name) {
             return new BotCommand([
-                'command' => $name,
+                'command'     => $name,
                 'description' => static::$description,
             ]);
         }, static::$aliases);

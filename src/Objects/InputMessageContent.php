@@ -18,8 +18,8 @@ abstract class InputMessageContent extends TelegramObject
 {
     private static $types = [
         'message_text' => InputTextMessageContent::class,
-        'address' => InputVenueMessageContent::class,
-        'latitude' => InputLocationMessageContent::class,
+        'address'      => InputVenueMessageContent::class,
+        'latitude'     => InputLocationMessageContent::class,
         'phone_number' => InputContactMessageContent::class,
     ];
 

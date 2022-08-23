@@ -9,7 +9,7 @@ if (!function_exists('get_config')) {
     {
         $config = [
             'exceptions' => true,
-            'async' => false,
+            'async'      => false,
         ];
 
         if ($val = getenv('TELEGRAM_API_URL')) {

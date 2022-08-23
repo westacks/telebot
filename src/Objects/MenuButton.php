@@ -16,8 +16,8 @@ abstract class MenuButton extends TelegramObject
 {
     private static $types = [
         'commands' => MenuButtonCommands::class,
-        'web_app' => MenuButtonWebApp::class,
-        'default' => MenuButtonDefault::class,
+        'web_app'  => MenuButtonWebApp::class,
+        'default'  => MenuButtonDefault::class,
     ];
 
     public static function create($object)

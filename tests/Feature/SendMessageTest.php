@@ -48,13 +48,13 @@ class SendMessageTest extends TestCase
 
         $promises[] = $this->bot->async(true)->sendMessage([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'text' => 'Unit test message',
+            'text'    => 'Unit test message',
         ]);
 
         // Should be wrong cos Telegram is not accept empty messages.
         $promises[] = $this->bot->async(true)->exceptions(false)->sendMessage([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'text' => '',
+            'text'    => '',
         ]);
 
         $responses = Promise\unwrap($promises);
@@ -64,7 +64,7 @@ class SendMessageTest extends TestCase
         $this->expectException(TeleBotException::class);
         $this->bot->sendMessage([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'text' => '',
+            'text'    => '',
         ]);
     }
 
@@ -72,19 +72,19 @@ class SendMessageTest extends TestCase
     {
         $message = $this->bot->sendMessage([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'text' => 'This message should be forwarded',
+            'text'    => 'This message should be forwarded',
         ]);
 
         $forwarded = $this->bot->forwardMessage([
-            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'chat_id'      => getenv('TELEGRAM_USER_ID'),
             'from_chat_id' => getenv('TELEGRAM_USER_ID'),
-            'message_id' => $message->message_id,
+            'message_id'   => $message->message_id,
         ]);
 
         $copied = $this->bot->copyMessage([
-            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'chat_id'      => getenv('TELEGRAM_USER_ID'),
             'from_chat_id' => getenv('TELEGRAM_USER_ID'),
-            'message_id' => $message->message_id,
+            'message_id'   => $message->message_id,
         ]);
 
         $this->assertInstanceOf(Message::class, $message);
@@ -95,29 +95,29 @@ class SendMessageTest extends TestCase
     public function testSendLocation()
     {
         $message = $this->bot->sendLocation([
-            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'chat_id'     => getenv('TELEGRAM_USER_ID'),
             'live_period' => 60,
-            'latitude' => 50.450157,
-            'longitude' => 30.524191,
+            'latitude'    => 50.450157,
+            'longitude'   => 30.524191,
         ]);
         $this->assertInstanceOf(Message::class, $message);
 
         $message = $this->bot->editMessageLiveLocation([
-            'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'message_id' => $message->message_id,
-            'latitude' => 50.350157,
-            'longitude' => 30.424191,
+            'chat_id'      => getenv('TELEGRAM_USER_ID'),
+            'message_id'   => $message->message_id,
+            'latitude'     => 50.350157,
+            'longitude'    => 30.424191,
             'reply_markup' => [
                 'inline_keyboard' => [[[
                     'text' => 'Google',
-                    'url' => 'http://google.com/',
+                    'url'  => 'http://google.com/',
                 ]]],
             ],
         ]);
         $this->assertInstanceOf(Message::class, $message);
 
         $message = $this->bot->stopMessageLiveLocation([
-            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'chat_id'    => getenv('TELEGRAM_USER_ID'),
             'message_id' => $message->message_id,
         ]);
         $this->assertInstanceOf(Message::class, $message);
@@ -126,12 +126,12 @@ class SendMessageTest extends TestCase
     public function testSendVenue()
     {
         $message = $this->bot->sendVenue([
-            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'chat_id'     => getenv('TELEGRAM_USER_ID'),
             'live_period' => 60,
-            'latitude' => 50.450157,
-            'longitude' => 30.524191,
-            'title' => 'Maidan Nezalezhnosti',
-            'address' => 'Kyiv',
+            'latitude'    => 50.450157,
+            'longitude'   => 30.524191,
+            'title'       => 'Maidan Nezalezhnosti',
+            'address'     => 'Kyiv',
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -139,10 +139,10 @@ class SendMessageTest extends TestCase
     public function testSendContact()
     {
         $message = $this->bot->exceptions(false)->sendContact([
-            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'chat_id'      => getenv('TELEGRAM_USER_ID'),
             'phone_number' => '+380111111111',
-            'first_name' => 'John',
-            'last_name' => 'Doe',
+            'first_name'   => 'John',
+            'last_name'    => 'Doe',
         ]);
         $this->assertNotNull($message);
     }
@@ -150,9 +150,9 @@ class SendMessageTest extends TestCase
     public function testSendPoll()
     {
         $message = $this->bot->sendPoll([
-            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'chat_id'  => getenv('TELEGRAM_USER_ID'),
             'question' => 'What is love?',
-            'options' => [
+            'options'  => [
                 'Baby, don\'t hurt me',
                 'Pain',
                 'Butterflies',
@@ -160,7 +160,7 @@ class SendMessageTest extends TestCase
         ]);
 
         $poll = $this->bot->stopPoll([
-            'chat_id' => getenv('TELEGRAM_USER_ID'),
+            'chat_id'    => getenv('TELEGRAM_USER_ID'),
             'message_id' => $message->message_id,
         ]);
 
@@ -180,7 +180,7 @@ class SendMessageTest extends TestCase
     {
         $message = $this->bot->sendChatAction([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'action' => 'typing',
+            'action'  => 'typing',
         ]);
         $this->assertTrue($message);
     }

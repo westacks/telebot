@@ -111,14 +111,14 @@ class TelegramNotification implements JsonSerializable
     public function __construct(string $data = null)
     {
         $this->data = $data ? json_decode($data, true) : [
-            'bot' => null,
+            'bot'     => null,
             'actions' => [],
         ];
     }
 
     public static function __callStatic(string $name, array $arguments)
     {
-        return (new static())->$name(...$arguments);
+        return (new static)->$name(...$arguments);
     }
 
     public function __call(string $method, array $arguments)
@@ -128,7 +128,7 @@ class TelegramNotification implements JsonSerializable
         }
 
         $this->data['actions'][] = [
-            'method' => $method,
+            'method'    => $method,
             'arguments' => is_array($arguments[0]) ? $arguments[0] : [],
         ];
 

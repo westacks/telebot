@@ -24,48 +24,48 @@ class SendStickerMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
-        'chat_id' => 'string',
-        'sticker' => 'InputFile',
-        'disable_notification' => 'boolean',
-        'protect_content' => 'boolean',
-        'reply_to_message_id' => 'integer',
+        'chat_id'                     => 'string',
+        'sticker'                     => 'InputFile',
+        'disable_notification'        => 'boolean',
+        'protect_content'             => 'boolean',
+        'reply_to_message_id'         => 'integer',
         'allow_sending_without_reply' => 'boolean',
-        'reply_markup' => 'Keyboard',
+        'reply_markup'                => 'Keyboard',
     ];
 
     public function mock($arguments)
     {
         return new Message([
             'message_id' => '123456789',
-            'from' => [
-                'id' => '123456789',
+            'from'       => [
+                'id'         => '123456789',
                 'first_name' => 'First',
-                'last_name' => 'Last',
-                'username' => 'username',
+                'last_name'  => 'Last',
+                'username'   => 'username',
             ],
             'chat' => [
-                'id' => '123456789',
+                'id'         => '123456789',
                 'first_name' => 'First',
-                'last_name' => 'Last',
-                'type' => 'private',
+                'last_name'  => 'Last',
+                'type'       => 'private',
             ],
-            'date' => '1479168447',
+            'date'    => '1479168447',
             'sticker' => [
                 'file_id' => '123456789',
-                'width' => '123',
-                'height' => '123',
-                'thumb' => [
+                'width'   => '123',
+                'height'  => '123',
+                'thumb'   => [
                     'file_id' => '123456789',
-                    'width' => '123',
-                    'height' => '123',
+                    'width'   => '123',
+                    'height'  => '123',
                 ],
-                'emoji' => 'emoji',
-                'set_name' => 'set_name',
+                'emoji'         => 'emoji',
+                'set_name'      => 'set_name',
                 'mask_position' => [
-                    'point' => 'point',
+                    'point'   => 'point',
                     'x_shift' => '123',
                     'y_shift' => '123',
-                    'scale' => '123',
+                    'scale'   => '123',
                 ],
                 'file_size' => '123',
             ],

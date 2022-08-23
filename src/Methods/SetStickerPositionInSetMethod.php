@@ -17,7 +17,7 @@ class SetStickerPositionInSetMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'sticker' => 'string',
+        'sticker'  => 'string',
         'position' => 'integer',
     ];
 

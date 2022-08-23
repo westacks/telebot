@@ -19,15 +19,15 @@ namespace WeStacks\TeleBot\Objects;
 class InlineQueryResultCachedDocument extends InlineQueryResult
 {
     protected $attributes = [
-        'type' => 'string',
-        'id' => 'string',
-        'title' => 'string',
-        'document_file_id' => 'string',
-        'description' => 'string',
-        'caption' => 'string',
-        'parse_mode' => 'string',
-        'caption_entities' => 'MessageEntity[]',
-        'reply_markup' => 'InlineKeyboardMarkup',
+        'type'                  => 'string',
+        'id'                    => 'string',
+        'title'                 => 'string',
+        'document_file_id'      => 'string',
+        'description'           => 'string',
+        'caption'               => 'string',
+        'parse_mode'            => 'string',
+        'caption_entities'      => 'MessageEntity[]',
+        'reply_markup'          => 'InlineKeyboardMarkup',
         'input_message_content' => 'InputMessageContent',
     ];
 }

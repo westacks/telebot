@@ -20,14 +20,14 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class WebhookInfo extends TelegramObject
 {
     protected $attributes = [
-        'url' => 'string',
-        'has_custom_certificate' => 'boolean',
-        'pending_update_count' => 'integer',
-        'ip_address' => 'string',
-        'last_error_date' => 'integer',
-        'last_error_message' => 'string',
+        'url'                             => 'string',
+        'has_custom_certificate'          => 'boolean',
+        'pending_update_count'            => 'integer',
+        'ip_address'                      => 'string',
+        'last_error_date'                 => 'integer',
+        'last_error_message'              => 'string',
         'last_synchronization_error_date' => 'integer',
-        'max_connections' => 'integer',
-        'allowed_updates' => 'string[]',
+        'max_connections'                 => 'integer',
+        'allowed_updates'                 => 'string[]',
     ];
 }

@@ -23,17 +23,17 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class Sticker extends TelegramObject
 {
     protected $attributes = [
-        'file_id' => 'string',
-        'file_unique_id' => 'string',
-        'width' => 'integer',
-        'height' => 'integer',
-        'is_animated' => 'boolean',
-        'is_video' => 'boolean',
-        'thumb' => 'PhotoSize',
-        'emoji' => 'string',
-        'set_name' => 'string',
+        'file_id'           => 'string',
+        'file_unique_id'    => 'string',
+        'width'             => 'integer',
+        'height'            => 'integer',
+        'is_animated'       => 'boolean',
+        'is_video'          => 'boolean',
+        'thumb'             => 'PhotoSize',
+        'emoji'             => 'string',
+        'set_name'          => 'string',
         'premium_animation' => 'File',
-        'mask_position' => 'MaskPosition',
-        'file_size' => 'integer',
+        'mask_position'     => 'MaskPosition',
+        'file_size'         => 'integer',
     ];
 }

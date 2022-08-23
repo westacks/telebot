@@ -19,15 +19,15 @@ namespace WeStacks\TeleBot\Objects;
 class InputMediaVideo extends InputMedia
 {
     protected $attributes = [
-        'type' => 'string',
-        'media' => 'InputFile',
-        'thumb' => 'InputFile',
-        'caption' => 'string',
-        'parse_mode' => 'string',
-        'caption_entities' => 'MessageEntity[]',
-        'width' => 'integer',
-        'height' => 'integer',
-        'duration' => 'integer',
+        'type'               => 'string',
+        'media'              => 'InputFile',
+        'thumb'              => 'InputFile',
+        'caption'            => 'string',
+        'parse_mode'         => 'string',
+        'caption_entities'   => 'MessageEntity[]',
+        'width'              => 'integer',
+        'height'             => 'integer',
+        'duration'           => 'integer',
         'supports_streaming' => 'boolean',
     ];
 }

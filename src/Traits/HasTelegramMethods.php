@@ -146,7 +146,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_          `$provider_token`                __Required: Yes__.	Payment provider token, obtained via BotFather
  * - _string_          `$currency`                      __Required: Yes__.	Three-letter ISO 4217 currency code, see more on currencies
  * - _LabeledPrice[]_  `$prices`                        __Required: Yes__.	Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)
- * - _integer_         `$max_tip_amount`                __Required: Optional__.	The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount 
+ * - _integer_         `$max_tip_amount`                __Required: Optional__.	The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount
  * - _integer_         `$suggested_tip_amounts`	        __Required: Optional__.	A JSON-serialized array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specifie
  * - _string_          `$provider_data`                 __Required: Optional__.	JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed description of required fields should be provided by the payment pro
  * - _string_          `$photo_url`                     __Required: Optional__.	URL of the product photo for the invoice. Can be a photo of the goods or a marketing image for a service.
@@ -940,6 +940,6 @@ trait HasTelegramMethods
             return $class;
         }
 
-        return null;
+        return;
     }
 }

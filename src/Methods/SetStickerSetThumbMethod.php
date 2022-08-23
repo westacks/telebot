@@ -19,9 +19,9 @@ class SetStickerSetThumbMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'name' => 'string',
+        'name'    => 'string',
         'user_id' => 'string',
-        'thumb' => 'InputFile',
+        'thumb'   => 'InputFile',
     ];
 
     public function mock($arguments)

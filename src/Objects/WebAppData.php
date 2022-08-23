@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class WebAppData extends TelegramObject
 {
     protected $attributes = [
-        'data' => 'string',
+        'data'        => 'string',
         'button_text' => 'string',
     ];
 }

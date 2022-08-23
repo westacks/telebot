@@ -26,15 +26,15 @@ class EditMessageLiveLocationMethod extends TelegramMethod
     protected string $expect = 'Message|boolean';
 
     protected array $parameters = [
-        'chat_id' => 'string',
-        'message_id' => 'integer',
-        'inline_message_id' => 'string',
-        'latitude' => 'double',
-        'longitude' => 'double',
-        'horizontal_accuracy' => 'double',
-        'heading' => 'integer',
+        'chat_id'                => 'string',
+        'message_id'             => 'integer',
+        'inline_message_id'      => 'string',
+        'latitude'               => 'double',
+        'longitude'              => 'double',
+        'horizontal_accuracy'    => 'double',
+        'heading'                => 'integer',
         'proximity_alert_radius' => 'integer',
-        'reply_markup' => 'InlineKeyboardMarkup',
+        'reply_markup'           => 'InlineKeyboardMarkup',
     ];
 
     public function mock($arguments)
@@ -48,13 +48,13 @@ class EditMessageLiveLocationMethod extends TelegramMethod
                 'id' => $arguments['chat_id'],
             ],
             'message_id' => $arguments['message_id'],
-            'text' => 'Test',
-            'location' => [
-                'latitude' => $arguments['latitude'],
-                'longitude' => $arguments['longitude'],
-                'horizontal_accuracy' => $arguments['horizontal_accuracy'] ?? null,
-                'live_period' => now()->timestamp,
-                'heading' => $arguments['heading'] ?? null,
+            'text'       => 'Test',
+            'location'   => [
+                'latitude'               => $arguments['latitude'],
+                'longitude'              => $arguments['longitude'],
+                'horizontal_accuracy'    => $arguments['horizontal_accuracy'] ?? null,
+                'live_period'            => now()->timestamp,
+                'heading'                => $arguments['heading'] ?? null,
                 'proximity_alert_radius' => $arguments['proximity_alert_radius'] ?? null,
             ],
             'reply_markup' => $arguments['reply_markup'] ?? [],

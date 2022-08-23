@@ -17,7 +17,7 @@ class KeyboardTest extends TestCase
         $keyboard = Keyboard::create([
             'inline_keyboard' => [[[
                 'text' => 'Google',
-                'url' => 'https://google.com/',
+                'url'  => 'https://google.com/',
             ]]],
         ]);
         $this->assertInstanceOf(InlineKeyboardMarkup::class, $keyboard);

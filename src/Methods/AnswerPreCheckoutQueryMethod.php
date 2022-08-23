@@ -19,8 +19,8 @@ class AnswerPreCheckoutQueryMethod extends TelegramMethod
 
     protected array $parameters = [
         'pre_checkout_query_id' => 'string',
-        'ok' => 'boolean',
-        'error_message' => 'string',
+        'ok'                    => 'boolean',
+        'error_message'         => 'string',
     ];
 
     public function mock($arguments)

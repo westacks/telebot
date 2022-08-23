@@ -27,15 +27,15 @@ class CreateNewStickerSetMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'user_id' => 'string',
-        'name' => 'string',
-        'title' => 'string',
-        'png_sticker' => 'InputFile',
-        'tgs_sticker' => 'InputFile',
-        'webm_sticker' => 'InputFile',
-        'emojis' => 'string',
+        'user_id'        => 'string',
+        'name'           => 'string',
+        'title'          => 'string',
+        'png_sticker'    => 'InputFile',
+        'tgs_sticker'    => 'InputFile',
+        'webm_sticker'   => 'InputFile',
+        'emojis'         => 'string',
         'contains_masks' => 'boolean',
-        'mask_position' => 'MaskPosition',
+        'mask_position'  => 'MaskPosition',
     ];
 
     public function mock($arguments)

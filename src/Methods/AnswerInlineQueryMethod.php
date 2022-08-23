@@ -24,12 +24,12 @@ class AnswerInlineQueryMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'inline_query_id' => 'string',
-        'results' => 'InlineQueryResult[]',
-        'cache_time' => 'integer',
-        'is_personal' => 'boolean',
-        'next_offset' => 'string',
-        'switch_pm_text' => 'string',
+        'inline_query_id'     => 'string',
+        'results'             => 'InlineQueryResult[]',
+        'cache_time'          => 'integer',
+        'is_personal'         => 'boolean',
+        'next_offset'         => 'string',
+        'switch_pm_text'      => 'string',
         'switch_pm_parameter' => 'string',
     ];
 

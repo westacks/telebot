@@ -17,11 +17,11 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class Location extends TelegramObject
 {
     protected $attributes = [
-        'longitude' => 'double',
-        'latitude' => 'double',
-        'horizontal_accuracy' => 'double',
-        'live_period' => 'integer',
-        'heading' => 'integer',
+        'longitude'              => 'double',
+        'latitude'               => 'double',
+        'horizontal_accuracy'    => 'double',
+        'live_period'            => 'integer',
+        'heading'                => 'integer',
         'proximity_alert_radius' => 'integer',
     ];
 }

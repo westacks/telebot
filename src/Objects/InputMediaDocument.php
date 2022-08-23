@@ -16,12 +16,12 @@ namespace WeStacks\TeleBot\Objects;
 class InputMediaDocument extends InputMedia
 {
     protected $attributes = [
-        'type' => 'string',
-        'media' => 'InputFile',
-        'thumb' => 'InputFile',
-        'caption' => 'string',
-        'parse_mode' => 'string',
-        'caption_entities' => 'MessageEntity[]',
+        'type'                           => 'string',
+        'media'                          => 'InputFile',
+        'thumb'                          => 'InputFile',
+        'caption'                        => 'string',
+        'parse_mode'                     => 'string',
+        'caption_entities'               => 'MessageEntity[]',
         'disable_content_type_detection' => 'boolean',
     ];
 }

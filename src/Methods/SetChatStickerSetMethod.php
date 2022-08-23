@@ -17,7 +17,7 @@ class SetChatStickerSetMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'chat_id' => 'string',
+        'chat_id'          => 'string',
         'sticker_set_name' => 'string',
     ];
 

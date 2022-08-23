@@ -23,10 +23,10 @@ class GetFileMethod extends TelegramMethod
     public function mock($arguments)
     {
         return new File([
-            'file_id' => $arguments['file_id'],
+            'file_id'        => $arguments['file_id'],
             'file_unique_id' => 'mock-file-unique-id',
-            'file_size' => 12345,
-            'file_path' => 'mock-file-path',
+            'file_size'      => 12345,
+            'file_path'      => 'mock-file-path',
         ]);
     }
 }

@@ -17,11 +17,11 @@ use WeStacks\TeleBot\Exceptions\TeleBotException;
 abstract class InputMedia extends TelegramObject
 {
     protected static $types = [
-        'photo' => InputMediaPhoto::class,
-        'video' => InputMediaVideo::class,
+        'photo'     => InputMediaPhoto::class,
+        'video'     => InputMediaVideo::class,
         'animation' => InputMediaAnimation::class,
-        'audio' => InputMediaAudio::class,
-        'document' => InputMediaDocument::class,
+        'audio'     => InputMediaAudio::class,
+        'document'  => InputMediaDocument::class,
     ];
 
     public static function create($object)

@@ -21,15 +21,15 @@ use WeStacks\TeleBot\Exceptions\TeleBotException;
 abstract class PassportElementError extends TelegramObject
 {
     protected static $types = [
-        'data' => PassportElementErrorDataField::class,
-        'front_side' => PassportElementErrorFrontSide::class,
-        'reverse_side' => PassportElementErrorReverseSide::class,
-        'selfie' => PassportElementErrorSelfie::class,
-        'file' => PassportElementErrorFile::class,
-        'files' => PassportElementErrorFiles::class,
-        'translation_file' => PassportElementErrorTranslationFile::class,
+        'data'              => PassportElementErrorDataField::class,
+        'front_side'        => PassportElementErrorFrontSide::class,
+        'reverse_side'      => PassportElementErrorReverseSide::class,
+        'selfie'            => PassportElementErrorSelfie::class,
+        'file'              => PassportElementErrorFile::class,
+        'files'             => PassportElementErrorFiles::class,
+        'translation_file'  => PassportElementErrorTranslationFile::class,
         'translation_files' => PassportElementErrorTranslationFiles::class,
-        'unspecified' => PassportElementErrorUnspecified::class,
+        'unspecified'       => PassportElementErrorUnspecified::class,
     ];
 
     public static function create($object)

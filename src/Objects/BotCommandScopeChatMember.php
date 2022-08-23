@@ -12,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
 class BotCommandScopeChatMember extends BotCommandScope
 {
     protected $attributes = [
-        'type' => 'string',
+        'type'    => 'string',
         'chat_id' => 'string',
         'user_id' => 'string',
     ];

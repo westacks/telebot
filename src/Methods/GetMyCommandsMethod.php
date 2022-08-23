@@ -19,7 +19,7 @@ class GetMyCommandsMethod extends TelegramMethod
     protected string $expect = 'BotCommand[]';
 
     protected array $parameters = [
-        'scope' => 'BotCommandScope',
+        'scope'         => 'BotCommandScope',
         'language_code' => 'string',
     ];
 
@@ -27,8 +27,8 @@ class GetMyCommandsMethod extends TelegramMethod
     {
         return [
             new BotCommand([
-                'command' => 'command',
-                'description' => 'description'
+                'command'     => 'command',
+                'description' => 'description',
             ]),
         ];
     }

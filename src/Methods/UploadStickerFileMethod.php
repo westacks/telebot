@@ -19,16 +19,16 @@ class UploadStickerFileMethod extends TelegramMethod
     protected string $expect = 'File';
 
     protected array $parameters = [
-        'user_id' => 'string',
+        'user_id'     => 'string',
         'png_sticker' => 'InputFile',
     ];
 
     public function mock($arguments)
     {
         return new File([
-            'file_id' => 'file_id',
-            'file_size' => 123,
-            'file_path' => 'file_path',
+            'file_id'        => 'file_id',
+            'file_size'      => 123,
+            'file_path'      => 'file_path',
             'file_unique_id' => 'file_unique_id',
         ]);
     }

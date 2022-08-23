@@ -12,6 +12,6 @@ class ReplyKeyboardRemove extends Keyboard
 {
     protected $attributes = [
         'remove_keyboard' => 'boolean',
-        'selective' => 'boolean',
+        'selective'       => 'boolean',
     ];
 }

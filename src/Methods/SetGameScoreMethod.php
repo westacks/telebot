@@ -23,13 +23,13 @@ class SetGameScoreMethod extends TelegramMethod
     protected string $expect = 'Message|boolean';
 
     protected array $parameters = [
-        'user_id' => 'string',
-        'score' => 'integer',
-        'force' => 'boolean',
+        'user_id'              => 'string',
+        'score'                => 'integer',
+        'force'                => 'boolean',
         'disable_edit_message' => 'boolean',
-        'chat_id' => 'integer',
-        'message_id' => 'integer',
-        'inline_message_id' => 'string',
+        'chat_id'              => 'integer',
+        'message_id'           => 'integer',
+        'inline_message_id'    => 'string',
     ];
 
     public function mock($arguments)
@@ -40,8 +40,8 @@ class SetGameScoreMethod extends TelegramMethod
 
         return new Message([
             'message_id' => rand(1, 100),
-            'chat' => [
-                'id' => rand(1, 100),
+            'chat'       => [
+                'id'   => rand(1, 100),
                 'type' => 'private',
             ],
         ]);

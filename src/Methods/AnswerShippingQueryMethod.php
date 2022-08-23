@@ -21,9 +21,9 @@ class AnswerShippingQueryMethod extends TelegramMethod
 
     protected array $parameters = [
         'shipping_query_id' => 'string',
-        'ok' => 'boolean',
-        'shipping_options' => 'ShippingOption[]',
-        'error_message' => 'string',
+        'ok'                => 'boolean',
+        'shipping_options'  => 'ShippingOption[]',
+        'error_message'     => 'string',
     ];
 
     public function mock($arguments)

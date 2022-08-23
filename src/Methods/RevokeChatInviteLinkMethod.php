@@ -18,7 +18,7 @@ class RevokeChatInviteLinkMethod extends TelegramMethod
     protected string $expect = 'ChatInviteLink';
 
     protected array $parameters = [
-        'chat_id' => 'string',
+        'chat_id'     => 'string',
         'invite_link' => 'string',
     ];
 
@@ -26,14 +26,14 @@ class RevokeChatInviteLinkMethod extends TelegramMethod
     {
         return new ChatInviteLink([
             'creator' => [
-                'id' => '123456789',
+                'id'         => '123456789',
                 'first_name' => 'First',
-                'last_name' => 'Last',
-                'username' => 'username',
+                'last_name'  => 'Last',
+                'username'   => 'username',
             ],
-            'invite_link' => $arguments['invite_link'],
-            'is_revoked' => true,
-            'is_primary' => false,
+            'invite_link'          => $arguments['invite_link'],
+            'is_revoked'           => true,
+            'is_primary'           => false,
             'creates_join_request' => false,
         ]);
     }

@@ -19,11 +19,11 @@ class GetMeMethod extends TelegramMethod
     public function mock($arguments)
     {
         return new User([
-            'id' => '123456789',
+            'id'         => '123456789',
             'first_name' => 'First',
-            'last_name' => 'Last',
-            'username' => 'username',
-            'is_bot' => true,
+            'last_name'  => 'Last',
+            'username'   => 'username',
+            'is_bot'     => true,
         ]);
     }
 }

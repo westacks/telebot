@@ -12,8 +12,8 @@ namespace WeStacks\TeleBot\Objects;
 class ChatMemberBanned extends ChatMember
 {
     protected $attributes = [
-        'status' => 'string',
-        'user' => 'User',
+        'status'     => 'string',
+        'user'       => 'User',
         'until_date' => 'integer',
     ];
 }

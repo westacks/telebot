@@ -18,12 +18,12 @@ use WeStacks\TeleBot\Exceptions\TeleBotException;
 abstract class ChatMember extends TelegramObject
 {
     protected static $types = [
-        'creator' => ChatMemberOwner::class,
+        'creator'       => ChatMemberOwner::class,
         'administrator' => ChatMemberAdministrator::class,
-        'member' => ChatMemberMember::class,
-        'restricted' => ChatMemberRestricted::class,
-        'left' => ChatMemberLeft::class,
-        'kicked' => ChatMemberBanned::class,
+        'member'        => ChatMemberMember::class,
+        'restricted'    => ChatMemberRestricted::class,
+        'left'          => ChatMemberLeft::class,
+        'kicked'        => ChatMemberBanned::class,
     ];
 
     public static function create($object)

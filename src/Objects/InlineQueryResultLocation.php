@@ -23,19 +23,19 @@ namespace WeStacks\TeleBot\Objects;
 class InlineQueryResultLocation extends InlineQueryResult
 {
     protected $attributes = [
-        'type' => 'string',
-        'id' => 'string',
-        'latitude' => 'double',
-        'longitude' => 'double',
-        'title' => 'string',
-        'horizontal_accuracy' => 'double',
-        'live_period' => 'integer',
-        'heading' => 'integer',
+        'type'                   => 'string',
+        'id'                     => 'string',
+        'latitude'               => 'double',
+        'longitude'              => 'double',
+        'title'                  => 'string',
+        'horizontal_accuracy'    => 'double',
+        'live_period'            => 'integer',
+        'heading'                => 'integer',
         'proximity_alert_radius' => 'integer',
-        'reply_markup' => 'InlineKeyboardMarkup',
-        'input_message_content' => 'InputMessageContent',
-        'thumb_url' => 'string',
-        'thumb_width' => 'integer',
-        'thumb_height' => 'integer',
+        'reply_markup'           => 'InlineKeyboardMarkup',
+        'input_message_content'  => 'InputMessageContent',
+        'thumb_url'              => 'string',
+        'thumb_width'            => 'integer',
+        'thumb_height'           => 'integer',
     ];
 }

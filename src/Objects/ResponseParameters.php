@@ -14,6 +14,6 @@ class ResponseParameters extends TelegramObject
 {
     protected $attributes = [
         'migrate_to_chat_id' => 'integer',
-        'retry_after' => 'integer',
+        'retry_after'        => 'integer',
     ];
 }

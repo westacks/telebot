@@ -23,19 +23,19 @@ class GetStickerSetMethod extends TelegramMethod
     public function mock($arguments)
     {
         return new StickerSet([
-            'name' => $arguments['name'],
-            'title' => 'title',
+            'name'           => $arguments['name'],
+            'title'          => 'title',
             'contains_masks' => false,
-            'stickers' => [
+            'stickers'       => [
                 [
-                    'file_id' => 'file_id',
-                    'width' => 100,
-                    'height' => 100,
+                    'file_id'     => 'file_id',
+                    'width'       => 100,
+                    'height'      => 100,
                     'is_animated' => false,
-                    'thumb' => [
+                    'thumb'       => [
                         'file_id' => 'file_id',
-                        'width' => 100,
-                        'height' => 100,
+                        'width'   => 100,
+                        'height'  => 100,
                     ],
                 ],
             ],

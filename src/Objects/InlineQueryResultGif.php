@@ -23,19 +23,19 @@ namespace WeStacks\TeleBot\Objects;
 class InlineQueryResultGif extends InlineQueryResult
 {
     protected $attributes = [
-        'type' => 'string',
-        'id' => 'string',
-        'gif_url' => 'string',
-        'gif_width' => 'integer',
-        'gif_height' => 'integer',
-        'gif_duration' => 'integer',
-        'thumb_url' => 'string',
-        'thumb_mime_type' => 'string',
-        'title' => 'string',
-        'caption' => 'string',
-        'parse_mode' => 'string',
-        'caption_entities' => 'MessageEntity[]',
-        'reply_markup' => 'InlineKeyboardMarkup',
+        'type'                  => 'string',
+        'id'                    => 'string',
+        'gif_url'               => 'string',
+        'gif_width'             => 'integer',
+        'gif_height'            => 'integer',
+        'gif_duration'          => 'integer',
+        'thumb_url'             => 'string',
+        'thumb_mime_type'       => 'string',
+        'title'                 => 'string',
+        'caption'               => 'string',
+        'parse_mode'            => 'string',
+        'caption_entities'      => 'MessageEntity[]',
+        'reply_markup'          => 'InlineKeyboardMarkup',
         'input_message_content' => 'InputMessageContent',
     ];
 }

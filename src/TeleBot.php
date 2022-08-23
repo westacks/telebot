@@ -62,14 +62,14 @@ class TeleBot
         }
 
         $this->config = [
-            'token' => $config['token'],
-            'name' => $config['name'] ?? null,
+            'token'      => $config['token'],
+            'name'       => $config['name'] ?? null,
             'exceptions' => $config['exceptions'] ?? true,
-            'async' => $config['async'] ?? false,
-            'api_url' => $config['api_url'] ?? 'https://api.telegram.org/bot{TOKEN}/{METHOD}',
-            'webhook' => $config['webhook'] ?? [],
-            'poll' => $config['poll'] ?? [],
-            'handlers' => $config['handlers'] ?? null,
+            'async'      => $config['async'] ?? false,
+            'api_url'    => $config['api_url'] ?? 'https://api.telegram.org/bot{TOKEN}/{METHOD}',
+            'webhook'    => $config['webhook'] ?? [],
+            'poll'       => $config['poll'] ?? [],
+            'handlers'   => $config['handlers'] ?? null,
         ];
 
         $this->client = new Client([
@@ -77,7 +77,7 @@ class TeleBot
         ]);
 
         if (is_subclass_of($handlers = $this->config['handlers'] ?? [], Kernel::class)) {
-            $this->kernel = new $handlers();
+            $this->kernel = new $handlers;
         } else {
             $this->kernel = new Kernel($handlers);
         }

@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class LabeledPrice extends TelegramObject
 {
     protected $attributes = [
-        'label' => 'string',
+        'label'  => 'string',
         'amount' => 'integer',
     ];
 }

@@ -19,13 +19,13 @@ use WeStacks\TeleBot\Exceptions\TeleBotException;
 abstract class BotCommandScope extends TelegramObject
 {
     protected static $types = [
-        'default' => BotCommandScopeDefault::class,
-        'all_private_chats' => BotCommandScopeAllPrivateChats::class,
-        'all_group_chats' => BotCommandScopeAllGroupChats::class,
+        'default'                 => BotCommandScopeDefault::class,
+        'all_private_chats'       => BotCommandScopeAllPrivateChats::class,
+        'all_group_chats'         => BotCommandScopeAllGroupChats::class,
         'all_chat_administrators' => BotCommandScopeAllChatAdministrators::class,
-        'chat' => BotCommandScopeChat::class,
-        'chat_administrators' => BotCommandScopeChatAdministrators::class,
-        'chat_member' => BotCommandScopeChatMember::class,
+        'chat'                    => BotCommandScopeChat::class,
+        'chat_administrators'     => BotCommandScopeChatAdministrators::class,
+        'chat_member'             => BotCommandScopeChatMember::class,
     ];
 
     public static function create($object)

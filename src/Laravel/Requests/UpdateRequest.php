@@ -50,14 +50,14 @@ class UpdateRequest extends FormRequest
 
     protected function onlyOnePresent(string $type)
     {
-        $types = implode(",", array_filter($this->types, fn($value) => $value !== $type));
+        $types = implode(",", array_filter($this->types, fn ($value) => $value !== $type));
         return "required_without_all:$types|prohibits:$types";
     }
 
     public function rules()
     {
         return collect($this->types)
-            ->mapWithKeys(fn($type) => [$type => [$this->onlyOnePresent($type), 'array']])
+            ->mapWithKeys(fn ($type) => [$type => [$this->onlyOnePresent($type), 'array']])
             ->prepend(['required', 'numeric'], 'update_id')
             ->toArray();
     }

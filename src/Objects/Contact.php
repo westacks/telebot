@@ -17,9 +17,9 @@ class Contact extends TelegramObject
 {
     protected $attributes = [
         'phone_number' => 'string',
-        'first_name' => 'string',
-        'last_name' => 'string',
-        'user_id' => 'string',
-        'vcard' => 'string',
+        'first_name'   => 'string',
+        'last_name'    => 'string',
+        'user_id'      => 'string',
+        'vcard'        => 'string',
     ];
 }

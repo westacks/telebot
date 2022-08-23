@@ -17,9 +17,9 @@ abstract class Keyboard extends TelegramObject
 {
     private static $types = [
         'inline_keyboard' => InlineKeyboardMarkup::class,
-        'keyboard' => ReplyKeyboardMarkup::class,
+        'keyboard'        => ReplyKeyboardMarkup::class,
         'remove_keyboard' => ReplyKeyboardRemove::class,
-        'force_reply' => ForceReply::class,
+        'force_reply'     => ForceReply::class,
     ];
 
     public static function create($object)

@@ -22,11 +22,11 @@ class SendMediaGroupMethod extends TelegramMethod
     protected string $expect = 'Message[]';
 
     protected array $parameters = [
-        'chat_id' => 'string',
-        'media' => 'InputMedia[]',
-        'disable_notification' => 'boolean',
-        'protect_content' => 'boolean',
-        'reply_to_message_id' => 'integer',
+        'chat_id'                     => 'string',
+        'media'                       => 'InputMedia[]',
+        'disable_notification'        => 'boolean',
+        'protect_content'             => 'boolean',
+        'reply_to_message_id'         => 'integer',
         'allow_sending_without_reply' => 'boolean',
     ];
 
@@ -35,23 +35,23 @@ class SendMediaGroupMethod extends TelegramMethod
         return [
             new Message([
                 'message_id' => '123456789',
-                'from' => [
-                    'id' => '123456789',
+                'from'       => [
+                    'id'         => '123456789',
                     'first_name' => 'First',
-                    'last_name' => 'Last',
-                    'username' => 'username',
+                    'last_name'  => 'Last',
+                    'username'   => 'username',
                 ],
                 'chat' => [
-                    'id' => '123456789',
+                    'id'         => '123456789',
                     'first_name' => 'First',
-                    'last_name' => 'Last',
-                    'type' => 'private',
+                    'last_name'  => 'Last',
+                    'type'       => 'private',
                 ],
-                'date' => '1479168447',
+                'date'  => '1479168447',
                 'photo' => [
                     'file_id' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-                    'width' => '640',
-                    'height' => '640',
+                    'width'   => '640',
+                    'height'  => '640',
                 ],
             ]),
         ];

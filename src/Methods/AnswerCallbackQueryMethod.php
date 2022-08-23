@@ -23,10 +23,10 @@ class AnswerCallbackQueryMethod extends TelegramMethod
 
     protected array $parameters = [
         'callback_query_id' => 'string',
-        'text' => 'string',
-        'show_alert' => 'boolean',
-        'url' => 'string',
-        'cache_time' => 'integer',
+        'text'              => 'string',
+        'show_alert'        => 'boolean',
+        'url'               => 'string',
+        'cache_time'        => 'integer',
     ];
 
     public function mock($arguments)

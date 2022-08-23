@@ -14,10 +14,10 @@ namespace WeStacks\TeleBot\Objects;
 class ReplyKeyboardMarkup extends Keyboard
 {
     protected $attributes = [
-        'keyboard' => 'KeyboardButton[][]',
-        'resize_keyboard' => 'boolean',
-        'one_time_keyboard' => 'boolean',
+        'keyboard'                => 'KeyboardButton[][]',
+        'resize_keyboard'         => 'boolean',
+        'one_time_keyboard'       => 'boolean',
         'input_field_placeholder' => 'string',
-        'selective' => 'boolean',
+        'selective'               => 'boolean',
     ];
 }

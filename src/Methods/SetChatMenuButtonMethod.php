@@ -18,7 +18,7 @@ class SetChatMenuButtonMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'chat_id' => 'string',
+        'chat_id'     => 'string',
         'menu_button' => 'MenuButton',
     ];
 

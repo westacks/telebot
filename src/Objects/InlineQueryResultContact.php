@@ -20,16 +20,16 @@ namespace WeStacks\TeleBot\Objects;
 class InlineQueryResultContact extends InlineQueryResult
 {
     protected $attributes = [
-        'type' => 'string',
-        'id' => 'string',
-        'phone_number' => 'string',
-        'first_name' => 'string',
-        'last_name' => 'string',
-        'vcard' => 'string',
-        'reply_markup' => 'InlineKeyboardMarkup',
+        'type'                  => 'string',
+        'id'                    => 'string',
+        'phone_number'          => 'string',
+        'first_name'            => 'string',
+        'last_name'             => 'string',
+        'vcard'                 => 'string',
+        'reply_markup'          => 'InlineKeyboardMarkup',
         'input_message_content' => 'InputMessageContent',
-        'thumb_url' => 'string',
-        'thumb_width' => 'integer',
-        'thumb_height' => 'integer',
+        'thumb_url'             => 'string',
+        'thumb_width'           => 'integer',
+        'thumb_height'          => 'integer',
     ];
 }

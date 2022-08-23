@@ -16,10 +16,10 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class ChosenInlineResult extends TelegramObject
 {
     protected $attributes = [
-        'result_id' => 'string',
-        'from' => 'User',
-        'location' => 'Location',
+        'result_id'         => 'string',
+        'from'              => 'User',
+        'location'          => 'Location',
         'inline_message_id' => 'string',
-        'query' => 'string',
+        'query'             => 'string',
     ];
 }

@@ -16,10 +16,10 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class KeyboardButton extends TelegramObject
 {
     protected $attributes = [
-        'text' => 'string',
-        'request_contact' => 'boolean',
+        'text'             => 'string',
+        'request_contact'  => 'boolean',
         'request_location' => 'boolean',
-        'request_poll' => 'KeyboardButtonPollType',
-        'web_app' => 'WebAppInfo',
+        'request_poll'     => 'KeyboardButtonPollType',
+        'web_app'          => 'WebAppInfo',
     ];
 }

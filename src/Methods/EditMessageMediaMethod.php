@@ -23,11 +23,11 @@ class EditMessageMediaMethod extends TelegramMethod
     protected string $expect = 'Message|boolean';
 
     protected array $parameters = [
-        'chat_id' => 'string',
-        'message_id' => 'integer',
+        'chat_id'           => 'string',
+        'message_id'        => 'integer',
         'inline_message_id' => 'string',
-        'media' => 'InputMedia',
-        'reply_markup' => 'InlineKeyboardMarkup',
+        'media'             => 'InputMedia',
+        'reply_markup'      => 'InlineKeyboardMarkup',
     ];
 
     public function mock($arguments)
@@ -40,8 +40,8 @@ class EditMessageMediaMethod extends TelegramMethod
             'chat' => [
                 'id' => $arguments['chat_id'],
             ],
-            'message_id' => $arguments['message_id'],
-            'text' => 'Test',
+            'message_id'   => $arguments['message_id'],
+            'text'         => 'Test',
             'reply_markup' => $arguments['reply_markup'] ?? [],
             // TODO: mock media
         ]);

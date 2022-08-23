@@ -19,7 +19,7 @@ class SetChatPhotoMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id' => 'string',
-        'photo' => 'InputFile',
+        'photo'   => 'InputFile',
     ];
 
     public function mock($arguments)

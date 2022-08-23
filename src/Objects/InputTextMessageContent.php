@@ -13,9 +13,9 @@ namespace WeStacks\TeleBot\Objects;
 class InputTextMessageContent extends InputMessageContent
 {
     protected $attributes = [
-        'message_text' => 'string',
-        'parse_mode' => 'string',
-        'entities' => 'MessageEntity[]',
+        'message_text'             => 'string',
+        'parse_mode'               => 'string',
+        'entities'                 => 'MessageEntity[]',
         'disable_web_page_preview' => 'boolean',
     ];
 }

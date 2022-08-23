@@ -28,44 +28,44 @@ class SendPhotoMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
-        'chat_id' => 'string',
-        'photo' => 'InputFile',
-        'caption' => 'string',
-        'parse_mode' => 'string',
-        'caption_entities' => 'MessageEntity[]',
-        'disable_notification' => 'boolean',
-        'protect_content' => 'boolean',
-        'reply_to_message_id' => 'integer',
+        'chat_id'                     => 'string',
+        'photo'                       => 'InputFile',
+        'caption'                     => 'string',
+        'parse_mode'                  => 'string',
+        'caption_entities'            => 'MessageEntity[]',
+        'disable_notification'        => 'boolean',
+        'protect_content'             => 'boolean',
+        'reply_to_message_id'         => 'integer',
         'allow_sending_without_reply' => 'boolean',
-        'reply_markup' => 'Keyboard',
+        'reply_markup'                => 'Keyboard',
     ];
 
     public function mock($arguments)
     {
         return new Message([
             'message_id' => mt_rand(1, 100),
-            'from' => [
-                'id' => mt_rand(1, 100),
-                'is_bot' => false,
-                'first_name' => '',
-                'last_name' => '',
-                'username' => '',
+            'from'       => [
+                'id'            => mt_rand(1, 100),
+                'is_bot'        => false,
+                'first_name'    => '',
+                'last_name'     => '',
+                'username'      => '',
                 'language_code' => '',
             ],
             'chat' => [
-                'id' => $arguments['chat_id'],
-                'type' => 'private',
-                'title' => '',
-                'username' => '',
-                'first_name' => '',
-                'last_name' => '',
+                'id'                             => $arguments['chat_id'],
+                'type'                           => 'private',
+                'title'                          => '',
+                'username'                       => '',
+                'first_name'                     => '',
+                'last_name'                      => '',
                 'all_members_are_administrators' => false,
             ],
-            'date' => time(),
+            'date'  => time(),
             'photo' => [
-                'file_id' => '',
-                'width' => mt_rand(1, 100),
-                'height' => mt_rand(1, 100),
+                'file_id'   => '',
+                'width'     => mt_rand(1, 100),
+                'height'    => mt_rand(1, 100),
                 'file_size' => mt_rand(1, 100),
             ],
         ]);

@@ -18,14 +18,14 @@ namespace WeStacks\TeleBot\Objects;
 class InputMediaAnimation extends InputMedia
 {
     protected $attributes = [
-        'type' => 'string',
-        'media' => 'InputFile',
-        'thumb' => 'InputFile',
-        'caption' => 'string',
-        'parse_mode' => 'string',
+        'type'             => 'string',
+        'media'            => 'InputFile',
+        'thumb'            => 'InputFile',
+        'caption'          => 'string',
+        'parse_mode'       => 'string',
         'caption_entities' => 'MessageEntity[]',
-        'width' => 'integer',
-        'height' => 'integer',
-        'duration' => 'integer',
+        'width'            => 'integer',
+        'height'           => 'integer',
+        'duration'         => 'integer',
     ];
 }

@@ -18,7 +18,7 @@ class SetMyDefaultAdministratorRightsMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'rights' => 'ChatAdministratorRights',
+        'rights'       => 'ChatAdministratorRights',
         'for_channels' => 'boolean',
     ];
 

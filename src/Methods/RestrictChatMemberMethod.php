@@ -20,10 +20,10 @@ class RestrictChatMemberMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'chat_id' => 'string',
-        'user_id' => 'string',
+        'chat_id'     => 'string',
+        'user_id'     => 'string',
         'permissions' => 'ChatPermissions',
-        'until_date' => 'integer',
+        'until_date'  => 'integer',
     ];
 
     public function mock($arguments)

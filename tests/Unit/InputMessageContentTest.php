@@ -18,7 +18,7 @@ class InputMessageContentTest extends TestCase
         $this->assertInstanceOf(InputTextMessageContent::class, $object);
 
         $object = InputMessageContent::create([
-            'address' => 'Test',
+            'address'  => 'Test',
             'latitude' => 23.043235,
         ]);
         $this->assertInstanceOf(InputVenueMessageContent::class, $object);

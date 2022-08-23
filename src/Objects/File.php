@@ -17,10 +17,10 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class File extends TelegramObject
 {
     protected $attributes = [
-        'file_id' => 'string',
+        'file_id'        => 'string',
         'file_unique_id' => 'string',
-        'file_size' => 'integer',
-        'file_path' => 'string',
+        'file_size'      => 'integer',
+        'file_path'      => 'string',
     ];
 
     /**

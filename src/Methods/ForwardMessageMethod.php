@@ -21,11 +21,11 @@ class ForwardMessageMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
-        'chat_id' => 'string',
-        'from_chat_id' => 'string',
+        'chat_id'              => 'string',
+        'from_chat_id'         => 'string',
         'disable_notification' => 'boolean',
-        'protect_content' => 'boolean',
-        'message_id' => 'integer',
+        'protect_content'      => 'boolean',
+        'message_id'           => 'integer',
     ];
 
     public function mock($arguments)

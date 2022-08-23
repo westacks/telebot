@@ -16,10 +16,10 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class Invoice extends TelegramObject
 {
     protected $attributes = [
-        'title' => 'string',
-        'description' => 'string',
+        'title'           => 'string',
+        'description'     => 'string',
         'start_parameter' => 'string',
-        'currency' => 'string',
-        'total_amount' => 'integer',
+        'currency'        => 'string',
+        'total_amount'    => 'integer',
     ];
 }

@@ -22,40 +22,40 @@ class IssueTest extends TestCase
     {
         $update = new Update([
             'update_id' => 848141909,
-            'message' => [
+            'message'   => [
                 'message_id' => 400,
-                'from' => [
-                    'id' => '123123',
-                    'is_bot' => false,
-                    'first_name' => 'first_name',
-                    'username' => 'username',
+                'from'       => [
+                    'id'            => '123123',
+                    'is_bot'        => false,
+                    'first_name'    => 'first_name',
+                    'username'      => 'username',
                     'language_code' => 'en',
                 ],
                 'chat' => [
-                    'id' => '123123',
+                    'id'         => '123123',
                     'first_name' => 'first_name',
-                    'username' => 'username',
-                    'type' => 'private',
+                    'username'   => 'username',
+                    'type'       => 'private',
                 ],
-                'date' => 1619653425,
+                'date'         => 1619653425,
                 'forward_from' => [
-                    'id' => '123123',
-                    'is_bot' => true,
+                    'id'         => '123123',
+                    'is_bot'     => true,
                     'first_name' => 'first_name',
-                    'username' => 'username',
+                    'username'   => 'username',
                 ],
                 'forward_date' => 1619564252,
-                'invoice' => [
-                    'title' => 'Product',
-                    'description' => 'description',
+                'invoice'      => [
+                    'title'           => 'Product',
+                    'description'     => 'description',
                     'start_parameter' => '',
-                    'currency' => 'UAH',
-                    'total_amount' => 1810,
+                    'currency'        => 'UAH',
+                    'total_amount'    => 1810,
                 ],
                 'reply_markup' => [
                     'inline_keyboard' => [[[
                         'text' => 'Pay 18,10UAH',
-                        'pay' => true,
+                        'pay'  => true,
                     ]]],
                 ],
             ],

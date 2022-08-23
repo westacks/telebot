@@ -13,8 +13,8 @@ namespace WeStacks\TeleBot\Objects;
 class ChatMemberOwner extends ChatMember
 {
     protected $attributes = [
-        'status' => 'string',
-        'user' => 'User',
+        'status'       => 'string',
+        'user'         => 'User',
         'is_anonymous' => 'boolean',
         'custom_title' => 'string',
     ];

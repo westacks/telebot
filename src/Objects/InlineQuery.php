@@ -17,11 +17,11 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class InlineQuery extends TelegramObject
 {
     protected $attributes = [
-        'id' => 'string',
-        'from' => 'User',
-        'query' => 'string',
-        'offset' => 'string',
+        'id'        => 'string',
+        'from'      => 'User',
+        'query'     => 'string',
+        'offset'    => 'string',
         'chat_type' => 'string',
-        'location' => 'Location',
+        'location'  => 'Location',
     ];
 }

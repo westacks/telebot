@@ -22,9 +22,9 @@ class GetGameHighScoresMethod extends TelegramMethod
     protected string $expect = 'GameHighScore[]';
 
     protected array $parameters = [
-        'user_id' => 'string',
-        'chat_id' => 'integer',
-        'message_id' => 'integer',
+        'user_id'           => 'string',
+        'chat_id'           => 'integer',
+        'message_id'        => 'integer',
         'inline_message_id' => 'string',
     ];
 
@@ -35,14 +35,14 @@ class GetGameHighScoresMethod extends TelegramMethod
                 'user' => [
                     'id' => $arguments['user_id'],
                 ],
-                'score' => '2000',
+                'score'    => '2000',
                 'position' => 1,
             ]),
             new GameHighScore([
                 'user' => [
                     'id' => $arguments['user_id'],
                 ],
-                'score' => '1000',
+                'score'    => '1000',
                 'position' => 2,
             ]),
         ];
