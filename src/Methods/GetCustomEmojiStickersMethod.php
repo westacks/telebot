@@ -10,7 +10,7 @@ use WeStacks\TeleBot\Objects\Sticker;
  *
  * @property string[] $custom_emoji_ids __Required: Yes__. List of custom emoji identifiers. At most 200 custom emoji identifiers can be specified.
  */
-class GetChatMethod extends TelegramMethod
+class GetCustomEmojiStickersMethod extends TelegramMethod
 {
     protected string $method = 'getCustomEmojiStickers';
 
