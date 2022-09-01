@@ -85,6 +85,7 @@ abstract class TelegramObject implements IteratorAggregate, JsonSerializable
         return json_encode($this->toArray());
     }
 
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return $this->toArray();
