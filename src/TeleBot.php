@@ -48,6 +48,12 @@ class TeleBot
     protected $exceptions;
 
     /**
+     * Fake trigger.
+     * @var bool
+     */
+    protected $fake;
+
+    /**
      * Create new instance of Telegram bot.
      * @param  array|string     $config Bot config. Path telegram bot API token as string, or array of parameters
      * @throws TeleBotException

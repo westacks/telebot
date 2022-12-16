@@ -38,7 +38,7 @@ class UpdateMessageTest extends TestCase
     {
         $message = $this->bot->sendPhoto([
             'chat_id'      => getenv('TELEGRAM_USER_ID'),
-            'photo'        => 'https://picsum.photos/640',
+            'photo'        => 'https://api.lorem.space/image?w=640&h=640',
             'caption'      => 'Update message test',
             'reply_markup' => [
                 'inline_keyboard' => [[[
@@ -59,7 +59,7 @@ class UpdateMessageTest extends TestCase
             'message_id' => $message->message_id,
             'media'      => [
                 'type'  => 'photo',
-                'media' => fopen('https://picsum.photos/640', 'r'),
+                'media' => 'https://api.lorem.space/image?w=640&h=640',
             ],
         ]);
 

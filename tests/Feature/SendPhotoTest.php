@@ -23,7 +23,7 @@ class SendPhotoTest extends TestCase
     {
         $message = $this->bot->sendPhoto([
             'chat_id'      => getenv('TELEGRAM_USER_ID'),
-            'photo'        => 'https://picsum.photos/640',
+            'photo'        => 'https://api.lorem.space/image?w=640&h=640',
             'reply_markup' => [
                 'inline_keyboard' => [[[
                     'text' => 'Google',
@@ -39,7 +39,7 @@ class SendPhotoTest extends TestCase
         $message = $this->bot->sendPhoto([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'photo'   => [
-                'file'     => fopen('https://picsum.photos/640', 'r'),
+                'file'     => fopen('https://api.lorem.space/image?w=640&h=640', 'r'),
                 'filename' => 'test-image.jpg',
             ],
         ]);
@@ -48,7 +48,7 @@ class SendPhotoTest extends TestCase
 
     public function testSendPhotoFromFile()
     {
-        file_put_contents(__DIR__.'/test-image.jpg', fopen('https://picsum.photos/640', 'r'));
+        file_put_contents(__DIR__.'/test-image.jpg', fopen('https://api.lorem.space/image?w=640&h=640', 'r'));
 
         $message = $this->bot->sendPhoto([
             'chat_id' => getenv('TELEGRAM_USER_ID'),

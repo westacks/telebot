@@ -45,7 +45,7 @@ class ChatMethodsTest extends TestCase
     {
         $set = $this->bot->setChatPhoto([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
-            'photo'   => fopen('https://picsum.photos/640', 'r'),
+            'photo'   => fopen('https://api.lorem.space/image?w=640&h=640', 'r'),
         ]);
 
         $this->assertTrue($set);
