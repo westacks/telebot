@@ -54,6 +54,14 @@ class UpdateRequest extends FormRequest
         return "required_without_all:$types|prohibits:$types";
     }
 
+    protected function prepareForValidation()
+    {
+        // Crutch to prevent any data modifications from Laravel
+        // For now, Laravel not allowing to disable global middleware per request,
+        // so we can't ignore middlewares like: ConvertEmptyStringsToNull, TrimStrings etc.
+        $this->merge(json_decode($this->getContent(), true));
+    }
+
     public function rules()
     {
         return collect($this->types)
