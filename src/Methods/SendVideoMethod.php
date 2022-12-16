@@ -11,6 +11,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as [Document](https://core.telegram.org/bots/api#document)). On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
  *
  * @property string          $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int             $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property InputFile       $video                       __Required: Yes__. Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More info on Sending Files »
  * @property int             $duration                    __Required: Optional__. Duration of sent video in seconds
  * @property int             $width                       __Required: Optional__. Video width
@@ -34,6 +35,7 @@ class SendVideoMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                     => 'string',
+        'message_thread_id'           => 'integer',
         'video'                       => 'InputFile',
         'duration'                    => 'integer',
         'width'                       => 'integer',

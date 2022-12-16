@@ -9,6 +9,7 @@ use WeStacks\TeleBot\Objects\Message;
  * Use this method to send information about a venue. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * @property string   $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int      $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property float    $latitude                    __Required: Yes__. Latitude of the venue
  * @property float    $longitude                   __Required: Yes__. Longitude of the venue
  * @property string   $title                       __Required: Yes__. Name of the venue
@@ -31,6 +32,7 @@ class SendVenueMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                     => 'string',
+        'message_thread_id'           => 'integer',
         'latitude'                    => 'double',
         'longitude'                   => 'double',
         'title'                       => 'string',

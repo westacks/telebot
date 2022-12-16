@@ -97,3 +97,11 @@ All notable changes to `telebot` will be documented here
 - Added ability to fake requests to Telegram bot api using `$bot->fake()->sendMessage(...)`
 - Added new handler type `RequestInputHandler` which implements simplest state machine to request user input (e.g. #44). More details in documentation.
 - Increased security of Laravel's webhook with stricter validation and implemented in Bot API v6.1 `secret_token` feature.
+
+## 2.2.0 - 2022-08-23
+- Updated [Bot API](https://core.telegram.org/bots/api) to version 6.2
+
+## 2.3.0 - 2022-12-16
+- Updated [Bot API](https://core.telegram.org/bots/api) to version 6.3
+- Dropped support for PHP 7.4
+- Webhook request now uses raw request parameters to prevent data changes from Laravel (fix [#60](https://github.com/westacks/telebot/issues/60))

@@ -10,6 +10,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * Use this method to send a native poll. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * @property string          $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int             $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property string          $question                    __Required: Yes__. Poll question, 1-300 characters
  * @property string[]        $options                     __Required: Yes__. A JSON-serialized list of answer options, 2-10 strings 1-100 characters each
  * @property bool            $is_anonymous                __Required: Optional__. True, if the poll needs to be anonymous, defaults to True
@@ -36,6 +37,7 @@ class SendPollMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                     => 'string',
+        'message_thread_id'           => 'integer',
         'question'                    => 'string',
         'options'                     => 'string[]',
         'is_anonymous'                => 'boolean',

@@ -10,6 +10,7 @@ use WeStacks\TeleBot\Objects\ChatAdministratorRights;
 use WeStacks\TeleBot\Objects\ChatInviteLink;
 use WeStacks\TeleBot\Objects\ChatMember;
 use WeStacks\TeleBot\Objects\File;
+use WeStacks\TeleBot\Objects\ForumTopic;
 use WeStacks\TeleBot\Objects\GameHighScore;
 use WeStacks\TeleBot\Objects\MenuButton;
 use WeStacks\TeleBot\Objects\Message;
@@ -116,6 +117,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_          `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_             `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _string_          `$from_chat_id`                __Required: Yes__. Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
  * - _int_             `$message_id`                  __Required: Yes__. Message identifier in the chat specified in from_chat_id
  * - _string_          `$caption`                     __Required: Optional__. New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept
@@ -194,6 +196,54 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ *
+ * @method Sticker[]|PromiseInterface getForumTopicIconStickers() Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user. Requires no parameters. Returns an Array of Sticker objects.
+ *
+ *
+ * @method ForumTopic|PromiseInterface createForumTopic(array $parameters = []) Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns information about the created topic as a ForumTopic object.
+ *
+ * Parameters:
+ * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * - __string__ `$name`                  __Required: Yes__. Topic name, 1-128 characters
+ * - __int__    `$icon_color`            __Required: Optional__. Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)
+ * - __string__ `$icon_custom_emoji_id`  __Required: Optional__. Unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers.
+ *
+ *
+ * @method bool|PromiseInterface editForumTopic(array $parameters = []) Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
+ *
+ * Parameters:
+ * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * - __int__    `$message_thread_id`     __Required: Yes__. Unique identifier for the target message thread of the forum topi
+ * - __string__ `$name`                  __Required: Yes__. New topic name, 1-128 characters
+ * - __string__ `$icon_custom_emoji_id`  __Required: Optional__. New unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers.
+ *
+ *
+ * @method bool|PromiseInterface closeForumTopic(array $parameters = []) Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
+ *
+ * Parameters:
+ * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * - __int__    `$message_thread_id`     __Required: Yes__. Unique identifier for the target message thread of the forum topi
+ *
+ *
+ * @method bool|PromiseInterface reopenForumTopic(array $parameters = []) Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
+ *
+ * Parameters:
+ * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * - __int__    `$message_thread_id`     __Required: Yes__. Unique identifier for the target message thread of the forum topi
+ *
+ *
+ * @method bool|PromiseInterface deleteForumTopic(array $parameters = []) Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success.
+ *
+ * Parameters:
+ * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * - __int__    `$message_thread_id`     __Required: Yes__. Unique identifier for the target message thread of the forum topi
+ *
+ *
+ * @method bool|PromiseInterface unpinAllForumTopicMessages(array $parameters = []) Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
+ *
+ * Parameters:
+ * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * - __int__    `$message_thread_id`     __Required: Yes__. Unique identifier for the target message thread of the forum topi
  *
  *
  * @method bool|PromiseInterface deleteMessage(array $parameters = []) Use this method to delete a message, including service messages, with the following limitations:
@@ -310,6 +360,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_ `$chat_id`              __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_    `$message_thread_id`    __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _string_ `$from_chat_id`         __Required: Yes__. Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
  * - _bool_   `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_   `$protect_content`      __Required: Optional__. Protects the contents of the forwarded message from forwarding and saving
@@ -468,6 +519,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_          `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_             `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _InputFile_       `$animation`                   __Required: Yes__. Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More info on Sending Files »
  * - _int_             `$duration`                    __Required: Optional__. Duration of sent animation in seconds
  * - _int_             `$width`                       __Required: Optional__. Animation width
@@ -489,6 +541,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_          `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_             `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _InputFile_       `$audio`                       __Required: Yes__. Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
  * - _string_          `$caption`                     __Required: Optional__. Audio caption, 0-1024 characters after entities parsing
  * - _string_          `$parse_mode`                  __Required: Optional__. Mode for parsing entities in the audio caption. See formatting options for more details.
@@ -519,6 +572,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_   `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_      `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _string_   `$phone_number`                __Required: Yes__. Contact's phone number
  * - _string_   `$first_name`                  __Required: Yes__. Contact's first name
  * - _string_   `$last_name`                   __Required: Optional__. Contact's last name
@@ -534,6 +588,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_   `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_      `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _string_   `$emoji`                       __Required: Optional__. Emoji on which the dice throw animation is based. Currently, must be one of “🎲”, “🎯”, “🏀”, “⚽”, or “🎰”. Dice can have values 1-6 for “🎲” and “🎯”, values 1-5 for “🏀” and “⚽”, and values 1-64 for “🎰”. Defaults to “🎲”
  * - _bool_     `$disable_notification`        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_     `$protect_content`             __Required: Optional__. Protects the contents of the sent message from forwarding
@@ -546,6 +601,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_          `$chat_id`                        __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_             `$message_thread_id`              __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _InputFile_       `$document`                       __Required: Yes__. File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
  * - _InputFile_       `$thumb`                          __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
  * - _string_          `$caption`                        __Required: Optional__. Document caption (may also be used when resending documents by file_id), 0-1024 characters after entities parsing
@@ -563,6 +619,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _int_                  `$chat_id`                     __Required: Yes__. Unique identifier for the target chat
+ * - _int_                  `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _string_               `$game_short_name`             __Required: Yes__. Short name of the game, serves as the unique identifier for the game. Set up your games via Botfather.
  * - _bool_                 `$disable_notification`        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_                 `$protect_content`             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
@@ -575,6 +632,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_               `$chat_id`                       __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_                  `$message_thread_id`             __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _string_               `$title`                         __Required: Yes__. Product name, 1-32 characters
  * - _string_               `$description`                   __Required: Yes__. Product description, 1-255 characters
  * - _string_               `$payload`                       __Required: Yes__. Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
@@ -607,6 +665,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_   `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_      `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _float_    `$latitude`                    __Required: Yes__. Latitude of the location
  * - _float_    `$longitude`                   __Required: Yes__. Longitude of the location
  * - _float_    `$horizontal_accuracy`         __Required: Optional__. The radius of uncertainty for the location, measured in meters; 0-1500
@@ -624,6 +683,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_       `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_          `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _InputMedia[]_ `$media`                       __Required: Yes__. A JSON-serialized array describing messages to be sent, must include 2-10 items
  * - _bool_         `$disable_notification`        __Required: Optional__. Sends messages silently. Users will receive a notification with no sound.
  * - _bool_         `$protect_content`             __Required: Optional__. Protects the contents of the sent messages from forwarding and saving
@@ -635,6 +695,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_          `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_             `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _string_          `$text`                        __Required: Yes__. Text of the message to be sent, 1-4096 characters after entities parsing
  * - _string_          `$parse_mode`                  __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
  * - _MessageEntity[]_ `$entities`                    __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
@@ -650,6 +711,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_          `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_             `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _InputFile_       `$photo`                       __Required: Yes__. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More info on Sending Files »
  * - _string_          `$caption`                     __Required: Optional__. Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
  * - _string_          `$parse_mode`                  __Required: Optional__. Mode for parsing entities in the photo caption. See formatting options for more details.
@@ -665,6 +727,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_          `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_             `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _string_          `$question`                    __Required: Yes__. Poll question, 1-300 characters
  * - _string[]_        `$options`                     __Required: Yes__. A JSON-serialized list of answer options, 2-10 strings 1-100 characters each
  * - _bool_            `$is_anonymous`                __Required: Optional__. True, if the poll needs to be anonymous, defaults to True
@@ -688,6 +751,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_    `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_       `$message_thread_id`              __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _InputFile_ `$sticker`                     __Required: Yes__. Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
  * - _bool_      `$disable_notification`        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_      `$protect_content`             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
@@ -700,6 +764,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_   `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_      `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _float_    `$latitude`                    __Required: Yes__. Latitude of the venue
  * - _float_    `$longitude`                   __Required: Yes__. Longitude of the venue
  * - _string_   `$title`                       __Required: Yes__. Name of the venue
@@ -719,6 +784,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_          `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_             `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _InputFile_       `$video`                       __Required: Yes__. Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More info on Sending Files »
  * - _int_             `$duration`                    __Required: Optional__. Duration of sent video in seconds
  * - _int_             `$width`                       __Required: Optional__. Video width
@@ -739,6 +805,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_    `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_       `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _InputFile_ `$video_note`                  __Required: Yes__. Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More info on Sending Files ». Sending video notes by a URL is currently unsupported
  * - _int_       `$duration`                    __Required: Optional__. Duration of sent video in seconds
  * - _int_       `$length`                      __Required: Optional__. Video width and height, i.e. diameter of the video message
@@ -754,6 +821,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_          `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_             `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _InputFile_       `$voice`                       __Required: Yes__. Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
  * - _string_          `$caption`                     __Required: Optional__. Voice message caption, 0-1024 characters after entities parsing
  * - _string_          `$parse_mode`                  __Required: Optional__. Mode for parsing entities in the voice message caption. See formatting options for more details.

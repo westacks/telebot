@@ -9,6 +9,7 @@ use WeStacks\TeleBot\Objects\Message;
  * Use this method to send point on the map. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * @property string   $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int      $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property float    $latitude                    __Required: Yes__. Latitude of the location
  * @property float    $longitude                   __Required: Yes__. Longitude of the location
  * @property float    $horizontal_accuracy         __Required: Optional__. The radius of uncertainty for the location, measured in meters; 0-1500
@@ -29,6 +30,7 @@ class SendLocationMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                     => 'string',
+        'message_thread_id'           => 'integer',
         'latitude'                    => 'double',
         'longitude'                   => 'double',
         'horizontal_accuracy'         => 'double',

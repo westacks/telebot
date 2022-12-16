@@ -11,6 +11,7 @@ use WeStacks\TeleBot\Objects\Message;
  * Use this method to send invoices. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * @property string               $chat_id                       __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int                  $message_thread_id             __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property string               $title                         __Required: Yes__. Product name, 1-32 characters
  * @property string               $description                   __Required: Yes__. Product description, 1-255 characters
  * @property string               $payload                       __Required: Yes__. Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
@@ -46,6 +47,7 @@ class SendInvoiceMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                       => 'string',
+        'message_thread_id'             => 'integer',
         'title'                         => 'string',
         'description'                   => 'string',
         'payload'                       => 'string',

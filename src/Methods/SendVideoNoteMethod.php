@@ -10,6 +10,7 @@ use WeStacks\TeleBot\Objects\Message;
  * As of [v.4.0](https://telegram.org/blog/video-messages-and-telescope), Telegram clients support rounded square mp4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * @property string    $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int       $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property InputFile $video_note                  __Required: Yes__. Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More info on Sending Files ». Sending video notes by a URL is currently unsupported
  * @property int       $duration                    __Required: Optional__. Duration of sent video in seconds
  * @property int       $length                      __Required: Optional__. Video width and height, i.e. diameter of the video message
@@ -28,6 +29,7 @@ class SendVideoNoteMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                     => 'string',
+        'message_thread_id'           => 'integer',
         'video_note'                  => 'InputFile',
         'duration'                    => 'integer',
         'length'                      => 'integer',

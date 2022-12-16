@@ -1,7 +1,7 @@
 <p id="telebot" align="center">
 <a href="https://github.com/westacks/telebot"><img src="./assets/logo.svg" alt="Project Logo"></a><br>
 <a href="https://packagist.org/packages/westacks/telebot"><img src="https://poser.pugx.org/westacks/telebot/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://core.telegram.org/bots/api"><img src="https://img.shields.io/badge/Bot%20API-6.1-blue" alt="Bot API Version"></a>
+<a href="https://core.telegram.org/bots/api"><img src="https://img.shields.io/badge/Bot%20API-6.3-blue" alt="Bot API Version"></a>
 <a href="https://packagist.org/packages/westacks/telebot"><img src="https://poser.pugx.org/westacks/telebot/d/total.svg" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/westacks/telebot"><img src="https://poser.pugx.org/westacks/telebot/license.svg" alt="License"></a>
 </p>

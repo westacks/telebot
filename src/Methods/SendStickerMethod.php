@@ -10,6 +10,7 @@ use WeStacks\TeleBot\Objects\Message;
  * Use this method to send static .WEBP or [animated](https://telegram.org/blog/animated-stickers) .TGS stickers. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * @property string    $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int       $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property InputFile $sticker                     __Required: Yes__. Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
  * @property bool      $disable_notification        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * @property bool      $protect_content             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
@@ -25,6 +26,7 @@ class SendStickerMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                     => 'string',
+        'message_thread_id'           => 'integer',
         'sticker'                     => 'InputFile',
         'disable_notification'        => 'boolean',
         'protect_content'             => 'boolean',

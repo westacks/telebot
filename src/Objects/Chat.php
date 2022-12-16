@@ -15,6 +15,8 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property string          $last_name                                 Optional. Last name of the other party in a private chat
  * @property bool            $is_forum                                  Optional. True, if the supergroup chat is a forum (has topics enabled)
  * @property ChatPhoto       $photo                                     Optional. Chat photo. Returned only in getChat.
+ * @property string[]        $active_usernames                          Optional. If non-empty, the list of all active chat usernames; for private chats, supergroups and channels. Returned only in getChat.
+ * @property string          $emoji_status_custom_emoji_id              Optional. Custom emoji identifier of emoji status of the other party in a private chat. Returned only in getChat.
  * @property string          $bio                                       Optional. Bio of the other party in a private chat. Returned only in getChat.
  * @property bool            $has_private_forwards                      Optional. True, if privacy settings of the other party in the private chat allows to use tg://user?id= links only in chats with the user. Returned only in getChat.
  * @property bool            $has_restricted_voice_and_video_messages   Optional. True, if the privacy settings of the other party restrict sending voice and video note messages in the private chat. Returned only in getChat.
@@ -43,6 +45,8 @@ class Chat extends TelegramObject
         'last_name'                               => 'string',
         'is_forum'                                => 'boolean',
         'photo'                                   => 'ChatPhoto',
+        'active_usernames'                        => 'string[]',
+        'emoji_status_custom_emoji_id'            => 'string',
         'bio'                                     => 'string',
         'has_private_forwards'                    => 'boolean',
         'has_restricted_voice_and_video_messages' => 'boolean',

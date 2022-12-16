@@ -10,6 +10,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * Use this method to send text messages. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * @property string          $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int             $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property string          $text                        __Required: Yes__. Text of the message to be sent, 1-4096 characters after entities parsing
  * @property string          $parse_mode                  __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
  * @property MessageEntity[] $entities                    __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
@@ -28,6 +29,7 @@ class SendMessageMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                     => 'string',
+        'message_thread_id'           => 'integer',
         'text'                        => 'string',
         'parse_mode'                  => 'string',
         'entities'                    => 'MessageEntity[]',

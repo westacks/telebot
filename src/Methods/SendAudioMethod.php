@@ -13,6 +13,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * For sending voice messages, use the [sendVoice](https://core.telegram.org/bots/api#sendvoice) method instead.
  *
  * @property string          $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int             $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property InputFile       $audio                       __Required: Yes__. Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
  * @property string          $caption                     __Required: Optional__. Audio caption, 0-1024 characters after entities parsing
  * @property string          $parse_mode                  __Required: Optional__. Mode for parsing entities in the audio caption. See formatting options for more details.
@@ -35,6 +36,7 @@ class SendAudioMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                     => 'string',
+        'message_thread_id'           => 'integer',
         'audio'                       => 'InputFile',
         'caption'                     => 'string',
         'parse_mode'                  => 'string',

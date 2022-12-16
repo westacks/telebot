@@ -11,6 +11,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * Use this method to send photos. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * @property string          $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int             $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property InputFile       $photo                       __Required: Yes__. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More info on Sending Files »
  * @property string          $caption                     __Required: Optional__. Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
  * @property string          $parse_mode                  __Required: Optional__. Mode for parsing entities in the photo caption. See formatting options for more details.
@@ -29,6 +30,7 @@ class SendPhotoMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                     => 'string',
+        'message_thread_id'           => 'integer',
         'photo'                       => 'InputFile',
         'caption'                     => 'string',
         'parse_mode'                  => 'string',

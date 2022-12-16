@@ -11,6 +11,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS (other formats may be sent as [Audio](https://core.telegram.org/bots/api#audio) or [Document](https://core.telegram.org/bots/api#document)). On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
  *
  * @property string          $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int             $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property InputFile       $voice                       __Required: Yes__. Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
  * @property string          $caption                     __Required: Optional__. Voice message caption, 0-1024 characters after entities parsing
  * @property string          $parse_mode                  __Required: Optional__. Mode for parsing entities in the voice message caption. See formatting options for more details.
@@ -30,6 +31,7 @@ class SendVoiceMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                     => 'string',
+        'message_thread_id'           => 'integer',
         'voice'                       => 'InputFile',
         'caption'                     => 'string',
         'parse_mode'                  => 'string',

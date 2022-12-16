@@ -11,6 +11,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * Use this method to send general files. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
  *
  * @property string          $chat_id                        __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int             $message_thread_id              __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property InputFile       $document                       __Required: Yes__. File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
  * @property InputFile       $thumb                          __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
  * @property string          $caption                        __Required: Optional__. Document caption (may also be used when resending documents by file_id), 0-1024 characters after entities parsing
@@ -31,6 +32,7 @@ class SendDocumentMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                        => 'string',
+        'message_thread_id'           => 'integer',
         'document'                       => 'InputFile',
         'thumb'                          => 'InputFile',
         'caption'                        => 'string',

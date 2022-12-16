@@ -11,6 +11,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
  *
  * @property string          $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int             $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property InputFile       $animation                   __Required: Yes__. Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More info on Sending Files »
  * @property int             $duration                    __Required: Optional__. Duration of sent animation in seconds
  * @property int             $width                       __Required: Optional__. Animation width
@@ -33,6 +34,7 @@ class SendAnimationMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                     => 'string',
+        'message_thread_id'           => 'integer',
         'animation'                   => 'InputFile',
         'duration'                    => 'integer',
         'width'                       => 'integer',

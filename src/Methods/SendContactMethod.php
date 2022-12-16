@@ -9,6 +9,7 @@ use WeStacks\TeleBot\Objects\Message;
  * Use this method to send phone contacts. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * @property string   $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property int      $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property string   $phone_number                __Required: Yes__. Contact's phone number
  * @property string   $first_name                  __Required: Yes__. Contact's first name
  * @property string   $last_name                   __Required: Optional__. Contact's last name
@@ -27,6 +28,7 @@ class SendContactMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                     => 'string',
+        'message_thread_id'           => 'integer',
         'phone_number'                => 'string',
         'first_name'                  => 'string',
         'last_name'                   => 'string',
