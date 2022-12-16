@@ -32,7 +32,7 @@ class SendDocumentMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id'                        => 'string',
-        'message_thread_id'           => 'integer',
+        'message_thread_id'              => 'integer',
         'document'                       => 'InputFile',
         'thumb'                          => 'InputFile',
         'caption'                        => 'string',

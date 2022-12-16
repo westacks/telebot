@@ -26,7 +26,7 @@ class GetForumTopicIconStickersMethod extends TelegramMethod
                 'height'         => 100,
                 'is_animated'    => false,
                 'is_video'       => false,
-            ])
+            ]),
         ];
     }
 }

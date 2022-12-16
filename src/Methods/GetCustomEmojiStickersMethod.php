@@ -23,7 +23,7 @@ class GetCustomEmojiStickersMethod extends TelegramMethod
     public function mock($arguments)
     {
         return [
-            new Sticker([])
+            new Sticker([]),
         ];
     }
 }
