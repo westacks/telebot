@@ -445,6 +445,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_   `$can_change_info`        __Required: Optional__. Pass True, if the administrator can change chat title, photo and other settings
  * - _bool_   `$can_invite_users`       __Required: Optional__. Pass True, if the administrator can invite new users to the chat
  * - _bool_   `$can_pin_messages`       __Required: Optional__. Pass True, if the administrator can pin messages, supergroups only
+ * - _bool_   `$can_manage_topics`      __Required: Optional__. Pass True if the user is allowed to create, rename, close, and reopen forum topics, supergroups only
  *
  *
  * @method bool|PromiseInterface restrictChatMember(array $parameters = []) Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass True for all permissions to lift restrictions from a user. Returns True on success.

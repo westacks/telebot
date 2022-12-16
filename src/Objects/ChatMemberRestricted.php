@@ -11,6 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property bool   $can_change_info           True, if the user is allowed to change the chat title, photo and other settings
  * @property bool   $can_invite_users          True, if the user is allowed to invite new users to the chat
  * @property bool   $can_pin_messages          True, if the user is allowed to pin messages
+ * @property bool   $can_manage_topics         True, if the user is allowed to create forum topics
  * @property bool   $can_send_messages         True, if the user is allowed to send text messages, contacts, locations and venues
  * @property bool   $can_send_media_messages   True, if the user is allowed to send audios, documents, photos, videos, video notes and voice notes
  * @property bool   $can_send_polls            True, if the user is allowed to send polls
@@ -27,6 +28,7 @@ class ChatMemberRestricted extends ChatMember
         'can_change_info'           => 'boolean',
         'can_invite_users'          => 'boolean',
         'can_pin_messages'          => 'boolean',
+        'can_manage_topics'         => 'boolean',
         'can_send_messages'         => 'boolean',
         'can_send_media_messages'   => 'boolean',
         'can_send_polls'            => 'boolean',

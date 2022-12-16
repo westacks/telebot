@@ -20,6 +20,7 @@ use WeStacks\TeleBot\Contracts\TelegramMethod;
  * @property bool   $can_change_info        __Required: Optional__. Pass True, if the administrator can change chat title, photo and other settings
  * @property bool   $can_invite_users       __Required: Optional__. Pass True, if the administrator can invite new users to the chat
  * @property bool   $can_pin_messages       __Required: Optional__. Pass True, if the administrator can pin messages, supergroups only
+ * @property bool   $can_manage_topics      __Required: Optional__. Pass True if the user is allowed to create, rename, close, and reopen forum topics, supergroups only
  */
 class PromoteChatMemberMethod extends TelegramMethod
 {
@@ -41,6 +42,7 @@ class PromoteChatMemberMethod extends TelegramMethod
         'can_change_info'        => 'boolean',
         'can_invite_users'       => 'boolean',
         'can_pin_messages'       => 'boolean',
+        'can_manage_topics'      => 'boolean',
     ];
 
     public function mock($arguments)

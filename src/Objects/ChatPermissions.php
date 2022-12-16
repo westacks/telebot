@@ -15,6 +15,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property bool $can_change_info           Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups
  * @property bool $can_invite_users          Optional. True, if the user is allowed to invite new users to the chat
  * @property bool $can_pin_messages          Optional. True, if the user is allowed to pin messages. Ignored in public supergroups
+ * @property bool $can_manage_topics         Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages
  */
 class ChatPermissions extends TelegramObject
 {
@@ -27,5 +28,6 @@ class ChatPermissions extends TelegramObject
         'can_change_info'           => 'boolean',
         'can_invite_users'          => 'boolean',
         'can_pin_messages'          => 'boolean',
+        'can_manage_topics'         => 'boolean',
     ];
 }

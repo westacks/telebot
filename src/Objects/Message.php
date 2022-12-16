@@ -60,6 +60,9 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property string                        $connected_website                 Optional. The domain name of the website on which the user has logged in. More about Telegram Login »
  * @property PassportData                  $passport_data                     Optional. Telegram Passport data
  * @property ProximityAlertTriggered       $proximity_alert_triggered         Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
+ * @property ForumTopicCreated             $forum_topic_created               Optional. Service message: forum topic created
+ * @property ForumTopicClosed              $forum_topic_closed                Optional. Service message: forum topic closed
+ * @property ForumTopicReopened            $forum_topic_reopened              Optional. Service message: forum topic reopened
  * @property VideoChatScheduled            $video_chat_scheduled              Optional. Service message: video chat scheduled
  * @property VideoChatStarted              $video_chat_started                Optional. Service message: video chat started
  * @property VideoChatEnded                $video_chat_ended                  Optional. Service message: video chat ended
@@ -71,6 +74,7 @@ class Message extends TelegramObject
 {
     protected $attributes = [
         'message_id'                        => 'integer',
+        'message_thread_id'                 => 'integer',
         'from'                              => 'User',
         'sender_chat'                       => 'Chat',
         'date'                              => 'integer',
@@ -81,6 +85,7 @@ class Message extends TelegramObject
         'forward_signature'                 => 'string',
         'forward_sender_name'               => 'string',
         'forward_date'                      => 'integer',
+        'is_topic_message'                  => 'boolean',
         'is_automatic_forward'              => 'boolean',
         'reply_to_message'                  => 'Message',
         'via_bot'                           => 'User',
@@ -123,6 +128,9 @@ class Message extends TelegramObject
         'connected_website'                 => 'string',
         'passport_data'                     => 'PassportData',
         'proximity_alert_triggered'         => 'ProximityAlertTriggered',
+        'forum_topic_created'               => 'ForumTopicCreated',
+        'forum_topic_closed'                => 'ForumTopicClosed',
+        'forum_topic_reopened'              => 'ForumTopicReopened',
         'video_chat_scheduled'              => 'VideoChatScheduled',
         'video_chat_started'                => 'VideoChatStarted',
         'video_chat_ended'                  => 'VideoChatEnded',
