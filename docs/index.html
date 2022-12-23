@@ -9,11 +9,18 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <script data-ad-client="ca-pub-7760277029920144" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css" title="docsify-darklight-theme" type="text/css">
     <link rel="icon" href="assets/favicon.svg" sizes="any" type="image/svg+xml">
     <style>
         .github-corner svg {
             height: 60px;
             width: 60px;
+        }
+        section.cover.has-mask .mask {
+            background-color: var(--coverColor);
+        }
+        .app-name-link img, .cover-main img {
+            content: var(--logo,url('/assets/logo.svg'));
         }
     </style>
 </head>
@@ -36,6 +43,21 @@
             themeColor: '#35ACE0',
             executeScript: true,
             noEmoji: false,
+            darklightTheme: {
+                defaultTheme: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+                dark: {
+                    coverColor: "#000",
+                    "docsifytabs-border-color": "#000",
+                    "docsifytabs-tab-background": "#000",
+                    logo: "url(/assets/logo-white.svg)"
+                },
+                light: {
+                    coverColor: "#fff",
+                    "docsifytabs-border-color": "#ededed",
+                    "docsifytabs-tab-background": "#f8f8f8",
+                    logo: "url(/assets/logo-black.svg)"
+                },
+            },
             copyCode: {
                 buttonText: {
                     '/': 'Copy to clipboard'
@@ -61,6 +83,7 @@
     <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-php.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js"></script>
 </body>
 
 </html>
