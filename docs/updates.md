@@ -48,7 +48,7 @@ If function end up having non-void return value, handling proccess will be stopp
 
 namespace Somewhere\InYour\App;
 
-use WeStacks\TeleBot\Interfaces\UpdateHandler;
+use WeStacks\TeleBot\Handlers\UpdateHandler;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\TeleBot;
 

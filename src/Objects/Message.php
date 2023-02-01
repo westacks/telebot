@@ -37,6 +37,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property Voice                         $voice                             Optional. Message is a voice message, information about the file
  * @property string                        $caption                           Optional. Caption for the animation, audio, document, photo, video or voice, 0-1024 characters
  * @property MessageEntity[]               $caption_entities                  Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption
+ * @property bool                          $has_media_spoiler                 Optional. True, if the message media is covered by a spoiler animation
  * @property Contact                       $contact                           Optional. Message is a shared contact, information about the contact
  * @property Dice                          $dice                              Optional. Message is a dice with random value
  * @property Game                          $game                              Optional. Message is a game, information about the game. More about games »
@@ -58,11 +59,15 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property Invoice                       $invoice                           Optional. Message is an invoice for a payment, information about the invoice. More about payments »
  * @property SuccessfulPayment             $successful_payment                Optional. Message is a service message about a successful payment, information about the payment. More about payments »
  * @property string                        $connected_website                 Optional. The domain name of the website on which the user has logged in. More about Telegram Login »
+ * @property WriteAccessAllowed            $write_access_allowed              Optional. Service message: the user allowed the bot added to the attachment menu to write messages
  * @property PassportData                  $passport_data                     Optional. Telegram Passport data
  * @property ProximityAlertTriggered       $proximity_alert_triggered         Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
  * @property ForumTopicCreated             $forum_topic_created               Optional. Service message: forum topic created
+ * @property ForumTopicEdited              $forum_topic_edited                Optional. Service message: forum topic edited
  * @property ForumTopicClosed              $forum_topic_closed                Optional. Service message: forum topic closed
  * @property ForumTopicReopened            $forum_topic_reopened              Optional. Service message: forum topic reopened
+ * @property GeneralForumTopicHidden       $general_forum_topic_hidden        Optional. Service message: the 'General' forum topic hidden
+ * @property GeneralForumTopicUnhidden     $general_forum_topic_unhidden      Optional. Service message: the 'General' forum topic unhidden
  * @property VideoChatScheduled            $video_chat_scheduled              Optional. Service message: video chat scheduled
  * @property VideoChatStarted              $video_chat_started                Optional. Service message: video chat started
  * @property VideoChatEnded                $video_chat_ended                  Optional. Service message: video chat ended
@@ -105,6 +110,7 @@ class Message extends TelegramObject
         'voice'                             => 'Voice',
         'caption'                           => 'string',
         'caption_entities'                  => 'MessageEntity[]',
+        'has_media_spoiler '                => 'boolean',
         'contact'                           => 'Contact',
         'dice'                              => 'Dice',
         'game'                              => 'Game',
@@ -126,11 +132,15 @@ class Message extends TelegramObject
         'invoice'                           => 'Invoice',
         'successful_payment'                => 'SuccessfulPayment',
         'connected_website'                 => 'string',
+        'write_access_allowed'              => 'WriteAccessAllowed',
         'passport_data'                     => 'PassportData',
         'proximity_alert_triggered'         => 'ProximityAlertTriggered',
         'forum_topic_created'               => 'ForumTopicCreated',
+        'forum_topic_edited'                => 'ForumTopicEdited',
         'forum_topic_closed'                => 'ForumTopicClosed',
         'forum_topic_reopened'              => 'ForumTopicReopened',
+        'general_forum_topic_hidden'        => 'GeneralForumTopicHidden',
+        'general_forum_topic_unhidden'      => 'GeneralForumTopicUnhidden',
         'video_chat_scheduled'              => 'VideoChatScheduled',
         'video_chat_started'                => 'VideoChatStarted',
         'video_chat_ended'                  => 'VideoChatEnded',

@@ -28,6 +28,8 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property ChatPermissions $permissions                               Optional. Default chat member permissions, for groups and supergroups. Returned only in getChat.
  * @property int             $slow_mode_delay                           Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unpriviledged user; in seconds. Returned only in getChat.
  * @property int             $message_auto_delete_time                  Optional. The time after which all messages sent to the chat will be automatically deleted; in seconds. Returned only in getChat.
+ * @property bool            $has_aggressive_anti_spam_enabled          Optional. True, if aggressive anti-spam checks are enabled in the supergroup. The field is only available to chat administrators. Returned only in getChat.
+ * @property bool            $has_hidden_members                        Optional. True, if non-administrators can only get the list of bots and administrators in the chat. Returned only in getChat.
  * @property bool            $has_protected_content                     Optional. True, if messages from the chat can't be forwarded to other chats. Returned only in getChat.
  * @property string          $sticker_set_name                          Optional. For supergroups, name of group sticker set. Returned only in getChat.
  * @property bool            $can_set_sticker_set                       Optional. True, if the bot can change the group sticker set. Returned only in getChat.
@@ -58,6 +60,8 @@ class Chat extends TelegramObject
         'permissions'                             => 'ChatPermissions',
         'slow_mode_delay'                         => 'integer',
         'message_auto_delete_time'                => 'integer',
+        'has_aggressive_anti_spam_enabled'        => 'boolean',
+        'has_hidden_members'                      => 'boolean',
         'has_protected_content'                   => 'boolean',
         'sticker_set_name'                        => 'string',
         'can_set_sticker_set'                     => 'boolean',

@@ -528,6 +528,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_          `$caption`                     __Required: Optional__. Animation caption (may also be used when resending animation by file_id), 0-1024 characters after entities parsing
  * - _string_          `$parse_mode`                  __Required: Optional__. Mode for parsing entities in the animation caption. See formatting options for more details.
  * - _MessageEntity[]_ `$caption_entities`            __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+ * - _bool_            `$has_spoiler`                 __Required: Optional__. Pass True if the animation needs to be covered with a spoiler animation
  * - _bool_            `$disable_notification`        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_            `$protect_content`             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _int_             `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
@@ -564,9 +565,10 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.
  *
  * Parameters:
- * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _string_ `$action`  __Required: Yes__. Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, choose_sticker for stickers, find_location for location data, record_video_note or upload_video_note for video notes.
- *
+ * - _string_ `$chat_id`           __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_    `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread; supergroups only
+ * - _string_ `$action`            __Required: Yes__. Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, choose_sticker for stickers, find_location for location data, record_video_note or upload_video_note for video notes.
+*
  *
  * @method Message|PromiseInterface sendContact(array $parameters = []) Use this method to send phone contacts. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
@@ -716,6 +718,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_          `$caption`                     __Required: Optional__. Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
  * - _string_          `$parse_mode`                  __Required: Optional__. Mode for parsing entities in the photo caption. See formatting options for more details.
  * - _MessageEntity[]_ `$caption_entities`            __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+ * - _bool_            `$has_spoiler`                 __Required: Optional__. Pass True if the photo needs to be covered with a spoiler animation
  * - _bool_            `$disable_notification`        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_            `$protect_content`             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _int_             `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
@@ -793,6 +796,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_          `$caption`                     __Required: Optional__. Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing
  * - _string_          `$parse_mode`                  __Required: Optional__. Mode for parsing entities in the video caption. See formatting options for more details.
  * - _MessageEntity[]_ `$caption_entities`            __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+ * - _bool_            `$has_spoiler`                 __Required: Optional__. Pass True if the video needs to be covered with a spoiler animation
  * - _bool_            `$supports_streaming`          __Required: Optional__. Pass True, if the uploaded video is suitable for streaming
  * - _bool_            `$disable_notification`        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_            `$protect_content`             __Required: Optional__. Protects the contents of the sent message from forwarding and saving

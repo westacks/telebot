@@ -48,6 +48,7 @@ abstract class UpdateHandler
             'chat_id'               => $this->update->chat()->id ?? null,
             'user_id'               => $this->update->user()->id ?? null,
             'message_id'            => $this->update->message()->message_id ?? null,
+            'message_thread_id'     => $this->update->message()->message_thread_id ?? null,
             'callback_query_id'     => $this->update->callback_query->id ?? null,
             'inline_message_id'     => $this->update->chosen_inline_result->inline_message_id ?? null,
             'inline_query_id'       => $this->update->inline_query->id ?? null,
@@ -55,15 +56,10 @@ abstract class UpdateHandler
             'pre_checkout_query_id' => $this->update->pre_checkout_query->id ?? null,
         ];
 
-        $data = $arguments[0] ?? [];
-
-        foreach ($custom as $key => $val) {
-            if (! is_null($val)) {
-                $data[$key] = $data[$key] ?? $val;
-            }
-        }
-
-        $arguments[0] = $data;
+        $arguments[0] = array_merge(
+            array_filter($custom, fn($v) => !is_null($v)),
+            $arguments[0] ?? []
+        );
 
         return $this->bot->{$name}(...$arguments);
     }

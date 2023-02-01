@@ -16,6 +16,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * @property string          $caption                     __Required: Optional__. Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
  * @property string          $parse_mode                  __Required: Optional__. Mode for parsing entities in the photo caption. See formatting options for more details.
  * @property MessageEntity[] $caption_entities            __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+ * @property bool            $has_spoiler                 __Required: Optional__. Pass True if the photo needs to be covered with a spoiler animation
  * @property bool            $disable_notification        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * @property bool            $protect_content             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * @property int             $reply_to_message_id         __Required: Optional__. If the message is a reply, ID of the original message
@@ -35,6 +36,7 @@ class SendPhotoMethod extends TelegramMethod
         'caption'                     => 'string',
         'parse_mode'                  => 'string',
         'caption_entities'            => 'MessageEntity[]',
+        'has_spoiler'                 => 'boolean',
         'disable_notification'        => 'boolean',
         'protect_content'             => 'boolean',
         'reply_to_message_id'         => 'integer',
