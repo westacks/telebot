@@ -105,3 +105,7 @@ All notable changes to `telebot` will be documented here
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 6.3
 - Dropped support for PHP 7.4
 - Webhook request now uses raw request parameters to prevent data changes from Laravel (fix [#60](https://github.com/westacks/telebot/issues/60))
+
+## 2.4.0 - 2023-02-01
+- Updated [Bot API](https://core.telegram.org/bots/api) to version 6.4
+- Added Laravel 10 support
