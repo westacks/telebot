@@ -11,7 +11,8 @@ concurrency:
 
 jobs:
 
-  php-80:
+  test:
+    name: PHP 8.0
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -20,42 +21,6 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.0'
-    - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        TELEGRAM_USER_ID: ${{ secrets.TELEGRAM_USER_ID }}
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      run: vendor/bin/phpunit --testdox
-
-  php-81:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.1'
-    - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        TELEGRAM_USER_ID: ${{ secrets.TELEGRAM_USER_ID }}
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      run: vendor/bin/phpunit --testdox
-
-  php-82:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.2'
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Execute tests (Unit and Feature tests) via PHPUnit

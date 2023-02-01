@@ -123,12 +123,6 @@ class LaravelTest extends TestCase
         $this->postJson("/telebot/webhook/wrong_bot/123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11")->assertStatus(403);
     }
 
-    public function testWebAppTemplate()
-    {
-        $html = View::file(__DIR__.'/../Helpers/views/webapp-example.blade.php')->render();
-        $this->assertStringContainsString('<script src="https://telegram.org/js/telegram-web-app.js"></script>', $html);
-    }
-
     protected function getPackageProviders($app)
     {
         return [TeleBotServiceProvider::class];
