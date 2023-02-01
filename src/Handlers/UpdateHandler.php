@@ -57,7 +57,7 @@ abstract class UpdateHandler
         ];
 
         $arguments[0] = array_merge(
-            array_filter($custom, fn($v) => !is_null($v)),
+            array_filter($custom, fn ($v) => !is_null($v)),
             $arguments[0] ?? []
         );
 

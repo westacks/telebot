@@ -16,7 +16,7 @@ class HideGeneralForumTopicMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'chat_id'           => 'string',
+        'chat_id' => 'string',
     ];
 
     public function mock($arguments)

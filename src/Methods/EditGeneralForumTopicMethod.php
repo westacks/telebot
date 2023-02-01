@@ -17,8 +17,8 @@ class EditGeneralForumTopicMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'chat_id'              => 'string',
-        'name'                 => 'string',
+        'chat_id' => 'string',
+        'name'    => 'string',
     ];
 
     public function mock($arguments)
