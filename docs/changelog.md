@@ -109,3 +109,6 @@ All notable changes to `telebot` will be documented here
 ## 2.4.0 - 2023-02-01
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 6.4
 - Added Laravel 10 support
+
+## 2.5.0 - 2023-02-18
+- Updated [Bot API](https://core.telegram.org/bots/api) to version 6.5
