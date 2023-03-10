@@ -13,9 +13,9 @@ namespace WeStacks\TeleBot\Objects;
  * @property string               $vcard                 Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
  * @property InlineKeyboardMarkup $reply_markup          Optional. Inline keyboard attached to the message
  * @property InputMessageContent  $input_message_content Optional. Content of the message to be sent instead of the contact
- * @property string               $thumb_url             Optional. Url of the thumbnail for the result
- * @property int                  $thumb_width           Optional. Thumbnail width
- * @property int                  $thumb_height          Optional. Thumbnail height
+ * @property string               $thumbnail_url         Optional. Url of the thumbnail for the result
+ * @property int                  $thumbnail_width       Optional. Thumbnail width
+ * @property int                  $thumbnail_height      Optional. Thumbnail height
  */
 class InlineQueryResultContact extends InlineQueryResult
 {
@@ -28,8 +28,8 @@ class InlineQueryResultContact extends InlineQueryResult
         'vcard'                 => 'string',
         'reply_markup'          => 'InlineKeyboardMarkup',
         'input_message_content' => 'InputMessageContent',
-        'thumb_url'             => 'string',
-        'thumb_width'           => 'integer',
-        'thumb_height'          => 'integer',
+        'thumbnail_url'         => 'string',
+        'thumbnail_width'       => 'integer',
+        'thumbnail_height'      => 'integer',
     ];
 }

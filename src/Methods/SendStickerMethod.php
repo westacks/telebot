@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InputFile;
+use WeStacks\TeleBot\Objects\Keyboard;
 use WeStacks\TeleBot\Objects\Message;
 
 /**
@@ -12,6 +13,7 @@ use WeStacks\TeleBot\Objects\Message;
  * @property string    $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * @property int       $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property InputFile $sticker                     __Required: Yes__. Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
+ * @property string    $emoji                       __Required: Optional__. Emoji associated with the sticker; only for just uploaded stickers
  * @property bool      $disable_notification        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * @property bool      $protect_content             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * @property int       $reply_to_message_id         __Required: Optional__. If the message is a reply, ID of the original message
@@ -28,6 +30,7 @@ class SendStickerMethod extends TelegramMethod
         'chat_id'                     => 'string',
         'message_thread_id'           => 'integer',
         'sticker'                     => 'InputFile',
+        'emoji'                       => 'string',
         'disable_notification'        => 'boolean',
         'protect_content'             => 'boolean',
         'reply_to_message_id'         => 'integer',
@@ -53,10 +56,10 @@ class SendStickerMethod extends TelegramMethod
             ],
             'date'    => '1479168447',
             'sticker' => [
-                'file_id' => '123456789',
-                'width'   => '123',
-                'height'  => '123',
-                'thumb'   => [
+                'file_id'   => '123456789',
+                'width'     => '123',
+                'height'    => '123',
+                'thumbnail' => [
                     'file_id' => '123456789',
                     'width'   => '123',
                     'height'  => '123',
@@ -71,6 +74,7 @@ class SendStickerMethod extends TelegramMethod
                 ],
                 'file_size' => '123',
             ],
+            'emoji' => 'emoji',
         ]);
     }
 }

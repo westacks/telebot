@@ -16,7 +16,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * @property int             $duration                    __Required: Optional__. Duration of sent video in seconds
  * @property int             $width                       __Required: Optional__. Video width
  * @property int             $height                      __Required: Optional__. Video height
- * @property InputFile       $thumb                       __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
+ * @property InputFile       $thumbnail                   __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
  * @property string          $caption                     __Required: Optional__. Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing
  * @property string          $parse_mode                  __Required: Optional__. Mode for parsing entities in the video caption. See formatting options for more details.
  * @property MessageEntity[] $caption_entities            __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
@@ -41,7 +41,7 @@ class SendVideoMethod extends TelegramMethod
         'duration'                    => 'integer',
         'width'                       => 'integer',
         'height'                      => 'integer',
-        'thumb'                       => 'InputFile',
+        'thumbnail'                   => 'InputFile',
         'caption'                     => 'string',
         'parse_mode'                  => 'string',
         'caption_entities'            => 'MessageEntity[]',
@@ -64,11 +64,11 @@ class SendVideoMethod extends TelegramMethod
             ],
             'date'  => time(),
             'video' => [
-                'file_id'  => 'video_file_id',
-                'duration' => mt_rand(1, 100),
-                'width'    => mt_rand(1, 100),
-                'height'   => mt_rand(1, 100),
-                'thumb'    => [
+                'file_id'   => 'video_file_id',
+                'duration'  => mt_rand(1, 100),
+                'width'     => mt_rand(1, 100),
+                'height'    => mt_rand(1, 100),
+                'thumbnail' => [
                     'file_id' => 'thumb_file_id',
                     'width'   => mt_rand(1, 100),
                     'height'  => mt_rand(1, 100),

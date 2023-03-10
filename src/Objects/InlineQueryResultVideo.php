@@ -11,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property string               $id                    Unique identifier for this result, 1-64 bytes
  * @property string               $video_url             A valid URL for the embedded video player or video file
  * @property string               $mime_type             Mime type of the content of video url, “text/html” or “video/mp4”
- * @property string               $thumb_url             URL of the thumbnail (JPEG only) for the video
+ * @property string               $thumbnail_url         URL of the thumbnail (JPEG only) for the video
  * @property string               $title                 Title for the result
  * @property string               $caption               Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
  * @property string               $parse_mode            Optional. Mode for parsing entities in the video caption. See formatting options for more details.
@@ -30,7 +30,7 @@ class InlineQueryResultVideo extends InlineQueryResult
         'id'                    => 'string',
         'video_url'             => 'string',
         'mime_type'             => 'string',
-        'thumb_url'             => 'string',
+        'thumbnail_url'         => 'string',
         'title'                 => 'string',
         'caption'               => 'string',
         'parse_mode'            => 'string',

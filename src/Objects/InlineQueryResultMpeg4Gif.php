@@ -11,8 +11,8 @@ namespace WeStacks\TeleBot\Objects;
  * @property int                  $mpeg4_width           Optional. Video width
  * @property int                  $mpeg4_height          Optional. Video height
  * @property int                  $mpeg4_duration        Optional. Video duration
- * @property string               $thumb_url             URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
- * @property string               $thumb_mime_type       Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
+ * @property string               $thumbnail_url         URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
+ * @property string               $thumbnail_mime_type   Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
  * @property string               $title                 Optional. Title for the result
  * @property string               $caption               Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing
  * @property MessageEntity[]      $caption_entities      Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
@@ -29,8 +29,8 @@ class InlineQueryResultMpeg4Gif extends InlineQueryResult
         'mpeg4_width'           => 'integer',
         'mpeg4_height'          => 'integer',
         'mpeg4_duration'        => 'integer',
-        'thumb_url'             => 'string',
-        'thumb_mime_type'       => 'string',
+        'thumbnail_url'         => 'string',
+        'thumbnail_mime_type'   => 'string',
         'title'                 => 'string',
         'caption'               => 'string',
         'parse_mode'            => 'string',

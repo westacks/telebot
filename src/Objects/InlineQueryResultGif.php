@@ -11,8 +11,8 @@ namespace WeStacks\TeleBot\Objects;
  * @property int                  $gif_width             Optional. Width of the GIF
  * @property int                  $gif_height            Optional. Height of the GIF
  * @property int                  $gif_duration          Optional. Duration of the GIF in seconds
- * @property string               $thumb_url             URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
- * @property string               $thumb_mime_type       Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
+ * @property string               $thumbnail_url         URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
+ * @property string               $thumbnail_mime_type   Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
  * @property string               $title                 Optional. Title for the result
  * @property string               $caption               Optional. Caption of the GIF file to be sent, 0-1024 characters after entities parsing
  * @property string               $parse_mode            Optional. Mode for parsing entities in the caption. See formatting options for more details.
@@ -29,8 +29,8 @@ class InlineQueryResultGif extends InlineQueryResult
         'gif_width'             => 'integer',
         'gif_height'            => 'integer',
         'gif_duration'          => 'integer',
-        'thumb_url'             => 'string',
-        'thumb_mime_type'       => 'string',
+        'thumbnail_url'         => 'string',
+        'thumbnail_mime_type'   => 'string',
         'title'                 => 'string',
         'caption'               => 'string',
         'parse_mode'            => 'string',

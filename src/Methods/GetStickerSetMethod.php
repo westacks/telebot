@@ -32,7 +32,7 @@ class GetStickerSetMethod extends TelegramMethod
                     'width'       => 100,
                     'height'      => 100,
                     'is_animated' => false,
-                    'thumb'       => [
+                    'thumbnail'   => [
                         'file_id' => 'file_id',
                         'width'   => 100,
                         'height'  => 100,

@@ -12,7 +12,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property int       $width          Video width as defined by sender
  * @property int       $height         Video height as defined by sender
  * @property int       $duration       Duration of the video in seconds as defined by sender
- * @property PhotoSize $thumb          Optional. Video thumbnail
+ * @property PhotoSize $thumbnail      Optional. Video thumbnail
  * @property string    $file_name      Optional. Original filename as defined by sender
  * @property string    $mime_type      Optional. Mime type of a file as defined by sender
  * @property int       $file_size      Optional. File size in bytes
@@ -25,7 +25,7 @@ class Video extends TelegramObject
         'width'          => 'integer',
         'height'         => 'integer',
         'duration'       => 'integer',
-        'thumb'          => 'PhotoSize',
+        'thumbnail'      => 'PhotoSize',
         'file_name'      => 'string',
         'mime_type'      => 'string',
         'file_size'      => 'integer',

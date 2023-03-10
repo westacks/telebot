@@ -15,7 +15,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property string    $file_name      Optional. Original filename as defined by sender
  * @property string    $mime_type      Optional. MIME type of the file as defined by sender
  * @property int       $file_size      Optional. File size in bytes
- * @property PhotoSize $thumb          Optional. Thumbnail of the album cover to which the music file belongs
+ * @property PhotoSize $thumbnail      Optional. Thumbnail of the album cover to which the music file belongs
  */
 class Audio extends TelegramObject
 {
@@ -28,6 +28,6 @@ class Audio extends TelegramObject
         'file_name'      => 'string',
         'mime_type'      => 'string',
         'file_size'      => 'integer',
-        'thumb'          => 'PhotoSize',
+        'thumbnail'      => 'PhotoSize',
     ];
 }
