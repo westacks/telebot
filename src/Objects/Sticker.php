@@ -13,12 +13,13 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property int          $height               Sticker height
  * @property bool         $is_animated          True, if the sticker is animated
  * @property bool         $is_video             True, if the sticker is a [video sticker](https://telegram.org/blog/video-stickers-better-reactions)
- * @property PhotoSize    $thumb                Optional. Sticker thumbnail in the .WEBP or .JPG format
+ * @property PhotoSize    $thumbnail            Optional. Sticker thumbnail in the .WEBP or .JPG format
  * @property string       $emoji                Optional. Emoji associated with the sticker
  * @property string       $set_name             Optional. Name of the sticker set to which the sticker belongs
  * @property File         $premium_animation    Optional. Premium animation for the sticker, if the sticker is premium
  * @property MaskPosition $mask_position        Optional. For mask stickers, the position where the mask should be placed
  * @property string       $custom_emoji_id      Optional. For custom emoji stickers, unique identifier of the custom emoji
+ * @property true         $needs_repainting     Optional. True, if the sticker must be repainted to a text color in messages, the color of the Telegram Premium badge in emoji status, white color on chat photos, or another appropriate color in other places
  * @property int          $file_size            Optional. File size in bytes
  */
 class Sticker extends TelegramObject
@@ -30,12 +31,13 @@ class Sticker extends TelegramObject
         'height'            => 'integer',
         'is_animated'       => 'boolean',
         'is_video'          => 'boolean',
-        'thumb'             => 'PhotoSize',
+        'thumbnail'         => 'PhotoSize',
         'emoji'             => 'string',
         'set_name'          => 'string',
         'premium_animation' => 'File',
         'mask_position'     => 'MaskPosition',
         'custom_emoji_id'   => 'string',
+        'needs_repainting'  => 'boolean',
         'file_size'         => 'integer',
     ];
 }

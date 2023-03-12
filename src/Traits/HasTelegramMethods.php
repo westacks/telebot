@@ -5,6 +5,8 @@ namespace WeStacks\TeleBot\Traits;
 use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Support\Str;
 use WeStacks\TeleBot\Objects\BotCommand;
+use WeStacks\TeleBot\Objects\BotDescription;
+use WeStacks\TeleBot\Objects\BotShortDescription;
 use WeStacks\TeleBot\Objects\Chat;
 use WeStacks\TeleBot\Objects\ChatAdministratorRights;
 use WeStacks\TeleBot\Objects\ChatInviteLink;
@@ -26,15 +28,12 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
 /**
  * This trait contains documentation for all Telegram methods.
  *
- * @method File|bool|PromiseInterface addStickerToSet(array $parameters = []) Use this method to add a new sticker to a set created by the bot. You must use exactly one of the fields png_sticker or tgs_sticker. Animated stickers can be added to animated sticker sets and only to them. Animated sticker sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns True on success.
+ * @method File|bool|PromiseInterface addStickerToSet(array $parameters = []) Use this method to add a new sticker to a set created by the bot. The format of the added sticker must match the format of the other stickers in the set. Emoji sticker sets can have up to 200 stickers. Animated and video sticker sets can have up to 50 stickers. Static sticker sets can have up to 120 stickers. Returns True on success.
  *
  * Parameters:
  * - _int_          `$user_id`       __Required: Yes__. User identifier of sticker set owner
  * - _string_       `$name`          __Required: Yes__. Sticker set name
- * - _InputFile_    `$png_sticker`   __Required: Optional__. PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
- * - _InputFile_    `$tgs_sticker`   __Required: Optional__. TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
- * - _InputFile_    `$webm_sticker`  __Required: Optional__. WEBM video with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/stickers#video-sticker-requirements for technical requirements
- * - _string_       `$emojis`        __Required: Yes__. One or more emoji corresponding to the sticker
+ * - _InputSticker_ `$sticker`       __Required: Yes__. A JSON-serialized object with information about the added sticker. If exactly the same sticker had already been added to the set, then the set isn't changed.
  *
  *
  * @method bool|PromiseInterface answerCallbackQuery(array $parameters = []) Use this method to send answers to callback queries sent from [inline keyboards](/bots#inline-keyboards-and-on-the-fly-updating). The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
@@ -165,18 +164,16 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _boolean_         `$is_flexible`                   __Required: Optional__.	Pass True, if the final price depends on the shipping method
  *
  *
- * @method File|PromiseInterface createNewStickerSet(array $parameters = []) Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. You must use exactly one of the fields png_sticker or tgs_sticker. Returns True on success.
+ * @method File|PromiseInterface createNewStickerSet(array $parameters = []) Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. Returns True on success.
  *
  * Parameters:
- * - _int_          `$user_id`        __Required: Yes__. User identifier of created sticker set owner
- * - _string_       `$name`           __Required: Yes__. Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in “_by_”.  is case insensitive. 1-64 characters.
- * - _string_       `$title`          __Required: Yes__. Sticker set title, 1-64 characters
- * - _InputFile-    `$png_sticker`    __Required: Optional__. PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
- * - _InputFile-    `$tgs_sticker`    __Required: Optional__. TGS animation with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
- * - _InputFile-    `$webm_sticker`   __Required: Optional__. WEBM video with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/stickers#video-sticker-requirements for technical requirements
- * - _string_       `$sticker_type`   __Required: Optional__. Type of stickers in the set, pass “regular” or “mask”. Custom emoji sticker sets can't be created via the Bot API at the moment. By default, a regular sticker set is created.
- * - _string_       `$emojis`         __Required: Yes__. One or more emoji corresponding to the sticker
- * - _MaskPosition_ `$mask_position`  __Required: Optional__. A JSON-serialized object for position where the mask should be placed on faces
+ * - _int_            `$user_id`          __Required: Yes__. User identifier of created sticker set owner
+ * - _string_         `$name`             __Required: Yes__. Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in “_by_”.  is case insensitive. 1-64 characters.
+ * - _string_         `$title`            __Required: Yes__. Sticker set title, 1-64 characters
+ * - _InputSticker[]_ `$stickers`         __Required: Yes__. A JSON-serialized list of 1-50 initial stickers to be added to the sticker set
+ * - _string_         `$sticker_format`   __Required: Yes__. Format of stickers in the set, must be one of “static”, “animated”, “video”
+ * - _string_         `$sticker_type`     __Required: Optional__. Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”. By default, a regular sticker set is created.
+ * - _true_           `$needs_repainting` __Required: Optional__. Pass True if stickers in the sticker set must be repainted to the color of text when used in messages, the accent color if used as emoji status, white on chat photos, or another appropriate color based on context; for custom emoji sticker sets only
  *
  *
  * @method bool|PromiseInterface declineChatJoinRequest(array $parameters = []) Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
@@ -463,6 +460,18 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * @method WebhookInfo|PromiseInterface getWebhookInfo() Use this method to get current webhook status. Requires no parameters. On success, returns a [WebhookInfo](https://core.telegram.org/bots/api#webhookinfo) object. If the bot is using [getUpdates](https://core.telegram.org/bots/api#getupdates), will return an object with the url field empty.
  *
  *
+ * @method BotDescription|PromiseInterface getMyDescription() Use this method to get the current bot description for the given user language. Returns [BotDescription](https://core.telegram.org/bots/api#botdescription) on success.
+ *
+ * Parameters:
+ * - _string_ `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code or an empty string
+ *
+ *
+ * @method BotShortDescription|PromiseInterface getMyShortDescription() Use this method to get the current bot short description for the given user language. Returns [BotShortDescription](https://core.telegram.org/bots/api#botshortdescription) on success.
+ *
+ * Parameters:
+ * - _string_ `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code or an empty string
+ *
+ *
  * @method bool|PromiseInterface leaveChat(array $parameters = []) Use this method for your bot to leave a group, supergroup or channel. Returns True on success.
  *
  * Parameters:
@@ -525,7 +534,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_             `$duration`                    __Required: Optional__. Duration of sent animation in seconds
  * - _int_             `$width`                       __Required: Optional__. Animation width
  * - _int_             `$height`                      __Required: Optional__. Animation height
- * - _InputFile_       `$thumb`                       __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
+ * - _InputFile_       `$thumbnail`                   __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
  * - _string_          `$caption`                     __Required: Optional__. Animation caption (may also be used when resending animation by file_id), 0-1024 characters after entities parsing
  * - _string_          `$parse_mode`                  __Required: Optional__. Mode for parsing entities in the animation caption. See formatting options for more details.
  * - _MessageEntity[]_ `$caption_entities`            __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
@@ -551,7 +560,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_             `$duration`                    __Required: Optional__. Duration of the audio in seconds
  * - _string_          `$performer`                   __Required: Optional__. Performer
  * - _string_          `$title`                       __Required: Optional__. Track name
- * - _InputFile_       `$thumb`                       __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
+ * - _InputFile_       `$thumbnail`                   __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
  * - _bool_            `$disable_notification`        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_            `$protect_content`             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _int_             `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
@@ -606,7 +615,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_          `$chat_id`                        __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_             `$message_thread_id`              __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _InputFile_       `$document`                       __Required: Yes__. File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
- * - _InputFile_       `$thumb`                          __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
+ * - _InputFile_       `$thumbnail`                      __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
  * - _string_          `$caption`                        __Required: Optional__. Document caption (may also be used when resending documents by file_id), 0-1024 characters after entities parsing
  * - _string_          `$parse_mode`                     __Required: Optional__. Mode for parsing entities in the document caption. See formatting options for more details.
  * - _MessageEntity[]_ `$caption_entities`               __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
@@ -793,7 +802,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_             `$duration`                    __Required: Optional__. Duration of sent video in seconds
  * - _int_             `$width`                       __Required: Optional__. Video width
  * - _int_             `$height`                      __Required: Optional__. Video height
- * - _InputFile_       `$thumb`                       __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
+ * - _InputFile_       `$thumbnail`                   __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
  * - _string_          `$caption`                     __Required: Optional__. Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing
  * - _string_          `$parse_mode`                  __Required: Optional__. Mode for parsing entities in the video caption. See formatting options for more details.
  * - _MessageEntity[]_ `$caption_entities`            __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
@@ -814,7 +823,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _InputFile_ `$video_note`                  __Required: Yes__. Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More info on Sending Files ». Sending video notes by a URL is currently unsupported
  * - _int_       `$duration`                    __Required: Optional__. Duration of sent video in seconds
  * - _int_       `$length`                      __Required: Optional__. Video width and height, i.e. diameter of the video message
- * - _InputFile_ `$thumb`                       __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
+ * - _InputFile_ `$thumbnail`                   __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://” if the thumbnail was uploaded using multipart/form-data under . More info on Sending Files »
  * - _bool_      `$disable_notification`        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_      `$protect_content`             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _int_       `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
@@ -867,7 +876,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_          `$chat_id`                           __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
  * - _ChatPermissions_ `$permissions`                       __Required: Yes__. A JSON-serialized object for new default chat permissions
  * - _bool_            `$use_independent_chat_permissions`  __Required: Yes__. Pass True if chat permissions are set independently. Otherwise, the can_send_other_messages and can_add_web_page_previews permissions will imply the can_send_messages, can_send_audios, can_send_documents, can_send_photos, can_send_videos, can_send_video_notes, and can_send_voice_notes permissions; the can_send_polls permission will imply the can_send_messages permission.
-
  *
  *
  * @method bool|PromiseInterface setChatPhoto(array $parameters = []) Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
@@ -934,12 +942,12 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_    `$position` __Required: Yes__. New sticker position in the set, zero-based
  *
  *
- * @method bool|PromiseInterface setStickerSetThumb(array $parameters = []) Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.
+ * @method bool|PromiseInterface setStickerSetThumbnail(array $parameters = []) Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.
  *
  * Parameters:
- * - _string_    `$name`    __Required: Yes__. Sticker set name
- * - _int_       `$user_id` __Required: Yes__. User identifier of the sticker set owner
- * - _InputFile_ `$thumb`   __Required: Optional__. A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ». Animated sticker set thumbnail can't be uploaded via HTTP URL.
+ * - _string_    `$name`      __Required: Yes__. Sticker set name
+ * - _int_       `$user_id`   __Required: Yes__. User identifier of the sticker set owner
+ * - _InputFile_ `$thumbnail` __Required: Optional__. A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ». Animated sticker set thumbnail can't be uploaded via HTTP URL.
  *
  *
  * @method bool|PromiseInterface setWebhook(array $parameters = []) Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized [Update](https://core.telegram.org/bots/api#update). In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
@@ -953,6 +961,55 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_       `$max_connections`      __Required: Optional__. Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to 40. Use lower values to limit the load on your bot's server, and higher values to increase your bot's throughput.
  * - _string[]_  `$allowed_updates`      __Required: Optional__. A JSON-serialized list of the update types you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time.
  * - _bool_      `$drop_pending_updates` __Required: Optional__. Pass True to drop all pending updates
+ *
+ *
+ * @method boolean|PromiseInterface setMyDescription(array $parameters = []) Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty. Returns True on success.
+ *
+ * Parameters:
+ * - _string_ `$description`   __Required: Optional__. New bot description; 0-512 characters. Pass an empty string to remove the dedicated description for the given language.
+ * - _string_ `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code. If empty, the description will be applied to all users for whose language there is no dedicated description.
+ *
+ *
+ * @method boolean|PromiseInterface setMyShortDescription(array $parameters = []) Use this method to change the bot's short description, which is shown on the bot's profile page and is sent together with the link when users share the bot. Returns True on success.
+ *
+ * Parameters:
+ * - _string_ `$short_description` __Required: Optional__. New short description for the bot; 0-120 characters. Pass an empty string to remove the dedicated short description for the given language.
+ * - _string_ `$language_code`     __Required: Optional__. A two-letter ISO 639-1 language code. If empty, the short description will be applied to all users for whose language there is no dedicated short description.
+ *
+ *
+ * @method boolean|PromiseInterface setCustomEmojiStickerSetThumbnail(array $parameters = []) Use this method to set the thumbnail of a custom emoji sticker set. Returns True on success.
+ *
+ * Parameters:
+ * - _string_ `$name`            __Required: Yes__. Sticker set name
+ * - _string_ `$custom_emoji_id` __Required: Optional__. Custom emoji identifier of a sticker from the sticker set; pass an empty string to drop the thumbnail and use the first sticker as the thumbnail.
+ *
+ *
+ * @method boolean|PromiseInterface setStickerEmojiList(array $parameters = []) Use this method to change the list of emoji assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
+ *
+ * Parameters:
+ * - _string_   `$sticker`    __Required: Yes__. File identifier of the sticker
+ * - _string[]_ `$emoji_list` __Required: Yes__. A JSON-serialized list of 1-20 emoji associated with the sticker
+ *
+ *
+ * @method boolean|PromiseInterface setStickerKeywords(array $parameters = []) Use this method to change search keywords assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
+ *
+ * Parameters:
+ * - _string_   `$sticker`  __Required: Yes__. File identifier of the sticker
+ * - _string[]_ `$keywords` __Required: Optional__. A JSON-serialized list of 0-20 search keywords for the sticker with total length of up to 64 characters
+ *
+ *
+ * @method boolean|PromiseInterface setStickerMaskPosition(array $parameters = []) Use this method to change the [mask position](https://core.telegram.org/bots/api#maskposition) of a mask sticker. The sticker must belong to a sticker set that was created by the bot. Returns True on success.
+ *
+ * Parameters:
+ * - _string_       `$sticker`       __Required: Yes__. File identifier of the sticker
+ * - _MaskPosition_ `$mask_position` __Required: Optional__. A JSON-serialized object with the position where the mask should be placed on faces. Omit the parameter to remove the mask position
+ *
+ *
+ * @method boolean|PromiseInterface setStickerSetTitle(array $parameters = []) Use this method to set the title of a created sticker set. Returns True on success.
+ *
+ * Parameters:
+ * - _string_ `$name`            __Required: Yes__. Sticker set name
+ * - _string_ `$custom_emoji_id` __Required: Yes__. Sticker set title, 1-64 characters
  *
  *
  * @method Message|bool|PromiseInterface stopMessageLiveLocation(array $parameters = []) Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned.
@@ -1000,12 +1057,12 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_    `$message_id` __Required: Optional__. Identifier of a message to unpin. If not specified, the most recent pinned message (by sending date) will be unpinned.
  *
  *
- * @method File|PromiseInterface uploadStickerFile(array $parameters = []) Use this method to upload a .PNG file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times). Returns the uploaded [File](https://core.telegram.org/bots/api#file) on success.
+ * @method File|PromiseInterface uploadStickerFile(array $parameters = []) Use this method to upload a file with a sticker for later use in the [createNewStickerSet](https://core.telegram.org/bots/api#createnewstickerset) and [addStickerToSet](https://core.telegram.org/bots/api#addstickertoset) methods (the file can be used multiple times). Returns the uploaded [File](https://core.telegram.org/bots/api#file) on success.
  *
  * Parameters:
- * - _int_       `$user_id`     __Required: Yes__. User identifier of sticker file owner
- * - _InputFile_ `$png_sticker` __Required: Yes__. PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. More info on Sending Files »
- *
+ * - _int_       `$user_id`        __Required: Yes__. User identifier of sticker set owner
+ * - _InputFile_ `$sticker`        __Required: Yes__. A file with the sticker in .WEBP, .PNG, .TGS, or .WEBM format. See [https://core.telegram.org/stickers](https://core.telegram.org/stickers) for technical requirements. [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files)
+ * - _string_    `$sticker_format` __Required: Yes__. Format of the sticker, must be one of “static”, “animated”, “video”
  * @see https://core.telegram.org/bots/api
  */
 trait HasTelegramMethods

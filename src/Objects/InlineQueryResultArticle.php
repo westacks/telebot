@@ -13,9 +13,9 @@ namespace WeStacks\TeleBot\Objects;
  * @property string               $url                   Optional. URL of the result
  * @property bool                 $hide_url              Optional. Pass True, if you don't want the URL to be shown in the message
  * @property string               $description           Optional. Short description of the result
- * @property string               $thumb_url             Optional. Url of the thumbnail for the result
- * @property int                  $thumb_width           Optional. Thumbnail width
- * @property int                  $thumb_height          Optional. Thumbnail height
+ * @property string               $thumbnail_url         Optional. Url of the thumbnail for the result
+ * @property int                  $thumbnail_width       Optional. Thumbnail width
+ * @property int                  $thumbnail_height      Optional. Thumbnail height
  */
 class InlineQueryResultArticle extends InlineQueryResult
 {
@@ -28,8 +28,8 @@ class InlineQueryResultArticle extends InlineQueryResult
         'url'                   => 'string',
         'hide_url'              => 'boolean',
         'description'           => 'string',
-        'thumb_url'             => 'string',
-        'thumb_width'           => 'integer',
-        'thumb_height'          => 'integer',
+        'thumbnail_url'         => 'string',
+        'thumbnail_width'       => 'integer',
+        'thumbnail_height'      => 'integer',
     ];
 }

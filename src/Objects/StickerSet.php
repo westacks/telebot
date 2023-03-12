@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property bool      $is_animated    True, if the sticker set contains animated stickers
  * @property bool      $is_video       True, if the sticker set contains [video stickers](https://telegram.org/blog/video-stickers-better-reactions)
  * @property Sticker[] $stickers       List of all set stickers
- * @property PhotoSize $thumb          Optional. Sticker set thumbnail in the .WEBP or .TGS format
+ * @property PhotoSize $thumbnail      Optional. Sticker set thumbnail in the .WEBP, .TGS, or .WEBM format
  */
 class StickerSet extends TelegramObject
 {
@@ -25,6 +25,6 @@ class StickerSet extends TelegramObject
         'is_video'       => 'boolean',
         'contains_masks' => 'boolean', // DEPRECATED
         'stickers'       => 'Sticker[]',
-        'thumb'          => 'PhotoSize',
+        'thumbnail'      => 'PhotoSize',
     ];
 }

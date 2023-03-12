@@ -13,7 +13,6 @@ namespace WeStacks\TeleBot\Objects;
  * @property bool   $can_pin_messages          True, if the user is allowed to pin messages
  * @property bool   $can_manage_topics         True, if the user is allowed to create forum topics
  * @property bool   $can_send_messages         True, if the user is allowed to send text messages, contacts, locations and venues
- * @property bool   $can_send_messages         True, if the user is allowed to send text messages, contacts, locations and venues
  * @property bool   $can_send_audios           True, if the user is allowed to send audios
  * @property bool   $can_send_documents        True, if the user is allowed to send documents
  * @property bool   $can_send_photos           True, if the user is allowed to send photos

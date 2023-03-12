@@ -8,7 +8,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property string               $type                  Type of the result, must be photo
  * @property string               $id                    Unique identifier for this result, 1-64 bytes
  * @property string               $photo_url             A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB
- * @property string               $thumb_url             URL of the thumbnail for the photo
+ * @property string               $thumbnail_url         URL of the thumbnail for the photo
  * @property int                  $photo_width           Optional. Width of the photo
  * @property int                  $photo_height          Optional. Height of the photo
  * @property string               $title                 Optional. Title for the result
@@ -25,7 +25,7 @@ class InlineQueryResultPhoto extends InlineQueryResult
         'type'                  => 'string',
         'id'                    => 'string',
         'photo_url'             => 'string',
-        'thumb_url'             => 'string',
+        'thumbnail_url'         => 'string',
         'photo_width'           => 'integer',
         'photo_height'          => 'integer',
         'title'                 => 'string',

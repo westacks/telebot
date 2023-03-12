@@ -16,9 +16,9 @@ namespace WeStacks\TeleBot\Objects;
  * @property string               $description           Optional. Short description of the result
  * @property InlineKeyboardMarkup $reply_markup          Optional. Inline keyboard attached to the message
  * @property InputMessageContent  $input_message_content Optional. Content of the message to be sent instead of the file
- * @property string               $thumb_url             Optional. URL of the thumbnail (JPEG only) for the file
- * @property int                  $thumb_width           Optional. Thumbnail width
- * @property int                  $thumb_height          Optional. Thumbnail height
+ * @property string               $thumbnail_url         Optional. URL of the thumbnail (JPEG only) for the file
+ * @property int                  $thumbnail_width       Optional. Thumbnail width
+ * @property int                  $thumbnail_height      Optional. Thumbnail height
  */
 class InlineQueryResultDocument extends InlineQueryResult
 {
@@ -34,8 +34,8 @@ class InlineQueryResultDocument extends InlineQueryResult
         'description'           => 'string',
         'reply_markup'          => 'InlineKeyboardMarkup',
         'input_message_content' => 'InputMessageContent',
-        'thumb_url'             => 'string',
-        'thumb_width'           => 'integer',
-        'thumb_height'          => 'integer',
+        'thumbnail_url'         => 'string',
+        'thumbnail_width'       => 'integer',
+        'thumbnail_height'      => 'integer',
     ];
 }
