@@ -152,9 +152,9 @@ class TelegramNotification extends Notification
 }
 ```
 
-## Authorising Web Apps
+## Authorizing Web Apps
 
-You may easily authorise [Web Apps](https://core.telegram.org/bots/webapps) requests using inbuilt middleware:
+You may easily authorize [Web Apps](https://core.telegram.org/bots/webapps) requests using inbuilt middleware:
 
 <!-- tabs:start -->
 
