@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AuthorizeWebAppRequest
 {
+    protected ?Collection $credentials;
+
     /**
      * Handle an incoming request.
      *
@@ -18,16 +20,23 @@ class AuthorizeWebAppRequest
     {
         abort_unless($this->validCredentials($request, $bot), 403);
 
+        // TODO: Should be compatible with Octane
+        // $request->macro('webAppUser', $this->getUser($request));
+
         return $next($request);
     }
 
     protected function getCredentials(Request $request): ?Collection
     {
+        if (isset($this->credentials)) {
+            return $this->credentials;
+        }
+
         if (! $data = $request->header('X-Telegram-Web-App')) {
             return null;
         }
 
-        return collect(explode('&', urldecode($data)))
+        return $this->credentials = collect(explode('&', urldecode($data)))
             ->mapWithKeys(function ($value) {
                 [$key, $val] = explode('=', $value);
 
@@ -51,5 +60,14 @@ class AuthorizeWebAppRequest
         $secret_key = hash_hmac('sha256', config("telebot.bots.$bot.token", ''), 'WebAppData', true);
 
         return $hash === bin2hex(hash_hmac('sha256', $data_check_string, $secret_key, true));
+    }
+
+    protected function getUser(Request $request): ?array
+    {
+        if (! $credentials = $this->getCredentials($request)) {
+            return null;
+        }
+
+        return json_decode($credentials->get('user'));
     }
 }

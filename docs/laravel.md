@@ -34,7 +34,8 @@ return [
         // 'certificate'       => env('TELEGRAM_BOT_CERT_PATH', storage_path('app/ssl/public.pem')),
         // 'max_connections'   => 40,
         // 'ip_address'        => '8.8.8.8',
-        // 'allowed_updates'   => ["message", "edited_channel_post", "callback_query"]
+        // 'allowed_updates'   => ["message", "edited_channel_post", "callback_query"],
+        // 'secret_token'      => env('TELEGRAM_KEY', null),
       ]
     ]
 ];
@@ -150,6 +151,34 @@ class TelegramNotification extends Notification
     }
 }
 ```
+
+## Authorising Web Apps
+
+You may easily authorise [Web Apps](https://core.telegram.org/bots/webapps) requests using inbuilt middleware:
+
+<!-- tabs:start -->
+
+#### ** Creating route **
+
+```php
+// routes/api.php
+
+Route::post('/action', [/App/Http/Controllers/WebAppController::class, 'action'])
+    ->middleware('telebot-webapp:bot');
+```
+
+#### ** Sending request from Web App **
+
+```js
+// web-app.js
+import axios from 'axios';
+
+axios.post('/action', { test: 123 }, {
+  headers: { 'X-Telegram-Web-App': Telegram.WebApp.initData }
+})
+
+```
+<!-- tabs:end -->
 
 ## Log driver
 

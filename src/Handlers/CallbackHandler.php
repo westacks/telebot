@@ -18,7 +18,9 @@ abstract class CallbackHandler extends UpdateHandler
 
     protected function arguments(?int $index = null)
     {
-        preg_match($this->match, $this->update->callback_query->data, $matches);
+        if (! @preg_match($this->match, $this->update->callback_query->data, $matches)) {
+            return [];
+        }
 
         if (! isset($matches)) {
             throw new \Exception('Unable to parse arguments!');

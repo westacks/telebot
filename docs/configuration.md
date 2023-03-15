@@ -13,7 +13,8 @@ use WeStacks\TeleBot\TeleBot;
 
 $bot = new TeleBot([
     'token'      => '<telegram api token>',
-    'api_url'    => 'https://api.telegram.org'
+    'name'       => '<telegram bot name>',
+    'api_url'    => 'https://api.telegram.org/bot{TOKEN}/{METHOD}'
     'exceptions' => true,
     'async'      => false,
     'handlers'   => []

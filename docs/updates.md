@@ -54,9 +54,9 @@ use WeStacks\TeleBot\TeleBot;
 
 class YourUpdateHandler extends UpdateHandler
 {
-    public static function trigger(Update $update, TeleBot $bot): bool
+    public function trigger(): bool
     {
-        return isset($update->message); // handle regular messages (example)
+        return isset($this->update->message); // handle regular messages (example)
     }
 
     public function handle()
@@ -92,65 +92,6 @@ $bot->addHandler(\Somewhere\InYour\App\YourUpdateHandler::class);
 $bot->addHandler($handler);
 ```
 
-## Requesting user input
-
-Library have inbuilt state machine to handle user input. It is possible to request user input by creating `RequestInputHandler`.
-
-<!-- tabs:start -->
-
-#### ** Creating handler **
-
-```php
-<?php
-
-namespace Somewhere\InYour\App;
-
-use WeStacks\TeleBot\Handlers\RequestInputHandler;
-
-class AskNameHandler extends RequestInputHandler
-{
-    public function handle()
-    {
-        $data = $this->update->message()->toArray();
-        $validator = Validator::make($data, [
-            'text' => 'required|string|max:255'
-        ]);
-
-        if ($validator->fails()) {
-            return $this->sendMessage([
-                'text' => 'Invalid input!'
-            ]);
-        }
-
-        $this->acceptInput();
-        $name = $validator->validated()['text'];
-
-        return $this->sendMessage([
-            'text' => "Hello, $name!",
-        ]);
-    }
-}
-```
-#### ** Requesting user input **
-
-```php
-
-$handler = function ($bot, $update, $next) {
-    if ('/test' !== $update->message()->text ?? null) {
-        return $next();
-    }
-
-    AskNameHandler::requestInput($bot, $update->user()->id);
-
-    return $bot->sendMessage([
-        'chat_id' => $update->chat()->id,
-        'text' => 'Please, type your name.',
-    ]);
-},
-
-```
-
-<!-- tabs:end -->
 ## Bot commands
 
 The library proviedes an `UpdateHandler` specially for bot commands, so you could work with them more efficiently. All `CommandHandler` classes should be registered to be avaliable for the `setLocalCommands()` method which is handy for registering all bot commands for your bot.
@@ -219,6 +160,100 @@ php artisan telebot:commands --remove
 ```
 
 <!-- tabs:end -->
+## Requesting user input
+
+Library have inbuilt state machine to handle user input. It is possible to request user input by creating `RequestInputHandler`.
+
+<!-- tabs:start -->
+
+#### ** Creating handler **
+
+```php
+<?php
+
+namespace Somewhere\InYour\App;
+
+use WeStacks\TeleBot\Handlers\RequestInputHandler;
+
+class AskNameHandler extends RequestInputHandler
+{
+    public function handle()
+    {
+        $data = $this->update->message()->toArray();
+        $validator = Validator::make($data, [
+            'text' => 'required|string|max:255'
+        ]);
+
+        if ($validator->fails()) {
+            return $this->sendMessage([
+                'text' => 'Invalid input!'
+            ]);
+        }
+
+        $this->acceptInput();
+        $name = $validator->validated()['text'];
+
+        return $this->sendMessage([
+            'text' => "Hello, $name!",
+        ]);
+    }
+}
+```
+#### ** Requesting user input **
+
+```php
+
+$handler = function ($bot, $update, $next) {
+    if ('/test' !== $update->message()->text ?? null) {
+        return $next();
+    }
+
+    AskNameHandler::requestInput($bot, $update->user()->id);
+
+    return $bot->sendMessage([
+        'chat_id' => $update->chat()->id,
+        'text' => 'Please, type your name.',
+    ]);
+},
+
+```
+
+<!-- tabs:end -->
+
+## Handling callback queries
+When answering [Callback Queries](https://core.telegram.org/bots/api#callbackquery) you may use `CallbackHandler` to handle incoming updates:
+
+```php
+<?php
+
+namespace Somewhere\InYour\App;
+
+use WeStacks\TeleBot\Handlers\CallbackHandler;
+use App\Models\Test;
+
+class ButtonPressHandler extends CallbackHandler
+{
+    // Example: "test:delete:6"
+    protected string $match = "/^test:(delete|update):(\d+)$/";
+
+    public function handle()
+    {
+        [$action, $id] = $this->arguments(); // "delete", "6"
+
+        $result = match ($action) {
+            'update' => $this->update($id),
+            'delete' => $this->delete($id),
+            default => null
+        };
+
+        $this->answerCallbackQuery();
+    }
+
+    ...
+}
+
+```
+
 ## Handling updates
 
 You may run start handling proccess using `handleUpdate()` method
