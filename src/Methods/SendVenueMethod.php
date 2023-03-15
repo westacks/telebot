@@ -31,42 +31,42 @@ class SendVenueMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
-        'chat_id'                     => 'string',
-        'message_thread_id'           => 'integer',
-        'latitude'                    => 'double',
-        'longitude'                   => 'double',
-        'title'                       => 'string',
-        'address'                     => 'string',
-        'foursquare_id'               => 'string',
-        'foursquare_type'             => 'string',
-        'google_place_id'             => 'string',
-        'google_place_type'           => 'string',
-        'disable_notification'        => 'boolean',
-        'protect_content'             => 'boolean',
-        'reply_to_message_id'         => 'integer',
+        'chat_id' => 'string',
+        'message_thread_id' => 'integer',
+        'latitude' => 'double',
+        'longitude' => 'double',
+        'title' => 'string',
+        'address' => 'string',
+        'foursquare_id' => 'string',
+        'foursquare_type' => 'string',
+        'google_place_id' => 'string',
+        'google_place_type' => 'string',
+        'disable_notification' => 'boolean',
+        'protect_content' => 'boolean',
+        'reply_to_message_id' => 'integer',
         'allow_sending_without_reply' => 'boolean',
-        'reply_markup'                => 'Keyboard',
+        'reply_markup' => 'Keyboard',
     ];
 
     public function mock($arguments)
     {
         return new Message([
             'message_id' => rand(1, 100),
-            'date'       => time(),
-            'chat'       => [
-                'id'   => $arguments['chat_id'],
+            'date' => time(),
+            'chat' => [
+                'id' => $arguments['chat_id'],
                 'type' => 'private',
             ],
             'venue' => [
                 'location' => [
-                    'latitude'  => $arguments['latitude'],
+                    'latitude' => $arguments['latitude'],
                     'longitude' => $arguments['longitude'],
                 ],
-                'title'             => $arguments['title'],
-                'address'           => $arguments['address'],
-                'foursquare_id'     => $arguments['foursquare_id'],
-                'foursquare_type'   => $arguments['foursquare_type'],
-                'google_place_id'   => $arguments['google_place_id'],
+                'title' => $arguments['title'],
+                'address' => $arguments['address'],
+                'foursquare_id' => $arguments['foursquare_id'],
+                'foursquare_type' => $arguments['foursquare_type'],
+                'google_place_id' => $arguments['google_place_id'],
                 'google_place_type' => $arguments['google_place_type'],
             ],
         ]);

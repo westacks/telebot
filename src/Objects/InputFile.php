@@ -11,12 +11,14 @@ class InputFile
 {
     /**
      * File name.
+     *
      * @var null|string
      */
     protected $filename;
 
     /**
      * File contents.
+     *
      * @var bool|resource|string
      */
     protected $contents;
@@ -47,7 +49,7 @@ class InputFile
     public function toMultipart(string $name)
     {
         $data = [
-            'name'     => $name,
+            'name' => $name,
             'contents' => $this->contents,
         ];
 

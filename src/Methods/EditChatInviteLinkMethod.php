@@ -22,11 +22,11 @@ class EditChatInviteLinkMethod extends TelegramMethod
     protected string $expect = 'ChatInviteLink';
 
     protected array $parameters = [
-        'chat_id'              => 'string',
-        'invite_link'          => 'string',
-        'name'                 => 'string',
-        'expire_date'          => 'integer',
-        'member_limit'         => 'integer',
+        'chat_id' => 'string',
+        'invite_link' => 'string',
+        'name' => 'string',
+        'expire_date' => 'integer',
+        'member_limit' => 'integer',
         'creates_join_request' => 'boolean',
     ];
 
@@ -34,18 +34,18 @@ class EditChatInviteLinkMethod extends TelegramMethod
     {
         return new ChatInviteLink([
             'invite_link' => 'https://telegram.me/joinchat/test',
-            'creator'     => [
-                'id'         => 1,
+            'creator' => [
+                'id' => 1,
                 'first_name' => 'First',
-                'last_name'  => 'Last',
-                'username'   => 'username',
+                'last_name' => 'Last',
+                'username' => 'username',
             ],
-            'creates_join_request'       => $arguments['creates_join_request'] ?? false,
-            'is_primary'                 => false,
-            'is_revoked'                 => false,
-            'name'                       => $arguments['name'] ?? null,
-            'expire_date'                => $arguments['expire_date'] ?? null,
-            'member_limit'               => $arguments['member_limit'] ?? null,
+            'creates_join_request' => $arguments['creates_join_request'] ?? false,
+            'is_primary' => false,
+            'is_revoked' => false,
+            'name' => $arguments['name'] ?? null,
+            'expire_date' => $arguments['expire_date'] ?? null,
+            'member_limit' => $arguments['member_limit'] ?? null,
             'pending_join_request_count' => 0,
         ]);
     }

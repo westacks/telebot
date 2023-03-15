@@ -22,9 +22,9 @@ class SendChatActionMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'chat_id'           => 'string',
+        'chat_id' => 'string',
         'message_thread_id' => 'integer',
-        'action'            => 'string',
+        'action' => 'string',
     ];
 
     public function mock($arguments)

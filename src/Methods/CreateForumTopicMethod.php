@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\ForumTopic;
 
 /**
  * Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns information about the created topic as a ForumTopic object.
@@ -19,14 +20,19 @@ class CreateForumTopicMethod extends TelegramMethod
     protected string $expect = 'ForumTopic';
 
     protected array $parameters = [
-        'chat_id'              => 'string',
-        'name'                 => 'string',
-        'icon_color'           => 'integer',
+        'chat_id' => 'string',
+        'name' => 'string',
+        'icon_color' => 'integer',
         'icon_custom_emoji_id' => 'string',
     ];
 
-    public function mock($arguments)
+    protected function mock($arguments): ForumTopic
     {
-        return new ForumTopic;
+        return new ForumTopic([
+            'message_thread_id' => -1,
+            'name' => $arguments['name'],
+            'icon_color' => $arguments['icon_color'] ?? '255,255,255',
+            'icon_custom_emoji_id' => $arguments['icon_custom_emoji_id'] ?? null,
+        ]);
     }
 }

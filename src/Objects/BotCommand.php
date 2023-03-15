@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class BotCommand extends TelegramObject
 {
     protected $attributes = [
-        'command'     => 'string',
+        'command' => 'string',
         'description' => 'string',
     ];
 }

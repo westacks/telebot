@@ -35,43 +35,43 @@ class SendVideoMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
-        'chat_id'                     => 'string',
-        'message_thread_id'           => 'integer',
-        'video'                       => 'InputFile',
-        'duration'                    => 'integer',
-        'width'                       => 'integer',
-        'height'                      => 'integer',
-        'thumbnail'                   => 'InputFile',
-        'caption'                     => 'string',
-        'parse_mode'                  => 'string',
-        'caption_entities'            => 'MessageEntity[]',
-        'has_spoiler'                 => 'boolean',
-        'supports_streaming'          => 'boolean',
-        'disable_notification'        => 'boolean',
-        'protect_content'             => 'boolean',
-        'reply_to_message_id'         => 'integer',
+        'chat_id' => 'string',
+        'message_thread_id' => 'integer',
+        'video' => 'InputFile',
+        'duration' => 'integer',
+        'width' => 'integer',
+        'height' => 'integer',
+        'thumbnail' => 'InputFile',
+        'caption' => 'string',
+        'parse_mode' => 'string',
+        'caption_entities' => 'MessageEntity[]',
+        'has_spoiler' => 'boolean',
+        'supports_streaming' => 'boolean',
+        'disable_notification' => 'boolean',
+        'protect_content' => 'boolean',
+        'reply_to_message_id' => 'integer',
         'allow_sending_without_reply' => 'boolean',
-        'reply_markup'                => 'Keyboard',
+        'reply_markup' => 'Keyboard',
     ];
 
     public function mock($arguments)
     {
         return new Message([
             'message_id' => mt_rand(1, 100),
-            'chat'       => [
-                'id'   => $arguments['chat_id'],
+            'chat' => [
+                'id' => $arguments['chat_id'],
                 'type' => 'private',
             ],
-            'date'  => time(),
+            'date' => time(),
             'video' => [
-                'file_id'   => 'video_file_id',
-                'duration'  => mt_rand(1, 100),
-                'width'     => mt_rand(1, 100),
-                'height'    => mt_rand(1, 100),
+                'file_id' => 'video_file_id',
+                'duration' => mt_rand(1, 100),
+                'width' => mt_rand(1, 100),
+                'height' => mt_rand(1, 100),
                 'thumbnail' => [
                     'file_id' => 'thumb_file_id',
-                    'width'   => mt_rand(1, 100),
-                    'height'  => mt_rand(1, 100),
+                    'width' => mt_rand(1, 100),
+                    'height' => mt_rand(1, 100),
                 ],
                 'mime_type' => 'video/mp4',
                 'file_size' => mt_rand(1, 100),

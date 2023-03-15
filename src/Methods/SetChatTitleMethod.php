@@ -18,7 +18,7 @@ class SetChatTitleMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id' => 'string',
-        'title'   => 'string',
+        'title' => 'string',
     ];
 
     public function mock($arguments)

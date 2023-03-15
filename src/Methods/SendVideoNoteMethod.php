@@ -28,43 +28,43 @@ class SendVideoNoteMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
-        'chat_id'                     => 'string',
-        'message_thread_id'           => 'integer',
-        'video_note'                  => 'InputFile',
-        'duration'                    => 'integer',
-        'length'                      => 'integer',
-        'thumbnail'                   => 'InputFile',
-        'disable_notification'        => 'boolean',
-        'protect_content'             => 'boolean',
-        'reply_to_message_id'         => 'integer',
+        'chat_id' => 'string',
+        'message_thread_id' => 'integer',
+        'video_note' => 'InputFile',
+        'duration' => 'integer',
+        'length' => 'integer',
+        'thumbnail' => 'InputFile',
+        'disable_notification' => 'boolean',
+        'protect_content' => 'boolean',
+        'reply_to_message_id' => 'integer',
         'allow_sending_without_reply' => 'boolean',
-        'reply_markup'                => 'Keyboard',
+        'reply_markup' => 'Keyboard',
     ];
 
     public function mock($arguments)
     {
         return new Message([
             'message_id' => mt_rand(1, 100),
-            'from'       => [
-                'id'            => mt_rand(1, 100),
-                'is_bot'        => false,
-                'first_name'    => '',
-                'last_name'     => '',
-                'username'      => '',
+            'from' => [
+                'id' => mt_rand(1, 100),
+                'is_bot' => false,
+                'first_name' => '',
+                'last_name' => '',
+                'username' => '',
                 'language_code' => '',
             ],
             'chat' => [
-                'id'   => $arguments['chat_id'],
+                'id' => $arguments['chat_id'],
                 'type' => 'private',
             ],
-            'date'       => time(),
+            'date' => time(),
             'video_note' => [
-                'file_id'        => '',
+                'file_id' => '',
                 'file_unique_id' => '',
-                'duration'       => mt_rand(1, 60),
-                'length'         => mt_rand(1, 100),
-                'mime_type'      => 'video/mp4',
-                'file_size'      => mt_rand(1, 100),
+                'duration' => mt_rand(1, 60),
+                'length' => mt_rand(1, 100),
+                'mime_type' => 'video/mp4',
+                'file_size' => mt_rand(1, 100),
             ],
         ]);
     }

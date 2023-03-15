@@ -15,9 +15,9 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class PassportFile extends TelegramObject
 {
     protected $attributes = [
-        'file_id'        => 'string',
+        'file_id' => 'string',
         'file_unique_id' => 'string',
-        'file_size'      => 'integer',
-        'file_date'      => 'integer',
+        'file_size' => 'integer',
+        'file_date' => 'integer',
     ];
 }

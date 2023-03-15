@@ -14,10 +14,10 @@ namespace WeStacks\TeleBot\Objects;
 class InlineQueryResultCachedSticker extends InlineQueryResult
 {
     protected $attributes = [
-        'type'                  => 'string',
-        'id'                    => 'string',
-        'sticker_file_id'       => 'string',
-        'reply_markup'          => 'InlineKeyboardMarkup',
+        'type' => 'string',
+        'id' => 'string',
+        'sticker_file_id' => 'string',
+        'reply_markup' => 'InlineKeyboardMarkup',
         'input_message_content' => 'InputMessageContent',
     ];
 }

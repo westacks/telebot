@@ -35,28 +35,28 @@ abstract class InlineQueryResult extends TelegramObject
 {
     private static $types = [
         'default' => [
-            'article'   => InlineQueryResultArticle::class,
-            'photo'     => InlineQueryResultPhoto::class,
-            'gif'       => InlineQueryResultGif::class,
+            'article' => InlineQueryResultArticle::class,
+            'photo' => InlineQueryResultPhoto::class,
+            'gif' => InlineQueryResultGif::class,
             'mpeg4_gif' => InlineQueryResultMpeg4Gif::class,
-            'video'     => InlineQueryResultVideo::class,
-            'audio'     => InlineQueryResultAudio::class,
-            'voice'     => InlineQueryResultVoice::class,
-            'document'  => InlineQueryResultDocument::class,
-            'location'  => InlineQueryResultLocation::class,
-            'venue'     => InlineQueryResultVenue::class,
-            'contact'   => InlineQueryResultContact::class,
-            'game'      => InlineQueryResultGame::class,
+            'video' => InlineQueryResultVideo::class,
+            'audio' => InlineQueryResultAudio::class,
+            'voice' => InlineQueryResultVoice::class,
+            'document' => InlineQueryResultDocument::class,
+            'location' => InlineQueryResultLocation::class,
+            'venue' => InlineQueryResultVenue::class,
+            'contact' => InlineQueryResultContact::class,
+            'game' => InlineQueryResultGame::class,
         ],
         'cached' => [
-            'photo'     => InlineQueryResultCachedPhoto::class,
-            'gif'       => InlineQueryResultCachedGif::class,
+            'photo' => InlineQueryResultCachedPhoto::class,
+            'gif' => InlineQueryResultCachedGif::class,
             'mpeg4_gif' => InlineQueryResultCachedMpeg4Gif::class,
-            'sticker'   => InlineQueryResultCachedSticker::class,
-            'document'  => InlineQueryResultCachedDocument::class,
-            'video'     => InlineQueryResultCachedVideo::class,
-            'voice'     => InlineQueryResultCachedVoice::class,
-            'audio'     => InlineQueryResultCachedAudio::class,
+            'sticker' => InlineQueryResultCachedSticker::class,
+            'document' => InlineQueryResultCachedDocument::class,
+            'video' => InlineQueryResultCachedVideo::class,
+            'voice' => InlineQueryResultCachedVoice::class,
+            'audio' => InlineQueryResultCachedAudio::class,
         ],
     ];
 
@@ -77,7 +77,7 @@ abstract class InlineQueryResult extends TelegramObject
     private static function isCached($object)
     {
         foreach (array_keys($object) as $key) {
-            if (false !== strpos($key, 'file_id')) {
+            if (str_contains($key, 'file_id')) {
                 return true;
             }
         }

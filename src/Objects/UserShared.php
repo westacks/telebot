@@ -14,6 +14,6 @@ class UserShared extends TelegramObject
 {
     protected $attributes = [
         'request_id' => 'integer',
-        'user_id'    => 'integer',
+        'user_id' => 'integer',
     ];
 }

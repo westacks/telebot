@@ -14,6 +14,6 @@ class ChatLocation extends TelegramObject
 {
     protected $attributes = [
         'location' => 'Location',
-        'address'  => 'string',
+        'address' => 'string',
     ];
 }

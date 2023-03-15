@@ -18,25 +18,17 @@ class TelegramChannel
      */
     protected $botmanager;
 
-    /**
-     * @var Dispatcher
-     */
-    private $dispatcher;
-
-    public function __construct(BotManager $botmanager, Dispatcher $dispatcher)
+    public function __construct(BotManager $botmanager, private Dispatcher $dispatcher)
     {
         $this->botmanager = $botmanager;
-        $this->dispatcher = $dispatcher;
     }
 
     /**
      * Send Telegram Notification.
      *
-     * @param  mixed        $notifiable
-     * @param  Notification $notification
      * @return mixed
      */
-    public function send($notifiable, Notification $notification)
+    public function send(mixed $notifiable, Notification $notification)
     {
         $data = call_user_func([$notification, 'toTelegram'], $notifiable);
         $data = new TelegramNotification((string) $data);
@@ -53,6 +45,7 @@ class TelegramChannel
                 ->{$action['method']}($action['arguments'])
                 ->otherwise(function (Exception $exception) use (&$errors) {
                     $errors[] = $exception;
+
                     return $exception;
                 });
         }
@@ -63,6 +56,7 @@ class TelegramChannel
             new NotificationSent($notifiable, $notification, static::class, $results);
 
         $this->dispatcher->dispatch($report);
+
         return $results;
     }
 }

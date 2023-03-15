@@ -20,7 +20,7 @@ class AddStickerToSetMethod extends TelegramMethod
 
     protected array $parameters = [
         'user_id' => 'string',
-        'name'    => 'string',
+        'name' => 'string',
         'sticker' => 'InputSticker',
     ];
 

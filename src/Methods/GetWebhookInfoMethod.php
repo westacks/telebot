@@ -19,13 +19,13 @@ class GetWebhookInfoMethod extends TelegramMethod
     public function mock($arguments)
     {
         return new WebhookInfo([
-            'url'                    => 'https://example.com/webhook',
+            'url' => 'https://example.com/webhook',
             'has_custom_certificate' => true,
-            'pending_update_count'   => 1,
-            'last_error_date'        => 1,
-            'last_error_message'     => 'last_error_message',
-            'max_connections'        => 1,
-            'allowed_updates'        => [
+            'pending_update_count' => 1,
+            'last_error_date' => 1,
+            'last_error_message' => 'last_error_message',
+            'max_connections' => 1,
+            'allowed_updates' => [
                 'message',
             ],
         ]);

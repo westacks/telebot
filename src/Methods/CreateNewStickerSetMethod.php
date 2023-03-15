@@ -23,12 +23,12 @@ class CreateNewStickerSetMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'user_id'          => 'integer',
-        'name'             => 'string',
-        'title'            => 'string',
-        'stickers'         => 'InputSticker[]',
-        'sticker_format'   => 'string',
-        'sticker_type'     => 'string',
+        'user_id' => 'integer',
+        'name' => 'string',
+        'title' => 'string',
+        'stickers' => 'InputSticker[]',
+        'sticker_format' => 'string',
+        'sticker_type' => 'string',
         'needs_repainting' => 'boolean',
     ];
 

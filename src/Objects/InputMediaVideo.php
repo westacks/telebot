@@ -15,21 +15,21 @@ namespace WeStacks\TeleBot\Objects;
  * @property int             $height             Optional. Video height
  * @property int             $duration           Optional. Video duration in seconds
  * @property bool            $supports_streaming Optional. Pass True, if the uploaded video is suitable for streaming
- * @property boolean         $has_spoiler        Optional. Pass True if the video needs to be covered with a spoiler animation
+ * @property bool         $has_spoiler        Optional. Pass True if the video needs to be covered with a spoiler animation
  */
 class InputMediaVideo extends InputMedia
 {
     protected $attributes = [
-        'type'               => 'string',
-        'media'              => 'InputFile',
-        'thumbnail'          => 'InputFile',
-        'caption'            => 'string',
-        'parse_mode'         => 'string',
-        'caption_entities'   => 'MessageEntity[]',
-        'width'              => 'integer',
-        'height'             => 'integer',
-        'duration'           => 'integer',
+        'type' => 'string',
+        'media' => 'InputFile',
+        'thumbnail' => 'InputFile',
+        'caption' => 'string',
+        'parse_mode' => 'string',
+        'caption_entities' => 'MessageEntity[]',
+        'width' => 'integer',
+        'height' => 'integer',
+        'duration' => 'integer',
         'supports_streaming' => 'boolean',
-        'has_spoiler'        => 'boolean',
+        'has_spoiler' => 'boolean',
     ];
 }

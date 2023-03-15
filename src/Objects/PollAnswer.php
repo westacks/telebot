@@ -14,8 +14,8 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class PollAnswer extends TelegramObject
 {
     protected $attributes = [
-        'poll_id'    => 'string',
-        'user'       => 'User',
+        'poll_id' => 'string',
+        'user' => 'User',
         'option_ids' => 'integer[]',
     ];
 }

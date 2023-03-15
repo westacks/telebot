@@ -17,7 +17,7 @@ class SetCustomEmojiStickerSetThumbnailMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'name'            => 'string',
+        'name' => 'string',
         'custom_emoji_id' => 'string',
     ];
 

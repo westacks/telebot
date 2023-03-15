@@ -29,18 +29,18 @@ class CopyMessageMethod extends TelegramMethod
     protected string $expect = 'MessageId';
 
     protected array $parameters = [
-        'chat_id'                     => 'string',
-        'message_thread_id'           => 'integer',
-        'from_chat_id'                => 'string',
-        'message_id'                  => 'integer',
-        'caption'                     => 'string',
-        'parse_mode'                  => 'string',
-        'caption_entities'            => 'MessageEntity[]',
-        'disable_notification'        => 'boolean',
-        'protect_content'             => 'boolean',
-        'reply_to_message_id'         => 'integer',
+        'chat_id' => 'string',
+        'message_thread_id' => 'integer',
+        'from_chat_id' => 'string',
+        'message_id' => 'integer',
+        'caption' => 'string',
+        'parse_mode' => 'string',
+        'caption_entities' => 'MessageEntity[]',
+        'disable_notification' => 'boolean',
+        'protect_content' => 'boolean',
+        'reply_to_message_id' => 'integer',
         'allow_sending_without_reply' => 'boolean',
-        'reply_markup'                => 'Keyboard',
+        'reply_markup' => 'Keyboard',
     ];
 
     public function mock($arguments)

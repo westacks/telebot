@@ -50,7 +50,8 @@ class UpdateRequest extends FormRequest
 
     protected function onlyOnePresent(string $type)
     {
-        $types = implode(",", array_filter($this->types, fn ($value) => $value !== $type));
+        $types = implode(',', array_filter($this->types, fn ($value) => $value !== $type));
+
         return "required_without_all:$types|prohibits:$types";
     }
 
@@ -75,6 +76,7 @@ class UpdateRequest extends FormRequest
         if (empty($this->update)) {
             $this->update = new Update($this->validated());
         }
+
         return $this->update;
     }
 }

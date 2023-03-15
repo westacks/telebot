@@ -12,6 +12,6 @@ class ChatMemberMember extends ChatMember
 {
     protected $attributes = [
         'status' => 'string',
-        'user'   => 'User',
+        'user' => 'User',
     ];
 }

@@ -14,8 +14,8 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class ShippingOption extends TelegramObject
 {
     protected $attributes = [
-        'id'     => 'string',
-        'title'  => 'string',
+        'id' => 'string',
+        'title' => 'string',
         'prices' => 'LabeledPrice[]',
     ];
 }

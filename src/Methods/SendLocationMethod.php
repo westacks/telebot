@@ -29,37 +29,37 @@ class SendLocationMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
-        'chat_id'                     => 'string',
-        'message_thread_id'           => 'integer',
-        'latitude'                    => 'double',
-        'longitude'                   => 'double',
-        'horizontal_accuracy'         => 'double',
-        'live_period'                 => 'integer',
-        'heading'                     => 'integer',
-        'proximity_alert_radius'      => 'integer',
-        'disable_notification'        => 'boolean',
-        'protect_content'             => 'boolean',
-        'reply_to_message_id'         => 'integer',
+        'chat_id' => 'string',
+        'message_thread_id' => 'integer',
+        'latitude' => 'double',
+        'longitude' => 'double',
+        'horizontal_accuracy' => 'double',
+        'live_period' => 'integer',
+        'heading' => 'integer',
+        'proximity_alert_radius' => 'integer',
+        'disable_notification' => 'boolean',
+        'protect_content' => 'boolean',
+        'reply_to_message_id' => 'integer',
         'allow_sending_without_reply' => 'boolean',
-        'reply_markup'                => 'Keyboard',
+        'reply_markup' => 'Keyboard',
     ];
 
     public function mock($arguments)
     {
         return new Message([
             'message_id' => mt_rand(1, 100),
-            'from'       => [
-                'id'         => mt_rand(1, 100),
-                'is_bot'     => false,
+            'from' => [
+                'id' => mt_rand(1, 100),
+                'is_bot' => false,
                 'first_name' => 'First Name',
             ],
             'chat' => [
-                'id'   => $arguments['chat_id'],
+                'id' => $arguments['chat_id'],
                 'type' => 'private',
             ],
-            'date'     => time(),
+            'date' => time(),
             'location' => [
-                'latitude'  => $arguments['latitude'],
+                'latitude' => $arguments['latitude'],
                 'longitude' => $arguments['longitude'],
             ],
         ]);

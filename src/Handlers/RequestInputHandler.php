@@ -11,24 +11,26 @@ abstract class RequestInputHandler extends UpdateHandler
 {
     protected static function getState(TeleBot $bot)
     {
-        $statePath = __DIR__ . "/../../storage/" . $bot->config('token') . ".json";
+        $statePath = __DIR__.'/../../storage/'.$bot->config('token').'.json';
+
         return file_exists($statePath) ? json_decode(file_get_contents($statePath), true) : [];
     }
 
     protected static function updateState(TeleBot $bot, callable $callback)
     {
-        $statePath = __DIR__ . "/../../storage/" . $bot->config('token') . ".json";
+        $statePath = __DIR__.'/../../storage/'.$bot->config('token').'.json';
         $state = static::getState($bot);
 
         $state = $callback($state);
 
-        return !!file_put_contents($statePath, json_encode($state));
+        return (bool) file_put_contents($statePath, json_encode($state));
     }
 
     public static function requestInput(TeleBot $bot, string $user_id)
     {
         return static::updateState($bot, function ($state) use ($user_id) {
             $state[$user_id] = static::class;
+
             return $state;
         });
     }
@@ -43,6 +45,7 @@ abstract class RequestInputHandler extends UpdateHandler
     {
         return static::updateState($this->bot, function ($state) {
             unset($state[$this->update->user()->id]);
+
             return $state;
         });
     }

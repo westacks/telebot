@@ -21,10 +21,10 @@ class StopMessageLiveLocationMethod extends TelegramMethod
     protected string $expect = 'Message|boolean';
 
     protected array $parameters = [
-        'chat_id'           => 'string',
-        'message_id'        => 'integer',
+        'chat_id' => 'string',
+        'message_id' => 'integer',
         'inline_message_id' => 'string',
-        'reply_markup'      => 'InlineKeyboardMarkup',
+        'reply_markup' => 'InlineKeyboardMarkup',
     ];
 
     public function mock($arguments)
@@ -35,8 +35,8 @@ class StopMessageLiveLocationMethod extends TelegramMethod
 
         return new Message([
             'message_id' => rand(1, 100),
-            'chat'       => [
-                'id'   => rand(1, 100),
+            'chat' => [
+                'id' => rand(1, 100),
                 'type' => 'private',
             ],
         ]);

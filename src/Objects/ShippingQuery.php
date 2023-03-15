@@ -15,9 +15,9 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class ShippingQuery extends TelegramObject
 {
     protected $attributes = [
-        'id'               => 'string',
-        'from'             => 'User',
-        'invoice_payload'  => 'string',
+        'id' => 'string',
+        'from' => 'User',
+        'invoice_payload' => 'string',
         'shipping_address' => 'ShippingAddress',
     ];
 }

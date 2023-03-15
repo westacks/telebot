@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class ForumTopicEdited extends TelegramObject
 {
     protected $attributes = [
-        'name'                 => 'string',
+        'name' => 'string',
         'icon_custom_emoji_id' => 'string',
     ];
 }

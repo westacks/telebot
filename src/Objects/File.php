@@ -17,15 +17,16 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class File extends TelegramObject
 {
     protected $attributes = [
-        'file_id'        => 'string',
+        'file_id' => 'string',
         'file_unique_id' => 'string',
-        'file_size'      => 'integer',
-        'file_path'      => 'string',
+        'file_size' => 'integer',
+        'file_path' => 'string',
     ];
 
     /**
      * Get the file URL to download file.
-     * @param  string $token Telegram bot token
+     *
+     * @param  string  $token Telegram bot token
      * @return string
      */
     public function url(string $token, string $api = 'https://api.telegram.org')

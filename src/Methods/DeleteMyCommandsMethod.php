@@ -18,7 +18,7 @@ class DeleteMyCommandsMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'scope'         => 'BotCommandScope',
+        'scope' => 'BotCommandScope',
         'language_code' => 'string',
     ];
 

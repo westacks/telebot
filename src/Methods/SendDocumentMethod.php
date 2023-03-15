@@ -31,41 +31,41 @@ class SendDocumentMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
-        'chat_id'                        => 'string',
-        'message_thread_id'              => 'integer',
-        'document'                       => 'InputFile',
-        'thumbnail'                      => 'InputFile',
-        'caption'                        => 'string',
-        'parse_mode'                     => 'string',
-        'caption_entities'               => 'MessageEntity[]',
+        'chat_id' => 'string',
+        'message_thread_id' => 'integer',
+        'document' => 'InputFile',
+        'thumbnail' => 'InputFile',
+        'caption' => 'string',
+        'parse_mode' => 'string',
+        'caption_entities' => 'MessageEntity[]',
         'disable_content_type_detection' => 'boolean',
-        'disable_notification'           => 'boolean',
-        'protect_content'                => 'boolean',
-        'reply_to_message_id'            => 'integer',
-        'allow_sending_without_reply'    => 'boolean',
-        'reply_markup'                   => 'Keyboard',
+        'disable_notification' => 'boolean',
+        'protect_content' => 'boolean',
+        'reply_to_message_id' => 'integer',
+        'allow_sending_without_reply' => 'boolean',
+        'reply_markup' => 'Keyboard',
     ];
 
     public function mock($arguments)
     {
         return new Message([
             'message_id' => rand(1, 100),
-            'from'       => [
-                'id'         => rand(1, 100),
-                'is_bot'     => false,
+            'from' => [
+                'id' => rand(1, 100),
+                'is_bot' => false,
                 'first_name' => 'Bot',
             ],
             'chat' => [
-                'id'   => $arguments['chat_id'],
+                'id' => $arguments['chat_id'],
                 'type' => 'private',
             ],
-            'date'     => time(),
+            'date' => time(),
             'document' => [
-                'file_id'   => 'test',
+                'file_id' => 'test',
                 'thumbnail' => [
                     'file_id' => 'test',
-                    'width'   => 0,
-                    'height'  => 0,
+                    'width' => 0,
+                    'height' => 0,
                 ],
                 'file_name' => 'test',
                 'mime_type' => 'test',

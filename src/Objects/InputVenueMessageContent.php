@@ -17,13 +17,13 @@ namespace WeStacks\TeleBot\Objects;
 class InputVenueMessageContent extends InputMessageContent
 {
     protected $attributes = [
-        'latitude'          => 'double',
-        'longitude'         => 'double',
-        'title'             => 'string',
-        'address'           => 'string',
-        'foursquare_id'     => 'string',
-        'foursquare_type'   => 'string',
-        'google_place_id'   => 'string',
+        'latitude' => 'double',
+        'longitude' => 'double',
+        'title' => 'string',
+        'address' => 'string',
+        'foursquare_id' => 'string',
+        'foursquare_type' => 'string',
+        'google_place_id' => 'string',
         'google_place_type' => 'string',
     ];
 }

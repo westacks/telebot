@@ -13,9 +13,9 @@ namespace WeStacks\TeleBot\Objects;
 class ForumTopic extends Keyboard
 {
     protected $attributes = [
-        'message_thread_id'    => 'integer',
-        'name'                 => 'string',
-        'icon_color'           => 'integer',
+        'message_thread_id' => 'integer',
+        'name' => 'string',
+        'icon_color' => 'integer',
         'icon_custom_emoji_id' => 'string',
     ];
 }

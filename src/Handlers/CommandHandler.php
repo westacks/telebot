@@ -22,7 +22,7 @@ abstract class CommandHandler extends UpdateHandler
      *
      * @var string
      */
-    protected static $description = null;
+    protected static $description;
 
     /**
      * Get array of Telegram` BotCommand` objects for each command alias.
@@ -33,7 +33,7 @@ abstract class CommandHandler extends UpdateHandler
     {
         return array_map(function ($name) {
             return new BotCommand([
-                'command'     => $name,
+                'command' => $name,
                 'description' => static::$description,
             ]);
         }, static::$aliases);

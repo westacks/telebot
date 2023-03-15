@@ -13,9 +13,9 @@ namespace WeStacks\TeleBot\Objects;
 class PassportElementErrorFiles extends PassportElementError
 {
     protected $attributes = [
-        'source'      => 'string',
-        'type'        => 'string',
+        'source' => 'string',
+        'type' => 'string',
         'file_hashes' => 'string[]',
-        'message'     => 'string',
+        'message' => 'string',
     ];
 }

@@ -15,9 +15,9 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class OrderInfo extends TelegramObject
 {
     protected $attributes = [
-        'name'             => 'string',
-        'phone_number'     => 'string',
-        'email'            => 'string',
+        'name' => 'string',
+        'phone_number' => 'string',
+        'email' => 'string',
         'shipping_address' => 'ShippingAddress',
     ];
 }

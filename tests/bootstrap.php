@@ -4,12 +4,12 @@ use WeStacks\TeleBot\TeleBot;
 
 require_once 'vendor/autoload.php';
 
-if (!function_exists('get_config')) {
+if (! function_exists('get_config')) {
     function get_config()
     {
         $config = [
             'exceptions' => true,
-            'async'      => false,
+            'async' => false,
         ];
 
         if ($val = getenv('TELEGRAM_API_URL')) {
@@ -28,7 +28,7 @@ if (!function_exists('get_config')) {
     }
 }
 
-if (!function_exists('get_bot')) {
+if (! function_exists('get_bot')) {
     function get_bot()
     {
         return new TeleBot(get_config());

@@ -17,11 +17,11 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class VideoNote extends TelegramObject
 {
     protected $attributes = [
-        'file_id'        => 'string',
+        'file_id' => 'string',
         'file_unique_id' => 'string',
-        'length'         => 'integer',
-        'duration'       => 'integer',
-        'thumbnail'      => 'PhotoSize',
-        'file_size'      => 'integer',
+        'length' => 'integer',
+        'duration' => 'integer',
+        'thumbnail' => 'PhotoSize',
+        'file_size' => 'integer',
     ];
 }

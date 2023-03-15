@@ -20,12 +20,12 @@ class GetForumTopicIconStickersMethod extends TelegramMethod
     {
         return [
             new Sticker([
-                'file_id'        => 'test',
+                'file_id' => 'test',
                 'file_unique_id' => 'test',
-                'width'          => 100,
-                'height'         => 100,
-                'is_animated'    => false,
-                'is_video'       => false,
+                'width' => 100,
+                'height' => 100,
+                'is_animated' => false,
+                'is_video' => false,
             ]),
         ];
     }

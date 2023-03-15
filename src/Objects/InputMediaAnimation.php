@@ -14,20 +14,20 @@ namespace WeStacks\TeleBot\Objects;
  * @property int             $width            Optional. Animation width
  * @property int             $height           Optional. Animation height
  * @property int             $duration         Optional. Animation duration in seconds
- * @property boolean         $has_spoiler      Optional. Pass True if the animation needs to be covered with a spoiler animation
+ * @property bool         $has_spoiler      Optional. Pass True if the animation needs to be covered with a spoiler animation
  */
 class InputMediaAnimation extends InputMedia
 {
     protected $attributes = [
-        'type'             => 'string',
-        'media'            => 'InputFile',
-        'thumbnail'        => 'InputFile',
-        'caption'          => 'string',
-        'parse_mode'       => 'string',
+        'type' => 'string',
+        'media' => 'InputFile',
+        'thumbnail' => 'InputFile',
+        'caption' => 'string',
+        'parse_mode' => 'string',
         'caption_entities' => 'MessageEntity[]',
-        'width'            => 'integer',
-        'height'           => 'integer',
-        'duration'         => 'integer',
-        'has_spoiler'      => 'boolean',
+        'width' => 'integer',
+        'height' => 'integer',
+        'duration' => 'integer',
+        'has_spoiler' => 'boolean',
     ];
 }

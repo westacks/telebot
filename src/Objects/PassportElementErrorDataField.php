@@ -14,10 +14,10 @@ namespace WeStacks\TeleBot\Objects;
 class PassportElementErrorDataField extends PassportElementError
 {
     protected $attributes = [
-        'source'     => 'string',
-        'type'       => 'string',
+        'source' => 'string',
+        'type' => 'string',
         'field_name' => 'string',
-        'data_hash'  => 'string',
-        'message'    => 'string',
+        'data_hash' => 'string',
+        'message' => 'string',
     ];
 }

@@ -15,7 +15,7 @@ class ProximityAlertTriggered extends TelegramObject
 {
     protected $attributes = [
         'traveler' => 'User',
-        'watcher'  => 'User',
+        'watcher' => 'User',
         'distance' => 'integer',
     ];
 }

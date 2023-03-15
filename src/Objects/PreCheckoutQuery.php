@@ -18,12 +18,12 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class PreCheckoutQuery extends TelegramObject
 {
     protected $attributes = [
-        'id'                 => 'string',
-        'from'               => 'User',
-        'currency'           => 'string',
-        'total_amount'       => 'integer',
-        'invoice_payload'    => 'string',
+        'id' => 'string',
+        'from' => 'User',
+        'currency' => 'string',
+        'total_amount' => 'integer',
+        'invoice_payload' => 'string',
         'shipping_option_id' => 'string',
-        'order_info'         => 'OrderInfo',
+        'order_info' => 'OrderInfo',
     ];
 }

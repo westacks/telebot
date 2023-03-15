@@ -16,10 +16,10 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class Voice extends TelegramObject
 {
     protected $attributes = [
-        'file_id'        => 'string',
+        'file_id' => 'string',
         'file_unique_id' => 'string',
-        'duration'       => 'integer',
-        'mime_type'      => 'string',
-        'file_size'      => 'integer',
+        'duration' => 'integer',
+        'mime_type' => 'string',
+        'file_size' => 'integer',
     ];
 }

@@ -17,7 +17,7 @@ class SetStickerKeywordsMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'sticker'  => 'string',
+        'sticker' => 'string',
         'keywords' => 'string[]',
     ];
 

@@ -19,8 +19,8 @@ class SetStickerSetThumbnailMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'name'      => 'string',
-        'user_id'   => 'string',
+        'name' => 'string',
+        'user_id' => 'string',
         'thumbnail' => 'InputFile',
     ];
 

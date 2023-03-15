@@ -19,9 +19,9 @@ class SetChatPermissionsMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'chat_id'                           => 'string',
-        'permissions'                       => 'ChatPermissions',
-        'use_independent_chat_permissions'  => 'bool',
+        'chat_id' => 'string',
+        'permissions' => 'ChatPermissions',
+        'use_independent_chat_permissions' => 'bool',
     ];
 
     public function mock($arguments)

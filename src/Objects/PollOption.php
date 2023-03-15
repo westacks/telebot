@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class PollOption extends TelegramObject
 {
     protected $attributes = [
-        'text'        => 'string',
+        'text' => 'string',
         'voter_count' => 'integer',
     ];
 }

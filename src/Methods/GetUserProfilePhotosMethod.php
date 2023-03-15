@@ -20,20 +20,20 @@ class GetUserProfilePhotosMethod extends TelegramMethod
 
     protected array $parameters = [
         'user_id' => 'string',
-        'offset'  => 'integer',
-        'limit'   => 'integer',
+        'offset' => 'integer',
+        'limit' => 'integer',
     ];
 
     public function mock($arguments)
     {
         return new UserProfilePhotos([
             'total_count' => 1,
-            'photos'      => [
+            'photos' => [
                 [[
-                    'file_id'   => 'file_id',
+                    'file_id' => 'file_id',
                     'file_size' => rand(1, 100),
-                    'width'     => rand(1, 100),
-                    'height'    => rand(1, 100),
+                    'width' => rand(1, 100),
+                    'height' => rand(1, 100),
                 ]],
             ],
         ]);

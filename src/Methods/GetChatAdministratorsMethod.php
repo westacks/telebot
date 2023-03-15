@@ -25,19 +25,19 @@ class GetChatAdministratorsMethod extends TelegramMethod
         return [
             new ChatMemberAdministrator([
                 'user' => [
-                    'id'         => 1,
+                    'id' => 1,
                     'first_name' => 'First',
-                    'last_name'  => 'Last',
-                    'username'   => 'username',
+                    'last_name' => 'Last',
+                    'username' => 'username',
                 ],
                 'status' => 'administrator',
             ]),
             new ChatMemberAdministrator([
                 'user' => [
-                    'id'         => 2,
+                    'id' => 2,
                     'first_name' => 'Second',
-                    'last_name'  => 'Last',
-                    'username'   => 'username',
+                    'last_name' => 'Last',
+                    'username' => 'username',
                 ],
                 'status' => 'administrator',
             ]),
