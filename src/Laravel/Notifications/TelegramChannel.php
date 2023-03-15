@@ -13,14 +13,10 @@ use WeStacks\TeleBot\BotManager;
 
 class TelegramChannel
 {
-    /**
-     * @var BotManager
-     */
-    protected $botmanager;
-
-    public function __construct(BotManager $botmanager, private Dispatcher $dispatcher)
-    {
-        $this->botmanager = $botmanager;
+    public function __construct(
+        protected BotManager $botmanager,
+        private Dispatcher $dispatcher,
+    ) {
     }
 
     /**
@@ -45,6 +41,7 @@ class TelegramChannel
                 ->{$action['method']}($action['arguments'])
                 ->otherwise(function (Exception $exception) use (&$errors) {
                     $errors[] = $exception;
+                    report($exception);
 
                     return $exception;
                 });
