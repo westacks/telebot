@@ -28,20 +28,27 @@ class UpdateRequest extends FormRequest
 
     public function authorize()
     {
+        return  $this->isMethod('post') &&
+                $this->isJson() &&
+                $this->validToken() &&
+                $this->validSecret();
+    }
+
+    private function validToken()
+    {
         $bot = $this->route('bot');
         $token = $this->route('token');
 
         $config = config("telebot.bots.$bot");
         $realToken = $config['token'] ?? $config;
 
-        return  $this->isMethod('post') &&
-                $this->isJson() &&
-                $this->validSecret($bot) &&
-                $token === $realToken;
+        return $token === $realToken;
     }
 
-    private function validSecret(string $bot)
+    private function validSecret()
     {
+        $bot = $this->route('bot');
+
         $secret = $this->header('X-Telegram-Bot-Api-Secret-Token');
         $token = config("telebot.bots.$bot.webhook.secret_token");
 
@@ -50,7 +57,8 @@ class UpdateRequest extends FormRequest
 
     protected function onlyOnePresent(string $type)
     {
-        $types = implode(",", array_filter($this->types, fn ($value) => $value !== $type));
+        $types = implode(',', array_filter($this->types, fn ($value) => $value !== $type));
+
         return "required_without_all:$types|prohibits:$types";
     }
 
@@ -75,6 +83,7 @@ class UpdateRequest extends FormRequest
         if (empty($this->update)) {
             $this->update = new Update($this->validated());
         }
+
         return $this->update;
     }
 }

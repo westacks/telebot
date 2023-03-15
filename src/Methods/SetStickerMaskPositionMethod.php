@@ -18,7 +18,7 @@ class SetStickerMaskPositionMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'sticker'       => 'string',
+        'sticker' => 'string',
         'mask_position' => 'MaskPosition',
     ];
 

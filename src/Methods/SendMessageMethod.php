@@ -28,38 +28,38 @@ class SendMessageMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
-        'chat_id'                     => 'string',
-        'message_thread_id'           => 'integer',
-        'text'                        => 'string',
-        'parse_mode'                  => 'string',
-        'entities'                    => 'MessageEntity[]',
-        'disable_web_page_preview'    => 'boolean',
-        'disable_notification'        => 'boolean',
-        'protect_content'             => 'boolean',
-        'reply_to_message_id'         => 'integer',
+        'chat_id' => 'string',
+        'message_thread_id' => 'integer',
+        'text' => 'string',
+        'parse_mode' => 'string',
+        'entities' => 'MessageEntity[]',
+        'disable_web_page_preview' => 'boolean',
+        'disable_notification' => 'boolean',
+        'protect_content' => 'boolean',
+        'reply_to_message_id' => 'integer',
         'allow_sending_without_reply' => 'boolean',
-        'reply_markup'                => 'Keyboard',
+        'reply_markup' => 'Keyboard',
     ];
 
     public function mock($arguments)
     {
         return new Message([
             'message_id' => '-1',
-            'from'       => [
-                'id'         => '-1',
+            'from' => [
+                'id' => '-1',
                 'first_name' => 'First',
-                'last_name'  => 'Last',
-                'username'   => 'username',
-                'is_bot'     => true,
+                'last_name' => 'Last',
+                'username' => 'username',
+                'is_bot' => true,
             ],
             'chat' => [
-                'id'         => $arguments['chat_id'] ?? '-1',
+                'id' => $arguments['chat_id'] ?? '-1',
                 'first_name' => 'First',
-                'last_name'  => 'Last',
-                'type'       => 'private',
+                'last_name' => 'Last',
+                'type' => 'private',
             ],
-            'date'     => now()->timestamp,
-            'text'     => $arguments['text'] ?? 'Test message',
+            'date' => now()->timestamp,
+            'text' => $arguments['text'] ?? 'Test message',
             'entities' => $arguments['entities'] ?? [],
         ]);
     }

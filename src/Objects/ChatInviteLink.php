@@ -20,14 +20,14 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class ChatInviteLink extends TelegramObject
 {
     protected $attributes = [
-        'invite_link'                => 'string',
-        'creator'                    => 'User',
-        'creates_join_request'       => 'boolean',
-        'is_primary'                 => 'boolean',
-        'is_revoked'                 => 'boolean',
-        'name'                       => 'string',
-        'expire_date'                => 'integer',
-        'member_limit'               => 'integer',
+        'invite_link' => 'string',
+        'creator' => 'User',
+        'creates_join_request' => 'boolean',
+        'is_primary' => 'boolean',
+        'is_revoked' => 'boolean',
+        'name' => 'string',
+        'expire_date' => 'integer',
+        'member_limit' => 'integer',
         'pending_join_request_count' => 'integer',
     ];
 }

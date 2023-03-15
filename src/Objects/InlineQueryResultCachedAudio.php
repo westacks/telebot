@@ -17,13 +17,13 @@ namespace WeStacks\TeleBot\Objects;
 class InlineQueryResultCachedAudio extends InlineQueryResult
 {
     protected $attributes = [
-        'type'                  => 'string',
-        'id'                    => 'string',
-        'audio_file_id'         => 'string',
-        'caption'               => 'string',
-        'parse_mode'            => 'string',
-        'caption_entities'      => 'MessageEntity[]',
-        'reply_markup'          => 'InlineKeyboardMarkup',
+        'type' => 'string',
+        'id' => 'string',
+        'audio_file_id' => 'string',
+        'caption' => 'string',
+        'parse_mode' => 'string',
+        'caption_entities' => 'MessageEntity[]',
+        'reply_markup' => 'InlineKeyboardMarkup',
         'input_message_content' => 'InputMessageContent',
     ];
 }

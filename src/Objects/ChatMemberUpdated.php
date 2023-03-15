@@ -17,11 +17,11 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class ChatMemberUpdated extends TelegramObject
 {
     protected $attributes = [
-        'chat'            => 'Chat',
-        'from'            => 'User',
-        'date'            => 'integer',
+        'chat' => 'Chat',
+        'from' => 'User',
+        'date' => 'integer',
         'old_chat_member' => 'ChatMember',
         'new_chat_member' => 'ChatMember',
-        'invite_link'     => 'ChatInviteLink',
+        'invite_link' => 'ChatInviteLink',
     ];
 }

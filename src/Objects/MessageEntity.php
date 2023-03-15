@@ -18,12 +18,12 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class MessageEntity extends TelegramObject
 {
     protected $attributes = [
-        'type'            => 'string',
-        'offset'          => 'integer',
-        'length'          => 'integer',
-        'url'             => 'string',
-        'user'            => 'User',
-        'language'        => 'string',
+        'type' => 'string',
+        'offset' => 'integer',
+        'length' => 'integer',
+        'url' => 'string',
+        'user' => 'User',
+        'language' => 'string',
         'custom_emoji_id' => 'string',
     ];
 }

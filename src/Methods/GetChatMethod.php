@@ -23,7 +23,7 @@ class GetChatMethod extends TelegramMethod
     public function mock($arguments)
     {
         return new Chat([
-            'id'   => $arguments['chat_id'],
+            'id' => $arguments['chat_id'],
             'type' => [
                 'private', 'group', 'supergroup', 'channel',
             ][rand(0, 3)],

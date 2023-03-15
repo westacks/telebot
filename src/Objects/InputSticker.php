@@ -15,9 +15,9 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class InputSticker extends TelegramObject
 {
     protected $attributes = [
-        'sticker'       => 'InputFile',
-        'emoji_list'    => 'string[]',
+        'sticker' => 'InputFile',
+        'emoji_list' => 'string[]',
         'mask_position' => 'MaskPosition',
-        'keywords'      => 'string[]',
+        'keywords' => 'string[]',
     ];
 }

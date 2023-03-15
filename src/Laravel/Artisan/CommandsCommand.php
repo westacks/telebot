@@ -52,10 +52,12 @@ class CommandsCommand extends TeleBotCommand
                     ->setLocalCommands()
                     ->then(function ($result) use ($bot) {
                         $this->info("Success! Bot commands has been set for '{$bot}' bot!");
+
                         return $result;
                     })
                     ->otherwise(function ($e) use ($bot) {
                         $this->error("Error while setting bot commands for '{$bot}' bot: {$e->getMessage()}");
+
                         return $e;
                     });
         }
@@ -72,10 +74,12 @@ class CommandsCommand extends TeleBotCommand
                     ->deleteLocalCommands()
                     ->then(function ($result) use ($bot) {
                         $this->info("Success! Bot commands has been deleted for '{$bot}' bot!");
+
                         return $result;
                     })
                     ->otherwise(function ($e) use ($bot) {
                         $this->error("Error while deleting bot commands for '{$bot}' bot: {$e->getMessage()}");
+
                         return $e;
                     });
         }
@@ -94,6 +98,7 @@ class CommandsCommand extends TeleBotCommand
                 ->getMyCommands()
                 ->then(function (array $commands) use ($bot) {
                     $this->makeTable($commands, $bot);
+
                     return $commands;
                 });
         }

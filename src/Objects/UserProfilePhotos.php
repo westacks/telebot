@@ -14,6 +14,6 @@ class UserProfilePhotos extends TelegramObject
 {
     protected $attributes = [
         'total_count' => 'integer',
-        'photos'      => 'PhotoSize[][]',
+        'photos' => 'PhotoSize[][]',
     ];
 }

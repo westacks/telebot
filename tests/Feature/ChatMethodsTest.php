@@ -24,7 +24,7 @@ class ChatMethodsTest extends TestCase
     public function testSetChatPermissions()
     {
         $set = $this->bot->setChatPermissions([
-            'chat_id'     => getenv('TELEGRAM_CHAT_ID'),
+            'chat_id' => getenv('TELEGRAM_CHAT_ID'),
             'permissions' => [
                 'can_send_messages' => true,
             ],
@@ -45,7 +45,7 @@ class ChatMethodsTest extends TestCase
     {
         $set = $this->bot->setChatPhoto([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
-            'photo'   => fopen('https://api.lorem.space/image?w=640&h=640', 'r'),
+            'photo' => fopen('https://api.lorem.space/image?w=640&h=640', 'r'),
         ]);
 
         $this->assertTrue($set);
@@ -61,7 +61,7 @@ class ChatMethodsTest extends TestCase
     {
         $set = $this->bot->setChatTitle([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
-            'title'   => 'PHP TeleBot Test',
+            'title' => 'PHP TeleBot Test',
         ]);
         $this->assertTrue($set);
     }
@@ -69,7 +69,7 @@ class ChatMethodsTest extends TestCase
     public function testSetChatDescription()
     {
         $set = $this->bot->setChatDescription([
-            'chat_id'     => getenv('TELEGRAM_CHAT_ID'),
+            'chat_id' => getenv('TELEGRAM_CHAT_ID'),
             'description' => 'PHP TeleBot Test '.rand(0, 200),
         ]);
         $this->assertTrue($set);
@@ -79,18 +79,18 @@ class ChatMethodsTest extends TestCase
     {
         $message = $this->bot->sendMessage([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
-            'text'    => 'Test message to pin!',
+            'text' => 'Test message to pin!',
         ]);
         $this->assertInstanceOf(Message::class, $message);
 
         $pinned = $this->bot->pinChatMessage([
-            'chat_id'    => getenv('TELEGRAM_CHAT_ID'),
+            'chat_id' => getenv('TELEGRAM_CHAT_ID'),
             'message_id' => $message->message_id,
         ]);
         $this->assertTrue($pinned);
 
         $unpinned = $this->bot->unpinChatMessage([
-            'chat_id'    => getenv('TELEGRAM_CHAT_ID'),
+            'chat_id' => getenv('TELEGRAM_CHAT_ID'),
             'message_id' => $message->message_id,
         ]);
         $this->assertTrue($unpinned);
@@ -132,13 +132,13 @@ class ChatMethodsTest extends TestCase
         ]);
 
         $link = $this->bot->editChatInviteLink([
-            'chat_id'      => getenv('TELEGRAM_CHAT_ID'),
-            'invite_link'  => $link->invite_link,
+            'chat_id' => getenv('TELEGRAM_CHAT_ID'),
+            'invite_link' => $link->invite_link,
             'member_limit' => 1,
         ]);
 
         $link = $this->bot->revokeChatInviteLink([
-            'chat_id'     => getenv('TELEGRAM_CHAT_ID'),
+            'chat_id' => getenv('TELEGRAM_CHAT_ID'),
             'invite_link' => $link->invite_link,
         ]);
 

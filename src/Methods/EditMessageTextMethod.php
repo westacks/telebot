@@ -26,14 +26,14 @@ class EditMessageTextMethod extends TelegramMethod
     protected string $expect = 'Message|boolean';
 
     protected array $parameters = [
-        'chat_id'                  => 'string',
-        'message_id'               => 'integer',
-        'inline_message_id'        => 'string',
-        'text'                     => 'string',
-        'parse_mode'               => 'string',
-        'entities'                 => 'MessageEntity[]',
+        'chat_id' => 'string',
+        'message_id' => 'integer',
+        'inline_message_id' => 'string',
+        'text' => 'string',
+        'parse_mode' => 'string',
+        'entities' => 'MessageEntity[]',
         'disable_web_page_preview' => 'boolean',
-        'reply_markup'             => 'InlineKeyboardMarkup',
+        'reply_markup' => 'InlineKeyboardMarkup',
     ];
 
     public function mock($arguments)
@@ -46,10 +46,10 @@ class EditMessageTextMethod extends TelegramMethod
             'chat' => [
                 'id' => $arguments['chat_id'],
             ],
-            'message_id'   => $arguments['message_id'],
-            'text'         => $arguments['text'] ?? 'Test',
+            'message_id' => $arguments['message_id'],
+            'text' => $arguments['text'] ?? 'Test',
             'reply_markup' => $arguments['reply_markup'] ?? [],
-            'entities'     => $arguments['entities'] ?? [],
+            'entities' => $arguments['entities'] ?? [],
         ]);
     }
 }

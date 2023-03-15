@@ -18,8 +18,8 @@ class PinChatMessageMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'chat_id'              => 'string',
-        'message_id'           => 'integer',
+        'chat_id' => 'string',
+        'message_id' => 'integer',
         'disable_notification' => 'boolean',
     ];
 

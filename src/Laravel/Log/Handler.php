@@ -12,24 +12,28 @@ class Handler extends AbstractProcessingHandler
 {
     /**
      * Bot instance.
+     *
      * @var TeleBot
      */
     protected $bot;
 
     /**
      * Chat id to send log message.
+     *
      * @var string
      */
     protected $chat_id;
 
     /**
      * App name.
+     *
      * @var string
      */
     protected $app;
 
     /**
      * App env.
+     *
      * @var string
      */
     protected $env;
@@ -49,9 +53,6 @@ class Handler extends AbstractProcessingHandler
         $this->env = config('app.env');
     }
 
-    /**
-     * @param array $record
-     */
     public function write(array $record): void
     {
         $textChunks = str_split($this->formatText($record), 4096);
@@ -62,17 +63,13 @@ class Handler extends AbstractProcessingHandler
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     protected function getDefaultFormatter(): FormatterInterface
     {
         return new LineFormatter("%message% %context% %extra%\n");
     }
 
-    /**
-     * @param  array  $record
-     * @return string
-     */
     private function formatText(array $record): string
     {
         return view('telebot::log', array_merge($record, [
@@ -81,15 +78,12 @@ class Handler extends AbstractProcessingHandler
         ]))->render();
     }
 
-    /**
-     * @param string $text
-     */
     private function sendMessage(string $text): void
     {
         $this->bot->exceptions(false)->async(false)->sendMessage([
-            'chat_id'    => $this->chat_id,
+            'chat_id' => $this->chat_id,
             'parse_mode' => 'html',
-            'text'       => $text,
+            'text' => $text,
         ]);
     }
 }

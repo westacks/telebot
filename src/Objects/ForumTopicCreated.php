@@ -14,8 +14,8 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class ForumTopicCreated extends TelegramObject
 {
     protected $attributes = [
-        'name'                 => 'string',
-        'icon_color'           => 'integer',
+        'name' => 'string',
+        'icon_color' => 'integer',
         'icon_custom_emoji_id' => 'string',
     ];
 }

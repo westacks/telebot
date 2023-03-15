@@ -20,14 +20,14 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class Animation extends TelegramObject
 {
     protected $attributes = [
-        'file_id'        => 'string',
+        'file_id' => 'string',
         'file_unique_id' => 'string',
-        'width'          => 'integer',
-        'height'         => 'integer',
-        'duration'       => 'integer',
-        'thumbnail'      => 'PhotoSize',
-        'file_name'      => 'string',
-        'mime_type'      => 'string',
-        'file_size'      => 'integer',
+        'width' => 'integer',
+        'height' => 'integer',
+        'duration' => 'integer',
+        'thumbnail' => 'PhotoSize',
+        'file_name' => 'string',
+        'mime_type' => 'string',
+        'file_size' => 'integer',
     ];
 }

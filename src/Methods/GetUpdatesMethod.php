@@ -20,9 +20,9 @@ class GetUpdatesMethod extends TelegramMethod
     protected string $expect = 'Update[]';
 
     protected array $parameters = [
-        'offset'          => 'integer',
-        'limit'           => 'integer',
-        'timeout'         => 'integer',
+        'offset' => 'integer',
+        'limit' => 'integer',
+        'timeout' => 'integer',
         'allowed_updates' => 'string[]',
     ];
 
@@ -31,22 +31,22 @@ class GetUpdatesMethod extends TelegramMethod
         return [
             new Update([
                 'update_id' => $arguments['offset'] ? $arguments['offset'] + 1 : 1,
-                'message'   => [
+                'message' => [
                     'message_id' => 1,
-                    'from'       => [
-                        'id'            => 1,
-                        'is_bot'        => true,
-                        'first_name'    => 'First',
-                        'last_name'     => 'Last',
-                        'username'      => 'username',
+                    'from' => [
+                        'id' => 1,
+                        'is_bot' => true,
+                        'first_name' => 'First',
+                        'last_name' => 'Last',
+                        'username' => 'username',
                         'language_code' => 'en-US',
                     ],
                     'chat' => [
-                        'id'         => 1,
+                        'id' => 1,
                         'first_name' => 'First',
-                        'last_name'  => 'Last',
-                        'username'   => 'username',
-                        'type'       => 'private',
+                        'last_name' => 'Last',
+                        'username' => 'username',
+                        'type' => 'private',
                     ],
                     'date' => 1,
                     'text' => 'text',

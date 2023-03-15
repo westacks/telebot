@@ -18,13 +18,13 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class StickerSet extends TelegramObject
 {
     protected $attributes = [
-        'name'           => 'string',
-        'title'          => 'string',
-        'sticker_type'   => 'string',
-        'is_animated'    => 'boolean',
-        'is_video'       => 'boolean',
+        'name' => 'string',
+        'title' => 'string',
+        'sticker_type' => 'string',
+        'is_animated' => 'boolean',
+        'is_video' => 'boolean',
         'contains_masks' => 'boolean', // DEPRECATED
-        'stickers'       => 'Sticker[]',
-        'thumbnail'      => 'PhotoSize',
+        'stickers' => 'Sticker[]',
+        'thumbnail' => 'PhotoSize',
     ];
 }

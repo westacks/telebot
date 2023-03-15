@@ -12,8 +12,8 @@ namespace WeStacks\TeleBot\Objects;
 class ForceReply extends Keyboard
 {
     protected $attributes = [
-        'force_reply'             => 'boolean',
+        'force_reply' => 'boolean',
         'input_field_placeholder' => 'string',
-        'selective'               => 'boolean',
+        'selective' => 'boolean',
     ];
 }

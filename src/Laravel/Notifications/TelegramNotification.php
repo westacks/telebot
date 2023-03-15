@@ -105,7 +105,7 @@ use WeStacks\TeleBot\Traits\HasTelegramMethods;
  * @method static self unpinChatMessage(array $parameters = [])                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
  * @method static self uploadStickerFile(array $parameters = []) Use this method to upload a .PNG file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times). Returns the uploaded [File](https://core.telegram.org/bots/api#file)                                                                                                                                                                                                                                                                                                                                    on success.
  */
-class TelegramNotification implements JsonSerializable
+class TelegramNotification implements JsonSerializable, \Stringable
 {
     use HasTelegramMethods;
 
@@ -114,12 +114,12 @@ class TelegramNotification implements JsonSerializable
     /**
      * Create new notification instance.
      *
-     * @param string|null $data JSON data object representation
+     * @param  string|null  $data JSON data object representation
      */
     public function __construct(string $data = null)
     {
         $this->data = $data ? json_decode($data, true) : [
-            'bot'     => null,
+            'bot' => null,
             'actions' => [],
         ];
     }
@@ -136,7 +136,7 @@ class TelegramNotification implements JsonSerializable
         }
 
         $this->data['actions'][] = [
-            'method'    => $method,
+            'method' => $method,
             'arguments' => is_array($arguments[0]) ? $arguments[0] : [],
         ];
 
@@ -146,7 +146,6 @@ class TelegramNotification implements JsonSerializable
     /**
      * Set bot to send notification.
      *
-     * @param  string $bot
      * @return self
      */
     public function bot(string $bot)
@@ -162,8 +161,8 @@ class TelegramNotification implements JsonSerializable
         return $this->data;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
-        return json_encode($this->data);
+        return (string) json_encode($this->data);
     }
 }

@@ -4,16 +4,15 @@ namespace WeStacks\TeleBot\Tests\Feature;
 
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
-use WeStacks\TeleBot\Laravel\TeleBot;
+use WeStacks\TeleBot\Exceptions\TeleBotException;
 use WeStacks\TeleBot\Laravel\Providers\TeleBotServiceProvider;
+use WeStacks\TeleBot\Laravel\TeleBot;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\TeleBot as Bot;
 use WeStacks\TeleBot\Tests\Helpers\StartCommandHandler;
 use WeStacks\TeleBot\Tests\Helpers\TelegramNotification;
 use WeStacks\TeleBot\Tests\Helpers\TestNotifiable;
-use WeStacks\TeleBot\Exceptions\TeleBotException;
 
 class LaravelTest extends TestCase
 {
@@ -26,7 +25,7 @@ class LaravelTest extends TestCase
     {
         $message = TeleBot::sendMessage([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'text'    => 'Hello from Laravel!',
+            'text' => 'Hello from Laravel!',
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
@@ -120,7 +119,7 @@ class LaravelTest extends TestCase
             $this->postJson($url, json_decode($update, true))->assertStatus(200);
         }
 
-        $this->postJson("/telebot/webhook/wrong_bot/123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11")->assertStatus(403);
+        $this->postJson('/telebot/webhook/wrong_bot/123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11')->assertStatus(403);
     }
 
     protected function getPackageProviders($app)

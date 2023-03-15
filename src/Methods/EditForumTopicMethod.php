@@ -19,9 +19,9 @@ class EditForumTopicMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'chat_id'              => 'string',
-        'message_thread_id'    => 'integer',
-        'name'                 => 'string',
+        'chat_id' => 'string',
+        'message_thread_id' => 'integer',
+        'name' => 'string',
         'icon_custom_emoji_id' => 'string',
     ];
 

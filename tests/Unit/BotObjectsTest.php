@@ -83,7 +83,7 @@ class BotObjectsTest extends TestCase
         $this->expectException(TeleBotException::class);
         new Update([
             'update_id' => [1, 4, 5, 1, 5, 6],
-            'message'   => 4,
+            'message' => 4,
         ]);
     }
 

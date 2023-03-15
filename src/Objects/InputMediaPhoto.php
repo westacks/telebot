@@ -10,16 +10,16 @@ namespace WeStacks\TeleBot\Objects;
  * @property string          $caption          Optional. Caption of the photo to be sent, 0-1024 characters after entities parsing
  * @property string          $parse_mode       Optional. Mode for parsing entities in the photo caption. See formatting options for more details.
  * @property MessageEntity[] $caption_entities Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
- * @property boolean         $has_spoiler      Optional. Pass True if the photo needs to be covered with a spoiler animation
+ * @property bool         $has_spoiler      Optional. Pass True if the photo needs to be covered with a spoiler animation
  */
 class InputMediaPhoto extends InputMedia
 {
     protected $attributes = [
-        'type'             => 'string',
-        'media'            => 'InputFile',
-        'caption'          => 'string',
-        'parse_mode'       => 'string',
+        'type' => 'string',
+        'media' => 'InputFile',
+        'caption' => 'string',
+        'parse_mode' => 'string',
         'caption_entities' => 'MessageEntity[]',
-        'has_spoiler'      => 'boolean',
+        'has_spoiler' => 'boolean',
     ];
 }

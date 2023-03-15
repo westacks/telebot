@@ -20,14 +20,14 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class InlineKeyboardButton extends TelegramObject
 {
     protected $attributes = [
-        'text'                             => 'string',
-        'url'                              => 'string',
-        'login_url'                        => 'LoginUrl',
-        'callback_data'                    => 'string',
-        'web_app'                          => 'WebAppInfo',
-        'switch_inline_query'              => 'string',
+        'text' => 'string',
+        'url' => 'string',
+        'login_url' => 'LoginUrl',
+        'callback_data' => 'string',
+        'web_app' => 'WebAppInfo',
+        'switch_inline_query' => 'string',
         'switch_inline_query_current_chat' => 'string',
-        'callback_game'                    => 'CallbackGame',
-        'pay'                              => 'boolean',
+        'callback_game' => 'CallbackGame',
+        'pay' => 'boolean',
     ];
 }

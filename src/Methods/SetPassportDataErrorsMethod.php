@@ -21,7 +21,7 @@ class SetPassportDataErrorsMethod extends TelegramMethod
 
     protected array $parameters = [
         'user_id' => 'string',
-        'errors'  => 'PassportElementError[]',
+        'errors' => 'PassportElementError[]',
     ];
 
     public function mock($arguments)

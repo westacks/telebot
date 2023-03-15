@@ -18,80 +18,80 @@ class HandleUpdatesTest extends TestCase
     protected function setUp(): void
     {
         $from = [
-            'id'            => getenv('TELEGRAM_USER_ID'),
-            'is_bot'        => false,
-            'first_name'    => 'Test',
-            'last_name'     => 'Test',
-            'username'      => 'Test',
+            'id' => getenv('TELEGRAM_USER_ID'),
+            'is_bot' => false,
+            'first_name' => 'Test',
+            'last_name' => 'Test',
+            'username' => 'Test',
             'language_code' => 'en',
         ];
 
         $chat = [
-            'id'         => getenv('TELEGRAM_USER_ID'),
+            'id' => getenv('TELEGRAM_USER_ID'),
             'first_name' => 'Test',
-            'last_name'  => 'Test',
-            'username'   => 'Test',
-            'type'       => 'private',
+            'last_name' => 'Test',
+            'username' => 'Test',
+            'type' => 'private',
         ];
 
         $this->updates = [
             new Update([
                 'update_id' => 1,
-                'message'   => [
+                'message' => [
                     'message_id' => 1,
-                    'from'       => $from,
-                    'chat'       => $chat,
-                    'date'       => now()->seconds(-5)->timestamp,
-                    'text'       => '/start',
-                    'entities'   => [
+                    'from' => $from,
+                    'chat' => $chat,
+                    'date' => now()->seconds(-5)->timestamp,
+                    'text' => '/start',
+                    'entities' => [
                         [
                             'offset' => 0,
                             'length' => 6,
-                            'type'   => 'bot_command',
+                            'type' => 'bot_command',
                         ],
                     ],
                 ],
             ]),
             new Update([
                 'update_id' => 2,
-                'message'   => [
+                'message' => [
                     'message_id' => 2,
-                    'from'       => $from,
-                    'chat'       => $chat,
-                    'date'       => now()->seconds(-4)->timestamp,
-                    'text'       => '/test',
-                    'entities'   => [
+                    'from' => $from,
+                    'chat' => $chat,
+                    'date' => now()->seconds(-4)->timestamp,
+                    'text' => '/test',
+                    'entities' => [
                         [
                             'offset' => 0,
                             'length' => 5,
-                            'type'   => 'bot_command',
+                            'type' => 'bot_command',
                         ],
                     ],
                 ],
             ]),
             new Update([
                 'update_id' => 3,
-                'message'   => [
+                'message' => [
                     'message_id' => 3,
-                    'from'       => $from,
-                    'chat'       => $chat,
-                    'date'       => now()->seconds(-3)->timestamp,
-                    'text'       => 'help',
+                    'from' => $from,
+                    'chat' => $chat,
+                    'date' => now()->seconds(-3)->timestamp,
+                    'text' => 'help',
                 ],
             ]),
             new Update([
                 'update_id' => 4,
-                'message'   => [
+                'message' => [
                     'message_id' => 4,
-                    'from'       => $from,
-                    'chat'       => $chat,
-                    'date'       => now()->seconds(-2)->timestamp,
-                    'text'       => '#help',
-                    'entities'   => [
+                    'from' => $from,
+                    'chat' => $chat,
+                    'date' => now()->seconds(-2)->timestamp,
+                    'text' => '#help',
+                    'entities' => [
                         [
                             'offset' => 0,
                             'length' => 5,
-                            'type'   => 'hashtag',
+                            'type' => 'hashtag',
                         ],
                     ],
                 ],

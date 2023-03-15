@@ -15,7 +15,7 @@ class GameHighScore extends TelegramObject
 {
     protected $attributes = [
         'position' => 'integer',
-        'user'     => 'User',
-        'score'    => 'integer',
+        'user' => 'User',
+        'score' => 'integer',
     ];
 }

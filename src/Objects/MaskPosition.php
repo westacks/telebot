@@ -15,9 +15,9 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class MaskPosition extends TelegramObject
 {
     protected $attributes = [
-        'point'   => 'string',
+        'point' => 'string',
         'x_shift' => 'double',
         'y_shift' => 'double',
-        'scale'   => 'double',
+        'scale' => 'double',
     ];
 }

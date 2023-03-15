@@ -21,7 +21,7 @@ class Type
             foreach ($types as $_type) {
                 try {
                     return static::cast($value, $_type);
-                } catch (Throwable $e) {
+                } catch (Throwable) {
                     // We need to check each avaliable type, so just skip exception.
                 }
             }
@@ -105,7 +105,7 @@ class Type
 
         foreach ($object as $key => $value) {
             $flat[] = [
-                'name'     => $key,
+                'name' => $key,
                 'contents' => is_iterable($value) ?
                     json_encode(static::strip($value)) : $value,
             ];

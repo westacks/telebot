@@ -30,32 +30,32 @@ class SendVoiceMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
-        'chat_id'                     => 'string',
-        'message_thread_id'           => 'integer',
-        'voice'                       => 'InputFile',
-        'caption'                     => 'string',
-        'parse_mode'                  => 'string',
-        'caption_entities'            => 'MessageEntity[]',
-        'duration'                    => 'integer',
-        'disable_notification'        => 'boolean',
-        'protect_content'             => 'boolean',
-        'reply_to_message_id'         => 'integer',
+        'chat_id' => 'string',
+        'message_thread_id' => 'integer',
+        'voice' => 'InputFile',
+        'caption' => 'string',
+        'parse_mode' => 'string',
+        'caption_entities' => 'MessageEntity[]',
+        'duration' => 'integer',
+        'disable_notification' => 'boolean',
+        'protect_content' => 'boolean',
+        'reply_to_message_id' => 'integer',
         'allow_sending_without_reply' => 'boolean',
-        'reply_markup'                => 'Keyboard',
+        'reply_markup' => 'Keyboard',
     ];
 
     public function mock($arguments)
     {
         return new Message([
             'message_id' => rand(1, 100),
-            'date'       => time(),
-            'chat'       => [
-                'id'   => $arguments['chat_id'],
+            'date' => time(),
+            'chat' => [
+                'id' => $arguments['chat_id'],
                 'type' => 'private',
             ],
             'voice' => [
-                'file_id'   => '',
-                'duration'  => rand(1, 100),
+                'file_id' => '',
+                'duration' => rand(1, 100),
                 'mime_type' => 'audio/ogg',
                 'file_size' => rand(1, 100),
             ],

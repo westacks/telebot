@@ -27,27 +27,25 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class Update extends TelegramObject
 {
     protected $attributes = [
-        'update_id'            => 'integer',
-        'message'              => 'Message',
-        'edited_message'       => 'Message',
-        'channel_post'         => 'Message',
-        'edited_channel_post'  => 'Message',
-        'inline_query'         => 'InlineQuery',
+        'update_id' => 'integer',
+        'message' => 'Message',
+        'edited_message' => 'Message',
+        'channel_post' => 'Message',
+        'edited_channel_post' => 'Message',
+        'inline_query' => 'InlineQuery',
         'chosen_inline_result' => 'ChosenInlineResult',
-        'callback_query'       => 'CallbackQuery',
-        'shipping_query'       => 'ShippingQuery',
-        'pre_checkout_query'   => 'PreCheckoutQuery',
-        'poll'                 => 'Poll',
-        'poll_answer'          => 'PollAnswer',
-        'my_chat_member'       => 'ChatMemberUpdated',
-        'chat_member'          => 'ChatMemberUpdated',
-        'chat_join_request'    => 'ChatJoinRequest',
+        'callback_query' => 'CallbackQuery',
+        'shipping_query' => 'ShippingQuery',
+        'pre_checkout_query' => 'PreCheckoutQuery',
+        'poll' => 'Poll',
+        'poll_answer' => 'PollAnswer',
+        'my_chat_member' => 'ChatMemberUpdated',
+        'chat_member' => 'ChatMemberUpdated',
+        'chat_join_request' => 'ChatJoinRequest',
     ];
 
     /**
      * Check `Update` is given `$type`.
-     * @param  string $type
-     * @return bool
      */
     public function is(string $type): bool
     {
@@ -56,6 +54,7 @@ class Update extends TelegramObject
 
     /**
      * Get the type of given `Update`.
+     *
      * @return string|null
      */
     public function type()
@@ -65,12 +64,11 @@ class Update extends TelegramObject
                 return $key;
             }
         }
-
-        return;
     }
 
     /**
      * Get the `Message` object instance from update.
+     *
      * @return Message|null
      */
     public function message()
@@ -85,6 +83,7 @@ class Update extends TelegramObject
 
     /**
      * Get the `Chat` (where sended) object instance from update.
+     *
      * @return Chat|null
      */
     public function chat()
@@ -98,6 +97,7 @@ class Update extends TelegramObject
 
     /**
      * Get the `User` (sender) object instance from update.
+     *
      * @return User|null
      */
     public function user()

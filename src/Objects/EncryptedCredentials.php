@@ -14,8 +14,8 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class EncryptedCredentials extends TelegramObject
 {
     protected $attributes = [
-        'data'   => 'string',
-        'hash'   => 'string',
+        'data' => 'string',
+        'hash' => 'string',
         'secret' => 'string',
     ];
 }

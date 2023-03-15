@@ -25,48 +25,48 @@ class SendGameMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
-        'chat_id'                     => 'integer',
-        'message_thread_id'           => 'integer',
-        'game_short_name'             => 'string',
-        'disable_notification'        => 'boolean',
-        'protect_content'             => 'boolean',
-        'reply_to_message_id'         => 'integer',
+        'chat_id' => 'integer',
+        'message_thread_id' => 'integer',
+        'game_short_name' => 'string',
+        'disable_notification' => 'boolean',
+        'protect_content' => 'boolean',
+        'reply_to_message_id' => 'integer',
         'allow_sending_without_reply' => 'boolean',
-        'reply_markup'                => 'InlineKeyboardMarkup',
+        'reply_markup' => 'InlineKeyboardMarkup',
     ];
 
     public function mock($arguments)
     {
         return new Message([
             'message_id' => '123456789',
-            'from'       => [
-                'id'         => $arguments['chat_id'],
+            'from' => [
+                'id' => $arguments['chat_id'],
                 'first_name' => 'First',
-                'last_name'  => 'Last',
-                'username'   => 'username',
+                'last_name' => 'Last',
+                'username' => 'username',
             ],
             'chat' => [
-                'id'         => '123456789',
+                'id' => '123456789',
                 'first_name' => 'First',
-                'last_name'  => 'Last',
-                'type'       => 'private',
+                'last_name' => 'Last',
+                'type' => 'private',
             ],
             'date' => '1479168447',
             'game' => [
-                'title'       => 'game_title',
+                'title' => 'game_title',
                 'description' => 'game_description',
-                'photo'       => [
+                'photo' => [
                     'small' => [
-                        'file_id'        => 'photo_file_id',
+                        'file_id' => 'photo_file_id',
                         'file_unique_id' => 'photo_file_unique_id',
-                        'width'          => 'photo_width',
-                        'height'         => 'photo_height',
+                        'width' => 'photo_width',
+                        'height' => 'photo_height',
                     ],
                     'big' => [
-                        'file_id'        => 'photo_file_id',
+                        'file_id' => 'photo_file_id',
                         'file_unique_id' => 'photo_file_unique_id',
-                        'width'          => 'photo_width',
-                        'height'         => 'photo_height',
+                        'width' => 'photo_width',
+                        'height' => 'photo_height',
                     ],
                 ],
                 'text' => 'game_text',

@@ -20,7 +20,7 @@ class AnswerWebAppQueryMethod extends TelegramMethod
 
     protected array $parameters = [
         'web_app_query_id' => 'string',
-        'result'           => 'InlineQueryResult',
+        'result' => 'InlineQueryResult',
     ];
 
     public function mock($arguments)

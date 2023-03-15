@@ -18,12 +18,12 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class Venue extends TelegramObject
 {
     protected $attributes = [
-        'location'          => 'Location',
-        'title'             => 'string',
-        'address'           => 'string',
-        'foursquare_id'     => 'string',
-        'foursquare_type'   => 'string',
-        'google_place_id'   => 'string',
+        'location' => 'Location',
+        'title' => 'string',
+        'address' => 'string',
+        'foursquare_id' => 'string',
+        'foursquare_type' => 'string',
+        'google_place_id' => 'string',
         'google_place_type' => 'string',
     ];
 }

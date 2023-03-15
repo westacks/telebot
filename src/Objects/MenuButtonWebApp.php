@@ -12,8 +12,8 @@ namespace WeStacks\TeleBot\Objects;
 class MenuButtonWebApp extends MenuButton
 {
     protected $attributes = [
-        'type'    => 'string',
-        'text'    => 'string',
+        'type' => 'string',
+        'text' => 'string',
         'web_app' => 'WebAppInfo',
     ];
 }

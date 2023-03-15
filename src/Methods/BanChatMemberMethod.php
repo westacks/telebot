@@ -19,9 +19,9 @@ class BanChatMemberMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'chat_id'         => 'string',
-        'user_id'         => 'string',
-        'until_date'      => 'integer',
+        'chat_id' => 'string',
+        'user_id' => 'string',
+        'until_date' => 'integer',
         'revoke_messages' => 'boolean',
     ];
 

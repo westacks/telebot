@@ -18,11 +18,11 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class SuccessfulPayment extends TelegramObject
 {
     protected $attributes = [
-        'currency'                   => 'string',
-        'total_amount'               => 'integer',
-        'invoice_payload'            => 'string',
-        'shipping_option_id'         => 'string',
-        'order_info'                 => 'OrderInfo',
+        'currency' => 'string',
+        'total_amount' => 'integer',
+        'invoice_payload' => 'string',
+        'shipping_option_id' => 'string',
+        'order_info' => 'OrderInfo',
         'telegram_payment_charge_id' => 'string',
         'provider_payment_charge_id' => 'string',
     ];

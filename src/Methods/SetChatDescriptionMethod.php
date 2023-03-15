@@ -17,7 +17,7 @@ class SetChatDescriptionMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'chat_id'     => 'string',
+        'chat_id' => 'string',
         'description' => 'string',
     ];
 

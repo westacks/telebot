@@ -14,6 +14,6 @@ class ChatShared extends TelegramObject
 {
     protected $attributes = [
         'request_id' => 'integer',
-        'chat_id'    => 'integer',
+        'chat_id' => 'integer',
     ];
 }

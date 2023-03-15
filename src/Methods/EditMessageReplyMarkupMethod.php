@@ -21,10 +21,10 @@ class EditMessageReplyMarkupMethod extends TelegramMethod
     protected string $expect = 'Message|boolean';
 
     protected array $parameters = [
-        'chat_id'           => 'string',
-        'message_id'        => 'integer',
+        'chat_id' => 'string',
+        'message_id' => 'integer',
         'inline_message_id' => 'string',
-        'reply_markup'      => 'InlineKeyboardMarkup',
+        'reply_markup' => 'InlineKeyboardMarkup',
     ];
 
     public function mock($arguments)
@@ -37,7 +37,7 @@ class EditMessageReplyMarkupMethod extends TelegramMethod
             'chat' => [
                 'id' => $arguments['chat_id'],
             ],
-            'message_id'   => $arguments['message_id'],
+            'message_id' => $arguments['message_id'],
             'reply_markup' => $arguments['reply_markup'] ?? [],
         ]);
     }

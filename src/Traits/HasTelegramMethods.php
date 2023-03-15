@@ -34,8 +34,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_          `$user_id`       __Required: Yes__. User identifier of sticker set owner
  * - _string_       `$name`          __Required: Yes__. Sticker set name
  * - _InputSticker_ `$sticker`       __Required: Yes__. A JSON-serialized object with information about the added sticker. If exactly the same sticker had already been added to the set, then the set isn't changed.
- *
- *
  * @method bool|PromiseInterface answerCallbackQuery(array $parameters = []) Use this method to send answers to callback queries sent from [inline keyboards](/bots#inline-keyboards-and-on-the-fly-updating). The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
  *
  * > Alternatively, the user can be redirected to the specified Game URL. For this option to work, you must first create a game for your bot via [@Botfather](https://t.me/botfather) and accept the terms. Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.
@@ -46,8 +44,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_   `$show_alert`        __Required: Optional__. If True, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.
  * - _string_ `$url`               __Required: Optional__. URL that will be opened by the user's client. If you have created a Game and accepted the conditions via @Botfather, specify the URL that opens your game — note that this will only work if the query comes from a callback_game button.Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.
  * - _int_    `$cache_time`        __Required: Optional__. The maximum amount of time in seconds that the result of the callback query may be cached client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.
- *
- *
  * @method bool|PromiseInterface answerInlineQuery(array $parameters = []) Use this method to send answers to an inline query. On success, True is returned.
  *
  * No more than 50 results per query are allowed.
@@ -60,16 +56,12 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_              `$next_offset`         __Required: Optional__. Pass the offset that a client should send in the next query with the same text to receive more results. Pass an empty string if there are no more results or if you don't support pagination. Offset length can't exceed 64 bytes.
  * - _string_              `$switch_pm_text`      __Required: Optional__. If passed, clients will display a button with specified text that switches the user to a private chat with the bot and sends the bot a start message with the parameter switch_pm_parameter
  * - _string_              `$switch_pm_parameter` __Required: Optional__. Deep-linking parameter for the /start message sent to the bot when user presses the switch button. 1-64 characters, only A-Z, a-z, 0-9, _ and - are allowed.Example: An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account to adapt search results accordingly. To do this, it displays a 'Connect your YouTube account' button above the results, or even before showing any. The user presses the button, switches to a private chat with the bot and, in doing so, passes a start parameter that instructs the bot to return an OAuth link. Once done, the bot can offer a switch_inline button so that the user can easily return to the chat where they wanted to use the bot's inline capabilities.
- *
- *
  * @method bool|PromiseInterface answerPreCheckoutQuery(array $parameters = []) Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an [Update](https://core.telegram.org/bots/api#update) with the field pre_checkout_query. Use this method to respond to such pre-checkout queries. On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.
  *
  * Parameters:
  * - _string_ `$pre_checkout_query_id` __Required: Yes__. Unique identifier for the query to be answered
  * - _bool_   `$ok`                    __Required: Yes__. Specify True if everything is alright (goods are available, etc.) and the bot is ready to proceed with the order. Use False if there are any problems.
  * - _string_ `$error_message`         __Required: Optional__. Required if ok is False. Error message in human readable form that explains the reason for failure to proceed with the checkout (e.g. "Sorry, somebody just bought the last of our amazing black T-shirts while you were busy filling out your payment details. Please choose a different color or garment!"). Telegram will display this message to the user.
- *
- *
  * @method bool|PromiseInterface answerShippingQuery(array $parameters = []) If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an [Update](https://core.telegram.org/bots/api#update) with a shipping_query field to the bot. Use this method to reply to shipping queries. On success, True is returned.
  *
  * Parameters:
@@ -77,22 +69,16 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_             `$ok`                __Required: Yes__. Specify True if delivery to the specified address is possible and False if there are any problems (for example, if delivery to the specified address is not possible)
  * - _ShippingOption[]_ `$shipping_options`  __Required: Optional__. Required if ok is True. A JSON-serialized array of available shipping options.
  * - _string_           `$error_message`     __Required: Optional__. Required if ok is False. Error message in human readable form that explains why it is impossible to complete the order (e.g. "Sorry, delivery to your desired address is unavailable'). Telegram will display this message to the user.
- *
- *
  * @method SentWebAppMessage|PromiseInterface answerWebAppQuery(array $parameters = []) Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned.
  *
  * Parameters:
  * - _string_            `$web_app_query_id` __Required: Yes__. Unique identifier for the query to be answered
  * - _InlineQueryResult_ `$result`           __Required: Yes__. A JSON-serialized object describing the message to be sent
- *
- *
  * @method bool|PromiseInterface approveChatJoinRequest(array $parameters = []) Use this method to approve a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_    `$user_id` __Required: Yes__. Unique identifier of the target user
- *
- *
  * @method bool|PromiseInterface banChatMember(array $parameters = []) Use this method to ban a user in a group, a supergroup or a channel. In the case of supergroups and channels, the user will not be able to return to the chat on their own using invite links, etc., unless [unbanned](https://core.telegram.org/bots/api#unbanchatmember) first. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
  *
  * Parameters:
@@ -100,18 +86,12 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_    `$user_id`         __Required: Yes__. Unique identifier of the target user
  * - _int_    `$until_date`      __Required: Optional__. Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only.
  * - _bool_   `$revoke_messages` __Required: Optional__. Pass True to delete all messages from the chat for the user that is being removed. If False, the user will be able to see messages in the group that were sent before the user was removed. Always True for supergroups and channels.
- *
- *
  * @method bool|PromiseInterface banChatSenderChat(array $parameters = []) Use this method to ban a channel chat in a supergroup or a channel. Until the chat is [unbanned](https://core.telegram.org/bots/api#unbanchatsenderchat), the owner of the banned chat won't be able to send messages on behalf of any of their channels. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id`        __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_    `$sender_chat_id` __Required: Yes__. Unique identifier of the target sender chat
- *
- *
  * @method bool|PromiseInterface close() Use this method to close the bot instance before moving it from one local server to another. You need to delete the webhook before calling this method to ensure that the bot isn't launched again after server restart. The method will return error 429 in the first 10 minutes after the bot is launched. Returns True on success. Requires no parameters.
- *
- *
  * @method MessageId|PromiseInterface copyMessage(array $parameters = []) Use this method to copy messages of any kind. Service messages and invoice messages can't be copied. The method is analogous to the method [forwardMessage](https://core.telegram.org/bots/api#forwardmessage), but the copied message doesn't have a link to the original message. Returns the [MessageId](https://core.telegram.org/bots/api#messageid) of the sent message on success.
  *
  * Parameters:
@@ -127,8 +107,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_             `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_            `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_        `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method ChatInviteLink|PromiseInterface createChatInviteLink(array $parameters = []) Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method [revokeChatInviteLink](https://core.telegram.org/bots/api#revokechatinvitelink). Returns the new invite link as [ChatInviteLink](https://core.telegram.org/bots/api#chatinvitelink) object.
  *
  * Parameters:
@@ -137,8 +115,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_    `$expire_date`          __Required: Optional__. Point in time (Unix timestamp) when the link will expire
  * - _int_    `$member_limit`         __Required: Optional__. Maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
  * - _bool_   `$creates_join_request` __Required: Optional__. True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified
- *
- *
  * @method ChatInviteLink|PromiseInterface createInvoiceLink(array $parameters = []) Use this method to create a link for an invoice. Returns the created invoice link as String on success.
  *
  * Parameters:
@@ -162,8 +138,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _boolean_         `$send_phone_number_to_provider` __Required: Optional__.	Pass True, if the user's phone number should be sent to the provider
  * - _boolean_         `$send_email_to_provider`        __Required: Optional__.	Pass True, if the user's email address should be sent to the provider
  * - _boolean_         `$is_flexible`                   __Required: Optional__.	Pass True, if the final price depends on the shipping method
- *
- *
  * @method File|PromiseInterface createNewStickerSet(array $parameters = []) Use this method to create a new sticker set owned by a user. The bot will be able to edit the sticker set thus created. Returns True on success.
  *
  * Parameters:
@@ -174,29 +148,20 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_         `$sticker_format`   __Required: Yes__. Format of stickers in the set, must be one of “static”, “animated”, “video”
  * - _string_         `$sticker_type`     __Required: Optional__. Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”. By default, a regular sticker set is created.
  * - _true_           `$needs_repainting` __Required: Optional__. Pass True if stickers in the sticker set must be repainted to the color of text when used in messages, the accent color if used as emoji status, white on chat photos, or another appropriate color based on context; for custom emoji sticker sets only
- *
- *
  * @method bool|PromiseInterface declineChatJoinRequest(array $parameters = []) Use this method to decline a chat join request. The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_    `$user_id` __Required: Yes__. Unique identifier of the target user
- *
- *
  * @method bool|PromiseInterface deleteChatPhoto(array $parameters = []) Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- *
- *
  * @method bool|PromiseInterface deleteChatStickerSet(array $parameters = []) Use this method to delete a group sticker set from a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in [getChat](https://core.telegram.org/bots/api#getchat) requests to check if the bot can use this method. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
- *
  * @method Sticker[]|PromiseInterface getForumTopicIconStickers() Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user. Requires no parameters. Returns an Array of Sticker objects.
- *
- *
  * @method ForumTopic|PromiseInterface createForumTopic(array $parameters = []) Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns information about the created topic as a ForumTopic object.
  *
  * Parameters:
@@ -204,8 +169,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - __string__ `$name`                  __Required: Yes__. Topic name, 1-128 characters
  * - __int__    `$icon_color`            __Required: Optional__. Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)
  * - __string__ `$icon_custom_emoji_id`  __Required: Optional__. Unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers.
- *
- *
  * @method bool|PromiseInterface editForumTopic(array $parameters = []) Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
  *
  * Parameters:
@@ -213,36 +176,26 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - __int__    `$message_thread_id`     __Required: Yes__. Unique identifier for the target message thread of the forum topi
  * - __string__ `$name`                  __Required: Yes__. New topic name, 1-128 characters
  * - __string__ `$icon_custom_emoji_id`  __Required: Optional__. New unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers.
- *
- *
  * @method bool|PromiseInterface closeForumTopic(array $parameters = []) Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
  *
  * Parameters:
  * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
  * - __int__    `$message_thread_id`     __Required: Yes__. Unique identifier for the target message thread of the forum topi
- *
- *
  * @method bool|PromiseInterface reopenForumTopic(array $parameters = []) Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
  *
  * Parameters:
  * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
  * - __int__    `$message_thread_id`     __Required: Yes__. Unique identifier for the target message thread of the forum topi
- *
- *
  * @method bool|PromiseInterface deleteForumTopic(array $parameters = []) Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success.
  *
  * Parameters:
  * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
  * - __int__    `$message_thread_id`     __Required: Yes__. Unique identifier for the target message thread of the forum topi
- *
- *
  * @method bool|PromiseInterface unpinAllForumTopicMessages(array $parameters = []) Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
  *
  * Parameters:
  * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
  * - __int__    `$message_thread_id`     __Required: Yes__. Unique identifier for the target message thread of the forum topi
- *
- *
  * @method bool|PromiseInterface deleteMessage(array $parameters = []) Use this method to delete a message, including service messages, with the following limitations:
  *                                                                     - A message can only be deleted if it was sent less than 48 hours ago.
  *                                                                     - A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.
@@ -257,27 +210,19 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _int_ `$chat_id`    __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_id` __Required: Yes__. Identifier of the message to delete
- *
- *
  * @method bool|PromiseInterface deleteMyCommands(array $parameters = []) Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, [higher level commands](https://core.telegram.org/bots/api#determining-list-of-commands) will be shown to affected users. Returns True on success.
  *
  * Parameters:
  * - _BotCommandScope_ `$scope`         __Required: Optional__. A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault.
  * - _string_          `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands
- *
- *
  * @method bool|PromiseInterface deleteStickerFromSet(array $parameters = []) Use this method to delete a sticker from a set created by the bot. Returns True on success.
  *
  * Parameters:
  * - _string_ `$sticker` __Required: Yes__. File identifier of the sticker
- *
- *
  * @method bool|PromiseInterface deleteWebhook(array $parameters = []) Use this method to remove webhook integration if you decide to switch back to [getUpdates](https://core.telegram.org/bots/api#getupdates). Returns True on success.
  *
  * Parameters:
  * - _bool_ `$drop_pending_updates` __Required: Optional__. Pass True to drop all pending updates
- *
- *
  * @method ChatInviteLink|PromiseInterface editChatInviteLink(array $parameters = []) Use this method to edit a non-primary invite link created by the bot. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the edited invite link as a [ChatInviteLink](https://core.telegram.org/bots/api#chatinvitelink) object.
  *
  * Parameters:
@@ -287,8 +232,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_    `$expire_date`          __Required: Optional__. Point in time (Unix timestamp) when the link will expire
  * - _int_    `$member_limit`         __Required: Optional__. Maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
  * - _bool_   `$creates_join_request` __Required: Optional__. True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified
- *
- *
  * @method Message|bool|PromiseInterface editMessageCaption(array $parameters = []) Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned.
  *
  * Parameters:
@@ -299,8 +242,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_               `$parse_mode`        __Required: Optional__. Mode for parsing entities in the message caption. See formatting options for more details.
  * - _MessageEntity[]_      `$caption_entities`  __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
  * - _InlineKeyboardMarkup_ `$reply_markup`      __Required: Optional__. A JSON-serialized object for an inline keyboard.
- *
- *
  * @method Message|bool|PromiseInterface editMessageLiveLocation(array $parameters = []) Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to [stopMessageLiveLocation](https://core.telegram.org/bots/api#stopmessagelivelocation). On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned.
  *
  * Parameters:
@@ -313,8 +254,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_                  `$heading`                __Required: Optional__. Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
  * - _int_                  `$proximity_alert_radius` __Required: Optional__. Maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
  * - _InlineKeyboardMarkup_ `$reply_markup`           __Required: Optional__. A JSON-serialized object for a new inline keyboard.
- *
- *
  * @method Message|bool|PromiseInterface editMessageMedia(array $parameters = []) Use this method to edit animation, audio, document, photo, or video messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned.
  *
  * Parameters:
@@ -323,8 +262,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_               `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
  * - _InputMedia_           `$media`             __Required: Yes__. A JSON-serialized object for a new media content of the message
  * - _InlineKeyboardMarkup_ `$reply_markup`      __Required: Optional__. A JSON-serialized object for a new inline keyboard.
- *
- *
  * @method Message|bool|PromiseInterface editMessageReplyMarkup(array $parameters = []) Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned.
  *
  * Parameters:
@@ -332,8 +269,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_                  `$message_id`        __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message to edit
  * - _string_               `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
  * - _InlineKeyboardMarkup_ `$reply_markup`      __Required: Optional__. A JSON-serialized object for an inline keyboard.
- *
- *
  * @method Message|bool|PromiseInterface editMessageText(array $parameters = []) Use this method to edit text and [game](https://core.telegram.org/bots/api#games) messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned.
  *
  * Parameters:
@@ -345,14 +280,10 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _MessageEntity[]_      `$entities`                 __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
  * - _bool_                 `$disable_web_page_preview` __Required: Optional__. Disables link previews for links in this message
  * - _InlineKeyboardMarkup_ `$reply_markup`             __Required: Optional__. A JSON-serialized object for an inline keyboard.
- *
- *
  * @method string|PromiseInterface exportChatInviteLink(array $parameters = []) Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the new invite link as String on success.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- *
- *
  * @method Message|PromiseInterface forwardMessage(array $parameters = []) Use this method to forward messages of any kind. Service messages can't be forwarded. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * Parameters:
@@ -362,51 +293,35 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_   `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_   `$protect_content`      __Required: Optional__. Protects the contents of the forwarded message from forwarding and saving
  * - _int_    `$message_id`           __Required: Yes__. Message identifier in the chat specified in from_chat_id
- *
- *
  * @method ChatMember[]|PromiseInterface getChatAdministrators(array $parameters = []) Use this method to get a list of administrators in a chat. On success, returns an Array of [ChatMember](https://core.telegram.org/bots/api#chatmember) objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
- *
- *
  * @method int|PromiseInterface getChatMemberCount(array $parameters = []) Use this method to get the number of members in a chat. Returns Int on success.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
- *
- *
  * @method ChatMember|PromiseInterface getChatMember(array $parameters = []) Use this method to get information about a member of a chat. Returns a [ChatMember](https://core.telegram.org/bots/api#chatmember) object on success.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
  * - _int_    `$user_id` __Required: Yes__. Unique identifier of the target user
- *
- *
  * @method MenuButton|PromiseInterface getChatMenuButton(array $parameters = []) Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Optional__. Unique identifier for the target private chat. If not specified, default bot's menu button will be returned
- *
- *
  * @method Chat|PromiseInterface getChat(array $parameters = []) Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a [Chat](https://core.telegram.org/bots/api#chat) object on success.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
- *
- *
  * @method Sticker[]|PromiseInterface getCustomEmojiStickers(array $parameters = []) Use this method to get information about custom emoji stickers by their identifiers. Returns an Array of Sticker objects.
  *
  * Parameters:
  * - _string[]_ `$custom_emoji_ids` __Required: Yes__. List of custom emoji identifiers. At most 200 custom emoji identifiers can be specified.
- *
- *
  * @method File|PromiseInterface getFile(array $parameters = []) Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a [File](https://core.telegram.org/bots/api#file) object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling [getFile](https://core.telegram.org/bots/api#getfile) again.
  *
  * Parameters:
  * - _string_ `$file_id` __Required: Yes__. File identifier to get info about
- *
- *
  * @method GameHighScore[]|PromiseInterface getGameHighScores(array $parameters = []) Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. On success, returns an Array of [GameHighScore](https://core.telegram.org/bots/api#gamehighscore) objects.
  *
  * This method will currently return scores for the target user, plus two of their closest neighbors on each side. Will also return the top three users if the user and his neighbors are not among them. Please note that this behavior is subject to change.
@@ -416,30 +331,20 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_    `$chat_id`           __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat
  * - _int_    `$message_id`        __Required: Optional__. Required if inline_message_id is not specified. Identifier of the sent message
  * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
- *
- *
  * @method User|PromiseInterface getMe() A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about the bot in form of a [User](https://core.telegram.org/bots/api#user) object.
- *
- *
  * @method BotCommand[]|PromiseInterface getMyCommands(array $parameters = []) Use this method to get the current list of the bot's commands for the given scope and user language. Returns Array of [BotCommand](https://core.telegram.org/bots/api#botcommand) on success. If commands aren't set, an empty list is returned.
  *
  * Parameters:
  * - _BotCommandScope_ `$scope`         __Required: Optional__. A JSON-serialized object, describing scope of users. Defaults to BotCommandScopeDefault.
  * - _string_          `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code or an empty string
- *
- *
  * @method ChatAdministratorRights|PromiseInterface getMyDefaultAdministratorRights(array $parameters = []) Use this method to get the current default administrator rights of the bot. Returns ChatAdministratorRights on success.
  *
  * Parameters:
  * - _bool_ `$for_channels` __Required: Optional__. Pass True to get default administrator rights of the bot in channels. Otherwise, default administrator rights of the bot for groups and supergroups will be returned.
- *
- *
  * @method StickerSet|PromiseInterface getStickerSet(array $parameters = []) Use this method to get a sticker set. On success, a [StickerSet](https://core.telegram.org/bots/api#stickerset) object is returned.
  *
  * Parameters:
  * - _string_ `$name` __Required: Yes__. Name of the sticker set
- *
- *
  * @method Update[]|PromiseInterface getUpdates(array $parameters = []) Use this method to receive incoming updates using long polling ([wiki](https://en.wikipedia.org/wiki/Push_technology#Long_polling)). An Array of [Update](https://core.telegram.org/bots/api#update) objects is returned.
  *
  * Parameters:
@@ -447,48 +352,32 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_      `$limit`           __Required: Optional__. Limits the number of updates to be retrieved. Values between 1-100 are accepted. Defaults to 100.
  * - _int_      `$timeout`         __Required: Optional__. Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive, short polling should be used for testing purposes only.
  * - _string[]_ `$allowed_updates` __Required: Optional__. A JSON-serialized list of the update types you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time.
- *
- *
  * @method UserProfilePhotos|PromiseInterface getUserProfilePhotos(array $parameters = []) Use this method to get a list of profile pictures for a user. Returns a [UserProfilePhotos](https://core.telegram.org/bots/api#userprofilephotos) object.
  *
  * Parameters:
  * - _int_ `$user_id` __Required: Yes__. Unique identifier of the target user
  * - _int_ `$offset`  __Required: Optional__. Sequential number of the first photo to be returned. By default, all photos are returned.
  * - _int_ `$limit`   __Required: Optional__. Limits the number of photos to be retrieved. Values between 1-100 are accepted. Defaults to 100.
- *
- *
  * @method WebhookInfo|PromiseInterface getWebhookInfo() Use this method to get current webhook status. Requires no parameters. On success, returns a [WebhookInfo](https://core.telegram.org/bots/api#webhookinfo) object. If the bot is using [getUpdates](https://core.telegram.org/bots/api#getupdates), will return an object with the url field empty.
- *
- *
  * @method BotDescription|PromiseInterface getMyDescription() Use this method to get the current bot description for the given user language. Returns [BotDescription](https://core.telegram.org/bots/api#botdescription) on success.
  *
  * Parameters:
  * - _string_ `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code or an empty string
- *
- *
  * @method BotShortDescription|PromiseInterface getMyShortDescription() Use this method to get the current bot short description for the given user language. Returns [BotShortDescription](https://core.telegram.org/bots/api#botshortdescription) on success.
  *
  * Parameters:
  * - _string_ `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code or an empty string
- *
- *
  * @method bool|PromiseInterface leaveChat(array $parameters = []) Use this method for your bot to leave a group, supergroup or channel. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
- *
- *
  * @method bool|PromiseInterface logOut() Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.
- *
- *
  * @method bool|PromiseInterface pinChatMessage(array $parameters = []) Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id`              __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_    `$message_id`           __Required: Yes__. Identifier of a message to pin
  * - _bool_   `$disable_notification` __Required: Optional__. Pass True, if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels and private chats.
- *
- *
  * @method bool|PromiseInterface promoteChatMember(array $parameters = []) Use this method to promote or demote a user in a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Pass False for all boolean parameters to demote a user. Returns True on success.
  *
  * Parameters:
@@ -506,8 +395,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_   `$can_invite_users`       __Required: Optional__. Pass True, if the administrator can invite new users to the chat
  * - _bool_   `$can_pin_messages`       __Required: Optional__. Pass True, if the administrator can pin messages, supergroups only
  * - _bool_   `$can_manage_topics`      __Required: Optional__. Pass True if the user is allowed to create, rename, close, and reopen forum topics, supergroups only
- *
- *
  * @method bool|PromiseInterface restrictChatMember(array $parameters = []) Use this method to restrict a user in a supergroup. The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights. Pass True for all permissions to lift restrictions from a user. Returns True on success.
  *
  * Parameters:
@@ -516,15 +403,11 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _ChatPermissions_ `$permissions`                       __Required: Yes__. A JSON-serialized object for new user permissions
  * - _bool_            `$use_independent_chat_permissions`  __Required: Optional__. Pass True if chat permissions are set independently. Otherwise, the can_send_other_messages and can_add_web_page_previews permissions will imply the can_send_messages, can_send_audios, can_send_documents, can_send_photos, can_send_videos, can_send_video_notes, and can_send_voice_notes permissions; the can_send_polls permission will imply the can_send_messages permission.
  * - _int_             `$until_date`                        __Required: Optional__. Date when restrictions will be lifted for the user, unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever
- *
- *
  * @method ChatInviteLink|PromiseInterface revokeChatInviteLink(array $parameters = []) Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as [ChatInviteLink](https://core.telegram.org/bots/api#chatinvitelink) object.
  *
  * Parameters:
  * - _string_ `$chat_id`     __Required: Yes__. Unique identifier of the target chat or username of the target channel (in the format @channelusername)
  * - _string_ `$invite_link` __Required: Yes__. The invite link to revoke
- *
- *
  * @method Message|PromiseInterface sendAnimation(array $parameters = []) Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
  *
  * Parameters:
@@ -544,8 +427,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_             `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_            `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_        `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method Message|PromiseInterface sendAudio(array $parameters = []) Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
  *
  * For sending voice messages, use the [sendVoice](https://core.telegram.org/bots/api#sendvoice) method instead.
@@ -566,8 +447,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_             `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_            `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_        `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method bool|PromiseInterface sendChatAction(array $parameters = []) Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.
  *
  * Example: The [ImageBot](https://t.me/imagebot) needs some time to process a request and upload the image. Instead of sending a text message along the lines of “Retrieving image, please wait…”, the bot may use [sendChatAction](https://core.telegram.org/bots/api#sendchataction) with action = upload_photo. The user will see a “sending photo” status for the bot.
@@ -578,8 +457,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$chat_id`           __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_    `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread; supergroups only
  * - _string_ `$action`            __Required: Yes__. Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, choose_sticker for stickers, find_location for location data, record_video_note or upload_video_note for video notes.
-*
- *
  * @method Message|PromiseInterface sendContact(array $parameters = []) Use this method to send phone contacts. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * Parameters:
@@ -594,8 +471,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_      `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_     `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_ `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove keyboard or to force a reply from the user.
- *
- *
  * @method Message|PromiseInterface sendDice(array $parameters = []) Use this method to send an animated emoji that will display a random value. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * Parameters:
@@ -607,8 +482,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_      `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_     `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_ `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method Message|PromiseInterface sendDocument(array $parameters = []) Use this method to send general files. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
  *
  * Parameters:
@@ -625,8 +498,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_             `$reply_to_message_id`            __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_            `$allow_sending_without_reply`    __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_        `$reply_markup`                   __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method Message|PromiseInterface sendGame(array $parameters = []) Use this method to send a game. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * Parameters:
@@ -638,8 +509,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_                  `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_                 `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _InlineKeyboardMarkup_ `$reply_markup`                __Required: Optional__. A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be shown. If not empty, the first button must launch the game.
- *
- *
  * @method Message|PromiseInterface sendInvoice(array $parameters = []) Use this method to send invoices. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * Parameters:
@@ -671,8 +540,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_                  `$reply_to_message_id`           __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_                 `$allow_sending_without_reply`   __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _InlineKeyboardMarkup_ `$reply_markup`                  __Required: Optional__. A JSON-serialized object for an inline keyboard. If empty, one 'Pay total price' button will be shown. If not empty, the first button must be a Pay button.
- *
- *
  * @method Message|PromiseInterface sendLocation(array $parameters = []) Use this method to send point on the map. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * Parameters:
@@ -689,8 +556,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_      `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_     `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_ `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method Message|PromiseInterface sendMediaGroup(array $parameters = []) Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of [Messages](https://core.telegram.org/bots/api#message) that were sent is returned.
  *
  * Parameters:
@@ -701,8 +566,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_         `$protect_content`             __Required: Optional__. Protects the contents of the sent messages from forwarding and saving
  * - _int_          `$reply_to_message_id`         __Required: Optional__. If the messages are a reply, ID of the original message
  * - _bool_         `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
- *
- *
  * @method Message|PromiseInterface sendMessage(array $parameters = []) Use this method to send text messages. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * Parameters:
@@ -717,8 +580,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_             `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_            `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_        `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method Message|PromiseInterface sendPhoto(array $parameters = []) Use this method to send photos. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * Parameters:
@@ -734,8 +595,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_             `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_            `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_        `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method Message|PromiseInterface sendPoll(array $parameters = []) Use this method to send a native poll. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * Parameters:
@@ -758,8 +617,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_             `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_            `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_        `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method Message|PromiseInterface sendSticker(array $parameters = []) Use this method to send static .WEBP or [animated](https://telegram.org/blog/animated-stickers) .TGS stickers. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * Parameters:
@@ -771,8 +628,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_       `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_      `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_  `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method Message|PromiseInterface sendVenue(array $parameters = []) Use this method to send information about a venue. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * Parameters:
@@ -791,8 +646,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_      `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_     `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_ `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method Message|PromiseInterface sendVideo(array $parameters = []) Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as [Document](https://core.telegram.org/bots/api#document)). On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
  *
  * Parameters:
@@ -813,8 +666,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_             `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_            `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_        `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method Message|PromiseInterface sendVideoNote(array $parameters = []) As of [v.4.0](https://telegram.org/blog/video-messages-and-telescope), Telegram clients support rounded square mp4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * Parameters:
@@ -829,8 +680,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_       `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_      `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_  `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method Message|PromiseInterface sendVoice(array $parameters = []) Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS (other formats may be sent as [Audio](https://core.telegram.org/bots/api#audio) or [Document](https://core.telegram.org/bots/api#document)). On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
  *
  * Parameters:
@@ -846,59 +695,43 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_             `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_            `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_        `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
- *
- *
  * @method bool|PromiseInterface setChatAdministratorCustomTitle(array $parameters = []) Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id`      __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
  * - _int_    `$user_id`      __Required: Yes__. Unique identifier of the target user
  * - _string_ `$custom_title` __Required: Yes__. New custom title for the administrator; 0-16 characters, emoji are not allowed
- *
- *
  * @method bool|PromiseInterface setChatDescription(array $parameters = []) Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id`     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _string_ `$description` __Required: Optional__. New chat description, 0-255 characters
- *
- *
  * @method bool|PromiseInterface setChatMenuButton(array $parameters = []) Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
  *
  * Parameters:
  * - _string_     `$chat_id`     __Required: Optional__. Unique identifier for the target private chat. If not specified, default bot's menu button will be changed
  * - _MenuButton_ `$menu_button` __Required: Optional__. A JSON-serialized object for the new bot's menu button. Defaults to MenuButtonDefault
- *
- *
  * @method bool|PromiseInterface setChatPermissions(array $parameters = []) Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights. Returns True on success.
  *
  * Parameters:
  * - _string_          `$chat_id`                           __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
  * - _ChatPermissions_ `$permissions`                       __Required: Yes__. A JSON-serialized object for new default chat permissions
  * - _bool_            `$use_independent_chat_permissions`  __Required: Yes__. Pass True if chat permissions are set independently. Otherwise, the can_send_other_messages and can_add_web_page_previews permissions will imply the can_send_messages, can_send_audios, can_send_documents, can_send_photos, can_send_videos, can_send_video_notes, and can_send_voice_notes permissions; the can_send_polls permission will imply the can_send_messages permission.
- *
- *
  * @method bool|PromiseInterface setChatPhoto(array $parameters = []) Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
  *
  * Parameters:
  * - _string_    `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _InputFile_ `$photo`   __Required: Yes__. New chat photo, uploaded using multipart/form-data
- *
- *
  * @method bool|PromiseInterface setChatStickerSet(array $parameters = []) Use this method to set a new group sticker set for a supergroup. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Use the field can_set_sticker_set optionally returned in [getChat](https://core.telegram.org/bots/api#getchat) requests to check if the bot can use this method. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id`          __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
  * - _string_ `$sticker_set_name` __Required: Yes__. Name of the sticker set to be set as the group sticker set
- *
- *
  * @method bool|PromiseInterface setChatTitle(array $parameters = []) Use this method to change the title of a chat. Titles can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _string_ `$title`   __Required: Yes__. New chat title, 1-255 characters
- *
- *
  * @method Message|bool|PromiseInterface setGameScore(array $parameters = []) Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.
  *
  * Parameters:
@@ -909,23 +742,17 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_    `$chat_id`              __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat
  * - _int_    `$message_id`           __Required: Optional__. Required if inline_message_id is not specified. Identifier of the sent message
  * - _string_ `$inline_message_id`    __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
- *
- *
  * @method bool|PromiseInterface setMyCommands(array $parameters = []) Use this method to change the list of the bot's commands. See https://core.telegram.org/bots#commands for more details about bot commands. Returns True on success.
  *
  * Parameters:
  * - _BotCommand[]_    `$commands`      __Required: Yes__. A JSON-serialized list of bot commands to be set as the list of the bot's commands. At most 100 commands can be specified.
  * - _BotCommandScope_ `$scope`         __Required: Optional__. A JSON-serialized object, describing scope of users for which the commands are relevant. Defaults to BotCommandScopeDefault.
  * - _string_          `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the given scope, for whose language there are no dedicated commands
- *
- *
  * @method bool|PromiseInterface setMyDefaultAdministratorRights(array $parameters = []) Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are are free to modify the list before adding the bot. Returns True on success.
  *
  * Parameters:
  * - _ChatAdministratorRights_ `$rights`       __Required: Optional__. A JSON-serialized object describing new default administrator rights. If not specified, the default administrator rights will be cleared.
  * - _bool_                    `$for_channels` __Required: Optional__. Pass True to change the default administrator rights of the bot in channels. Otherwise, the default administrator rights of the bot for groups and supergroups will be changed.
- *
- *
  * @method bool|PromiseInterface setPassportDataErrors(array $parameters = []) Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
  *
  * Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.
@@ -933,23 +760,17 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _int_                    `$user_id` __Required: Yes__. User identifier
  * - _PassportElementError[]_ `$errors`  __Required: Yes__. A JSON-serialized array describing the errors
- *
- *
  * @method bool|PromiseInterface setStickerPositionInSet(array $parameters = []) Use this method to move a sticker in a set created by the bot to a specific position. Returns True on success.
  *
  * Parameters:
  * - _string_ `$sticker`  __Required: Yes__. File identifier of the sticker
  * - _int_    `$position` __Required: Yes__. New sticker position in the set, zero-based
- *
- *
  * @method bool|PromiseInterface setStickerSetThumbnail(array $parameters = []) Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.
  *
  * Parameters:
  * - _string_    `$name`      __Required: Yes__. Sticker set name
  * - _int_       `$user_id`   __Required: Yes__. User identifier of the sticker set owner
  * - _InputFile_ `$thumbnail` __Required: Optional__. A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ». Animated sticker set thumbnail can't be uploaded via HTTP URL.
- *
- *
  * @method bool|PromiseInterface setWebhook(array $parameters = []) Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized [Update](https://core.telegram.org/bots/api#update). In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
  *
  * If you'd like to make sure that the Webhook request comes from Telegram, we recommend using a secret path in the URL, e.g. https://www.example.com/<token\>. Since nobody else knows your bot's token, you can be pretty sure it's us.
@@ -961,57 +782,41 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_       `$max_connections`      __Required: Optional__. Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to 40. Use lower values to limit the load on your bot's server, and higher values to increase your bot's throughput.
  * - _string[]_  `$allowed_updates`      __Required: Optional__. A JSON-serialized list of the update types you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time.
  * - _bool_      `$drop_pending_updates` __Required: Optional__. Pass True to drop all pending updates
- *
- *
- * @method boolean|PromiseInterface setMyDescription(array $parameters = []) Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty. Returns True on success.
+ * @method bool|PromiseInterface setMyDescription(array $parameters = []) Use this method to change the bot's description, which is shown in the chat with the bot if the chat is empty. Returns True on success.
  *
  * Parameters:
  * - _string_ `$description`   __Required: Optional__. New bot description; 0-512 characters. Pass an empty string to remove the dedicated description for the given language.
  * - _string_ `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code. If empty, the description will be applied to all users for whose language there is no dedicated description.
- *
- *
- * @method boolean|PromiseInterface setMyShortDescription(array $parameters = []) Use this method to change the bot's short description, which is shown on the bot's profile page and is sent together with the link when users share the bot. Returns True on success.
+ * @method bool|PromiseInterface setMyShortDescription(array $parameters = []) Use this method to change the bot's short description, which is shown on the bot's profile page and is sent together with the link when users share the bot. Returns True on success.
  *
  * Parameters:
  * - _string_ `$short_description` __Required: Optional__. New short description for the bot; 0-120 characters. Pass an empty string to remove the dedicated short description for the given language.
  * - _string_ `$language_code`     __Required: Optional__. A two-letter ISO 639-1 language code. If empty, the short description will be applied to all users for whose language there is no dedicated short description.
- *
- *
- * @method boolean|PromiseInterface setCustomEmojiStickerSetThumbnail(array $parameters = []) Use this method to set the thumbnail of a custom emoji sticker set. Returns True on success.
+ * @method bool|PromiseInterface setCustomEmojiStickerSetThumbnail(array $parameters = []) Use this method to set the thumbnail of a custom emoji sticker set. Returns True on success.
  *
  * Parameters:
  * - _string_ `$name`            __Required: Yes__. Sticker set name
  * - _string_ `$custom_emoji_id` __Required: Optional__. Custom emoji identifier of a sticker from the sticker set; pass an empty string to drop the thumbnail and use the first sticker as the thumbnail.
- *
- *
- * @method boolean|PromiseInterface setStickerEmojiList(array $parameters = []) Use this method to change the list of emoji assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
+ * @method bool|PromiseInterface setStickerEmojiList(array $parameters = []) Use this method to change the list of emoji assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
  *
  * Parameters:
  * - _string_   `$sticker`    __Required: Yes__. File identifier of the sticker
  * - _string[]_ `$emoji_list` __Required: Yes__. A JSON-serialized list of 1-20 emoji associated with the sticker
- *
- *
- * @method boolean|PromiseInterface setStickerKeywords(array $parameters = []) Use this method to change search keywords assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
+ * @method bool|PromiseInterface setStickerKeywords(array $parameters = []) Use this method to change search keywords assigned to a regular or custom emoji sticker. The sticker must belong to a sticker set created by the bot. Returns True on success.
  *
  * Parameters:
  * - _string_   `$sticker`  __Required: Yes__. File identifier of the sticker
  * - _string[]_ `$keywords` __Required: Optional__. A JSON-serialized list of 0-20 search keywords for the sticker with total length of up to 64 characters
- *
- *
- * @method boolean|PromiseInterface setStickerMaskPosition(array $parameters = []) Use this method to change the [mask position](https://core.telegram.org/bots/api#maskposition) of a mask sticker. The sticker must belong to a sticker set that was created by the bot. Returns True on success.
+ * @method bool|PromiseInterface setStickerMaskPosition(array $parameters = []) Use this method to change the [mask position](https://core.telegram.org/bots/api#maskposition) of a mask sticker. The sticker must belong to a sticker set that was created by the bot. Returns True on success.
  *
  * Parameters:
  * - _string_       `$sticker`       __Required: Yes__. File identifier of the sticker
  * - _MaskPosition_ `$mask_position` __Required: Optional__. A JSON-serialized object with the position where the mask should be placed on faces. Omit the parameter to remove the mask position
- *
- *
- * @method boolean|PromiseInterface setStickerSetTitle(array $parameters = []) Use this method to set the title of a created sticker set. Returns True on success.
+ * @method bool|PromiseInterface setStickerSetTitle(array $parameters = []) Use this method to set the title of a created sticker set. Returns True on success.
  *
  * Parameters:
  * - _string_ `$name`            __Required: Yes__. Sticker set name
  * - _string_ `$custom_emoji_id` __Required: Yes__. Sticker set title, 1-64 characters
- *
- *
  * @method Message|bool|PromiseInterface stopMessageLiveLocation(array $parameters = []) Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned.
  *
  * Parameters:
@@ -1019,50 +824,39 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_                  `$message_id`        __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message with live location to stop
  * - _string_               `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
  * - _InlineKeyboardMarkup_ `$reply_markup`      __Required: Optional__. A JSON-serialized object for a new inline keyboard.
- *
- *
  * @method bool|PromiseInterface stopPoll(array $parameters = []) Use this method to stop a poll which was sent by the bot. On success, the stopped [Poll](https://core.telegram.org/bots/api#poll) is returned.
  *
  * Parameters:
  * - _string_               `$chat_id`      __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_                  `$message_id`   __Required: Yes__. Identifier of the original message with the poll
  * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for a new message inline keyboard.
- *
- *
  * @method bool|PromiseInterface unbanChatMember(array $parameters = []) Use this method to unban a previously banned user in a supergroup or channel. The user will not return to the group or channel automatically, but will be able to join via link, etc. The bot must be an administrator for this to work. By default, this method guarantees that after the call the user is not a member of the chat, but will be able to join it. So if the user is a member of the chat they will also be removed from the chat. If you don't want this, use the parameter only_if_banned. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id`        __Required: Yes__. Unique identifier for the target group or username of the target supergroup or channel (in the format @username)
  * - _int_    `$user_id`        __Required: Yes__. Unique identifier of the target user
  * - _bool_   `$only_if_banned` __Required: Optional__. Do nothing if the user is not banned
- *
- *
  * @method bool|PromiseInterface unbanChatSenderChat(array $parameters = []) Use this method to unban a previously banned channel chat in a supergroup or channel. The bot must be an administrator for this to work and must have the appropriate administrator rights. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id`        __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_    `$sender_chat_id` __Required: Yes__. Unique identifier of the target sender chat
- *
- *
  * @method bool|PromiseInterface unpinAllChatMessages(array $parameters = []) Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- *
- *
  * @method bool|PromiseInterface unpinChatMessage(array $parameters = []) Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
  *
  * Parameters:
  * - _string_ `$chat_id`    __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_    `$message_id` __Required: Optional__. Identifier of a message to unpin. If not specified, the most recent pinned message (by sending date) will be unpinned.
- *
- *
  * @method File|PromiseInterface uploadStickerFile(array $parameters = []) Use this method to upload a file with a sticker for later use in the [createNewStickerSet](https://core.telegram.org/bots/api#createnewstickerset) and [addStickerToSet](https://core.telegram.org/bots/api#addstickertoset) methods (the file can be used multiple times). Returns the uploaded [File](https://core.telegram.org/bots/api#file) on success.
  *
  * Parameters:
  * - _int_       `$user_id`        __Required: Yes__. User identifier of sticker set owner
  * - _InputFile_ `$sticker`        __Required: Yes__. A file with the sticker in .WEBP, .PNG, .TGS, or .WEBM format. See [https://core.telegram.org/stickers](https://core.telegram.org/stickers) for technical requirements. [More information on Sending Files »](https://core.telegram.org/bots/api#sending-files)
  * - _string_    `$sticker_format` __Required: Yes__. Format of the sticker, must be one of “static”, “animated”, “video”
+ *
  * @see https://core.telegram.org/bots/api
  */
 trait HasTelegramMethods
@@ -1079,7 +873,5 @@ trait HasTelegramMethods
         if (class_exists($class = "WeStacks\\TeleBot\\Methods\\{$method}Method")) {
             return $class;
         }
-
-        return;
     }
 }

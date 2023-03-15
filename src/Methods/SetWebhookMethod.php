@@ -25,13 +25,13 @@ class SetWebhookMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'url'                  => 'string',
-        'certificate'          => 'InputFile',
-        'ip_address'           => 'string',
-        'max_connections'      => 'integer',
-        'allowed_updates'      => 'string[]',
+        'url' => 'string',
+        'certificate' => 'InputFile',
+        'ip_address' => 'string',
+        'max_connections' => 'integer',
+        'allowed_updates' => 'string[]',
         'drop_pending_updates' => 'boolean',
-        'secret_token'         => 'string',
+        'secret_token' => 'string',
     ];
 
     public function mock($arguments)

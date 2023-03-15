@@ -24,18 +24,18 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 class Poll extends TelegramObject
 {
     protected $attributes = [
-        'id'                      => 'string',
-        'question'                => 'string',
-        'options'                 => 'PollOption[]',
-        'total_voter_count'       => 'integer',
-        'is_closed'               => 'boolean',
-        'is_anonymous'            => 'boolean',
-        'type'                    => 'string',
+        'id' => 'string',
+        'question' => 'string',
+        'options' => 'PollOption[]',
+        'total_voter_count' => 'integer',
+        'is_closed' => 'boolean',
+        'is_anonymous' => 'boolean',
+        'type' => 'string',
         'allows_multiple_answers' => 'boolean',
-        'correct_option_id'       => 'integer',
-        'explanation'             => 'string',
-        'explanation_entities'    => 'MessageEntity[]',
-        'open_period'             => 'integer',
-        'close_date'              => 'integer',
+        'correct_option_id' => 'integer',
+        'explanation' => 'string',
+        'explanation_entities' => 'MessageEntity[]',
+        'open_period' => 'integer',
+        'close_date' => 'integer',
     ];
 }
