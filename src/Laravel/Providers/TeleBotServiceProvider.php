@@ -2,11 +2,14 @@
 
 namespace WeStacks\TeleBot\Laravel\Providers;
 
+use Illuminate\Http\Request;
 use Illuminate\Notifications\ChannelManager;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Arr;
 use WeStacks\TeleBot\BotManager;
 use WeStacks\TeleBot\Laravel\Notifications\TelegramChannel;
+use WeStacks\TeleBot\Laravel\Services\TelegramWebAppService;
 
 class TeleBotServiceProvider extends ServiceProvider
 {
@@ -33,9 +36,7 @@ class TeleBotServiceProvider extends ServiceProvider
             \WeStacks\TeleBot\Laravel\Artisan\CommandsCommand::class,
         ]);
 
-        $this->app->singleton(BotManager::class, function () {
-            return new BotManager(config('telebot'));
-        });
+        $this->app->singleton(BotManager::class, fn () => new BotManager(config('telebot')));
         $this->app->alias(BotManager::class, 'telebot');
 
         Notification::resolved(function (ChannelManager $service) {
@@ -43,6 +44,10 @@ class TeleBotServiceProvider extends ServiceProvider
                 return $app->make(TelegramChannel::class);
             });
         });
+
+        Request::macro('telegramWebAppUser', fn (?string $key = null, $default = null) =>
+            Arr::get($this->app->make(TelegramWebAppService::class)->user(), $key, $default)
+        );
     }
 
     public function provides()

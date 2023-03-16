@@ -163,8 +163,9 @@ You may easily authorize [Web Apps](https://core.telegram.org/bots/webapps) requ
 ```php
 // routes/api.php
 
-Route::post('/action', [/App/Http/Controllers/WebAppController::class, 'action'])
-    ->middleware('telebot-webapp:bot');
+Route::post('/action', function(Request $request) {
+    $request->telegramWebAppUser('id'); // ID of telegram user
+})->middleware('telebot-webapp');
 ```
 
 #### ** Sending request from Web App **
