@@ -46,7 +46,7 @@ class TeleBotServiceProvider extends ServiceProvider
         });
 
         Request::macro('telegramWebAppUser', fn (?string $key = null, $default = null) =>
-            Arr::get($this->app->make(TelegramWebAppService::class)->user(), $key, $default)
+            Arr::get(app(TelegramWebAppService::class)->user(), $key, $default)
         );
     }
 
