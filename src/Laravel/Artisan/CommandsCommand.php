@@ -44,46 +44,26 @@ class CommandsCommand extends TeleBotCommand
 
     private function setupCommands($bots)
     {
-        $promises = [];
         foreach ($bots as $bot) {
-            $promises[] = $this->bot->bot($bot)
-                    ->async()
-                    ->exceptions()
-                    ->setLocalCommands()
-                    ->then(function ($result) use ($bot) {
-                        $this->info("Success! Bot commands has been set for '{$bot}' bot!");
-
-                        return $result;
-                    })
-                    ->otherwise(function ($e) use ($bot) {
-                        $this->error("Error while setting bot commands for '{$bot}' bot: {$e->getMessage()}");
-
-                        return $e;
-                    });
+            try {
+                $this->bot->bot($bot)->setLocalCommands();
+                $this->info("Success! Bot commands has been set for '{$bot}' bot!");
+            } catch (\Exception $e) {
+                $this->error("Error while setting up bot commands for '{$bot}' bot: {$e->getMessage()}");
+            }
         }
-        Utils::all($promises)->wait();
     }
 
     private function removeCommands($bots)
     {
-        $promises = [];
         foreach ($bots as $bot) {
-            $promises[] = $this->bot->bot($bot)
-                    ->async()
-                    ->exceptions()
-                    ->deleteLocalCommands()
-                    ->then(function ($result) use ($bot) {
-                        $this->info("Success! Bot commands has been deleted for '{$bot}' bot!");
-
-                        return $result;
-                    })
-                    ->otherwise(function ($e) use ($bot) {
-                        $this->error("Error while deleting bot commands for '{$bot}' bot: {$e->getMessage()}");
-
-                        return $e;
-                    });
+            try {
+                $this->bot->bot($bot)->deleteLocalCommands();
+                $this->info("Success! Bot commands has been removed for '{$bot}' bot!");
+            } catch (\Exception $e) {
+                $this->error("Error while removing bot commands for '{$bot}' bot: {$e->getMessage()}");
+            }
         }
-        Utils::all($promises)->wait();
     }
 
     private function getCommands($bots)
