@@ -51,7 +51,15 @@
         "sort-packages": true
     },
     "archive": {
-        "exclude": ["/tests", "/docs"]
+        "exclude": [
+            "/.gitignore",
+            "/.gitattributes",
+            "/.github",
+            "/tests",
+            "/docs",
+            "/phpunit.xml.dist",
+            "/rector.php"
+        ]
     },
     "minimum-stability": "stable",
     "prefer-stable": true

@@ -77,6 +77,9 @@ class LongPollCommad extends TeleBotCommand implements SignalableCommandInterfac
         if (defined('SIGQUIT')) {
             $signals[] = SIGQUIT;
         }
+        if (defined('SIGKILL')) {
+            $signals[] = SIGKILL;
+        }
 
         return $signals;
     }
@@ -85,5 +88,9 @@ class LongPollCommad extends TeleBotCommand implements SignalableCommandInterfac
     {
         $this->warn('Shutting down Telegram polling...');
         $this->poll = false;
+
+        if ($signal === SIGKILL) {
+            exit(static::SUCCESS);
+        }
     }
 }
