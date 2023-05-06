@@ -69,12 +69,18 @@ abstract class UpdateHandler
      *
      * @return bool
      */
-    abstract public function trigger();
+    public function trigger()
+    {
+        return true;
+    }
 
     /**
      * This function should handle updates.
      */
-    abstract public function handle();
+    public function handle()
+    {
+        // Do nothing.
+    }
 
     /**
      * Handling proccess.
