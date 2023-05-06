@@ -121,3 +121,6 @@ All notable changes to `telebot` will be documented here
 - Add callback handler
 - Add middleware to authorize web app requests.
 - Updated docs
+
+## 2.7.0 - 2023-05-06
+- Updated [Bot API](https://core.telegram.org/bots/api) to version 6.7

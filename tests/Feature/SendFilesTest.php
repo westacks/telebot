@@ -89,7 +89,7 @@ class SendFilesTest extends TestCase
                     'media' => 'https://file-examples.com/storage/fe88505b6162b2538a045ce/2017/04/file_example_MP4_480_1_5MG.mp4',
                 ], [
                     'type' => 'photo',
-                    'media' => 'https://api.lorem.space/image?w=640&h=640',
+                    'media' => 'https://via.placeholder.com/640x640',
                 ],
             ],
         ]);

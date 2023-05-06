@@ -31,12 +31,16 @@ abstract class CommandHandler extends UpdateHandler
      */
     final public static function getBotCommand(?string $locale = null)
     {
-        return array_map(fn ($name) => new BotCommand([
-            'command' => $name,
-            'description' => function_exists('trans') ?
-                trans(static::$description, locale: $locale) :
-                static::$description,
-        ]), static::$aliases);
+        $description = rescue(
+            fn () => trans(static::$description, locale: $locale),
+            static::$description, false
+        );
+
+        return array_map(
+            function (string $command) use ($description) {
+                return new BotCommand(compact('command', 'description'));
+            }, static::$aliases
+        );
     }
 
     public function trigger()

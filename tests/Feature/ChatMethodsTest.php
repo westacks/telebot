@@ -45,7 +45,7 @@ class ChatMethodsTest extends TestCase
     {
         $set = $this->bot->setChatPhoto([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
-            'photo' => fopen('https://api.lorem.space/image?w=640&h=640', 'r'),
+            'photo' => fopen('https://via.placeholder.com/640x640', 'r'),
         ]);
 
         $this->assertTrue($set);
@@ -70,7 +70,7 @@ class ChatMethodsTest extends TestCase
     {
         $set = $this->bot->setChatDescription([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
-            'description' => 'PHP TeleBot Test '.rand(0, 200),
+            'description' => 'PHP TeleBot Test '.random_int(0, 200),
         ]);
         $this->assertTrue($set);
     }

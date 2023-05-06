@@ -33,7 +33,7 @@ $bot = new TeleBot('<your bot token>');
 // Using URL
 $message = $bot->sendPhoto([
     'chat_id' => 1234567890,
-    'photo' => 'https://picsum.photos/640'
+    'photo' => 'https://via.placeholder.com/640x640'
 ]);
 
 // Local file
@@ -46,14 +46,14 @@ $message = $bot->sendPhoto([
 $message = $bot->sendPhoto([
     'chat_id' => 1234567890,
     'photo' => [
-        'file' => fopen('https://picsum.photos/640', 'r'),
+        'file' => fopen('https://via.placeholder.com/640x640', 'r'),
         'filename' => 'test-image.jpg'
     ]
 ]);
 // or
 $message = $bot->sendPhoto([
     'chat_id' => 1234567890,
-    'photo' => new InputFile(fopen('https://picsum.photos/640', 'r'), 'test-image.jpg')
+    'photo' => new InputFile(fopen('https://via.placeholder.com/640x640', 'r'), 'test-image.jpg')
 ]);
 ```
 
