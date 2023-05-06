@@ -6,6 +6,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Support\Str;
 use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\BotDescription;
+use WeStacks\TeleBot\Objects\BotName;
 use WeStacks\TeleBot\Objects\BotShortDescription;
 use WeStacks\TeleBot\Objects\Chat;
 use WeStacks\TeleBot\Objects\ChatAdministratorRights;
@@ -49,13 +50,12 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * No more than 50 results per query are allowed.
  *
  * Parameters:
- * - _string_              `$inline_query_id`     __Required: Yes__. Unique identifier for the answered query
- * - _InlineQueryResult[]_ `$results`             __Required: Yes__. A JSON-serialized array of results for the inline query
- * - _int_                 `$cache_time`          __Required: Optional__. The maximum amount of time in seconds that the result of the inline query may be cached on the server. Defaults to 300.
- * - _bool_                `$is_personal`         __Required: Optional__. Pass True, if results may be cached on the server side only for the user that sent the query. By default, results may be returned to any user who sends the same query
- * - _string_              `$next_offset`         __Required: Optional__. Pass the offset that a client should send in the next query with the same text to receive more results. Pass an empty string if there are no more results or if you don't support pagination. Offset length can't exceed 64 bytes.
- * - _string_              `$switch_pm_text`      __Required: Optional__. If passed, clients will display a button with specified text that switches the user to a private chat with the bot and sends the bot a start message with the parameter switch_pm_parameter
- * - _string_              `$switch_pm_parameter` __Required: Optional__. Deep-linking parameter for the /start message sent to the bot when user presses the switch button. 1-64 characters, only A-Z, a-z, 0-9, _ and - are allowed.Example: An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account to adapt search results accordingly. To do this, it displays a 'Connect your YouTube account' button above the results, or even before showing any. The user presses the button, switches to a private chat with the bot and, in doing so, passes a start parameter that instructs the bot to return an OAuth link. Once done, the bot can offer a switch_inline button so that the user can easily return to the chat where they wanted to use the bot's inline capabilities.
+ * - _string_                   `$inline_query_id`     __Required: Yes__. Unique identifier for the answered query
+ * - _InlineQueryResult[]_      `$results`             __Required: Yes__. A JSON-serialized array of results for the inline query
+ * - _int_                      `$cache_time`          __Required: Optional__. The maximum amount of time in seconds that the result of the inline query may be cached on the server. Defaults to 300.
+ * - _bool_                     `$is_personal`         __Required: Optional__. Pass True, if results may be cached on the server side only for the user that sent the query. By default, results may be returned to any user who sends the same query
+ * - _string_                   `$next_offset`         __Required: Optional__. Pass the offset that a client should send in the next query with the same text to receive more results. Pass an empty string if there are no more results or if you don't support pagination. Offset length can't exceed 64 bytes.
+ * - _InlineQueryResultsButton_ `$button`              __Required: Optional__. A JSON-serialized object describing a button to be shown above inline query results
  * @method bool|PromiseInterface answerPreCheckoutQuery(array $parameters = []) Once the user has confirmed their payment and shipping details, the Bot API sends the final confirmation in the form of an [Update](https://core.telegram.org/bots/api#update) with the field pre_checkout_query. Use this method to respond to such pre-checkout queries. On success, True is returned. Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.
  *
  * Parameters:
@@ -360,6 +360,10 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$limit`   __Required: Optional__. Limits the number of photos to be retrieved. Values between 1-100 are accepted. Defaults to 100.
  * @method WebhookInfo|PromiseInterface getWebhookInfo() Use this method to get current webhook status. Requires no parameters. On success, returns a [WebhookInfo](https://core.telegram.org/bots/api#webhookinfo) object. If the bot is using [getUpdates](https://core.telegram.org/bots/api#getupdates), will return an object with the url field empty.
  * @method BotDescription|PromiseInterface getMyDescription() Use this method to get the current bot description for the given user language. Returns [BotDescription](https://core.telegram.org/bots/api#botdescription) on success.
+ *
+ * Parameters:
+ * - _string_ `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code or an empty string
+ * @method BotName|PromiseInterface getMyName() Use this method to get the current bot name for the given user language. Returns [BotName](https://core.telegram.org/bots/api#botname) on success.
  *
  * Parameters:
  * - _string_ `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code or an empty string
@@ -787,6 +791,11 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$description`   __Required: Optional__. New bot description; 0-512 characters. Pass an empty string to remove the dedicated description for the given language.
  * - _string_ `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code. If empty, the description will be applied to all users for whose language there is no dedicated description.
+ * @method bool|PromiseInterface setMyName(array $parameters = []) Use this method to change the bot's name. Returns True on success.
+ *
+ * Parameters:
+ * - _string_ `$name`   __Required: Optional__. New bot name; 0-64 characters. Pass an empty string to remove the dedicated name for the given language.
+ * - _string_ `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code. If empty, the name will be shown to all users for whose language there is no dedicated name.
  * @method bool|PromiseInterface setMyShortDescription(array $parameters = []) Use this method to change the bot's short description, which is shown on the bot's profile page and is sent together with the link when users share the bot. Returns True on success.
  *
  * Parameters:
