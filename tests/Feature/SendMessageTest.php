@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Tests\Feature;
 
-use GuzzleHttp\Promise;
+use GuzzleHttp\Promise\Utils;
 use PHPUnit\Framework\TestCase;
 use TypeError;
 use WeStacks\TeleBot\Exceptions\TeleBotException;
@@ -57,7 +57,7 @@ class SendMessageTest extends TestCase
             'text' => '',
         ]);
 
-        $responses = Promise\unwrap($promises);
+        $responses = Utils::unwrap($promises);
         $this->assertInstanceOf(Message::class, $responses[0]);
         $this->assertFalse($responses[1]);
 
