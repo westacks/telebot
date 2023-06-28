@@ -6,6 +6,7 @@ use Monolog\Formatter\FormatterInterface;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
+use Monolog\LogRecord;
 use WeStacks\TeleBot\TeleBot;
 
 class Handler extends AbstractProcessingHandler
@@ -53,7 +54,7 @@ class Handler extends AbstractProcessingHandler
         $this->env = config('app.env');
     }
 
-    public function write(array $record): void
+    public function write(LogRecord|array $record): void
     {
         $textChunks = str_split($this->formatText($record), 4096);
 
@@ -70,8 +71,12 @@ class Handler extends AbstractProcessingHandler
         return new LineFormatter("%message% %context% %extra%\n");
     }
 
-    private function formatText(array $record): string
+    private function formatText(LogRecord|array $record): string
     {
+        if (is_a($record, LogRecord::class)) {
+            $record = array_merge($record->toArray(), ['formatted' => $record->formatted]);
+        }
+
         return view('telebot::log', array_merge($record, [
             'app' => $this->app,
             'env' => $this->env,
