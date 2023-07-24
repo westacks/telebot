@@ -124,13 +124,13 @@ class TeleBot
      *
      * @return mixed
      */
-    public function config($value = null)
+    public function config(string $value = null, $default = null)
     {
         if ($value === null) {
             return $this->config;
         }
 
-        return $this->config[$value] ?? null;
+        return $this->config[$value] ?? $default;
     }
 
     /**

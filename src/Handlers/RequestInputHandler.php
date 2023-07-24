@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Handlers;
 
+use WeStacks\TeleBot\Contracts\StorageContract;
+use WeStacks\TeleBot\Helpers\JsonStorage;
 use WeStacks\TeleBot\TeleBot;
 
 /**
@@ -9,45 +11,26 @@ use WeStacks\TeleBot\TeleBot;
  */
 abstract class RequestInputHandler extends UpdateHandler
 {
-    protected static function getState(TeleBot $bot)
+    protected static function storage(TeleBot $bot): StorageContract
     {
-        $statePath = __DIR__.'/../../storage/'.$bot->config('token').'.json';
-
-        return file_exists($statePath) ? json_decode(file_get_contents($statePath), true) : [];
-    }
-
-    protected static function updateState(TeleBot $bot, callable $callback)
-    {
-        $statePath = __DIR__.'/../../storage/'.$bot->config('token').'.json';
-        $state = static::getState($bot);
-
-        $state = $callback($state);
-
-        return (bool) file_put_contents($statePath, json_encode($state));
+        $storage = $bot->config('storage', JsonStorage::class);
+        return new $storage($bot);
     }
 
     public static function requestInput(TeleBot $bot, string $user_id)
     {
-        return static::updateState($bot, function ($state) use ($user_id) {
-            $state[$user_id] = static::class;
-
-            return $state;
-        });
+        return static::storage($bot)->set($user_id, static::class);
     }
 
     public function trigger()
     {
         return  ($this->update->message()->text ?? false) &&
-                static::class == (static::getState($this->bot)[$this->update->user()->id] ?? null);
+                static::class == static::storage($this->bot)->get($this->update->user()->id);
     }
 
     protected function acceptInput()
     {
-        return static::updateState($this->bot, function ($state) {
-            unset($state[$this->update->user()->id]);
-
-            return $state;
-        });
+        return static::storage($this->bot)->delete($this->update->user()->id);
     }
 
     public function __invoke($next)

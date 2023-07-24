@@ -29,6 +29,7 @@ return [
             'api_url' => env('TELEGRAM_API_URL', 'https://api.telegram.org/bot{TOKEN}/{METHOD}'),
             'exceptions' => true,
             'async' => false,
+            'storage' => \WeStacks\TeleBot\Helpers\JsonStorage::class,
 
             'webhook' => [
                 // 'url'               => env('TELEGRAM_BOT_WEBHOOK_URL', env('APP_URL').'/telebot/webhook/bot/'.env('TELEGRAM_BOT_TOKEN')),
