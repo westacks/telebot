@@ -3,9 +3,11 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
+use TypeError;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\TeleBot;
 use WeStacks\TeleBot\Tests\Helpers\AskNameHandler;
+use WeStacks\TeleBot\Tests\Helpers\CustomWrongStorage;
 
 class AskHandlerTest extends TestCase
 {
@@ -73,5 +75,43 @@ class AskHandlerTest extends TestCase
 
         $res = $bot->handleUpdate($correctName);
         $this->assertEquals('Hello, John!', $res->text);
+    }
+
+    public function testWrongStorage()
+    {
+        $bot = new TeleBot(array_merge(get_config(), [
+            'storage' => CustomWrongStorage::class,
+            'handlers' => [
+                AskNameHandler::class,
+                function ($bot, $update, $next) {
+                    if ('/test' !== $update->message()->text ?? null) {
+                        return $next();
+                    }
+
+                    AskNameHandler::requestInput($bot, $update->user()->id);
+
+                    return $bot->fake()->sendMessage([
+                        'chat_id' => $update->chat()->id,
+                        'text' => 'Please, type your name.',
+                    ]);
+                },
+            ],
+        ]));
+
+        $update = new Update([
+            'message' => [
+                'from' => [
+                    'id' => '-1',
+                ],
+                'chat' => [
+                    'id' => '-1',
+                ],
+                'text' => '/test',
+            ],
+        ]);
+
+
+        $this->expectException(TypeError::class);
+        $bot->handleUpdate($update);
     }
 }
