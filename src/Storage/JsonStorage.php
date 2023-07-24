@@ -1,6 +1,6 @@
 <?php
 
-namespace WeStacks\TeleBot\Helpers;
+namespace WeStacks\TeleBot\Storage;
 
 use WeStacks\TeleBot\Contracts\StorageContract;
 use WeStacks\TeleBot\TeleBot;
@@ -35,7 +35,7 @@ class JsonStorage implements StorageContract
         return $this->data[$key] ?? $default;
     }
 
-    public function set(string $key, string $value): true
+    public function set(string $key, $value): true
     {
         $this->data[$key] = $value;
         return $this->changed = true;

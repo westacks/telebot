@@ -220,6 +220,57 @@ $handler = function ($bot, $update, $next) {
 
 <!-- tabs:end -->
 
+### Customize storage engine
+
+By default TeleBot uses `WeStacks\TeleBot\Storage\JsonStorage` engine to store user's input state. You may create custom storage engine to store data in database, Redis or Memcached
+
+<!-- tabs:start -->
+
+#### ** Creating custom engine **
+
+```php
+<?php
+
+namespace Somewhere\InYour\App;
+
+use App\Models\User;
+use WeStacks\TeleBot\Contracts\StorageContract;
+
+class DatabaseStorage implements StorageContract
+{
+    public function get(string $key, $default = null): mixed
+    {
+        return User::where('telegram_id', $key)->value('input_state') ?? $default;
+    }
+
+    public function set(string $key, $value): true
+    {
+        return User::where('telegram_id', $key)->first(['id', 'input_state'])
+            ?->update(['input_state' => $value]);
+    }
+
+    public function delete(string $key): true
+    {
+        return $this->set($key, null);
+    }
+}
+```
+#### ** Using custom storage **
+
+```php
+
+$bot = new TeleBot([
+    'token' => '<your bot token>',
+    'handlers' => [
+        \Somewhere\InYour\App\StartCommand::class,
+    ],
+    'storage' => \Somewhere\InYour\App\DatabaseStorage::class,
+]);
+
+```
+
+<!-- tabs:end -->
+
 ## Handling callback queries
 When answering [Callback Queries](https://core.telegram.org/bots/api#callbackquery) you may use `CallbackHandler` to handle incoming updates:
 

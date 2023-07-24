@@ -125,6 +125,11 @@ Bot config may be represented as:
 * Default: `false`
 * If you set this parameter `true`, bot methods will return Guzzle Promises, which you can handle mannualy.
 
+#### `storage` (string)
+
+* Default: `\WeStacks\TeleBot\Storage\JsonStorage::class`
+* Storage driver to store bot user's input state
+
 #### `webhook` (array)
 
 * Default: `[]`

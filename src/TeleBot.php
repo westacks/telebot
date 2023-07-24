@@ -80,6 +80,7 @@ class TeleBot
             'name' => $config['name'] ?? null,
             'exceptions' => $config['exceptions'] ?? true,
             'async' => $config['async'] ?? false,
+            'storage' => $config['storage'] ?? \WeStacks\TeleBot\Storage\JsonStorage::class,
             'api_url' => $config['api_url'] ?? 'https://api.telegram.org/bot{TOKEN}/{METHOD}',
             'webhook' => $config['webhook'] ?? [],
             'poll' => $config['poll'] ?? [],

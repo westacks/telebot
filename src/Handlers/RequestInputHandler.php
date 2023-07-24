@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Handlers;
 
 use WeStacks\TeleBot\Contracts\StorageContract;
-use WeStacks\TeleBot\Helpers\JsonStorage;
+use WeStacks\TeleBot\Storage\JsonStorage;
 use WeStacks\TeleBot\TeleBot;
 
 /**
