@@ -35,13 +35,13 @@ class JsonStorage implements StorageContract
         return $this->data[$key] ?? $default;
     }
 
-    public function set(string $key, $value): true
+    public function set(string $key, $value): bool
     {
         $this->data[$key] = $value;
         return $this->changed = true;
     }
 
-    public function delete(string $key): true
+    public function delete(string $key): bool
     {
         unset($this->data[$key]);
         return $this->changed = true;
