@@ -48,7 +48,6 @@ abstract class UpdateHandler
             'chat_id' => $this->update->chat()->id ?? null,
             'user_id' => $this->update->user()->id ?? null,
             'message_id' => $this->update->message()->message_id ?? null,
-            'message_thread_id' => $this->update->message()->message_thread_id ?? null,
             'callback_query_id' => $this->update->callback_query->id ?? null,
             'inline_message_id' => $this->update->chosen_inline_result->inline_message_id ?? null,
             'inline_query_id' => $this->update->inline_query->id ?? null,
