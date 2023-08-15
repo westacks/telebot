@@ -1,6 +1,6 @@
 ### Requirements
 
-- PHP 7.2+
+- PHP 8.0+
 - Composer
 - Telegram bot token ([what is it?](https://core.telegram.org/bots/api#authorizing-your-bot))
 
@@ -10,6 +10,21 @@ You can install the package via composer:
 
 ```bash
 composer require westacks/telebot
+```
+
+For laravel, you should install package with adapter
+
+```bash
+composer require westacks/telebot-laravel
+```
+
+## Migrating from 2.x
+
+For standalone project you can just upgrade package without any breaking changes. But in case you are using Laravel, to migrate the package to newest version you need update your `composer.json`:
+
+```json
+// "westacks/telebot": "^2.0",
+"westacks/telebot-laravel": "^3.0",
 ```
 
 ## Laravel

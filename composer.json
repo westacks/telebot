@@ -34,16 +34,6 @@
         "test": "phpunit",
         "testdox": "phpunit --testdox"
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "WeStacks\\TeleBot\\Laravel\\Providers\\TeleBotServiceProvider"
-            ],
-            "aliases": {
-                "TeleBot": "WeStacks\\TeleBot\\Laravel\\TeleBot"
-            }
-        }
-    },
     "config": {
         "preferred-install": "dist",
         "sort-packages": true
