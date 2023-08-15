@@ -41,7 +41,7 @@ class HandleUpdatesTest extends TestCase
                     'message_id' => 1,
                     'from' => $from,
                     'chat' => $chat,
-                    'date' => now()->seconds(-5)->timestamp,
+                    'date' => time() - 5,
                     'text' => '/start',
                     'entities' => [
                         [
@@ -58,7 +58,7 @@ class HandleUpdatesTest extends TestCase
                     'message_id' => 2,
                     'from' => $from,
                     'chat' => $chat,
-                    'date' => now()->seconds(-4)->timestamp,
+                    'date' => time() - 4,
                     'text' => '/test',
                     'entities' => [
                         [
@@ -75,7 +75,7 @@ class HandleUpdatesTest extends TestCase
                     'message_id' => 3,
                     'from' => $from,
                     'chat' => $chat,
-                    'date' => now()->seconds(-3)->timestamp,
+                    'date' => time() - 3,
                     'text' => 'help',
                 ],
             ]),
@@ -85,7 +85,7 @@ class HandleUpdatesTest extends TestCase
                     'message_id' => 4,
                     'from' => $from,
                     'chat' => $chat,
-                    'date' => now()->seconds(-2)->timestamp,
+                    'date' => time() - 2,
                     'text' => '#help',
                     'entities' => [
                         [

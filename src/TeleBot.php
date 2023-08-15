@@ -82,14 +82,15 @@ class TeleBot
             'async' => $config['async'] ?? false,
             'storage' => $config['storage'] ?? \WeStacks\TeleBot\Storage\JsonStorage::class,
             'api_url' => $config['api_url'] ?? 'https://api.telegram.org/bot{TOKEN}/{METHOD}',
+            'http' => $config['http'] ?? [],
             'webhook' => $config['webhook'] ?? [],
             'poll' => $config['poll'] ?? [],
             'handlers' => $config['handlers'] ?? null,
         ];
 
-        $this->client = new Client([
+        $this->client = new Client(array_merge([
             'http_errors' => false,
-        ]);
+        ], $this->config['http']));
 
         if (is_subclass_of($handlers = $this->config['handlers'] ?? [], Kernel::class)) {
             $this->kernel = new $handlers;

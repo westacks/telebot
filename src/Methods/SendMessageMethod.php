@@ -58,7 +58,7 @@ class SendMessageMethod extends TelegramMethod
                 'last_name' => 'Last',
                 'type' => 'private',
             ],
-            'date' => now()->timestamp,
+            'date' => time(),
             'text' => $arguments['text'] ?? 'Test message',
             'entities' => $arguments['entities'] ?? [],
         ]);

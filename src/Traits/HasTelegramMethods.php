@@ -3,7 +3,6 @@
 namespace WeStacks\TeleBot\Traits;
 
 use GuzzleHttp\Promise\PromiseInterface;
-use Illuminate\Support\Str;
 use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\BotDescription;
 use WeStacks\TeleBot\Objects\BotName;
@@ -877,10 +876,17 @@ trait HasTelegramMethods
      */
     protected function method(string $method)
     {
-        $method = Str::studly($method);
-
-        if (class_exists($class = "WeStacks\\TeleBot\\Methods\\{$method}Method")) {
+        if (class_exists($class = "WeStacks\\TeleBot\\Methods\\{$this->studly($method)}Method")) {
             return $class;
         }
+    }
+
+    private function studly(string $value): string
+    {
+        $words = explode(' ', str_replace(['-', '_'], ' ', $value));
+
+        $studlyWords = array_map(fn ($word) => ucfirst($word), $words);
+
+        return implode($studlyWords);
     }
 }

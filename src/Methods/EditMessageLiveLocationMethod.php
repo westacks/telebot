@@ -53,7 +53,7 @@ class EditMessageLiveLocationMethod extends TelegramMethod
                 'latitude' => $arguments['latitude'],
                 'longitude' => $arguments['longitude'],
                 'horizontal_accuracy' => $arguments['horizontal_accuracy'] ?? null,
-                'live_period' => now()->timestamp,
+                'live_period' => time(),
                 'heading' => $arguments['heading'] ?? null,
                 'proximity_alert_radius' => $arguments['proximity_alert_radius'] ?? null,
             ],

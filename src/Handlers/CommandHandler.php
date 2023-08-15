@@ -31,10 +31,7 @@ abstract class CommandHandler extends UpdateHandler
      */
     final public static function getBotCommand(?string $locale = null)
     {
-        $description = rescue(
-            fn () => trans(static::$description, locale: $locale),
-            static::$description, false
-        );
+        $description = function_exists('trans') ? trans(static::$description, locale: $locale) : static::$description;
 
         return array_map(
             function (string $command) use ($description) {

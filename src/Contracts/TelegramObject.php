@@ -3,7 +3,6 @@
 namespace WeStacks\TeleBot\Contracts;
 
 use ArrayIterator;
-use Illuminate\Support\Arr;
 use IteratorAggregate;
 use JsonSerializable;
 use Traversable;
@@ -127,7 +126,7 @@ abstract class TelegramObject implements IteratorAggregate, JsonSerializable, \S
             return $this->getMany($key);
         }
 
-        return Arr::get($this->toArray(), $key, $default);
+        return $this->_get($this->toArray(), $key, $default);
     }
 
     private function getMany($keys)
@@ -139,10 +138,49 @@ abstract class TelegramObject implements IteratorAggregate, JsonSerializable, \S
                 [$key, $default] = [$default, null];
             }
 
-            $data[$key] = Arr::get($this->items, $key, $default);
+            $data[$key] = $this->_get($this->items, $key, $default);
         }
 
         return $data;
+    }
+
+    private function value($value, ...$args)
+    {
+        return $value instanceof \Closure ? $value(...$args) : $value;
+    }
+
+    private function accessible($array)
+    {
+        return is_array($array) || $array instanceof \ArrayAccess;
+    }
+
+    private function _get($array, $key, $default = null)
+    {
+        if (! $this->accessible($array)) {
+            return $this->value($array);
+        }
+
+        if (is_null($key)) {
+            return $array;
+        }
+
+        if (array_key_exists($key, $array)) {
+            return $array[$key];
+        }
+
+        if (! str_contains($key, '.')) {
+            return $array[$key] ?? $this->value($default);
+        }
+
+        foreach (explode('.', $key) as $segment) {
+            if ($this->accessible($array) && array_key_exists($segment, $array)) {
+                $array = $array[$segment];
+            } else {
+                return $this->value($default);
+            }
+        }
+
+        return $array;
     }
 
     public function getIterator(): Traversable
