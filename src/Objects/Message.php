@@ -32,6 +32,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property Document                      $document                          Optional. Message is a general file, information about the file
  * @property PhotoSize[]                   $photo                             Optional. Message is a photo, available sizes of the photo
  * @property Sticker                       $sticker                           Optional. Message is a sticker, information about the sticker
+ * @property Story                         $story                             Optional. Message is a forwarded story
  * @property Video                         $video                             Optional. Message is a video, information about the video
  * @property VideoNote                     $video_note                        Optional. Message is a video note, information about the video message
  * @property Voice                         $voice                             Optional. Message is a voice message, information about the file
@@ -107,6 +108,7 @@ class Message extends TelegramObject
         'document' => 'Document',
         'photo' => 'PhotoSize[]',
         'sticker' => 'Sticker',
+        'story' => 'Story',
         'video' => 'Video',
         'video_note' => 'VideoNote',
         'voice' => 'Voice',

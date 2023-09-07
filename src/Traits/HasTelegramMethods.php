@@ -195,6 +195,36 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
  * - __int__    `$message_thread_id`     __Required: Yes__. Unique identifier for the target message thread of the forum topi
+ * @method bool|PromiseInterface editGeneralForumTopic(array $parameters = []) Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have can_manage_topics administrator rights. Returns True on success.
+ *
+ * Parameters:
+ * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * - __int__    `$message_thread_id`     __Required: Yes__. Unique identifier for the target message thread of the forum topi
+ * @method bool|PromiseInterface editGeneralForumTopic(array $parameters = []) Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have can_manage_topics administrator rights. Returns True on success.
+ *
+ * Parameters:
+ * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * - __string__    `$name`               __Required: Yes__. New topic name, 1-128 characters
+ * @method bool|PromiseInterface closeGeneralForumTopic(array $parameters = []) Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
+ *
+ * Parameters:
+ * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * @method bool|PromiseInterface reopenGeneralForumTopic(array $parameters = []) Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically unhidden if it was hidden. Returns True on success.
+ *
+ * Parameters:
+ * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * @method bool|PromiseInterface hideGeneralForumTopic(array $parameters = []) Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically closed if it was open. Returns True on success.
+ *
+ * Parameters:
+ * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * @method bool|PromiseInterface unhideGeneralForumTopic(array $parameters = []) Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success.
+ *
+ * Parameters:
+ * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * @method bool|PromiseInterface unpinAllGeneralForumTopicMessages(array $parameters = []) Use this method to clear the list of pinned messages in a General forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
+ *
+ * Parameters:
+ * - __string__ `$chat_id`               __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
  * @method bool|PromiseInterface deleteMessage(array $parameters = []) Use this method to delete a message, including service messages, with the following limitations:
  *                                                                     - A message can only be deleted if it was sent less than 48 hours ago.
  *                                                                     - A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.
