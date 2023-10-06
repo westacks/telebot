@@ -20,6 +20,9 @@ use WeStacks\TeleBot\Contracts\TelegramMethod;
  * @property bool   $can_change_info        __Required: Optional__. Pass True, if the administrator can change chat title, photo and other settings
  * @property bool   $can_invite_users       __Required: Optional__. Pass True, if the administrator can invite new users to the chat
  * @property bool   $can_pin_messages       __Required: Optional__. Pass True, if the administrator can pin messages, supergroups only
+ * @property bool   $can_post_stories       __Required: Optional__. Pass True if the administrator can post stories in the channel; channels only
+ * @property bool   $can_edit_stories       __Required: Optional__. Pass True if the administrator can edit stories posted by other users; channels only
+ * @property bool   $can_delete_stories     __Required: Optional__. Pass True if the administrator can delete stories posted by other users; channels only
  * @property bool   $can_manage_topics      __Required: Optional__. Pass True if the user is allowed to create, rename, close, and reopen forum topics, supergroups only
  */
 class PromoteChatMemberMethod extends TelegramMethod
@@ -42,6 +45,9 @@ class PromoteChatMemberMethod extends TelegramMethod
         'can_change_info' => 'boolean',
         'can_invite_users' => 'boolean',
         'can_pin_messages' => 'boolean',
+        'can_post_stories' => 'boolean',
+        'can_edit_stories' => 'boolean',
+        'can_delete_stories' => 'boolean',
         'can_manage_topics' => 'boolean',
     ];
 

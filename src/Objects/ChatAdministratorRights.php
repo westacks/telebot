@@ -18,6 +18,9 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property bool $can_post_messages      Optional. True, if the administrator can post in the channel; channels only
  * @property bool $can_edit_messages      Optional. True, if the administrator can edit messages of other users and can pin messages; channels only
  * @property bool $can_pin_messages       Optional. True, if the user is allowed to pin messages; groups and supergroups only
+ * @property bool $can_post_stories       Optional. True, if the administrator can post stories in the channel; channels only
+ * @property bool $can_edit_stories       Optional. True, if the administrator can edit stories posted by other users; channels only
+ * @property bool $can_delete_stories     Optional. True, if the administrator can delete stories posted by other users; channels only
  * @property bool $can_manage_topics      Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; supergroups only
  */
 class ChatAdministratorRights extends TelegramObject
@@ -34,6 +37,9 @@ class ChatAdministratorRights extends TelegramObject
         'can_post_messages' => 'boolean',
         'can_edit_messages' => 'boolean',
         'can_pin_messages' => 'boolean',
+        'can_post_stories' => 'boolean',
+        'can_edit_stories' => 'boolean',
+        'can_delete_stories' => 'boolean',
         'can_manage_topics' => 'boolean',
     ];
 }
