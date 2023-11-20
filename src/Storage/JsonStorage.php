@@ -24,7 +24,7 @@ class JsonStorage implements StorageContract
         }
 
         if (empty($this->data)) {
-            return unlink($this->path);
+            return @unlink($this->path);
         }
 
         file_put_contents($this->path, json_encode($this->data));
