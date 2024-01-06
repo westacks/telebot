@@ -59,7 +59,7 @@ class Type
     {
         $value_type = gettype($object);
 
-        return  $value_type == $type ||
+        return $value_type == $type ||
                 'object' == $value_type && class_exists($type) &&
                 ($object instanceof $type || is_subclass_of($object, $type));
     }

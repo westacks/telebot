@@ -16,6 +16,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property bool            $is_forum                                  Optional. True, if the supergroup chat is a forum (has topics enabled)
  * @property ChatPhoto       $photo                                     Optional. Chat photo. Returned only in getChat.
  * @property string[]        $active_usernames                          Optional. If non-empty, the list of all active chat usernames; for private chats, supergroups and channels. Returned only in getChat.
+ * @property ReactionType[]  $available_reactions                       Optional. List of available reactions allowed in the chat. If omitted, then all emoji reactions are allowed. Returned only in getChat.
  * @property string          $emoji_status_custom_emoji_id              Optional. Custom emoji identifier of emoji status of the other party in a private chat. Returned only in getChat.
  * @property int             $emoji_status_expiration_date              Optional. Expiration date of the emoji status of the other party in a private chat in Unix time, if any. Returned only in getChat.
  * @property string          $bio                                       Optional. Bio of the other party in a private chat. Returned only in getChat.
@@ -49,6 +50,7 @@ class Chat extends TelegramObject
         'is_forum' => 'boolean',
         'photo' => 'ChatPhoto',
         'active_usernames' => 'string[]',
+        'available_reactions' => 'ReactionType[]',
         'emoji_status_custom_emoji_id' => 'string',
         'emoji_status_expiration_date' => 'integer',
         'bio' => 'string',

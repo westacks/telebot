@@ -23,7 +23,7 @@ class GetMyNameMethod extends TelegramMethod
     public function mock($arguments)
     {
         return new BotName([
-            'name' => 'Bot Name'
+            'name' => 'Bot Name',
         ]);
     }
 }

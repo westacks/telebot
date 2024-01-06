@@ -14,6 +14,7 @@ abstract class RequestInputHandler extends UpdateHandler
     protected static function storage(TeleBot $bot): StorageContract
     {
         $storage = $bot->config('storage', JsonStorage::class);
+
         return new $storage($bot);
     }
 
@@ -24,7 +25,7 @@ abstract class RequestInputHandler extends UpdateHandler
 
     public function trigger()
     {
-        return  ($this->update->message()->text ?? false) &&
+        return ($this->update->message()->text ?? false) &&
                 static::class == static::storage($this->bot)->get($this->update->user()->id);
     }
 

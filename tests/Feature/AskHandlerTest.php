@@ -110,7 +110,6 @@ class AskHandlerTest extends TestCase
             ],
         ]);
 
-
         $this->expectException(TypeError::class);
         $bot->handleUpdate($update);
     }

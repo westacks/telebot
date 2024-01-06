@@ -8,7 +8,9 @@ use WeStacks\TeleBot\TeleBot;
 class JsonStorage implements StorageContract
 {
     protected string $path;
+
     protected array $data;
+
     protected bool $changed = false;
 
     public function __construct(TeleBot $bot)
@@ -19,7 +21,7 @@ class JsonStorage implements StorageContract
 
     public function __destruct()
     {
-        if (!$this->changed) {
+        if (! $this->changed) {
             return;
         }
 
@@ -38,12 +40,14 @@ class JsonStorage implements StorageContract
     public function set(string $key, $value): bool
     {
         $this->data[$key] = $value;
+
         return $this->changed = true;
     }
 
     public function delete(string $key): bool
     {
         unset($this->data[$key]);
+
         return $this->changed = true;
     }
 }

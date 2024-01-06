@@ -17,6 +17,7 @@ use WeStacks\TeleBot\Objects\GameHighScore;
 use WeStacks\TeleBot\Objects\MenuButton;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageId;
+use WeStacks\TeleBot\Objects\ReactionType;
 use WeStacks\TeleBot\Objects\SentWebAppMessage;
 use WeStacks\TeleBot\Objects\Sticker;
 use WeStacks\TeleBot\Objects\StickerSet;
@@ -493,6 +494,14 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$chat_id`           __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_    `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread; supergroups only
  * - _string_ `$action`            __Required: Yes__. Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, choose_sticker for stickers, find_location for location data, record_video_note or upload_video_note for video notes.
+ * @method bool|PromiseInterface setMessageReaction(array $parameters = []) Use this method to change the chosen reactions on a message. Service messages can't be reacted to. Automatically forwarded messages from a channel to its discussion group have the same available reactions as messages in the channel. Returns True on success.
+ *
+ * Parameters:
+ * - _string_           `$chat_id`    __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_              `$message_id` __Required: Yes__. Identifier of the target message. If the message belongs to a media group, the reaction is set to the first non-deleted message in the group instead.
+ * - _ReactionType[]_   `$reaction`   __Required: Optional__. New list of reaction types to set on the message. Currently, as non-premium users, bots can set up to one reaction per message. A custom emoji reaction can be used if it is either already present on the message or explicitly allowed by chat administrators.
+ * - _bool_             `$is_big`     __Required: Optional__. Pass True to set the reaction with a big animation
+
  * @method Message|PromiseInterface sendContact(array $parameters = []) Use this method to send phone contacts. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
  * Parameters:

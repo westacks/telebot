@@ -29,7 +29,7 @@ abstract class CommandHandler extends UpdateHandler
      *
      * @return BotCommand[]
      */
-    final public static function getBotCommand(?string $locale = null)
+    final public static function getBotCommand(string $locale = null)
     {
         $description = function_exists('trans') ? trans(static::$description, locale: $locale) : static::$description;
 

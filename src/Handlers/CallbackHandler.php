@@ -16,7 +16,7 @@ abstract class CallbackHandler extends UpdateHandler
             preg_match($this->match, $this->update->callback_query->data);
     }
 
-    protected function arguments(?int $index = null)
+    protected function arguments(int $index = null)
     {
         if (! @preg_match($this->match, $this->update->callback_query->data, $matches)) {
             return [];
