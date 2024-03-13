@@ -107,6 +107,16 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_             `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message
  * - _bool_            `$allow_sending_without_reply` __Required: Optional__. Pass True, if the message should be sent even if the specified replied-to message is not found
  * - _Keyboard_        `$reply_markup`                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+ * @method MessageId|PromiseInterface copyMessages(array $parameters = []) Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an array of MessageId of the sent messages is returned.
+ *
+ * Parameters:
+ * - _string_          `$chat_id`                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_             `$message_thread_id`           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _string_          `$from_chat_id`                __Required: Yes__. Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
+ * - _int[]_           `$message_ids`                 __Required: Yes__. A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to copy. The identifiers must be specified in a strictly increasing order.
+ * - _bool_            `$disable_notification`        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
+ * - _bool_            `$protect_content`             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
+ * - _bool_            `$remove_caption`              __Required: Optional__. Pass True to copy the messages without their captions
  * @method ChatInviteLink|PromiseInterface createChatInviteLink(array $parameters = []) Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method [revokeChatInviteLink](https://core.telegram.org/bots/api#revokechatinvitelink). Returns the new invite link as [ChatInviteLink](https://core.telegram.org/bots/api#chatinvitelink) object.
  *
  * Parameters:
@@ -240,6 +250,11 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _int_ `$chat_id`    __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_id` __Required: Yes__. Identifier of the message to delete
+ * @method bool|PromiseInterface deleteMessages(array $parameters = []) Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success.
+ *
+ * Parameters:
+ * - _int_ `$chat_id`     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_ `$message_ids` __Required: Yes__. A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted
  * @method bool|PromiseInterface deleteMyCommands(array $parameters = []) Use this method to delete the list of the bot's commands for the given scope and user language. After deletion, [higher level commands](https://core.telegram.org/bots/api#determining-list-of-commands) will be shown to affected users. Returns True on success.
  *
  * Parameters:
@@ -323,6 +338,15 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_   `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_   `$protect_content`      __Required: Optional__. Protects the contents of the forwarded message from forwarding and saving
  * - _int_    `$message_id`           __Required: Yes__. Message identifier in the chat specified in from_chat_id
+ * @method Message|PromiseInterface forwardMessages(array $parameters = []) Use this method to forward multiple messages of any kind. If some of the specified messages can't be found or forwarded, they are skipped. Service messages and messages with protected content can't be forwarded. Album grouping is kept for forwarded messages. On success, an array of MessageId of the sent messages is returned.
+ *
+ * Parameters:
+ * - _string_ `$chat_id`              __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_    `$message_thread_id`    __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _string_ `$from_chat_id`         __Required: Yes__. Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
+ * - _bool_   `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
+ * - _bool_   `$protect_content`      __Required: Optional__. Protects the contents of the forwarded message from forwarding and saving
+ * - _int_    `$message_ids`          __Required: Yes__. A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to forward. The identifiers must be specified in a strictly increasing order.
  * @method ChatMember[]|PromiseInterface getChatAdministrators(array $parameters = []) Use this method to get a list of administrators in a chat. On success, returns an Array of [ChatMember](https://core.telegram.org/bots/api#chatmember) objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.
  *
  * Parameters:
