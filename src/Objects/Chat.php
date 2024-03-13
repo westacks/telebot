@@ -17,8 +17,12 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property ChatPhoto       $photo                                     Optional. Chat photo. Returned only in getChat.
  * @property string[]        $active_usernames                          Optional. If non-empty, the list of all active chat usernames; for private chats, supergroups and channels. Returned only in getChat.
  * @property ReactionType[]  $available_reactions                       Optional. List of available reactions allowed in the chat. If omitted, then all emoji reactions are allowed. Returned only in getChat.
- * @property string          $emoji_status_custom_emoji_id              Optional. Custom emoji identifier of emoji status of the other party in a private chat. Returned only in getChat.
- * @property int             $emoji_status_expiration_date              Optional. Expiration date of the emoji status of the other party in a private chat in Unix time, if any. Returned only in getChat.
+ * @property int             $accent_color_id                           Optional. Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header, and link preview. See accent colors for more details. Returned only in getChat. Always returned in getChat.
+ * @property string          $background_custom_emoji_id                Optional. Custom emoji identifier of emoji chosen by the chat for the reply header and link preview background. Returned only in getChat.
+ * @property int             $profile_accent_color_id                   Optional. Identifier of the accent color for the chat's profile background. See profile accent colors for more details. Returned only in getChat.
+ * @property string          $profile_background_custom_emoji_id        Optional. Custom emoji identifier of the emoji chosen by the chat for its profile background. Returned only in getChat.
+ * @property string          $emoji_status_custom_emoji_id              Optional. Custom emoji identifier of the emoji status of the chat or the other party in a private chat. Returned only in getChat.
+ * @property int             $emoji_status_expiration_date              Optional. Expiration date of the emoji status of the chat or the other party in a private chat, in Unix time, if any. Returned only in getChat.
  * @property string          $bio                                       Optional. Bio of the other party in a private chat. Returned only in getChat.
  * @property bool            $has_private_forwards                      Optional. True, if privacy settings of the other party in the private chat allows to use tg://user?id= links only in chats with the user. Returned only in getChat.
  * @property bool            $has_restricted_voice_and_video_messages   Optional. True, if the privacy settings of the other party restrict sending voice and video note messages in the private chat. Returned only in getChat.
@@ -33,6 +37,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property bool            $has_aggressive_anti_spam_enabled          Optional. True, if aggressive anti-spam checks are enabled in the supergroup. The field is only available to chat administrators. Returned only in getChat.
  * @property bool            $has_hidden_members                        Optional. True, if non-administrators can only get the list of bots and administrators in the chat. Returned only in getChat.
  * @property bool            $has_protected_content                     Optional. True, if messages from the chat can't be forwarded to other chats. Returned only in getChat.
+ * @property bool            $has_visible_history                       Optional. True, if new chat members will have access to old messages; available only to chat administrators. Returned only in getChat.
  * @property string          $sticker_set_name                          Optional. For supergroups, name of group sticker set. Returned only in getChat.
  * @property bool            $can_set_sticker_set                       Optional. True, if the bot can change the group sticker set. Returned only in getChat.
  * @property int             $linked_chat_id                            Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier. Returned only in getChat.
@@ -51,6 +56,10 @@ class Chat extends TelegramObject
         'photo' => 'ChatPhoto',
         'active_usernames' => 'string[]',
         'available_reactions' => 'ReactionType[]',
+        'accent_color_id' => 'integer',
+        'background_custom_emoji_id' => 'string',
+        'profile_accent_color_id' => 'integer',
+        'profile_background_custom_emoji_id' => 'string',
         'emoji_status_custom_emoji_id' => 'string',
         'emoji_status_expiration_date' => 'integer',
         'bio' => 'string',
@@ -67,6 +76,7 @@ class Chat extends TelegramObject
         'has_aggressive_anti_spam_enabled' => 'boolean',
         'has_hidden_members' => 'boolean',
         'has_protected_content' => 'boolean',
+        'has_visible_history' => 'boolean',
         'sticker_set_name' => 'string',
         'can_set_sticker_set' => 'boolean',
         'linked_chat_id' => 'integer',

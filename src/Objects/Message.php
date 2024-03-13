@@ -12,12 +12,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property Chat                          $sender_chat                       Optional. Sender of the message, sent on behalf of a chat. For example, the channel itself for channel posts, the supergroup itself for messages from anonymous group administrators, the linked channel for messages automatically forwarded to the discussion group. For backward compatibility, the field from contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
  * @property int                           $date                              Date the message was sent in Unix time
  * @property Chat                          $chat                              Conversation the message belongs to
- * @property User                          $forward_from                      Optional. For forwarded messages, sender of the original message
- * @property Chat                          $forward_from_chat                 Optional. For messages forwarded from channels or from anonymous administrators, information about the original sender chat
- * @property int                           $forward_from_message_id           Optional. For messages forwarded from channels, identifier of the original message in the channel
- * @property string                        $forward_signature                 Optional. For forwarded messages that were originally sent in channels or by an anonymous chat administrator, signature of the message sender if present
- * @property string                        $forward_sender_name               Optional. Sender's name for messages forwarded from users who disallow adding a link to their account in forwarded messages
- * @property int                           $forward_date                      Optional. For forwarded messages, date the original message was sent in Unix time
+ * @property MessageOrigin                 $forward_origin                    Optional. Information about the original message for forwarded messages
  * @property bool                          $is_automatic_forward              Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion group
  * @property Message                       $reply_to_message                  Optional. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
  * @property ExternalReplyInfo             $external_reply                    Optional. Information about the message that is being replied to, which may come from another chat or forum topic
@@ -94,12 +89,7 @@ class Message extends TelegramObject
         'sender_chat' => 'Chat',
         'date' => 'integer',
         'chat' => 'Chat',
-        'forward_from' => 'User',
-        'forward_from_chat' => 'Chat',
-        'forward_from_message_id' => 'integer',
-        'forward_signature' => 'string',
-        'forward_sender_name' => 'string',
-        'forward_date' => 'integer',
+        'forward_origin' => 'MessageOrigin',
         'is_topic_message' => 'boolean',
         'is_automatic_forward' => 'boolean',
         'reply_to_message' => 'Message',
