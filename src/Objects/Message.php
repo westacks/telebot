@@ -10,6 +10,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property int                           $message_id                        Unique message identifier inside this chat
  * @property User                          $from                              Optional. Sender of the message; empty for messages sent to channels. For backward compatibility, the field contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
  * @property Chat                          $sender_chat                       Optional. Sender of the message, sent on behalf of a chat. For example, the channel itself for channel posts, the supergroup itself for messages from anonymous group administrators, the linked channel for messages automatically forwarded to the discussion group. For backward compatibility, the field from contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
+ * @property int                           $sender_boost_count                Optional. If the sender of the message boosted the chat, the number of boosts added by the user
  * @property int                           $date                              Date the message was sent in Unix time
  * @property Chat                          $chat                              Conversation the message belongs to
  * @property MessageOrigin                 $forward_origin                    Optional. Information about the original message for forwarded messages
@@ -17,6 +18,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property Message                       $reply_to_message                  Optional. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
  * @property ExternalReplyInfo             $external_reply                    Optional. Information about the message that is being replied to, which may come from another chat or forum topic
  * @property TextQuote                     $quote                             Optional. For replies that quote part of the original message, the quoted part of the message
+ * @property Story                         $reply_to_story                    Optional. For replies to a story, the original story
  * @property User                          $via_bot                           Optional. Bot through which the message was sent
  * @property int                           $edit_date                         Optional. Date the message was last edited in Unix time
  * @property bool                          $has_protected_content             Optional. True, if the message can't be forwarded
@@ -87,6 +89,7 @@ class Message extends TelegramObject
         'message_thread_id' => 'integer',
         'from' => 'User',
         'sender_chat' => 'Chat',
+        'sender_boost_count' => 'integer',
         'date' => 'integer',
         'chat' => 'Chat',
         'forward_origin' => 'MessageOrigin',
@@ -95,6 +98,7 @@ class Message extends TelegramObject
         'reply_to_message' => 'Message',
         'external_reply' => 'ExternalReplyInfo',
         'quote' => 'TextQuote',
+        'reply_to_story' => 'Story',
         'via_bot' => 'User',
         'edit_date' => 'integer',
         'has_protected_content' => 'boolean',
@@ -141,6 +145,7 @@ class Message extends TelegramObject
         'write_access_allowed' => 'WriteAccessAllowed',
         'passport_data' => 'PassportData',
         'proximity_alert_triggered' => 'ProximityAlertTriggered',
+        'boost_added' => 'ChatBoostAdded',
         'forum_topic_created' => 'ForumTopicCreated',
         'forum_topic_edited' => 'ForumTopicEdited',
         'forum_topic_closed' => 'ForumTopicClosed',

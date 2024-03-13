@@ -33,6 +33,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property Message         $pinned_message                            Optional. The most recent pinned message (by sending date). Returned only in getChat.
  * @property ChatPermissions $permissions                               Optional. Default chat member permissions, for groups and supergroups. Returned only in getChat.
  * @property int             $slow_mode_delay                           Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unpriviledged user; in seconds. Returned only in getChat.
+ * @property int             $unrestrict_boost_count                    Optional. For supergroups, the minimum number of boosts that a non-administrator user needs to add in order to ignore slow mode and chat permissions. Returned only in getChat.
  * @property int             $message_auto_delete_time                  Optional. The time after which all messages sent to the chat will be automatically deleted; in seconds. Returned only in getChat.
  * @property bool            $has_aggressive_anti_spam_enabled          Optional. True, if aggressive anti-spam checks are enabled in the supergroup. The field is only available to chat administrators. Returned only in getChat.
  * @property bool            $has_hidden_members                        Optional. True, if non-administrators can only get the list of bots and administrators in the chat. Returned only in getChat.
@@ -40,6 +41,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property bool            $has_visible_history                       Optional. True, if new chat members will have access to old messages; available only to chat administrators. Returned only in getChat.
  * @property string          $sticker_set_name                          Optional. For supergroups, name of group sticker set. Returned only in getChat.
  * @property bool            $can_set_sticker_set                       Optional. True, if the bot can change the group sticker set. Returned only in getChat.
+ * @property string          $custom_emoji_sticker_set_name             Optional. For supergroups, the name of the group's custom emoji sticker set. Custom emoji from this set can be used by all users and bots in the group. Returned only in getChat.
  * @property int             $linked_chat_id                            Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier. Returned only in getChat.
  * @property ChatLocation    $location                                  Optional. For supergroups, the location to which the supergroup is connected. Returned only in getChat.
  */
@@ -72,6 +74,7 @@ class Chat extends TelegramObject
         'pinned_message' => 'Message',
         'permissions' => 'ChatPermissions',
         'slow_mode_delay' => 'integer',
+        'unrestrict_boost_count' => 'integer',
         'message_auto_delete_time' => 'integer',
         'has_aggressive_anti_spam_enabled' => 'boolean',
         'has_hidden_members' => 'boolean',
@@ -79,6 +82,7 @@ class Chat extends TelegramObject
         'has_visible_history' => 'boolean',
         'sticker_set_name' => 'string',
         'can_set_sticker_set' => 'boolean',
+        'custom_emoji_sticker_set_name' => 'string',
         'linked_chat_id' => 'integer',
         'location' => 'ChatLocation',
     ];

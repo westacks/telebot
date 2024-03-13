@@ -5,9 +5,15 @@ namespace WeStacks\TeleBot\Objects;
 use WeStacks\TeleBot\Contracts\TelegramObject;
 
 /**
- * This object represents a message about a forwarded story in the chat. Currently holds no information.
+ * This object represents a story.
+ *
+ * @property Chat $chat Chat that posted the story
+ * @property int  $id   Unique identifier for the story in the chat
  */
 class Story extends TelegramObject
 {
-    protected $attributes = [];
+    protected $attributes = [
+        'chat' => 'Chat',
+        'id'   => 'integer',
+    ];
 }
