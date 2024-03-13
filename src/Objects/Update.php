@@ -25,6 +25,8 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property ChatMemberUpdated              $my_chat_member         Optional. The bot's chat member status was updated in a chat. For private chats, this update is received only when the bot is blocked or unblocked by the user.
  * @property ChatMemberUpdated              $chat_member            Optional. A chat member's status was updated in a chat. The bot must be an administrator in the chat and must explicitly specify “chat_member” in the list of allowed_updates to receive these updates.
  * @property ChatJoinRequest                $chat_join_request      Optional. A request to join the chat has been sent. The bot must have the can_invite_users administrator right in the chat to receive these updates.
+ * @property ChatBoostUpdated               $chat_boost             Optional. A chat boost was added or changed. The bot must be an administrator in the chat to receive these updates.
+ * @property ChatBoostRemoved               $removed_chat_boost     Optional. A boost was removed from a chat. The bot must be an administrator in the chat to receive these updates.
  */
 class Update extends TelegramObject
 {
@@ -46,6 +48,8 @@ class Update extends TelegramObject
         'my_chat_member' => 'ChatMemberUpdated',
         'chat_member' => 'ChatMemberUpdated',
         'chat_join_request' => 'ChatJoinRequest',
+        'chat_boost' => 'ChatBoostUpdated',
+        'removed_chat_boost' => 'ChatBoostRemoved',
     ];
 
     /**
@@ -98,6 +102,8 @@ class Update extends TelegramObject
                 $this->chat_join_request->chat ??
                 $this->message_reaction->chat ??
                 $this->message_reaction_count->chat ??
+                $this->chat_boost->chat ??
+                $this->removed_chat_boost->chat ??
                 null;
     }
 

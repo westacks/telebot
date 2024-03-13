@@ -45,6 +45,11 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_   `$show_alert`        __Required: Optional__. If True, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false.
  * - _string_ `$url`               __Required: Optional__. URL that will be opened by the user's client. If you have created a Game and accepted the conditions via @Botfather, specify the URL that opens your game — note that this will only work if the query comes from a callback_game button.Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.
  * - _int_    `$cache_time`        __Required: Optional__. The maximum amount of time in seconds that the result of the callback query may be cached client-side. Telegram apps will support caching starting in version 3.14. Defaults to 0.
+ * @method UserChatBoosts|PromiseInterface getUserChatBoosts(array $parameters = []) Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat. Returns a UserChatBoosts object.
+ *
+ * Parameters:
+ * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the chat or username of the channel (in the format @channelusername)
+ * - _int_    `$user_id` __Required: Yes__. Unique identifier of the target user
  * @method bool|PromiseInterface answerInlineQuery(array $parameters = []) Use this method to send answers to an inline query. On success, True is returned.
  *
  * No more than 50 results per query are allowed.
