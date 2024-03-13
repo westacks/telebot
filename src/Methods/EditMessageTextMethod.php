@@ -6,6 +6,7 @@ use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageEntity;
+use WeStacks\TeleBot\Objects\LinkPreviewOptions;
 
 /**
  * Use this method to edit text and [game](https://core.telegram.org/bots/api#games) messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned.
@@ -16,7 +17,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * @property string               $text                     __Required: Yes__. New text of the message, 1-4096 characters after entities parsing
  * @property string               $parse_mode               __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
  * @property MessageEntity[]      $entities                 __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
- * @property bool                 $disable_web_page_preview __Required: Optional__. Disables link previews for links in this message
+ * @property LinkPreviewOptions   $link_preview_options     __Required: Optional__. Link preview generation options for the message
  * @property InlineKeyboardMarkup $reply_markup             __Required: Optional__. A JSON-serialized object for an inline keyboard.
  */
 class EditMessageTextMethod extends TelegramMethod
@@ -32,7 +33,7 @@ class EditMessageTextMethod extends TelegramMethod
         'text' => 'string',
         'parse_mode' => 'string',
         'entities' => 'MessageEntity[]',
-        'disable_web_page_preview' => 'boolean',
+        'link_preview_options' => 'LinkPreviewOptions',
         'reply_markup' => 'InlineKeyboardMarkup',
     ];
 

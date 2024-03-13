@@ -308,7 +308,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_               `$text`                     __Required: Yes__. New text of the message, 1-4096 characters after entities parsing
  * - _string_               `$parse_mode`               __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
  * - _MessageEntity[]_      `$entities`                 __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
- * - _bool_                 `$disable_web_page_preview` __Required: Optional__. Disables link previews for links in this message
+ * - _LinkPreviewOptions_   `$link_preview_options`     __Required: Optional__. Link preview generation options for the message
  * - _InlineKeyboardMarkup_ `$reply_markup`             __Required: Optional__. A JSON-serialized object for an inline keyboard.
  * @method string|PromiseInterface exportChatInviteLink(array $parameters = []) Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the new invite link as String on success.
  *
@@ -619,7 +619,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_          `$text`                        __Required: Yes__. Text of the message to be sent, 1-4096 characters after entities parsing
  * - _string_          `$parse_mode`                  __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
  * - _MessageEntity[]_ `$entities`                    __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
- * - _bool_            `$disable_web_page_preview`    __Required: Optional__. Disables link previews for links in this message
+ * - _LinkPreviewOptions_   `$link_preview_options`     __Required: Optional__. Link preview generation options for the message
  * - _bool_            `$disable_notification`        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_            `$protect_content`             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _int_             `$reply_to_message_id`         __Required: Optional__. If the message is a reply, ID of the original message

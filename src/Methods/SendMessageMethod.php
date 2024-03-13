@@ -7,6 +7,7 @@ use WeStacks\TeleBot\Objects\Keyboard;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageEntity;
 use WeStacks\TeleBot\Objects\ReplyParameters;
+use WeStacks\TeleBot\Objects\LinkPreviewOptions;
 
 /**
  * Use this method to send text messages. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
@@ -16,7 +17,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property string          $text                        __Required: Yes__. Text of the message to be sent, 1-4096 characters after entities parsing
  * @property string          $parse_mode                  __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
  * @property MessageEntity[] $entities                    __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
- * @property bool            $disable_web_page_preview    __Required: Optional__. Disables link previews for links in this message
+ * @property LinkPreviewOptions   $link_preview_options     __Required: Optional__. Link preview generation options for the message
  * @property bool            $disable_notification        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * @property bool            $protect_content             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * @property ReplyParameters $reply_parameters            __Required: Optional__. Description of the message to reply to
@@ -34,7 +35,7 @@ class SendMessageMethod extends TelegramMethod
         'text' => 'string',
         'parse_mode' => 'string',
         'entities' => 'MessageEntity[]',
-        'disable_web_page_preview' => 'boolean',
+        'link_preview_options' => 'LinkPreviewOptions',
         'disable_notification' => 'boolean',
         'protect_content' => 'boolean',
         'reply_parameters' => 'ReplyParameters',

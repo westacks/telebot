@@ -29,6 +29,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property string                        $author_signature                  Optional. Signature of the post author for messages in channels, or the custom title of an anonymous group administrator
  * @property string                        $text                              Optional. For text messages, the actual UTF-8 text of the message, 0-4096 characters
  * @property MessageEntity[]               $entities                          Optional. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text
+ * @property LinkPreviewOptions            $link_preview_options              Optional. Options used for link preview generation for the message, if it is a text message and link preview options were changed
  * @property Animation                     $animation                         Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set
  * @property Audio                         $audio                             Optional. Message is an audio file, information about the file
  * @property Document                      $document                          Optional. Message is a general file, information about the file
@@ -107,6 +108,7 @@ class Message extends TelegramObject
         'author_signature' => 'string',
         'text' => 'string',
         'entities' => 'MessageEntity[]',
+        'link_preview_options' => 'LinkPreviewOptions',
         'animation' => 'Animation',
         'audio' => 'Audio',
         'document' => 'Document',
