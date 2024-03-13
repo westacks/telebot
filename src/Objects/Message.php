@@ -20,6 +20,8 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property int                           $forward_date                      Optional. For forwarded messages, date the original message was sent in Unix time
  * @property bool                          $is_automatic_forward              Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion group
  * @property Message                       $reply_to_message                  Optional. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
+ * @property ExternalReplyInfo             $external_reply                    Optional. Information about the message that is being replied to, which may come from another chat or forum topic
+ * @property TextQuote                     $quote                             Optional. For replies that quote part of the original message, the quoted part of the message
  * @property User                          $via_bot                           Optional. Bot through which the message was sent
  * @property int                           $edit_date                         Optional. Date the message was last edited in Unix time
  * @property bool                          $has_protected_content             Optional. True, if the message can't be forwarded
@@ -96,6 +98,8 @@ class Message extends TelegramObject
         'is_topic_message' => 'boolean',
         'is_automatic_forward' => 'boolean',
         'reply_to_message' => 'Message',
+        'external_reply' => 'ExternalReplyInfo',
+        'quote' => 'TextQuote',
         'via_bot' => 'User',
         'edit_date' => 'integer',
         'has_protected_content' => 'boolean',
