@@ -62,7 +62,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property Message                       $pinned_message                    Optional. Specified message was pinned. Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply.
  * @property Invoice                       $invoice                           Optional. Message is an invoice for a payment, information about the invoice. More about payments »
  * @property SuccessfulPayment             $successful_payment                Optional. Message is a service message about a successful payment, information about the payment. More about payments »
- * @property UserShared                    $user_shared                	      Optional. Service message: a user was shared with the bot
+ * @property UsersShared                   $users_shared               	      Optional. Service message: a user was shared with the bot
  * @property ChatShared                    $chat_shared                       Optional. Service message: a chat was shared with the bot
  * @property string                        $connected_website                 Optional. The domain name of the website on which the user has logged in. More about Telegram Login »
  * @property WriteAccessAllowed            $write_access_allowed              Optional. Service message: the user allowed the bot added to the attachment menu to write messages
@@ -141,7 +141,7 @@ class Message extends TelegramObject
         'pinned_message' => 'Message',
         'invoice' => 'Invoice',
         'successful_payment' => 'SuccessfulPayment',
-        'user_shared' => 'UserShared',
+        'users_shared' => 'UsersShared',
         'chat_shared' => 'ChatShared',
         'connected_website' => 'string',
         'write_access_allowed' => 'WriteAccessAllowed',
