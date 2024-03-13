@@ -74,6 +74,10 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property ForumTopicReopened            $forum_topic_reopened              Optional. Service message: forum topic reopened
  * @property GeneralForumTopicHidden       $general_forum_topic_hidden        Optional. Service message: the 'General' forum topic hidden
  * @property GeneralForumTopicUnhidden     $general_forum_topic_unhidden      Optional. Service message: the 'General' forum topic unhidden
+ * @property GiveawayCreated               $giveaway_created                  Optional. Service message: a scheduled giveaway was created
+ * @property Giveaway                      $giveaway                          Optional. The message is a scheduled giveaway message
+ * @property GiveawayWinners               $giveaway_winners                  Optional. A giveaway with public winners was completed
+ * @property GiveawayCompleted             $giveaway_completed                Optional. Service message: a giveaway without public winners was completed
  * @property VideoChatScheduled            $video_chat_scheduled              Optional. Service message: video chat scheduled
  * @property VideoChatStarted              $video_chat_started                Optional. Service message: video chat started
  * @property VideoChatEnded                $video_chat_ended                  Optional. Service message: video chat ended
@@ -153,6 +157,10 @@ class Message extends TelegramObject
         'forum_topic_reopened' => 'ForumTopicReopened',
         'general_forum_topic_hidden' => 'GeneralForumTopicHidden',
         'general_forum_topic_unhidden' => 'GeneralForumTopicUnhidden',
+        'giveaway_created' => 'GiveawayCreated',
+        'giveaway' => 'Giveaway',
+        'giveaway_winners' => 'GiveawayWinners',
+        'giveaway_completed' => 'GiveawayCompleted',
         'video_chat_scheduled' => 'VideoChatScheduled',
         'video_chat_started' => 'VideoChatStarted',
         'video_chat_ended' => 'VideoChatEnded',
