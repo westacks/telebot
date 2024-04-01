@@ -11,9 +11,10 @@ use WeStacks\TeleBot\Contracts\TelegramMethod;
  *
  * We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.
  *
- * @property string $chat_id           __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * @property string $message_thread_id __Required: Optional__. Unique identifier for the target message thread; supergroups only
- * @property string $action            __Required: Yes__. Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, choose_sticker for stickers, find_location for location data, record_video_note or upload_video_note for video notes.
+ * @property string $business_connection_id __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
+ * @property string $chat_id                __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property string $message_thread_id      __Required: Optional__. Unique identifier for the target message thread; supergroups only
+ * @property string $action                 __Required: Yes__. Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, choose_sticker for stickers, find_location for location data, record_video_note or upload_video_note for video notes.
  */
 class SendChatActionMethod extends TelegramMethod
 {
@@ -22,6 +23,7 @@ class SendChatActionMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
+        'bussiness_connection_id' => 'string',
         'chat_id' => 'string',
         'message_thread_id' => 'integer',
         'action' => 'string',

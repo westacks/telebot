@@ -12,7 +12,6 @@ use WeStacks\TeleBot\Objects\InputSticker;
  * @property string         $name             __Required: Yes__. Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in “_by_”.  is case insensitive. 1-64 characters.
  * @property string         $title            __Required: Yes__. Sticker set title, 1-64 characters
  * @property InputSticker[] $stickers         __Required: Yes__. A JSON-serialized list of 1-50 initial stickers to be added to the sticker set
- * @property string         $sticker_format   __Required: Yes__. Format of stickers in the set, must be one of “static”, “animated”, “video”
  * @property string         $sticker_type     __Required: Optional__. Type of stickers in the set, pass “regular”, “mask”, or “custom_emoji”. By default, a regular sticker set is created.
  * @property true           $needs_repainting __Required: Optional__. Pass True if stickers in the sticker set must be repainted to the color of text when used in messages, the accent color if used as emoji status, white on chat photos, or another appropriate color based on context; for custom emoji sticker sets only
  */
@@ -27,7 +26,6 @@ class CreateNewStickerSetMethod extends TelegramMethod
         'name' => 'string',
         'title' => 'string',
         'stickers' => 'InputSticker[]',
-        'sticker_format' => 'string',
         'sticker_type' => 'string',
         'needs_repainting' => 'boolean',
     ];
