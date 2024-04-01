@@ -11,7 +11,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
 /**
  * Use this method to send a native poll. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
- * @property string          $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property string          $business_connection_id      __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent* @property string          $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * @property int             $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property string          $question                    __Required: Yes__. Poll question, 1-300 characters
  * @property string[]        $options                     __Required: Yes__. A JSON-serialized list of answer options, 2-10 strings 1-100 characters each
@@ -37,6 +37,7 @@ class SendPollMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
+        'bussiness_connection_id' => 'string',
         'chat_id' => 'string',
         'message_thread_id' => 'integer',
         'question' => 'string',

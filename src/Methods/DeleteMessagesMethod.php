@@ -18,7 +18,7 @@ class DeleteMessagesMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id' => 'string',
-        'message_id' => 'integer[]',
+        'message_ids' => 'integer[]',
     ];
 
     public function mock($arguments)

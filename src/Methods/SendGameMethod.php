@@ -10,7 +10,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
 /**
  * Use this method to send a game. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.
  *
- * @property int                  $chat_id                     __Required: Yes__. Unique identifier for the target chat
+ * @property string               $business_connection_id      __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent* @property int                  $chat_id                     __Required: Yes__. Unique identifier for the target chat
  * @property int                  $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property string               $game_short_name             __Required: Yes__. Short name of the game, serves as the unique identifier for the game. Set up your games via Botfather.
  * @property bool                 $disable_notification        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
@@ -25,6 +25,7 @@ class SendGameMethod extends TelegramMethod
     protected string $expect = 'Message';
 
     protected array $parameters = [
+        'bussiness_connection_id' => 'string',
         'chat_id' => 'integer',
         'message_thread_id' => 'integer',
         'game_short_name' => 'string',

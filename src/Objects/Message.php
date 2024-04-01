@@ -11,7 +11,9 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property User                          $from                              Optional. Sender of the message; empty for messages sent to channels. For backward compatibility, the field contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
  * @property Chat                          $sender_chat                       Optional. Sender of the message, sent on behalf of a chat. For example, the channel itself for channel posts, the supergroup itself for messages from anonymous group administrators, the linked channel for messages automatically forwarded to the discussion group. For backward compatibility, the field from contains a fake sender user in non-channel chats, if the message was sent on behalf of a chat.
  * @property int                           $sender_boost_count                Optional. If the sender of the message boosted the chat, the number of boosts added by the user
+ * @property User                          $sender_business_bot               Optional. The bot that actually sent the message on behalf of the business account. Available only for outgoing messages sent on behalf of the connected business account.
  * @property int                           $date                              Date the message was sent in Unix time
+ * @property string                        $business_connection_id            Optional. Unique identifier of the business connection from which the message was received. If non-empty, the message belongs to a chat of the corresponding business account that is independent from any potential bot chat which might share the same identifier.
  * @property Chat                          $chat                              Conversation the message belongs to
  * @property MessageOrigin                 $forward_origin                    Optional. Information about the original message for forwarded messages
  * @property bool                          $is_automatic_forward              Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion group
@@ -22,6 +24,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property User                          $via_bot                           Optional. Bot through which the message was sent
  * @property int                           $edit_date                         Optional. Date the message was last edited in Unix time
  * @property bool                          $has_protected_content             Optional. True, if the message can't be forwarded
+ * @property bool                          $is_from_offline                   Optional. True, if the message was sent by an implicit action, for example, as an away or a greeting business message, or as a scheduled message
  * @property string                        $media_group_id                    Optional. The unique identifier of a media message group this message belongs to
  * @property string                        $author_signature                  Optional. Signature of the post author for messages in channels, or the custom title of an anonymous group administrator
  * @property string                        $text                              Optional. For text messages, the actual UTF-8 text of the message, 0-4096 characters
@@ -90,7 +93,9 @@ class Message extends TelegramObject
         'from' => 'User',
         'sender_chat' => 'Chat',
         'sender_boost_count' => 'integer',
+        'sender_business_bot' => 'User',
         'date' => 'integer',
+        'business_connection_id' => 'string',
         'chat' => 'Chat',
         'forward_origin' => 'MessageOrigin',
         'is_topic_message' => 'boolean',
@@ -102,6 +107,7 @@ class Message extends TelegramObject
         'via_bot' => 'User',
         'edit_date' => 'integer',
         'has_protected_content' => 'boolean',
+        'is_from_offline' => 'boolean',
         'media_group_id' => 'string',
         'author_signature' => 'string',
         'text' => 'string',

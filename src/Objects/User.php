@@ -18,6 +18,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property bool   $can_join_groups             Optional. True, if the bot can be invited to groups. Returned only in getMe.
  * @property bool   $can_read_all_group_messages Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.
  * @property bool   $supports_inline_queries     Optional. True, if the bot supports inline queries. Returned only in getMe.
+ * @property bool   $can_connect_to_business     Optional. True, if the bot can be connected to a Telegram Business account to receive its messages. Returned only in getMe.
  */
 class User extends TelegramObject
 {
@@ -33,5 +34,6 @@ class User extends TelegramObject
         'can_join_groups' => 'boolean',
         'can_read_all_group_messages' => 'boolean',
         'supports_inline_queries' => 'boolean',
+        'can_connect_to_business' => 'boolean',
     ];
 }
