@@ -4,10 +4,10 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\Keyboard;
+use WeStacks\TeleBot\Objects\LinkPreviewOptions;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageEntity;
 use WeStacks\TeleBot\Objects\ReplyParameters;
-use WeStacks\TeleBot\Objects\LinkPreviewOptions;
 
 /**
  * Use this method to send text messages. On success, the sent [Message](https://core.telegram.org/bots/api#message) is returned.

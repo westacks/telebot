@@ -7,8 +7,8 @@ use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\BotDescription;
 use WeStacks\TeleBot\Objects\BotName;
 use WeStacks\TeleBot\Objects\BotShortDescription;
-use WeStacks\TeleBot\Objects\Chat;
 use WeStacks\TeleBot\Objects\ChatAdministratorRights;
+use WeStacks\TeleBot\Objects\ChatFullInfo;
 use WeStacks\TeleBot\Objects\ChatInviteLink;
 use WeStacks\TeleBot\Objects\ChatMember;
 use WeStacks\TeleBot\Objects\File;
@@ -369,7 +369,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Optional__. Unique identifier for the target private chat. If not specified, default bot's menu button will be returned
- * @method Chat|PromiseInterface getChat(array $parameters = []) Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a [Chat](https://core.telegram.org/bots/api#chat) object on success.
+ * @method ChatFullInfo|PromiseInterface getChat(array $parameters = []) Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a [Chat](https://core.telegram.org/bots/api#chat) object on success.
  *
  * Parameters:
  * - _string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)

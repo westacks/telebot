@@ -4,9 +4,9 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
+use WeStacks\TeleBot\Objects\LinkPreviewOptions;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageEntity;
-use WeStacks\TeleBot\Objects\LinkPreviewOptions;
 
 /**
  * Use this method to edit text and [game](https://core.telegram.org/bots/api#games) messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned.

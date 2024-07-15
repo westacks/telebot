@@ -3,7 +3,6 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
-use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\UserChatBoosts;
 
 /**
@@ -26,7 +25,7 @@ class GetUserChatBoostsMethod extends TelegramMethod
     public function mock($arguments)
     {
         return new UserChatBoosts([
-            'boosts' => []
+            'boosts' => [],
         ]);
     }
 }

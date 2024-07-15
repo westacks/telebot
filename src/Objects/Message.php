@@ -68,6 +68,8 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property WriteAccessAllowed            $write_access_allowed              Optional. Service message: the user allowed the bot added to the attachment menu to write messages
  * @property PassportData                  $passport_data                     Optional. Telegram Passport data
  * @property ProximityAlertTriggered       $proximity_alert_triggered         Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
+ * @property ChatBoostAdded                $boost_added                       Optional. Service message: user boosted the chat
+ * @property ChatBackground                $chat_background_set               Optional. Service message: chat background set
  * @property ForumTopicCreated             $forum_topic_created               Optional. Service message: forum topic created
  * @property ForumTopicEdited              $forum_topic_edited                Optional. Service message: forum topic edited
  * @property ForumTopicClosed              $forum_topic_closed                Optional. Service message: forum topic closed
@@ -152,6 +154,7 @@ class Message extends TelegramObject
         'passport_data' => 'PassportData',
         'proximity_alert_triggered' => 'ProximityAlertTriggered',
         'boost_added' => 'ChatBoostAdded',
+        'chat_background_set' => 'ChatBackground',
         'forum_topic_created' => 'ForumTopicCreated',
         'forum_topic_edited' => 'ForumTopicEdited',
         'forum_topic_closed' => 'ForumTopicClosed',

@@ -14,6 +14,6 @@ class Story extends TelegramObject
 {
     protected $attributes = [
         'chat' => 'Chat',
-        'id'   => 'integer',
+        'id' => 'integer',
     ];
 }

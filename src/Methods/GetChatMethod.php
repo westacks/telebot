@@ -14,7 +14,7 @@ class GetChatMethod extends TelegramMethod
 {
     protected string $method = 'getChat';
 
-    protected string $expect = 'Chat';
+    protected string $expect = 'ChatFullInfo';
 
     protected array $parameters = [
         'chat_id' => 'string',

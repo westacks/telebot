@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Objects\InputPollOption;
 use WeStacks\TeleBot\Objects\Keyboard;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageEntity;
@@ -14,7 +15,8 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property string          $business_connection_id      __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent* @property string          $chat_id                     __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * @property int             $message_thread_id           __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property string          $question                    __Required: Yes__. Poll question, 1-300 characters
- * @property string[]        $options                     __Required: Yes__. A JSON-serialized list of answer options, 2-10 strings 1-100 characters each
+ * @property string          $options_parse_mode          __Required: Optional__. Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed
+ * @property InputPollOption[] $options                     __Required: Yes__. A JSON-serialized list of answer options, 2-10 strings 1-100 characters each
  * @property bool            $is_anonymous                __Required: Optional__. True, if the poll needs to be anonymous, defaults to True
  * @property string          $type                        __Required: Optional__. Poll type, “quiz” or “regular”, defaults to “regular”
  * @property bool            $allows_multiple_answers     __Required: Optional__. True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False
@@ -41,7 +43,8 @@ class SendPollMethod extends TelegramMethod
         'chat_id' => 'string',
         'message_thread_id' => 'integer',
         'question' => 'string',
-        'options' => 'string[]',
+        'question_parse_mode' => 'string',
+        'options' => 'InputPollOption[]',
         'is_anonymous' => 'boolean',
         'type' => 'string',
         'allows_multiple_answers' => 'boolean',

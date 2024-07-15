@@ -19,7 +19,7 @@ abstract class MessageOrigin extends TelegramObject
         'user' => MessageOriginUser::class,
         'hidden_user' => MessageOriginHiddenUser::class,
         'chat' => MessageOriginChat::class,
-        'channel' => MessageOriginChannel::class
+        'channel' => MessageOriginChannel::class,
     ];
 
     public static function create($object)
