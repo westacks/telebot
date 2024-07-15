@@ -11,7 +11,7 @@ use WeStacks\TeleBot\Objects\LabeledPrice;
  * @property string          $title                         __Required: Yes__.	Product name, 1-32 characters
  * @property string          $description                   __Required: Yes__.	Product description, 1-255 characters
  * @property string          $payload                       __Required: Yes__.	Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use for your internal processes.
- * @property string          $provider_token                __Required: Yes__.	Payment provider token, obtained via BotFather
+ * @property string          $provider_token                __Required: Optional__.	Payment provider token, obtained via @BotFather. Pass an empty string for payments in Telegram Stars.
  * @property string          $currency                      __Required: Yes__.	Three-letter ISO 4217 currency code, see more on currencies
  * @property LabeledPrice[]  $prices                        __Required: Yes__.	Price breakdown, a JSON-serialized list of components (e.g. product price, tax, discount, delivery cost, delivery tax, bonus, etc.)
  * @property int         $max_tip_amount                __Required: Optional__.	The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0

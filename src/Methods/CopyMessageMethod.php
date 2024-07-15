@@ -18,6 +18,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property string          $caption                     __Required: Optional__. New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept
  * @property string          $parse_mode                  __Required: Optional__. Mode for parsing entities in the new caption. See formatting options for more details.
  * @property MessageEntity[] $caption_entities            __Required: Optional__. A JSON-serialized list of special entities that appear in the new caption, which can be specified instead of parse_mode
+ * @property bool            $show_caption_above_media    __Required: Optional__. Pass True, if the caption must be shown above the message media
  * @property bool            $disable_notification        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * @property bool            $protect_content             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * @property ReplyParameters $reply_parameters            __Required: Optional__. Description of the message to reply to
@@ -37,6 +38,7 @@ class CopyMessageMethod extends TelegramMethod
         'caption' => 'string',
         'parse_mode' => 'string',
         'caption_entities' => 'MessageEntity[]',
+        'show_caption_above_media' => 'boolean',
         'disable_notification' => 'boolean',
         'protect_content' => 'boolean',
         'reply_parameters' => 'ReplyParameters',

@@ -18,6 +18,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property string          $vcard                       __Required: Optional__. Additional data about the contact in the form of a vCard, 0-2048 bytes
  * @property bool            $disable_notification        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * @property bool            $protect_content             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
+ * @property string          $message_effect_id           __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
  * @property ReplyParameters $reply_parameters            __Required: Optional__. Description of the message to reply to
  * @property Keyboard        $reply_markup                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove keyboard or to force a reply from the user.
  */
@@ -37,6 +38,7 @@ class SendContactMethod extends TelegramMethod
         'vcard' => 'string',
         'disable_notification' => 'boolean',
         'protect_content' => 'boolean',
+        'message_effect_id' => 'string',
         'reply_parameters' => 'ReplyParameters',
         'reply_markup' => 'Keyboard',
     ];

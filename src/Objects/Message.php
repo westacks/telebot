@@ -30,6 +30,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property string                        $text                              Optional. For text messages, the actual UTF-8 text of the message, 0-4096 characters
  * @property MessageEntity[]               $entities                          Optional. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text
  * @property LinkPreviewOptions            $link_preview_options              Optional. Options used for link preview generation for the message, if it is a text message and link preview options were changed
+ * @property string                        $effect_id                         Optional. Unique identifier of the message effect added to the message
  * @property Animation                     $animation                         Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set
  * @property Audio                         $audio                             Optional. Message is an audio file, information about the file
  * @property Document                      $document                          Optional. Message is a general file, information about the file
@@ -41,6 +42,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property Voice                         $voice                             Optional. Message is a voice message, information about the file
  * @property string                        $caption                           Optional. Caption for the animation, audio, document, photo, video or voice, 0-1024 characters
  * @property MessageEntity[]               $caption_entities                  Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption
+ * @property bool                          $show_caption_above_media          Optional. Pass True, if the caption must be shown above the message media. Ignored if a new caption isn't specified.
  * @property bool                          $has_media_spoiler                 Optional. True, if the message media is covered by a spoiler animation
  * @property Contact                       $contact                           Optional. Message is a shared contact, information about the contact
  * @property Dice                          $dice                              Optional. Message is a dice with random value
@@ -115,6 +117,7 @@ class Message extends TelegramObject
         'text' => 'string',
         'entities' => 'MessageEntity[]',
         'link_preview_options' => 'LinkPreviewOptions',
+        'effect_id' => 'string',
         'animation' => 'Animation',
         'audio' => 'Audio',
         'document' => 'Document',
@@ -126,6 +129,7 @@ class Message extends TelegramObject
         'voice' => 'Voice',
         'caption' => 'string',
         'caption_entities' => 'MessageEntity[]',
+        'show_caption_above_media' => 'boolean',
         'has_media_spoiler ' => 'boolean',
         'contact' => 'Contact',
         'dice' => 'Dice',

@@ -16,6 +16,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property InputMedia[]    $media                       __Required: Yes__. A JSON-serialized array describing messages to be sent, must include 2-10 items
  * @property bool            $disable_notification        __Required: Optional__. Sends messages silently. Users will receive a notification with no sound.
  * @property bool            $protect_content             __Required: Optional__. Protects the contents of the sent messages from forwarding and saving
+ * @property string          $message_effect_id           __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
  * @property ReplyParameters $reply_parameters            __Required: Optional__. Description of the message to reply to
  */
 class SendMediaGroupMethod extends TelegramMethod
@@ -31,6 +32,7 @@ class SendMediaGroupMethod extends TelegramMethod
         'media' => 'InputMedia[]',
         'disable_notification' => 'boolean',
         'protect_content' => 'boolean',
+        'message_effect_id' => 'string',
         'reply_parameters' => 'ReplyParameters',
     ];
 

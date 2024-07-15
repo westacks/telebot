@@ -16,6 +16,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property string               $caption               Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
  * @property string               $parse_mode            Optional. Mode for parsing entities in the video caption. See formatting options for more details.
  * @property MessageEntity[]      $caption_entities      Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
+ * @property bool                          $show_caption_above_media          Optional. Pass True, if the caption must be shown above the message media. Ignored if a new caption isn't specified.
  * @property int                  $video_width           Optional. Video width
  * @property int                  $video_height          Optional. Video height
  * @property int                  $video_duration        Optional. Video duration in seconds
@@ -35,6 +36,7 @@ class InlineQueryResultVideo extends InlineQueryResult
         'caption' => 'string',
         'parse_mode' => 'string',
         'caption_entities' => 'MessageEntity[]',
+        'show_caption_above_media' => 'boolean',
         'video_width' => 'integer',
         'video_height' => 'integer',
         'video_duration' => 'integer',

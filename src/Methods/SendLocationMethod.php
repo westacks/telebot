@@ -21,6 +21,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property int             $proximity_alert_radius      __Required: Optional__. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
  * @property bool            $disable_notification        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * @property bool            $protect_content             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
+ * @property string          $message_effect_id           __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
  * @property ReplyParameters $reply_parameters            __Required: Optional__. Description of the message to reply to
  * @property Keyboard        $reply_markup                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
  */
@@ -42,6 +43,7 @@ class SendLocationMethod extends TelegramMethod
         'proximity_alert_radius' => 'integer',
         'disable_notification' => 'boolean',
         'protect_content' => 'boolean',
+        'message_effect_id' => 'string',
         'reply_parameters' => 'ReplyParameters',
         'reply_markup' => 'Keyboard',
     ];

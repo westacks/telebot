@@ -22,10 +22,12 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property string          $caption                     __Required: Optional__. Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing
  * @property string          $parse_mode                  __Required: Optional__. Mode for parsing entities in the video caption. See formatting options for more details.
  * @property MessageEntity[] $caption_entities            __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+ * @property bool            $show_caption_above_media    __Required: Optional__. Pass True, if the caption must be shown above the message media
  * @property bool            $has_spoiler                 __Required: Optional__. Pass True if the video needs to be covered with a spoiler animation
  * @property bool            $supports_streaming          __Required: Optional__. Pass True, if the uploaded video is suitable for streaming
  * @property bool            $disable_notification        __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * @property bool            $protect_content             __Required: Optional__. Protects the contents of the sent message from forwarding and saving
+ * @property string          $message_effect_id           __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
  * @property ReplyParameters $reply_parameters            __Required: Optional__. Description of the message to reply to
  * @property Keyboard        $reply_markup                __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
  */
@@ -46,10 +48,12 @@ class SendVideoMethod extends TelegramMethod
         'caption' => 'string',
         'parse_mode' => 'string',
         'caption_entities' => 'MessageEntity[]',
+        'show_caption_above_media' => 'boolean',
         'has_spoiler' => 'boolean',
         'supports_streaming' => 'boolean',
         'disable_notification' => 'boolean',
         'protect_content' => 'boolean',
+        'message_effect_id' => 'string',
         'reply_parameters' => 'ReplyParameters',
         'reply_markup' => 'Keyboard',
     ];

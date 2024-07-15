@@ -36,6 +36,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property bool                 $is_flexible                   __Required: Optional__. Pass True, if the final price depends on the shipping method
  * @property bool                 $disable_notification          __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * @property bool                 $protect_content               __Required: Optional__. Protects the contents of the sent message from forwarding and saving
+ * @property string               $message_effect_id           __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
  * @property ReplyParameters      $reply_parameters            __Required: Optional__. Description of the message to reply to
  * @property InlineKeyboardMarkup $reply_markup                  __Required: Optional__. A JSON-serialized object for an inline keyboard. If empty, one 'Pay total price' button will be shown. If not empty, the first button must be a Pay button.
  */
@@ -71,6 +72,7 @@ class SendInvoiceMethod extends TelegramMethod
         'is_flexible' => 'boolean',
         'disable_notification' => 'boolean',
         'protect_content' => 'boolean',
+        'message_effect_id' => 'string',
         'reply_parameters' => 'ReplyParameters',
         'reply_markup' => 'InlineKeyboardMarkup',
     ];
