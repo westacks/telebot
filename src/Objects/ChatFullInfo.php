@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Objects;
 use WeStacks\TeleBot\Contracts\TelegramObject;
 
 /**
- * This object represents a chat.
+ * This object represents a chat full information.
  *
  * @property int                  $id                                                     Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
  * @property string               $type                                                   Type of chat, can be either “private”, “group”, “supergroup” or “channel”
@@ -51,7 +51,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  * @property int                  $linked_chat_id                                         Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier. Returned only in getChat.
  * @property ChatLocation         $location                                               Optional. For supergroups, the location to which the supergroup is connected. Returned only in getChat.
  */
-class Chat extends TelegramObject
+class ChatFullInfo extends TelegramObject
 {
     protected $attributes = [
         'id' => 'integer',
