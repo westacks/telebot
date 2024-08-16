@@ -15,6 +15,7 @@ $bot = new TeleBot([
     'token'      => '<telegram api token>',
     'name'       => '<telegram bot name>',
     'api_url'    => 'https://api.telegram.org/bot{TOKEN}/{METHOD}'
+    'proxy'      => 'http://127.0.0.1:8000',     // optional
     'exceptions' => true,
     'async'      => false,
     'handlers'   => []
@@ -70,6 +71,7 @@ return [
         'bot1' => [
             'token'         => env('TELEGRAM_BOT_TOKEN', '<telegram api token>'),
             'api_url'       => 'https://api.telegram.org/bot{TOKEN}/{METHOD}',
+            'proxy'         => 'http://127.0.0.1:8000',     // optional
             'exceptions'    => true,
             'async'         => false,
             'handlers'      => []

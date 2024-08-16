@@ -87,6 +87,9 @@ class TeleBot
             'poll' => $config['poll'] ?? [],
             'handlers' => $config['handlers'] ?? null,
         ];
+        if ($config['proxy']) {
+            $this->config['proxy'] = $config['proxy'];
+        }
 
         $this->client = new Client(array_merge([
             'http_errors' => false,
