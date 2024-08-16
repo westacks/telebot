@@ -1,14 +1,14 @@
 {
-    "name": "westacks/telebot",
-    "description": "Easy way to create Telegram-bots in PHP",
+    "name": "legacy-ua/telebot",
+    "description": "Easy way to create Telegram-bots in PHP (with ability to use proxy)",
     "type": "library",
-    "homepage": "https://github.com/westacks/telebot",
+    "homepage": "https://github.com/legacy-ua/telebot",
     "license": "MIT",
     "authors": [
         {
-            "name": "PunyFlash",
-            "email": "puny.flash@gmail.com",
-            "homepage": "https://github.com/PunyFlash"
+            "name": "LegacyUA",
+            "email": "korsair93@gmail.com",
+            "homepage": "https://github.com/legacy-ua"
         }
     ],
     "require": {
