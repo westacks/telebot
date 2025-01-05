@@ -16,9 +16,13 @@
         "guzzlehttp/guzzle": "^6.0 || ^7.0"
     },
     "require-dev": {
+        "electrolinux/phpquery": "^0.9.7",
         "laravel/pint": "^1.0",
+        "league/html-to-markdown": "^5.1",
+        "phpdocumentor/reflection-docblock": "^5.6",
         "phpunit/phpunit": "^8.0 || ^9.0 || ^10.0",
-        "rector/rector": "^0.17"
+        "rector/rector": "^0.17",
+        "spatie/php-structure-discoverer": "^2.2"
     },
     "autoload": {
         "psr-4": {

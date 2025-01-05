@@ -4,6 +4,7 @@ composer.lock
 /.phpunit.cache
 .php_cs.cache
 phpunit.xml
-/build/
+/build/*
+!/build/build.php
 /.idea/
 /.vscode/
