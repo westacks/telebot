@@ -9,7 +9,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  *
  * @property string          $id                      Unique poll identifier
  * @property string          $question                Poll question, 1-300 characters
- * @property MessageEntity[] $question_entities       Optional. Special entities that appear in the question. Currently, only custom emoji entities are allowed in poll questions.
+ * @property MessageEntity[] $question_entities       Optional. Special entities that appear in the question. Currently, only custom emoji entities are allowed in poll questions
  * @property PollOption[]    $options                 List of poll options
  * @property int             $total_voter_count       Total number of users that voted in the poll
  * @property bool            $is_closed               True, if the poll is closed

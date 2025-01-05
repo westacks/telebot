@@ -7,8 +7,8 @@ use WeStacks\TeleBot\Contracts\TelegramMethod;
 /**
  * Use this method to set the title of a created sticker set. Returns True on success.
  *
- * @property string $name            __Required: Yes__. Sticker set name
- * @property string $custom_emoji_id __Required: Yes__. Sticker set title, 1-64 characters
+ * @property string $name  __Required: Yes__. Sticker set name
+ * @property string $title __Required: Yes__. Sticker set title, 1-64 characters
  */
 class SetStickerSetTitleMethod extends TelegramMethod
 {

@@ -17,7 +17,7 @@ use WeStacks\TeleBot\Objects\PassportElementErrorUnspecified;
 
 class PassportElementErrorTest extends TestCase
 {
-    public function testPassportElementError()
+    public function test_passport_element_error()
     {
         $object = PassportElementError::create(['source' => 'data']);
         $this->assertInstanceOf(PassportElementErrorDataField::class, $object);
@@ -47,7 +47,7 @@ class PassportElementErrorTest extends TestCase
         $this->assertInstanceOf(PassportElementErrorUnspecified::class, $object);
     }
 
-    public function testWrongPassportElementError()
+    public function test_wrong_passport_element_error()
     {
         $this->expectException(TeleBotException::class);
         PassportElementError::create(['source' => 'some_wrong_type']);

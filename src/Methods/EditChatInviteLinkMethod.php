@@ -12,7 +12,7 @@ use WeStacks\TeleBot\Objects\ChatInviteLink;
  * @property string $invite_link          __Required: Yes__. The invite link to edit
  * @property string $name                 __Required: Optional__. Invite link name; 0-32 characters
  * @property int    $expire_date          __Required: Optional__. Point in time (Unix timestamp) when the link will expire
- * @property int    $member_limit         __Required: Optional__. Maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
+ * @property int    $member_limit         __Required: Optional__. The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
  * @property bool   $creates_join_request __Required: Optional__. True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified
  */
 class EditChatInviteLinkMethod extends TelegramMethod

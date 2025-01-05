@@ -29,14 +29,15 @@ abstract class CommandHandler extends UpdateHandler
      *
      * @return BotCommand[]
      */
-    final public static function getBotCommand(string $locale = null)
+    final public static function getBotCommand(?string $locale = null)
     {
         $description = function_exists('trans') ? trans(static::$description, locale: $locale) : static::$description;
 
         return array_map(
             function (string $command) use ($description) {
                 return new BotCommand(compact('command', 'description'));
-            }, static::$aliases
+            },
+            static::$aliases,
         );
     }
 
@@ -47,7 +48,7 @@ abstract class CommandHandler extends UpdateHandler
         }
 
         foreach ($this->update->message->entities as $entity) {
-            if ('bot_command' != $entity->type) {
+            if ($entity->type != 'bot_command') {
                 continue;
             }
 

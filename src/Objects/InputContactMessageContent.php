@@ -8,7 +8,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property string $phone_number Contact's phone number
  * @property string $first_name   Contact's first name
  * @property string $last_name    Optional. Contact's last name
- * @property string $vcard        Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
+ * @property string $vcard        Optional. Additional data about the contact in the form of a [vCard](https://en.wikipedia.org/wiki/VCard), 0-2048 bytes
  */
 class InputContactMessageContent extends InputMessageContent
 {

@@ -12,7 +12,7 @@ use WeStacks\TeleBot\Helpers\Type;
 /**
  * Basic Telegram object class. All Telegram api objects should extend this class.
  */
-abstract class TelegramObject implements IteratorAggregate, JsonSerializable, \Stringable
+abstract class TelegramObject implements \Stringable, IteratorAggregate, JsonSerializable
 {
     /**
      * Array of object properties.
@@ -31,7 +31,7 @@ abstract class TelegramObject implements IteratorAggregate, JsonSerializable, \S
     /**
      * Create new Telegram object instance.
      *
-     * @param  array|object  $object
+     * @param array|object $object
      */
     public function __construct($object)
     {
@@ -44,7 +44,7 @@ abstract class TelegramObject implements IteratorAggregate, JsonSerializable, \S
     /**
      * Create new Telegram object instance.
      *
-     * @param  array|object  $object
+     * @param  array|object $object
      * @return static
      */
     public static function create($object)
@@ -117,7 +117,7 @@ abstract class TelegramObject implements IteratorAggregate, JsonSerializable, \S
     /**
      * Get value(s) using dot notation.
      *
-     * @param  array|string  $key
+     * @param  array|string $key
      * @return mixed
      */
     public function get($key, mixed $default = null)

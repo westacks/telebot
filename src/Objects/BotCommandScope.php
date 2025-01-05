@@ -6,7 +6,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 use WeStacks\TeleBot\Exceptions\TeleBotException;
 
 /**
- * This object represents the scope to which bot commands are applied. Currently, the following 7 scopes are supported:.
+ * This object represents the scope to which bot commands are applied. Currently, the following 7 scopes are supported:
  *
  * - [BotCommandScopeDefault](https://core.telegram.org/bots/api#botcommandscopedefault)
  * - [BotCommandScopeAllPrivateChats](https://core.telegram.org/bots/api#botcommandscopeallprivatechats)
@@ -30,12 +30,12 @@ abstract class BotCommandScope extends TelegramObject
 
     public static function create($object)
     {
-        $object = (array) $object;
+        $object = (array)$object;
 
         if ($class = static::$types[$object['type'] ?? null] ?? null) {
             return new $class($object);
         }
 
-        throw new TeleBotException('Cannot cast value of type '.gettype($object).' to type '.static::class);
+        throw new TeleBotException('Cannot cast value of type ' . gettype($object) . ' to type ' . static::class);
     }
 }

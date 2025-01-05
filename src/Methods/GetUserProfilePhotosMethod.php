@@ -19,7 +19,7 @@ class GetUserProfilePhotosMethod extends TelegramMethod
     protected string $expect = 'UserProfilePhotos';
 
     protected array $parameters = [
-        'user_id' => 'string',
+        'user_id' => 'integer',
         'offset' => 'integer',
         'limit' => 'integer',
     ];
@@ -29,12 +29,14 @@ class GetUserProfilePhotosMethod extends TelegramMethod
         return new UserProfilePhotos([
             'total_count' => 1,
             'photos' => [
-                [[
-                    'file_id' => 'file_id',
-                    'file_size' => rand(1, 100),
-                    'width' => rand(1, 100),
-                    'height' => rand(1, 100),
-                ]],
+                [
+                    [
+                        'file_id' => 'file_id',
+                        'file_size' => rand(1, 100),
+                        'width' => rand(1, 100),
+                        'height' => rand(1, 100),
+                    ],
+                ],
             ],
         ]);
     }

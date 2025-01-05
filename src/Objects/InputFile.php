@@ -23,9 +23,9 @@ class InputFile
      */
     protected $contents;
 
-    public function __construct($file, string $filename = null)
+    public function __construct($file, ?string $filename = null)
     {
-        if (! $file) {
+        if (!$file) {
             throw new TeleBotException('InputFile must be a file path or a resource');
         }
 
@@ -36,12 +36,12 @@ class InputFile
 
         $this->filename = $filename;
 
-        if (is_resource($file) || ! @is_file($file) || ! $this->contents = @fopen($file, 'r')) {
+        if (is_resource($file) || !@is_file($file) || !$this->contents = @fopen($file, 'r')) {
             $this->contents = $file;
         }
     }
 
-    public static function create($file, string $filename = null)
+    public static function create($file, ?string $filename = null)
     {
         return new static($file, $filename);
     }

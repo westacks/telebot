@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
-use WeStacks\TeleBot\Objects\Chat;
+use WeStacks\TeleBot\Objects\ChatFullInfo;
 use WeStacks\TeleBot\Objects\ChatInviteLink;
 use WeStacks\TeleBot\Objects\ChatMember;
 use WeStacks\TeleBot\Objects\Message;
@@ -21,7 +21,7 @@ class ChatMethodsTest extends TestCase
         $this->bot = get_bot();
     }
 
-    public function testSetChatPermissions()
+    public function test_set_chat_permissions()
     {
         $set = $this->bot->setChatPermissions([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
@@ -33,7 +33,7 @@ class ChatMethodsTest extends TestCase
         $this->assertTrue($set);
     }
 
-    public function testExportChatInviteLink()
+    public function test_export_chat_invite_link()
     {
         $link = $this->bot->exportChatInviteLink([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
@@ -41,11 +41,11 @@ class ChatMethodsTest extends TestCase
         $this->assertNotFalse(filter_var($link, FILTER_VALIDATE_URL));
     }
 
-    public function testSetChatPhoto()
+    public function test_set_chat_photo()
     {
         $set = $this->bot->setChatPhoto([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
-            'photo' => fopen('https://via.placeholder.com/640x640', 'r'),
+            'photo' => fopen('https://placehold.co/640x640.jpg', 'r'),
         ]);
 
         $this->assertTrue($set);
@@ -57,7 +57,7 @@ class ChatMethodsTest extends TestCase
         $this->assertTrue($deleted);
     }
 
-    public function testSetChatTitle()
+    public function test_set_chat_title()
     {
         $set = $this->bot->setChatTitle([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
@@ -66,16 +66,16 @@ class ChatMethodsTest extends TestCase
         $this->assertTrue($set);
     }
 
-    public function testSetChatDescription()
+    public function test_set_chat_description()
     {
         $set = $this->bot->setChatDescription([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
-            'description' => 'PHP TeleBot Test '.random_int(0, 200),
+            'description' => 'PHP TeleBot Test ' . random_int(0, 200),
         ]);
         $this->assertTrue($set);
     }
 
-    public function testPinChatMessage()
+    public function test_pin_chat_message()
     {
         $message = $this->bot->sendMessage([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
@@ -101,12 +101,12 @@ class ChatMethodsTest extends TestCase
         $this->assertTrue($unpinned);
     }
 
-    public function testGetChat()
+    public function test_get_chat()
     {
         $chat = $this->bot->getChat([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
         ]);
-        $this->assertInstanceOf(Chat::class, $chat);
+        $this->assertInstanceOf(ChatFullInfo::class, $chat);
 
         $members = $this->bot->getChatAdministrators([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),
@@ -125,7 +125,7 @@ class ChatMethodsTest extends TestCase
         $this->assertInstanceOf(ChatMember::class, $member);
     }
 
-    public function testInviteLinks()
+    public function test_invite_links()
     {
         $link = $this->bot->createChatInviteLink([
             'chat_id' => getenv('TELEGRAM_CHAT_ID'),

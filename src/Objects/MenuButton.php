@@ -6,7 +6,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 use WeStacks\TeleBot\Exceptions\TeleBotException;
 
 /**
- * This object describes the bot's menu button in a private chat. It should be one of:.
+ * This object describes the bot's menu button in a private chat. It should be one of
  *
  * - [MenuButtonCommands](https://core.telegram.org/bots/api#menubuttoncommands)
  * - [MenuButtonWebApp](https://core.telegram.org/bots/api#menubuttonwebapp)
@@ -22,16 +22,16 @@ abstract class MenuButton extends TelegramObject
 
     public static function create($object)
     {
-        $object = (array) $object;
+        $object = (array)$object;
 
         foreach (static::$types as $type => $class) {
-            if (! isset($object[$type])) {
+            if (!isset($object[$type])) {
                 continue;
             }
 
             return new $class($object);
         }
 
-        throw new TeleBotException('Cannot cast value of type '.gettype($object).' to type '.static::class);
+        throw new TeleBotException('Cannot cast value of type ' . gettype($object) . ' to type ' . static::class);
     }
 }

@@ -6,10 +6,10 @@ use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\MenuButton;
 
 /**
- * Use this method to change the description of a group, a supergroup or a channel. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
+ * Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
  *
- * @property string     $chat_id     __Required: Optional__. Unique identifier for the target private chat. If not specified, default bot's menu button will be changed
- * @property MenuButton $menu_button __Required: Optional__. A JSON-serialized object for the new bot's menu button. Defaults to MenuButtonDefault
+ * @property int        $chat_id     __Required: Optional__. Unique identifier for the target private chat. If not specified, default bot's menu button will be changed
+ * @property MenuButton $menu_button __Required: Optional__. A JSON-serialized object for the bot's new menu button. Defaults to [MenuButtonDefault](https://core.telegram.org/bots/api#menubuttondefault)
  */
 class SetChatMenuButtonMethod extends TelegramMethod
 {
@@ -18,7 +18,7 @@ class SetChatMenuButtonMethod extends TelegramMethod
     protected string $expect = 'boolean';
 
     protected array $parameters = [
-        'chat_id' => 'string',
+        'chat_id' => 'integer',
         'menu_button' => 'MenuButton',
     ];
 

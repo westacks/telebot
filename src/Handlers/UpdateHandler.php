@@ -57,7 +57,7 @@ abstract class UpdateHandler
 
         $arguments[0] = array_merge(
             array_filter($custom, fn ($v) => ! is_null($v)),
-            $arguments[0] ?? []
+            $arguments[0] ?? [],
         );
 
         return $this->bot->{$name}(...$arguments);
@@ -84,7 +84,7 @@ abstract class UpdateHandler
     /**
      * Handling proccess.
      *
-     * @param  callable  $next
+     * @param callable $next
      * @return $next
      */
     public function __invoke($next)

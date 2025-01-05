@@ -28,7 +28,7 @@ use WeStacks\TeleBot\Objects\InlineQueryResultVoice;
 
 class InlineQueryResultTest extends TestCase
 {
-    public function testInlineQueryResultDefault()
+    public function test_inline_query_result_default()
     {
         $object = InlineQueryResult::create(['type' => 'photo']);
         $this->assertInstanceOf(InlineQueryResultPhoto::class, $object);
@@ -67,7 +67,7 @@ class InlineQueryResultTest extends TestCase
         $this->assertInstanceOf(InlineQueryResultGame::class, $object);
     }
 
-    public function testInlineQueryResultCached()
+    public function test_inline_query_result_cached()
     {
         $object = InlineQueryResult::create(['type' => 'photo', 'photo_file_id' => 123123123]);
         $this->assertInstanceOf(InlineQueryResultCachedPhoto::class, $object);
@@ -94,7 +94,7 @@ class InlineQueryResultTest extends TestCase
         $this->assertInstanceOf(InlineQueryResultCachedAudio::class, $object);
     }
 
-    public function testWrongInlineQueryResult()
+    public function test_wrong_inline_query_result()
     {
         $this->expectException(TeleBotException::class);
         InlineQueryResult::create(['type' => 'some_wrong_type']);

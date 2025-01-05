@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Objects\InputMediaVideo;
 
 class InputMediaTest extends TestCase
 {
-    public function testInputMedia()
+    public function test_input_media()
     {
         $object = InputMedia::create(['type' => 'document']);
         $this->assertInstanceOf(InputMediaDocument::class, $object);
@@ -31,7 +31,7 @@ class InputMediaTest extends TestCase
         $this->assertInstanceOf(InputMediaVideo::class, $object);
     }
 
-    public function testWrongInputMedia()
+    public function test_wrong_input_media()
     {
         $this->expectException(TeleBotException::class);
         InputMedia::create(['type' => 'some_wrong_type']);

@@ -10,8 +10,8 @@ use WeStacks\TeleBot\Objects\Message;
  *
  * @property int    $user_id              __Required: Yes__. User identifier
  * @property int    $score                __Required: Yes__. New score, must be non-negative
- * @property bool   $force                __Required: Optional__. Pass True, if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters
- * @property bool   $disable_edit_message __Required: Optional__. Pass True, if the game message should not be automatically edited to include the current scoreboard
+ * @property bool   $force                __Required: Optional__. Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters
+ * @property bool   $disable_edit_message __Required: Optional__. Pass True if the game message should not be automatically edited to include the current scoreboard
  * @property int    $chat_id              __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat
  * @property int    $message_id           __Required: Optional__. Required if inline_message_id is not specified. Identifier of the sent message
  * @property string $inline_message_id    __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
@@ -23,7 +23,7 @@ class SetGameScoreMethod extends TelegramMethod
     protected string $expect = 'Message|boolean';
 
     protected array $parameters = [
-        'user_id' => 'string',
+        'user_id' => 'integer',
         'score' => 'integer',
         'force' => 'boolean',
         'disable_edit_message' => 'boolean',

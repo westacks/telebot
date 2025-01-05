@@ -22,12 +22,12 @@ abstract class ChatBoostSource extends TelegramObject
 
     public static function create($object)
     {
-        $object = (array) $object;
+        $object = (array)$object;
 
         if ($class = static::$types[$object['source'] ?? null] ?? null) {
             return new $class($object);
         }
 
-        throw new TeleBotException('Cannot cast value of type '.gettype($object).' to type '.static::class);
+        throw new TeleBotException('Cannot cast value of type ' . gettype($object) . ' to type ' . static::class);
     }
 }

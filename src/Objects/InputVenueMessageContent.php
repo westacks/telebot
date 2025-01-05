@@ -12,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property string $foursquare_id     Optional. Foursquare identifier of the venue, if known
  * @property string $foursquare_type   Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
  * @property string $google_place_id   Optional. Google Places identifier of the venue
- * @property string $google_place_type Optional. Google Places type of the venue. (See supported types.)
+ * @property string $google_place_type Optional. Google Places type of the venue. (See [supported types](https://developers.google.com/places/web-service/supported_types).)
  */
 class InputVenueMessageContent extends InputMessageContent
 {

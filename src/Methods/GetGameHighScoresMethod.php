@@ -6,9 +6,7 @@ use WeStacks\TeleBot\Contracts\TelegramMethod;
 use WeStacks\TeleBot\Objects\GameHighScore;
 
 /**
- * Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. On success, returns an Array of [GameHighScore](https://core.telegram.org/bots/api#gamehighscore) objects.
- *
- * > This method will currently return scores for the target user, plus two of their closest neighbors on each side. Will also return the top three users if the user and his neighbors are not among them. Please note that this behavior is subject to change.
+ * Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of [GameHighScore](https://core.telegram.org/bots/api#gamehighscore) objects.  This method will currently return scores for the target user, plus two of their closest neighbors on each side. Will also return the top three users if the user and their neighbors are not among them. Please note that this behavior is subject to change.
  *
  * @property int    $user_id           __Required: Yes__. Target user id
  * @property int    $chat_id           __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat
@@ -22,7 +20,7 @@ class GetGameHighScoresMethod extends TelegramMethod
     protected string $expect = 'GameHighScore[]';
 
     protected array $parameters = [
-        'user_id' => 'string',
+        'user_id' => 'integer',
         'chat_id' => 'integer',
         'message_id' => 'integer',
         'inline_message_id' => 'string',

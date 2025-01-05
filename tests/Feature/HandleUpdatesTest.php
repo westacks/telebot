@@ -100,7 +100,7 @@ class HandleUpdatesTest extends TestCase
     }
 
     // You should send any message to your bot in order to have at least one update
-    public function testHandleUpdatesSimple()
+    public function test_handle_updates_simple()
     {
         $bot = new TeleBot(array_merge(get_config(), [
             'handlers' => [
@@ -122,7 +122,7 @@ class HandleUpdatesTest extends TestCase
         }
     }
 
-    public function testUpdateType()
+    public function test_update_type()
     {
         $type = $this->updates[0]->is('message');
         $this->assertIsBool($type);
@@ -131,7 +131,7 @@ class HandleUpdatesTest extends TestCase
         $this->assertIsString($type);
     }
 
-    public function testHandleUpdatesUsingObject()
+    public function test_handle_updates_using_object()
     {
         $bot = new TeleBot(array_merge(get_config(), [
             'handlers' => [
@@ -153,14 +153,14 @@ class HandleUpdatesTest extends TestCase
         }
     }
 
-    public function testGetBotCommand()
+    public function test_get_bot_command()
     {
         $commands = StartCommandHandler::getBotCommand();
         $this->assertContainsOnlyInstancesOf(BotCommand::class, $commands);
         $this->assertCount(2, $commands);
     }
 
-    public function testGetConfig()
+    public function test_get_config()
     {
         $config = get_config();
         $bot = new TeleBot($config);

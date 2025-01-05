@@ -14,8 +14,8 @@ use WeStacks\TeleBot\Traits\HasTelegramMethods;
  */
 class TeleBot
 {
-    use HasTelegramMethods;
     use HandlesUpdates;
+    use HasTelegramMethods;
 
     /**
      * Actual bot config.
@@ -62,7 +62,7 @@ class TeleBot
     /**
      * Create new instance of Telegram bot.
      *
-     * @param  array|string  $config Bot config. Path telegram bot API token as string, or array of parameters
+     * @param array|string $config Bot config. Path telegram bot API token as string, or array of parameters
      *
      * @throws TeleBotException
      */
@@ -93,7 +93,7 @@ class TeleBot
         ], $this->config['http']));
 
         if (is_subclass_of($handlers = $this->config['handlers'] ?? [], Kernel::class)) {
-            $this->kernel = new $handlers;
+            $this->kernel = new $handlers();
         } else {
             $this->kernel = new Kernel($handlers);
         }
@@ -111,7 +111,7 @@ class TeleBot
             $this->config['token'],
             $this->exceptions ?? $this->config['exceptions'],
             $this->async ?? $this->config['async'],
-            $this->fake ?? false
+            $this->fake ?? false,
         );
 
         $this->exceptions = null;
@@ -126,7 +126,7 @@ class TeleBot
      *
      * @return mixed
      */
-    public function config(string $value = null, $default = null)
+    public function config(?string $value = null, $default = null)
     {
         if ($value === null) {
             return $this->config;
@@ -150,7 +150,7 @@ class TeleBot
     /**
      * Call next method fake.
      *
-     * @param  bool  $async
+     * @param  bool $fake
      * @return self
      */
     public function fake(bool $fake = true)
