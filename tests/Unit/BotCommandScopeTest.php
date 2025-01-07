@@ -15,7 +15,7 @@ use WeStacks\TeleBot\Objects\BotCommandScopeDefault;
 
 class BotCommandScopeTest extends TestCase
 {
-    public function testBotCommandScope()
+    public function test_bot_command_scope()
     {
         $object = BotCommandScope::create(['type' => 'default']);
         $this->assertInstanceOf(BotCommandScopeDefault::class, $object);
@@ -39,7 +39,7 @@ class BotCommandScopeTest extends TestCase
         $this->assertInstanceOf(BotCommandScopeChatMember::class, $object);
     }
 
-    public function testWrongBotCommandScope()
+    public function test_wrong_bot_command_scope()
     {
         $this->expectException(TeleBotException::class);
         BotCommandScope::create(['type' => 'some_wrong_type']);

@@ -9,7 +9,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
  *
  * @property string $business_connection_id Unique identifier of the business connection
  * @property Chat   $chat                   Information about a chat in the business account. The bot may not have access to the chat or the corresponding user.
- * @property int[]  $message_ids            A JSON-serialized list of identifiers of deleted messages in the chat of the business account
+ * @property int[]  $message_ids            The list of identifiers of deleted messages in the chat of the business account
  */
 class BusinessMessagesDeleted extends TelegramObject
 {

@@ -18,10 +18,10 @@ class WebhookTest extends TestCase
         $this->bot = get_bot();
     }
 
-    public function testWebhook()
+    public function test_webhook()
     {
         $webhook_set = $this->bot->setWebhook([
-            'url' => 'https://telebot.westacks.com.ua/webhook',
+            'url' => 'https://google.com/webhook',
         ]);
         $this->assertTrue($webhook_set);
 

@@ -14,7 +14,7 @@ class Server
     protected int $callbackQueryId = 1;
 
     public function __construct(
-        protected string $baseUrl
+        protected string $baseUrl,
     ) {
     }
 

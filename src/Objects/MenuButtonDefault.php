@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Objects;
 /**
  * Describes that no specific value for the menu button was set.
  *
- * @property string $type Type of the button, must be _default_.
+ * @property string $type Type of the button, must be default
  */
 class MenuButtonDefault extends MenuButton
 {

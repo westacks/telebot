@@ -10,10 +10,10 @@ use WeStacks\TeleBot\Objects\Update;
 
 class CasterTest extends TestCase
 {
-    public function testCastMultipleTypes()
+    public function test_cast_multiple_types()
     {
-        $false1 = Type::cast(false, Message::class.'|boolean');
-        $false2 = Type::cast(false, 'boolean|'.Message::class);
+        $false1 = Type::cast(false, Message::class . '|boolean');
+        $false2 = Type::cast(false, 'boolean|' . Message::class);
 
         $message1 = Type::cast(['message_id' => 123456], 'Message|boolean');
         $message2 = Type::cast(['message_id' => 123456], 'boolean|Message');
@@ -24,9 +24,9 @@ class CasterTest extends TestCase
         $this->assertInstanceOf(Message::class, $message2);
     }
 
-    public function testCastWrongMultiple()
+    public function test_cast_wrong_multiple()
     {
         $this->expectException(TeleBotException::class);
-        Type::cast(12334242, Message::class.'|'.Update::class);
+        Type::cast(12334242, Message::class . '|' . Update::class);
     }
 }

@@ -11,13 +11,13 @@ use WeStacks\TeleBot\Tests\Helpers\CustomWrongStorage;
 
 class AskHandlerTest extends TestCase
 {
-    public function testAskHandler()
+    public function test_ask_handler()
     {
         $bot = new TeleBot(array_merge(get_config(), [
             'handlers' => [
                 AskNameHandler::class,
                 function ($bot, $update, $next) {
-                    if ('/test' !== $update->message()->text ?? null) {
+                    if ($update->message()->text !== '/test' ?? null) {
                         return $next();
                     }
 
@@ -77,14 +77,14 @@ class AskHandlerTest extends TestCase
         $this->assertEquals('Hello, John!', $res->text);
     }
 
-    public function testWrongStorage()
+    public function test_wrong_storage()
     {
         $bot = new TeleBot(array_merge(get_config(), [
             'storage' => CustomWrongStorage::class,
             'handlers' => [
                 AskNameHandler::class,
                 function ($bot, $update, $next) {
-                    if ('/test' !== $update->message()->text ?? null) {
+                    if ($update->message()->text !== '/test' ?? null) {
                         return $next();
                     }
 

@@ -2,7 +2,7 @@
 
 namespace WeStacks\TeleBot\Tests\Helpers;
 
-use WeStacks\TeleBot\Abstract\UpdateHandler;
+use WeStacks\TeleBot\Handlers\UpdateHandler;
 
 class TestUpdateHandler extends UpdateHandler
 {

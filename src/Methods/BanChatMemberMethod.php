@@ -9,7 +9,7 @@ use WeStacks\TeleBot\Contracts\TelegramMethod;
  *
  * @property string $chat_id         __Required: Yes__. Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername)
  * @property int    $user_id         __Required: Yes__. Unique identifier of the target user
- * @property int    $until_date      __Required: Optional__. Date when the user will be unbanned, unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only.
+ * @property int    $until_date      __Required: Optional__. Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only.
  * @property bool   $revoke_messages __Required: Optional__. Pass True to delete all messages from the chat for the user that is being removed. If False, the user will be able to see messages in the group that were sent before the user was removed. Always True for supergroups and channels.
  */
 class BanChatMemberMethod extends TelegramMethod
@@ -20,7 +20,7 @@ class BanChatMemberMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id' => 'string',
-        'user_id' => 'string',
+        'user_id' => 'integer',
         'until_date' => 'integer',
         'revoke_messages' => 'boolean',
     ];

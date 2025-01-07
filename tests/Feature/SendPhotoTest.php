@@ -19,47 +19,51 @@ class SendPhotoTest extends TestCase
         $this->bot = get_bot();
     }
 
-    public function testSendPhotoFromUrl()
+    public function test_send_photo_from_url()
     {
         $message = $this->bot->sendPhoto([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'photo' => 'https://via.placeholder.com/640x640',
+            'photo' => 'https://placehold.co/640x640.jpg',
             'reply_markup' => [
-                'inline_keyboard' => [[[
-                    'text' => 'Google',
-                    'url' => 'https://google.com/',
-                ]]],
+                'inline_keyboard' => [
+                    [
+                        [
+                            'text' => 'Google',
+                            'url' => 'https://google.com/',
+                        ],
+                    ],
+                ],
             ],
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
 
-    public function testSendPhotoFromContents()
+    public function test_send_photo_from_contents()
     {
         $message = $this->bot->sendPhoto([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'photo' => [
-                'file' => fopen('https://via.placeholder.com/640x640', 'r'),
+                'file' => fopen('https://placehold.co/640x640.jpg', 'r'),
                 'filename' => 'test-image.jpg',
             ],
         ]);
         $this->assertInstanceOf(Message::class, $message);
     }
 
-    public function testSendPhotoFromFile()
+    public function test_send_photo_from_file()
     {
-        file_put_contents(__DIR__.'/test-image.jpg', fopen('https://via.placeholder.com/640x640', 'r'));
+        file_put_contents(__DIR__ . '/test-image.jpg', fopen('https://placehold.co/640x640.jpg', 'r'));
 
         $message = $this->bot->sendPhoto([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'photo' => __DIR__.'/test-image.jpg',
+            'photo' => __DIR__ . '/test-image.jpg',
         ]);
         $this->assertInstanceOf(Message::class, $message);
 
-        unlink(__DIR__.'/test-image.jpg');
+        unlink(__DIR__ . '/test-image.jpg');
     }
 
-    public function testSendPhotoNull()
+    public function test_send_photo_null()
     {
         $this->expectException(TeleBotException::class);
         $this->bot->sendPhoto([

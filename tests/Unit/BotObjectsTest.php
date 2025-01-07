@@ -38,25 +38,25 @@ class BotObjectsTest extends TestCase
         $this->object = Update::create($this->data);
     }
 
-    public function testBotWithEmptyConfig()
+    public function test_bot_with_empty_config()
     {
         $this->expectException(TeleBotException::class);
         new TeleBot([]);
     }
 
-    public function testBotManagerNoBots()
+    public function test_bot_manager_no_bots()
     {
         $this->expectException(TeleBotException::class);
-        new BotManager;
+        new BotManager();
     }
 
-    public function testBotWithWrongConfig()
+    public function test_bot_with_wrong_config()
     {
         $this->expectException(TeleBotException::class);
         new TeleBot(123);
     }
 
-    public function testWrongObject()
+    public function test_wrong_object()
     {
         $this->expectException(TypeError::class);
         new Message([
@@ -64,7 +64,7 @@ class BotObjectsTest extends TestCase
         ]);
     }
 
-    public function testTypes()
+    public function test_types()
     {
         $this->assertInstanceOf(Update::class, $this->object);
         $this->assertInstanceOf(Message::class, $this->object->message);
@@ -72,13 +72,13 @@ class BotObjectsTest extends TestCase
         $this->assertFalse($this->object->message->from->is_bot);
     }
 
-    public function testDebug()
+    public function test_debug()
     {
         $result = print_r($this->object, true);
         $this->assertTrue(str_contains($result, 'WeStacks\TeleBot\Objects\User Object'));
     }
 
-    public function testCastWrongType()
+    public function test_cast_wrong_type()
     {
         $this->expectException(TeleBotException::class);
         new Update([
@@ -87,7 +87,7 @@ class BotObjectsTest extends TestCase
         ]);
     }
 
-    public function testHelpersAndMagickMethods()
+    public function test_helpers_and_magick_methods()
     {
         $this->assertEquals($this->json, $this->object->toJson());
         $this->assertEquals($this->data, $this->object->toArray());
@@ -100,7 +100,7 @@ class BotObjectsTest extends TestCase
         $this->assertStringContainsString(User::class, $result);
     }
 
-    public function testGetByDotNotation()
+    public function test_get_by_dot_notation()
     {
         $data = $this->object->get('message.from.id');
         $this->assertEquals(3456789, $data);
@@ -112,7 +112,7 @@ class BotObjectsTest extends TestCase
         $this->assertTrue($data);
     }
 
-    public function testNullCoalescing()
+    public function test_null_coalescing()
     {
         $data = $this->object->message ?? null;
         $this->assertInstanceOf(Message::class, $data);
@@ -121,13 +121,13 @@ class BotObjectsTest extends TestCase
         $this->assertNull($data);
     }
 
-    public function testSetObjectProperties()
+    public function test_set_object_properties()
     {
         $this->expectException(TeleBotException::class);
         $this->object->some_undefined_variable = 'test';
     }
 
-    public function testUnsetObjectProperties()
+    public function test_unset_object_properties()
     {
         unset($this->object->message);
         $this->assertTrue(empty($this->object->message));

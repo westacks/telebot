@@ -75,14 +75,13 @@ class Kernel
                 $handler($bot, $update, $next);
         }
 
-        return function () {
-        };
+        return function () {};
     }
 
     /**
      * Add new update handler(s).
      *
-     * @param  array|Closure|string  $handler string that represents `UpdateHandler` subclass resolution or closure function. You also may give an array to add multiple handlers.
+     * @param array|\Closure|string $handler string that represents `UpdateHandler` subclass resolution or closure function. You also may give an array to add multiple handlers.
      *
      * @throws TeleBotException
      */

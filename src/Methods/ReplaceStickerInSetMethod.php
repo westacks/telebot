@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Objects\InputSticker;
  * @property string       $old_sticker __Required: Yes__. File identifier of the replaced sticker
  * @property InputSticker $sticker     __Required: Yes__. A JSON-serialized object with information about the added sticker. If exactly the same sticker had already been added to the set, then the set remains unchanged.
  */
-class ReplaceStickerInSet extends TelegramMethod
+class ReplaceStickerInSetMethod extends TelegramMethod
 {
     protected string $method = 'replaceStickerInSet';
 

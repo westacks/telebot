@@ -18,7 +18,7 @@ class UpdateMessageTest extends TestCase
         $this->bot = get_bot();
     }
 
-    public function testUpdateMessage()
+    public function test_update_message()
     {
         $message = $this->bot->sendMessage([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
@@ -34,17 +34,21 @@ class UpdateMessageTest extends TestCase
         $this->assertInstanceOf(Message::class, $message);
     }
 
-    public function testUpdateMediaMessage()
+    public function test_update_media_message()
     {
         $message = $this->bot->sendPhoto([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
-            'photo' => 'https://via.placeholder.com/640x640',
+            'photo' => 'https://placehold.co/640x640.jpg',
             'caption' => 'Update message test',
             'reply_markup' => [
-                'inline_keyboard' => [[[
-                    'text' => 'Google',
-                    'url' => 'https://google.com/',
-                ]]],
+                'inline_keyboard' => [
+                    [
+                        [
+                            'text' => 'Google',
+                            'url' => 'https://google.com/',
+                        ],
+                    ],
+                ],
             ],
         ]);
 
@@ -59,7 +63,7 @@ class UpdateMessageTest extends TestCase
             'message_id' => $message->message_id,
             'media' => [
                 'type' => 'photo',
-                'media' => 'https://via.placeholder.com/640x640',
+                'media' => 'https://placehold.co/640x640.jpg',
             ],
         ]);
 
@@ -67,10 +71,14 @@ class UpdateMessageTest extends TestCase
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'message_id' => $message->message_id,
             'reply_markup' => [
-                'inline_keyboard' => [[[
-                    'text' => 'Yahoo',
-                    'url' => 'https://yahoo.com/',
-                ]]],
+                'inline_keyboard' => [
+                    [
+                        [
+                            'text' => 'Yahoo',
+                            'url' => 'https://yahoo.com/',
+                        ],
+                    ],
+                ],
             ],
         ]);
 

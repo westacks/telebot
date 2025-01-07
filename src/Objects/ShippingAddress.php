@@ -7,7 +7,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 /**
  * This object represents a shipping address.
  *
- * @property string $country_code ISO 3166-1 alpha-2 country code
+ * @property string $country_code Two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code
  * @property string $state        State, if applicable
  * @property string $city         City
  * @property string $street_line1 First line for the address

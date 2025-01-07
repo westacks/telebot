@@ -8,7 +8,7 @@ class AskNameHandler extends RequestInputHandler
 {
     public function handle()
     {
-        if (! in_array($name = $this->update->message()->text, ['John', 'Jane'])) {
+        if (!in_array($name = $this->update->message()->text, ['John', 'Jane'])) {
             return $this->fake()->sendMessage([
                 'text' => 'Sorry, I don\'t know you.',
             ]);

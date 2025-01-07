@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Objects;
 use WeStacks\TeleBot\Contracts\TelegramObject;
 
 /**
- * This object represents a birthday class.
+ * Describes the birthdate of a user.
  *
  * @property int $day   Day of the user's birth; 1-31
  * @property int $month Month of the user's birth; 1-12

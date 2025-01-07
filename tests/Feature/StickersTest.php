@@ -18,7 +18,7 @@ class StickersTest extends TestCase
         $this->bot = get_bot();
     }
 
-    public function testGetStickerSet()
+    public function test_get_sticker_set()
     {
         $set = $this->bot->getStickerSet([
             'name' => 'pappy_fox',

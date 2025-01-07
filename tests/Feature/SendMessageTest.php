@@ -24,25 +24,25 @@ class SendMessageTest extends TestCase
         $this->bot = get_bot();
     }
 
-    public function testCallUndefinedMethod()
+    public function test_call_undefined_method()
     {
         $this->expectException(TeleBotException::class);
         $this->bot->getYou();
     }
 
-    public function testExecuteMethod()
+    public function test_execute_method()
     {
         $botUser = $this->bot->getMe();
         $this->assertInstanceOf(User::class, $botUser);
     }
 
-    public function testSomethingReallyWrong()
+    public function test_something_really_wrong()
     {
         $this->expectException(TypeError::class);
         $this->bot->sendMessage('test');
     }
 
-    public function testSendMessageAsync()
+    public function test_send_message_async()
     {
         $promises = [];
 
@@ -68,7 +68,7 @@ class SendMessageTest extends TestCase
         ]);
     }
 
-    public function testForwardMessage()
+    public function test_forward_message()
     {
         $message = $this->bot->sendMessage([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
@@ -92,7 +92,7 @@ class SendMessageTest extends TestCase
         $this->assertInstanceOf(MessageId::class, $copied);
     }
 
-    public function testSendLocation()
+    public function test_send_location()
     {
         $message = $this->bot->sendLocation([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
@@ -108,10 +108,14 @@ class SendMessageTest extends TestCase
             'latitude' => 50.350157,
             'longitude' => 30.424191,
             'reply_markup' => [
-                'inline_keyboard' => [[[
-                    'text' => 'Google',
-                    'url' => 'http://google.com/',
-                ]]],
+                'inline_keyboard' => [
+                    [
+                        [
+                            'text' => 'Google',
+                            'url' => 'http://google.com/',
+                        ],
+                    ],
+                ],
             ],
         ]);
         $this->assertInstanceOf(Message::class, $message);
@@ -123,7 +127,7 @@ class SendMessageTest extends TestCase
         $this->assertInstanceOf(Message::class, $message);
     }
 
-    public function testSendVenue()
+    public function test_send_venue()
     {
         $message = $this->bot->sendVenue([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
@@ -136,7 +140,7 @@ class SendMessageTest extends TestCase
         $this->assertInstanceOf(Message::class, $message);
     }
 
-    public function testSendContact()
+    public function test_send_contact()
     {
         $message = $this->bot->exceptions(false)->sendContact([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
@@ -147,15 +151,15 @@ class SendMessageTest extends TestCase
         $this->assertNotNull($message);
     }
 
-    public function testSendPoll()
+    public function test_send_poll()
     {
         $message = $this->bot->sendPoll([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
             'question' => 'What is love?',
             'options' => [
-                'Baby, don\'t hurt me',
-                'Pain',
-                'Butterflies',
+                ['text' => 'Baby, don\'t hurt me'],
+                ['text' => 'Pain'],
+                ['text' => 'Butterflies'],
             ],
         ]);
 
@@ -168,7 +172,7 @@ class SendMessageTest extends TestCase
         $this->assertInstanceOf(Poll::class, $poll);
     }
 
-    public function testSendDice()
+    public function test_send_dice()
     {
         $message = $this->bot->sendDice([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
@@ -176,7 +180,7 @@ class SendMessageTest extends TestCase
         $this->assertInstanceOf(Message::class, $message);
     }
 
-    public function testSendChatAction()
+    public function test_send_chat_action()
     {
         $message = $this->bot->sendChatAction([
             'chat_id' => getenv('TELEGRAM_USER_ID'),

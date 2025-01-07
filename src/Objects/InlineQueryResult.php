@@ -6,7 +6,7 @@ use WeStacks\TeleBot\Contracts\TelegramObject;
 use WeStacks\TeleBot\Exceptions\TeleBotException;
 
 /**
- * This object represents one result of an inline query. Telegram clients currently support results of the following 20 types:.
+ * This object represents one result of an inline query. Telegram clients currently support results of the following 20 types:
  *
  * - [InlineQueryResultCachedAudio](https://core.telegram.org/bots/api#inlinequeryresultcachedaudio)
  * - [InlineQueryResultCachedDocument](https://core.telegram.org/bots/api#inlinequeryresultcacheddocument)
@@ -29,7 +29,7 @@ use WeStacks\TeleBot\Exceptions\TeleBotException;
  * - [InlineQueryResultVideo](https://core.telegram.org/bots/api#inlinequeryresultvideo)
  * - [InlineQueryResultVoice](https://core.telegram.org/bots/api#inlinequeryresultvoice)
  *
- * Note: All URLs passed in inline query results will be available to end users and therefore must be assumed to be public.
+ * __Note__: All URLs passed in inline query results will be available to end users and therefore must be assumed to be __public__.
  */
 abstract class InlineQueryResult extends TelegramObject
 {
@@ -62,7 +62,7 @@ abstract class InlineQueryResult extends TelegramObject
 
     public static function create($object)
     {
-        $object = (array) $object;
+        $object = (array)$object;
         $key = static::isCached($object) ? 'cached' : 'default';
         $type = $object['type'] ?? null;
         $class = static::$types[$key][$type] ?? null;
@@ -71,7 +71,7 @@ abstract class InlineQueryResult extends TelegramObject
             return new $class($object);
         }
 
-        throw new TeleBotException('Cannot cast value of type '.gettype($object).' to type '.static::class);
+        throw new TeleBotException('Cannot cast value of type ' . gettype($object) . ' to type ' . static::class);
     }
 
     private static function isCached($object)

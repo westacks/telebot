@@ -139,3 +139,6 @@ All notable changes to `telebot` will be documented here
 
 ## 3.3.0 - 2024-04-01
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 7.2
+
+## 3.4.0 - 2025-01-07
+- Updated [Bot API](https://core.telegram.org/bots/api) to version 8.2

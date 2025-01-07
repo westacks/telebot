@@ -20,7 +20,7 @@ class SendFilesTest extends TestCase
         $this->bot = get_bot();
     }
 
-    public function testSendAudioFromUrl()
+    public function test_send_audio_from_url()
     {
         $message = $this->bot->sendAudio([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
@@ -29,7 +29,7 @@ class SendFilesTest extends TestCase
         $this->assertInstanceOf(Message::class, $message);
     }
 
-    public function testSendDocument()
+    public function test_send_document()
     {
         $message = $this->bot->sendDocument([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
@@ -41,7 +41,7 @@ class SendFilesTest extends TestCase
         $this->assertInstanceOf(Message::class, $message);
     }
 
-    public function testSendVideo()
+    public function test_send_video()
     {
         $message = $this->bot->sendVideo([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
@@ -50,7 +50,7 @@ class SendFilesTest extends TestCase
         $this->assertInstanceOf(Message::class, $message);
     }
 
-    public function testSendAnimation()
+    public function test_send_animation()
     {
         $message = $this->bot->sendAnimation([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
@@ -59,7 +59,7 @@ class SendFilesTest extends TestCase
         $this->assertInstanceOf(Message::class, $message);
     }
 
-    public function testSendVoice()
+    public function test_send_voice()
     {
         $message = $this->bot->sendVoice([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
@@ -68,7 +68,7 @@ class SendFilesTest extends TestCase
         $this->assertInstanceOf(Message::class, $message);
     }
 
-    public function testSendVideoNote()
+    public function test_send_video_note()
     {
         $message = $this->bot->sendVideoNote([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
@@ -79,7 +79,7 @@ class SendFilesTest extends TestCase
         $this->assertInstanceOf(Message::class, $message);
     }
 
-    public function testSendMediaGroup()
+    public function test_send_media_group()
     {
         $messages = $this->bot->sendMediaGroup([
             'chat_id' => getenv('TELEGRAM_USER_ID'),
@@ -87,16 +87,17 @@ class SendFilesTest extends TestCase
                 [
                     'type' => 'video',
                     'media' => 'https://file-examples.com/storage/fe88505b6162b2538a045ce/2017/04/file_example_MP4_480_1_5MG.mp4',
-                ], [
+                ],
+                [
                     'type' => 'photo',
-                    'media' => 'https://via.placeholder.com/640x640',
+                    'media' => 'https://placehold.co/640x640.jpg',
                 ],
             ],
         ]);
         $this->assertContainsOnlyInstancesOf(Message::class, $messages);
     }
 
-    public function testGetFile()
+    public function test_get_file()
     {
         $photos = $this->bot->getUserProfilePhotos([
             'user_id' => getenv('TELEGRAM_USER_ID'),
@@ -111,7 +112,7 @@ class SendFilesTest extends TestCase
         $this->assertNotFalse(filter_var($file->url(getenv('TELEGRAM_BOT_TOKEN')), FILTER_VALIDATE_URL));
     }
 
-    public function testSendSticker()
+    public function test_send_sticker()
     {
         $message = $this->bot->sendSticker([
             'chat_id' => getenv('TELEGRAM_USER_ID'),

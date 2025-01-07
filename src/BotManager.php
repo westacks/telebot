@@ -28,7 +28,7 @@ class BotManager
      */
     protected $default;
 
-    public function __construct(array $config = null)
+    public function __construct(?array $config = null)
     {
         $bots = $config['bots'] ?? [];
 
@@ -47,12 +47,12 @@ class BotManager
     /**
      * Get bot by name.
      *
-     * @param  string  $name bot name
+     * @param  string|null $name bot name
      * @return TeleBot
      *
      * @throws TeleBotException
      */
-    public function bot(string $name = null)
+    public function bot(?string $name = null)
     {
         $bot = $name ?? $this->default ?? null;
 
@@ -84,8 +84,8 @@ class BotManager
     /**
      * Add bot to BotManager.
      *
-     * @param  string  $name bot name
-     * @param  array|string|TeleBot  $bot  TeleBot instance or bot config
+     * @param  string               $name bot name
+     * @param  array|string|TeleBot $bot  TeleBot instance or bot config
      * @return TeleBot              added bot
      */
     public function add(string $name, array|string|TeleBot $bot)
@@ -102,7 +102,7 @@ class BotManager
     /**
      * Delete bot from BotManager.
      *
-     * @param  string  $name bot name
+     * @param string $name bot name
      */
     public function delete(string $name)
     {

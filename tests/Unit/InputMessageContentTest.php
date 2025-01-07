@@ -12,7 +12,7 @@ use WeStacks\TeleBot\Objects\InputVenueMessageContent;
 
 class InputMessageContentTest extends TestCase
 {
-    public function testInputMessageContent()
+    public function test_input_message_content()
     {
         $object = InputMessageContent::create(['message_text' => 'Test']);
         $this->assertInstanceOf(InputTextMessageContent::class, $object);
@@ -34,7 +34,7 @@ class InputMessageContentTest extends TestCase
         $this->assertInstanceOf(InputContactMessageContent::class, $object);
     }
 
-    public function testWrongInputMessageContent()
+    public function test_wrong_input_message_content()
     {
         $this->expectException(TeleBotException::class);
         InputMessageContent::create(['something_wrong' => 'some_wrong_type']);

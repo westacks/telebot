@@ -5,9 +5,9 @@ namespace WeStacks\TeleBot\Objects;
 use WeStacks\TeleBot\Contracts\TelegramObject;
 
 /**
- * This object represents a service message about new members invited to a voice chat.
+ * This object represents a service message about new members invited to a video chat.
  *
- * @property User[] $users Optional. New members that were invited to the voice chat
+ * @property User[] $users New members that were invited to the video chat
  */
 class VideoChatParticipantsInvited extends TelegramObject
 {

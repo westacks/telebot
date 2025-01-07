@@ -19,7 +19,7 @@ class SetChatAdministratorCustomTitleMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id' => 'string',
-        'user_id' => 'string',
+        'user_id' => 'integer',
         'custom_title' => 'string',
     ];
 

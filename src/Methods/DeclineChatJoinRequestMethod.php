@@ -18,7 +18,7 @@ class DeclineChatJoinRequestMethod extends TelegramMethod
 
     protected array $parameters = [
         'chat_id' => 'string',
-        'user_id' => 'string',
+        'user_id' => 'integer',
     ];
 
     public function mock($arguments)
