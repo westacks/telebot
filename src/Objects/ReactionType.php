@@ -22,7 +22,7 @@ abstract class ReactionType extends TelegramObject
     {
         $object = (array)$object;
 
-        if ($class = static::$types[$object['source'] ?? null] ?? null) {
+        if ($class = static::$types[$object['type'] ?? null] ?? null) {
             return new $class($object);
         }
 
