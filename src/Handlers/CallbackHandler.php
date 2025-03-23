@@ -29,7 +29,7 @@ abstract class CallbackHandler extends UpdateHandler
         array_shift($matches);
         $matches = array_values($matches);
 
-        if ($index) {
+        if (isset($index)) {
             return $matches[$index];
         }
 
