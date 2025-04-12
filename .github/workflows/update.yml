@@ -42,6 +42,7 @@ jobs:
         if: steps.verify.outputs.api == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
+          token: ${{ secrets.SECRET_TOKEN }}
           commit-message: Update bot API version
           title: Update Bot API Version to latest version
           body: This is an automated PR. Please check the diff, and the action logs, to check for any funky behaviour.
