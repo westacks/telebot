@@ -6,12 +6,12 @@ export default defineConfig({
   title: 'TeleBot',
   description: 'A modern Telegram bot framework',
   head: [
-    ['link', { rel: 'icon', href: './assets/logo.svg' }]
+    ['link', { rel: 'icon', href: '/logo.svg' }]
   ],
   base: '/telebot/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: './assets/logo.svg',
+    logo: '/logo.svg',
 
     nav: [
       { text: 'Home', link: '/' },
