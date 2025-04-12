@@ -1,0 +1,157 @@
+Running php-build composer
+WARNING! Your password will be stored unencrypted in /home/runner/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+Pulling docker.pkg.github.com/westacks/telebot/php-actions_composer_telebot:php-latest-build2.1.0
+Error response from daemon: manifest unknown
+Dockerfile:
+FROM php:cli-alpine
+RUN apk add --update --no-cache bash coreutils git make openssh patch unzip zip
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile-php-build
+#1 transferring dockerfile: 147B done
+#1 DONE 0.0s
+
+#2 [auth] library/php:pull token for registry-1.docker.io
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/php:cli-alpine
+#3 DONE 0.4s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 importing cache manifest from docker.pkg.github.com/westacks/telebot/php-actions_composer_telebot:php-latest-build2.1.0
+#5 ERROR: failed to configure registry cache importer: unexpected status from HEAD request to https://docker.pkg.github.com/v2/westacks/telebot/php-actions_composer_telebot/manifests/php-latest-build2.1.0: 401 Unauthorized
+
+#6 [1/2] FROM docker.io/library/php:cli-alpine@sha256:0c005fbcdecc04fe63d21220b0fdb7aba9f14b8bc92646a363a019fd65ca12fc
+#6 resolve docker.io/library/php:cli-alpine@sha256:0c005fbcdecc04fe63d21220b0fdb7aba9f14b8bc92646a363a019fd65ca12fc done
+#6 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870
+#6 sha256:e9e21e4b766e22ad7ab55d6e50d907e8669c6480a87c9930f0a866c10799c8e8 7.60kB / 7.60kB done
+#6 sha256:0d55cff53123d85a9177c4f1c8be768cdc148f4e75add12c2b2dac3b767c836e 0B / 222B 0.1s
+#6 sha256:115c7a04f6c00070d91613ceaf576994307c0b84a90f0b1a088bbf9776a4c43b 0B / 933B 0.1s
+#6 sha256:0c005fbcdecc04fe63d21220b0fdb7aba9f14b8bc92646a363a019fd65ca12fc 10.30kB / 10.30kB done
+#6 sha256:4458133a931b614540fb42a2d5b366c412ffe43fb079057a99634399805efab9 2.68kB / 2.68kB done
+#6 sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 3.64MB / 3.64MB 0.1s done
+#6 sha256:b1220d176a8dc4ff5bc1c09d81c91223d1db607237a519d56119410deee673cd 0B / 3.34MB 0.1s
+#6 extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e69c2d5c870 0.1s done
+#6 sha256:0d55cff53123d85a9177c4f1c8be768cdc148f4e75add12c2b2dac3b767c836e 222B / 222B 0.1s done
+#6 sha256:115c7a04f6c00070d91613ceaf576994307c0b84a90f0b1a088bbf9776a4c43b 933B / 933B 0.1s done
+#6 sha256:b1220d176a8dc4ff5bc1c09d81c91223d1db607237a519d56119410deee673cd 3.34MB / 3.34MB 0.1s done
+#6 sha256:88d591373a1942f2bef00fa93d9a78e9ee85117617f7d4bd07858e863f6b81ff 13.63MB / 13.63MB 0.2s done
+#6 sha256:ffeef6b41a5682ccf70b716a775cc8e6f5dbf548ddec432240ec0f9bf7fb5026 8.39MB / 20.96MB 0.3s
+#6 sha256:6d95abe48138673ff509234f4be1d0a54c2ddcd056348417b10517a3eefcb485 2.45kB / 2.45kB 0.2s done
+#6 sha256:dc6d32971fca8bf54c40f3af5a57e10e6c18f4586e18be60b8fd802d0b5c6167 487B / 487B 0.2s done
+#6 extracting sha256:b1220d176a8dc4ff5bc1c09d81c91223d1db607237a519d56119410deee673cd
+#6 sha256:a80d3af78a9d898a9b670384f9b1cf9632c2b68d324bd8a03779a70e8fbfd4ed 20.04kB / 20.04kB 0.3s done
+#6 sha256:ffeef6b41a5682ccf70b716a775cc8e6f5dbf548ddec432240ec0f9bf7fb5026 19.92MB / 20.96MB 0.4s
+#6 extracting sha256:b1220d176a8dc4ff5bc1c09d81c91223d1db607237a519d56119410deee673cd 0.1s done
+#6 sha256:ffeef6b41a5682ccf70b716a775cc8e6f5dbf548ddec432240ec0f9bf7fb5026 20.96MB / 20.96MB 0.4s done
+#6 extracting sha256:115c7a04f6c00070d91613ceaf576994307c0b84a90f0b1a088bbf9776a4c43b done
+#6 extracting sha256:0d55cff53123d85a9177c4f1c8be768cdc148f4e75add12c2b2dac3b767c836e done
+#6 extracting sha256:88d591373a1942f2bef00fa93d9a78e9ee85117617f7d4bd07858e863f6b81ff 0.1s done
+#6 extracting sha256:dc6d32971fca8bf54c40f3af5a57e10e6c18f4586e18be60b8fd802d0b5c6167 done
+#6 extracting sha256:ffeef6b41a5682ccf70b716a775cc8e6f5dbf548ddec432240ec0f9bf7fb5026 0.1s
+#6 extracting sha256:ffeef6b41a5682ccf70b716a775cc8e6f5dbf548ddec432240ec0f9bf7fb5026 0.4s done
+#6 extracting sha256:6d95abe48138673ff509234f4be1d0a54c2ddcd056348417b10517a3eefcb485
+#6 extracting sha256:6d95abe48138673ff509234f4be1d0a54c2ddcd056348417b10517a3eefcb485 done
+#6 extracting sha256:a80d3af78a9d898a9b670384f9b1cf9632c2b68d324bd8a03779a70e8fbfd4ed done
+#6 DONE 1.2s
+
+#7 [2/2] RUN apk add --update --no-cache bash coreutils git make openssh patch unzip zip
+#7 0.139 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/main/x86_64/APKINDEX.tar.gz
+#7 0.233 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/community/x86_64/APKINDEX.tar.gz
+#7 0.493 (1/24) Installing bash (5.2.37-r0)
+#7 0.511 Executing bash-5.2.37-r0.post-install
+#7 0.514 (2/24) Installing coreutils-env (9.5-r2)
+#7 0.522 (3/24) Installing coreutils-fmt (9.5-r2)
+#7 0.528 (4/24) Installing coreutils-sha512sum (9.5-r2)
+#7 0.539 (5/24) Installing libattr (2.5.2-r2)
+#7 0.545 (6/24) Installing skalibs-libs (2.14.3.0-r0)
+#7 0.553 (7/24) Installing utmps-libs (0.1.2.3-r2)
+#7 0.560 (8/24) Installing coreutils (9.5-r2)
+#7 0.583 (9/24) Installing libexpat (2.7.0-r0)
+#7 0.590 (10/24) Installing pcre2 (10.43-r0)
+#7 0.602 (11/24) Installing git (2.47.2-r0)
+#7 0.665 (12/24) Installing git-init-template (2.47.2-r0)
+#7 0.673 (13/24) Installing make (4.4.1-r2)
+#7 0.683 (14/24) Installing openssh-keygen (9.9_p2-r0)
+#7 0.694 (15/24) Installing libedit (20240808.3.1-r0)
+#7 0.702 (16/24) Installing openssh-client-common (9.9_p2-r0)
+#7 0.723 (17/24) Installing openssh-client-default (9.9_p2-r0)
+#7 0.735 (18/24) Installing openssh-sftp-server (9.9_p2-r0)
+#7 0.744 (19/24) Installing openssh-server-common (9.9_p2-r0)
+#7 0.752 (20/24) Installing openssh-server (9.9_p2-r0)
+#7 0.767 (21/24) Installing openssh (9.9_p2-r0)
+#7 0.777 (22/24) Installing patch (2.7.6-r10)
+#7 0.785 (23/24) Installing unzip (6.0-r15)
+#7 0.794 (24/24) Installing zip (3.0-r13)
+#7 0.805 Executing busybox-1.37.0-r12.trigger
+#7 0.811 OK: 35 MiB in 64 packages
+#7 DONE 0.9s
+
+#8 exporting to image
+#8 exporting layers
+#8 exporting layers 0.3s done
+#8 writing image sha256:06ee2ff7f0def4304d53a21504da31d5a36c328e3f3dd539611475161bd615fd done
+#8 naming to docker.pkg.github.com/westacks/telebot/php-actions_composer_telebot:php-latest-build2.1.0 done
+#8 DONE 0.3s
+------
+ > importing cache manifest from docker.pkg.github.com/westacks/telebot/php-actions_composer_telebot:php-latest-build2.1.0:
+------
+The push refers to repository [docker.pkg.github.com/westacks/telebot/php-actions_composer_telebot]
+493e47b475e6: Preparing
+2cbb198f7537: Preparing
+07a69626c242: Preparing
+6e19e8226d74: Preparing
+a9b854b4091b: Preparing
+eeea736c7022: Preparing
+74492eaedffd: Preparing
+e7d6c8908175: Preparing
+6a1fde1a6f15: Preparing
+08000c18d16d: Preparing
+eeea736c7022: Waiting
+74492eaedffd: Waiting
+e7d6c8908175: Waiting
+6a1fde1a6f15: Waiting
+08000c18d16d: Waiting
+a9b854b4091b: Pushed
+2cbb198f7537: Pushed
+07a69626c242: Pushed
+74492eaedffd: Pushed
+e7d6c8908175: Pushed
+493e47b475e6: Pushed
+eeea736c7022: Pushed
+6a1fde1a6f15: Pushed
+08000c18d16d: Pushed
+6e19e8226d74: Pushed
+php-latest-build2.1.0: digest: sha256:8d22b4e43ea9430a588af18aacc65ae09a1a6a1e66501a4d4f2571ed4149c007 size: 2412
+Docker tag: docker.pkg.github.com/westacks/telebot/php-actions_composer_telebot:php-latest-build2.1.0
+No private keys supplied
+Command: composer install --no-progress --no-interaction
+Skipping env variable PWD
+Skipping env variable HOME
+Skipping env variable SHLVL
+Skipping env variable PATH
+Running php-build composer
+WARNING! Your password will be stored unencrypted in /home/runner/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+Pulling docker.pkg.github.com/westacks/telebot/php-actions_composer_telebot:php-latest-build2.1.0
+php-latest-build2.1.0: Pulling from westacks/telebot/php-actions_composer_telebot
+Digest: sha256:8d22b4e43ea9430a588af18aacc65ae09a1a6a1e66501a4d4f2571ed4149c007
+Status: Image is up to date for docker.pkg.github.com/westacks/telebot/php-actions_composer_telebot:php-latest-build2.1.0
+docker.pkg.github.com/westacks/telebot/php-actions_composer_telebot:php-latest-build2.1.0
+Docker tag: docker.pkg.github.com/westacks/telebot/php-actions_composer_telebot:php-latest-build2.1.0
+No private keys supplied
+Command: composer install --no-progress --no-interaction
+Skipping env variable PWD
+Skipping env variable HOME
+Skipping env variable SHLVL
+Skipping env variable PATH
