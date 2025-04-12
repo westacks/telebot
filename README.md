@@ -1,3 +1,5 @@
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://vshymanskyy.github.io/StandWithUkraine/)
+
 <p align="center">
 <a href="https://github.com/westacks/telebot"><img src="./docs/public/logo.svg" alt="Project Logo" width="200"></a>
 </p>
