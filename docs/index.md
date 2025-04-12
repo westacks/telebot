@@ -13,7 +13,7 @@ hero:
       text: View on GitHub
       link: https://github.com/westacks/telebot
   image:
-    src: /assets/logo.svg
+    src: ./assets/logo.svg
     alt: TeleBot
 
 features:
