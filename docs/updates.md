@@ -67,8 +67,8 @@ $bot = new TeleBot([
 ]);
 
 // Or add later
-$bot->addHandler(\App\YourUpdateHandler::class);
-$bot->addHandler($handler);
+$bot->handler(\App\YourUpdateHandler::class);
+$bot->handler($handler);
 ```
 ### Custom Kernel
 
