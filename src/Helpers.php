@@ -134,7 +134,7 @@ function multipart(array $data, array &$files = []): array
     $walk = function (array &$data) use (&$extract, &$result, &$walk) {
         foreach ($data as $key => $value) {
             if (is_a($value, InputFile::class)) {
-                $result[$key] = $extract($value);
+                $data[$key] = $extract($value);
 
                 continue;
             }
@@ -146,14 +146,12 @@ function multipart(array $data, array &$files = []): array
             if (is_array($value)) {
                 $walk($data[$key]);
             }
-
-            $result[$key] = $data[$key];
         }
     };
 
     $walk($data);
 
-    foreach ($result as $key => $value) {
+    foreach ($data as $key => $value) {
         $result[$key] = [
             'name' => $key,
             'contents' => is_iterable($value) ? json_encode($value) : (string) $value,
