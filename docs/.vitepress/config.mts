@@ -8,6 +8,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/assets/logo.svg' }]
   ],
+  base: '/telebot/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/assets/logo.svg',
