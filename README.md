@@ -44,8 +44,15 @@ $handler = function(TeleBot $bot, Update $update, $next) {
 // Object oriented handler
 class YourUpdateHandler extends CommandHandler
 {
-    protected static $aliases = ['/start'];
-    protected static $description = 'Your description';
+    protected static function aliases(): string
+    {
+        return ['/start'];
+    }
+
+    protected static function description(?string $locale = null)
+    {
+        return 'Start command';
+    }
 
     public function handle()
     {
