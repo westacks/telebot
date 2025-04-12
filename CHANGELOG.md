@@ -8,75 +8,49 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 **Full Changelog**: https://github.com/westacks/telebot/compare/3.4.2...4.0.0
 
-## [Unreleased]
-
-### Added
-
-- New features or enhancements that are planned for the next release.
-
-### Changed
-
-- Modifications to existing functionality.
-
-### Deprecated
-
-- Features that are still available but are slated for removal in future releases.
-
-### Removed
-
-- Features that have been removed in this release.
-
-### Fixed
-
-- Bug fixes.
-
-### Security
-
-- Security-related changes or fixes.
-
-## [3.4.0] - 2025-01-07
+## 3.4.0 - 2025-01-07
 
 ### Changed
 
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 8.2.
 
-## [3.3.0] - 2024-04-01
+## 3.3.0 - 2024-04-01
 
 ### Changed
 
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 7.2.
 
-## [3.2.0] - 2024-03-13
+## 3.2.0 - 2024-03-13
 
 ### Changed
 
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 7.1.
 
-## [3.1.1] - 2023-10-06
+## 3.1.1 - 2023-10-06
 
 ### Changed
 
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 6.9.
 
-## [3.1.0] - 2023-09-07
+## 3.1.0 - 2023-09-07
 
 ### Changed
 
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 6.8.
 
-## [3.0.0] - 2023-08-15
+## 3.0.0 - 2023-08-15
 
 ### Changed
 
 - Migrated Laravel support to a separate package.
 
-## [2.7.0] - 2023-05-06
+## 2.7.0 - 2023-05-06
 
 ### Changed
 
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 6.7.
 
-## [2.6.1] - 2023-03-16
+## 2.6.1 - 2023-03-16
 
 ### Added
 
@@ -88,19 +62,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Refactored codebase.
 - Updated documentation.
 
-## [2.6.0] - 2023-03-10
+## 2.6.0 - 2023-03-10
 
 ### Changed
 
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 6.6.
 
-## [2.5.0] - 2023-02-18
+## 2.5.0 - 2023-02-18
 
 ### Changed
 
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 6.5.
 
-## [2.4.0] - 2023-02-01
+## 2.4.0 - 2023-02-01
 
 ### Added
 
@@ -110,7 +84,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 6.4.
 
-## [2.3.0] - 2022-12-16
+## 2.3.0 - 2022-12-16
 
 ### Changed
 
@@ -121,13 +95,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Dropped support for PHP 7.4.
 
-## [2.2.0] - 2022-08-23
+## 2.2.0 - 2022-08-23
 
 ### Changed
 
 - Updated [Bot API](https://core.telegram.org/bots/api) to version 6.2.
 
-## [2.1.0] - 2022-06-22
+## 2.1.0 - 2022-06-22
 
 ### Added
 
@@ -145,7 +119,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Support for PHP 7.4.
 
-## [2.0.0] - 2022-06-06
+## 2.0.0 - 2022-06-06
 
 ### Added
 
