@@ -1,27 +1,18 @@
 <?php
 
-declare(strict_types=1);
-
-use Rector\CodeQuality\Rector\Class_\InlineConstructorDefaultToPropertyRector;
 use Rector\Config\RectorConfig;
-use Rector\Core\ValueObject\PhpVersion;
 use Rector\Set\ValueObject\SetList;
+use Rector\ValueObject\PhpVersion;
 
-return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->phpVersion(PhpVersion::PHP_80);
-    $rectorConfig->indent(' ', 4);
-
-    $rectorConfig->paths([
+return RectorConfig::configure()
+    ->withPhpVersion(PhpVersion::PHP_82)
+    ->withSets([
+        SetList::DEAD_CODE,
+        SetList::PHP_82,
+    ])
+    ->withIndent(' ', 4)
+    ->withPaths([
         __DIR__.'/src',
         __DIR__.'/tests',
+        __DIR__.'/generator',
     ]);
-
-    // register a single rule
-    $rectorConfig->rule(InlineConstructorDefaultToPropertyRector::class);
-
-    // define sets of rules
-    $rectorConfig->sets([
-        SetList::DEAD_CODE,
-        SetList::PHP_80,
-    ]);
-};

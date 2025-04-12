@@ -1,9 +1,10 @@
-/vendor/
-composer.lock
-.phpunit.result.cache
-/.phpunit.cache
-.php_cs.cache
-phpunit.xml
-/build/
 /.idea/
 /.vscode/
+docs/node_modules/
+docs/.vitepress/dist
+docs/.vitepress/cache
+api.min.json
+vendor/
+composer.lock
+phpunit.xml
+.php_cs.cache

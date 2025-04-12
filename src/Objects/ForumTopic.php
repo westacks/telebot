@@ -2,22 +2,24 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
  * This object represents a forum topic.
+ * @property-read int $message_thread_id Unique identifier of the forum topic
+ * @property-read string $name Name of the topic
+ * @property-read int $icon_color Color of the topic icon in RGB format
+ * @property-read ?string $icon_custom_emoji_id Optional. Unique identifier of the custom emoji shown as the topic icon
  *
- * @property int    $message_thread_id    Unique identifier of the forum topic
- * @property string $name                 Name of the topic
- * @property int    $icon_color           Color of the topic icon in RGB format
- * @property string $icon_custom_emoji_id Optional. Unique identifier of the custom emoji shown as the topic icon
+ * @see https://core.telegram.org/bots/api#forumtopic
  */
 class ForumTopic extends TelegramObject
 {
-    protected $attributes = [
-        'message_thread_id' => 'integer',
-        'name' => 'string',
-        'icon_color' => 'integer',
-        'icon_custom_emoji_id' => 'string',
-    ];
+    public function __construct(
+        public readonly int $message_thread_id,
+        public readonly string $name,
+        public readonly int $icon_color,
+        public readonly ?string $icon_custom_emoji_id,
+    ) {
+    }
 }

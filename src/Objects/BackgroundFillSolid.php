@@ -4,14 +4,16 @@ namespace WeStacks\TeleBot\Objects;
 
 /**
  * The background is filled using the selected color.
+ * @property-read string $type Type of the background fill, always “solid”
+ * @property-read int $color The color of the background fill in the RGB24 format
  *
- * @property string $type  Type of the background fill, always “solid”
- * @property int    $color The color of the background fill in the RGB24 format
+ * @see https://core.telegram.org/bots/api#backgroundfillsolid
  */
 class BackgroundFillSolid extends BackgroundFill
 {
-    protected $attributes = [
-        'type' => 'string',
-        'color' => 'integer',
-    ];
+    public function __construct(
+        public readonly string $type,
+        public readonly int $color,
+    ) {
+    }
 }

@@ -2,22 +2,24 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
  * This object contains information about an incoming shipping query.
+ * @property-read string $id Unique query identifier
+ * @property-read User $from User who sent the query
+ * @property-read string $invoice_payload Bot-specified invoice payload
+ * @property-read ShippingAddress $shipping_address User specified shipping address
  *
- * @property string          $id               Unique query identifier
- * @property User            $from             User who sent the query
- * @property string          $invoice_payload  Bot-specified invoice payload
- * @property ShippingAddress $shipping_address User specified shipping address
+ * @see https://core.telegram.org/bots/api#shippingquery
  */
 class ShippingQuery extends TelegramObject
 {
-    protected $attributes = [
-        'id' => 'string',
-        'from' => 'User',
-        'invoice_payload' => 'string',
-        'shipping_address' => 'ShippingAddress',
-    ];
+    public function __construct(
+        public readonly string $id,
+        public readonly User $from,
+        public readonly string $invoice_payload,
+        public readonly ShippingAddress $shipping_address,
+    ) {
+    }
 }

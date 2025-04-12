@@ -2,25 +2,22 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
  * Use this method to get the number of members in a chat. Returns Int on success.
  *
- * @property string $chat_id __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+ * @property-read int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+ *
+ * @see https://core.telegram.org/bots/api#getchatmembercount
  */
 class GetChatMemberCountMethod extends TelegramMethod
 {
     protected string $method = 'getChatMemberCount';
+    protected array $expect = ['int'];
 
-    protected string $expect = 'integer';
-
-    protected array $parameters = [
-        'chat_id' => 'string',
-    ];
-
-    public function mock($arguments)
-    {
-        return rand(1, 100);
+    public function __construct(
+        public readonly int|string $chat_id,
+    ) {
     }
 }

@@ -1,7 +1,9 @@
 .gitignore export-ignore
 .gitattributes export-ignore
 .github export-ignore
-tests/ export-ignore
+api.min.json export-ignore
 docs/ export-ignore
+generator/ export-ignore
 phpunit.xml.dist export-ignore
 rector.php export-ignore
+tests/ export-ignore

@@ -2,16 +2,18 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
  * Contains a list of Telegram Star transactions.
+ * @property-read StarTransaction[] $transactions The list of transactions
  *
- * @property StarTransaction[] $transactions The list of transactions
+ * @see https://core.telegram.org/bots/api#startransactions
  */
 class StarTransactions extends TelegramObject
 {
-    protected $attributes = [
-        'transactions' => 'StarTransaction[]',
-    ];
+    public function __construct(
+        public readonly array $transactions,
+    ) {
+    }
 }

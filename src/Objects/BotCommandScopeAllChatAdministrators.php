@@ -3,13 +3,15 @@
 namespace WeStacks\TeleBot\Objects;
 
 /**
- * Represents the [scope](https://core.telegram.org/bots/api#botcommandscope) of bot commands, covering all group and supergroup chat administrators.
+ * Represents the scope of bot commands, covering all group and supergroup chat administrators.
+ * @property-read string $type Scope type, must be all_chat_administrators
  *
- * @property string $type Scope type, must be all_chat_administrators
+ * @see https://core.telegram.org/bots/api#botcommandscopeallchatadministrators
  */
 class BotCommandScopeAllChatAdministrators extends BotCommandScope
 {
-    protected $attributes = [
-        'type' => 'string',
-    ];
+    public function __construct(
+        public readonly string $type,
+    ) {
+    }
 }

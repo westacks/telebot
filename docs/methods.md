@@ -1,17 +1,30 @@
 # Methods
 
-The `WeStacks\TeleBot\TeleBot` instance can execute all methods which provided in official Telegram API [documentstion](https://core.telegram.org/bots/api#available-methods).
+The bot instance can execute all methods listed in the official Telegram Bot API [documentation](https://core.telegram.org/bots/api#available-methods) using the following syntax:
 
-If you need some working examples always feel free to see our [tests](https://github.com/WeStacks\TeleBot\tree/master/tests)
 
-<!-- tabs:start -->
-
-#### ** sendMessage **
-
+:::tabs
+== Named arguments
 ```php
 $bot = new TeleBot('<your bot token>');
 
-// See docs for details:  https://core.telegram.org/bots/api#sendmessage
+// See docs for details: https://core.telegram.org/bots/api#sendmessage
+$message = $bot->sendMessage(
+    chat_id: 1234567890,
+    text: 'Test message',
+    reply_markup: [
+        'inline_keyboard' => [[[
+            'text' => 'Google',
+            'url' => 'https://google.com/'
+        ]]]
+    ]
+);
+```
+== Array syntax
+```php
+$bot = new TeleBot('<your bot token>');
+
+// See docs for details: https://core.telegram.org/bots/api#sendmessage
 $message = $bot->sendMessage([
     'chat_id' => 1234567890,
     'text' => 'Test message',
@@ -23,108 +36,30 @@ $message = $bot->sendMessage([
     ]
 ]);
 ```
+:::
 
-#### ** sendPhoto **
+## TeleBot Methods
 
-```php
-$bot = new TeleBot('<your bot token>');
+The `WeStacks\TeleBot\TeleBot` class supports **all** official Telegram API methods and adds some useful helper methods:
 
-// See docs for details:  https://core.telegram.org/bots/api#sendphoto
-// Using URL
-$message = $bot->sendPhoto([
-    'chat_id' => 1234567890,
-    'photo' => 'https://via.placeholder.com/640x640'
-]);
+| Method | Description |
+|--------|-------------|
+| `handle(Update $update): mixed` | Handle a Telegram [Update](https://core.telegram.org/bots/api#update) using registered handlers. |
+| `handler($handler): self` | Register a new update handler (closure or class-based). |
+| `purge(): void` | Recreate bot kernel (all handlers will be removed). |
+| `setLocalCommands(): bool` | Push locally registered bot commands to Telegram. |
+| `deleteLocalCommands(): bool` | Remove registered commands from Telegram. |
 
-// Local file
-$message = $bot->sendPhoto([
-    'chat_id' => 1234567890,
-    'photo' => fopen('local/file/path', 'r')
-]);
+---
 
-// With filename
-$message = $bot->sendPhoto([
-    'chat_id' => 1234567890,
-    'photo' => [
-        'file' => fopen('https://via.placeholder.com/640x640', 'r'),
-        'filename' => 'test-image.jpg'
-    ]
-]);
-// or
-$message = $bot->sendPhoto([
-    'chat_id' => 1234567890,
-    'photo' => new InputFile(fopen('https://via.placeholder.com/640x640', 'r'), 'test-image.jpg')
-]);
-```
+## BotManager Methods
 
-<!-- tabs:end -->
+The `WeStacks\TeleBot\BotManager` supports all `TeleBot` methods and allows managing multiple bots:
 
-## TeleBot methods
-
-* `WeStacks\TeleBot\TeleBot` supports all methods form official Telegram API [documentation](https://core.telegram.org/bots/api#available-methods).
-
-Additional library methods:
-
-* **`async(bool $async = true)`**
-    * Call next Telegram API method asynchronously, ignoring config parameter (bot method will return guzzle promise)
-    * Returns: `self`
-
-* **`exceptions(bool $exceptions = true)`**
-    * Throw exceptions on next method, ignoring config parameter (bot method will throw `TeleBotException` on request error)
-    * Returns: `self`
-
-* **`config($value = null)`**
-    * Get config that was used to create this bot instance. Passed key as argument will return only selected value instead of whole config.
-    * Returns: `mixed`
-
-* **`handleUpdate(Update $update)`**
-    * Handle Telegram [Update](https://core.telegram.org/bots/api#update) using registered update handlers. See more details in [Handling updates](updates.md) section.
-    * Returns: `mixed` - result of handled update
-
-* **`addHandler($handler)`**
-    * Add new update handler(s) to the bot instance. See more details in [Handling updates](updates.md) section
-    * `$handler` - closure function or `UpdateHandler` class resolution.
-    * Returns: `void`
-
-* **`clearHandlers()`**
-    * Remove all update handlers from bot instance
-    * Returns: `void`
-
-* **`setLocalCommands()`**
-    * Sets locally registered bot commands on Telegram API server. See [Handling commands](updates.md#commands) section for more details. Can be customized by custom Kernel.
-    * Returns: `mixed` - By default returns `true` if commands were set.
-
-* **`deleteLocalCommands()`**
-    * Deletes locally registered bot commands from Telegram API server. See [Handling commands](updates.md#commands) section for more details. Can be customized by custom Kernel.
-    * Returns: `mixed` - By default returns `true` if commands were deleted.
-
-
-## BotManager methods
-
-* `WeStacks\TeleBot\BotManager` supports all `WeStacks\TeleBot\TeleBot` methods, passing them to your [default](configuration.md#default-string) bot.
-
-Additional library methods:
-
-* **`bot(string $name)`**
-    * Get [TeleBot](methods.md#telebot-methods) instance by bot name
-    * Returns: `TeleBot`
-
-* **`bots()`**
-    * Get array of bot names attached to BotManager instance
-    * Returns: `string[]`
-
-* **`add(string $name, TeleBot|string|array $bot)`**
-    * Add a `$bot` with given `$name` to `BotManager` instance
-    * Returns: `TeleBot` - given bot
-
-* **`delete(string $name)`**
-    * Delete a bot with given `$name` from `BotManager` instance
-    * Returns: `void`
-
-* **`default(string $name)`**
-    * Set `BotManager` default bot to `$name`
-    * Returns: `TeleBot` - default bot
-
-## Laravel TeleBot Facade
-
-`WeStacks\TeleBot\Laravel\TeleBot` is a [facade](https://laravel.com/docs/facades) for `WeStacks\TeleBot\BotManager` instance. It supports all `BotManager` methods statically (config is used from `config/telebot.php`).
+| Method | Description |
+|--------|-------------|
+| `bot(string\|int $name): TeleBot` | Get a specific `TeleBot` instance by name. |
+| `bots(): Array<string\|int>` | Get a list of registered bot names. |
+| `add(string\|int $name, TeleBot\|string\|array $bot): self` | Add a bot instance to the manager. |
+| `remove(string\|int $name): self` | Remove a bot by name. |
+| `default(string\|int $name): self` | Set the default bot. |

@@ -2,43 +2,22 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Contracts\TelegramMethod;
-use WeStacks\TeleBot\Objects\StickerSet;
+use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
- * Use this method to get a sticker set. On success, a [StickerSet](https://core.telegram.org/bots/api#stickerset) object is returned.
+ * Use this method to get a sticker set. On success, a StickerSet object is returned.
  *
- * @property string $name __Required: Yes__. Name of the sticker set
+ * @property-read string $name Name of the sticker set
+ *
+ * @see https://core.telegram.org/bots/api#getstickerset
  */
 class GetStickerSetMethod extends TelegramMethod
 {
     protected string $method = 'getStickerSet';
+    protected array $expect = ['StickerSet'];
 
-    protected string $expect = 'StickerSet';
-
-    protected array $parameters = [
-        'name' => 'string',
-    ];
-
-    public function mock($arguments)
-    {
-        return new StickerSet([
-            'name' => $arguments['name'],
-            'title' => 'title',
-            'contains_masks' => false,
-            'stickers' => [
-                [
-                    'file_id' => 'file_id',
-                    'width' => 100,
-                    'height' => 100,
-                    'is_animated' => false,
-                    'thumbnail' => [
-                        'file_id' => 'file_id',
-                        'width' => 100,
-                        'height' => 100,
-                    ],
-                ],
-            ],
-        ]);
+    public function __construct(
+        public readonly string $name,
+    ) {
     }
 }

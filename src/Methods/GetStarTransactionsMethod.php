@@ -2,35 +2,24 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Contracts\TelegramMethod;
-use WeStacks\TeleBot\Objects\StarTransaction;
-use WeStacks\TeleBot\Objects\StarTransactions;
+use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
- * Returns the bot's Telegram Star transactions in chronological order. On success, returns a [StarTransactions](https://core.telegram.org/bots/api#startransactions) object.
+ * Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object.
  *
- * @property int $offset __Required: Optional__. Number of transactions to skip in the response
- * @property int $limit  __Required: Optional__. The maximum number of transactions to be retrieved. Values between 1-100 are accepted. Defaults to 100.
+ * @property-read ?int $offset Number of transactions to skip in the response
+ * @property-read ?int $limit The maximum number of transactions to be retrieved. Values between 1-100 are accepted. Defaults to 100.
+ *
+ * @see https://core.telegram.org/bots/api#getstartransactions
  */
 class GetStarTransactionsMethod extends TelegramMethod
 {
     protected string $method = 'getStarTransactions';
+    protected array $expect = ['StarTransactions'];
 
-    protected string $expect = 'StarTransactions';
-
-    protected array $parameters = [
-        'offset' => 'integer',
-        'limit' => 'integer',
-    ];
-
-    public function mock($arguments)
-    {
-        return new StarTransactions([
-            new StarTransaction([
-                'id' => rand(1, 100),
-                'amount' => rand(1, 100),
-                'date' => time(),
-            ]),
-        ]);
+    public function __construct(
+        public readonly ?int $offset,
+        public readonly ?int $limit,
+    ) {
     }
 }

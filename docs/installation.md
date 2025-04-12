@@ -1,55 +1,38 @@
-### Requirements
+# Getting Started
 
-- PHP 8.0+
-- Composer
-- Telegram bot token ([what is it?](https://core.telegram.org/bots/api#authorizing-your-bot))
+Install TeleBot and create your first Telegram bot in 3 minutes.
 
-## Installing package
+::: tip Compatibility
+- PHP 8.2+
+- Latest [Telegram Bot API](https://core.telegram.org/bots/api)
+:::
 
-You can install the package via composer:
 
+## Installation
+
+Install via Composer:
 ```bash
 composer require westacks/telebot
 ```
 
-For laravel, you should install package with adapter
+### Framework Integration
 
-```bash
-composer require westacks/telebot-laravel
-```
+In case you are using a PHP framework, you may use adapter packages to have a seamless experience:
 
-## Migrating from 2.x
+- [Laravel](https://github.com/westacks/telebot-laravel)
+- ...
 
-For standalone project you can just upgrade package without any breaking changes. But in case you are using Laravel, to migrate the package to newest version you need update your `composer.json`:
+::: info Created your own adapter?
+[Open a pull request](https://github.com/westacks/telebot/pulls) to share it with the community!
+:::
 
-```json
-// "westacks/telebot": "^2.0",
-"westacks/telebot-laravel": "^3.0",
-```
+## Basic Example
 
-## Laravel
-
-Only Laravel version 5.5 or greater supported by the library!
-
-If you are using Laravel, the library will self-register its ServiceProvider and Facade using Laravel's auto-discovery. If you turned off auto-discovery for some reason, you need to register service provider and facade manually in `config/app.php`:
+Now you can use TeleBot in your code:
 
 ```php
-'providers' => [
-    /*
-     * Package Service Providers...
-     */
-    WeStacks\TeleBot\Laravel\Providers\TeleBotServiceProvider::class,
-],
-'aliases' => [
-    'TeleBot' => WeStacks\TeleBot\Laravel\TeleBot::class,
-]
+use WeStacks\TeleBot\TeleBot;
+
+$bot = new TeleBot('YOUR_BOT_TOKEN');
+$bot->getMe();
 ```
-
-### Publish Configuration File
-
-Open your terminal window and fire the following command to publish config file to your config directory:
-
-```bash
-php artisan vendor:publish --provider="WeStacks\TeleBot\Laravel\Providers\TeleBotServiceProvider" --tag=config
-```
-Now you can find your bots config on `config/telebot.php` file. To see more details about config parameters, you should be acquainted with `BotManager` [config](configuration.md#bot-manager-config))

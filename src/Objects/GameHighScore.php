@@ -2,20 +2,22 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
- * This object represents one row of the high scores table for a game.And that's about all we've got for now. If you've got any questions, please check out our [__Bot FAQ »__](https://core.telegram.org/bots/faq)
+ * This object represents one row of the high scores table for a game.
+ * @property-read int $position Position in high score table for the game
+ * @property-read User $user User
+ * @property-read int $score Score
  *
- * @property int  $position Position in high score table for the game
- * @property User $user     User
- * @property int  $score    Score
+ * @see https://core.telegram.org/bots/api#gamehighscore
  */
 class GameHighScore extends TelegramObject
 {
-    protected $attributes = [
-        'position' => 'integer',
-        'user' => 'User',
-        'score' => 'integer',
-    ];
+    public function __construct(
+        public readonly int $position,
+        public readonly User $user,
+        public readonly int $score,
+    ) {
+    }
 }

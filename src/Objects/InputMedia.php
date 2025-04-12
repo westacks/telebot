@@ -2,36 +2,30 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
-use WeStacks\TeleBot\Exceptions\TeleBotException;
+use WeStacks\TeleBot\Foundation\Identifiable;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
  * This object represents the content of a media message to be sent. It should be one of
- *
  * - [InputMediaAnimation](https://core.telegram.org/bots/api#inputmediaanimation)
  * - [InputMediaDocument](https://core.telegram.org/bots/api#inputmediadocument)
  * - [InputMediaAudio](https://core.telegram.org/bots/api#inputmediaaudio)
  * - [InputMediaPhoto](https://core.telegram.org/bots/api#inputmediaphoto)
  * - [InputMediaVideo](https://core.telegram.org/bots/api#inputmediavideo)
+ *
+ * @see https://core.telegram.org/bots/api#inputmedia
  */
-abstract class InputMedia extends TelegramObject
+abstract class InputMedia extends TelegramObject implements Identifiable
 {
-    protected static $types = [
-        'photo' => InputMediaPhoto::class,
-        'video' => InputMediaVideo::class,
-        'animation' => InputMediaAnimation::class,
-        'audio' => InputMediaAudio::class,
-        'document' => InputMediaDocument::class,
-    ];
-
-    public static function create($object)
+    public static function identify(array $parameters): string
     {
-        $object = (array)$object;
-
-        if ($class = static::$types[$object['type'] ?? null] ?? null) {
-            return new $class($object);
-        }
-
-        throw new TeleBotException('Cannot cast value of type ' . gettype($object) . ' to type ' . static::class);
+        return match ($parameters['type']) {
+            'animation' => InputMediaAnimation::class,
+            'document' => InputMediaDocument::class,
+            'audio' => InputMediaAudio::class,
+            'photo' => InputMediaPhoto::class,
+            'video' => InputMediaVideo::class,
+            default => throw new \InvalidArgumentException("Unknown InputMedia: ".$parameters['type']),
+        };
     }
 }

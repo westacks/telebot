@@ -2,32 +2,26 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
-use WeStacks\TeleBot\Exceptions\TeleBotException;
+use WeStacks\TeleBot\Foundation\Identifiable;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
- * This object describes the type of a reaction. Currently, it can be one of
- *
+ * This object describes paid media. Currently, it can be one of
  * - [PaidMediaPreview](https://core.telegram.org/bots/api#paidmediapreview)
  * - [PaidMediaPhoto](https://core.telegram.org/bots/api#paidmediaphoto)
  * - [PaidMediaVideo](https://core.telegram.org/bots/api#paidmediavideo)
+ *
+ * @see https://core.telegram.org/bots/api#paidmedia
  */
-abstract class PaidMedia extends TelegramObject
+abstract class PaidMedia extends TelegramObject implements Identifiable
 {
-    protected static $types = [
-        'preview' => PaidMediaPreview::class,
-        'photo' => PaidMediaPhoto::class,
-        'video' => PaidMediaVideo::class,
-    ];
-
-    public static function create($object)
+    public static function identify(array $parameters): string
     {
-        $object = (array)$object;
-
-        if ($class = static::$types[$object['source'] ?? null] ?? null) {
-            return new $class($object);
-        }
-
-        throw new TeleBotException('Cannot cast value of type ' . gettype($object) . ' to type ' . static::class);
+        return match ($parameters['type']) {
+            'preview' => PaidMediaPreview::class,
+            'photo' => PaidMediaPhoto::class,
+            'video' => PaidMediaVideo::class,
+            default => throw new \InvalidArgumentException("Unknown PaidMedia: ".$parameters['type']),
+        };
     }
 }

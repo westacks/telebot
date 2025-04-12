@@ -1,6 +1,6 @@
 The MIT License
 
-Copyright (c) 2020 WeStacks https://westacks.com.ua/
+Copyright (c) 2020 WeStacks
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -2,32 +2,26 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
-use WeStacks\TeleBot\Exceptions\TeleBotException;
+use WeStacks\TeleBot\Foundation\Identifiable;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
  * This object describes the state of a revenue withdrawal operation. Currently, it can be one of
- *
  * - [RevenueWithdrawalStatePending](https://core.telegram.org/bots/api#revenuewithdrawalstatepending)
  * - [RevenueWithdrawalStateSucceeded](https://core.telegram.org/bots/api#revenuewithdrawalstatesucceeded)
  * - [RevenueWithdrawalStateFailed](https://core.telegram.org/bots/api#revenuewithdrawalstatefailed)
+ *
+ * @see https://core.telegram.org/bots/api#revenuewithdrawalstate
  */
-abstract class RevenueWithdrawalState extends TelegramObject
+abstract class RevenueWithdrawalState extends TelegramObject implements Identifiable
 {
-    protected static $types = [
-        'pending' => RevenueWithdrawalStatePending::class,
-        'succeeded' => RevenueWithdrawalStateSucceeded::class,
-        'failed' => RevenueWithdrawalStateFailed::class,
-    ];
-
-    public static function create($object)
+    public static function identify(array $parameters): string
     {
-        $object = (array)$object;
-
-        if ($class = static::$types[$object['type'] ?? null] ?? null) {
-            return new $class($object);
-        }
-
-        throw new TeleBotException('Cannot cast value of type ' . gettype($object) . ' to type ' . static::class);
+        return match ($parameters['type']) {
+            'pending' => RevenueWithdrawalStatePending::class,
+            'succeeded' => RevenueWithdrawalStateSucceeded::class,
+            'failed' => RevenueWithdrawalStateFailed::class,
+            default => throw new \InvalidArgumentException("Unknown RevenueWithdrawalState: ".$parameters['type']),
+        };
     }
 }

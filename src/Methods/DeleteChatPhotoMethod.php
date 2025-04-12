@@ -2,25 +2,22 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
  * Use this method to delete a chat photo. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
  *
- * @property string $chat_id __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ *
+ * @see https://core.telegram.org/bots/api#deletechatphoto
  */
 class DeleteChatPhotoMethod extends TelegramMethod
 {
     protected string $method = 'deleteChatPhoto';
+    protected array $expect = ['true'];
 
-    protected string $expect = 'boolean';
-
-    protected array $parameters = [
-        'chat_id' => 'string',
-    ];
-
-    public function mock($arguments)
-    {
-        return true;
+    public function __construct(
+        public readonly int|string $chat_id,
+    ) {
     }
 }

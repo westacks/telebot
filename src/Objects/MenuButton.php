@@ -2,36 +2,27 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
-use WeStacks\TeleBot\Exceptions\TeleBotException;
+use WeStacks\TeleBot\Foundation\Identifiable;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
  * This object describes the bot's menu button in a private chat. It should be one of
- *
+ * If a menu button other than MenuButtonDefault is set for a private chat, then it is applied in the chat. Otherwise the default menu button is applied. By default, the menu button opens the list of bot commands.
  * - [MenuButtonCommands](https://core.telegram.org/bots/api#menubuttoncommands)
  * - [MenuButtonWebApp](https://core.telegram.org/bots/api#menubuttonwebapp)
  * - [MenuButtonDefault](https://core.telegram.org/bots/api#menubuttondefault)
+ *
+ * @see https://core.telegram.org/bots/api#menubutton
  */
-abstract class MenuButton extends TelegramObject
+abstract class MenuButton extends TelegramObject implements Identifiable
 {
-    private static $types = [
-        'commands' => MenuButtonCommands::class,
-        'web_app' => MenuButtonWebApp::class,
-        'default' => MenuButtonDefault::class,
-    ];
-
-    public static function create($object)
+    public static function identify(array $parameters): string
     {
-        $object = (array)$object;
-
-        foreach (static::$types as $type => $class) {
-            if (!isset($object[$type])) {
-                continue;
-            }
-
-            return new $class($object);
-        }
-
-        throw new TeleBotException('Cannot cast value of type ' . gettype($object) . ' to type ' . static::class);
+        return match ($parameters['type']) {
+            'commands' => MenuButtonCommands::class,
+            'web_app' => MenuButtonWebApp::class,
+            'default' => MenuButtonDefault::class,
+            default => throw new \InvalidArgumentException("Unknown MenuButton: ".$parameters['type']),
+        };
     }
 }

@@ -1,13 +1,12 @@
 <p align="center">
-<a href="https://github.com/westacks/telebot"><img src="./docs/assets/logo.svg" alt="Project Logo"></a>
+<a href="https://github.com/westacks/telebot"><img src="./docs/assets/logo.svg" alt="Project Logo" width="200"></a>
 </p>
 
 <p align="center">
 <a href="https://packagist.org/packages/westacks/telebot"><img src="https://poser.pugx.org/westacks/telebot/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://core.telegram.org/bots/api"><img src="https://img.shields.io/badge/Bot%20API-8.2-blue" alt="Bot API Version"></a>
 <a href="https://packagist.org/packages/westacks/telebot"><img src="https://poser.pugx.org/westacks/telebot/d/total.svg" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/westacks/telebot"><img src="https://poser.pugx.org/westacks/telebot/license.svg" alt="License"></a>
-<a href="https://github.com/westacks/telebot/actions/workflows/main.yml"><img src="https://github.com/westacks/telebot/actions/workflows/main.yml/badge.svg" alt="PHPUnit"></a>
+<a href="https://github.com/westacks/telebot/actions/workflows/test.yml"><img src="https://github.com/westacks/telebot/actions/workflows/test.yml/badge.svg" alt="Pest"></a>
 <a href="https://app.fossa.com/projects/git%2Bgithub.com%2Fwestacks%2Ftelebot?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwestacks%2Ftelebot.svg?type=shield"/></a>
 </p>
 

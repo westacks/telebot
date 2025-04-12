@@ -2,16 +2,18 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
- * Describes an inline message sent by a [Web App](https://core.telegram.org/bots/webapps) on behalf of a user.
+ * Describes an inline message sent by a Web App on behalf of a user.
+ * @property-read ?string $inline_message_id Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message.
  *
- * @property string $inline_message_id Optional. Identifier of the sent inline message. Available only if there is an [inline keyboard](https://core.telegram.org/bots/api#inlinekeyboardmarkup) attached to the message.
+ * @see https://core.telegram.org/bots/api#sentwebappmessage
  */
 class SentWebAppMessage extends TelegramObject
 {
-    protected $attributes = [
-        'inline_message_id' => 'string',
-    ];
+    public function __construct(
+        public readonly ?string $inline_message_id,
+    ) {
+    }
 }

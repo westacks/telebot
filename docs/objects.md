@@ -1,57 +1,32 @@
 # Objects
 
-The library provides an object relation map for each JSON representation of [Telegram API](https://core.telegram.org/bots/api#available-types) object with same properties.
+The library provides **DTO (Data Transfer Object)** representations for each [Telegram API](https://core.telegram.org/bots/api#available-types) object. These DTOs mirror the structure and field names from the Telegram documentation exactly.
 
-The sub-object's types are automaticaly casted when you create a new object instance, so you may fully rely on Telegram API [documentation](https://core.telegram.org/bots/api).
+Each sub-object is **automatically cast** to its appropriate DTO class when you create a new instance, so you can rely entirely on the official [Telegram Bot API docs](https://core.telegram.org/bots/api) for expected fields and types.
 
-### Interactions
+## Interactions
 
-The next things can be done with each library [object](https://core.telegram.org/bots/api#available-types), but we will use only `Update` object as example:
-<!-- tabs:start -->
-
-#### ** Usage **
+All DTOs share a consistent and convenient interface. Below, we demonstrate how to work with the `Update` object.
 
 ```php
-// Chaining properties
+// 🔗 Accessing nested properties (standard chaining)
 $chatId = $update->message->from->id; // 3456789
 
-// Using dot notation
+// 📍 Using dot notation (safe, readable)
 $chatId = $update->get('message.from.is_bot'); // false
 
-// Iterating properties
-foreach ($update->message->from as $prop => $value)
-{
+// 🔁 Iterating over properties
+foreach ($update->message->from as $prop => $value) {
+    echo "$prop => $value\n";
     // id => 3456789
     // is_bot => false
     // first_name => 'John'
     // last_name => 'Doe'
 }
 
-// Get object JSON representaition
+// 🔄 JSON representation
 $jsonUpdate = $update->toJson();
 
-// Get object associative array representaition
+// 🔃 Array representation
 $arrayUpdate = $update->toArray();
-
-// Debugable =)  
-var_dump($update);
 ```
-
-#### ** Where $update came form? **
-
-```php
-$update = new Update([
-    'update_id' => 1234567,
-    'message' => [
-        'message_id'  => 2345678,
-        'from'        => [
-            'id'          => 3456789,
-            'is_bot'      => false,
-            'first_name'  => 'John',
-            'last_name'   => 'Doe'
-        ]
-    ]
-]);
-```
-
-<!-- tabs:end -->

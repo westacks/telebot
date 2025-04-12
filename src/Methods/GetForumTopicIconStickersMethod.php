@@ -2,31 +2,20 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Contracts\TelegramMethod;
-use WeStacks\TeleBot\Objects\Sticker;
+use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
- * Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user. Requires no parameters. Returns an Array of [Sticker](https://core.telegram.org/bots/api#sticker) objects.
+ * Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user. Requires no parameters. Returns an Array of Sticker objects.
+ *
+ *
+ * @see https://core.telegram.org/bots/api#getforumtopiciconstickers
  */
 class GetForumTopicIconStickersMethod extends TelegramMethod
 {
     protected string $method = 'getForumTopicIconStickers';
+    protected array $expect = ['Sticker[]'];
 
-    protected string $expect = 'Sticker[]';
-
-    protected array $parameters = [];
-
-    public function mock($arguments)
+    public function __construct()
     {
-        return [
-            new Sticker([
-                'file_id' => 'test',
-                'file_unique_id' => 'test',
-                'width' => 100,
-                'height' => 100,
-                'is_animated' => false,
-                'is_video' => false,
-            ]),
-        ];
     }
 }

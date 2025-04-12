@@ -2,56 +2,39 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Foundation\TelegramMethod;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
-use WeStacks\TeleBot\Objects\Message;
-use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
- * Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited [Message](https://core.telegram.org/bots/api#message) is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within __48 hours__ from the time they were sent.
+ * Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
  *
- * @property string               $business_connection_id   __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
- * @property string               $chat_id                  __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * @property int                  $message_id               __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message to edit
- * @property string               $inline_message_id        __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
- * @property string               $caption                  __Required: Optional__. New caption of the message, 0-1024 characters after entities parsing
- * @property string               $parse_mode               __Required: Optional__. Mode for parsing entities in the message caption. See [formatting options](https://core.telegram.org/bots/api#formatting-options) for more details.
- * @property MessageEntity[]      $caption_entities         __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
- * @property bool                 $show_caption_above_media __Required: Optional__. Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages.
- * @property InlineKeyboardMarkup $reply_markup             __Required: Optional__. A JSON-serialized object for an [inline keyboard](https://core.telegram.org/bots/features#inline-keyboards).
+ * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
+ * @property-read null|int|string $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property-read ?int $message_id Required if inline_message_id is not specified. Identifier of the message to edit
+ * @property-read ?string $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
+ * @property-read ?string $caption New caption of the message, 0-1024 characters after entities parsing
+ * @property-read ?string $parse_mode Mode for parsing entities in the message caption. See formatting options for more details.
+ * @property-read ?MessageEntity[] $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+ * @property-read ?bool $show_caption_above_media Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages.
+ * @property-read ?InlineKeyboardMarkup $reply_markup A JSON-serialized object for an inline keyboard.
+ *
+ * @see https://core.telegram.org/bots/api#editmessagecaption
  */
 class EditMessageCaptionMethod extends TelegramMethod
 {
     protected string $method = 'editMessageCaption';
+    protected array $expect = ['Message', 'true'];
 
-    protected string $expect = 'Message|boolean';
-
-    protected array $parameters = [
-        'business_connection_id' => 'string',
-        'chat_id' => 'string',
-        'message_id' => 'integer',
-        'inline_message_id' => 'string',
-        'caption' => 'string',
-        'parse_mode' => 'string',
-        'caption_entities' => 'MessageEntity[]',
-        'show_caption_above_media' => 'boolean',
-        'reply_markup' => 'InlineKeyboardMarkup',
-    ];
-
-    public function mock($arguments)
-    {
-        if (isset($arguments['inline_message_id'])) {
-            return true;
-        }
-
-        return new Message([
-            'chat' => [
-                'id' => $arguments['chat_id'],
-            ],
-            'message_id' => $arguments['message_id'],
-            'text' => $arguments['caption'] ?? 'Test',
-            'reply_markup' => $arguments['reply_markup'] ?? [],
-            'entities' => $arguments['caption_entities'] ?? [],
-        ]);
+    public function __construct(
+        public readonly ?string $business_connection_id,
+        public readonly null|int|string $chat_id,
+        public readonly ?int $message_id,
+        public readonly ?string $inline_message_id,
+        public readonly ?string $caption,
+        public readonly ?string $parse_mode,
+        public readonly ?array $caption_entities,
+        public readonly ?bool $show_caption_above_media,
+        public readonly ?InlineKeyboardMarkup $reply_markup,
+    ) {
     }
 }

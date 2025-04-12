@@ -2,28 +2,22 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Contracts\TelegramMethod;
-use WeStacks\TeleBot\Objects\BotDescription;
+use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
- * Use this method to get the current bot description for the given user language. Returns [BotDescription](https://core.telegram.org/bots/api#botdescription) on success.
+ * Use this method to get the current bot description for the given user language. Returns BotDescription on success.
  *
- * @property string $language_code __Required: Optional__. A two-letter ISO 639-1 language code or an empty string
+ * @property-read ?string $language_code A two-letter ISO 639-1 language code or an empty string
+ *
+ * @see https://core.telegram.org/bots/api#getmydescription
  */
 class GetMyDescriptionMethod extends TelegramMethod
 {
     protected string $method = 'getMyDescription';
+    protected array $expect = ['BotDescription'];
 
-    protected string $expect = 'BotDescription';
-
-    protected array $parameters = [
-        'language_code' => 'string',
-    ];
-
-    public function mock($arguments)
-    {
-        return new BotDescription([
-            'description' => 'Bot description',
-        ]);
+    public function __construct(
+        public readonly ?string $language_code,
+    ) {
     }
 }

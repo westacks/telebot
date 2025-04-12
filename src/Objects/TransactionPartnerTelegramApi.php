@@ -3,15 +3,17 @@
 namespace WeStacks\TeleBot\Objects;
 
 /**
- * Describes a transaction with payment for [paid broadcasting](https://core.telegram.org/bots/api#paid-broadcasts).
+ * Describes a transaction with payment for paid broadcasting.
+ * @property-read string $type Type of the transaction partner, always “telegram_api”
+ * @property-read int $request_count The number of successful requests that exceeded regular limits and were therefore billed
  *
- * @property string $type          Type of the transaction partner, always “telegram_api”
- * @property int    $request_count The number of successful requests that exceeded regular limits and were therefore billed
+ * @see https://core.telegram.org/bots/api#transactionpartnertelegramapi
  */
 class TransactionPartnerTelegramApi extends TransactionPartner
 {
-    protected $attributes = [
-        'type' => 'string',
-        'request_count' => 'integer',
-    ];
+    public function __construct(
+        public readonly string $type,
+        public readonly int $request_count,
+    ) {
+    }
 }

@@ -3,17 +3,19 @@
 namespace WeStacks\TeleBot\Objects;
 
 /**
- * Represents a [chat member](https://core.telegram.org/bots/api#chatmember) that has no additional privileges or restrictions.
+ * Represents a chat member that has no additional privileges or restrictions.
+ * @property-read string $status The member's status in the chat, always “member”
+ * @property-read User $user Information about the user
+ * @property-read ?int $until_date Optional. Date when the user's subscription will expire; Unix time
  *
- * @property string $status     The member's status in the chat, always “member”
- * @property User   $user       Information about the user
- * @property int    $until_date Optional. Date when the user's subscription will expire; Unix time
+ * @see https://core.telegram.org/bots/api#chatmembermember
  */
 class ChatMemberMember extends ChatMember
 {
-    protected $attributes = [
-        'status' => 'string',
-        'user' => 'User',
-        'until_date' => 'integer',
-    ];
+    public function __construct(
+        public readonly string $status,
+        public readonly User $user,
+        public readonly ?int $until_date,
+    ) {
+    }
 }

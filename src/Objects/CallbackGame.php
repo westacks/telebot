@@ -2,12 +2,13 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
- * A placeholder, currently holds no information. Use [BotFather](https://t.me/botfather) to set up your game.
+ * A placeholder, currently holds no information. Use BotFather to set up your game.
+ *
+ * @see https://core.telegram.org/bots/api#callbackgame
  */
 class CallbackGame extends TelegramObject
 {
-    protected $attributes = [];
 }

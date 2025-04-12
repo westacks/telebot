@@ -3,13 +3,15 @@
 namespace WeStacks\TeleBot\Objects;
 
 /**
- * Represents the [scope](https://core.telegram.org/bots/api#botcommandscope) of bot commands, covering all group and supergroup chats.
+ * Represents the scope of bot commands, covering all group and supergroup chats.
+ * @property-read string $type Scope type, must be all_group_chats
  *
- * @property string $type Scope type, must be all_group_chats
+ * @see https://core.telegram.org/bots/api#botcommandscopeallgroupchats
  */
 class BotCommandScopeAllGroupChats extends BotCommandScope
 {
-    protected $attributes = [
-        'type' => 'string',
-    ];
+    public function __construct(
+        public readonly string $type,
+    ) {
+    }
 }

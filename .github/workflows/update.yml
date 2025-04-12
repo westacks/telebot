@@ -1,0 +1,52 @@
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron:  '0 0 * * *'
+
+name: Update bot API
+
+jobs:
+  update:
+    name: Update
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: php-actions/composer@v6
+        with:
+          php-version: 8.4
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+        with:
+          php-version: 8.4
+      - name: Scrap API docs
+        run: composer run scrap
+      - name: Verify
+        uses: dorny/paths-filter@v3
+        id: verify
+        with:
+          filters: |
+            api:
+              - 'api.json'
+      - name: Update API
+        if: steps.verify.outputs.api == 'true'
+        run: |
+          composer run generate
+          vendor/bin/rector
+          vendor/bin/pint
+      - name: Create Pull Request
+        if: steps.verify.outputs.api == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: Update bot API version
+          title: Update Bot API Version to latest version
+          body: This is an automated PR. Please check the diff, and the action logs, to check for any funky behaviour.
+          branch: auto/bot-api-update
+          reviewers: PunyFlash
+          assignees: PunyFlash
+          labels: automated
+          delete-branch: true

@@ -3,172 +3,194 @@
 namespace WeStacks\TeleBot;
 
 use GuzzleHttp\Client;
-use WeStacks\TeleBot\Exceptions\TeleBotException;
-use WeStacks\TeleBot\Traits\HandlesUpdates;
-use WeStacks\TeleBot\Traits\HasTelegramMethods;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use WeStacks\TeleBot\Foundation\FileStorage;
+use WeStacks\TeleBot\Foundation\HasTelegramMethods;
+use WeStacks\TeleBot\Foundation\UpdateHandler;
+use WeStacks\TeleBot\Objects\Update;
 
 /**
- * This class represents a bot instance. This is main controller for sending and handling your Telegram requests.
+ * This class represents a bot instance.
  *
  * @see https://core.telegram.org/bots/api
  */
 class TeleBot
 {
-    use HandlesUpdates;
     use HasTelegramMethods;
 
     /**
-     * Actual bot config.
+     * Bot configuration
      *
-     * @var array
+     * @var array{
+     *     token: string,
+     *     name: string|null,
+     *     storage: class-string,
+     *     api_url: string,
+     *     http: array,
+     *     kernel: class-string<Kernel>|Array<class-string<UpdateHandler>|callable>
+     * }
      */
-    protected $config = [];
+    public readonly array $config;
 
-    /**
-     * Guzzle HTTP client.
-     *
-     * @var Client
-     */
-    protected $client;
+    protected Client $client;
+    protected HandlerStack $stack;
+    protected MockHandler $mockHandler;
 
-    /**
-     * Kernel for handling incoming updates.
-     *
-     * @var Kernel
-     */
-    protected $kernel;
+    protected Kernel $kernel;
 
-    /**
-     * Async trigger.
-     *
-     * @var bool
-     */
-    protected $async;
-
-    /**
-     * Exception trigger.
-     *
-     * @var bool
-     */
-    protected $exceptions;
-
-    /**
-     * Fake trigger.
-     *
-     * @var bool
-     */
-    protected $fake;
-
-    /**
-     * Create new instance of Telegram bot.
-     *
-     * @param array|string $config Bot config. Path telegram bot API token as string, or array of parameters
-     *
-     * @throws TeleBotException
-     */
-    public function __construct($config)
+    public function __construct(array|string $config)
     {
         if (is_string($config)) {
             $config = ['token' => $config];
         }
+
         if (! isset($config['token'])) {
-            throw new TeleBotException('Token is required.');
+            throw new \InvalidArgumentException('Token is required');
         }
 
-        $this->config = [
-            'token' => $config['token'],
-            'name' => $config['name'] ?? null,
-            'exceptions' => $config['exceptions'] ?? true,
-            'async' => $config['async'] ?? false,
-            'storage' => $config['storage'] ?? \WeStacks\TeleBot\Storage\JsonStorage::class,
-            'api_url' => $config['api_url'] ?? 'https://api.telegram.org/bot{TOKEN}/{METHOD}',
-            'http' => $config['http'] ?? [],
-            'webhook' => $config['webhook'] ?? [],
-            'poll' => $config['poll'] ?? [],
-            'handlers' => $config['handlers'] ?? null,
-        ];
+        $this->config = array_merge([
+            'kernel' => Kernel::class,
+            'storage' => FileStorage::class,
+            'api_url' => 'https://api.telegram.org',
+            'name' => null,
+            'http' => [],
+        ], $config);
 
-        $this->client = new Client(array_merge([
+        $this->client = new Client(array_merge($this->config['http'], [
             'http_errors' => false,
-        ], $this->config['http']));
+            'base_uri' => $this->config['api_url'] . "/bot" . $this->config['token'] . '/',
+            'handler' => $this->stack = HandlerStack::create(),
+        ]));
 
-        if (is_subclass_of($handlers = $this->config['handlers'] ?? [], Kernel::class)) {
-            $this->kernel = new $handlers();
-        } else {
-            $this->kernel = new Kernel($handlers);
-        }
+        $this->kernel = is_array($this->config['kernel'])
+            ? new Kernel($this->config['kernel'])
+            : new $this->config['kernel']();
     }
 
-    public function __call(string $method, array $arguments)
+    public function __call(string $method, array $arguments): mixed
     {
-        if (! $Method = static::method($method)) {
-            throw new TeleBotException("Method '{$method}' not found.");
+        if (! class_exists($method = $this->method($method))) {
+            throw new \BadMethodCallException("Method {$method} not found");
         }
 
-        $method = new $Method(
-            $this->client,
-            $this->config['api_url'],
-            $this->config['token'],
-            $this->exceptions ?? $this->config['exceptions'],
-            $this->async ?? $this->config['async'],
-            $this->fake ?? false,
-        );
+        if (count($arguments) === 1 && isset($arguments[0]) && is_array($arguments[0])) {
+            $arguments = $arguments[0];
+        }
 
-        $this->exceptions = null;
-        $this->async = null;
-        $this->fake = null;
+        $properties = array_merge($method::properties(), ['_rescue', '_promise']);
 
-        return $method(...$arguments);
+        foreach ($arguments as $key => $value) {
+            if (is_int($key)) {
+                $arguments[$properties[$key]] = $value;
+                unset($arguments[$key]);
+            }
+        }
+
+        if (array_key_exists('_rescue', $arguments)) {
+            $rescue = array_pull($arguments, '_rescue');
+            $rescue = static fn (\Throwable $e) => is_callable($rescue) ? $rescue($e) : $rescue;
+        }
+
+        $promise = array_pull($arguments, '_promise');
+
+        /** @var \WeStacks\TeleBot\Foundation\TelegramMethod */
+        $method = synthesize($arguments, $method);
+
+        $result = $method($this->client, $rescue ?? null);
+
+        return $promise ? $result : $result->wait();
     }
 
     /**
-     * Get bot config.
+     * Fake the response of the bot. If you want to disable the mock, pass false as argument.
      *
-     * @return mixed
+     * @param array|false $responses The responses to be used by the mock handler.
      */
-    public function config(?string $value = null, $default = null)
+    public function fake(array|false $responses = []): void
     {
-        if ($value === null) {
-            return $this->config;
+        if (isset($this->mockHandler)) {
+            $this->stack->remove($this->mockHandler);
+            unset($this->mockHandler);
         }
 
-        return $this->config[$value] ?? $default;
+        if ($responses === false) {
+            return;
+        }
+
+        $this->stack->setHandler($this->mockHandler = new MockHandler($responses));
     }
 
     /**
-     * Call next method asynchronously (bot method will return guzzle promise).
+     * Handle an update with registered handlers.
      *
-     * @return self
+     * @param Update $update The incoming update.
+     *
+     * @return mixed The result of the last handler.
      */
-    public function async(bool $async = true)
+    public function handle(Update $update): mixed
     {
-        $this->async = $async;
+        return $this->kernel->run($this, $update);
+    }
+
+    /**
+     * Poll updates from Telegram.
+     *
+     * @param ?callable(TeleBot, Update): void $using
+     * @param ?string[] $allowed_updates
+     *
+     * @return \Generator<int,Update>
+     */
+    public function poll(
+        int $offset = 0,
+        ?int $limit = null,
+        ?int $timeout = null,
+        ?array $allowed_updates = null
+    ): \Generator {
+        while (true) {
+            $updates = $this->getUpdates($offset, $limit, $timeout, $allowed_updates);
+
+            foreach ($updates as $update) {
+                yield $update;
+
+                $offset = $update->update_id + 1;
+            }
+        }
+    }
+
+    /**
+     * Add a handler to the bot kernel.
+     *
+     * @param  callable|class-string<UpdateHandler>  $handler
+     */
+    public function handler(callable|string $handler): self
+    {
+        $this->kernel->add($handler);
 
         return $this;
     }
 
     /**
-     * Call next method fake.
-     *
-     * @param  bool $fake
-     * @return self
+     * Set the commands for the bot.
      */
-    public function fake(bool $fake = true)
+    public function setLocalCommands(): true
     {
-        $this->fake = $fake;
-
-        return $this;
+        return $this->kernel->setCommands($this);
     }
 
     /**
-     * Throw exceptions on next method (bot method will throw `TeleBotException` on request error).
-     *
-     * @return self
+     * Delete the commands for the bot.
      */
-    public function exceptions(bool $exceptions = true)
+    public function deleteLocalCommands(): true
     {
-        $this->exceptions = $exceptions;
+        return $this->kernel->deleteCommands($this);
+    }
 
-        return $this;
+    /**
+     * Purge the bot kernel.
+     */
+    public function purge(): void
+    {
+        $this->kernel = new ($this->kernel::class);
     }
 }

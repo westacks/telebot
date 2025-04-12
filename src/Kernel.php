@@ -2,23 +2,35 @@
 
 namespace WeStacks\TeleBot;
 
-use WeStacks\TeleBot\Exceptions\TeleBotException;
-use WeStacks\TeleBot\Handlers\CommandHandler;
-use WeStacks\TeleBot\Handlers\UpdateHandler;
+use WeStacks\TeleBot\Foundation\CommandHandler;
+use WeStacks\TeleBot\Foundation\UpdateHandler;
 use WeStacks\TeleBot\Objects\Update;
 
 class Kernel
 {
     /**
-     * Array of update handlers.
-     *
-     * @var string[]|callable[]
+     * @param Array<class-string<UpdateHandler>|callable> $handlers
      */
-    protected $handlers = [];
+    public function __construct(
+        protected array $handlers = []
+    ) {
+        foreach ($handlers as $index => $handler) {
+            if (! $this->validate($handler)) {
+                throw new \InvalidArgumentException('Invalid handler type at index ' . $index);
+            }
+        }
+    }
 
-    public function __construct(array $handlers = [])
+    /**
+     * @param  callable|class-string<UpdateHandler>  $handler
+     */
+    protected function validate(callable|string $handler): bool
     {
-        $this->add($handlers);
+        if (is_callable($handler)) {
+            return true;
+        }
+
+        return is_subclass_of($handler, UpdateHandler::class);
     }
 
     /**
@@ -28,14 +40,19 @@ class Kernel
      */
     public function run(TeleBot $bot, Update $update)
     {
-        $runner = $this->runner($bot);
+        $runner = (function () use ($bot): \Generator {
+            foreach ($this->handlers as $handler) {
+                yield static fn (Update $update, callable $next) => is_subclass_of($handler, UpdateHandler::class) ?
+                    (new $handler($bot, $update))($next) :
+                    $handler($bot, $update, $next);
+            }
+        })();
 
         if (! $runner->valid()) {
             return;
         }
 
-        $start = $runner->current();
-        $pipeline = function () use ($runner, $update, &$pipeline) {
+        $pipeline = static function () use (&$runner, $update, &$pipeline) {
             $runner->next();
 
             return $runner->valid() ?
@@ -43,64 +60,57 @@ class Kernel
                 $runner->getReturn();
         };
 
-        return $start($update, $pipeline);
+        return $runner->current()($update, $pipeline);
     }
 
-    public function setCommands(TeleBot &$bot)
+    public function setCommands(TeleBot $bot): true
     {
         return $bot->setMyCommands([
             'commands' => $this->getLocalCommands(),
         ]);
     }
 
-    public function deleteCommands(TeleBot &$bot)
+    public function deleteCommands(TeleBot $bot): true
     {
         return $bot->deleteMyCommands();
     }
 
-    protected function getLocalCommands()
+    /**
+     * Get all registered localized commands.
+     *
+     * @return BotCommand[]
+     */
+    protected function getLocalCommands(?string $locale = null): array
     {
-        return array_merge(...array_map(function ($command) {
-            return $command::getBotCommand();
-        }, array_filter($this->handlers, function ($handler) {
-            return is_subclass_of($handler, CommandHandler::class);
-        })));
-    }
+        /** @var Array<class-string<CommandHandler>> */
+        $commands = array_filter($this->handlers, static fn ($handler) => is_subclass_of($handler, CommandHandler::class));
 
-    private function runner(TeleBot $bot)
-    {
-        foreach ($this->handlers as $handler) {
-            yield fn ($update, $next) => is_subclass_of($handler, UpdateHandler::class) ?
-                (new $handler($bot, $update))($next) :
-                $handler($bot, $update, $next);
-        }
-
-        return function () {};
+        return array_values(array_merge(...array_map(
+            static fn ($command) => $command::getBotCommand($locale),
+            $commands,
+        )));
     }
 
     /**
      * Add new update handler(s).
      *
-     * @param array|\Closure|string $handler string that represents `UpdateHandler` subclass resolution or closure function. You also may give an array to add multiple handlers.
-     *
-     * @throws TeleBotException
+     * @param  array|callable|class-string<UpdateHandler> $handler
+     * @throws \InvalidArgumentException
      */
-    public function add(array|\Closure|string $handler)
+    public function add(array|callable|string ...$handlers): void
     {
-        if (is_array($handler)) {
-            foreach ($handler as $sub) {
-                $this->add($sub);
+        foreach ($handlers as $index => $handler) {
+            if (is_array($handler)) {
+                $this->add(...$handler);
+
+                continue;
             }
 
-            return;
+            if (! $this->validate($handler)) {
+                throw new \InvalidArgumentException('Invalid handler type at index ' . $index);
+            }
         }
 
-        if (is_subclass_of($handler, UpdateHandler::class) || is_callable($handler)) {
-            $this->handlers[] = $handler;
-
-            return;
-        }
-
-        throw new TeleBotException('Invalid handler type.');
+        $this->handlers = array_merge($this->handlers, $handlers);
     }
 }

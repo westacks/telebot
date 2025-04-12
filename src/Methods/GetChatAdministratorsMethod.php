@@ -2,45 +2,22 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Contracts\TelegramMethod;
-use WeStacks\TeleBot\Objects\ChatMemberAdministrator;
+use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
- * Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of [ChatMember](https://core.telegram.org/bots/api#chatmember) objects.
+ * Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of ChatMember objects.
  *
- * @property string $chat_id __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+ * @property-read int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+ *
+ * @see https://core.telegram.org/bots/api#getchatadministrators
  */
 class GetChatAdministratorsMethod extends TelegramMethod
 {
     protected string $method = 'getChatAdministrators';
+    protected array $expect = ['ChatMember[]'];
 
-    protected string $expect = 'ChatMember[]';
-
-    protected array $parameters = [
-        'chat_id' => 'string',
-    ];
-
-    public function mock($arguments)
-    {
-        return [
-            new ChatMemberAdministrator([
-                'user' => [
-                    'id' => 1,
-                    'first_name' => 'First',
-                    'last_name' => 'Last',
-                    'username' => 'username',
-                ],
-                'status' => 'administrator',
-            ]),
-            new ChatMemberAdministrator([
-                'user' => [
-                    'id' => 2,
-                    'first_name' => 'Second',
-                    'last_name' => 'Last',
-                    'username' => 'username',
-                ],
-                'status' => 'administrator',
-            ]),
-        ];
+    public function __construct(
+        public readonly int|string $chat_id,
+    ) {
     }
 }

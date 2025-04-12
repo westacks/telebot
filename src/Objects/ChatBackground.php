@@ -2,16 +2,18 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
  * This object represents a chat background.
+ * @property-read BackgroundType $type Type of the background
  *
- * @property BackgroundTypeChatTheme|BackgroundTypeFill|BackgroundTypePattern|BackgroundTypeWallpaper $type Type of the background
+ * @see https://core.telegram.org/bots/api#chatbackground
  */
 class ChatBackground extends TelegramObject
 {
-    protected $attributes = [
-        'type' => 'BackgroundType',
-    ];
+    public function __construct(
+        public readonly BackgroundType $type,
+    ) {
+    }
 }

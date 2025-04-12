@@ -2,25 +2,22 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
  * Use this method to delete a sticker from a set created by the bot. Returns True on success.
  *
- * @property string $sticker __Required: Yes__. File identifier of the sticker
+ * @property-read string $sticker File identifier of the sticker
+ *
+ * @see https://core.telegram.org/bots/api#deletestickerfromset
  */
 class DeleteStickerFromSetMethod extends TelegramMethod
 {
     protected string $method = 'deleteStickerFromSet';
+    protected array $expect = ['true'];
 
-    protected string $expect = 'boolean';
-
-    protected array $parameters = [
-        'sticker' => 'string',
-    ];
-
-    public function mock($arguments)
-    {
-        return true;
+    public function __construct(
+        public readonly string $sticker,
+    ) {
     }
 }

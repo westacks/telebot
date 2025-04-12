@@ -2,54 +2,81 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Exceptions\TeleBotException;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
  * This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.
+ *
+ * @see https://core.telegram.org/bots/api#inputfile
  */
-class InputFile
+class InputFile extends TelegramObject
 {
-    /**
-     * File name.
-     *
-     * @var null|string
-     */
-    protected $filename;
+    /** Original filename as defined by sender */
+    protected ?string $filename;
 
     /**
-     * File contents.
-     *
-     * @var bool|resource|string
+     * The contents of the file
+     * @var string|resource|null
      */
     protected $contents;
 
-    public function __construct($file, ?string $filename = null)
+    public function __construct(mixed $file, ?string $filename = null)
     {
-        if (!$file) {
-            throw new TeleBotException('InputFile must be a file path or a resource');
-        }
-
         if (is_array($file)) {
             $filename = $file['filename'] ?? null;
             $file = $file['file'] ?? null;
         }
 
+        if (empty($filename) && is_string($file)) {
+            $filename = basename($file);
+        }
+
+        if (! is_resource($file) && (! is_string($file) || ! file_exists($file))) {
+            throw new \InvalidArgumentException('The file must be a resource or a path to a file');
+        }
+
         $this->filename = $filename;
 
-        if (is_resource($file) || !@is_file($file) || !$this->contents = @fopen($file, 'r')) {
+        if (is_resource($file)) {
             $this->contents = $file;
+        } elseif (is_file($file)) {
+            $this->contents = fopen($file, 'r');
         }
     }
 
-    public static function create($file, ?string $filename = null)
+    public function __destruct()
     {
-        return new static($file, $filename);
+        if (is_resource($this->contents)) {
+            fclose($this->contents);
+        }
     }
 
-    public function toMultipart(string $name)
+    public static function from(array|string $parameters): static
+    {
+        if (is_string($parameters)) {
+            $parameters = ['file' => $parameters];
+        }
+
+        return new static(...$parameters);
+    }
+
+    public function toArray(bool $recursive = true): array
+    {
+        return [
+            'file' => $this->contents,
+            'filename' => $this->filename,
+        ];
+    }
+
+    public function toJson(): string
+    {
+        throw new \RuntimeException('This object cannot be converted to JSON');
+    }
+
+    public function toMultipart(string $key): array
     {
         $data = [
-            'name' => $name,
+            'name' => $key,
             'contents' => $this->contents,
         ];
 

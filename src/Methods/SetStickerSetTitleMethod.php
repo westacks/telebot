@@ -2,27 +2,24 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
  * Use this method to set the title of a created sticker set. Returns True on success.
  *
- * @property string $name  __Required: Yes__. Sticker set name
- * @property string $title __Required: Yes__. Sticker set title, 1-64 characters
+ * @property-read string $name Sticker set name
+ * @property-read string $title Sticker set title, 1-64 characters
+ *
+ * @see https://core.telegram.org/bots/api#setstickersettitle
  */
 class SetStickerSetTitleMethod extends TelegramMethod
 {
     protected string $method = 'setStickerSetTitle';
+    protected array $expect = ['true'];
 
-    protected string $expect = 'boolean';
-
-    protected array $parameters = [
-        'name' => 'string',
-        'title' => 'string',
-    ];
-
-    public function mock($arguments)
-    {
-        return true;
+    public function __construct(
+        public readonly string $name,
+        public readonly string $title,
+    ) {
     }
 }

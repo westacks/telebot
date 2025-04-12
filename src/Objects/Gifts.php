@@ -2,16 +2,18 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
  * This object represent a list of gifts.
+ * @property-read Gift[] $gifts The list of gifts
  *
- * @property Gift[] $gifts The list of gifts
+ * @see https://core.telegram.org/bots/api#gifts
  */
 class Gifts extends TelegramObject
 {
-    protected $attributes = [
-        'gifts' => 'Gift[]',
-    ];
+    public function __construct(
+        public readonly array $gifts,
+    ) {
+    }
 }

@@ -2,34 +2,22 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Contracts\TelegramMethod;
-use WeStacks\TeleBot\Objects\Chat;
+use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
- * Use this method to get up-to-date information about the chat. Returns a [ChatFullInfo](https://core.telegram.org/bots/api#chatfullinfo) object on success.
+ * Use this method to get up-to-date information about the chat. Returns a ChatFullInfo object on success.
  *
- * @property string $chat_id __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+ * @property-read int|string $chat_id Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+ *
+ * @see https://core.telegram.org/bots/api#getchat
  */
 class GetChatMethod extends TelegramMethod
 {
     protected string $method = 'getChat';
+    protected array $expect = ['ChatFullInfo'];
 
-    protected string $expect = 'ChatFullInfo';
-
-    protected array $parameters = [
-        'chat_id' => 'string',
-    ];
-
-    public function mock($arguments)
-    {
-        return new Chat([
-            'id' => $arguments['chat_id'],
-            'type' => [
-                'private',
-                'group',
-                'supergroup',
-                'channel',
-            ][rand(0, 3)],
-        ]);
+    public function __construct(
+        public readonly int|string $chat_id,
+    ) {
     }
 }

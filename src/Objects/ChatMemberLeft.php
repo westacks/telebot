@@ -3,15 +3,17 @@
 namespace WeStacks\TeleBot\Objects;
 
 /**
- * Represents a [chat member](https://core.telegram.org/bots/api#chatmember) that isn't currently a member of the chat, but may join it themselves.
+ * Represents a chat member that isn't currently a member of the chat, but may join it themselves.
+ * @property-read string $status The member's status in the chat, always “left”
+ * @property-read User $user Information about the user
  *
- * @property string $status The member's status in the chat, always “left”
- * @property User   $user   Information about the user
+ * @see https://core.telegram.org/bots/api#chatmemberleft
  */
 class ChatMemberLeft extends ChatMember
 {
-    protected $attributes = [
-        'status' => 'string',
-        'user' => 'User',
-    ];
+    public function __construct(
+        public readonly string $status,
+        public readonly User $user,
+    ) {
+    }
 }

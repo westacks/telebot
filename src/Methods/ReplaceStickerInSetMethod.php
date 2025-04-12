@@ -2,32 +2,29 @@
 
 namespace WeStacks\TeleBot\Methods;
 
-use WeStacks\TeleBot\Contracts\TelegramMethod;
+use WeStacks\TeleBot\Foundation\TelegramMethod;
 use WeStacks\TeleBot\Objects\InputSticker;
 
 /**
- * Use this method to replace an existing sticker in a sticker set with a new one. The method is equivalent to calling [deleteStickerFromSet](https://core.telegram.org/bots/api#deletestickerfromset), then [addStickerToSet](https://core.telegram.org/bots/api#addstickertoset), then [setStickerPositionInSet](https://core.telegram.org/bots/api#setstickerpositioninset). Returns True on success.
+ * Use this method to replace an existing sticker in a sticker set with a new one. The method is equivalent to calling deleteStickerFromSet, then addStickerToSet, then setStickerPositionInSet. Returns True on success.
  *
- * @property int          $user_id     __Required: Yes__. User identifier of the sticker set owner
- * @property string       $name        __Required: Yes__. Sticker set name
- * @property string       $old_sticker __Required: Yes__. File identifier of the replaced sticker
- * @property InputSticker $sticker     __Required: Yes__. A JSON-serialized object with information about the added sticker. If exactly the same sticker had already been added to the set, then the set remains unchanged.
+ * @property-read int $user_id User identifier of the sticker set owner
+ * @property-read string $name Sticker set name
+ * @property-read string $old_sticker File identifier of the replaced sticker
+ * @property-read InputSticker $sticker A JSON-serialized object with information about the added sticker. If exactly the same sticker had already been added to the set, then the set remains unchanged.
+ *
+ * @see https://core.telegram.org/bots/api#replacestickerinset
  */
 class ReplaceStickerInSetMethod extends TelegramMethod
 {
     protected string $method = 'replaceStickerInSet';
+    protected array $expect = ['true'];
 
-    protected string $expect = 'boolean';
-
-    protected array $parameters = [
-        'user_id' => 'integer',
-        'name' => 'string',
-        'old_sticker' => 'string',
-        'sticker' => 'InputSticker',
-    ];
-
-    public function mock($arguments)
-    {
-        return true;
+    public function __construct(
+        public readonly int $user_id,
+        public readonly string $name,
+        public readonly string $old_sticker,
+        public readonly InputSticker $sticker,
+    ) {
     }
 }

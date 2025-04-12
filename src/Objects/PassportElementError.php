@@ -2,12 +2,11 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
-use WeStacks\TeleBot\Exceptions\TeleBotException;
+use WeStacks\TeleBot\Foundation\Identifiable;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
- * This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of
- *
+ * This object represents an error in the Telegram Passport element which was submitted that should be resolved by the user. It should be one of:
  * - [PassportElementErrorDataField](https://core.telegram.org/bots/api#passportelementerrordatafield)
  * - [PassportElementErrorFrontSide](https://core.telegram.org/bots/api#passportelementerrorfrontside)
  * - [PassportElementErrorReverseSide](https://core.telegram.org/bots/api#passportelementerrorreverseside)
@@ -17,29 +16,24 @@ use WeStacks\TeleBot\Exceptions\TeleBotException;
  * - [PassportElementErrorTranslationFile](https://core.telegram.org/bots/api#passportelementerrortranslationfile)
  * - [PassportElementErrorTranslationFiles](https://core.telegram.org/bots/api#passportelementerrortranslationfiles)
  * - [PassportElementErrorUnspecified](https://core.telegram.org/bots/api#passportelementerrorunspecified)
+ *
+ * @see https://core.telegram.org/bots/api#passportelementerror
  */
-abstract class PassportElementError extends TelegramObject
+abstract class PassportElementError extends TelegramObject implements Identifiable
 {
-    protected static $types = [
-        'data' => PassportElementErrorDataField::class,
-        'front_side' => PassportElementErrorFrontSide::class,
-        'reverse_side' => PassportElementErrorReverseSide::class,
-        'selfie' => PassportElementErrorSelfie::class,
-        'file' => PassportElementErrorFile::class,
-        'files' => PassportElementErrorFiles::class,
-        'translation_file' => PassportElementErrorTranslationFile::class,
-        'translation_files' => PassportElementErrorTranslationFiles::class,
-        'unspecified' => PassportElementErrorUnspecified::class,
-    ];
-
-    public static function create($object)
+    public static function identify(array $parameters): string
     {
-        $object = (array)$object;
-
-        if ($class = static::$types[$object['source'] ?? null] ?? null) {
-            return new $class($object);
-        }
-
-        throw new TeleBotException('Cannot cast value of type ' . gettype($object) . ' to type ' . static::class);
+        return match ($parameters['type']) {
+            'address' => PassportElementErrorDataField::class,
+            'internal_passport' => PassportElementErrorFrontSide::class,
+            'identity_card' => PassportElementErrorReverseSide::class,
+            'internal_passport' => PassportElementErrorSelfie::class,
+            'temporary_registration' => PassportElementErrorFile::class,
+            'temporary_registration' => PassportElementErrorFiles::class,
+            'temporary_registration' => PassportElementErrorTranslationFile::class,
+            'temporary_registration' => PassportElementErrorTranslationFiles::class,
+            'issue' => PassportElementErrorUnspecified::class,
+            default => throw new \InvalidArgumentException("Unknown PassportElementError: ".$parameters['type']),
+        };
     }
 }

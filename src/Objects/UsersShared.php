@@ -2,18 +2,20 @@
 
 namespace WeStacks\TeleBot\Objects;
 
-use WeStacks\TeleBot\Contracts\TelegramObject;
+use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
- * This object contains information about the users whose identifiers were shared with the bot using a [KeyboardButtonRequestUsers](https://core.telegram.org/bots/api#keyboardbuttonrequestusers) button.
+ * This object contains information about the users whose identifiers were shared with the bot using a KeyboardButtonRequestUsers button.
+ * @property-read int $request_id Identifier of the request
+ * @property-read SharedUser[] $users Information about users shared with the bot.
  *
- * @property int          $request_id Identifier of the request
- * @property SharedUser[] $users      Information about users shared with the bot.
+ * @see https://core.telegram.org/bots/api#usersshared
  */
 class UsersShared extends TelegramObject
 {
-    protected $attributes = [
-        'request_id' => 'integer',
-        'users' => 'SharedUser[]',
-    ];
+    public function __construct(
+        public readonly int $request_id,
+        public readonly array $users,
+    ) {
+    }
 }
