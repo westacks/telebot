@@ -53,7 +53,7 @@ function synthesize(mixed $data, string $target): mixed
     }
 
     // Telegram object
-    if (! class_exists($target)) {
+    if (class_exists("WeStacks\\TeleBot\\Objects\\{$target}")) {
         $target = "WeStacks\\TeleBot\\Objects\\{$target}";
     }
 
@@ -76,6 +76,10 @@ function synthesize(mixed $data, string $target): mixed
 
     $reflection = new \ReflectionClass($target);
     $params = [];
+
+    if (!$reflection->getConstructor()) {
+        dd($reflection);
+    }
 
     foreach ($reflection->getConstructor()->getParameters() as $param) {
         $name = $param->getName();
