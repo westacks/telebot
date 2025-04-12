@@ -22,4 +22,12 @@ class File extends TelegramObject
         public readonly ?string $file_path,
     ) {
     }
+
+    /**
+     * Get the file URL for downloading.
+     */
+    public function url(string $token, string $baseUrl = 'https://api.telegram.org'): string
+    {
+        return "{$baseUrl}/file/bot{$token}/{$this->file_path}";
+    }
 }
