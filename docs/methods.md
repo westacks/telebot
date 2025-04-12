@@ -38,6 +38,26 @@ $message = $bot->sendMessage([
 ```
 :::
 
+## Guzzle Promises
+
+You can comfigure `TeleBot` methods to return Guzzle promises instead of dispatching requests immediately:
+
+```php
+$promise = $bot->getMe(_promise: true);
+
+$promise->then(fn (User $user) => var_dump($user))->wait();
+```
+
+## Error handling and default values
+
+Instead using try/catch blocks, you can set a default return value or handle exceptions using following syntax:
+
+```php
+$result = $bot->getMe(_rescue: fn (\Throwable $e) => $e);
+
+var_dump($result); // Will be return value of _rescue callback in case of exception
+```
+
 ## TeleBot Methods
 
 The `WeStacks\TeleBot\TeleBot` class supports **all** official Telegram API methods and adds some useful helper methods:

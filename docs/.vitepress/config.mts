@@ -26,7 +26,14 @@ export default defineConfig({
           { text: 'Configuration', link: '/configuration' },
           { text: 'Objects', link: '/objects' },
           { text: 'Methods', link: '/methods' },
-          { text: 'Handling Updates', link: '/updates' }
+          { text: 'Handling Updates', link: '/updates' },
+          { text: 'Testing', link: '/testing' },
+        ]
+      },
+      {
+        text: 'Upgrade Guide',
+        items: [
+          { text: '3.x to 4.x', link: '/upgrade/3.x-4.x' },
         ]
       }
     ],
