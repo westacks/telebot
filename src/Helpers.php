@@ -77,8 +77,8 @@ function synthesize(mixed $data, string $target): mixed
     $reflection = new \ReflectionClass($target);
     $params = [];
 
-    if (!$reflection->getConstructor()) {
-        dd($reflection);
+    if (! $reflection->getConstructor()) {
+        return new $target(...$data);
     }
 
     foreach ($reflection->getConstructor()->getParameters() as $param) {
@@ -96,6 +96,8 @@ function synthesize(mixed $data, string $target): mixed
         $params[$name] = $type;
     }
 
+    $result = [];
+
     foreach ($params as $name => $type) {
         if (! is_array($type)) {
             $type = [$type];
@@ -103,7 +105,7 @@ function synthesize(mixed $data, string $target): mixed
 
         foreach ($type as $t) {
             try {
-                $data[$name] = isset($data[$name]) ? synthesize($data[$name], $t) : null;
+                $result[$name] = isset($data[$name]) ? synthesize($data[$name], $t) : null;
                 break;
             } catch (\InvalidArgumentException) {
                 continue;
@@ -111,7 +113,7 @@ function synthesize(mixed $data, string $target): mixed
         }
     }
 
-    return new $target(...$data);
+    return new $target(...$result);
 }
 
 /**
