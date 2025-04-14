@@ -34,7 +34,10 @@ jobs:
 
       - name: Run generate command
         if: steps.check_api.outputs.api_changed == 'true'
-        run: composer run generate
+        run: |
+          composer run generate
+          vendor/bin/pint
+          vendor/bin/rector
 
       - name: Configure Git
         if: steps.check_api.outputs.api_changed == 'true'
