@@ -13634,7 +13634,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the profile photo, must be \u201cstatic\u201d"
+                    "description": "Type of the profile photo, must be static"
                 },
                 "photo": {
                     "type": [
@@ -13655,7 +13655,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the profile photo, must be \u201canimated\u201d"
+                    "description": "Type of the profile photo, must be animated"
                 },
                 "animation": {
                     "type": [
@@ -13692,7 +13692,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the content, must be \u201cphoto\u201d"
+                    "description": "Type of the content, must be photo"
                 },
                 "photo": {
                     "type": [
@@ -13713,7 +13713,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the content, must be \u201cvideo\u201d"
+                    "description": "Type of the content, must be video"
                 },
                 "video": {
                     "type": [
