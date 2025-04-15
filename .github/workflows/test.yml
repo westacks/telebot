@@ -2,9 +2,9 @@ name: PHPUnit
 
 on:
   push:
-    branches: [ 4.x ]
+    branches: [ main ]
   pull_request:
-    branches: [ 4.x ]
+    branches: [ main ]
 
 concurrency:
   group: telebot
