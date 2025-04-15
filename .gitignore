@@ -8,3 +8,6 @@ vendor/
 composer.lock
 phpunit.xml
 .php_cs.cache
+DOCKER_ENV
+docker_tag
+output.log
