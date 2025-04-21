@@ -8,7 +8,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * Represents the rights of a business bot.
  * @property-read ?true $can_reply Optional. True, if the bot can send and edit messages in the private chats that had incoming messages in the last 24 hours
  * @property-read ?true $can_read_messages Optional. True, if the bot can mark incoming private messages as read
- * @property-read ?true $can_delete_outgoing_messages Optional. True, if the bot can delete messages sent by the bot
+ * @property-read ?true $can_delete_sent_messages Optional. True, if the bot can delete messages sent by the bot
  * @property-read ?true $can_delete_all_messages Optional. True, if the bot can delete all private messages in managed chats
  * @property-read ?true $can_edit_name Optional. True, if the bot can edit the first and last name of the business account
  * @property-read ?true $can_edit_bio Optional. True, if the bot can edit the bio of the business account
@@ -25,10 +25,12 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  */
 class BusinessBotRights extends TelegramObject
 {
+    public ?true $can_delete_outgoing_messages;
+
     public function __construct(
         public readonly ?true $can_reply,
         public readonly ?true $can_read_messages,
-        public readonly ?true $can_delete_outgoing_messages,
+        public readonly ?true $can_delete_sent_messages,
         public readonly ?true $can_delete_all_messages,
         public readonly ?true $can_edit_name,
         public readonly ?true $can_edit_bio,
