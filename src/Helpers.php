@@ -27,7 +27,7 @@ function synthesize(mixed $data, string $target): mixed
     // Array value
     if (str_ends_with($target, '[]')) {
         if (! is_array($data)) {
-            throw new \InvalidArgumentException('Input must be of type array, '.gettype($data).' given');
+            throw new \TypeError('Input must be of type array, '.gettype($data).' given');
         }
 
         $target = substr($target, 0, -2);
@@ -46,7 +46,7 @@ function synthesize(mixed $data, string $target): mixed
 
     if (in_array($target, ['int', 'integer', 'bool', 'boolean', 'float', 'double', 'string'])) {
         if (! settype($data, $target)) {
-            throw new \InvalidArgumentException('Input must be of type '.$target.', '.gettype($data).' given');
+            throw new \TypeError('Input must be of type '.$target.', '.gettype($data).' given');
         }
 
         return $data;
@@ -62,7 +62,7 @@ function synthesize(mixed $data, string $target): mixed
     }
 
     if (! class_exists($target)) {
-        throw new \InvalidArgumentException('Class '.$target.' does not exist');
+        throw new \TypeError('Type '.$target.' does not exist');
     }
 
     // Abstracts
@@ -99,6 +99,8 @@ function synthesize(mixed $data, string $target): mixed
     $result = [];
 
     foreach ($params as $name => $type) {
+        $error = true;
+
         if (! is_array($type)) {
             $type = [$type];
         }
@@ -106,10 +108,15 @@ function synthesize(mixed $data, string $target): mixed
         foreach ($type as $t) {
             try {
                 $result[$name] = isset($data[$name]) ? synthesize($data[$name], $t) : null;
+                $error = false;
                 break;
-            } catch (\InvalidArgumentException) {
+            } catch (\TypeError) {
                 continue;
             }
+        }
+
+        if ($error) {
+            throw new \InvalidArgumentException('Unable create `'.implode('|', $type).'` for `'.$name.'` field from given value');
         }
     }
 
@@ -118,7 +125,7 @@ function synthesize(mixed $data, string $target): mixed
 
 /**
  * @internal Prepare data for multipart upload.
- * @return Array<array{name: string, contents: string|resource, filename?: string}>
+ * @return array<array{name: string, contents: string|resource, filename?: string}>
  */
 function multipart(array $data, array &$files = []): array
 {
