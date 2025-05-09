@@ -4,6 +4,7 @@ use WeStacks\TeleBot\Methods\SendMessageMethod;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
 use WeStacks\TeleBot\Objects\ReplyKeyboardMarkup;
 use WeStacks\TeleBot\Objects\Update;
+
 use function WeStacks\TeleBot\synthesize;
 
 test('create update', function (string $update) {
