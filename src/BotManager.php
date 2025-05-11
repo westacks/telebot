@@ -49,7 +49,7 @@ class BotManager
     /**
      * Get all bot names/indexes.
      *
-     * @return Array<string|int>
+     * @return array<string|int>
      */
     public function bots(): array
     {

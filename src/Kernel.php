@@ -4,12 +4,13 @@ namespace WeStacks\TeleBot;
 
 use WeStacks\TeleBot\Foundation\CommandHandler;
 use WeStacks\TeleBot\Foundation\UpdateHandler;
+use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\Update;
 
 class Kernel
 {
     /**
-     * @param Array<class-string<UpdateHandler>|callable> $handlers
+     * @param array<class-string<UpdateHandler>|callable> $handlers
      */
     public function __construct(
         protected array $handlers = []
@@ -82,7 +83,7 @@ class Kernel
      */
     protected function getLocalCommands(?string $locale = null): array
     {
-        /** @var Array<class-string<CommandHandler>> */
+        /** @var array<class-string<CommandHandler>> */
         $commands = array_filter($this->handlers, static fn ($handler) => is_subclass_of($handler, CommandHandler::class));
 
         return array_values(array_merge(...array_map(
