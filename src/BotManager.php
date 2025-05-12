@@ -20,12 +20,6 @@ class BotManager
         protected array $bots = [],
         protected string|int|null $default = null
     ) {
-        foreach ($this->bots as $name => $bot) {
-            if (! ($bot instanceof TeleBot)) {
-                $this->bots[$name] = new TeleBot($bot);
-            }
-        }
-
         if ($default && ! isset($this->bots[$default])) {
             throw new \InvalidArgumentException("Unknown default bot: {$default}");
         }
@@ -41,9 +35,13 @@ class BotManager
      */
     public function bot(string|int|null $name = null): TeleBot
     {
-        $bot = $name ?? $this->default ?? array_keys($this->bots)[0];
+        $name ??= $this->default ?? array_keys($this->bots)[0];
 
-        return $this->bots[$bot];
+        if (! ($this->bots[$name] instanceof TeleBot)) {
+            $this->bots[$name] = new TeleBot($this->bots[$name]);
+        }
+
+        return $this->bots[$name];
     }
 
     /**
