@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\Methods;
 use WeStacks\TeleBot\Foundation\TelegramMethod;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
 use WeStacks\TeleBot\Objects\LinkPreviewOptions;
+use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
  * Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.

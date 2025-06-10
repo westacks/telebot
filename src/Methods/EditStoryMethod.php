@@ -4,6 +4,8 @@ namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Foundation\TelegramMethod;
 use WeStacks\TeleBot\Objects\InputStoryContent;
+use WeStacks\TeleBot\Objects\MessageEntity;
+use WeStacks\TeleBot\Objects\StoryArea;
 
 /**
  * Edits a story previously posted by the bot on behalf of a managed business account. Requires the can_manage_stories business bot right. Returns Story on success.

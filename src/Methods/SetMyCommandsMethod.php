@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Foundation\TelegramMethod;
+use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\BotCommandScope;
 
 /**

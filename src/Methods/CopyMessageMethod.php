@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\Methods;
 use WeStacks\TeleBot\Foundation\TelegramMethod;
 use WeStacks\TeleBot\Objects\ForceReply;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
+use WeStacks\TeleBot\Objects\MessageEntity;
 use WeStacks\TeleBot\Objects\ReplyKeyboardMarkup;
 use WeStacks\TeleBot\Objects\ReplyKeyboardRemove;
 use WeStacks\TeleBot\Objects\ReplyParameters;

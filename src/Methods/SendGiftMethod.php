@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Foundation\TelegramMethod;
+use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
  * Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver. Returns True on success.

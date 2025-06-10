@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Foundation\TelegramMethod;
+use WeStacks\TeleBot\Objects\InlineQueryResult;
 use WeStacks\TeleBot\Objects\InlineQueryResultsButton;
 
 /**

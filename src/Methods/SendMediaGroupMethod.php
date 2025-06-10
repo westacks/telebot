@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Foundation\TelegramMethod;
+use WeStacks\TeleBot\Objects\InputMedia;
 use WeStacks\TeleBot\Objects\ReplyParameters;
 
 /**
@@ -11,7 +12,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
- * @property-read InputMediaAudio[]|InputMediaDocument[]|InputMediaPhoto[]|InputMediaVideo[] $media A JSON-serialized array describing messages to be sent, must include 2-10 items
+ * @property-read InputMedia[] $media A JSON-serialized array describing messages to be sent, must include 2-10 items
  * @property-read ?bool $disable_notification Sends messages silently. Users will receive a notification with no sound.
  * @property-read ?bool $protect_content Protects the contents of the sent messages from forwarding and saving
  * @property-read ?bool $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
@@ -23,13 +24,13 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
 class SendMediaGroupMethod extends TelegramMethod
 {
     protected string $method = 'sendMediaGroup';
-    protected array $expect = ['Messages[]'];
+    protected array $expect = ['Message[]'];
 
     public function __construct(
         public readonly ?string $business_connection_id,
         public readonly int|string $chat_id,
         public readonly ?int $message_thread_id,
-        public readonly array|array|array|array $media,
+        public readonly array $media,
         public readonly ?bool $disable_notification,
         public readonly ?bool $protect_content,
         public readonly ?bool $allow_paid_broadcast,

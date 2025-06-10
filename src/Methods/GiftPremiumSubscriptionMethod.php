@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Foundation\TelegramMethod;
+use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
  * Gifts a Telegram Premium subscription to the given user. Returns True on success.

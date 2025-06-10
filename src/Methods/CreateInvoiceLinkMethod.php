@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Foundation\TelegramMethod;
+use WeStacks\TeleBot\Objects\LabeledPrice;
 
 /**
  * Use this method to create a link for an invoice. Returns the created invoice link as String on success.

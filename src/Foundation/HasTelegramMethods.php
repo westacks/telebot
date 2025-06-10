@@ -18,7 +18,6 @@ use WeStacks\TeleBot\Objects\GameHighScore;
 use WeStacks\TeleBot\Objects\MenuButton;
 use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageId;
-use WeStacks\TeleBot\Objects\Messages;
 use WeStacks\TeleBot\Objects\Poll;
 use WeStacks\TeleBot\Objects\PreparedInlineMessage;
 use WeStacks\TeleBot\Objects\SentWebAppMessage;
@@ -353,7 +352,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
  *
- * @method PromiseInterface|Messages[] sendMediaGroup(...$parameters) Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
+ * @method PromiseInterface|Message[] sendMediaGroup(...$parameters) Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
  *
  * {@see https://core.telegram.org/bots/api#sendmediagroup}
  *
@@ -361,7 +360,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
- * - _InputMediaAudio[]|InputMediaDocument[]|InputMediaPhoto[]|InputMediaVideo[]_ `$media` __Required: Yes__. A JSON-serialized array describing messages to be sent, must include 2-10 items
+ * - _InputMedia[]_ `$media` __Required: Yes__. A JSON-serialized array describing messages to be sent, must include 2-10 items
  * - _bool_ `$disable_notification` __Required: Optional__. Sends messages silently. Users will receive a notification with no sound.
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent messages from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
