@@ -16,6 +16,7 @@
         "guzzlehttp/guzzle": "^7.0"
     },
     "require-dev": {
+        "doctrine/inflector": "^2.0",
         "laravel/pint": "^1.0",
         "nette/php-generator": "^4.0",
         "pestphp/pest": "^3.0",

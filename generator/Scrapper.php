@@ -4,6 +4,7 @@ namespace WeStacks\TeleBot\Generator;
 
 use Symfony\Component\BrowserKit\HttpBrowser;
 use Symfony\Component\DomCrawler\Crawler;
+use Doctrine\Inflector\InflectorFactory;
 
 class Scrapper
 {
@@ -92,6 +93,11 @@ class Scrapper
                 }, $fields);
 
                 $result[$currentType][$currentName][$currentType === 'methods' ? 'parameters' : 'fields'] = array_combine($keys, $fields);
+
+                // Crutch for InputMedia
+                if (isset($result[$currentType][$currentName]['extends']) && $result[$currentType][$currentName]['extends'] === 'InputMedia') {
+                    array_unshift($result[$currentType][$currentName]['fields']['media']['type'], 'InputFile');
+                }
             }
 
             if ($x->nodeName() === 'ul') {
@@ -135,8 +141,9 @@ class Scrapper
     protected static function extractReturnTypes($currentType, $currentName, $return, &$items): void
     {
         if (preg_match("/(?:array of )+(\w*)/i", $return, $match)) {
+            $inflector = InflectorFactory::create()->build();
             $ret = static::cleanType($match[1]);
-            $rets = array_map(fn ($r) => "Array<$r>", $ret);
+            $rets = array_map(fn ($r) => "Array<".$inflector->singularize($r).">", $ret);
             $items[$currentType][$currentName]['returns'] = $rets;
         } else {
             $words = explode(' ', $return);
@@ -169,6 +176,13 @@ class Scrapper
             $fixed_commas = array_merge($fixed_commas, array_map('trim', explode(', ', $fa)));
         }
 
-        return array_map(fn (string $x) => $isArray ? 'Array<'.static::cleanType($x)[0].'>' : $x, $fixed_commas);
+        $result = array_map(fn (string $x) => $isArray ? 'Array<'.static::cleanType($x)[0].'>' : $x, $fixed_commas);
+
+        // Crutch for InputMedia
+        if (in_array('Array<InputMediaAudio>', $result)) {
+            return ['Array<InputMedia>'];
+        }
+
+        return $result;
     }
 }

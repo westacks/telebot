@@ -32,7 +32,7 @@ class InputFile extends TelegramObject
         }
 
         if (! is_resource($file) && (! is_string($file) || ! file_exists($file))) {
-            throw new \InvalidArgumentException('The file must be a resource or a path to a file');
+            throw new \TypeError('The file must be a resource or a path to a file');
         }
 
         $this->filename = $filename;

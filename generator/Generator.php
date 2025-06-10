@@ -45,7 +45,7 @@ class Generator
         foreach ($data['methods'] as $name => $method) {
             static::createMethod($name, $method);
 
-            $returns = array_map(fn ($t) => static::phpType($t, true, fn ($t) => $namespace->addUse($t)), $method['returns']);
+            $returns = array_unique(array_map(fn ($t) => static::phpType($t, true, fn ($t) => $namespace->addUse($t)), $method['returns']));
             array_unshift($returns, 'PromiseInterface');
 
             $trait->addComment('@method '.implode('|', $returns)." {$name}(...\$parameters) ".implode(PHP_EOL.PHP_EOL, $method['description']));
@@ -53,7 +53,7 @@ class Generator
             $parameters = '';
 
             foreach ($method['parameters'] ?? [] as $parameter => $spec) {
-                $types = array_map(fn ($t) => static::phpType($t, true), $spec['type']);
+                $types = array_unique(array_map(fn ($t) => static::phpType($t, true), $spec['type']));
                 $required = $spec['required'] ? 'Yes' : 'Optional';
                 $parameters .= '- _'.implode('|', $types)."_ `\${$parameter}` __Required: {$required}__. {$spec['description']}\n";
             }
@@ -111,8 +111,8 @@ class Generator
                 ->setPublic();
 
             foreach ($data['fields'] ?? [] as $field => $spec) {
-                $types = array_map(fn ($t) => static::phpType($t), $spec['type']);
-                $docTypes = array_map(fn ($t) => static::phpType($t, true), $spec['type']);
+                $types = array_unique(array_map(fn ($t) => static::phpType($t), $spec['type']));
+                $docTypes = array_unique(array_map(fn ($t) => static::phpType($t, true), $spec['type']));
 
                 if (str_starts_with($spec['description'], 'Optional')) {
                     count($types) > 1 ? array_unshift($types, 'null') : ($types[0] = "?{$types[0]}");
@@ -222,7 +222,7 @@ class Generator
             ->setType('string')
             ->setProtected();
 
-        $data['returns'] = array_map(fn ($t) => static::phpType($t, true), $data['returns']);
+        $data['returns'] = array_unique(array_map(fn ($t) => static::phpType($t, true), $data['returns']));
 
         $class->addProperty('expect', $data['returns'])
             ->setType('array')
@@ -236,11 +236,12 @@ class Generator
             ->setPublic();
 
         foreach ($data['parameters'] ?? [] as $parameter => $spec) {
-            $types = array_map(fn ($t) => static::phpType($t), $spec['type']);
-            $docTypes = array_map(fn ($t) => static::phpType($t, true), $spec['type']);
+            $types = array_unique(array_map(fn ($t) => static::phpType($t), $spec['type']));
+            $docTypes = array_unique(array_map(fn ($t) => static::phpType($t, true), $spec['type']));
 
-            foreach ($types as $type) {
+            foreach ($docTypes as $type) {
                 if (ctype_upper($type[0])) {
+                    $type = "WeStacks\\TeleBot\\Objects\\". str_replace('[]', '', $type);
                     $namespace->addUse($type);
                 }
             }

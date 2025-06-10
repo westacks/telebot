@@ -1598,7 +1598,7 @@
                 "Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned."
             ],
             "returns": [
-                "Array<Messages>"
+                "Array<Message>"
             ],
             "parameters": {
                 "business_connection_id": {
@@ -1625,10 +1625,7 @@
                 },
                 "media": {
                     "type": [
-                        "Array<InputMediaAudio>",
-                        "Array<InputMediaDocument>",
-                        "Array<InputMediaPhoto>",
-                        "Array<InputMediaVideo>"
+                        "Array<InputMedia>"
                     ],
                     "required": true,
                     "description": "A JSON-serialized array describing messages to be sent, must include 2-10 items"
@@ -13195,6 +13192,7 @@
                 },
                 "media": {
                     "type": [
+                        "InputFile",
                         "String"
                     ],
                     "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \u201cattach://<file_attach_name>\u201d to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files \u00bb"
@@ -13270,6 +13268,7 @@
                 },
                 "media": {
                     "type": [
+                        "InputFile",
                         "String"
                     ],
                     "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \u201cattach://<file_attach_name>\u201d to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files \u00bb"
@@ -13321,6 +13320,7 @@
                 },
                 "media": {
                     "type": [
+                        "InputFile",
                         "String"
                     ],
                     "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \u201cattach://<file_attach_name>\u201d to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files \u00bb"
@@ -13384,6 +13384,7 @@
                 },
                 "media": {
                     "type": [
+                        "InputFile",
                         "String"
                     ],
                     "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \u201cattach://<file_attach_name>\u201d to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files \u00bb"
@@ -13435,6 +13436,7 @@
                 },
                 "media": {
                     "type": [
+                        "InputFile",
                         "String"
                     ],
                     "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \u201cattach://<file_attach_name>\u201d to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files \u00bb"
