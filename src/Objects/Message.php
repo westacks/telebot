@@ -45,6 +45,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?MessageEntity[] $caption_entities Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption
  * @property-read ?true $show_caption_above_media Optional. True, if the caption must be shown above the message media
  * @property-read ?true $has_media_spoiler Optional. True, if the message media is covered by a spoiler animation
+ * @property-read ?Checklist $checklist Optional. Message is a checklist
  * @property-read ?Contact $contact Optional. Message is a shared contact, information about the contact
  * @property-read ?Dice $dice Optional. Message is a dice with random value
  * @property-read ?Game $game Optional. Message is a game, information about the game. More about games »
@@ -76,6 +77,9 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?ProximityAlertTriggered $proximity_alert_triggered Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
  * @property-read ?ChatBoostAdded $boost_added Optional. Service message: user boosted the chat
  * @property-read ?ChatBackground $chat_background_set Optional. Service message: chat background set
+ * @property-read ?ChecklistTasksDone $checklist_tasks_done Optional. Service message: some tasks in a checklist were marked as done or not done
+ * @property-read ?ChecklistTasksAdded $checklist_tasks_added Optional. Service message: tasks were added to a checklist
+ * @property-read ?DirectMessagePriceChanged $direct_message_price_changed Optional. Service message: the price for paid messages in the corresponding direct messages chat of a channel has changed
  * @property-read ?ForumTopicCreated $forum_topic_created Optional. Service message: forum topic created
  * @property-read ?ForumTopicEdited $forum_topic_edited Optional. Service message: forum topic edited
  * @property-read ?ForumTopicClosed $forum_topic_closed Optional. Service message: forum topic closed
@@ -140,6 +144,7 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?array $caption_entities,
         public readonly ?true $show_caption_above_media,
         public readonly ?true $has_media_spoiler,
+        public readonly ?Checklist $checklist,
         public readonly ?Contact $contact,
         public readonly ?Dice $dice,
         public readonly ?Game $game,
@@ -171,6 +176,9 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?ProximityAlertTriggered $proximity_alert_triggered,
         public readonly ?ChatBoostAdded $boost_added,
         public readonly ?ChatBackground $chat_background_set,
+        public readonly ?ChecklistTasksDone $checklist_tasks_done,
+        public readonly ?ChecklistTasksAdded $checklist_tasks_added,
+        public readonly ?DirectMessagePriceChanged $direct_message_price_changed,
         public readonly ?ForumTopicCreated $forum_topic_created,
         public readonly ?ForumTopicEdited $forum_topic_edited,
         public readonly ?ForumTopicClosed $forum_topic_closed,

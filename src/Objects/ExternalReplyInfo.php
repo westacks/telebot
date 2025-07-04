@@ -21,6 +21,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?VideoNote $video_note Optional. Message is a video note, information about the video message
  * @property-read ?Voice $voice Optional. Message is a voice message, information about the file
  * @property-read ?true $has_media_spoiler Optional. True, if the message media is covered by a spoiler animation
+ * @property-read ?Checklist $checklist Optional. Message is a checklist
  * @property-read ?Contact $contact Optional. Message is a shared contact, information about the contact
  * @property-read ?Dice $dice Optional. Message is a dice with random value
  * @property-read ?Game $game Optional. Message is a game, information about the game. More about games »
@@ -51,6 +52,7 @@ class ExternalReplyInfo extends TelegramObject
         public readonly ?VideoNote $video_note,
         public readonly ?Voice $voice,
         public readonly ?true $has_media_spoiler,
+        public readonly ?Checklist $checklist,
         public readonly ?Contact $contact,
         public readonly ?Dice $dice,
         public readonly ?Game $game,

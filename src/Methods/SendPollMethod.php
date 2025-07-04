@@ -20,7 +20,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property-read string $question Poll question, 1-300 characters
  * @property-read ?string $question_parse_mode Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed
  * @property-read ?MessageEntity[] $question_entities A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of question_parse_mode
- * @property-read InputPollOption[] $options A JSON-serialized list of 2-10 answer options
+ * @property-read InputPollOption[] $options A JSON-serialized list of 2-12 answer options
  * @property-read ?bool $is_anonymous True, if the poll needs to be anonymous, defaults to True
  * @property-read ?string $type Poll type, “quiz” or “regular”, defaults to “regular”
  * @property-read ?bool $allows_multiple_answers True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False

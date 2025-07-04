@@ -7,7 +7,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
 /**
  * Represents the rights of an administrator in a chat.
  * @property-read bool $is_anonymous True, if the user's presence in the chat is hidden
- * @property-read bool $can_manage_chat True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege.
+ * @property-read bool $can_manage_chat True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.
  * @property-read bool $can_delete_messages True, if the administrator can delete messages of other users
  * @property-read bool $can_manage_video_chats True, if the administrator can manage video chats
  * @property-read bool $can_restrict_members True, if the administrator can restrict, ban or unban chat members, or access supergroup statistics
@@ -17,7 +17,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read bool $can_post_stories True, if the administrator can post stories to the chat
  * @property-read bool $can_edit_stories True, if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access the chat's story archive
  * @property-read bool $can_delete_stories True, if the administrator can delete stories posted by other users
- * @property-read ?bool $can_post_messages Optional. True, if the administrator can post messages in the channel, or access channel statistics; for channels only
+ * @property-read ?bool $can_post_messages Optional. True, if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only
  * @property-read ?bool $can_edit_messages Optional. True, if the administrator can edit messages of other users and can pin messages; for channels only
  * @property-read ?bool $can_pin_messages Optional. True, if the user is allowed to pin messages; for groups and supergroups only
  * @property-read ?bool $can_manage_topics Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
