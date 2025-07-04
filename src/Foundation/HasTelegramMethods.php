@@ -21,6 +21,7 @@ use WeStacks\TeleBot\Objects\MessageId;
 use WeStacks\TeleBot\Objects\Poll;
 use WeStacks\TeleBot\Objects\PreparedInlineMessage;
 use WeStacks\TeleBot\Objects\SentWebAppMessage;
+use WeStacks\TeleBot\Objects\StarAmount;
 use WeStacks\TeleBot\Objects\StarTransactions;
 use WeStacks\TeleBot\Objects\Stars;
 use WeStacks\TeleBot\Objects\Sticker;
@@ -445,7 +446,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$question` __Required: Yes__. Poll question, 1-300 characters
  * - _string_ `$question_parse_mode` __Required: Optional__. Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed
  * - _MessageEntity[]_ `$question_entities` __Required: Optional__. A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of question_parse_mode
- * - _InputPollOption[]_ `$options` __Required: Yes__. A JSON-serialized list of 2-10 answer options
+ * - _InputPollOption[]_ `$options` __Required: Yes__. A JSON-serialized list of 2-12 answer options
  * - _bool_ `$is_anonymous` __Required: Optional__. True, if the poll needs to be anonymous, defaults to True
  * - _string_ `$type` __Required: Optional__. Poll type, “quiz” or “regular”, defaults to “regular”
  * - _bool_ `$allows_multiple_answers` __Required: Optional__. True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False
@@ -462,6 +463,21 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ *
+ *
+ * @method PromiseInterface|Message sendChecklist(...$parameters) Use this method to send a checklist on behalf of a connected business account. On success, the sent Message is returned.
+ *
+ * {@see https://core.telegram.org/bots/api#sendchecklist}
+ *
+ * Parameters:
+ * - _string_ `$business_connection_id` __Required: Yes__. Unique identifier of the business connection on behalf of which the message will be sent
+ * - _int_ `$chat_id` __Required: Yes__. Unique identifier for the target chat
+ * - _InputChecklist_ `$checklist` __Required: Yes__. A JSON-serialized object for the checklist to send
+ * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
+ * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
+ * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message
+ * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. A JSON-serialized object for description of the message to reply to
+ * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for an inline keyboard
  *
  *
  * @method PromiseInterface|Message sendDice(...$parameters) Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
@@ -576,7 +592,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$user_id` __Required: Yes__. Unique identifier of the target user
  * - _bool_ `$is_anonymous` __Required: Optional__. Pass True if the administrator's presence in the chat is hidden
- * - _bool_ `$can_manage_chat` __Required: Optional__. Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege.
+ * - _bool_ `$can_manage_chat` __Required: Optional__. Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.
  * - _bool_ `$can_delete_messages` __Required: Optional__. Pass True if the administrator can delete messages of other users
  * - _bool_ `$can_manage_video_chats` __Required: Optional__. Pass True if the administrator can manage video chats
  * - _bool_ `$can_restrict_members` __Required: Optional__. Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics
@@ -586,7 +602,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$can_post_stories` __Required: Optional__. Pass True if the administrator can post stories to the chat
  * - _bool_ `$can_edit_stories` __Required: Optional__. Pass True if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access the chat's story archive
  * - _bool_ `$can_delete_stories` __Required: Optional__. Pass True if the administrator can delete stories posted by other users
- * - _bool_ `$can_post_messages` __Required: Optional__. Pass True if the administrator can post messages in the channel, or access channel statistics; for channels only
+ * - _bool_ `$can_post_messages` __Required: Optional__. Pass True if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only
  * - _bool_ `$can_edit_messages` __Required: Optional__. Pass True if the administrator can edit messages of other users and can pin messages; for channels only
  * - _bool_ `$can_pin_messages` __Required: Optional__. Pass True if the administrator can pin messages; for supergroups only
  * - _bool_ `$can_manage_topics` __Required: Optional__. Pass True if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
@@ -1160,6 +1176,18 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for a new inline keyboard.
  *
  *
+ * @method PromiseInterface|Message editMessageChecklist(...$parameters) Use this method to edit a checklist on behalf of a connected business account. On success, the edited Message is returned.
+ *
+ * {@see https://core.telegram.org/bots/api#editmessagechecklist}
+ *
+ * Parameters:
+ * - _string_ `$business_connection_id` __Required: Yes__. Unique identifier of the business connection on behalf of which the message will be sent
+ * - _int_ `$chat_id` __Required: Yes__. Unique identifier for the target chat
+ * - _int_ `$message_id` __Required: Yes__. Unique identifier for the target message
+ * - _InputChecklist_ `$checklist` __Required: Yes__. A JSON-serialized object for the new checklist
+ * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for the new inline keyboard for the message
+ *
+ *
  * @method PromiseInterface|Message|true editMessageReplyMarkup(...$parameters) Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
  *
  * {@see https://core.telegram.org/bots/api#editmessagereplymarkup}
@@ -1724,6 +1752,9 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$error_message` __Required: Optional__. Required if ok is False. Error message in human readable form that explains the reason for failure to proceed with the checkout (e.g. "Sorry, somebody just bought the last of our amazing black T-shirts while you were busy filling out your payment details. Please choose a different color or garment!"). Telegram will display this message to the user.
  *
  *
+ * @method PromiseInterface|StarAmount getMyStarBalance(...$parameters) A method to get the current Telegram Stars balance of the bot. Requires no parameters. On success, returns a StarAmount object.
+ *
+ * {@see https://core.telegram.org/bots/api#getmystarbalance}
  * @method PromiseInterface|StarTransactions getStarTransactions(...$parameters) Returns the bot's Telegram Star transactions in chronological order. On success, returns a StarTransactions object.
  *
  * {@see https://core.telegram.org/bots/api#getstartransactions}

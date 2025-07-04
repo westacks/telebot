@@ -1,6 +1,6 @@
 {
-    "version": "Bot API 9.0",
-    "release_date": "April 11, 2025",
+    "version": "Bot API 9.1",
+    "release_date": "July 3, 2025",
     "methods": {
         "getUpdates": {
             "href": "https://core.telegram.org/bots/api#getupdates",
@@ -2084,7 +2084,7 @@
                         "Array<InputPollOption>"
                     ],
                     "required": true,
-                    "description": "A JSON-serialized list of 2-10 answer options"
+                    "description": "A JSON-serialized list of 2-12 answer options"
                 },
                 "is_anonymous": {
                     "type": [
@@ -2200,6 +2200,73 @@
                     ],
                     "required": false,
                     "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user"
+                }
+            }
+        },
+        "sendChecklist": {
+            "href": "https://core.telegram.org/bots/api#sendchecklist",
+            "description": [
+                "Use this method to send a checklist on behalf of a connected business account. On success, the sent Message is returned."
+            ],
+            "returns": [
+                "Message"
+            ],
+            "parameters": {
+                "business_connection_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message will be sent"
+                },
+                "chat_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat"
+                },
+                "checklist": {
+                    "type": [
+                        "InputChecklist"
+                    ],
+                    "required": true,
+                    "description": "A JSON-serialized object for the checklist to send"
+                },
+                "disable_notification": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Sends the message silently. Users will receive a notification with no sound."
+                },
+                "protect_content": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Protects the contents of the sent message from forwarding and saving"
+                },
+                "message_effect_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier of the message effect to be added to the message"
+                },
+                "reply_parameters": {
+                    "type": [
+                        "ReplyParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object for description of the message to reply to"
+                },
+                "reply_markup": {
+                    "type": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object for an inline keyboard"
                 }
             }
         },
@@ -2608,7 +2675,7 @@
                         "Boolean"
                     ],
                     "required": false,
-                    "description": "Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege."
+                    "description": "Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege."
                 },
                 "can_delete_messages": {
                     "type": [
@@ -2678,7 +2745,7 @@
                         "Boolean"
                     ],
                     "required": false,
-                    "description": "Pass True if the administrator can post messages in the channel, or access channel statistics; for channels only"
+                    "description": "Pass True if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only"
                 },
                 "can_edit_messages": {
                     "type": [
@@ -4471,6 +4538,52 @@
                     ],
                     "required": false,
                     "description": "A JSON-serialized object for a new inline keyboard."
+                }
+            }
+        },
+        "editMessageChecklist": {
+            "href": "https://core.telegram.org/bots/api#editmessagechecklist",
+            "description": [
+                "Use this method to edit a checklist on behalf of a connected business account. On success, the edited Message is returned."
+            ],
+            "returns": [
+                "Message"
+            ],
+            "parameters": {
+                "business_connection_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message will be sent"
+                },
+                "chat_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat"
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target message"
+                },
+                "checklist": {
+                    "type": [
+                        "InputChecklist"
+                    ],
+                    "required": true,
+                    "description": "A JSON-serialized object for the new checklist"
+                },
+                "reply_markup": {
+                    "type": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object for the new inline keyboard for the message"
                 }
             }
         },
@@ -6522,6 +6635,15 @@
                 }
             }
         },
+        "getMyStarBalance": {
+            "href": "https://core.telegram.org/bots/api#getmystarbalance",
+            "description": [
+                "A method to get the current Telegram Stars balance of the bot. Requires no parameters. On success, returns a StarAmount object."
+            ],
+            "returns": [
+                "StarAmount"
+            ]
+        },
         "getStarTransactions": {
             "href": "https://core.telegram.org/bots/api#getstartransactions",
             "description": [
@@ -7693,6 +7815,12 @@
                     ],
                     "description": "Optional. True, if the message media is covered by a spoiler animation"
                 },
+                "checklist": {
+                    "type": [
+                        "Checklist"
+                    ],
+                    "description": "Optional. Message is a checklist"
+                },
                 "contact": {
                     "type": [
                         "Contact"
@@ -7878,6 +8006,24 @@
                         "ChatBackground"
                     ],
                     "description": "Optional. Service message: chat background set"
+                },
+                "checklist_tasks_done": {
+                    "type": [
+                        "ChecklistTasksDone"
+                    ],
+                    "description": "Optional. Service message: some tasks in a checklist were marked as done or not done"
+                },
+                "checklist_tasks_added": {
+                    "type": [
+                        "ChecklistTasksAdded"
+                    ],
+                    "description": "Optional. Service message: tasks were added to a checklist"
+                },
+                "direct_message_price_changed": {
+                    "type": [
+                        "DirectMessagePriceChanged"
+                    ],
+                    "description": "Optional. Service message: the price for paid messages in the corresponding direct messages chat of a channel has changed"
                 },
                 "forum_topic_created": {
                     "type": [
@@ -8212,6 +8358,12 @@
                         "True"
                     ],
                     "description": "Optional. True, if the message media is covered by a spoiler animation"
+                },
+                "checklist": {
+                    "type": [
+                        "Checklist"
+                    ],
+                    "description": "Optional. Message is a checklist"
                 },
                 "contact": {
                     "type": [
@@ -9180,6 +9332,204 @@
                 }
             }
         },
+        "ChecklistTask": {
+            "href": "https://core.telegram.org/bots/api#checklisttask",
+            "description": [
+                "Describes a task in a checklist."
+            ],
+            "fields": {
+                "id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Unique identifier of the task"
+                },
+                "text": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Text of the task"
+                },
+                "text_entities": {
+                    "type": [
+                        "Array<MessageEntity>"
+                    ],
+                    "description": "Optional. Special entities that appear in the task text"
+                },
+                "completed_by_user": {
+                    "type": [
+                        "User"
+                    ],
+                    "description": "Optional. User that completed the task; omitted if the task wasn't completed"
+                },
+                "completion_date": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Point in time (Unix timestamp) when the task was completed; 0 if the task wasn't completed"
+                }
+            }
+        },
+        "Checklist": {
+            "href": "https://core.telegram.org/bots/api#checklist",
+            "description": [
+                "Describes a checklist."
+            ],
+            "fields": {
+                "title": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Title of the checklist"
+                },
+                "title_entities": {
+                    "type": [
+                        "Array<MessageEntity>"
+                    ],
+                    "description": "Optional. Special entities that appear in the checklist title"
+                },
+                "tasks": {
+                    "type": [
+                        "Array<ChecklistTask>"
+                    ],
+                    "description": "List of tasks in the checklist"
+                },
+                "others_can_add_tasks": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if users other than the creator of the list can add tasks to the list"
+                },
+                "others_can_mark_tasks_as_done": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if users other than the creator of the list can mark tasks as done or not done"
+                }
+            }
+        },
+        "InputChecklistTask": {
+            "href": "https://core.telegram.org/bots/api#inputchecklisttask",
+            "description": [
+                "Describes a task to add to a checklist."
+            ],
+            "fields": {
+                "id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Unique identifier of the task; must be positive and unique among all task identifiers currently present in the checklist"
+                },
+                "text": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Text of the task; 1-100 characters after entities parsing"
+                },
+                "parse_mode": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Mode for parsing entities in the text. See formatting options for more details."
+                },
+                "text_entities": {
+                    "type": [
+                        "Array<MessageEntity>"
+                    ],
+                    "description": "Optional. List of special entities that appear in the text, which can be specified instead of parse_mode. Currently, only bold, italic, underline, strikethrough, spoiler, and custom_emoji entities are allowed."
+                }
+            }
+        },
+        "InputChecklist": {
+            "href": "https://core.telegram.org/bots/api#inputchecklist",
+            "description": [
+                "Describes a checklist to create."
+            ],
+            "fields": {
+                "title": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Title of the checklist; 1-255 characters after entities parsing"
+                },
+                "parse_mode": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Mode for parsing entities in the title. See formatting options for more details."
+                },
+                "title_entities": {
+                    "type": [
+                        "Array<MessageEntity>"
+                    ],
+                    "description": "Optional. List of special entities that appear in the title, which can be specified instead of parse_mode. Currently, only bold, italic, underline, strikethrough, spoiler, and custom_emoji entities are allowed."
+                },
+                "tasks": {
+                    "type": [
+                        "Array<InputChecklistTask>"
+                    ],
+                    "description": "List of 1-30 tasks in the checklist"
+                },
+                "others_can_add_tasks": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "Optional. Pass True if other users can add tasks to the checklist"
+                },
+                "others_can_mark_tasks_as_done": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. Pass True if other users can mark tasks as done or not done in the checklist"
+                }
+            }
+        },
+        "ChecklistTasksDone": {
+            "href": "https://core.telegram.org/bots/api#checklisttasksdone",
+            "description": [
+                "Describes a service message about checklist tasks marked as done or not done."
+            ],
+            "fields": {
+                "checklist_message": {
+                    "type": [
+                        "Message"
+                    ],
+                    "description": "Optional. Message containing the checklist whose tasks were marked as done or not done. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                "marked_as_done_task_ids": {
+                    "type": [
+                        "Array<Integer>"
+                    ],
+                    "description": "Optional. Identifiers of the tasks that were marked as done"
+                },
+                "marked_as_not_done_task_ids": {
+                    "type": [
+                        "Array<Integer>"
+                    ],
+                    "description": "Optional. Identifiers of the tasks that were marked as not done"
+                }
+            }
+        },
+        "ChecklistTasksAdded": {
+            "href": "https://core.telegram.org/bots/api#checklisttasksadded",
+            "description": [
+                "Describes a service message about tasks added to a checklist."
+            ],
+            "fields": {
+                "checklist_message": {
+                    "type": [
+                        "Message"
+                    ],
+                    "description": "Optional. Message containing the checklist to which the tasks were added. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                "tasks": {
+                    "type": [
+                        "Array<ChecklistTask>"
+                    ],
+                    "description": "List of tasks added to the checklist"
+                }
+            }
+        },
         "Location": {
             "href": "https://core.telegram.org/bots/api#location",
             "description": [
@@ -9843,6 +10193,26 @@
                         "Integer"
                     ],
                     "description": "The new number of Telegram Stars that must be paid by non-administrator users of the supergroup chat for each sent message"
+                }
+            }
+        },
+        "DirectMessagePriceChanged": {
+            "href": "https://core.telegram.org/bots/api#directmessagepricechanged",
+            "description": [
+                "Describes a service message about a change in the price of direct messages sent to a channel chat."
+            ],
+            "fields": {
+                "are_direct_messages_enabled": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "True, if direct messages are enabled for the channel chat; false otherwise"
+                },
+                "direct_message_star_count": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. The new number of Telegram Stars that must be paid by users for each direct message sent to the channel. Does not apply to users who have been exempted by administrators. Defaults to 0."
                 }
             }
         },
@@ -10762,7 +11132,7 @@
                     "type": [
                         "Boolean"
                     ],
-                    "description": "True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege."
+                    "description": "True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege."
                 },
                 "can_delete_messages": {
                     "type": [
@@ -10822,7 +11192,7 @@
                     "type": [
                         "Boolean"
                     ],
-                    "description": "Optional. True, if the administrator can post messages in the channel, or access channel statistics; for channels only"
+                    "description": "Optional. True, if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only"
                 },
                 "can_edit_messages": {
                     "type": [
@@ -10982,7 +11352,7 @@
                     "type": [
                         "Boolean"
                     ],
-                    "description": "True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages and ignore slow mode. Implied by any other administrator privilege."
+                    "description": "True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege."
                 },
                 "can_delete_messages": {
                     "type": [
@@ -11042,7 +11412,7 @@
                     "type": [
                         "Boolean"
                     ],
-                    "description": "Optional. True, if the administrator can post messages in the channel, or access channel statistics; for channels only"
+                    "description": "Optional. True, if the administrator can post messages in the channel, approve suggested posts, or access channel statistics; for channels only"
                 },
                 "can_edit_messages": {
                     "type": [
@@ -11168,7 +11538,7 @@
                     "type": [
                         "Boolean"
                     ],
-                    "description": "True, if the user is allowed to send polls"
+                    "description": "True, if the user is allowed to send polls and checklists"
                 },
                 "can_send_other_messages": {
                     "type": [
@@ -11358,7 +11728,7 @@
                     "type": [
                         "Boolean"
                     ],
-                    "description": "Optional. True, if the user is allowed to send polls"
+                    "description": "Optional. True, if the user is allowed to send polls and checklists"
                 },
                 "can_send_other_messages": {
                     "type": [
@@ -12266,7 +12636,13 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Origin of the gift. Currently, either \u201cupgrade\u201d or \u201ctransfer\u201d"
+                    "description": "Origin of the gift. Currently, either \u201cupgrade\u201d for gifts upgraded from regular gifts, \u201ctransfer\u201d for gifts transferred from other users or channels, or \u201cresale\u201d for gifts bought from other users"
+                },
+                "last_resale_star_count": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. For gifts bought from other users, the price paid for the gift"
                 },
                 "owned_gift_id": {
                     "type": [
@@ -12279,6 +12655,12 @@
                         "Integer"
                     ],
                     "description": "Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift"
+                },
+                "next_transfer_date": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now"
                 }
             }
         },
@@ -12433,6 +12815,12 @@
                         "Integer"
                     ],
                     "description": "Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift"
+                },
+                "next_transfer_date": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now"
                 }
             }
         },
