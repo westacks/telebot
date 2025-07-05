@@ -9478,7 +9478,7 @@
                 },
                 "others_can_mark_tasks_as_done": {
                     "type": [
-                        "True"
+                        "Boolean"
                     ],
                     "description": "Optional. Pass True if other users can mark tasks as done or not done in the checklist"
                 }
