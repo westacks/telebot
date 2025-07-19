@@ -353,7 +353,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
  *
- * @method PromiseInterface|Message[] sendMediaGroup(...$parameters) Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Messages that were sent is returned.
+ * @method PromiseInterface|Message[] sendMediaGroup(...$parameters) Use this method to send a group of photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an array of Message objects that were sent is returned.
  *
  * {@see https://core.telegram.org/bots/api#sendmediagroup}
  *
