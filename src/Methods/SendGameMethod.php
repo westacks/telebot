@@ -10,7 +10,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * Use this method to send a game. On success, the sent Message is returned.
  *
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
- * @property-read int $chat_id Unique identifier for the target chat
+ * @property-read int $chat_id Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats.
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * @property-read string $game_short_name Short name of the game, serves as the unique identifier for the game. Set up your games via @BotFather.
  * @property-read ?bool $disable_notification Sends the message silently. Users will receive a notification with no sound.

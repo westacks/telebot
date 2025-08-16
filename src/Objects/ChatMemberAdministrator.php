@@ -22,6 +22,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?bool $can_edit_messages Optional. True, if the administrator can edit messages of other users and can pin messages; for channels only
  * @property-read ?bool $can_pin_messages Optional. True, if the user is allowed to pin messages; for groups and supergroups only
  * @property-read ?bool $can_manage_topics Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
+ * @property-read ?bool $can_manage_direct_messages Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only
  * @property-read ?string $custom_title Optional. Custom title for this user
  *
  * @see https://core.telegram.org/bots/api#chatmemberadministrator
@@ -47,6 +48,7 @@ class ChatMemberAdministrator extends ChatMember
         public readonly ?bool $can_edit_messages,
         public readonly ?bool $can_pin_messages,
         public readonly ?bool $can_manage_topics,
+        public readonly ?bool $can_manage_direct_messages,
         public readonly ?string $custom_title,
     ) {
     }

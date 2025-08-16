@@ -1,6 +1,6 @@
 {
-    "version": "Bot API 9.1",
-    "release_date": "July 3, 2025",
+    "version": "Bot API 9.2",
+    "release_date": "August 15, 2025",
     "methods": {
         "getUpdates": {
             "href": "https://core.telegram.org/bots/api#getupdates",
@@ -187,6 +187,13 @@
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
                 },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
+                },
                 "text": {
                     "type": [
                         "String"
@@ -243,6 +250,13 @@
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
                 "reply_parameters": {
                     "type": [
                         "ReplyParameters"
@@ -286,6 +300,13 @@
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
                 },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat"
+                },
                 "from_chat_id": {
                     "type": [
                         "Integer",
@@ -314,6 +335,13 @@
                     ],
                     "required": false,
                     "description": "Protects the contents of the forwarded message from forwarding and saving"
+                },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only"
                 },
                 "message_id": {
                     "type": [
@@ -347,6 +375,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat"
                 },
                 "from_chat_id": {
                     "type": [
@@ -402,6 +437,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 "from_chat_id": {
                     "type": [
@@ -474,6 +516,13 @@
                     "required": false,
                     "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
                 },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
                 "reply_parameters": {
                     "type": [
                         "ReplyParameters"
@@ -516,6 +565,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat"
                 },
                 "from_chat_id": {
                     "type": [
@@ -585,6 +641,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 "photo": {
                     "type": [
@@ -657,6 +720,13 @@
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
                 "reply_parameters": {
                     "type": [
                         "ReplyParameters"
@@ -707,6 +777,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 "audio": {
                     "type": [
@@ -794,6 +871,13 @@
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
                 "reply_parameters": {
                     "type": [
                         "ReplyParameters"
@@ -843,6 +927,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 "document": {
                     "type": [
@@ -916,6 +1007,13 @@
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
                 "reply_parameters": {
                     "type": [
                         "ReplyParameters"
@@ -965,6 +1063,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 "video": {
                     "type": [
@@ -1088,6 +1193,13 @@
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
                 "reply_parameters": {
                     "type": [
                         "ReplyParameters"
@@ -1137,6 +1249,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 "animation": {
                     "type": [
@@ -1238,6 +1357,13 @@
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
                 "reply_parameters": {
                     "type": [
                         "ReplyParameters"
@@ -1287,6 +1413,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 "voice": {
                     "type": [
@@ -1352,6 +1485,13 @@
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
                 "reply_parameters": {
                     "type": [
                         "ReplyParameters"
@@ -1401,6 +1541,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 "video_note": {
                     "type": [
@@ -1460,6 +1607,13 @@
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
                 "reply_parameters": {
                     "type": [
                         "ReplyParameters"
@@ -1502,6 +1656,20 @@
                     ],
                     "required": true,
                     "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername). If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance."
+                },
+                "message_thread_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 "star_count": {
                     "type": [
@@ -1573,6 +1741,13 @@
                     "required": false,
                     "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
                 },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
                 "reply_parameters": {
                     "type": [
                         "ReplyParameters"
@@ -1622,6 +1797,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat"
                 },
                 "media": {
                     "type": [
@@ -1698,6 +1880,13 @@
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
                 },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
+                },
                 "latitude": {
                     "type": [
                         "Float"
@@ -1768,6 +1957,13 @@
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
                 "reply_parameters": {
                     "type": [
                         "ReplyParameters"
@@ -1817,6 +2013,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 "latitude": {
                     "type": [
@@ -1902,6 +2105,13 @@
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
                 "reply_parameters": {
                     "type": [
                         "ReplyParameters"
@@ -1951,6 +2161,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 "phone_number": {
                     "type": [
@@ -2008,6 +2225,13 @@
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
                 },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
+                },
                 "reply_parameters": {
                     "type": [
                         "ReplyParameters"
@@ -2049,7 +2273,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername). Polls can't be sent to channel direct messages chats."
                 },
                 "message_thread_id": {
                     "type": [
@@ -2301,6 +2525,13 @@
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
                 },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
+                },
                 "emoji": {
                     "type": [
                         "String"
@@ -2335,6 +2566,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
+                },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
                 },
                 "reply_parameters": {
                     "type": [
@@ -2378,7 +2616,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel chats and channel direct messages chats aren't supported."
                 },
                 "message_thread_id": {
                     "type": [
@@ -2767,6 +3005,13 @@
                     ],
                     "required": false,
                     "description": "Pass True if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only"
+                },
+                "can_manage_direct_messages": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True if the administrator can manage direct messages within the channel and decline suggested posts; for channels only"
                 }
             }
         },
@@ -3259,7 +3504,7 @@
         "pinChatMessage": {
             "href": "https://core.telegram.org/bots/api#pinchatmessage",
             "description": [
-                "Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success."
+                "Use this method to add a message to the list of pinned messages in a chat. In private chats and channel direct messages chats, all non-service messages can be pinned. Conversely, the bot must be an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to pin messages in groups and channels respectively. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -3299,7 +3544,7 @@
         "unpinChatMessage": {
             "href": "https://core.telegram.org/bots/api#unpinchatmessage",
             "description": [
-                "Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success."
+                "Use this method to remove a message from the list of pinned messages in a chat. In private chats and channel direct messages chats, all messages can be unpinned. Conversely, the bot must be an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to unpin messages in groups and channels respectively. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -3332,7 +3577,7 @@
         "unpinAllChatMessages": {
             "href": "https://core.telegram.org/bots/api#unpinallchatmessages",
             "description": [
-                "Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success."
+                "Use this method to clear the list of pinned messages in a chat. In private chats and channel direct messages chats, no additional rights are required to unpin all pinned messages. Conversely, the bot must be an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to unpin all pinned messages in groups and channels respectively. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -3363,7 +3608,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername). Channel direct messages chats aren't supported; leave the corresponding channel instead."
                 }
             }
         },
@@ -4196,537 +4441,6 @@
                 }
             }
         },
-        "editMessageText": {
-            "href": "https://core.telegram.org/bots/api#editmessagetext",
-            "description": [
-                "Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
-            ],
-            "returns": [
-                "Message",
-                "True"
-            ],
-            "parameters": {
-                "business_connection_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                "chat_id": {
-                    "type": [
-                        "Integer",
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                "message_id": {
-                    "type": [
-                        "Integer"
-                    ],
-                    "required": false,
-                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
-                },
-                "inline_message_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
-                },
-                "text": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": true,
-                    "description": "New text of the message, 1-4096 characters after entities parsing"
-                },
-                "parse_mode": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Mode for parsing entities in the message text. See formatting options for more details."
-                },
-                "entities": {
-                    "type": [
-                        "Array<MessageEntity>"
-                    ],
-                    "required": false,
-                    "description": "A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode"
-                },
-                "link_preview_options": {
-                    "type": [
-                        "LinkPreviewOptions"
-                    ],
-                    "required": false,
-                    "description": "Link preview generation options for the message"
-                },
-                "reply_markup": {
-                    "type": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "required": false,
-                    "description": "A JSON-serialized object for an inline keyboard."
-                }
-            }
-        },
-        "editMessageCaption": {
-            "href": "https://core.telegram.org/bots/api#editmessagecaption",
-            "description": [
-                "Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
-            ],
-            "returns": [
-                "Message",
-                "True"
-            ],
-            "parameters": {
-                "business_connection_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                "chat_id": {
-                    "type": [
-                        "Integer",
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                "message_id": {
-                    "type": [
-                        "Integer"
-                    ],
-                    "required": false,
-                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
-                },
-                "inline_message_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
-                },
-                "caption": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "New caption of the message, 0-1024 characters after entities parsing"
-                },
-                "parse_mode": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Mode for parsing entities in the message caption. See formatting options for more details."
-                },
-                "caption_entities": {
-                    "type": [
-                        "Array<MessageEntity>"
-                    ],
-                    "required": false,
-                    "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode"
-                },
-                "show_caption_above_media": {
-                    "type": [
-                        "Boolean"
-                    ],
-                    "required": false,
-                    "description": "Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages."
-                },
-                "reply_markup": {
-                    "type": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "required": false,
-                    "description": "A JSON-serialized object for an inline keyboard."
-                }
-            }
-        },
-        "editMessageMedia": {
-            "href": "https://core.telegram.org/bots/api#editmessagemedia",
-            "description": [
-                "Use this method to edit animation, audio, document, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
-            ],
-            "returns": [
-                "Message",
-                "True"
-            ],
-            "parameters": {
-                "business_connection_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                "chat_id": {
-                    "type": [
-                        "Integer",
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                "message_id": {
-                    "type": [
-                        "Integer"
-                    ],
-                    "required": false,
-                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
-                },
-                "inline_message_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
-                },
-                "media": {
-                    "type": [
-                        "InputMedia"
-                    ],
-                    "required": true,
-                    "description": "A JSON-serialized object for a new media content of the message"
-                },
-                "reply_markup": {
-                    "type": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "required": false,
-                    "description": "A JSON-serialized object for a new inline keyboard."
-                }
-            }
-        },
-        "editMessageLiveLocation": {
-            "href": "https://core.telegram.org/bots/api#editmessagelivelocation",
-            "description": [
-                "Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned."
-            ],
-            "returns": [
-                "Message",
-                "True"
-            ],
-            "parameters": {
-                "business_connection_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                "chat_id": {
-                    "type": [
-                        "Integer",
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                "message_id": {
-                    "type": [
-                        "Integer"
-                    ],
-                    "required": false,
-                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
-                },
-                "inline_message_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
-                },
-                "latitude": {
-                    "type": [
-                        "Float"
-                    ],
-                    "required": true,
-                    "description": "Latitude of new location"
-                },
-                "longitude": {
-                    "type": [
-                        "Float"
-                    ],
-                    "required": true,
-                    "description": "Longitude of new location"
-                },
-                "live_period": {
-                    "type": [
-                        "Integer"
-                    ],
-                    "required": false,
-                    "description": "New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged"
-                },
-                "horizontal_accuracy": {
-                    "type": [
-                        "Float"
-                    ],
-                    "required": false,
-                    "description": "The radius of uncertainty for the location, measured in meters; 0-1500"
-                },
-                "heading": {
-                    "type": [
-                        "Integer"
-                    ],
-                    "required": false,
-                    "description": "Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified."
-                },
-                "proximity_alert_radius": {
-                    "type": [
-                        "Integer"
-                    ],
-                    "required": false,
-                    "description": "The maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified."
-                },
-                "reply_markup": {
-                    "type": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "required": false,
-                    "description": "A JSON-serialized object for a new inline keyboard."
-                }
-            }
-        },
-        "stopMessageLiveLocation": {
-            "href": "https://core.telegram.org/bots/api#stopmessagelivelocation",
-            "description": [
-                "Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned."
-            ],
-            "returns": [
-                "Message",
-                "True"
-            ],
-            "parameters": {
-                "business_connection_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                "chat_id": {
-                    "type": [
-                        "Integer",
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                "message_id": {
-                    "type": [
-                        "Integer"
-                    ],
-                    "required": false,
-                    "description": "Required if inline_message_id is not specified. Identifier of the message with live location to stop"
-                },
-                "inline_message_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
-                },
-                "reply_markup": {
-                    "type": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "required": false,
-                    "description": "A JSON-serialized object for a new inline keyboard."
-                }
-            }
-        },
-        "editMessageChecklist": {
-            "href": "https://core.telegram.org/bots/api#editmessagechecklist",
-            "description": [
-                "Use this method to edit a checklist on behalf of a connected business account. On success, the edited Message is returned."
-            ],
-            "returns": [
-                "Message"
-            ],
-            "parameters": {
-                "business_connection_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": true,
-                    "description": "Unique identifier of the business connection on behalf of which the message will be sent"
-                },
-                "chat_id": {
-                    "type": [
-                        "Integer"
-                    ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat"
-                },
-                "message_id": {
-                    "type": [
-                        "Integer"
-                    ],
-                    "required": true,
-                    "description": "Unique identifier for the target message"
-                },
-                "checklist": {
-                    "type": [
-                        "InputChecklist"
-                    ],
-                    "required": true,
-                    "description": "A JSON-serialized object for the new checklist"
-                },
-                "reply_markup": {
-                    "type": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "required": false,
-                    "description": "A JSON-serialized object for the new inline keyboard for the message"
-                }
-            }
-        },
-        "editMessageReplyMarkup": {
-            "href": "https://core.telegram.org/bots/api#editmessagereplymarkup",
-            "description": [
-                "Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
-            ],
-            "returns": [
-                "Message",
-                "True"
-            ],
-            "parameters": {
-                "business_connection_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                "chat_id": {
-                    "type": [
-                        "Integer",
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                "message_id": {
-                    "type": [
-                        "Integer"
-                    ],
-                    "required": false,
-                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
-                },
-                "inline_message_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
-                },
-                "reply_markup": {
-                    "type": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "required": false,
-                    "description": "A JSON-serialized object for an inline keyboard."
-                }
-            }
-        },
-        "stopPoll": {
-            "href": "https://core.telegram.org/bots/api#stoppoll",
-            "description": [
-                "Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned."
-            ],
-            "returns": [
-                "Poll"
-            ],
-            "parameters": {
-                "business_connection_id": {
-                    "type": [
-                        "String"
-                    ],
-                    "required": false,
-                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
-                },
-                "chat_id": {
-                    "type": [
-                        "Integer",
-                        "String"
-                    ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                "message_id": {
-                    "type": [
-                        "Integer"
-                    ],
-                    "required": true,
-                    "description": "Identifier of the original message with the poll"
-                },
-                "reply_markup": {
-                    "type": [
-                        "InlineKeyboardMarkup"
-                    ],
-                    "required": false,
-                    "description": "A JSON-serialized object for a new message inline keyboard."
-                }
-            }
-        },
-        "deleteMessage": {
-            "href": "https://core.telegram.org/bots/api#deletemessage",
-            "description": [
-                "Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- Service messages about a supergroup, channel, or forum topic creation can't be deleted.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.Returns True on success."
-            ],
-            "returns": [
-                "True"
-            ],
-            "parameters": {
-                "chat_id": {
-                    "type": [
-                        "Integer",
-                        "String"
-                    ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                "message_id": {
-                    "type": [
-                        "Integer"
-                    ],
-                    "required": true,
-                    "description": "Identifier of the message to delete"
-                }
-            }
-        },
-        "deleteMessages": {
-            "href": "https://core.telegram.org/bots/api#deletemessages",
-            "description": [
-                "Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success."
-            ],
-            "returns": [
-                "True"
-            ],
-            "parameters": {
-                "chat_id": {
-                    "type": [
-                        "Integer",
-                        "String"
-                    ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
-                },
-                "message_ids": {
-                    "type": [
-                        "Array<Integer>"
-                    ],
-                    "required": true,
-                    "description": "A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted"
-                }
-            }
-        },
         "getAvailableGifts": {
             "href": "https://core.telegram.org/bots/api#getavailablegifts",
             "description": [
@@ -4888,7 +4602,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername). Channel direct messages chats can't be verified."
                 },
                 "custom_description": {
                     "type": [
@@ -5542,6 +5256,601 @@
                 }
             }
         },
+        "editMessageText": {
+            "href": "https://core.telegram.org/bots/api#editmessagetext",
+            "description": [
+                "Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
+            ],
+            "returns": [
+                "Message",
+                "True"
+            ],
+            "parameters": {
+                "business_connection_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
+                },
+                "inline_message_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+                },
+                "text": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "New text of the message, 1-4096 characters after entities parsing"
+                },
+                "parse_mode": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Mode for parsing entities in the message text. See formatting options for more details."
+                },
+                "entities": {
+                    "type": [
+                        "Array<MessageEntity>"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode"
+                },
+                "link_preview_options": {
+                    "type": [
+                        "LinkPreviewOptions"
+                    ],
+                    "required": false,
+                    "description": "Link preview generation options for the message"
+                },
+                "reply_markup": {
+                    "type": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object for an inline keyboard."
+                }
+            }
+        },
+        "editMessageCaption": {
+            "href": "https://core.telegram.org/bots/api#editmessagecaption",
+            "description": [
+                "Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
+            ],
+            "returns": [
+                "Message",
+                "True"
+            ],
+            "parameters": {
+                "business_connection_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
+                },
+                "inline_message_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+                },
+                "caption": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "New caption of the message, 0-1024 characters after entities parsing"
+                },
+                "parse_mode": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Mode for parsing entities in the message caption. See formatting options for more details."
+                },
+                "caption_entities": {
+                    "type": [
+                        "Array<MessageEntity>"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode"
+                },
+                "show_caption_above_media": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages."
+                },
+                "reply_markup": {
+                    "type": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object for an inline keyboard."
+                }
+            }
+        },
+        "editMessageMedia": {
+            "href": "https://core.telegram.org/bots/api#editmessagemedia",
+            "description": [
+                "Use this method to edit animation, audio, document, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
+            ],
+            "returns": [
+                "Message",
+                "True"
+            ],
+            "parameters": {
+                "business_connection_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
+                },
+                "inline_message_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+                },
+                "media": {
+                    "type": [
+                        "InputMedia"
+                    ],
+                    "required": true,
+                    "description": "A JSON-serialized object for a new media content of the message"
+                },
+                "reply_markup": {
+                    "type": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object for a new inline keyboard."
+                }
+            }
+        },
+        "editMessageLiveLocation": {
+            "href": "https://core.telegram.org/bots/api#editmessagelivelocation",
+            "description": [
+                "Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned."
+            ],
+            "returns": [
+                "Message",
+                "True"
+            ],
+            "parameters": {
+                "business_connection_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
+                },
+                "inline_message_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+                },
+                "latitude": {
+                    "type": [
+                        "Float"
+                    ],
+                    "required": true,
+                    "description": "Latitude of new location"
+                },
+                "longitude": {
+                    "type": [
+                        "Float"
+                    ],
+                    "required": true,
+                    "description": "Longitude of new location"
+                },
+                "live_period": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged"
+                },
+                "horizontal_accuracy": {
+                    "type": [
+                        "Float"
+                    ],
+                    "required": false,
+                    "description": "The radius of uncertainty for the location, measured in meters; 0-1500"
+                },
+                "heading": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified."
+                },
+                "proximity_alert_radius": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "The maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified."
+                },
+                "reply_markup": {
+                    "type": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object for a new inline keyboard."
+                }
+            }
+        },
+        "stopMessageLiveLocation": {
+            "href": "https://core.telegram.org/bots/api#stopmessagelivelocation",
+            "description": [
+                "Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned."
+            ],
+            "returns": [
+                "Message",
+                "True"
+            ],
+            "parameters": {
+                "business_connection_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Identifier of the message with live location to stop"
+                },
+                "inline_message_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+                },
+                "reply_markup": {
+                    "type": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object for a new inline keyboard."
+                }
+            }
+        },
+        "editMessageChecklist": {
+            "href": "https://core.telegram.org/bots/api#editmessagechecklist",
+            "description": [
+                "Use this method to edit a checklist on behalf of a connected business account. On success, the edited Message is returned."
+            ],
+            "returns": [
+                "Message"
+            ],
+            "parameters": {
+                "business_connection_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the business connection on behalf of which the message will be sent"
+                },
+                "chat_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat"
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target message"
+                },
+                "checklist": {
+                    "type": [
+                        "InputChecklist"
+                    ],
+                    "required": true,
+                    "description": "A JSON-serialized object for the new checklist"
+                },
+                "reply_markup": {
+                    "type": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object for the new inline keyboard for the message"
+                }
+            }
+        },
+        "editMessageReplyMarkup": {
+            "href": "https://core.telegram.org/bots/api#editmessagereplymarkup",
+            "description": [
+                "Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
+            ],
+            "returns": [
+                "Message",
+                "True"
+            ],
+            "parameters": {
+                "business_connection_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Identifier of the message to edit"
+                },
+                "inline_message_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+                },
+                "reply_markup": {
+                    "type": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object for an inline keyboard."
+                }
+            }
+        },
+        "stopPoll": {
+            "href": "https://core.telegram.org/bots/api#stoppoll",
+            "description": [
+                "Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned."
+            ],
+            "returns": [
+                "Poll"
+            ],
+            "parameters": {
+                "business_connection_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
+                },
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Identifier of the original message with the poll"
+                },
+                "reply_markup": {
+                    "type": [
+                        "InlineKeyboardMarkup"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object for a new message inline keyboard."
+                }
+            }
+        },
+        "approveSuggestedPost": {
+            "href": "https://core.telegram.org/bots/api#approvesuggestedpost",
+            "description": [
+                "Use this method to approve a suggested post in a direct messages chat. The bot must have the 'can_post_messages' administrator right in the corresponding channel chat. Returns True on success."
+            ],
+            "returns": [
+                "True"
+            ],
+            "parameters": {
+                "chat_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target direct messages chat"
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Identifier of a suggested post message to approve"
+                },
+                "send_date": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future"
+                }
+            }
+        },
+        "declineSuggestedPost": {
+            "href": "https://core.telegram.org/bots/api#declinesuggestedpost",
+            "description": [
+                "Use this method to decline a suggested post in a direct messages chat. The bot must have the 'can_manage_direct_messages' administrator right in the corresponding channel chat. Returns True on success."
+            ],
+            "returns": [
+                "True"
+            ],
+            "parameters": {
+                "chat_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target direct messages chat"
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Identifier of a suggested post message to decline"
+                },
+                "comment": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Comment for the creator of the suggested post; 0-128 characters"
+                }
+            }
+        },
+        "deleteMessage": {
+            "href": "https://core.telegram.org/bots/api#deletemessage",
+            "description": [
+                "Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- Service messages about a supergroup, channel, or forum topic creation can't be deleted.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has can_delete_messages administrator right in a supergroup or a channel, it can delete any message there.- If the bot has can_manage_direct_messages administrator right in a channel, it can delete any message in the corresponding direct messages chat.Returns True on success."
+            ],
+            "returns": [
+                "True"
+            ],
+            "parameters": {
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Identifier of the message to delete"
+                }
+            }
+        },
+        "deleteMessages": {
+            "href": "https://core.telegram.org/bots/api#deletemessages",
+            "description": [
+                "Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success."
+            ],
+            "returns": [
+                "True"
+            ],
+            "parameters": {
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                "message_ids": {
+                    "type": [
+                        "Array<Integer>"
+                    ],
+                    "required": true,
+                    "description": "A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted"
+                }
+            }
+        },
         "sendSticker": {
             "href": "https://core.telegram.org/bots/api#sendsticker",
             "description": [
@@ -5572,6 +5881,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
                 },
                 "sticker": {
                     "type": [
@@ -5615,6 +5931,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
+                },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
                 },
                 "reply_parameters": {
                     "type": [
@@ -6208,6 +6531,13 @@
                     "required": false,
                     "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
                 },
+                "direct_messages_topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat"
+                },
                 "title": {
                     "type": [
                         "String"
@@ -6382,6 +6712,13 @@
                     ],
                     "required": false,
                     "description": "Unique identifier of the message effect to be added to the message; for private chats only"
+                },
+                "suggested_post_parameters": {
+                    "type": [
+                        "SuggestedPostParameters"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined."
                 },
                 "reply_parameters": {
                     "type": [
@@ -6773,7 +7110,7 @@
                         "Integer"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat"
+                    "description": "Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats."
                 },
                 "message_thread_id": {
                     "type": [
@@ -7282,6 +7619,12 @@
                         "True"
                     ],
                     "description": "Optional. True, if the supergroup chat is a forum (has topics enabled)"
+                },
+                "is_direct_messages": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if the chat is the direct messages chat of a channel"
                 }
             }
         },
@@ -7332,6 +7675,12 @@
                         "True"
                     ],
                     "description": "Optional. True, if the supergroup chat is a forum (has topics enabled)"
+                },
+                "is_direct_messages": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if the chat is the direct messages chat of a channel"
                 },
                 "accent_color_id": {
                     "type": [
@@ -7386,6 +7735,12 @@
                         "Chat"
                     ],
                     "description": "Optional. For private chats, the personal channel of the user"
+                },
+                "parent_chat": {
+                    "type": [
+                        "Chat"
+                    ],
+                    "description": "Optional. Information about the corresponding channel chat; for direct messages chats only"
                 },
                 "available_reactions": {
                     "type": [
@@ -7581,6 +7936,12 @@
                     ],
                     "description": "Optional. Unique identifier of a message thread to which the message belongs; for supergroups only"
                 },
+                "direct_messages_topic": {
+                    "type": [
+                        "DirectMessagesTopic"
+                    ],
+                    "description": "Optional. Information about the direct messages chat topic that contains the message"
+                },
                 "from": {
                     "type": [
                         "User"
@@ -7665,6 +8026,12 @@
                     ],
                     "description": "Optional. For replies to a story, the original story"
                 },
+                "reply_to_checklist_task_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Identifier of the specific checklist task that is being replied to"
+                },
                 "via_bot": {
                     "type": [
                         "User"
@@ -7688,6 +8055,12 @@
                         "True"
                     ],
                     "description": "Optional. True, if the message was sent by an implicit action, for example, as an away or a greeting business message, or as a scheduled message"
+                },
+                "is_paid_post": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if the message is a paid post. Note that such posts must not be deleted for 24 hours to receive the payment and can't be edited."
                 },
                 "media_group_id": {
                     "type": [
@@ -7724,6 +8097,12 @@
                         "LinkPreviewOptions"
                     ],
                     "description": "Optional. Options used for link preview generation for the message, if it is a text message and link preview options were changed"
+                },
+                "suggested_post_info": {
+                    "type": [
+                        "SuggestedPostInfo"
+                    ],
+                    "description": "Optional. Information about suggested post parameters if the message is a suggested post in a channel direct messages chat. If the message is an approved or declined suggested post, then it can't be edited."
                 },
                 "effect_id": {
                     "type": [
@@ -8091,6 +8470,36 @@
                     ],
                     "description": "Optional. Service message: the price for paid messages has changed in the chat"
                 },
+                "suggested_post_approved": {
+                    "type": [
+                        "SuggestedPostApproved"
+                    ],
+                    "description": "Optional. Service message: a suggested post was approved"
+                },
+                "suggested_post_approval_failed": {
+                    "type": [
+                        "SuggestedPostApprovalFailed"
+                    ],
+                    "description": "Optional. Service message: approval of a suggested post has failed"
+                },
+                "suggested_post_declined": {
+                    "type": [
+                        "SuggestedPostDeclined"
+                    ],
+                    "description": "Optional. Service message: a suggested post was declined"
+                },
+                "suggested_post_paid": {
+                    "type": [
+                        "SuggestedPostPaid"
+                    ],
+                    "description": "Optional. Service message: payment for a suggested post was received"
+                },
+                "suggested_post_refunded": {
+                    "type": [
+                        "SuggestedPostRefunded"
+                    ],
+                    "description": "Optional. Service message: payment for a suggested post was refunded"
+                },
                 "video_chat_scheduled": {
                     "type": [
                         "VideoChatScheduled"
@@ -8438,7 +8847,7 @@
                         "Integer",
                         "String"
                     ],
-                    "description": "Optional. If the message to be replied to is from a different chat, unique identifier for the chat or username of the channel (in the format @channelusername). Not supported for messages sent on behalf of a business account."
+                    "description": "Optional. If the message to be replied to is from a different chat, unique identifier for the chat or username of the channel (in the format @channelusername). Not supported for messages sent on behalf of a business account and messages from channel direct messages chats."
                 },
                 "allow_sending_without_reply": {
                     "type": [
@@ -8469,6 +8878,12 @@
                         "Integer"
                     ],
                     "description": "Optional. Position of the quote in the original message in UTF-16 code units"
+                },
+                "checklist_task_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Identifier of the specific checklist task to be replied to"
                 }
             }
         },
@@ -10216,6 +10631,124 @@
                 }
             }
         },
+        "SuggestedPostApproved": {
+            "href": "https://core.telegram.org/bots/api#suggestedpostapproved",
+            "description": [
+                "Describes a service message about the approval of a suggested post."
+            ],
+            "fields": {
+                "suggested_post_message": {
+                    "type": [
+                        "Message"
+                    ],
+                    "description": "Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                "price": {
+                    "type": [
+                        "SuggestedPostPrice"
+                    ],
+                    "description": "Optional. Amount paid for the post"
+                },
+                "send_date": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Date when the post will be published"
+                }
+            }
+        },
+        "SuggestedPostApprovalFailed": {
+            "href": "https://core.telegram.org/bots/api#suggestedpostapprovalfailed",
+            "description": [
+                "Describes a service message about the failed approval of a suggested post. Currently, only caused by insufficient user funds at the time of approval."
+            ],
+            "fields": {
+                "suggested_post_message": {
+                    "type": [
+                        "Message"
+                    ],
+                    "description": "Optional. Message containing the suggested post whose approval has failed. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                "price": {
+                    "type": [
+                        "SuggestedPostPrice"
+                    ],
+                    "description": "Expected price of the post"
+                }
+            }
+        },
+        "SuggestedPostDeclined": {
+            "href": "https://core.telegram.org/bots/api#suggestedpostdeclined",
+            "description": [
+                "Describes a service message about the rejection of a suggested post."
+            ],
+            "fields": {
+                "suggested_post_message": {
+                    "type": [
+                        "Message"
+                    ],
+                    "description": "Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                "comment": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Comment with which the post was declined"
+                }
+            }
+        },
+        "SuggestedPostPaid": {
+            "href": "https://core.telegram.org/bots/api#suggestedpostpaid",
+            "description": [
+                "Describes a service message about a successful payment for a suggested post."
+            ],
+            "fields": {
+                "suggested_post_message": {
+                    "type": [
+                        "Message"
+                    ],
+                    "description": "Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                "currency": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Currency in which the payment was made. Currently, one of \u201cXTR\u201d for Telegram Stars or \u201cTON\u201d for toncoins"
+                },
+                "amount": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. The amount of the currency that was received by the channel in nanotoncoins; for payments in toncoins only"
+                },
+                "star_amount": {
+                    "type": [
+                        "StarAmount"
+                    ],
+                    "description": "Optional. The amount of Telegram Stars that was received by the channel; for payments in Telegram Stars only"
+                }
+            }
+        },
+        "SuggestedPostRefunded": {
+            "href": "https://core.telegram.org/bots/api#suggestedpostrefunded",
+            "description": [
+                "Describes a service message about a payment refund for a suggested post."
+            ],
+            "fields": {
+                "suggested_post_message": {
+                    "type": [
+                        "Message"
+                    ],
+                    "description": "Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply."
+                },
+                "reason": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Reason for the refund. Currently, one of \u201cpost_deleted\u201d if the post was deleted within 24 hours of being posted or removed from scheduled messages without being posted, or \u201cpayment_refunded\u201d if the payer refunded their payment."
+                }
+            }
+        },
         "GiveawayCreated": {
             "href": "https://core.telegram.org/bots/api#giveawaycreated",
             "description": [
@@ -10439,6 +10972,92 @@
                         "Boolean"
                     ],
                     "description": "Optional. True, if the link preview must be shown above the message text; otherwise, the link preview will be shown below the message text"
+                }
+            }
+        },
+        "SuggestedPostPrice": {
+            "href": "https://core.telegram.org/bots/api#suggestedpostprice",
+            "description": [
+                "Desribes price of a suggested post."
+            ],
+            "fields": {
+                "currency": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Currency in which the post will be paid. Currently, must be one of \u201cXTR\u201d for Telegram Stars or \u201cTON\u201d for toncoins"
+                },
+                "amount": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "The amount of the currency that will be paid for the post in the smallest units of the currency, i.e. Telegram Stars or nanotoncoins. Currently, price in Telegram Stars must be between 5 and 100000, and price in nanotoncoins must be between 10000000 and 10000000000000."
+                }
+            }
+        },
+        "SuggestedPostInfo": {
+            "href": "https://core.telegram.org/bots/api#suggestedpostinfo",
+            "description": [
+                "Contains information about a suggested post."
+            ],
+            "fields": {
+                "state": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "State of the suggested post. Currently, it can be one of \u201cpending\u201d, \u201capproved\u201d, \u201cdeclined\u201d."
+                },
+                "price": {
+                    "type": [
+                        "SuggestedPostPrice"
+                    ],
+                    "description": "Optional. Proposed price of the post. If the field is omitted, then the post is unpaid."
+                },
+                "send_date": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Proposed send date of the post. If the field is omitted, then the post can be published at any time within 30 days at the sole discretion of the user or administrator who approves it."
+                }
+            }
+        },
+        "SuggestedPostParameters": {
+            "href": "https://core.telegram.org/bots/api#suggestedpostparameters",
+            "description": [
+                "Contains parameters of a post that is being suggested by the bot."
+            ],
+            "fields": {
+                "price": {
+                    "type": [
+                        "SuggestedPostPrice"
+                    ],
+                    "description": "Optional. Proposed price for the post. If the field is omitted, then the post is unpaid."
+                },
+                "send_date": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Proposed send date of the post. If specified, then the date must be between 300 second and 2678400 seconds (30 days) in the future. If the field is omitted, then the post can be published at any time within 30 days at the sole discretion of the user who approves it."
+                }
+            }
+        },
+        "DirectMessagesTopic": {
+            "href": "https://core.telegram.org/bots/api#directmessagestopic",
+            "description": [
+                "Describes a topic of a direct messages chat."
+            ],
+            "fields": {
+                "topic_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Unique identifier of the topic"
+                },
+                "user": {
+                    "type": [
+                        "User"
+                    ],
+                    "description": "Optional. Information about the user that created the topic. Currently, it is always present"
                 }
             }
         },
@@ -10815,19 +11434,19 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Not supported for messages sent on behalf of a Telegram Business account."
+                    "description": "Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted. Not supported for messages sent in channel direct messages chats and on behalf of a Telegram Business account."
                 },
                 "switch_inline_query_current_chat": {
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options. Not supported in channels and for messages sent on behalf of a Telegram Business account."
+                    "description": "Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.This offers a quick way for the user to open your bot in inline mode in the same chat - good for selecting something from multiple options. Not supported in channels and for messages sent in channel direct messages chats and on behalf of a Telegram Business account."
                 },
                 "switch_inline_query_chosen_chat": {
                     "type": [
                         "SwitchInlineQueryChosenChat"
                     ],
-                    "description": "Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent on behalf of a Telegram Business account."
+                    "description": "Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent in channel direct messages chats and on behalf of a Telegram Business account."
                 },
                 "copy_text": {
                     "type": [
@@ -11211,6 +11830,12 @@
                         "Boolean"
                     ],
                     "description": "Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only"
+                },
+                "can_manage_direct_messages": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only"
                 }
             }
         },
@@ -11431,6 +12056,12 @@
                         "Boolean"
                     ],
                     "description": "Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only"
+                },
+                "can_manage_direct_messages": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only"
                 },
                 "custom_title": {
                     "type": [
@@ -12393,6 +13024,12 @@
                         "Integer"
                     ],
                     "description": "Optional. The number of remaining gifts of this type that can be sent; for limited gifts only"
+                },
+                "publisher_chat": {
+                    "type": [
+                        "Chat"
+                    ],
+                    "description": "Optional. Information about the chat that published the gift"
                 }
             }
         },
@@ -12561,6 +13198,12 @@
                         "UniqueGiftBackdrop"
                     ],
                     "description": "Backdrop of the gift"
+                },
+                "publisher_chat": {
+                    "type": [
+                        "Chat"
+                    ],
+                    "description": "Optional. Information about the chat that published the gift"
                 }
             }
         },
@@ -13015,7 +13658,7 @@
                         "Integer",
                         "String"
                     ],
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel direct messages chats and channel chats aren't supported."
                 }
             }
         },
@@ -13037,7 +13680,7 @@
                         "Integer",
                         "String"
                     ],
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel direct messages chats and channel chats aren't supported."
                 }
             }
         },
@@ -13059,7 +13702,7 @@
                         "Integer",
                         "String"
                     ],
-                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel direct messages chats and channel chats aren't supported."
                 },
                 "user_id": {
                     "type": [

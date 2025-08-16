@@ -13,6 +13,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?string $first_name Optional. First name of the other party in a private chat
  * @property-read ?string $last_name Optional. Last name of the other party in a private chat
  * @property-read ?true $is_forum Optional. True, if the supergroup chat is a forum (has topics enabled)
+ * @property-read ?true $is_direct_messages Optional. True, if the chat is the direct messages chat of a channel
  *
  * @see https://core.telegram.org/bots/api#chat
  */
@@ -26,6 +27,7 @@ class Chat extends TelegramObject
         public readonly ?string $first_name,
         public readonly ?string $last_name,
         public readonly ?true $is_forum,
+        public readonly ?true $is_direct_messages,
     ) {
     }
 }
