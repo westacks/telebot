@@ -13,6 +13,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?string $first_name Optional. First name of the other party in a private chat
  * @property-read ?string $last_name Optional. Last name of the other party in a private chat
  * @property-read ?true $is_forum Optional. True, if the supergroup chat is a forum (has topics enabled)
+ * @property-read ?true $is_direct_messages Optional. True, if the chat is the direct messages chat of a channel
  * @property-read int $accent_color_id Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header, and link preview. See accent colors for more details.
  * @property-read int $max_reaction_count The maximum number of reactions that can be set on a message in the chat
  * @property-read ?ChatPhoto $photo Optional. Chat photo
@@ -22,6 +23,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?BusinessLocation $business_location Optional. For private chats with business accounts, the location of the business
  * @property-read ?BusinessOpeningHours $business_opening_hours Optional. For private chats with business accounts, the opening hours of the business
  * @property-read ?Chat $personal_chat Optional. For private chats, the personal channel of the user
+ * @property-read ?Chat $parent_chat Optional. Information about the corresponding channel chat; for direct messages chats only
  * @property-read ?ReactionType[] $available_reactions Optional. List of available reactions allowed in the chat. If omitted, then all emoji reactions are allowed.
  * @property-read ?string $background_custom_emoji_id Optional. Custom emoji identifier of the emoji chosen by the chat for the reply header and link preview background
  * @property-read ?int $profile_accent_color_id Optional. Identifier of the accent color for the chat's profile background. See profile accent colors for more details.
@@ -64,6 +66,7 @@ class ChatFullInfo extends TelegramObject
         public readonly ?string $first_name,
         public readonly ?string $last_name,
         public readonly ?true $is_forum,
+        public readonly ?true $is_direct_messages,
         public readonly int $accent_color_id,
         public readonly int $max_reaction_count,
         public readonly ?ChatPhoto $photo,
@@ -73,6 +76,7 @@ class ChatFullInfo extends TelegramObject
         public readonly ?BusinessLocation $business_location,
         public readonly ?BusinessOpeningHours $business_opening_hours,
         public readonly ?Chat $personal_chat,
+        public readonly ?Chat $parent_chat,
         public readonly ?array $available_reactions,
         public readonly ?string $background_custom_emoji_id,
         public readonly ?int $profile_accent_color_id,

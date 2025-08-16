@@ -7,7 +7,7 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
 /**
  * Verifies a chat on behalf of the organization which is represented by the bot. Returns True on success.
  *
- * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername). Channel direct messages chats can't be verified.
  * @property-read ?string $custom_description Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.
  *
  * @see https://core.telegram.org/bots/api#verifychat

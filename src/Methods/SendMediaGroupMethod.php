@@ -12,6 +12,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat
  * @property-read InputMedia[] $media A JSON-serialized array describing messages to be sent, must include 2-10 items
  * @property-read ?bool $disable_notification Sends messages silently. Users will receive a notification with no sound.
  * @property-read ?bool $protect_content Protects the contents of the sent messages from forwarding and saving
@@ -30,6 +31,7 @@ class SendMediaGroupMethod extends TelegramMethod
         public readonly ?string $business_connection_id,
         public readonly int|string $chat_id,
         public readonly ?int $message_thread_id,
+        public readonly ?int $direct_messages_topic_id,
         public readonly array $media,
         public readonly ?bool $disable_notification,
         public readonly ?bool $protect_content,

@@ -92,6 +92,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _string_ `$text` __Required: Yes__. Text of the message to be sent, 1-4096 characters after entities parsing
  * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
  * - _MessageEntity[]_ `$entities` __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
@@ -100,6 +101,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -111,10 +113,12 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat
  * - _int|string_ `$from_chat_id` __Required: Yes__. Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
  * - _int_ `$video_start_timestamp` __Required: Optional__. New start timestamp for the forwarded video in the message
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the forwarded message from forwarding and saving
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only
  * - _int_ `$message_id` __Required: Yes__. Message identifier in the chat specified in from_chat_id
  *
  *
@@ -125,6 +129,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat
  * - _int|string_ `$from_chat_id` __Required: Yes__. Unique identifier for the chat where the original messages were sent (or channel username in the format @channelusername)
  * - _int[]_ `$message_ids` __Required: Yes__. A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to forward. The identifiers must be specified in a strictly increasing order.
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the messages silently. Users will receive a notification with no sound.
@@ -138,6 +143,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int|string_ `$from_chat_id` __Required: Yes__. Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
  * - _int_ `$message_id` __Required: Yes__. Message identifier in the chat specified in from_chat_id
  * - _int_ `$video_start_timestamp` __Required: Optional__. New start timestamp for the copied video in the message
@@ -148,6 +154,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -159,6 +166,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat
  * - _int|string_ `$from_chat_id` __Required: Yes__. Unique identifier for the chat where the original messages were sent (or channel username in the format @channelusername)
  * - _int[]_ `$message_ids` __Required: Yes__. A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to copy. The identifiers must be specified in a strictly increasing order.
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the messages silently. Users will receive a notification with no sound.
@@ -174,6 +182,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$photo` __Required: Yes__. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files »
  * - _string_ `$caption` __Required: Optional__. Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
  * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the photo caption. See formatting options for more details.
@@ -184,6 +193,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -198,6 +208,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$audio` __Required: Yes__. Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
  * - _string_ `$caption` __Required: Optional__. Audio caption, 0-1024 characters after entities parsing
  * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the audio caption. See formatting options for more details.
@@ -210,6 +221,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -222,6 +234,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$document` __Required: Yes__. File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
  * - _InputFile|string_ `$thumbnail` __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
  * - _string_ `$caption` __Required: Optional__. Document caption (may also be used when resending documents by file_id), 0-1024 characters after entities parsing
@@ -232,6 +245,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -244,6 +258,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$video` __Required: Yes__. Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files »
  * - _int_ `$duration` __Required: Optional__. Duration of sent video in seconds
  * - _int_ `$width` __Required: Optional__. Video width
@@ -261,6 +276,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -273,6 +289,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$animation` __Required: Yes__. Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files »
  * - _int_ `$duration` __Required: Optional__. Duration of sent animation in seconds
  * - _int_ `$width` __Required: Optional__. Animation width
@@ -287,6 +304,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -299,6 +317,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$voice` __Required: Yes__. Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
  * - _string_ `$caption` __Required: Optional__. Voice message caption, 0-1024 characters after entities parsing
  * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the voice message caption. See formatting options for more details.
@@ -308,6 +327,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -320,6 +340,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$video_note` __Required: Yes__. Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files ». Sending video notes by a URL is currently unsupported
  * - _int_ `$duration` __Required: Optional__. Duration of sent video in seconds
  * - _int_ `$length` __Required: Optional__. Video width and height, i.e. diameter of the video message
@@ -328,6 +349,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -339,6 +361,8 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername). If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance.
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$star_count` __Required: Yes__. The number of Telegram Stars that must be paid to buy access to the media; 1-10000
  * - _InputPaidMedia[]_ `$media` __Required: Yes__. A JSON-serialized array describing the media to be sent; up to 10 items
  * - _string_ `$payload` __Required: Optional__. Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.
@@ -349,6 +373,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -361,6 +386,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat
  * - _InputMedia[]_ `$media` __Required: Yes__. A JSON-serialized array describing messages to be sent, must include 2-10 items
  * - _bool_ `$disable_notification` __Required: Optional__. Sends messages silently. Users will receive a notification with no sound.
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent messages from forwarding and saving
@@ -377,6 +403,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _float_ `$latitude` __Required: Yes__. Latitude of the location
  * - _float_ `$longitude` __Required: Yes__. Longitude of the location
  * - _float_ `$horizontal_accuracy` __Required: Optional__. The radius of uncertainty for the location, measured in meters; 0-1500
@@ -387,6 +414,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -399,6 +427,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _float_ `$latitude` __Required: Yes__. Latitude of the venue
  * - _float_ `$longitude` __Required: Yes__. Longitude of the venue
  * - _string_ `$title` __Required: Yes__. Name of the venue
@@ -411,6 +440,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -423,6 +453,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _string_ `$phone_number` __Required: Yes__. Contact's phone number
  * - _string_ `$first_name` __Required: Yes__. Contact's first name
  * - _string_ `$last_name` __Required: Optional__. Contact's last name
@@ -431,6 +462,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -441,7 +473,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
- * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername). Polls can't be sent to channel direct messages chats.
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _string_ `$question` __Required: Yes__. Poll question, 1-300 characters
  * - _string_ `$question_parse_mode` __Required: Optional__. Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed
@@ -488,11 +520,13 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _string_ `$emoji` __Required: Optional__. Emoji on which the dice throw animation is based. Currently, must be one of “”, “”, “”, “”, “”, or “”. Dice can have values 1-6 for “”, “” and “”, values 1-5 for “” and “”, and values 1-64 for “”. Defaults to “”
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -505,7 +539,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the action will be sent
- * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel chats and channel direct messages chats aren't supported.
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread; for supergroups only
  * - _string_ `$action` __Required: Yes__. Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, choose_sticker for stickers, find_location for location data, record_video_note or upload_video_note for video notes.
  *
@@ -606,6 +640,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$can_edit_messages` __Required: Optional__. Pass True if the administrator can edit messages of other users and can pin messages; for channels only
  * - _bool_ `$can_pin_messages` __Required: Optional__. Pass True if the administrator can pin messages; for supergroups only
  * - _bool_ `$can_manage_topics` __Required: Optional__. Pass True if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
+ * - _bool_ `$can_manage_direct_messages` __Required: Optional__. Pass True if the administrator can manage direct messages within the channel and decline suggested posts; for channels only
  *
  *
  * @method PromiseInterface|true setChatAdministratorCustomTitle(...$parameters) Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.
@@ -762,7 +797,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$description` __Required: Optional__. New chat description, 0-255 characters
  *
  *
- * @method PromiseInterface|true pinChatMessage(...$parameters) Use this method to add a message to the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
+ * @method PromiseInterface|true pinChatMessage(...$parameters) Use this method to add a message to the list of pinned messages in a chat. In private chats and channel direct messages chats, all non-service messages can be pinned. Conversely, the bot must be an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to pin messages in groups and channels respectively. Returns True on success.
  *
  * {@see https://core.telegram.org/bots/api#pinchatmessage}
  *
@@ -773,7 +808,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$disable_notification` __Required: Optional__. Pass True if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels and private chats.
  *
  *
- * @method PromiseInterface|true unpinChatMessage(...$parameters) Use this method to remove a message from the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
+ * @method PromiseInterface|true unpinChatMessage(...$parameters) Use this method to remove a message from the list of pinned messages in a chat. In private chats and channel direct messages chats, all messages can be unpinned. Conversely, the bot must be an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to unpin messages in groups and channels respectively. Returns True on success.
  *
  * {@see https://core.telegram.org/bots/api#unpinchatmessage}
  *
@@ -783,7 +818,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_id` __Required: Optional__. Identifier of the message to unpin. Required if business_connection_id is specified. If not specified, the most recent pinned message (by sending date) will be unpinned.
  *
  *
- * @method PromiseInterface|true unpinAllChatMessages(...$parameters) Use this method to clear the list of pinned messages in a chat. If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel. Returns True on success.
+ * @method PromiseInterface|true unpinAllChatMessages(...$parameters) Use this method to clear the list of pinned messages in a chat. In private chats and channel direct messages chats, no additional rights are required to unpin all pinned messages. Conversely, the bot must be an administrator with the 'can_pin_messages' right or the 'can_edit_messages' right to unpin all pinned messages in groups and channels respectively. Returns True on success.
  *
  * {@see https://core.telegram.org/bots/api#unpinallchatmessages}
  *
@@ -796,7 +831,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * {@see https://core.telegram.org/bots/api#leavechat}
  *
  * Parameters:
- * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
+ * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername). Channel direct messages chats aren't supported; leave the corresponding channel instead.
  *
  *
  * @method PromiseInterface|ChatFullInfo getChat(...$parameters) Use this method to get up-to-date information about the chat. Returns a ChatFullInfo object on success.
@@ -1101,134 +1136,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$for_channels` __Required: Optional__. Pass True to get default administrator rights of the bot in channels. Otherwise, default administrator rights of the bot for groups and supergroups will be returned.
  *
  *
- * @method PromiseInterface|Message|true editMessageText(...$parameters) Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
- *
- * {@see https://core.telegram.org/bots/api#editmessagetext}
- *
- * Parameters:
- * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
- * - _int|string_ `$chat_id` __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_id` __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message to edit
- * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
- * - _string_ `$text` __Required: Yes__. New text of the message, 1-4096 characters after entities parsing
- * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
- * - _MessageEntity[]_ `$entities` __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
- * - _LinkPreviewOptions_ `$link_preview_options` __Required: Optional__. Link preview generation options for the message
- * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for an inline keyboard.
- *
- *
- * @method PromiseInterface|Message|true editMessageCaption(...$parameters) Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
- *
- * {@see https://core.telegram.org/bots/api#editmessagecaption}
- *
- * Parameters:
- * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
- * - _int|string_ `$chat_id` __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_id` __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message to edit
- * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
- * - _string_ `$caption` __Required: Optional__. New caption of the message, 0-1024 characters after entities parsing
- * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the message caption. See formatting options for more details.
- * - _MessageEntity[]_ `$caption_entities` __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
- * - _bool_ `$show_caption_above_media` __Required: Optional__. Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages.
- * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for an inline keyboard.
- *
- *
- * @method PromiseInterface|Message|true editMessageMedia(...$parameters) Use this method to edit animation, audio, document, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
- *
- * {@see https://core.telegram.org/bots/api#editmessagemedia}
- *
- * Parameters:
- * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
- * - _int|string_ `$chat_id` __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_id` __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message to edit
- * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
- * - _InputMedia_ `$media` __Required: Yes__. A JSON-serialized object for a new media content of the message
- * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for a new inline keyboard.
- *
- *
- * @method PromiseInterface|Message|true editMessageLiveLocation(...$parameters) Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
- *
- * {@see https://core.telegram.org/bots/api#editmessagelivelocation}
- *
- * Parameters:
- * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
- * - _int|string_ `$chat_id` __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_id` __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message to edit
- * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
- * - _float_ `$latitude` __Required: Yes__. Latitude of new location
- * - _float_ `$longitude` __Required: Yes__. Longitude of new location
- * - _int_ `$live_period` __Required: Optional__. New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged
- * - _float_ `$horizontal_accuracy` __Required: Optional__. The radius of uncertainty for the location, measured in meters; 0-1500
- * - _int_ `$heading` __Required: Optional__. Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
- * - _int_ `$proximity_alert_radius` __Required: Optional__. The maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
- * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for a new inline keyboard.
- *
- *
- * @method PromiseInterface|Message|true stopMessageLiveLocation(...$parameters) Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.
- *
- * {@see https://core.telegram.org/bots/api#stopmessagelivelocation}
- *
- * Parameters:
- * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
- * - _int|string_ `$chat_id` __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_id` __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message with live location to stop
- * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
- * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for a new inline keyboard.
- *
- *
- * @method PromiseInterface|Message editMessageChecklist(...$parameters) Use this method to edit a checklist on behalf of a connected business account. On success, the edited Message is returned.
- *
- * {@see https://core.telegram.org/bots/api#editmessagechecklist}
- *
- * Parameters:
- * - _string_ `$business_connection_id` __Required: Yes__. Unique identifier of the business connection on behalf of which the message will be sent
- * - _int_ `$chat_id` __Required: Yes__. Unique identifier for the target chat
- * - _int_ `$message_id` __Required: Yes__. Unique identifier for the target message
- * - _InputChecklist_ `$checklist` __Required: Yes__. A JSON-serialized object for the new checklist
- * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for the new inline keyboard for the message
- *
- *
- * @method PromiseInterface|Message|true editMessageReplyMarkup(...$parameters) Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
- *
- * {@see https://core.telegram.org/bots/api#editmessagereplymarkup}
- *
- * Parameters:
- * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
- * - _int|string_ `$chat_id` __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_id` __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message to edit
- * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
- * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for an inline keyboard.
- *
- *
- * @method PromiseInterface|Poll stopPoll(...$parameters) Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.
- *
- * {@see https://core.telegram.org/bots/api#stoppoll}
- *
- * Parameters:
- * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
- * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_id` __Required: Yes__. Identifier of the original message with the poll
- * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for a new message inline keyboard.
- *
- *
- * @method PromiseInterface|true deleteMessage(...$parameters) Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- Service messages about a supergroup, channel, or forum topic creation can't be deleted.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.Returns True on success.
- *
- * {@see https://core.telegram.org/bots/api#deletemessage}
- *
- * Parameters:
- * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_id` __Required: Yes__. Identifier of the message to delete
- *
- *
- * @method PromiseInterface|true deleteMessages(...$parameters) Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success.
- *
- * {@see https://core.telegram.org/bots/api#deletemessages}
- *
- * Parameters:
- * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int[]_ `$message_ids` __Required: Yes__. A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted
- *
- *
  * @method PromiseInterface getAvailableGifts(...$parameters) Returns the list of gifts that can be sent by the bot to users and channel chats. Requires no parameters. Returns a Gifts object.
  *
  * {@see https://core.telegram.org/bots/api#getavailablegifts}
@@ -1273,7 +1180,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * {@see https://core.telegram.org/bots/api#verifychat}
  *
  * Parameters:
- * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername). Channel direct messages chats can't be verified.
  * - _string_ `$custom_description` __Required: Optional__. Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.
  *
  *
@@ -1472,6 +1379,154 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$story_id` __Required: Yes__. Unique identifier of the story to delete
  *
  *
+ * @method PromiseInterface|Message|true editMessageText(...$parameters) Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
+ *
+ * {@see https://core.telegram.org/bots/api#editmessagetext}
+ *
+ * Parameters:
+ * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
+ * - _int|string_ `$chat_id` __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_ `$message_id` __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message to edit
+ * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
+ * - _string_ `$text` __Required: Yes__. New text of the message, 1-4096 characters after entities parsing
+ * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
+ * - _MessageEntity[]_ `$entities` __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
+ * - _LinkPreviewOptions_ `$link_preview_options` __Required: Optional__. Link preview generation options for the message
+ * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for an inline keyboard.
+ *
+ *
+ * @method PromiseInterface|Message|true editMessageCaption(...$parameters) Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
+ *
+ * {@see https://core.telegram.org/bots/api#editmessagecaption}
+ *
+ * Parameters:
+ * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
+ * - _int|string_ `$chat_id` __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_ `$message_id` __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message to edit
+ * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
+ * - _string_ `$caption` __Required: Optional__. New caption of the message, 0-1024 characters after entities parsing
+ * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the message caption. See formatting options for more details.
+ * - _MessageEntity[]_ `$caption_entities` __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+ * - _bool_ `$show_caption_above_media` __Required: Optional__. Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages.
+ * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for an inline keyboard.
+ *
+ *
+ * @method PromiseInterface|Message|true editMessageMedia(...$parameters) Use this method to edit animation, audio, document, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
+ *
+ * {@see https://core.telegram.org/bots/api#editmessagemedia}
+ *
+ * Parameters:
+ * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
+ * - _int|string_ `$chat_id` __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_ `$message_id` __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message to edit
+ * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
+ * - _InputMedia_ `$media` __Required: Yes__. A JSON-serialized object for a new media content of the message
+ * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for a new inline keyboard.
+ *
+ *
+ * @method PromiseInterface|Message|true editMessageLiveLocation(...$parameters) Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+ *
+ * {@see https://core.telegram.org/bots/api#editmessagelivelocation}
+ *
+ * Parameters:
+ * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
+ * - _int|string_ `$chat_id` __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_ `$message_id` __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message to edit
+ * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
+ * - _float_ `$latitude` __Required: Yes__. Latitude of new location
+ * - _float_ `$longitude` __Required: Yes__. Longitude of new location
+ * - _int_ `$live_period` __Required: Optional__. New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged
+ * - _float_ `$horizontal_accuracy` __Required: Optional__. The radius of uncertainty for the location, measured in meters; 0-1500
+ * - _int_ `$heading` __Required: Optional__. Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
+ * - _int_ `$proximity_alert_radius` __Required: Optional__. The maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
+ * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for a new inline keyboard.
+ *
+ *
+ * @method PromiseInterface|Message|true stopMessageLiveLocation(...$parameters) Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.
+ *
+ * {@see https://core.telegram.org/bots/api#stopmessagelivelocation}
+ *
+ * Parameters:
+ * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
+ * - _int|string_ `$chat_id` __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_ `$message_id` __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message with live location to stop
+ * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
+ * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for a new inline keyboard.
+ *
+ *
+ * @method PromiseInterface|Message editMessageChecklist(...$parameters) Use this method to edit a checklist on behalf of a connected business account. On success, the edited Message is returned.
+ *
+ * {@see https://core.telegram.org/bots/api#editmessagechecklist}
+ *
+ * Parameters:
+ * - _string_ `$business_connection_id` __Required: Yes__. Unique identifier of the business connection on behalf of which the message will be sent
+ * - _int_ `$chat_id` __Required: Yes__. Unique identifier for the target chat
+ * - _int_ `$message_id` __Required: Yes__. Unique identifier for the target message
+ * - _InputChecklist_ `$checklist` __Required: Yes__. A JSON-serialized object for the new checklist
+ * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for the new inline keyboard for the message
+ *
+ *
+ * @method PromiseInterface|Message|true editMessageReplyMarkup(...$parameters) Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
+ *
+ * {@see https://core.telegram.org/bots/api#editmessagereplymarkup}
+ *
+ * Parameters:
+ * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
+ * - _int|string_ `$chat_id` __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_ `$message_id` __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message to edit
+ * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message
+ * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for an inline keyboard.
+ *
+ *
+ * @method PromiseInterface|Poll stopPoll(...$parameters) Use this method to stop a poll which was sent by the bot. On success, the stopped Poll is returned.
+ *
+ * {@see https://core.telegram.org/bots/api#stoppoll}
+ *
+ * Parameters:
+ * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message to be edited was sent
+ * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_ `$message_id` __Required: Yes__. Identifier of the original message with the poll
+ * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for a new message inline keyboard.
+ *
+ *
+ * @method PromiseInterface|true approveSuggestedPost(...$parameters) Use this method to approve a suggested post in a direct messages chat. The bot must have the 'can_post_messages' administrator right in the corresponding channel chat. Returns True on success.
+ *
+ * {@see https://core.telegram.org/bots/api#approvesuggestedpost}
+ *
+ * Parameters:
+ * - _int_ `$chat_id` __Required: Yes__. Unique identifier for the target direct messages chat
+ * - _int_ `$message_id` __Required: Yes__. Identifier of a suggested post message to approve
+ * - _int_ `$send_date` __Required: Optional__. Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future
+ *
+ *
+ * @method PromiseInterface|true declineSuggestedPost(...$parameters) Use this method to decline a suggested post in a direct messages chat. The bot must have the 'can_manage_direct_messages' administrator right in the corresponding channel chat. Returns True on success.
+ *
+ * {@see https://core.telegram.org/bots/api#declinesuggestedpost}
+ *
+ * Parameters:
+ * - _int_ `$chat_id` __Required: Yes__. Unique identifier for the target direct messages chat
+ * - _int_ `$message_id` __Required: Yes__. Identifier of a suggested post message to decline
+ * - _string_ `$comment` __Required: Optional__. Comment for the creator of the suggested post; 0-128 characters
+ *
+ *
+ * @method PromiseInterface|true deleteMessage(...$parameters) Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- Service messages about a supergroup, channel, or forum topic creation can't be deleted.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has can_delete_messages administrator right in a supergroup or a channel, it can delete any message there.- If the bot has can_manage_direct_messages administrator right in a channel, it can delete any message in the corresponding direct messages chat.Returns True on success.
+ *
+ * {@see https://core.telegram.org/bots/api#deletemessage}
+ *
+ * Parameters:
+ * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int_ `$message_id` __Required: Yes__. Identifier of the message to delete
+ *
+ *
+ * @method PromiseInterface|true deleteMessages(...$parameters) Use this method to delete multiple messages simultaneously. If some of the specified messages can't be found, they are skipped. Returns True on success.
+ *
+ * {@see https://core.telegram.org/bots/api#deletemessages}
+ *
+ * Parameters:
+ * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _int[]_ `$message_ids` __Required: Yes__. A JSON-serialized list of 1-100 identifiers of messages to delete. See deleteMessage for limitations on which messages can be deleted
+ *
+ *
  * @method PromiseInterface|Message sendSticker(...$parameters) Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers. On success, the sent Message is returned.
  *
  * {@see https://core.telegram.org/bots/api#sendsticker}
@@ -1480,12 +1535,14 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$sticker` __Required: Yes__. Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files ». Video and animated stickers can't be sent via an HTTP URL.
  * - _string_ `$emoji` __Required: Optional__. Emoji associated with the sticker; only for just uploaded stickers
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
@@ -1673,6 +1730,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _string_ `$title` __Required: Yes__. Product name, 1-32 characters
  * - _string_ `$description` __Required: Yes__. Product description, 1-255 characters
  * - _string_ `$payload` __Required: Yes__. Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes.
@@ -1698,6 +1756,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for an inline keyboard. If empty, one 'Pay total price' button will be shown. If not empty, the first button must be a Pay button.
  *
@@ -1800,7 +1859,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
- * - _int_ `$chat_id` __Required: Yes__. Unique identifier for the target chat
+ * - _int_ `$chat_id` __Required: Yes__. Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats.
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
  * - _string_ `$game_short_name` __Required: Yes__. Short name of the game, serves as the unique identifier for the game. Set up your games via @BotFather.
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.

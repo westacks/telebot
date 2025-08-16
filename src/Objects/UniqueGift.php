@@ -12,6 +12,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read UniqueGiftModel $model Model of the gift
  * @property-read UniqueGiftSymbol $symbol Symbol of the gift
  * @property-read UniqueGiftBackdrop $backdrop Backdrop of the gift
+ * @property-read ?Chat $publisher_chat Optional. Information about the chat that published the gift
  *
  * @see https://core.telegram.org/bots/api#uniquegift
  */
@@ -24,6 +25,7 @@ class UniqueGift extends TelegramObject
         public readonly UniqueGiftModel $model,
         public readonly UniqueGiftSymbol $symbol,
         public readonly UniqueGiftBackdrop $backdrop,
+        public readonly ?Chat $publisher_chat,
     ) {
     }
 }

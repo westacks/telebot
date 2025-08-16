@@ -6,12 +6,14 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
 use WeStacks\TeleBot\Objects\LabeledPrice;
 use WeStacks\TeleBot\Objects\ReplyParameters;
+use WeStacks\TeleBot\Objects\SuggestedPostParameters;
 
 /**
  * Use this method to send invoices. On success, the sent Message is returned.
  *
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property-read string $title Product name, 1-32 characters
  * @property-read string $description Product description, 1-255 characters
  * @property-read string $payload Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes.
@@ -37,6 +39,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property-read ?bool $protect_content Protects the contents of the sent message from forwarding and saving
  * @property-read ?bool $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
  * @property-read ?string $message_effect_id Unique identifier of the message effect to be added to the message; for private chats only
+ * @property-read ?SuggestedPostParameters $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property-read ?ReplyParameters $reply_parameters Description of the message to reply to
  * @property-read ?InlineKeyboardMarkup $reply_markup A JSON-serialized object for an inline keyboard. If empty, one 'Pay total price' button will be shown. If not empty, the first button must be a Pay button.
  *
@@ -50,6 +53,7 @@ class SendInvoiceMethod extends TelegramMethod
     public function __construct(
         public readonly int|string $chat_id,
         public readonly ?int $message_thread_id,
+        public readonly ?int $direct_messages_topic_id,
         public readonly string $title,
         public readonly string $description,
         public readonly string $payload,
@@ -75,6 +79,7 @@ class SendInvoiceMethod extends TelegramMethod
         public readonly ?bool $protect_content,
         public readonly ?bool $allow_paid_broadcast,
         public readonly ?string $message_effect_id,
+        public readonly ?SuggestedPostParameters $suggested_post_parameters,
         public readonly ?ReplyParameters $reply_parameters,
         public readonly ?InlineKeyboardMarkup $reply_markup,
     ) {
