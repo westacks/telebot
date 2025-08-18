@@ -10978,7 +10978,7 @@
         "SuggestedPostPrice": {
             "href": "https://core.telegram.org/bots/api#suggestedpostprice",
             "description": [
-                "Desribes price of a suggested post."
+                "Describes the price of a suggested post."
             ],
             "fields": {
                 "currency": {
