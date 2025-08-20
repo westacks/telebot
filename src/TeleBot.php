@@ -201,7 +201,7 @@ class TeleBot
      * @param  mixed  $default
      * @return mixed
      */
-    public function config(string|null $value = null, $default = null): mixed
+    public function config(string|null $value = null, mixed $default = null): mixed
     {
         if ($value === null) {
             return $this->config;
