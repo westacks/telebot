@@ -193,4 +193,20 @@ class TeleBot
     {
         $this->kernel = new ($this->kernel::class);
     }
+
+    /**
+     * Get a configuration value.
+     *
+     * @param  string|null  $value
+     * @param  mixed  $default
+     * @return mixed
+     */
+    public function config(string|null $value = null, mixed $default = null): mixed
+    {
+        if ($value === null) {
+            return $this->config;
+        }
+
+        return $this->config[$value] ?? $default;
+    }
 }
