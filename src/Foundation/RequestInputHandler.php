@@ -2,6 +2,7 @@
 
 namespace WeStacks\TeleBot\Foundation;
 
+use WeStacks\TeleBot\Objects\Chat;
 use WeStacks\TeleBot\Objects\User;
 use WeStacks\TeleBot\TeleBot;
 
@@ -30,9 +31,16 @@ abstract class RequestInputHandler extends UpdateHandler
         return static::class == static::storage($this->bot)->get($this->update->user()->id);
     }
 
-    public static function request(TeleBot $bot, User $user): bool
+    /**
+     * Can be used to set the request input handler for a specific user or chat.
+     *
+     * @param TeleBot $bot
+     * @param User|Chat $target
+     * @return bool
+     */
+    public static function request(TeleBot $bot, User|Chat $target): bool
     {
-        return static::storage($bot)->set($user->id, static::class);
+        return static::storage($bot)->set($target->id, static::class);
     }
 
     protected function accept(): bool
