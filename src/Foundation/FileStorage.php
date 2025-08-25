@@ -39,6 +39,6 @@ class FileStorage implements StorageContract
 
     public function delete(string $key): bool
     {
-        return file_exists($path = $this->path($key)) && unlink($path);
+        return unlink($this->path($key));
     }
 }
