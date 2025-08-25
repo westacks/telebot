@@ -60,12 +60,7 @@ abstract class RequestInputHandler extends UpdateHandler
      * @param User|null $user If `$target` is `Chat`, awaits a message in SPECIFIC chat from SPECIFIC user.
      * @param int|null $message_thread_id If passed, awaits a message in SPECIFIC message thread.
      */
-    public static function request(
-        TeleBot   $bot,
-        User|Chat $target,
-        ?User     $user = null,
-        ?int      $message_thread_id = null
-    ): bool
+    public static function request(TeleBot $bot, User|Chat $target, ?User $user = null, ?int $message_thread_id = null): bool
     {
         $key = match (true) {
             $target instanceof Chat && $user !== null => "chat_{$target->id}_user_{$user->id}",
