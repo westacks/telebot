@@ -8,18 +8,7 @@ use WeStacks\TeleBot\TeleBot;
 
 abstract class RequestInputHandler extends UpdateHandler
 {
-    /**
-     * Use
-     * {@see RequestInputHandler::trigger()},
-     * {@see RequestInputHandler::request()},
-     * {@see RequestInputHandler::accept()}
-     * methods instead.
-     *
-     * @param TeleBot $bot
-     * @return StorageContract
-     * @internal
-     */
-    protected static function storage(TeleBot $bot): StorageContract
+    private static function storage(TeleBot $bot): StorageContract
     {
         $storage = $bot->config['storage'] ?? FileStorage::class;
 
