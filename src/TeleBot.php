@@ -196,10 +196,6 @@ class TeleBot
 
     /**
      * Get a configuration value.
-     *
-     * @param  string|null  $value
-     * @param  mixed  $default
-     * @return mixed
      */
     public function config(string|null $value = null, mixed $default = null): mixed
     {
