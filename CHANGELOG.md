@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 4.2.4 - 2025-09-03
+
+### What's Changed
+
+* UpdateHandler.php bug fix for supergroups by @JhnBer in https://github.com/westacks/telebot/pull/135
+
+**Full Changelog**: https://github.com/westacks/telebot/compare/4.2.3...4.2.4
+
 ## 4.2.3 - 2025-08-26
 
 ### What's Changed
