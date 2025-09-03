@@ -38,7 +38,7 @@ abstract class UpdateHandler
             'from_chat_id' => $this->update->chat()->id ?? null,
             'user_id' => $this->update->user()->id ?? null,
             'message_id' => $this->update->message()->message_id ?? null,
-            'message_thread_id' => $this->update->message()->message_thread_id ?? null,
+            'message_thread_id' => $this->update->chat()->is_forum ? ($this->update->message()->message_thread_id ?? null) : null,
             'business_connection_id' => $this->update->message()->business_connection_id ?? null,
             'sender_chat_id' => $this->update->message()->sender_chat->id ?? null,
             'callback_query_id' => $this->update->callback_query->id ?? null,
