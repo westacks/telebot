@@ -14,6 +14,8 @@ jobs:
 
       - name: Install Composer dependencies
         uses: php-actions/composer@v6
+        with:
+          php_version: 8.2
 
       - name: Scrap API docs
         run: composer run scrap
