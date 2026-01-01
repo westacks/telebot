@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
  * @property-read ?bool $can_manage_chat Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.
  * @property-read ?bool $can_delete_messages Pass True if the administrator can delete messages of other users
  * @property-read ?bool $can_manage_video_chats Pass True if the administrator can manage video chats
- * @property-read ?bool $can_restrict_members Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics
+ * @property-read ?bool $can_restrict_members Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics. For backward compatibility, defaults to True for promotions of channel administrators
  * @property-read ?bool $can_promote_members Pass True if the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by him)
  * @property-read ?bool $can_change_info Pass True if the administrator can change chat title, photo and other settings
  * @property-read ?bool $can_invite_users Pass True if the administrator can invite new users to the chat

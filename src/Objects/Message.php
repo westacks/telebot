@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Objects;
 /**
  * This object represents a message.
  * @property-read int $message_id Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent
- * @property-read ?int $message_thread_id Optional. Unique identifier of a message thread to which the message belongs; for supergroups only
+ * @property-read ?int $message_thread_id Optional. Unique identifier of a message thread or forum topic to which the message belongs; for supergroups and private chats only
  * @property-read ?DirectMessagesTopic $direct_messages_topic Optional. Information about the direct messages chat topic that contains the message
  * @property-read ?User $from Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility, if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats
  * @property-read ?Chat $sender_chat Optional. Sender of the message when sent on behalf of a chat. For example, the supergroup itself for messages sent by its anonymous administrators or a linked channel for messages automatically forwarded to the channel's discussion group. For backward compatibility, if the message was sent on behalf of a chat, the field from contains a fake sender user in non-channel chats.
@@ -15,7 +15,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?string $business_connection_id Optional. Unique identifier of the business connection from which the message was received. If non-empty, the message belongs to a chat of the corresponding business account that is independent from any potential bot chat which might share the same identifier.
  * @property-read Chat $chat Chat the message belongs to
  * @property-read ?MessageOrigin $forward_origin Optional. Information about the original message for forwarded messages
- * @property-read ?true $is_topic_message Optional. True, if the message is sent to a forum topic
+ * @property-read ?true $is_topic_message Optional. True, if the message is sent to a topic in a forum supergroup or a private chat with the bot
  * @property-read ?true $is_automatic_forward Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion group
  * @property-read ?Message $reply_to_message Optional. For replies in the same chat and message thread, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
  * @property-read ?ExternalReplyInfo $external_reply Optional. Information about the message that is being replied to, which may come from another chat or forum topic
@@ -75,6 +75,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?ChatShared $chat_shared Optional. Service message: a chat was shared with the bot
  * @property-read ?GiftInfo $gift Optional. Service message: a regular gift was sent or received
  * @property-read ?UniqueGiftInfo $unique_gift Optional. Service message: a unique gift was sent or received
+ * @property-read ?GiftInfo $gift_upgrade_sent Optional. Service message: upgrade of a gift was purchased after the gift was sent
  * @property-read ?string $connected_website Optional. The domain name of the website on which the user has logged in. More about Telegram Login »
  * @property-read ?WriteAccessAllowed $write_access_allowed Optional. Service message: the user allowed the bot to write messages after adding it to the attachment or side menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess
  * @property-read ?PassportData $passport_data Optional. Telegram Passport data
@@ -183,6 +184,7 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?ChatShared $chat_shared,
         public readonly ?GiftInfo $gift,
         public readonly ?UniqueGiftInfo $unique_gift,
+        public readonly ?GiftInfo $gift_upgrade_sent,
         public readonly ?string $connected_website,
         public readonly ?WriteAccessAllowed $write_access_allowed,
         public readonly ?PassportData $passport_data,

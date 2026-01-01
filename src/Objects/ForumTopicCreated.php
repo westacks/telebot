@@ -9,6 +9,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read string $name Name of the topic
  * @property-read int $icon_color Color of the topic icon in RGB format
  * @property-read ?string $icon_custom_emoji_id Optional. Unique identifier of the custom emoji shown as the topic icon
+ * @property-read ?true $is_name_implicit Optional. True, if the name of the topic wasn't specified explicitly by its creator and likely needs to be changed by the bot
  *
  * @see https://core.telegram.org/bots/api#forumtopiccreated
  */
@@ -18,6 +19,7 @@ class ForumTopicCreated extends TelegramObject
         public readonly string $name,
         public readonly int $icon_color,
         public readonly ?string $icon_custom_emoji_id,
+        public readonly ?true $is_name_implicit,
     ) {
     }
 }

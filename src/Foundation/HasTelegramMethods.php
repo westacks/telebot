@@ -91,7 +91,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _string_ `$text` __Required: Yes__. Text of the message to be sent, 1-4096 characters after entities parsing
  * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
@@ -112,12 +112,13 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat
  * - _int|string_ `$from_chat_id` __Required: Yes__. Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
  * - _int_ `$video_start_timestamp` __Required: Optional__. New start timestamp for the forwarded video in the message
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the forwarded message from forwarding and saving
+ * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; only available when forwarding to private chats
  * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only
  * - _int_ `$message_id` __Required: Yes__. Message identifier in the chat specified in from_chat_id
  *
@@ -128,7 +129,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat
  * - _int|string_ `$from_chat_id` __Required: Yes__. Unique identifier for the chat where the original messages were sent (or channel username in the format @channelusername)
  * - _int[]_ `$message_ids` __Required: Yes__. A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to forward. The identifiers must be specified in a strictly increasing order.
@@ -142,7 +143,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int|string_ `$from_chat_id` __Required: Yes__. Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
  * - _int_ `$message_id` __Required: Yes__. Message identifier in the chat specified in from_chat_id
@@ -154,6 +155,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+ * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; only available when copying to private chats
  * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
@@ -165,7 +167,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat
  * - _int|string_ `$from_chat_id` __Required: Yes__. Unique identifier for the chat where the original messages were sent (or channel username in the format @channelusername)
  * - _int[]_ `$message_ids` __Required: Yes__. A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to copy. The identifiers must be specified in a strictly increasing order.
@@ -181,7 +183,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$photo` __Required: Yes__. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files »
  * - _string_ `$caption` __Required: Optional__. Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
@@ -207,7 +209,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$audio` __Required: Yes__. Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
  * - _string_ `$caption` __Required: Optional__. Audio caption, 0-1024 characters after entities parsing
@@ -233,7 +235,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$document` __Required: Yes__. File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
  * - _InputFile|string_ `$thumbnail` __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
@@ -257,7 +259,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$video` __Required: Yes__. Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files »
  * - _int_ `$duration` __Required: Optional__. Duration of sent video in seconds
@@ -288,7 +290,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$animation` __Required: Yes__. Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files »
  * - _int_ `$duration` __Required: Optional__. Duration of sent animation in seconds
@@ -316,7 +318,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$voice` __Required: Yes__. Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
  * - _string_ `$caption` __Required: Optional__. Voice message caption, 0-1024 characters after entities parsing
@@ -339,7 +341,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$video_note` __Required: Yes__. Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files ». Sending video notes by a URL is currently unsupported
  * - _int_ `$duration` __Required: Optional__. Duration of sent video in seconds
@@ -361,9 +363,9 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername). If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance.
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
- * - _int_ `$star_count` __Required: Yes__. The number of Telegram Stars that must be paid to buy access to the media; 1-10000
+ * - _int_ `$star_count` __Required: Yes__. The number of Telegram Stars that must be paid to buy access to the media; 1-25000
  * - _InputPaidMedia[]_ `$media` __Required: Yes__. A JSON-serialized array describing the media to be sent; up to 10 items
  * - _string_ `$payload` __Required: Optional__. Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.
  * - _string_ `$caption` __Required: Optional__. Media caption, 0-1024 characters after entities parsing
@@ -385,7 +387,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the messages will be sent; required if the messages are sent to a direct messages chat
  * - _InputMedia[]_ `$media` __Required: Yes__. A JSON-serialized array describing messages to be sent, must include 2-10 items
  * - _bool_ `$disable_notification` __Required: Optional__. Sends messages silently. Users will receive a notification with no sound.
@@ -402,7 +404,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _float_ `$latitude` __Required: Yes__. Latitude of the location
  * - _float_ `$longitude` __Required: Yes__. Longitude of the location
@@ -426,7 +428,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _float_ `$latitude` __Required: Yes__. Latitude of the venue
  * - _float_ `$longitude` __Required: Yes__. Longitude of the venue
@@ -452,7 +454,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _string_ `$phone_number` __Required: Yes__. Contact's phone number
  * - _string_ `$first_name` __Required: Yes__. Contact's first name
@@ -474,7 +476,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername). Polls can't be sent to channel direct messages chats.
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _string_ `$question` __Required: Yes__. Poll question, 1-300 characters
  * - _string_ `$question_parse_mode` __Required: Optional__. Mode for parsing entities in the question. See formatting options for more details. Currently, only custom emoji entities are allowed
  * - _MessageEntity[]_ `$question_entities` __Required: Optional__. A JSON-serialized list of special entities that appear in the poll question. It can be specified instead of question_parse_mode
@@ -519,7 +521,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _string_ `$emoji` __Required: Optional__. Emoji on which the dice throw animation is based. Currently, must be one of “”, “”, “”, “”, “”, or “”. Dice can have values 1-6 for “”, “” and “”, values 1-5 for “” and “”, and values 1-64 for “”. Defaults to “”
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
@@ -531,6 +533,19 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
  *
+ * @method PromiseInterface|true sendMessageDraft(...$parameters) Use this method to stream a partial message to a user while the message is being generated; supported only for bots with forum topic mode enabled. Returns True on success.
+ *
+ * {@see https://core.telegram.org/bots/api#sendmessagedraft}
+ *
+ * Parameters:
+ * - _int_ `$chat_id` __Required: Yes__. Unique identifier for the target private chat
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread
+ * - _int_ `$draft_id` __Required: Yes__. Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated
+ * - _string_ `$text` __Required: Yes__. Text of the message to be sent, 1-4096 characters after entities parsing
+ * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
+ * - _MessageEntity[]_ `$entities` __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
+ *
+ *
  * @method PromiseInterface|true sendChatAction(...$parameters) Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.
  *
  * We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.
@@ -540,7 +555,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the action will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel chats and channel direct messages chats aren't supported.
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread; for supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread or topic of a forum; for supergroups and private chats of bots with forum topic mode enabled only
  * - _string_ `$action` __Required: Yes__. Type of action to broadcast. Choose one, depending on what the user is about to receive: typing for text messages, upload_photo for photos, record_video or upload_video for videos, record_voice or upload_voice for voice notes, upload_document for general files, choose_sticker for stickers, find_location for location data, record_video_note or upload_video_note for video notes.
  *
  *
@@ -629,7 +644,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$can_manage_chat` __Required: Optional__. Pass True if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other administrator privilege.
  * - _bool_ `$can_delete_messages` __Required: Optional__. Pass True if the administrator can delete messages of other users
  * - _bool_ `$can_manage_video_chats` __Required: Optional__. Pass True if the administrator can manage video chats
- * - _bool_ `$can_restrict_members` __Required: Optional__. Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics
+ * - _bool_ `$can_restrict_members` __Required: Optional__. Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics. For backward compatibility, defaults to True for promotions of channel administrators
  * - _bool_ `$can_promote_members` __Required: Optional__. Pass True if the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by him)
  * - _bool_ `$can_change_info` __Required: Optional__. Pass True if the administrator can change chat title, photo and other settings
  * - _bool_ `$can_invite_users` __Required: Optional__. Pass True if the administrator can invite new users to the chat
@@ -898,7 +913,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$icon_custom_emoji_id` __Required: Optional__. Unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers.
  *
  *
- * @method PromiseInterface|true editForumTopic(...$parameters) Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
+ * @method PromiseInterface|true editForumTopic(...$parameters) Use this method to edit name and icon of a topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success.
  *
  * {@see https://core.telegram.org/bots/api#editforumtopic}
  *
@@ -927,7 +942,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Yes__. Unique identifier for the target message thread of the forum topic
  *
  *
- * @method PromiseInterface|true deleteForumTopic(...$parameters) Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success.
+ * @method PromiseInterface|true deleteForumTopic(...$parameters) Use this method to delete a forum topic along with all its messages in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success.
  *
  * {@see https://core.telegram.org/bots/api#deleteforumtopic}
  *
@@ -936,7 +951,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Yes__. Unique identifier for the target message thread of the forum topic
  *
  *
- * @method PromiseInterface|true unpinAllForumTopicMessages(...$parameters) Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
+ * @method PromiseInterface|true unpinAllForumTopicMessages(...$parameters) Use this method to clear the list of pinned messages in a forum topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success.
  *
  * {@see https://core.telegram.org/bots/api#unpinallforumtopicmessages}
  *
@@ -1146,7 +1161,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _int_ `$user_id` __Required: Optional__. Required if chat_id is not specified. Unique identifier of the target user who will receive the gift.
  * - _int|string_ `$chat_id` __Required: Optional__. Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @channelusername) that will receive the gift.
- * - _string_ `$gift_id` __Required: Yes__. Identifier of the gift
+ * - _string_ `$gift_id` __Required: Yes__. Identifier of the gift; limited gifts can't be sent to channel chats
  * - _bool_ `$pay_for_upgrade` __Required: Optional__. Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver
  * - _string_ `$text` __Required: Optional__. Text that will be shown along with the gift; 0-128 characters
  * - _string_ `$text_parse_mode` __Required: Optional__. Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
@@ -1302,10 +1317,46 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$exclude_unsaved` __Required: Optional__. Pass True to exclude gifts that aren't saved to the account's profile page
  * - _bool_ `$exclude_saved` __Required: Optional__. Pass True to exclude gifts that are saved to the account's profile page
  * - _bool_ `$exclude_unlimited` __Required: Optional__. Pass True to exclude gifts that can be purchased an unlimited number of times
- * - _bool_ `$exclude_limited` __Required: Optional__. Pass True to exclude gifts that can be purchased a limited number of times
+ * - _bool_ `$exclude_limited_upgradable` __Required: Optional__. Pass True to exclude gifts that can be purchased a limited number of times and can be upgraded to unique
+ * - _bool_ `$exclude_limited_non_upgradable` __Required: Optional__. Pass True to exclude gifts that can be purchased a limited number of times and can't be upgraded to unique
  * - _bool_ `$exclude_unique` __Required: Optional__. Pass True to exclude unique gifts
+ * - _bool_ `$exclude_from_blockchain` __Required: Optional__. Pass True to exclude gifts that were assigned from the TON blockchain and can't be resold or transferred in Telegram
  * - _bool_ `$sort_by_price` __Required: Optional__. Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
  * - _string_ `$offset` __Required: Optional__. Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
+ * - _int_ `$limit` __Required: Optional__. The maximum number of gifts to be returned; 1-100. Defaults to 100
+ *
+ *
+ * @method PromiseInterface getUserGifts(...$parameters) Returns the gifts owned and hosted by a user. Returns OwnedGifts on success.
+ *
+ * {@see https://core.telegram.org/bots/api#getusergifts}
+ *
+ * Parameters:
+ * - _int_ `$user_id` __Required: Yes__. Unique identifier of the user
+ * - _bool_ `$exclude_unlimited` __Required: Optional__. Pass True to exclude gifts that can be purchased an unlimited number of times
+ * - _bool_ `$exclude_limited_upgradable` __Required: Optional__. Pass True to exclude gifts that can be purchased a limited number of times and can be upgraded to unique
+ * - _bool_ `$exclude_limited_non_upgradable` __Required: Optional__. Pass True to exclude gifts that can be purchased a limited number of times and can't be upgraded to unique
+ * - _bool_ `$exclude_from_blockchain` __Required: Optional__. Pass True to exclude gifts that were assigned from the TON blockchain and can't be resold or transferred in Telegram
+ * - _bool_ `$exclude_unique` __Required: Optional__. Pass True to exclude unique gifts
+ * - _bool_ `$sort_by_price` __Required: Optional__. Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
+ * - _string_ `$offset` __Required: Optional__. Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results
+ * - _int_ `$limit` __Required: Optional__. The maximum number of gifts to be returned; 1-100. Defaults to 100
+ *
+ *
+ * @method PromiseInterface getChatGifts(...$parameters) Returns the gifts owned by a chat. Returns OwnedGifts on success.
+ *
+ * {@see https://core.telegram.org/bots/api#getchatgifts}
+ *
+ * Parameters:
+ * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * - _bool_ `$exclude_unsaved` __Required: Optional__. Pass True to exclude gifts that aren't saved to the chat's profile page. Always True, unless the bot has the can_post_messages administrator right in the channel.
+ * - _bool_ `$exclude_saved` __Required: Optional__. Pass True to exclude gifts that are saved to the chat's profile page. Always False, unless the bot has the can_post_messages administrator right in the channel.
+ * - _bool_ `$exclude_unlimited` __Required: Optional__. Pass True to exclude gifts that can be purchased an unlimited number of times
+ * - _bool_ `$exclude_limited_upgradable` __Required: Optional__. Pass True to exclude gifts that can be purchased a limited number of times and can be upgraded to unique
+ * - _bool_ `$exclude_limited_non_upgradable` __Required: Optional__. Pass True to exclude gifts that can be purchased a limited number of times and can't be upgraded to unique
+ * - _bool_ `$exclude_from_blockchain` __Required: Optional__. Pass True to exclude gifts that were assigned from the TON blockchain and can't be resold or transferred in Telegram
+ * - _bool_ `$exclude_unique` __Required: Optional__. Pass True to exclude unique gifts
+ * - _bool_ `$sort_by_price` __Required: Optional__. Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
+ * - _string_ `$offset` __Required: Optional__. Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results
  * - _int_ `$limit` __Required: Optional__. The maximum number of gifts to be returned; 1-100. Defaults to 100
  *
  *
@@ -1352,6 +1403,19 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the story caption. See formatting options for more details.
  * - _MessageEntity[]_ `$caption_entities` __Required: Optional__. A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
  * - _StoryArea[]_ `$areas` __Required: Optional__. A JSON-serialized list of clickable areas to be shown on the story
+ * - _bool_ `$post_to_chat_page` __Required: Optional__. Pass True to keep the story accessible after it expires
+ * - _bool_ `$protect_content` __Required: Optional__. Pass True if the content of the story must be protected from forwarding and screenshotting
+ *
+ *
+ * @method PromiseInterface|Story repostStory(...$parameters) Reposts a story on behalf of a business account from another business account. Both business accounts must be managed by the same bot, and the story on the source account must have been posted (or reposted) by the bot. Requires the can_manage_stories business bot right for both business accounts. Returns Story on success.
+ *
+ * {@see https://core.telegram.org/bots/api#repoststory}
+ *
+ * Parameters:
+ * - _string_ `$business_connection_id` __Required: Yes__. Unique identifier of the business connection
+ * - _int_ `$from_chat_id` __Required: Yes__. Unique identifier of the chat which posted the story that should be reposted
+ * - _int_ `$from_story_id` __Required: Yes__. Unique identifier of the story that should be reposted
+ * - _int_ `$active_period` __Required: Yes__. Period after which the story is moved to the archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400
  * - _bool_ `$post_to_chat_page` __Required: Optional__. Pass True to keep the story accessible after it expires
  * - _bool_ `$protect_content` __Required: Optional__. Pass True if the content of the story must be protected from forwarding and screenshotting
  *
@@ -1534,7 +1598,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _InputFile|string_ `$sticker` __Required: Yes__. Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files ». Video and animated stickers can't be sent via an HTTP URL.
  * - _string_ `$emoji` __Required: Optional__. Emoji associated with the sticker; only for just uploaded stickers
@@ -1729,7 +1793,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _string_ `$title` __Required: Yes__. Product name, 1-32 characters
  * - _string_ `$description` __Required: Yes__. Product description, 1-255 characters
@@ -1860,7 +1924,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
  * - _int_ `$chat_id` __Required: Yes__. Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats.
- * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _string_ `$game_short_name` __Required: Yes__. Short name of the game, serves as the unique identifier for the game. Set up your games via @BotFather.
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving

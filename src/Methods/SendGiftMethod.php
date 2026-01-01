@@ -10,7 +10,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  *
  * @property-read ?int $user_id Required if chat_id is not specified. Unique identifier of the target user who will receive the gift.
  * @property-read null|int|string $chat_id Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @channelusername) that will receive the gift.
- * @property-read string $gift_id Identifier of the gift
+ * @property-read string $gift_id Identifier of the gift; limited gifts can't be sent to channel chats
  * @property-read ?bool $pay_for_upgrade Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver
  * @property-read ?string $text Text that will be shown along with the gift; 0-128 characters
  * @property-read ?string $text_parse_mode Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored.

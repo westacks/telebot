@@ -17,9 +17,9 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  *
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername). If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance.
- * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
- * @property-read int $star_count The number of Telegram Stars that must be paid to buy access to the media; 1-10000
+ * @property-read int $star_count The number of Telegram Stars that must be paid to buy access to the media; 1-25000
  * @property-read InputPaidMedia[] $media A JSON-serialized array describing the media to be sent; up to 10 items
  * @property-read ?string $payload Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.
  * @property-read ?string $caption Media caption, 0-1024 characters after entities parsing

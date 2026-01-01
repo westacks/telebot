@@ -9,7 +9,8 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read int $id Unique identifier of the task
  * @property-read string $text Text of the task
  * @property-read ?MessageEntity[] $text_entities Optional. Special entities that appear in the task text
- * @property-read ?User $completed_by_user Optional. User that completed the task; omitted if the task wasn't completed
+ * @property-read ?User $completed_by_user Optional. User that completed the task; omitted if the task wasn't completed by a user
+ * @property-read ?Chat $completed_by_chat Optional. Chat that completed the task; omitted if the task wasn't completed by a chat
  * @property-read ?int $completion_date Optional. Point in time (Unix timestamp) when the task was completed; 0 if the task wasn't completed
  *
  * @see https://core.telegram.org/bots/api#checklisttask
@@ -21,6 +22,7 @@ class ChecklistTask extends TelegramObject
         public readonly string $text,
         public readonly ?array $text_entities,
         public readonly ?User $completed_by_user,
+        public readonly ?Chat $completed_by_chat,
         public readonly ?int $completion_date,
     ) {
     }

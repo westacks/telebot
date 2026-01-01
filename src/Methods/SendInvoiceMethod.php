@@ -12,7 +12,7 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * Use this method to send invoices. On success, the sent Message is returned.
  *
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property-read string $title Product name, 1-32 characters
  * @property-read string $description Product description, 1-255 characters

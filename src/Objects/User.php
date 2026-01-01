@@ -19,6 +19,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?bool $supports_inline_queries Optional. True, if the bot supports inline queries. Returned only in getMe.
  * @property-read ?bool $can_connect_to_business Optional. True, if the bot can be connected to a Telegram Business account to receive its messages. Returned only in getMe.
  * @property-read ?bool $has_main_web_app Optional. True, if the bot has a main Web App. Returned only in getMe.
+ * @property-read ?bool $has_topics_enabled Optional. True, if the bot has forum topic mode enabled in private chats. Returned only in getMe.
  *
  * @see https://core.telegram.org/bots/api#user
  */
@@ -38,6 +39,7 @@ class User extends TelegramObject
         public readonly ?bool $supports_inline_queries,
         public readonly ?bool $can_connect_to_business,
         public readonly ?bool $has_main_web_app,
+        public readonly ?bool $has_topics_enabled,
     ) {
     }
 }

@@ -144,7 +144,7 @@ function multipart(array $data, array &$files = []): array
         return $data['contents'];
     };
 
-    $walk = function (array &$data) use (&$extract, &$result, &$walk) {
+    $walk = function (array &$data) use (&$extract, &$walk) {
         foreach ($data as $key => $value) {
             if (is_a($value, InputFile::class)) {
                 $data[$key] = $extract($value);
