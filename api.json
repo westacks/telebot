@@ -1,6 +1,6 @@
 {
-    "version": "Bot API 9.2",
-    "release_date": "August 15, 2025",
+    "version": "Bot API 9.3",
+    "release_date": "December 31, 2025",
     "methods": {
         "getUpdates": {
             "href": "https://core.telegram.org/bots/api#getupdates",
@@ -185,7 +185,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -298,7 +298,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -335,6 +335,13 @@
                     ],
                     "required": false,
                     "description": "Protects the contents of the forwarded message from forwarding and saving"
+                },
+                "message_effect_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier of the message effect to be added to the message; only available when forwarding to private chats"
                 },
                 "suggested_post_parameters": {
                     "type": [
@@ -374,7 +381,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -436,7 +443,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -516,6 +523,13 @@
                     "required": false,
                     "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance"
                 },
+                "message_effect_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier of the message effect to be added to the message; only available when copying to private chats"
+                },
                 "suggested_post_parameters": {
                     "type": [
                         "SuggestedPostParameters"
@@ -564,7 +578,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -640,7 +654,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -776,7 +790,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -926,7 +940,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -1062,7 +1076,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -1248,7 +1262,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -1412,7 +1426,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -1540,7 +1554,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -1662,7 +1676,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -1676,7 +1690,7 @@
                         "Integer"
                     ],
                     "required": true,
-                    "description": "The number of Telegram Stars that must be paid to buy access to the media; 1-10000"
+                    "description": "The number of Telegram Stars that must be paid to buy access to the media; 1-25000"
                 },
                 "media": {
                     "type": [
@@ -1796,7 +1810,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -1878,7 +1892,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -2012,7 +2026,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -2160,7 +2174,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -2280,7 +2294,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "question": {
                     "type": [
@@ -2523,7 +2537,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -2593,6 +2607,59 @@
                 }
             }
         },
+        "sendMessageDraft": {
+            "href": "https://core.telegram.org/bots/api#sendmessagedraft",
+            "description": [
+                "Use this method to stream a partial message to a user while the message is being generated; supported only for bots with forum topic mode enabled. Returns True on success."
+            ],
+            "returns": [
+                "True"
+            ],
+            "parameters": {
+                "chat_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target private chat"
+                },
+                "message_thread_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier for the target message thread"
+                },
+                "draft_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated"
+                },
+                "text": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Text of the message to be sent, 1-4096 characters after entities parsing"
+                },
+                "parse_mode": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Mode for parsing entities in the message text. See formatting options for more details."
+                },
+                "entities": {
+                    "type": [
+                        "Array<MessageEntity>"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode"
+                }
+            }
+        },
         "sendChatAction": {
             "href": "https://core.telegram.org/bots/api#sendchataction",
             "description": [
@@ -2623,7 +2690,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread; for supergroups only"
+                    "description": "Unique identifier for the target message thread or topic of a forum; for supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "action": {
                     "type": [
@@ -2934,7 +3001,7 @@
                         "Boolean"
                     ],
                     "required": false,
-                    "description": "Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics"
+                    "description": "Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics. For backward compatibility, defaults to True for promotions of channel administrators"
                 },
                 "can_promote_members": {
                     "type": [
@@ -3792,7 +3859,7 @@
         "editForumTopic": {
             "href": "https://core.telegram.org/bots/api#editforumtopic",
             "description": [
-                "Use this method to edit name and icon of a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success."
+                "Use this method to edit name and icon of a topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -3884,7 +3951,7 @@
         "deleteForumTopic": {
             "href": "https://core.telegram.org/bots/api#deleteforumtopic",
             "description": [
-                "Use this method to delete a forum topic along with all its messages in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success."
+                "Use this method to delete a forum topic along with all its messages in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -3910,7 +3977,7 @@
         "unpinAllForumTopicMessages": {
             "href": "https://core.telegram.org/bots/api#unpinallforumtopicmessages",
             "description": [
-                "Use this method to clear the list of pinned messages in a forum topic. The bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success."
+                "Use this method to clear the list of pinned messages in a forum topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_pin_messages administrator right in the supergroup. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -4477,7 +4544,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Identifier of the gift"
+                    "description": "Identifier of the gift; limited gifts can't be sent to channel chats"
                 },
                 "pay_for_upgrade": {
                     "type": [
@@ -4957,12 +5024,98 @@
                     "required": false,
                     "description": "Pass True to exclude gifts that can be purchased an unlimited number of times"
                 },
-                "exclude_limited": {
+                "exclude_limited_upgradable": {
                     "type": [
                         "Boolean"
                     ],
                     "required": false,
-                    "description": "Pass True to exclude gifts that can be purchased a limited number of times"
+                    "description": "Pass True to exclude gifts that can be purchased a limited number of times and can be upgraded to unique"
+                },
+                "exclude_limited_non_upgradable": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude gifts that can be purchased a limited number of times and can't be upgraded to unique"
+                },
+                "exclude_unique": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude unique gifts"
+                },
+                "exclude_from_blockchain": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude gifts that were assigned from the TON blockchain and can't be resold or transferred in Telegram"
+                },
+                "sort_by_price": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to sort results by gift price instead of send date. Sorting is applied before pagination."
+                },
+                "offset": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results"
+                },
+                "limit": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "The maximum number of gifts to be returned; 1-100. Defaults to 100"
+                }
+            }
+        },
+        "getUserGifts": {
+            "href": "https://core.telegram.org/bots/api#getusergifts",
+            "description": [
+                "Returns the gifts owned and hosted by a user. Returns OwnedGifts on success."
+            ],
+            "returns": [],
+            "parameters": {
+                "user_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the user"
+                },
+                "exclude_unlimited": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude gifts that can be purchased an unlimited number of times"
+                },
+                "exclude_limited_upgradable": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude gifts that can be purchased a limited number of times and can be upgraded to unique"
+                },
+                "exclude_limited_non_upgradable": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude gifts that can be purchased a limited number of times and can't be upgraded to unique"
+                },
+                "exclude_from_blockchain": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude gifts that were assigned from the TON blockchain and can't be resold or transferred in Telegram"
                 },
                 "exclude_unique": {
                     "type": [
@@ -4983,7 +5136,94 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results"
+                    "description": "Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results"
+                },
+                "limit": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "The maximum number of gifts to be returned; 1-100. Defaults to 100"
+                }
+            }
+        },
+        "getChatGifts": {
+            "href": "https://core.telegram.org/bots/api#getchatgifts",
+            "description": [
+                "Returns the gifts owned by a chat. Returns OwnedGifts on success."
+            ],
+            "returns": [],
+            "parameters": {
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                },
+                "exclude_unsaved": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude gifts that aren't saved to the chat's profile page. Always True, unless the bot has the can_post_messages administrator right in the channel."
+                },
+                "exclude_saved": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude gifts that are saved to the chat's profile page. Always False, unless the bot has the can_post_messages administrator right in the channel."
+                },
+                "exclude_unlimited": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude gifts that can be purchased an unlimited number of times"
+                },
+                "exclude_limited_upgradable": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude gifts that can be purchased a limited number of times and can be upgraded to unique"
+                },
+                "exclude_limited_non_upgradable": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude gifts that can be purchased a limited number of times and can't be upgraded to unique"
+                },
+                "exclude_from_blockchain": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude gifts that were assigned from the TON blockchain and can't be resold or transferred in Telegram"
+                },
+                "exclude_unique": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to exclude unique gifts"
+                },
+                "sort_by_price": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to sort results by gift price instead of send date. Sorting is applied before pagination."
+                },
+                "offset": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results"
                 },
                 "limit": {
                     "type": [
@@ -5154,6 +5394,59 @@
                     ],
                     "required": false,
                     "description": "A JSON-serialized list of clickable areas to be shown on the story"
+                },
+                "post_to_chat_page": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to keep the story accessible after it expires"
+                },
+                "protect_content": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True if the content of the story must be protected from forwarding and screenshotting"
+                }
+            }
+        },
+        "repostStory": {
+            "href": "https://core.telegram.org/bots/api#repoststory",
+            "description": [
+                "Reposts a story on behalf of a business account from another business account. Both business accounts must be managed by the same bot, and the story on the source account must have been posted (or reposted) by the bot. Requires the can_manage_stories business bot right for both business accounts. Returns Story on success."
+            ],
+            "returns": [
+                "Story"
+            ],
+            "parameters": {
+                "business_connection_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the business connection"
+                },
+                "from_chat_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the chat which posted the story that should be reposted"
+                },
+                "from_story_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the story that should be reposted"
+                },
+                "active_period": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Period after which the story is moved to the archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400"
                 },
                 "post_to_chat_page": {
                     "type": [
@@ -5880,7 +6173,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -6529,7 +6822,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "direct_messages_topic_id": {
                     "type": [
@@ -7117,7 +7410,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Unique identifier for the target message thread (topic) of the forum; for forum supergroups only"
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
                 },
                 "game_short_name": {
                     "type": [
@@ -7569,6 +7862,12 @@
                         "Boolean"
                     ],
                     "description": "Optional. True, if the bot has a main Web App. Returned only in getMe."
+                },
+                "has_topics_enabled": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "Optional. True, if the bot has forum topic mode enabled in private chats. Returned only in getMe."
                 }
             }
         },
@@ -7915,6 +8214,24 @@
                         "ChatLocation"
                     ],
                     "description": "Optional. For supergroups, the location to which the supergroup is connected"
+                },
+                "rating": {
+                    "type": [
+                        "UserRating"
+                    ],
+                    "description": "Optional. For private chats, the rating of the user if any"
+                },
+                "unique_gift_colors": {
+                    "type": [
+                        "UniqueGiftColors"
+                    ],
+                    "description": "Optional. The color scheme based on a unique gift that must be used for the chat's name, message replies and link previews"
+                },
+                "paid_message_star_count": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. The number of Telegram Stars a general user have to pay to send a message to the chat"
                 }
             }
         },
@@ -7934,7 +8251,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. Unique identifier of a message thread to which the message belongs; for supergroups only"
+                    "description": "Optional. Unique identifier of a message thread or forum topic to which the message belongs; for supergroups and private chats only"
                 },
                 "direct_messages_topic": {
                     "type": [
@@ -7994,7 +8311,7 @@
                     "type": [
                         "True"
                     ],
-                    "description": "Optional. True, if the message is sent to a forum topic"
+                    "description": "Optional. True, if the message is sent to a topic in a forum supergroup or a private chat with the bot"
                 },
                 "is_automatic_forward": {
                     "type": [
@@ -8349,6 +8666,12 @@
                         "UniqueGiftInfo"
                     ],
                     "description": "Optional. Service message: a unique gift was sent or received"
+                },
+                "gift_upgrade_sent": {
+                    "type": [
+                        "GiftInfo"
+                    ],
+                    "description": "Optional. Service message: upgrade of a gift was purchased after the gift was sent"
                 },
                 "connected_website": {
                     "type": [
@@ -9775,7 +10098,13 @@
                     "type": [
                         "User"
                     ],
-                    "description": "Optional. User that completed the task; omitted if the task wasn't completed"
+                    "description": "Optional. User that completed the task; omitted if the task wasn't completed by a user"
+                },
+                "completed_by_chat": {
+                    "type": [
+                        "Chat"
+                    ],
+                    "description": "Optional. Chat that completed the task; omitted if the task wasn't completed by a chat"
                 },
                 "completion_date": {
                     "type": [
@@ -10380,6 +10709,12 @@
                         "String"
                     ],
                     "description": "Optional. Unique identifier of the custom emoji shown as the topic icon"
+                },
+                "is_name_implicit": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if the name of the topic wasn't specified explicitly by its creator and likely needs to be changed by the bot"
                 }
             }
         },
@@ -12511,6 +12846,38 @@
                 }
             }
         },
+        "UserRating": {
+            "href": "https://core.telegram.org/bots/api#userrating",
+            "description": [
+                "This object describes the rating of a user based on their Telegram Star spendings."
+            ],
+            "fields": {
+                "level": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Current level of the user, indicating their reliability when purchasing digital goods and services. A higher level suggests a more trustworthy customer; a negative level is likely reason for concern."
+                },
+                "rating": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Numerical value of the user's rating; the higher the rating, the better"
+                },
+                "current_level_rating": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "The rating value required to get the current level"
+                },
+                "next_level_rating": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. The rating value required to get to the next level; omitted if the maximum level was reached"
+                }
+            }
+        },
         "StoryAreaPosition": {
             "href": "https://core.telegram.org/bots/api#storyareaposition",
             "description": [
@@ -12980,6 +13347,38 @@
                         "String"
                     ],
                     "description": "Optional. Unique identifier of the custom emoji shown as the topic icon"
+                },
+                "is_name_implicit": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if the name of the topic wasn't specified explicitly by its creator and likely needs to be changed by the bot"
+                }
+            }
+        },
+        "GiftBackground": {
+            "href": "https://core.telegram.org/bots/api#giftbackground",
+            "description": [
+                "This object describes the background of a gift."
+            ],
+            "fields": {
+                "center_color": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Center color of the background in RGB format"
+                },
+                "edge_color": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Edge color of the background in RGB format"
+                },
+                "text_color": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Text color of the background in RGB format"
                 }
             }
         },
@@ -13013,17 +13412,53 @@
                     ],
                     "description": "Optional. The number of Telegram Stars that must be paid to upgrade the gift to a unique one"
                 },
+                "is_premium": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if the gift can only be purchased by Telegram Premium subscribers"
+                },
+                "has_colors": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if the gift can be used (after being upgraded) to customize a user's appearance"
+                },
                 "total_count": {
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. The total number of the gifts of this type that can be sent; for limited gifts only"
+                    "description": "Optional. The total number of gifts of this type that can be sent by all users; for limited gifts only"
                 },
                 "remaining_count": {
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. The number of remaining gifts of this type that can be sent; for limited gifts only"
+                    "description": "Optional. The number of remaining gifts of this type that can be sent by all users; for limited gifts only"
+                },
+                "personal_total_count": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. The total number of gifts of this type that can be sent by the bot; for limited gifts only"
+                },
+                "personal_remaining_count": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. The number of remaining gifts of this type that can be sent by the bot; for limited gifts only"
+                },
+                "background": {
+                    "type": [
+                        "GiftBackground"
+                    ],
+                    "description": "Optional. Background of the gift"
+                },
+                "unique_gift_variant_count": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. The total number of different unique gifts that can be obtained by upgrading the gift"
                 },
                 "publisher_chat": {
                     "type": [
@@ -13157,12 +13592,62 @@
                 }
             }
         },
+        "UniqueGiftColors": {
+            "href": "https://core.telegram.org/bots/api#uniquegiftcolors",
+            "description": [
+                "This object contains information about the color scheme for a user's name, message replies and link previews based on a unique gift."
+            ],
+            "fields": {
+                "model_custom_emoji_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Custom emoji identifier of the unique gift's model"
+                },
+                "symbol_custom_emoji_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Custom emoji identifier of the unique gift's symbol"
+                },
+                "light_theme_main_color": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Main color used in light themes; RGB format"
+                },
+                "light_theme_other_colors": {
+                    "type": [
+                        "Array<Integer>"
+                    ],
+                    "description": "List of 1-3 additional colors used in light themes; RGB format"
+                },
+                "dark_theme_main_color": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Main color used in dark themes; RGB format"
+                },
+                "dark_theme_other_colors": {
+                    "type": [
+                        "Array<Integer>"
+                    ],
+                    "description": "List of 1-3 additional colors used in dark themes; RGB format"
+                }
+            }
+        },
         "UniqueGift": {
             "href": "https://core.telegram.org/bots/api#uniquegift",
             "description": [
                 "This object describes a unique gift that was upgraded from a regular gift."
             ],
             "fields": {
+                "gift_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Identifier of the regular gift from which the gift was upgraded"
+                },
                 "base_name": {
                     "type": [
                         "String"
@@ -13198,6 +13683,24 @@
                         "UniqueGiftBackdrop"
                     ],
                     "description": "Backdrop of the gift"
+                },
+                "is_premium": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if the original regular gift was exclusively purchaseable by Telegram Premium subscribers"
+                },
+                "is_from_blockchain": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if the gift is assigned from the TON blockchain and can't be resold or transferred in Telegram"
+                },
+                "colors": {
+                    "type": [
+                        "UniqueGiftColors"
+                    ],
+                    "description": "Optional. The color scheme that can be used by the gift's owner for the chat's name, replies to messages and link previews; for business account gifts and gifts that are currently on sale only"
                 },
                 "publisher_chat": {
                     "type": [
@@ -13235,7 +13738,13 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. Number of Telegram Stars that were prepaid by the sender for the ability to upgrade the gift"
+                    "description": "Optional. Number of Telegram Stars that were prepaid for the ability to upgrade the gift"
+                },
+                "is_upgrade_separate": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if the gift's upgrade was purchased after the gift was sent"
                 },
                 "can_be_upgraded": {
                     "type": [
@@ -13260,6 +13769,12 @@
                         "True"
                     ],
                     "description": "Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them"
+                },
+                "unique_gift_number": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift"
                 }
             }
         },
@@ -13279,13 +13794,19 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Origin of the gift. Currently, either \u201cupgrade\u201d for gifts upgraded from regular gifts, \u201ctransfer\u201d for gifts transferred from other users or channels, or \u201cresale\u201d for gifts bought from other users"
+                    "description": "Origin of the gift. Currently, either \u201cupgrade\u201d for gifts upgraded from regular gifts, \u201ctransfer\u201d for gifts transferred from other users or channels, \u201cresale\u201d for gifts bought from other users, \u201cgifted_upgrade\u201d for upgrades purchased after the gift was sent, or \u201coffer\u201d for gifts bought or sold through gift purchase offers"
                 },
-                "last_resale_star_count": {
+                "last_resale_currency": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. For gifts bought from other users, the currency in which the payment for the gift was done. Currently, one of \u201cXTR\u201d for Telegram Stars or \u201cTON\u201d for toncoins."
+                },
+                "last_resale_amount": {
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. For gifts bought from other users, the price paid for the gift"
+                    "description": "Optional. For gifts bought from other users, the price paid for the gift in either Telegram Stars or nanotoncoins"
                 },
                 "owned_gift_id": {
                     "type": [
@@ -13394,13 +13915,25 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. Number of Telegram Stars that can be claimed by the receiver instead of the gift; omitted if the gift cannot be converted to Telegram Stars"
+                    "description": "Optional. Number of Telegram Stars that can be claimed by the receiver instead of the gift; omitted if the gift cannot be converted to Telegram Stars; for gifts received on behalf of business accounts only"
                 },
                 "prepaid_upgrade_star_count": {
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. Number of Telegram Stars that were paid by the sender for the ability to upgrade the gift"
+                    "description": "Optional. Number of Telegram Stars that were paid for the ability to upgrade the gift"
+                },
+                "is_upgrade_separate": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if the gift's upgrade was purchased after the gift was sent; for gifts received on behalf of business accounts only"
+                },
+                "unique_gift_number": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift"
                 }
             }
         },
@@ -13522,6 +14055,12 @@
                         "Boolean"
                     ],
                     "description": "True, if a Telegram Premium subscription is accepted"
+                },
+                "gifts_from_channels": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "True, if transfers of unique gifts from channels are accepted"
                 }
             }
         },

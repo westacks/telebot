@@ -17,7 +17,7 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  *
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of the forum; for forum supergroups only
+ * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property-read InputFile|string $animation Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files »
  * @property-read ?int $duration Duration of sent animation in seconds
