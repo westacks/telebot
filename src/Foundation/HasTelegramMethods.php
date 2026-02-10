@@ -31,6 +31,7 @@ use WeStacks\TeleBot\Objects\Telegram;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\User;
 use WeStacks\TeleBot\Objects\UserChatBoosts;
+use WeStacks\TeleBot\Objects\UserProfileAudios;
 use WeStacks\TeleBot\Objects\UserProfilePhotos;
 use WeStacks\TeleBot\Objects\WebhookInfo;
 
@@ -580,6 +581,16 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$limit` __Required: Optional__. Limits the number of photos to be retrieved. Values between 1-100 are accepted. Defaults to 100.
  *
  *
+ * @method PromiseInterface|UserProfileAudios getUserProfileAudios(...$parameters) Use this method to get a list of profile audios for a user. Returns a UserProfileAudios object.
+ *
+ * {@see https://core.telegram.org/bots/api#getuserprofileaudios}
+ *
+ * Parameters:
+ * - _int_ `$user_id` __Required: Yes__. Unique identifier of the target user
+ * - _int_ `$offset` __Required: Optional__. Sequential number of the first audio to be returned. By default, all audios are returned.
+ * - _int_ `$limit` __Required: Optional__. Limits the number of audios to be retrieved. Values between 1-100 are accepted. Defaults to 100.
+ *
+ *
  * @method PromiseInterface|true setUserEmojiStatus(...$parameters) Changes the emoji status for a given user that previously allowed the bot to manage their emoji status via the Mini App method requestEmojiStatusAccess. Returns True on success.
  *
  * {@see https://core.telegram.org/bots/api#setuseremojistatus}
@@ -902,7 +913,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * @method PromiseInterface|Sticker[] getForumTopicIconStickers(...$parameters) Use this method to get custom emoji stickers, which can be used as a forum topic icon by any user. Requires no parameters. Returns an Array of Sticker objects.
  *
  * {@see https://core.telegram.org/bots/api#getforumtopiciconstickers}
- * @method PromiseInterface|ForumTopic createForumTopic(...$parameters) Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns information about the created topic as a ForumTopic object.
+ * @method PromiseInterface|ForumTopic createForumTopic(...$parameters) Use this method to create a topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right. Returns information about the created topic as a ForumTopic object.
  *
  * {@see https://core.telegram.org/bots/api#createforumtopic}
  *
@@ -1117,6 +1128,17 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$language_code` __Required: Optional__. A two-letter ISO 639-1 language code or an empty string
  *
  *
+ * @method PromiseInterface|true setMyProfilePhoto(...$parameters) Changes the profile photo of the bot. Returns True on success.
+ *
+ * {@see https://core.telegram.org/bots/api#setmyprofilephoto}
+ *
+ * Parameters:
+ * - _InputProfilePhoto_ `$photo` __Required: Yes__. The new profile photo to set
+ *
+ *
+ * @method PromiseInterface|true removeMyProfilePhoto(...$parameters) Removes the profile photo of the bot. Requires no parameters. Returns True on success.
+ *
+ * {@see https://core.telegram.org/bots/api#removemyprofilephoto}
  * @method PromiseInterface|true setChatMenuButton(...$parameters) Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
  *
  * {@see https://core.telegram.org/bots/api#setchatmenubutton}

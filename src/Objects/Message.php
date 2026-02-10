@@ -58,6 +58,8 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?Location $location Optional. Message is a shared location, information about the location
  * @property-read ?User[] $new_chat_members Optional. New members that were added to the group or supergroup and information about them (the bot itself may be one of these members)
  * @property-read ?User $left_chat_member Optional. A member was removed from the group, information about them (this member may be the bot itself)
+ * @property-read ?ChatOwnerLeft $chat_owner_left Optional. Service message: chat owner has left
+ * @property-read ?ChatOwnerChanged $chat_owner_changed Optional. Service message: chat owner has changed
  * @property-read ?string $new_chat_title Optional. A chat title was changed to this value
  * @property-read ?PhotoSize[] $new_chat_photo Optional. A chat photo was change to this value
  * @property-read ?true $delete_chat_photo Optional. Service message: the chat photo was deleted
@@ -167,6 +169,8 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?Location $location,
         public readonly ?array $new_chat_members,
         public readonly ?User $left_chat_member,
+        public readonly ?ChatOwnerLeft $chat_owner_left,
+        public readonly ?ChatOwnerChanged $chat_owner_changed,
         public readonly ?string $new_chat_title,
         public readonly ?array $new_chat_photo,
         public readonly ?true $delete_chat_photo,
