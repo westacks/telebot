@@ -1,6 +1,6 @@
 {
-    "version": "Bot API 9.3",
-    "release_date": "December 31, 2025",
+    "version": "Bot API 9.4",
+    "release_date": "February 9, 2026",
     "methods": {
         "getUpdates": {
             "href": "https://core.telegram.org/bots/api#getupdates",
@@ -2773,6 +2773,38 @@
                 }
             }
         },
+        "getUserProfileAudios": {
+            "href": "https://core.telegram.org/bots/api#getuserprofileaudios",
+            "description": [
+                "Use this method to get a list of profile audios for a user. Returns a UserProfileAudios object."
+            ],
+            "returns": [
+                "UserProfileAudios"
+            ],
+            "parameters": {
+                "user_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the target user"
+                },
+                "offset": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Sequential number of the first audio to be returned. By default, all audios are returned."
+                },
+                "limit": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Limits the number of audios to be retrieved. Values between 1-100 are accepted. Defaults to 100."
+                }
+            }
+        },
         "setUserEmojiStatus": {
             "href": "https://core.telegram.org/bots/api#setuseremojistatus",
             "description": [
@@ -3819,7 +3851,7 @@
         "createForumTopic": {
             "href": "https://core.telegram.org/bots/api#createforumtopic",
             "description": [
-                "Use this method to create a topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns information about the created topic as a ForumTopic object."
+                "Use this method to create a topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right. Returns information about the created topic as a ForumTopic object."
             ],
             "returns": [
                 "ForumTopic"
@@ -4421,6 +4453,33 @@
                     "description": "A two-letter ISO 639-1 language code or an empty string"
                 }
             }
+        },
+        "setMyProfilePhoto": {
+            "href": "https://core.telegram.org/bots/api#setmyprofilephoto",
+            "description": [
+                "Changes the profile photo of the bot. Returns True on success."
+            ],
+            "returns": [
+                "True"
+            ],
+            "parameters": {
+                "photo": {
+                    "type": [
+                        "InputProfilePhoto"
+                    ],
+                    "required": true,
+                    "description": "The new profile photo to set"
+                }
+            }
+        },
+        "removeMyProfilePhoto": {
+            "href": "https://core.telegram.org/bots/api#removemyprofilephoto",
+            "description": [
+                "Removes the profile photo of the bot. Requires no parameters. Returns True on success."
+            ],
+            "returns": [
+                "True"
+            ]
         },
         "setChatMenuButton": {
             "href": "https://core.telegram.org/bots/api#setchatmenubutton",
@@ -7868,6 +7927,12 @@
                         "Boolean"
                     ],
                     "description": "Optional. True, if the bot has forum topic mode enabled in private chats. Returned only in getMe."
+                },
+                "allows_users_to_create_topics": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "Optional. True, if the bot allows users to create and delete topics in private chats. Returned only in getMe."
                 }
             }
         },
@@ -8221,6 +8286,12 @@
                     ],
                     "description": "Optional. For private chats, the rating of the user if any"
                 },
+                "first_profile_audio": {
+                    "type": [
+                        "Audio"
+                    ],
+                    "description": "Optional. For private chats, the first audio added to the profile of the user"
+                },
                 "unique_gift_colors": {
                     "type": [
                         "UniqueGiftColors"
@@ -8564,6 +8635,18 @@
                         "User"
                     ],
                     "description": "Optional. A member was removed from the group, information about them (this member may be the bot itself)"
+                },
+                "chat_owner_left": {
+                    "type": [
+                        "ChatOwnerLeft"
+                    ],
+                    "description": "Optional. Service message: chat owner has left"
+                },
+                "chat_owner_changed": {
+                    "type": [
+                        "ChatOwnerChanged"
+                    ],
+                    "description": "Optional. Service message: chat owner has changed"
                 },
                 "new_chat_title": {
                     "type": [
@@ -9574,6 +9657,50 @@
                 }
             }
         },
+        "VideoQuality": {
+            "href": "https://core.telegram.org/bots/api#videoquality",
+            "description": [
+                "This object represents a video file of a specific quality."
+            ],
+            "fields": {
+                "file_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Identifier for this file, which can be used to download or reuse the file"
+                },
+                "file_unique_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file."
+                },
+                "width": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Video width"
+                },
+                "height": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Video height"
+                },
+                "codec": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Codec that was used to encode the video, for example, \u201ch264\u201d, \u201ch265\u201d, or \u201cav01\u201d"
+                },
+                "file_size": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value."
+                }
+            }
+        },
         "Video": {
             "href": "https://core.telegram.org/bots/api#video",
             "description": [
@@ -9627,6 +9754,12 @@
                         "Integer"
                     ],
                     "description": "Optional. Timestamp in seconds from which the video will play in the message"
+                },
+                "qualities": {
+                    "type": [
+                        "Array<VideoQuality>"
+                    ],
+                    "description": "Optional. List of available qualities of the video"
                 },
                 "file_name": {
                     "type": [
@@ -11416,6 +11549,26 @@
                 }
             }
         },
+        "UserProfileAudios": {
+            "href": "https://core.telegram.org/bots/api#userprofileaudios",
+            "description": [
+                "This object represents the audios displayed on a user's profile."
+            ],
+            "fields": {
+                "total_count": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Total number of profile audios for the target user"
+                },
+                "audios": {
+                    "type": [
+                        "Array<Audio>"
+                    ],
+                    "description": "Requested profile audios"
+                }
+            }
+        },
         "File": {
             "href": "https://core.telegram.org/bots/api#file",
             "description": [
@@ -11509,15 +11662,26 @@
         "KeyboardButton": {
             "href": "https://core.telegram.org/bots/api#keyboardbutton",
             "description": [
-                "This object represents one button of the reply keyboard. At most one of the optional fields must be used to specify type of the button. For simple text buttons, String can be used instead of this object to specify the button text.",
-                "Note: request_users and request_chat options will only work in Telegram versions released after 3 February, 2023. Older clients will display unsupported message."
+                "This object represents one button of the reply keyboard. At most one of the fields other than text, icon_custom_emoji_id, and style must be used to specify the type of the button. For simple text buttons, String can be used instead of this object to specify the button text."
             ],
             "fields": {
                 "text": {
                     "type": [
                         "String"
                     ],
-                    "description": "Text of the button. If none of the optional fields are used, it will be sent as a message when the button is pressed"
+                    "description": "Text of the button. If none of the fields other than text, icon_custom_emoji_id, and style are used, it will be sent as a message when the button is pressed"
+                },
+                "icon_custom_emoji_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Unique identifier of the custom emoji shown before the text of the button. Can only be used by bots that purchased additional usernames on Fragment or in the messages directly sent by the bot to private, group and supergroup chats if the owner of the bot has a Telegram Premium subscription."
+                },
+                "style": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Style of the button. Must be one of \u201cdanger\u201d (red), \u201csuccess\u201d (green) or \u201cprimary\u201d (blue). If omitted, then an app-specific style is used."
                 },
                 "request_users": {
                     "type": [
@@ -11732,7 +11896,7 @@
         "InlineKeyboardButton": {
             "href": "https://core.telegram.org/bots/api#inlinekeyboardbutton",
             "description": [
-                "This object represents one button of an inline keyboard. Exactly one of the optional fields must be used to specify type of the button."
+                "This object represents one button of an inline keyboard. Exactly one of the fields other than text, icon_custom_emoji_id, and style must be used to specify the type of the button."
             ],
             "fields": {
                 "text": {
@@ -11740,6 +11904,18 @@
                         "String"
                     ],
                     "description": "Label text on the button"
+                },
+                "icon_custom_emoji_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Unique identifier of the custom emoji shown before the text of the button. Can only be used by bots that purchased additional usernames on Fragment or in the messages directly sent by the bot to private, group and supergroup chats if the owner of the bot has a Telegram Premium subscription."
+                },
+                "style": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Style of the button. Must be one of \u201cdanger\u201d (red), \u201csuccess\u201d (green) or \u201cprimary\u201d (blue). If omitted, then an app-specific style is used."
                 },
                 "url": {
                     "type": [
@@ -13504,7 +13680,13 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "The number of unique gifts that receive this model for every 1000 gifts upgraded"
+                    "description": "The number of unique gifts that receive this model for every 1000 gift upgrades. Always 0 for crafted gifts."
+                },
+                "rarity": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Rarity of the model if it is a crafted model. Currently, can be \u201cuncommon\u201d, \u201crare\u201d, \u201cepic\u201d, or \u201clegendary\u201d."
                 }
             }
         },
@@ -13689,6 +13871,12 @@
                         "True"
                     ],
                     "description": "Optional. True, if the original regular gift was exclusively purchaseable by Telegram Premium subscribers"
+                },
+                "is_burned": {
+                    "type": [
+                        "True"
+                    ],
+                    "description": "Optional. True, if the gift was used to craft another gift and isn't available anymore"
                 },
                 "is_from_blockchain": {
                     "type": [
@@ -14535,6 +14723,34 @@
                         "ChatBoostSource"
                     ],
                     "description": "Source of the removed boost"
+                }
+            }
+        },
+        "ChatOwnerLeft": {
+            "href": "https://core.telegram.org/bots/api#chatownerleft",
+            "description": [
+                "Describes a service message about the chat owner leaving the chat."
+            ],
+            "fields": {
+                "new_owner": {
+                    "type": [
+                        "User"
+                    ],
+                    "description": "Optional. The user which will be the new owner of the chat if the previous owner does not return to the chat"
+                }
+            }
+        },
+        "ChatOwnerChanged": {
+            "href": "https://core.telegram.org/bots/api#chatownerchanged",
+            "description": [
+                "Describes a service message about an ownership change in the chat."
+            ],
+            "fields": {
+                "new_owner": {
+                    "type": [
+                        "User"
+                    ],
+                    "description": "The new owner of the chat"
                 }
             }
         },
