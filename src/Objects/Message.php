@@ -11,6 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?Chat $sender_chat Optional. Sender of the message when sent on behalf of a chat. For example, the supergroup itself for messages sent by its anonymous administrators or a linked channel for messages automatically forwarded to the channel's discussion group. For backward compatibility, if the message was sent on behalf of a chat, the field from contains a fake sender user in non-channel chats.
  * @property-read ?int $sender_boost_count Optional. If the sender of the message boosted the chat, the number of boosts added by the user
  * @property-read ?User $sender_business_bot Optional. The bot that actually sent the message on behalf of the business account. Available only for outgoing messages sent on behalf of the connected business account.
+ * @property-read ?string $sender_tag Optional. Tag or custom title of the sender of the message; for supergroups only
  * @property-read int $date Date the message was sent in Unix time. It is always a positive number, representing a valid date.
  * @property-read ?string $business_connection_id Optional. Unique identifier of the business connection from which the message was received. If non-empty, the message belongs to a chat of the corresponding business account that is independent from any potential bot chat which might share the same identifier.
  * @property-read Chat $chat Chat the message belongs to
@@ -27,7 +28,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?true $has_protected_content Optional. True, if the message can't be forwarded
  * @property-read ?true $is_from_offline Optional. True, if the message was sent by an implicit action, for example, as an away or a greeting business message, or as a scheduled message
  * @property-read ?true $is_paid_post Optional. True, if the message is a paid post. Note that such posts must not be deleted for 24 hours to receive the payment and can't be edited.
- * @property-read ?string $media_group_id Optional. The unique identifier of a media message group this message belongs to
+ * @property-read ?string $media_group_id Optional. The unique identifier inside this chat of a media message group this message belongs to
  * @property-read ?string $author_signature Optional. Signature of the post author for messages in channels, or the custom title of an anonymous group administrator
  * @property-read ?int $paid_star_count Optional. The number of Telegram Stars that were paid by the sender of the message to send it
  * @property-read ?string $text Optional. For text messages, the actual UTF-8 text of the message
@@ -122,6 +123,7 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?Chat $sender_chat,
         public readonly ?int $sender_boost_count,
         public readonly ?User $sender_business_bot,
+        public readonly ?string $sender_tag,
         public readonly int $date,
         public readonly ?string $business_connection_id,
         public readonly Chat $chat,

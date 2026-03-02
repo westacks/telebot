@@ -5,6 +5,7 @@ namespace WeStacks\TeleBot\Objects;
 /**
  * Represents a chat member that is under certain restrictions in the chat. Supergroups only.
  * @property-read string $status The member's status in the chat, always “restricted”
+ * @property-read ?string $tag Optional. Tag of the member
  * @property-read User $user Information about the user
  * @property-read bool $is_member True, if the user is a member of the chat at the moment of the request
  * @property-read bool $can_send_messages True, if the user is allowed to send text messages, contacts, giveaways, giveaway winners, invoices, locations and venues
@@ -17,6 +18,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read bool $can_send_polls True, if the user is allowed to send polls and checklists
  * @property-read bool $can_send_other_messages True, if the user is allowed to send animations, games, stickers and use inline bots
  * @property-read bool $can_add_web_page_previews True, if the user is allowed to add web page previews to their messages
+ * @property-read bool $can_edit_tag True, if the user is allowed to edit their own tag
  * @property-read bool $can_change_info True, if the user is allowed to change the chat title, photo and other settings
  * @property-read bool $can_invite_users True, if the user is allowed to invite new users to the chat
  * @property-read bool $can_pin_messages True, if the user is allowed to pin messages
@@ -29,6 +31,7 @@ class ChatMemberRestricted extends ChatMember
 {
     public function __construct(
         public readonly string $status,
+        public readonly ?string $tag,
         public readonly User $user,
         public readonly bool $is_member,
         public readonly bool $can_send_messages,
@@ -41,6 +44,7 @@ class ChatMemberRestricted extends ChatMember
         public readonly bool $can_send_polls,
         public readonly bool $can_send_other_messages,
         public readonly bool $can_add_web_page_previews,
+        public readonly bool $can_edit_tag,
         public readonly bool $can_change_info,
         public readonly bool $can_invite_users,
         public readonly bool $can_pin_messages,

@@ -25,6 +25,7 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
  * @property-read ?bool $can_pin_messages Pass True if the administrator can pin messages; for supergroups only
  * @property-read ?bool $can_manage_topics Pass True if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
  * @property-read ?bool $can_manage_direct_messages Pass True if the administrator can manage direct messages within the channel and decline suggested posts; for channels only
+ * @property-read ?bool $can_manage_tags Pass True if the administrator can edit the tags of regular members; for groups and supergroups only
  *
  * @see https://core.telegram.org/bots/api#promotechatmember
  */
@@ -52,6 +53,7 @@ class PromoteChatMemberMethod extends TelegramMethod
         public readonly ?bool $can_pin_messages,
         public readonly ?bool $can_manage_topics,
         public readonly ?bool $can_manage_direct_messages,
+        public readonly ?bool $can_manage_tags,
     ) {
     }
 }
