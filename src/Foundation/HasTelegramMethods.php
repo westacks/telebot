@@ -534,7 +534,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
  *
  *
- * @method PromiseInterface|true sendMessageDraft(...$parameters) Use this method to stream a partial message to a user while the message is being generated; supported only for bots with forum topic mode enabled. Returns True on success.
+ * @method PromiseInterface|true sendMessageDraft(...$parameters) Use this method to stream a partial message to a user while the message is being generated. Returns True on success.
  *
  * {@see https://core.telegram.org/bots/api#sendmessagedraft}
  *
@@ -667,6 +667,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$can_pin_messages` __Required: Optional__. Pass True if the administrator can pin messages; for supergroups only
  * - _bool_ `$can_manage_topics` __Required: Optional__. Pass True if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
  * - _bool_ `$can_manage_direct_messages` __Required: Optional__. Pass True if the administrator can manage direct messages within the channel and decline suggested posts; for channels only
+ * - _bool_ `$can_manage_tags` __Required: Optional__. Pass True if the administrator can edit the tags of regular members; for groups and supergroups only
  *
  *
  * @method PromiseInterface|true setChatAdministratorCustomTitle(...$parameters) Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.
@@ -677,6 +678,16 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
  * - _int_ `$user_id` __Required: Yes__. Unique identifier of the target user
  * - _string_ `$custom_title` __Required: Yes__. New custom title for the administrator; 0-16 characters, emoji are not allowed
+ *
+ *
+ * @method PromiseInterface|true setChatMemberTag(...$parameters) Use this method to set a tag for a regular member in a group or a supergroup. The bot must be an administrator in the chat for this to work and must have the can_manage_tags administrator right. Returns True on success.
+ *
+ * {@see https://core.telegram.org/bots/api#setchatmembertag}
+ *
+ * Parameters:
+ * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * - _int_ `$user_id` __Required: Yes__. Unique identifier of the target user
+ * - _string_ `$tag` __Required: Optional__. New tag for the member; 0-16 characters, emoji are not allowed
  *
  *
  * @method PromiseInterface|true banChatSenderChat(...$parameters) Use this method to ban a channel chat in a supergroup or a channel. Until the chat is unbanned, the owner of the banned chat won't be able to send messages on behalf of any of their channels. The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights. Returns True on success.

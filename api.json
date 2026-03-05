@@ -1,6 +1,6 @@
 {
-    "version": "Bot API 9.4",
-    "release_date": "February 9, 2026",
+    "version": "Bot API 9.5",
+    "release_date": "March 1, 2026",
     "methods": {
         "getUpdates": {
             "href": "https://core.telegram.org/bots/api#getupdates",
@@ -2610,7 +2610,7 @@
         "sendMessageDraft": {
             "href": "https://core.telegram.org/bots/api#sendmessagedraft",
             "description": [
-                "Use this method to stream a partial message to a user while the message is being generated; supported only for bots with forum topic mode enabled. Returns True on success."
+                "Use this method to stream a partial message to a user while the message is being generated. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -3111,6 +3111,13 @@
                     ],
                     "required": false,
                     "description": "Pass True if the administrator can manage direct messages within the channel and decline suggested posts; for channels only"
+                },
+                "can_manage_tags": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True if the administrator can edit the tags of regular members; for groups and supergroups only"
                 }
             }
         },
@@ -3144,6 +3151,39 @@
                     ],
                     "required": true,
                     "description": "New custom title for the administrator; 0-16 characters, emoji are not allowed"
+                }
+            }
+        },
+        "setChatMemberTag": {
+            "href": "https://core.telegram.org/bots/api#setchatmembertag",
+            "description": [
+                "Use this method to set a tag for a regular member in a group or a supergroup. The bot must be an administrator in the chat for this to work and must have the can_manage_tags administrator right. Returns True on success."
+            ],
+            "returns": [
+                "True"
+            ],
+            "parameters": {
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)"
+                },
+                "user_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the target user"
+                },
+                "tag": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "New tag for the member; 0-16 characters, emoji are not allowed"
                 }
             }
         },
@@ -8354,6 +8394,12 @@
                     ],
                     "description": "Optional. The bot that actually sent the message on behalf of the business account. Available only for outgoing messages sent on behalf of the connected business account."
                 },
+                "sender_tag": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Tag or custom title of the sender of the message; for supergroups only"
+                },
                 "date": {
                     "type": [
                         "Integer"
@@ -8454,7 +8500,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. The unique identifier of a media message group this message belongs to"
+                    "description": "Optional. The unique identifier inside this chat of a media message group this message belongs to"
                 },
                 "author_signature": {
                     "type": [
@@ -9006,7 +9052,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the entity. Currently, can be \u201cmention\u201d (@username), \u201chashtag\u201d (#hashtag or #hashtag@chatusername), \u201ccashtag\u201d ($USD or $USD@chatusername), \u201cbot_command\u201d (/start@jobs_bot), \u201curl\u201d (https://telegram.org), \u201cemail\u201d (do-not-reply@telegram.org), \u201cphone_number\u201d (+1-212-555-0123), \u201cbold\u201d (bold text), \u201citalic\u201d (italic text), \u201cunderline\u201d (underlined text), \u201cstrikethrough\u201d (strikethrough text), \u201cspoiler\u201d (spoiler message), \u201cblockquote\u201d (block quotation), \u201cexpandable_blockquote\u201d (collapsed-by-default block quotation), \u201ccode\u201d (monowidth string), \u201cpre\u201d (monowidth block), \u201ctext_link\u201d (for clickable text URLs), \u201ctext_mention\u201d (for users without usernames), \u201ccustom_emoji\u201d (for inline custom emoji stickers)"
+                    "description": "Type of the entity. Currently, can be \u201cmention\u201d (@username), \u201chashtag\u201d (#hashtag or #hashtag@chatusername), \u201ccashtag\u201d ($USD or $USD@chatusername), \u201cbot_command\u201d (/start@jobs_bot), \u201curl\u201d (https://telegram.org), \u201cemail\u201d (do-not-reply@telegram.org), \u201cphone_number\u201d (+1-212-555-0123), \u201cbold\u201d (bold text), \u201citalic\u201d (italic text), \u201cunderline\u201d (underlined text), \u201cstrikethrough\u201d (strikethrough text), \u201cspoiler\u201d (spoiler message), \u201cblockquote\u201d (block quotation), \u201cexpandable_blockquote\u201d (collapsed-by-default block quotation), \u201ccode\u201d (monowidth string), \u201cpre\u201d (monowidth block), \u201ctext_link\u201d (for clickable text URLs), \u201ctext_mention\u201d (for users without usernames), \u201ccustom_emoji\u201d (for inline custom emoji stickers), or \u201cdate_time\u201d (for formatted date and time)"
                 },
                 "offset": {
                     "type": [
@@ -9043,6 +9089,18 @@
                         "String"
                     ],
                     "description": "Optional. For \u201ccustom_emoji\u201d only, unique identifier of the custom emoji. Use getCustomEmojiStickers to get full information about the sticker"
+                },
+                "unix_time": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. For \u201cdate_time\u201d only, the Unix time associated with the entity"
+                },
+                "date_time_format": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. For \u201cdate_time\u201d only, the string that defines the formatting of the date and time. See date-time entity formatting for more details."
                 }
             }
         },
@@ -12347,6 +12405,12 @@
                         "Boolean"
                     ],
                     "description": "Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only"
+                },
+                "can_manage_tags": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "Optional. True, if the administrator can edit the tags of regular members; for groups and supergroups only. If omitted defaults to the value of can_pin_messages."
                 }
             }
         },
@@ -12574,6 +12638,12 @@
                     ],
                     "description": "Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only"
                 },
+                "can_manage_tags": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "Optional. True, if the administrator can edit the tags of regular members; for groups and supergroups only. If omitted defaults to the value of can_pin_messages."
+                },
                 "custom_title": {
                     "type": [
                         "String"
@@ -12594,6 +12664,12 @@
                         "String"
                     ],
                     "description": "The member's status in the chat, always \u201cmember\u201d"
+                },
+                "tag": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Tag of the member"
                 },
                 "user": {
                     "type": [
@@ -12621,6 +12697,12 @@
                         "String"
                     ],
                     "description": "The member's status in the chat, always \u201crestricted\u201d"
+                },
+                "tag": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Tag of the member"
                 },
                 "user": {
                     "type": [
@@ -12693,6 +12775,12 @@
                         "Boolean"
                     ],
                     "description": "True, if the user is allowed to add web page previews to their messages"
+                },
+                "can_edit_tag": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "True, if the user is allowed to edit their own tag"
                 },
                 "can_change_info": {
                     "type": [
@@ -12883,6 +12971,12 @@
                         "Boolean"
                     ],
                     "description": "Optional. True, if the user is allowed to add web page previews to their messages"
+                },
+                "can_edit_tag": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "Optional. True, if the user is allowed to edit their own tag"
                 },
                 "can_change_info": {
                     "type": [
