@@ -23,14 +23,21 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property-read InputPollOption[] $options A JSON-serialized list of 2-12 answer options
  * @property-read ?bool $is_anonymous True, if the poll needs to be anonymous, defaults to True
  * @property-read ?string $type Poll type, “quiz” or “regular”, defaults to “regular”
- * @property-read ?bool $allows_multiple_answers True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False
- * @property-read ?int $correct_option_id 0-based identifier of the correct answer option, required for polls in quiz mode
+ * @property-read ?bool $allows_multiple_answers Pass True, if the poll allows multiple answers, defaults to False
+ * @property-read ?bool $allows_revoting Pass True, if the poll allows to change chosen answer options, defaults to False for quizzes and to True for regular polls
+ * @property-read ?bool $shuffle_options Pass True, if the poll options must be shown in random order
+ * @property-read ?bool $allow_adding_options Pass True, if answer options can be added to the poll after creation; not supported for anonymous polls and quizzes
+ * @property-read ?bool $hide_results_until_closes Pass True, if poll results must be shown only after the poll closes
+ * @property-read ?int[] $correct_option_ids A JSON-serialized list of monotonically increasing 0-based identifiers of the correct answer options, required for polls in quiz mode
  * @property-read ?string $explanation Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters with at most 2 line feeds after entities parsing
  * @property-read ?string $explanation_parse_mode Mode for parsing entities in the explanation. See formatting options for more details.
  * @property-read ?MessageEntity[] $explanation_entities A JSON-serialized list of special entities that appear in the poll explanation. It can be specified instead of explanation_parse_mode
- * @property-read ?int $open_period Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with close_date.
- * @property-read ?int $close_date Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no more than 600 seconds in the future. Can't be used together with open_period.
+ * @property-read ?int $open_period Amount of time in seconds the poll will be active after creation, 5-2628000. Can't be used together with close_date.
+ * @property-read ?int $close_date Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no more than 2628000 seconds in the future. Can't be used together with open_period.
  * @property-read ?bool $is_closed Pass True if the poll needs to be immediately closed. This can be useful for poll preview.
+ * @property-read ?string $description Description of the poll to be sent, 0-1024 characters after entities parsing
+ * @property-read ?string $description_parse_mode Mode for parsing entities in the poll description. See formatting options for more details.
+ * @property-read ?MessageEntity[] $description_entities A JSON-serialized list of special entities that appear in the poll description, which can be specified instead of description_parse_mode
  * @property-read ?bool $disable_notification Sends the message silently. Users will receive a notification with no sound.
  * @property-read ?bool $protect_content Protects the contents of the sent message from forwarding and saving
  * @property-read ?bool $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
@@ -56,13 +63,20 @@ class SendPollMethod extends TelegramMethod
         public readonly ?bool $is_anonymous,
         public readonly ?string $type,
         public readonly ?bool $allows_multiple_answers,
-        public readonly ?int $correct_option_id,
+        public readonly ?bool $allows_revoting,
+        public readonly ?bool $shuffle_options,
+        public readonly ?bool $allow_adding_options,
+        public readonly ?bool $hide_results_until_closes,
+        public readonly ?array $correct_option_ids,
         public readonly ?string $explanation,
         public readonly ?string $explanation_parse_mode,
         public readonly ?array $explanation_entities,
         public readonly ?int $open_period,
         public readonly ?int $close_date,
         public readonly ?bool $is_closed,
+        public readonly ?string $description,
+        public readonly ?string $description_parse_mode,
+        public readonly ?array $description_entities,
         public readonly ?bool $disable_notification,
         public readonly ?bool $protect_content,
         public readonly ?bool $allow_paid_broadcast,

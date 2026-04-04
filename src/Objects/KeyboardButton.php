@@ -11,6 +11,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?string $style Optional. Style of the button. Must be one of “danger” (red), “success” (green) or “primary” (blue). If omitted, then an app-specific style is used.
  * @property-read ?KeyboardButtonRequestUsers $request_users Optional. If specified, pressing the button will open a list of suitable users. Identifiers of selected users will be sent to the bot in a “users_shared” service message. Available in private chats only.
  * @property-read ?KeyboardButtonRequestChat $request_chat Optional. If specified, pressing the button will open a list of suitable chats. Tapping on a chat will send its identifier to the bot in a “chat_shared” service message. Available in private chats only.
+ * @property-read ?KeyboardButtonRequestManagedBot $request_managed_bot Optional. If specified, pressing the button will ask the user to create and share a bot that will be managed by the current bot. Available for bots that enabled management of other bots in the @BotFather Mini App. Available in private chats only.
  * @property-read ?bool $request_contact Optional. If True, the user's phone number will be sent as a contact when the button is pressed. Available in private chats only.
  * @property-read ?bool $request_location Optional. If True, the user's current location will be sent when the button is pressed. Available in private chats only.
  * @property-read ?KeyboardButtonPollType $request_poll Optional. If specified, the user will be asked to create a poll and send it to the bot when the button is pressed. Available in private chats only.
@@ -26,6 +27,7 @@ class KeyboardButton extends TelegramObject
         public readonly ?string $style,
         public readonly ?KeyboardButtonRequestUsers $request_users,
         public readonly ?KeyboardButtonRequestChat $request_chat,
+        public readonly ?KeyboardButtonRequestManagedBot $request_managed_bot,
         public readonly ?bool $request_contact,
         public readonly ?bool $request_location,
         public readonly ?KeyboardButtonPollType $request_poll,

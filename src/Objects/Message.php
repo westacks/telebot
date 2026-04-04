@@ -23,6 +23,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?TextQuote $quote Optional. For replies that quote part of the original message, the quoted part of the message
  * @property-read ?Story $reply_to_story Optional. For replies to a story, the original story
  * @property-read ?int $reply_to_checklist_task_id Optional. Identifier of the specific checklist task that is being replied to
+ * @property-read ?string $reply_to_poll_option_id Optional. Persistent identifier of the specific poll option that is being replied to
  * @property-read ?User $via_bot Optional. Bot through which the message was sent
  * @property-read ?int $edit_date Optional. Date the message was last edited in Unix time
  * @property-read ?true $has_protected_content Optional. True, if the message can't be forwarded
@@ -98,7 +99,10 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?Giveaway $giveaway Optional. The message is a scheduled giveaway message
  * @property-read ?GiveawayWinners $giveaway_winners Optional. A giveaway with public winners was completed
  * @property-read ?GiveawayCompleted $giveaway_completed Optional. Service message: a giveaway without public winners was completed
+ * @property-read ?ManagedBotCreated $managed_bot_created Optional. Service message: user created a bot that will be managed by the current bot
  * @property-read ?PaidMessagePriceChanged $paid_message_price_changed Optional. Service message: the price for paid messages has changed in the chat
+ * @property-read ?PollOptionAdded $poll_option_added Optional. Service message: answer option was added to a poll
+ * @property-read ?PollOptionDeleted $poll_option_deleted Optional. Service message: answer option was deleted from a poll
  * @property-read ?SuggestedPostApproved $suggested_post_approved Optional. Service message: a suggested post was approved
  * @property-read ?SuggestedPostApprovalFailed $suggested_post_approval_failed Optional. Service message: approval of a suggested post has failed
  * @property-read ?SuggestedPostDeclined $suggested_post_declined Optional. Service message: a suggested post was declined
@@ -135,6 +139,7 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?TextQuote $quote,
         public readonly ?Story $reply_to_story,
         public readonly ?int $reply_to_checklist_task_id,
+        public readonly ?string $reply_to_poll_option_id,
         public readonly ?User $via_bot,
         public readonly ?int $edit_date,
         public readonly ?true $has_protected_content,
@@ -210,7 +215,10 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?Giveaway $giveaway,
         public readonly ?GiveawayWinners $giveaway_winners,
         public readonly ?GiveawayCompleted $giveaway_completed,
+        public readonly ?ManagedBotCreated $managed_bot_created,
         public readonly ?PaidMessagePriceChanged $paid_message_price_changed,
+        public readonly ?PollOptionAdded $poll_option_added,
+        public readonly ?PollOptionDeleted $poll_option_deleted,
         public readonly ?SuggestedPostApproved $suggested_post_approved,
         public readonly ?SuggestedPostApprovalFailed $suggested_post_approval_failed,
         public readonly ?SuggestedPostDeclined $suggested_post_declined,
