@@ -13,8 +13,8 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * @property-read string $gift_id Identifier of the gift; limited gifts can't be sent to channel chats
  * @property-read ?bool $pay_for_upgrade Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver
  * @property-read ?string $text Text that will be shown along with the gift; 0-128 characters
- * @property-read ?string $text_parse_mode Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
- * @property-read ?MessageEntity[] $text_entities A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
+ * @property-read ?string $text_parse_mode Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, “custom_emoji”, and “date_time” are ignored.
+ * @property-read ?MessageEntity[] $text_entities A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, “custom_emoji”, and “date_time” are ignored.
  *
  * @see https://core.telegram.org/bots/api#sendgift
  */

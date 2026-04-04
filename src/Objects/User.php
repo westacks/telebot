@@ -21,6 +21,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?bool $has_main_web_app Optional. True, if the bot has a main Web App. Returned only in getMe.
  * @property-read ?bool $has_topics_enabled Optional. True, if the bot has forum topic mode enabled in private chats. Returned only in getMe.
  * @property-read ?bool $allows_users_to_create_topics Optional. True, if the bot allows users to create and delete topics in private chats. Returned only in getMe.
+ * @property-read ?bool $can_manage_bots Optional. True, if other bots can be created to be controlled by the bot. Returned only in getMe.
  *
  * @see https://core.telegram.org/bots/api#user
  */
@@ -42,6 +43,7 @@ class User extends TelegramObject
         public readonly ?bool $has_main_web_app,
         public readonly ?bool $has_topics_enabled,
         public readonly ?bool $allows_users_to_create_topics,
+        public readonly ?bool $can_manage_bots,
     ) {
     }
 }

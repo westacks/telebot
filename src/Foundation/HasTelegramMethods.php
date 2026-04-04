@@ -20,6 +20,7 @@ use WeStacks\TeleBot\Objects\Message;
 use WeStacks\TeleBot\Objects\MessageId;
 use WeStacks\TeleBot\Objects\Poll;
 use WeStacks\TeleBot\Objects\PreparedInlineMessage;
+use WeStacks\TeleBot\Objects\PreparedKeyboardButton;
 use WeStacks\TeleBot\Objects\SentWebAppMessage;
 use WeStacks\TeleBot\Objects\StarAmount;
 use WeStacks\TeleBot\Objects\StarTransactions;
@@ -484,14 +485,21 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _InputPollOption[]_ `$options` __Required: Yes__. A JSON-serialized list of 2-12 answer options
  * - _bool_ `$is_anonymous` __Required: Optional__. True, if the poll needs to be anonymous, defaults to True
  * - _string_ `$type` __Required: Optional__. Poll type, “quiz” or “regular”, defaults to “regular”
- * - _bool_ `$allows_multiple_answers` __Required: Optional__. True, if the poll allows multiple answers, ignored for polls in quiz mode, defaults to False
- * - _int_ `$correct_option_id` __Required: Optional__. 0-based identifier of the correct answer option, required for polls in quiz mode
+ * - _bool_ `$allows_multiple_answers` __Required: Optional__. Pass True, if the poll allows multiple answers, defaults to False
+ * - _bool_ `$allows_revoting` __Required: Optional__. Pass True, if the poll allows to change chosen answer options, defaults to False for quizzes and to True for regular polls
+ * - _bool_ `$shuffle_options` __Required: Optional__. Pass True, if the poll options must be shown in random order
+ * - _bool_ `$allow_adding_options` __Required: Optional__. Pass True, if answer options can be added to the poll after creation; not supported for anonymous polls and quizzes
+ * - _bool_ `$hide_results_until_closes` __Required: Optional__. Pass True, if poll results must be shown only after the poll closes
+ * - _int[]_ `$correct_option_ids` __Required: Optional__. A JSON-serialized list of monotonically increasing 0-based identifiers of the correct answer options, required for polls in quiz mode
  * - _string_ `$explanation` __Required: Optional__. Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters with at most 2 line feeds after entities parsing
  * - _string_ `$explanation_parse_mode` __Required: Optional__. Mode for parsing entities in the explanation. See formatting options for more details.
  * - _MessageEntity[]_ `$explanation_entities` __Required: Optional__. A JSON-serialized list of special entities that appear in the poll explanation. It can be specified instead of explanation_parse_mode
- * - _int_ `$open_period` __Required: Optional__. Amount of time in seconds the poll will be active after creation, 5-600. Can't be used together with close_date.
- * - _int_ `$close_date` __Required: Optional__. Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no more than 600 seconds in the future. Can't be used together with open_period.
+ * - _int_ `$open_period` __Required: Optional__. Amount of time in seconds the poll will be active after creation, 5-2628000. Can't be used together with close_date.
+ * - _int_ `$close_date` __Required: Optional__. Point in time (Unix timestamp) when the poll will be automatically closed. Must be at least 5 and no more than 2628000 seconds in the future. Can't be used together with open_period.
  * - _bool_ `$is_closed` __Required: Optional__. Pass True if the poll needs to be immediately closed. This can be useful for poll preview.
+ * - _string_ `$description` __Required: Optional__. Description of the poll to be sent, 0-1024 characters after entities parsing
+ * - _string_ `$description_parse_mode` __Required: Optional__. Mode for parsing entities in the poll description. See formatting options for more details.
+ * - _MessageEntity[]_ `$description_entities` __Required: Optional__. A JSON-serialized list of special entities that appear in the poll description, which can be specified instead of description_parse_mode
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
  * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
@@ -1060,6 +1068,22 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$business_connection_id` __Required: Yes__. Unique identifier of the business connection
  *
  *
+ * @method PromiseInterface|string getManagedBotToken(...$parameters) Use this method to get the token of a managed bot. Returns the token as String on success.
+ *
+ * {@see https://core.telegram.org/bots/api#getmanagedbottoken}
+ *
+ * Parameters:
+ * - _int_ `$user_id` __Required: Yes__. User identifier of the managed bot whose token will be returned
+ *
+ *
+ * @method PromiseInterface|string replaceManagedBotToken(...$parameters) Use this method to revoke the current token of a managed bot and generate a new one. Returns the new token as String on success.
+ *
+ * {@see https://core.telegram.org/bots/api#replacemanagedbottoken}
+ *
+ * Parameters:
+ * - _int_ `$user_id` __Required: Yes__. User identifier of the managed bot whose token will be replaced
+ *
+ *
  * @method PromiseInterface|true setMyCommands(...$parameters) Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success.
  *
  * {@see https://core.telegram.org/bots/api#setmycommands}
@@ -1197,8 +1221,8 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$gift_id` __Required: Yes__. Identifier of the gift; limited gifts can't be sent to channel chats
  * - _bool_ `$pay_for_upgrade` __Required: Optional__. Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver
  * - _string_ `$text` __Required: Optional__. Text that will be shown along with the gift; 0-128 characters
- * - _string_ `$text_parse_mode` __Required: Optional__. Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
- * - _MessageEntity[]_ `$text_entities` __Required: Optional__. A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
+ * - _string_ `$text_parse_mode` __Required: Optional__. Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, “custom_emoji”, and “date_time” are ignored.
+ * - _MessageEntity[]_ `$text_entities` __Required: Optional__. A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, “custom_emoji”, and “date_time” are ignored.
  *
  *
  * @method PromiseInterface|true giftPremiumSubscription(...$parameters) Gifts a Telegram Premium subscription to the given user. Returns True on success.
@@ -1210,8 +1234,8 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$month_count` __Required: Yes__. Number of months the Telegram Premium subscription will be active for the user; must be one of 3, 6, or 12
  * - _int_ `$star_count` __Required: Yes__. Number of Telegram Stars to pay for the Telegram Premium subscription; must be 1000 for 3 months, 1500 for 6 months, and 2500 for 12 months
  * - _string_ `$text` __Required: Optional__. Text that will be shown along with the service message about the subscription; 0-128 characters
- * - _string_ `$text_parse_mode` __Required: Optional__. Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
- * - _MessageEntity[]_ `$text_entities` __Required: Optional__. A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
+ * - _string_ `$text_parse_mode` __Required: Optional__. Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, “custom_emoji”, and “date_time” are ignored.
+ * - _MessageEntity[]_ `$text_entities` __Required: Optional__. A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, “custom_emoji”, and “date_time” are ignored.
  *
  *
  * @method PromiseInterface|true verifyUser(...$parameters) Verifies a user on behalf of the organization which is represented by the bot. Returns True on success.
@@ -1474,6 +1498,37 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _string_ `$business_connection_id` __Required: Yes__. Unique identifier of the business connection
  * - _int_ `$story_id` __Required: Yes__. Unique identifier of the story to delete
+ *
+ *
+ * @method PromiseInterface|SentWebAppMessage answerWebAppQuery(...$parameters) Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned.
+ *
+ * {@see https://core.telegram.org/bots/api#answerwebappquery}
+ *
+ * Parameters:
+ * - _string_ `$web_app_query_id` __Required: Yes__. Unique identifier for the query to be answered
+ * - _InlineQueryResult_ `$result` __Required: Yes__. A JSON-serialized object describing the message to be sent
+ *
+ *
+ * @method PromiseInterface|PreparedInlineMessage savePreparedInlineMessage(...$parameters) Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object.
+ *
+ * {@see https://core.telegram.org/bots/api#savepreparedinlinemessage}
+ *
+ * Parameters:
+ * - _int_ `$user_id` __Required: Yes__. Unique identifier of the target user that can use the prepared message
+ * - _InlineQueryResult_ `$result` __Required: Yes__. A JSON-serialized object describing the message to be sent
+ * - _bool_ `$allow_user_chats` __Required: Optional__. Pass True if the message can be sent to private chats with users
+ * - _bool_ `$allow_bot_chats` __Required: Optional__. Pass True if the message can be sent to private chats with bots
+ * - _bool_ `$allow_group_chats` __Required: Optional__. Pass True if the message can be sent to group and supergroup chats
+ * - _bool_ `$allow_channel_chats` __Required: Optional__. Pass True if the message can be sent to channel chats
+ *
+ *
+ * @method PromiseInterface|PreparedKeyboardButton savePreparedKeyboardButton(...$parameters) Stores a keyboard button that can be used by a user within a Mini App. Returns a PreparedKeyboardButton object.
+ *
+ * {@see https://core.telegram.org/bots/api#savepreparedkeyboardbutton}
+ *
+ * Parameters:
+ * - _int_ `$user_id` __Required: Yes__. Unique identifier of the target user that can use the button
+ * - _KeyboardButton_ `$button` __Required: Yes__. A JSON-serialized object describing the button to be saved. The button must be of the type request_users, request_chat, or request_managed_bot
  *
  *
  * @method PromiseInterface|Message|true editMessageText(...$parameters) Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
@@ -1796,28 +1851,6 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$is_personal` __Required: Optional__. Pass True if results may be cached on the server side only for the user that sent the query. By default, results may be returned to any user who sends the same query.
  * - _string_ `$next_offset` __Required: Optional__. Pass the offset that a client should send in the next query with the same text to receive more results. Pass an empty string if there are no more results or if you don't support pagination. Offset length can't exceed 64 bytes.
  * - _InlineQueryResultsButton_ `$button` __Required: Optional__. A JSON-serialized object describing a button to be shown above inline query results
- *
- *
- * @method PromiseInterface|SentWebAppMessage answerWebAppQuery(...$parameters) Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned.
- *
- * {@see https://core.telegram.org/bots/api#answerwebappquery}
- *
- * Parameters:
- * - _string_ `$web_app_query_id` __Required: Yes__. Unique identifier for the query to be answered
- * - _InlineQueryResult_ `$result` __Required: Yes__. A JSON-serialized object describing the message to be sent
- *
- *
- * @method PromiseInterface|PreparedInlineMessage savePreparedInlineMessage(...$parameters) Stores a message that can be sent by a user of a Mini App. Returns a PreparedInlineMessage object.
- *
- * {@see https://core.telegram.org/bots/api#savepreparedinlinemessage}
- *
- * Parameters:
- * - _int_ `$user_id` __Required: Yes__. Unique identifier of the target user that can use the prepared message
- * - _InlineQueryResult_ `$result` __Required: Yes__. A JSON-serialized object describing the message to be sent
- * - _bool_ `$allow_user_chats` __Required: Optional__. Pass True if the message can be sent to private chats with users
- * - _bool_ `$allow_bot_chats` __Required: Optional__. Pass True if the message can be sent to private chats with bots
- * - _bool_ `$allow_group_chats` __Required: Optional__. Pass True if the message can be sent to group and supergroup chats
- * - _bool_ `$allow_channel_chats` __Required: Optional__. Pass True if the message can be sent to channel chats
  *
  *
  * @method PromiseInterface|Message sendInvoice(...$parameters) Use this method to send invoices. On success, the sent Message is returned.
