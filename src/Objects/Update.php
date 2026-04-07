@@ -30,7 +30,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?ChatJoinRequest $chat_join_request Optional. A request to join the chat has been sent. The bot must have the can_invite_users administrator right in the chat to receive these updates.
  * @property-read ?ChatBoostUpdated $chat_boost Optional. A chat boost was added or changed. The bot must be an administrator in the chat to receive these updates.
  * @property-read ?ChatBoostRemoved $removed_chat_boost Optional. A boost was removed from a chat. The bot must be an administrator in the chat to receive these updates.
- * @property-read ?ManagedBotUpdated $managed_bot Optional. A new bot was created to be managed by the bot or token of a bot was changed
+ * @property-read ?ManagedBotUpdated $managed_bot Optional. A new bot was created to be managed by the bot, or token or owner of a managed bot was changed
  *
  * @see https://core.telegram.org/bots/api#update
  */
