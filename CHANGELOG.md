@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 4.6.0 - 2026-04-18
+
+#### Bot API 9.6
+
+### What's Changed
+
+* [AUTO] Update Telegram Bot API by @github-actions[bot] in https://github.com/westacks/telebot/pull/140
+* [AUTO] Update Telegram Bot API by @github-actions[bot] in https://github.com/westacks/telebot/pull/141
+* Fix UpdateHandler null exception when chat() is null by @ahurov in https://github.com/westacks/telebot/pull/142
+
+### New Contributors
+
+* @ahurov made their first contribution in https://github.com/westacks/telebot/pull/142
+
+**Full Changelog**: https://github.com/westacks/telebot/compare/4.5.0...4.6.0
+
 ## 4.5.0 - 2026-03-05
 
 Bot API 9.5
