@@ -116,7 +116,7 @@ function synthesize(mixed $data, string $target): mixed
         }
 
         if ($error) {
-            throw new \InvalidArgumentException('Unable create `'.implode('|', $type).'` for `'.$name.'` field from given value');
+            throw new \InvalidArgumentException('Unable create `'.implode('|', $type).'` for `'.$name.'` field from given value ' . json_encode($data[$name]));
         }
     }
 

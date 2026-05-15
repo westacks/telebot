@@ -29,10 +29,10 @@ dataset('updates', [
     'pre_checkout_query' => '{"update_id":1009,"pre_checkout_query":{"id":"checkout123","from":{"id":222333444,"is_bot":false,"first_name":"Grace","username":"grace_hopper"},"currency":"USD","total_amount":5000,"invoice_payload":"payload","order_info":{"name":"Grace Hopper","phone_number":"+1234567890","email":"grace@example.com","shipping_address":{"country_code":"US","state":"CA","city":"Los Angeles","street_line1":"123 Main St","street_line2":"Apt 4","post_code":"90001"}}}}',
 
     // 10. Poll Update
-    'poll' => '{"update_id":1010,"poll":{"id":"poll123","is_anonymous":false,"question":"What\'s your favorite color?","options":[{"text":"Red","voter_count":0},{"text":"Blue","voter_count":0},{"text":"Green","voter_count":0}],"total_voter_count":0,"is_closed":false,"type":"regular","allows_multiple_answers":false}}',
+    'poll' => '{"update_id":1010,"poll":{"id":"poll123","is_anonymous":false,"members_only":false,"question":"What\'s your favorite color?","options":[{"text":"Red","voter_count":0,"persistent_id":"1"},{"text":"Blue","voter_count":0,"persistent_id":"2"},{"text":"Green","voter_count":0,"persistent_id":"3"}],"total_voter_count":0,"is_closed":false,"type":"regular","allows_multiple_answers":false,"allows_revoting":false}}',
 
     // 11. Poll Answer Update
-    'poll_answer' => '{"update_id":1011,"poll_answer":{"poll_id":"poll123","user":{"id":333444555,"is_bot":false,"first_name":"Hank","username":"hank_hill"},"option_ids":[1]}}',
+    'poll_answer' => '{"update_id":1011,"poll_answer":{"poll_id":"poll123","user":{"id":333444555,"is_bot":false,"first_name":"Hank","username":"hank_hill"},"option_ids":[1],"option_persistent_ids":[]}}',
 
     // 12. My Chat Member Update
     'my_chat_member' => '{"update_id":1012,"my_chat_member":{"chat":{"id":-1009876543210,"title":"Group Chat","type":"supergroup"},"from":{"id":666777888,"is_bot":false,"first_name":"Ivy","username":"ivy_ivy"},"date":1610000005,"old_chat_member":{"user":{"id":111222333,"is_bot":true,"first_name":"TestBot","username":"test_bot"},"status":"member"},"new_chat_member":{"user":{"id":111222333,"is_bot":true,"first_name":"TestBot","username":"test_bot"},"status":"member"}}}',

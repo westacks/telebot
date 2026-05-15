@@ -32,8 +32,6 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  */
 class Poll extends TelegramObject
 {
-    public ?int $correct_option_id;
-
     public function __construct(
         public readonly string $id,
         public readonly string $question,
