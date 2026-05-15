@@ -10,7 +10,7 @@ use WeStacks\TeleBot\Objects\InputFile;
  *
  * If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token. If specified, the request will contain a header “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
  *
- * @property-read string $url HTTPS URL to send updates to. Use an empty string to remove webhook integration
+ * @property-read string $url HTTPS URL to send updates to. Use an empty string to remove webhook integration.
  * @property-read ?InputFile $certificate Upload your public key certificate so that the root certificate in use can be checked. See our self-signed guide for details.
  * @property-read ?string $ip_address The fixed IP address which will be used to send webhook requests instead of the IP address resolved through DNS
  * @property-read ?int $max_connections The maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery, 1-100. Defaults to 40. Use lower values to limit the load on your bot's server, and higher values to increase your bot's throughput.

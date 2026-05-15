@@ -6,7 +6,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
  * This object represents a venue.
- * @property-read Location $location Venue location. Can't be a live location
+ * @property-read Location $location Venue location. Can't be a live location.
  * @property-read string $title Name of the venue
  * @property-read string $address Address of the venue
  * @property-read ?string $foursquare_id Optional. Foursquare identifier of the venue

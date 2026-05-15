@@ -9,7 +9,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * Sends a gift to the given user or channel chat. The gift can't be converted to Telegram Stars by the receiver. Returns True on success.
  *
  * @property-read ?int $user_id Required if chat_id is not specified. Unique identifier of the target user who will receive the gift.
- * @property-read null|int|string $chat_id Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @channelusername) that will receive the gift.
+ * @property-read null|int|string $chat_id Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @username) that will receive the gift.
  * @property-read string $gift_id Identifier of the gift; limited gifts can't be sent to channel chats
  * @property-read ?bool $pay_for_upgrade Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver
  * @property-read ?string $text Text that will be shown along with the gift; 0-128 characters

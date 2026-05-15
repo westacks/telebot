@@ -7,7 +7,7 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
 /**
  * Use this method to set a custom title for an administrator in a supergroup promoted by the bot. Returns True on success.
  *
- * @property-read int|string $chat_id Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
+ * @property-read int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
  * @property-read int $user_id Unique identifier of the target user
  * @property-read string $custom_title New custom title for the administrator; 0-16 characters, emoji are not allowed
  *

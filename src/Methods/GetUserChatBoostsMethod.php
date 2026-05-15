@@ -7,7 +7,7 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
 /**
  * Use this method to get the list of boosts added to a chat by a user. Requires administrator rights in the chat. Returns a UserChatBoosts object.
  *
- * @property-read int|string $chat_id Unique identifier for the chat or username of the channel (in the format @channelusername)
+ * @property-read int|string $chat_id Unique identifier for the chat or username of the channel in the format @username
  * @property-read int $user_id Unique identifier of the target user
  *
  * @see https://core.telegram.org/bots/api#getuserchatboosts

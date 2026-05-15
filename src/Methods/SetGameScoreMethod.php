@@ -9,11 +9,11 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
  *
  * @property-read int $user_id User identifier
  * @property-read int $score New score, must be non-negative
- * @property-read ?bool $force Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters
+ * @property-read ?bool $force Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters.
  * @property-read ?bool $disable_edit_message Pass True if the game message should not be automatically edited to include the current scoreboard
- * @property-read ?int $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat
- * @property-read ?int $message_id Required if inline_message_id is not specified. Identifier of the sent message
- * @property-read ?string $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message
+ * @property-read ?int $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat.
+ * @property-read ?int $message_id Required if inline_message_id is not specified. Identifier of the sent message.
+ * @property-read ?string $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message.
  *
  * @see https://core.telegram.org/bots/api#setgamescore
  */

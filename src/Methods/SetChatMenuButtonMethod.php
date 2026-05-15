@@ -8,8 +8,8 @@ use WeStacks\TeleBot\Objects\MenuButton;
 /**
  * Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.
  *
- * @property-read ?int $chat_id Unique identifier for the target private chat. If not specified, default bot's menu button will be changed
- * @property-read ?MenuButton $menu_button A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault
+ * @property-read ?int $chat_id Unique identifier for the target private chat. If not specified, the bot's default menu button will be changed.
+ * @property-read ?MenuButton $menu_button A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault.
  *
  * @see https://core.telegram.org/bots/api#setchatmenubutton
  */

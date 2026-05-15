@@ -16,7 +16,7 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * Use this method to send paid media. On success, the sent Message is returned.
  *
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
- * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername). If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance.
+ * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance.
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property-read int $star_count The number of Telegram Stars that must be paid to buy access to the media; 1-25000
@@ -28,10 +28,10 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * @property-read ?bool $show_caption_above_media Pass True, if the caption must be shown above the message media
  * @property-read ?bool $disable_notification Sends the message silently. Users will receive a notification with no sound.
  * @property-read ?bool $protect_content Protects the contents of the sent message from forwarding and saving
- * @property-read ?bool $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+ * @property-read ?bool $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
  * @property-read ?SuggestedPostParameters $suggested_post_parameters A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
  * @property-read ?ReplyParameters $reply_parameters Description of the message to reply to
- * @property-read null|InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
+ * @property-read null|InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply $reply_markup Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  *
  * @see https://core.telegram.org/bots/api#sendpaidmedia
  */

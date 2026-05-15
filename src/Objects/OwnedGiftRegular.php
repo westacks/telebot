@@ -18,7 +18,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?int $convert_star_count Optional. Number of Telegram Stars that can be claimed by the receiver instead of the gift; omitted if the gift cannot be converted to Telegram Stars; for gifts received on behalf of business accounts only
  * @property-read ?int $prepaid_upgrade_star_count Optional. Number of Telegram Stars that were paid for the ability to upgrade the gift
  * @property-read ?true $is_upgrade_separate Optional. True, if the gift's upgrade was purchased after the gift was sent; for gifts received on behalf of business accounts only
- * @property-read ?int $unique_gift_number Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift
+ * @property-read ?int $unique_gift_number Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift.
  *
  * @see https://core.telegram.org/bots/api#ownedgiftregular
  */
