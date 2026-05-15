@@ -16,8 +16,9 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?true $added_to_attachment_menu Optional. True, if this user added the bot to the attachment menu
  * @property-read ?bool $can_join_groups Optional. True, if the bot can be invited to groups. Returned only in getMe.
  * @property-read ?bool $can_read_all_group_messages Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.
+ * @property-read ?bool $supports_guest_queries Optional. True, if the bot supports guest queries from chats it is not a member of. Returned only in getMe.
  * @property-read ?bool $supports_inline_queries Optional. True, if the bot supports inline queries. Returned only in getMe.
- * @property-read ?bool $can_connect_to_business Optional. True, if the bot can be connected to a Telegram Business account to receive its messages. Returned only in getMe.
+ * @property-read ?bool $can_connect_to_business Optional. True, if the bot can be connected to a user account to manage it. Returned only in getMe.
  * @property-read ?bool $has_main_web_app Optional. True, if the bot has a main Web App. Returned only in getMe.
  * @property-read ?bool $has_topics_enabled Optional. True, if the bot has forum topic mode enabled in private chats. Returned only in getMe.
  * @property-read ?bool $allows_users_to_create_topics Optional. True, if the bot allows users to create and delete topics in private chats. Returned only in getMe.
@@ -38,6 +39,7 @@ class User extends TelegramObject
         public readonly ?true $added_to_attachment_menu,
         public readonly ?bool $can_join_groups,
         public readonly ?bool $can_read_all_group_messages,
+        public readonly ?bool $supports_guest_queries,
         public readonly ?bool $supports_inline_queries,
         public readonly ?bool $can_connect_to_business,
         public readonly ?bool $has_main_web_app,

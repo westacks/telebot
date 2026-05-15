@@ -18,12 +18,13 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read bool $can_send_polls True, if the user is allowed to send polls and checklists
  * @property-read bool $can_send_other_messages True, if the user is allowed to send animations, games, stickers and use inline bots
  * @property-read bool $can_add_web_page_previews True, if the user is allowed to add web page previews to their messages
+ * @property-read bool $can_react_to_messages True, if the user is allowed to react to messages
  * @property-read bool $can_edit_tag True, if the user is allowed to edit their own tag
  * @property-read bool $can_change_info True, if the user is allowed to change the chat title, photo and other settings
  * @property-read bool $can_invite_users True, if the user is allowed to invite new users to the chat
  * @property-read bool $can_pin_messages True, if the user is allowed to pin messages
  * @property-read bool $can_manage_topics True, if the user is allowed to create forum topics
- * @property-read int $until_date Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever
+ * @property-read int $until_date Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever.
  *
  * @see https://core.telegram.org/bots/api#chatmemberrestricted
  */
@@ -44,6 +45,7 @@ class ChatMemberRestricted extends ChatMember
         public readonly bool $can_send_polls,
         public readonly bool $can_send_other_messages,
         public readonly bool $can_add_web_page_previews,
+        public readonly bool $can_react_to_messages,
         public readonly bool $can_edit_tag,
         public readonly bool $can_change_info,
         public readonly bool $can_invite_users,

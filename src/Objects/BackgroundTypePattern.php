@@ -8,7 +8,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read Document $document Document with the pattern
  * @property-read BackgroundFill $fill The background fill that is combined with the pattern
  * @property-read int $intensity Intensity of the pattern when it is shown above the filled background; 0-100
- * @property-read ?true $is_inverted Optional. True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only
+ * @property-read ?true $is_inverted Optional. True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only.
  * @property-read ?true $is_moving Optional. True, if the background moves slightly when the device is tilted
  *
  * @see https://core.telegram.org/bots/api#backgroundtypepattern

@@ -9,7 +9,7 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
  *
  * @property-read int $chat_id Unique identifier for the target direct messages chat
  * @property-read int $message_id Identifier of a suggested post message to approve
- * @property-read ?int $send_date Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future
+ * @property-read ?int $send_date Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future.
  *
  * @see https://core.telegram.org/bots/api#approvesuggestedpost
  */

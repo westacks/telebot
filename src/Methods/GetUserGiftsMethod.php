@@ -15,7 +15,7 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
  * @property-read ?bool $exclude_unique Pass True to exclude unique gifts
  * @property-read ?bool $sort_by_price Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
  * @property-read ?string $offset Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results
- * @property-read ?int $limit The maximum number of gifts to be returned; 1-100. Defaults to 100
+ * @property-read ?int $limit The maximum number of gifts to be returned; 1-100. Defaults to 100.
  *
  * @see https://core.telegram.org/bots/api#getusergifts
  */

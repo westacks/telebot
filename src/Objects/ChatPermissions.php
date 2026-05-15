@@ -16,11 +16,12 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?bool $can_send_polls Optional. True, if the user is allowed to send polls and checklists
  * @property-read ?bool $can_send_other_messages Optional. True, if the user is allowed to send animations, games, stickers and use inline bots
  * @property-read ?bool $can_add_web_page_previews Optional. True, if the user is allowed to add web page previews to their messages
- * @property-read ?bool $can_edit_tag Optional. True, if the user is allowed to edit their own tag
- * @property-read ?bool $can_change_info Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups
+ * @property-read ?bool $can_react_to_messages Optional. True, if the user is allowed to react to messages. If omitted, defaults to the value of can_send_messages.
+ * @property-read ?bool $can_edit_tag Optional. True, if the user is allowed to edit their own tag. If omitted, defaults to the value of can_pin_messages.
+ * @property-read ?bool $can_change_info Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups.
  * @property-read ?bool $can_invite_users Optional. True, if the user is allowed to invite new users to the chat
- * @property-read ?bool $can_pin_messages Optional. True, if the user is allowed to pin messages. Ignored in public supergroups
- * @property-read ?bool $can_manage_topics Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages
+ * @property-read ?bool $can_pin_messages Optional. True, if the user is allowed to pin messages. Ignored in public supergroups.
+ * @property-read ?bool $can_manage_topics Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages.
  *
  * @see https://core.telegram.org/bots/api#chatpermissions
  */
@@ -37,6 +38,7 @@ class ChatPermissions extends TelegramObject
         public readonly ?bool $can_send_polls,
         public readonly ?bool $can_send_other_messages,
         public readonly ?bool $can_add_web_page_previews,
+        public readonly ?bool $can_react_to_messages,
         public readonly ?bool $can_edit_tag,
         public readonly ?bool $can_change_info,
         public readonly ?bool $can_invite_users,

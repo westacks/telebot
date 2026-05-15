@@ -11,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?int $gif_height Optional. Height of the GIF
  * @property-read ?int $gif_duration Optional. Duration of the GIF in seconds
  * @property-read string $thumbnail_url URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
- * @property-read ?string $thumbnail_mime_type Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
+ * @property-read ?string $thumbnail_mime_type Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”.
  * @property-read ?string $title Optional. Title for the result
  * @property-read ?string $caption Optional. Caption of the GIF file to be sent, 0-1024 characters after entities parsing
  * @property-read ?string $parse_mode Optional. Mode for parsing entities in the caption. See formatting options for more details.

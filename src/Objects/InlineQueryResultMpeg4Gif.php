@@ -11,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?int $mpeg4_height Optional. Video height
  * @property-read ?int $mpeg4_duration Optional. Video duration in seconds
  * @property-read string $thumbnail_url URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
- * @property-read ?string $thumbnail_mime_type Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
+ * @property-read ?string $thumbnail_mime_type Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”.
  * @property-read ?string $title Optional. Title for the result
  * @property-read ?string $caption Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing
  * @property-read ?string $parse_mode Optional. Mode for parsing entities in the caption. See formatting options for more details.

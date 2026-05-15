@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Objects;
 use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
- * This object represents a custom keyboard with reply options (see Introduction to bots for details and examples). Not supported in channels and for messages sent on behalf of a Telegram Business account.
+ * This object represents a custom keyboard with reply options (see Introduction to bots for details and examples). Not supported in channels and for messages sent on behalf of a business account.
  * @property-read KeyboardButton[][] $keyboard Array of button rows, each represented by an Array of KeyboardButton objects
  * @property-read ?bool $is_persistent Optional. Requests clients to always show the keyboard when the regular keyboard is hidden. Defaults to false, in which case the custom keyboard can be hidden and opened with a keyboard icon.
  * @property-read ?bool $resize_keyboard Optional. Requests clients to resize the keyboard vertically for optimal fit (e.g., make the keyboard smaller if there are just two rows of buttons). Defaults to false, in which case the custom keyboard is always of the same height as the app's standard keyboard.

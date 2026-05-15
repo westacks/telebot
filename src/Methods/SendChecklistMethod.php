@@ -11,7 +11,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * Use this method to send a checklist on behalf of a connected business account. On success, the sent Message is returned.
  *
  * @property-read string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
- * @property-read int $chat_id Unique identifier for the target chat
+ * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot in the format @username
  * @property-read InputChecklist $checklist A JSON-serialized object for the checklist to send
  * @property-read ?bool $disable_notification Sends the message silently. Users will receive a notification with no sound.
  * @property-read ?bool $protect_content Protects the contents of the sent message from forwarding and saving
@@ -28,7 +28,7 @@ class SendChecklistMethod extends TelegramMethod
 
     public function __construct(
         public readonly string $business_connection_id,
-        public readonly int $chat_id,
+        public readonly int|string $chat_id,
         public readonly InputChecklist $checklist,
         public readonly ?bool $disable_notification,
         public readonly ?bool $protect_content,

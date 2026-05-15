@@ -13,6 +13,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?Animation $animation Optional. Message is an animation, information about the animation
  * @property-read ?Audio $audio Optional. Message is an audio file, information about the file
  * @property-read ?Document $document Optional. Message is a general file, information about the file
+ * @property-read ?LivePhoto $live_photo Optional. Message is a live photo, information about the live photo
  * @property-read ?PaidMediaInfo $paid_media Optional. Message contains paid media; information about the paid media
  * @property-read ?PhotoSize[] $photo Optional. Message is a photo, available sizes of the photo
  * @property-read ?Sticker $sticker Optional. Message is a sticker, information about the sticker
@@ -44,6 +45,7 @@ class ExternalReplyInfo extends TelegramObject
         public readonly ?Animation $animation,
         public readonly ?Audio $audio,
         public readonly ?Document $document,
+        public readonly ?LivePhoto $live_photo,
         public readonly ?PaidMediaInfo $paid_media,
         public readonly ?array $photo,
         public readonly ?Sticker $sticker,

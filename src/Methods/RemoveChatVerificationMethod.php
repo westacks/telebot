@@ -7,7 +7,7 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
 /**
  * Removes verification from a chat that is currently verified on behalf of the organization represented by the bot. Returns True on success.
  *
- * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot or channel in the format @username
  *
  * @see https://core.telegram.org/bots/api#removechatverification
  */

@@ -4,15 +4,16 @@ namespace WeStacks\TeleBot\Objects;
 
 /**
  * This object represents a message.
- * @property-read int $message_id Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent
+ * @property-read int $message_id Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent.
  * @property-read ?int $message_thread_id Optional. Unique identifier of a message thread or forum topic to which the message belongs; for supergroups and private chats only
  * @property-read ?DirectMessagesTopic $direct_messages_topic Optional. Information about the direct messages chat topic that contains the message
- * @property-read ?User $from Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility, if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats
+ * @property-read ?User $from Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility, if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats.
  * @property-read ?Chat $sender_chat Optional. Sender of the message when sent on behalf of a chat. For example, the supergroup itself for messages sent by its anonymous administrators or a linked channel for messages automatically forwarded to the channel's discussion group. For backward compatibility, if the message was sent on behalf of a chat, the field from contains a fake sender user in non-channel chats.
  * @property-read ?int $sender_boost_count Optional. If the sender of the message boosted the chat, the number of boosts added by the user
  * @property-read ?User $sender_business_bot Optional. The bot that actually sent the message on behalf of the business account. Available only for outgoing messages sent on behalf of the connected business account.
  * @property-read ?string $sender_tag Optional. Tag or custom title of the sender of the message; for supergroups only
  * @property-read int $date Date the message was sent in Unix time. It is always a positive number, representing a valid date.
+ * @property-read ?string $guest_query_id Optional. The unique identifier for the guest query. Use this identifier with the method answerGuestQuery to send a response message. If non-empty, the message belongs to the chat where the guest bot was summoned, which may not coincide with other existing bot chats sharing the same identifier.
  * @property-read ?string $business_connection_id Optional. Unique identifier of the business connection from which the message was received. If non-empty, the message belongs to a chat of the corresponding business account that is independent from any potential bot chat which might share the same identifier.
  * @property-read Chat $chat Chat the message belongs to
  * @property-read ?MessageOrigin $forward_origin Optional. Information about the original message for forwarded messages
@@ -25,6 +26,8 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?int $reply_to_checklist_task_id Optional. Identifier of the specific checklist task that is being replied to
  * @property-read ?string $reply_to_poll_option_id Optional. Persistent identifier of the specific poll option that is being replied to
  * @property-read ?User $via_bot Optional. Bot through which the message was sent
+ * @property-read ?User $guest_bot_caller_user Optional. For a message sent by a guest bot, this is the user whose original message triggered the bot's response
+ * @property-read ?Chat $guest_bot_caller_chat Optional. For a message sent by a guest bot, this is the chat whose original message triggered the bot's response
  * @property-read ?int $edit_date Optional. Date the message was last edited in Unix time
  * @property-read ?true $has_protected_content Optional. True, if the message can't be forwarded
  * @property-read ?true $is_from_offline Optional. True, if the message was sent by an implicit action, for example, as an away or a greeting business message, or as a scheduled message
@@ -37,9 +40,10 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?LinkPreviewOptions $link_preview_options Optional. Options used for link preview generation for the message, if it is a text message and link preview options were changed
  * @property-read ?SuggestedPostInfo $suggested_post_info Optional. Information about suggested post parameters if the message is a suggested post in a channel direct messages chat. If the message is an approved or declined suggested post, then it can't be edited.
  * @property-read ?string $effect_id Optional. Unique identifier of the message effect added to the message
- * @property-read ?Animation $animation Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set
+ * @property-read ?Animation $animation Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set.
  * @property-read ?Audio $audio Optional. Message is an audio file, information about the file
  * @property-read ?Document $document Optional. Message is a general file, information about the file
+ * @property-read ?LivePhoto $live_photo Optional. Message is a live photo, information about the live photo. For backward compatibility, when this field is set, the photo field will also be set.
  * @property-read ?PaidMediaInfo $paid_media Optional. Message contains paid media; information about the paid media
  * @property-read ?PhotoSize[] $photo Optional. Message is a photo, available sizes of the photo
  * @property-read ?Sticker $sticker Optional. Message is a sticker, information about the sticker
@@ -56,7 +60,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?Dice $dice Optional. Message is a dice with random value
  * @property-read ?Game $game Optional. Message is a game, information about the game. More about games »
  * @property-read ?Poll $poll Optional. Message is a native poll, information about the poll
- * @property-read ?Venue $venue Optional. Message is a venue, information about the venue. For backward compatibility, when this field is set, the location field will also be set
+ * @property-read ?Venue $venue Optional. Message is a venue, information about the venue. For backward compatibility, when this field is set, the location field will also be set.
  * @property-read ?Location $location Optional. Message is a shared location, information about the location
  * @property-read ?User[] $new_chat_members Optional. New members that were added to the group or supergroup and information about them (the bot itself may be one of these members)
  * @property-read ?User $left_chat_member Optional. A member was removed from the group, information about them (this member may be the bot itself)
@@ -129,6 +133,7 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?User $sender_business_bot,
         public readonly ?string $sender_tag,
         public readonly int $date,
+        public readonly ?string $guest_query_id,
         public readonly ?string $business_connection_id,
         public readonly Chat $chat,
         public readonly ?MessageOrigin $forward_origin,
@@ -141,6 +146,8 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?int $reply_to_checklist_task_id,
         public readonly ?string $reply_to_poll_option_id,
         public readonly ?User $via_bot,
+        public readonly ?User $guest_bot_caller_user,
+        public readonly ?Chat $guest_bot_caller_chat,
         public readonly ?int $edit_date,
         public readonly ?true $has_protected_content,
         public readonly ?true $is_from_offline,
@@ -156,6 +163,7 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?Animation $animation,
         public readonly ?Audio $audio,
         public readonly ?Document $document,
+        public readonly ?LivePhoto $live_photo,
         public readonly ?PaidMediaInfo $paid_media,
         public readonly ?array $photo,
         public readonly ?Sticker $sticker,

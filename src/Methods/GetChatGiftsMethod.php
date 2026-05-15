@@ -7,7 +7,7 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
 /**
  * Returns the gifts owned by a chat. Returns OwnedGifts on success.
  *
- * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel (in the format @channelusername)
+ * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
  * @property-read ?bool $exclude_unsaved Pass True to exclude gifts that aren't saved to the chat's profile page. Always True, unless the bot has the can_post_messages administrator right in the channel.
  * @property-read ?bool $exclude_saved Pass True to exclude gifts that are saved to the chat's profile page. Always False, unless the bot has the can_post_messages administrator right in the channel.
  * @property-read ?bool $exclude_unlimited Pass True to exclude gifts that can be purchased an unlimited number of times
@@ -17,7 +17,7 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
  * @property-read ?bool $exclude_unique Pass True to exclude unique gifts
  * @property-read ?bool $sort_by_price Pass True to sort results by gift price instead of send date. Sorting is applied before pagination.
  * @property-read ?string $offset Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results
- * @property-read ?int $limit The maximum number of gifts to be returned; 1-100. Defaults to 100
+ * @property-read ?int $limit The maximum number of gifts to be returned; 1-100. Defaults to 100.
  *
  * @see https://core.telegram.org/bots/api#getchatgifts
  */
