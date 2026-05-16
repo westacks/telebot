@@ -56,7 +56,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?UserRating $rating Optional. For private chats, the rating of the user if any
  * @property-read ?Audio $first_profile_audio Optional. For private chats, the first audio added to the profile of the user
  * @property-read ?UniqueGiftColors $unique_gift_colors Optional. The color scheme based on a unique gift that must be used for the chat's name, message replies and link previews
- * @property-read ?int $paid_message_star_count Optional. The number of Telegram Stars a general user have to pay to send a message to the chat
+ * @property-read ?int $paid_message_star_count Optional. The number of Telegram Stars a general user has to pay to send a message to the chat
  *
  * @see https://core.telegram.org/bots/api#chatfullinfo
  */

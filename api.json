@@ -8830,7 +8830,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. The number of Telegram Stars a general user have to pay to send a message to the chat"
+                    "description": "Optional. The number of Telegram Stars a general user has to pay to send a message to the chat"
                 }
             }
         },
