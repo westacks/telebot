@@ -4,6 +4,7 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { enhanceAppWithTabs } from 'vitepress-plugin-tabs/client'
 import analytics from 'vitepress-plugin-google-analytics'
+import CopyOrDownloadAsMarkdownButtons from 'vitepress-plugin-llms/vitepress-components/CopyOrDownloadAsMarkdownButtons.vue'
 import './style.css'
 
 export default {
@@ -16,5 +17,6 @@ export default {
   enhanceApp({ app, router, siteData }) {
     enhanceAppWithTabs(app)
     analytics({ id: 'G-LF06DJFQDF' })
+    app.component('CopyOrDownloadAsMarkdownButtons', CopyOrDownloadAsMarkdownButtons)
   }
 } satisfies Theme
