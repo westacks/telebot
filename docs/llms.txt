@@ -3,17 +3,17 @@
 
 ## Docs
 
-- [Installation](installation.md): Getting started guide — install via Composer and create your first bot
-- [Configuration](configuration.md): Configure single or multiple bots, bot parameters, and manager settings
-- [Objects](objects.md): DTO representations for all Telegram API types with dot notation access, JSON/array conversion
-- [Methods](methods.md): Execute Telegram API methods using named arguments or array syntax, promises, error handling
-- [Handling Updates](updates.md): Process incoming updates via closures, UpdateHandler classes, webhooks, and polling
-- [Testing](testing.md): Use the `fake()` method to simulate Telegram API responses without real HTTP requests
-- [API Examples](api-examples.md): Practical code examples for sending messages, handling updates, and more
+- [Installation](/telebot/installation): Getting started guide — install via Composer and create your first bot
+- [Configuration](/telebot/configuration): Configure single or multiple bots, bot parameters, and manager settings
+- [Objects](/telebot/objects): DTO representations for all Telegram API types with dot notation access, JSON/array conversion
+- [Methods](/telebot/methods): Execute Telegram API methods using named arguments or array syntax, promises, error handling
+- [Handling Updates](/telebot/updates): Process incoming updates via closures, UpdateHandler classes, webhooks, and polling
+- [Testing](/telebot/testing): Use the `fake()` method to simulate Telegram API responses without real HTTP requests
+- [API Examples](/telebot/api-examples): Practical code examples for sending messages, handling updates, and more
 
 ## Upgrade
 
-- [3.x to 4.x](upgrade/3.x-4.x.md): Migration guide from version 3.x to 4.x
+- [3.x to 4.x](/telebot/upgrade/3.x-4.x): Migration guide from version 3.x to 4.x
 
 ## Resources
 

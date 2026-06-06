@@ -37,6 +37,10 @@ class BotManager
     {
         $name ??= $this->default ?? array_keys($this->bots)[0];
 
+        if (! isset($this->bots[$name])) {
+            throw new \InvalidArgumentException("Unknown bot: {$name}");
+        }
+
         if (! ($this->bots[$name] instanceof TeleBot)) {
             $this->bots[$name] = new TeleBot($this->bots[$name]);
         }

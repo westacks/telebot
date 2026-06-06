@@ -210,6 +210,11 @@ function split(string $command): array
     $args = array();
 
     while (true) {
+        // skip whitespace between arguments
+        while (isset($command[$i]) && in_array($command[$i], $ws)) {
+            $i++;
+        }
+
         // command string ended
         if (!isset($command[$i])) {
             break;
