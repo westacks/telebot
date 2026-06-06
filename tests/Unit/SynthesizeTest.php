@@ -1,7 +1,5 @@
 <?php
 
-use WeStacks\TeleBot\Exceptions\TelegramObjectException;
-use WeStacks\TeleBot\Foundation\TelegramObject;
 use WeStacks\TeleBot\Methods\SendMessageMethod;
 use WeStacks\TeleBot\Objects\Update;
 use WeStacks\TeleBot\Objects\User;
