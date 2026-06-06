@@ -45,7 +45,8 @@ test('can register and remove handlers', function () {
 test('handler returns self for chaining', function () {
     $bot = new TeleBot('test');
 
-    $result = $bot->handler(function () {});
+    $result = $bot->handler(function () {
+    });
 
     expect($result)->toBe($bot);
 });
