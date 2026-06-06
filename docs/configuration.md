@@ -30,8 +30,19 @@ $bot = new BotManager([
     ]
 ]);
 
-$bot->getMe(); // Uses primary bot
+$bot->getMe(); // Uses primary bot (first bot)
 $bot->bot('secondary')->getMe(); // Uses secondary bot
+```
+
+You may also specify a default bot explicitly:
+
+```php
+$bot = new BotManager([
+    'primary' => new TeleBot('YOUR_BOT1_TOKEN'),
+    'secondary' => ['token' => 'YOUR_BOT2_TOKEN', 'name' => 'MyBot2'],
+], 'secondary');
+
+$bot->getMe(); // Uses secondary bot (now the default)
 ```
 
 ## Core Parameters
@@ -47,7 +58,10 @@ $bot->bot('secondary')->getMe(); // Uses secondary bot
 | `storage` | `string` | ❌ | `FileStorage::class` | Storage driver for user states |
 
 ### Manager Configuration
+
+The `BotManager` constructor takes two arguments:
+
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `bots` | `array` | `[]` | Array of [bot configs](#bot-configuration) |
-| `default` | `string\|int\|null` | `null` | Default bot name (first bot if unset) |
+| `$bots` | `array` | `[]` | Array of [bot configs](#bot-configuration) keyed by name |
+| `$default` | `string\|int\|null` | `null` | Default bot name (first bot if unset) |

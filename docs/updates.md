@@ -1,6 +1,6 @@
 # Handling Updates
 
-When the bot receives an update, the library passes it through a [pipline](https://refactoring.guru/design-patterns/chain-of-responsibility) of registered handlers. Each handler must check if it should handle the update and may optionally stop further processing.
+When the bot receives an update, the library passes it through a [pipeline](https://refactoring.guru/design-patterns/chain-of-responsibility) of registered handlers. Each handler must check if it should handle the update and may optionally stop further processing.
 
 The library supports two ways to handle updates:
 
@@ -60,7 +60,7 @@ Handlers must be registered in your bot instance:
 ```php
 $bot = new TeleBot([
     'token' => '<your bot token>',
-    'kernrel' => [
+    'kernel' => [
         \App\YourUpdateHandler::class,
         $handler
     ]
@@ -230,7 +230,7 @@ Default: `WeStacks\TeleBot\Foundation\FileStorage`. You can use Redis, database,
 namespace App;
 
 use App\Models\User;
-use WeStacks\TeleBot\Contracts\StorageContract;
+use WeStacks\TeleBot\Foundation\StorageContract;
 
 class DatabaseStorage implements StorageContract
 {
@@ -239,12 +239,12 @@ class DatabaseStorage implements StorageContract
         return User::where('telegram_id', $key)->value('input_state') ?? $default;
     }
 
-    public function set(string $key, $value): true
+    public function set(string $key, $value): bool
     {
         return User::where('telegram_id', $key)->update(['input_state' => $value]);
     }
 
-    public function delete(string $key): true
+    public function delete(string $key): bool
     {
         return $this->set($key, null);
     }
@@ -302,7 +302,7 @@ $bot->setWebhook([
 ]);
 
 $bot->handle(
-    Update::from(file_get_contents('php://input'))
+    \WeStacks\TeleBot\Objects\Update::from(file_get_contents('php://input'))
 );
 ```
 == Polling

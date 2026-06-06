@@ -1,49 +1,127 @@
----
-outline: deep
----
+# API Examples
 
-# Runtime API Examples
+Practical examples of using TeleBot with the Telegram Bot API.
 
-This page demonstrates usage of some of the runtime APIs provided by VitePress.
+## Sending Messages
 
-The main `useData()` API can be used to access site, theme, and page data for the current page. It works in both `.md` and `.vue` files:
+### Send a text message
 
-```md
-<script setup>
-import { useData } from 'vitepress'
+```php
+use WeStacks\TeleBot\TeleBot;
 
-const { theme, page, frontmatter } = useData()
-</script>
+$bot = new TeleBot('YOUR_BOT_TOKEN');
 
-## Results
-
-### Theme Data
-<pre>{{ theme }}</pre>
-
-### Page Data
-<pre>{{ page }}</pre>
-
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
+$bot->sendMessage([
+    'chat_id' => 123456789,
+    'text' => 'Hello, World!',
+]);
 ```
 
-<script setup>
-import { useData } from 'vitepress'
+### Send a message with inline keyboard
 
-const { site, theme, page, frontmatter } = useData()
-</script>
+```php
+$bot->sendMessage([
+    'chat_id' => 123456789,
+    'text' => 'Choose an option:',
+    'reply_markup' => [
+        'inline_keyboard' => [
+            [
+                ['text' => 'Option 1', 'callback_data' => 'option_1'],
+                ['text' => 'Option 2', 'callback_data' => 'option_2'],
+            ],
+            [
+                ['text' => 'Cancel', 'callback_data' => 'cancel'],
+            ],
+        ],
+    ],
+]);
+```
 
-## Results
+### Send a photo
 
-### Theme Data
-<pre>{{ theme }}</pre>
+```php
+$bot->sendPhoto([
+    'chat_id' => 123456789,
+    'photo' => 'https://example.com/image.jpg',
+    'caption' => 'Check out this image!',
+]);
+```
 
-### Page Data
-<pre>{{ page }}</pre>
+## Handling Updates
 
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
+### Using webhook
 
-## More
+```php
+$update = WeStacks\TeleBot\Objects\Update::from(file_get_contents('php://input'));
+$bot->handle($update);
+```
 
-Check out the documentation for the [full list of runtime APIs](https://vitepress.dev/reference/runtime-api#usedata).
+### Using long polling
+
+```php
+foreach ($bot->poll() as $update) {
+    $bot->handle($update);
+}
+```
+
+## Working with Objects
+
+### Accessing nested properties
+
+```php
+$update = WeStacks\TeleBot\Objects\Update::from($telegramResponse);
+
+// Standard chaining
+$chatId = $update->message->chat->id;
+
+// Dot notation
+$text = $update->get('message.text');
+
+// JSON
+$json = $update->toJson();
+
+// Array
+$array = $update->toArray();
+```
+
+## Using Multiple Bots
+
+```php
+use WeStacks\TeleBot\BotManager;
+
+$manager = new BotManager([
+    'primary' => new TeleBot('BOT1_TOKEN'),
+    'secondary' => ['token' => 'BOT2_TOKEN', 'name' => 'MySecondBot'],
+]);
+
+// Use default bot
+$manager->getMe();
+
+// Use specific bot
+$manager->bot('secondary')->getMe();
+```
+
+## Error Handling
+
+```php
+// Use _rescue to handle exceptions gracefully
+$result = $bot->sendMessage(
+    _rescue: fn (Throwable $e) => null,
+    chat_id: 123456789,
+    text: 'Hello!',
+);
+
+if ($result === null) {
+    // Handle error
+}
+```
+
+## Working with Promises
+
+```php
+$promise = $bot->getMe(_promise: true);
+
+$promise->then(function (User $user) {
+    echo $user->first_name;
+})->wait();
+```

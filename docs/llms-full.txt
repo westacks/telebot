@@ -1,0 +1,482 @@
+# TeleBot — Full Documentation
+
+> A modern Telegram bot framework for PHP 8.2+. Provides a clean, intuitive API for the Telegram Bot API with DTO objects, update handling, and testing utilities.
+
+---
+
+## Installation
+
+Install via Composer:
+
+```bash
+composer require westacks/telebot
+```
+
+**Requirements:** PHP 8.2+, Latest Telegram Bot API
+
+### Framework Integration
+
+Adapter packages for seamless framework integration:
+- [Laravel](https://github.com/westacks/telebot-laravel)
+
+### Basic Example
+
+```php
+use WeStacks\TeleBot\TeleBot;
+
+$bot = new TeleBot('YOUR_BOT_TOKEN');
+$bot->getMe();
+```
+
+---
+
+## Configuration
+
+### Single Bot
+
+```php
+use WeStacks\TeleBot\TeleBot;
+
+$bot = new TeleBot([
+    'token' => 'YOUR_BOT_TOKEN', // Required
+    'name' => 'MyBot'
+]);
+```
+
+### Multiple Bots
+
+```php
+use WeStacks\TeleBot\BotManager;
+
+$bot = new BotManager([
+    'primary' => new TeleBot('YOUR_BOT1_TOKEN'),
+    'secondary' => ['token' => 'YOUR_BOT2_TOKEN', 'name' => 'MyBot2'],
+], 'secondary'); // 'secondary' is the default
+
+$bot->getMe(); // Uses secondary bot
+$bot->bot('primary')->getMe(); // Uses primary bot
+```
+
+### Bot Configuration Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `token` | `string` | Yes | — | Telegram bot token |
+| `name` | `string` | No | `null` | Bot username for command parsing |
+| `api_url` | `string` | No | Telegram API URL | Custom API endpoint |
+| `http` | `array` | No | `[]` | Custom Guzzle HTTP client options |
+| `kernel` | `string\|array` | No | `Kernel::class` | Kernel for update handling or array of handlers |
+| `storage` | `string` | No | `FileStorage::class` | Storage driver for user states |
+
+---
+
+## Objects (DTOs)
+
+The library provides DTO representations for all Telegram API types. Each sub-object is automatically cast to its appropriate DTO class.
+
+### Interactions
+
+```php
+// Standard chaining
+$chatId = $update->message->from->id;
+
+// Dot notation (safe, readable)
+$chatId = $update->get('message.from.is_bot');
+
+// Iterating over properties
+foreach ($update->message->from as $prop => $value) {
+    echo "$prop => $value\n";
+}
+
+// JSON representation
+$jsonUpdate = $update->toJson();
+
+// Array representation
+$arrayUpdate = $update->toArray();
+```
+
+---
+
+## Methods
+
+Execute all Telegram Bot API methods using named arguments or array syntax:
+
+```php
+// Named arguments
+$message = $bot->sendMessage(
+    chat_id: 1234567890,
+    text: 'Test message',
+);
+
+// Array syntax
+$message = $bot->sendMessage([
+    'chat_id' => 1234567890,
+    'text' => 'Test message',
+]);
+```
+
+### Guzzle Promises
+
+```php
+$promise = $bot->getMe(_promise: true);
+$promise->then(fn (User $user) => var_dump($user))->wait();
+```
+
+### Error Handling
+
+```php
+$result = $bot->getMe(_rescue: fn (\Throwable $e) => $e);
+```
+
+### TeleBot Helper Methods
+
+| Method | Description |
+|--------|-------------|
+| `handle(Update $update): mixed` | Handle a Telegram Update using registered handlers |
+| `handler($handler): self` | Register a new update handler |
+| `purge(): void` | Recreate bot kernel (remove all handlers) |
+| `setLocalCommands(): bool` | Push locally registered bot commands to Telegram |
+| `deleteLocalCommands(): bool` | Remove registered commands from Telegram |
+
+### BotManager Methods
+
+| Method | Description |
+|--------|-------------|
+| `bot(string\|int $name): TeleBot` | Get a specific TeleBot instance by name |
+| `bots(): array` | Get a list of registered bot names |
+| `add(string\|int $name, ...): self` | Add a bot instance |
+| `remove(string\|int $name): self` | Remove a bot by name |
+| `default(string\|int $name): self` | Set the default bot |
+
+---
+
+## Handling Updates
+
+Updates pass through a pipeline of registered handlers. Each handler checks if it should handle the update and may optionally stop further processing.
+
+### Using Closures
+
+```php
+$handler = function (TeleBot $bot, Update $update, $next) {
+    if ($update->message->text === '/start') {
+        return $bot->sendMessage(
+            chat_id: $update->chat()->id,
+            text: 'Hello, World!'
+        );
+    }
+    return $next();
+};
+```
+
+### Using UpdateHandler Class
+
+```php
+use WeStacks\TeleBot\Foundation\UpdateHandler;
+
+class YourUpdateHandler extends UpdateHandler
+{
+    public function trigger(): bool
+    {
+        return $this->update->type('message');
+    }
+
+    public function handle()
+    {
+        return $this->sendMessage(text: 'Hello, World!');
+    }
+}
+```
+
+### Registering Handlers
+
+```php
+$bot = new TeleBot([
+    'token' => '<your bot token>',
+    'kernel' => [\App\YourUpdateHandler::class, $handler],
+]);
+
+// Or add later
+$bot->handler(\App\YourUpdateHandler::class);
+$bot->handler($handler);
+```
+
+### Custom Kernel
+
+```php
+use WeStacks\TeleBot\Kernel as TeleBotKernel;
+use WeStacks\TeleBot\TeleBot;
+
+class Kernel extends TeleBotKernel
+{
+    public function __construct()
+    {
+        parent::__construct([\App\YourUpdateHandler::class]);
+    }
+
+    public function setCommands(TeleBot $bot)
+    {
+        return $bot->setMyCommands([
+            'commands' => $this->getLocalCommands(),
+            'scope' => 'default',
+        ]);
+    }
+
+    public function deleteCommands(TeleBot $bot)
+    {
+        return $bot->deleteMyCommands(['scope' => 'default']);
+    }
+}
+```
+
+### Bot Commands (CommandHandler)
+
+```php
+use WeStacks\TeleBot\Foundation\CommandHandler;
+
+class StartCommand extends CommandHandler
+{
+    protected static function aliases(): array
+    {
+        return ['/start', '/s'];
+    }
+
+    protected static function description(?string $locale = null): string
+    {
+        return trans('Start the bot', locale: $locale);
+    }
+
+    public function handle()
+    {
+        return $this->sendMessage(['text' => 'Hello, World!']);
+    }
+}
+```
+
+Register commands on Telegram:
+```php
+$bot->setLocalCommands();
+$bot->deleteLocalCommands();
+```
+
+### Requesting User Input (RequestInputHandler)
+
+```php
+use WeStacks\TeleBot\Foundation\RequestInputHandler;
+
+class AskNameHandler extends RequestInputHandler
+{
+    public function handle()
+    {
+        $data = $this->update->message()->toArray();
+        $validator = Validator::make($data, [
+            'text' => 'required|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->sendMessage(['text' => 'Invalid input!']);
+        }
+
+        $this->accept();
+        $name = $validator->validated()['text'];
+
+        return $this->sendMessage(['text' => "Hello, $name!"]);
+    }
+}
+```
+
+Request input:
+```php
+$handler = function ($bot, $update, $next) {
+    if ('/test' !== $update->message()->text ?? null) {
+        return $next();
+    }
+    AskNameHandler::request($bot, $update->user());
+    return $bot->sendMessage([
+        'chat_id' => $update->chat()->id,
+        'text' => 'Please, type your name.',
+    ]);
+};
+```
+
+### Custom State Storage
+
+```php
+use WeStacks\TeleBot\Foundation\StorageContract;
+
+class DatabaseStorage implements StorageContract
+{
+    public function get(string $key, $default = null): mixed
+    {
+        return User::where('telegram_id', $key)->value('input_state') ?? $default;
+    }
+
+    public function set(string $key, $value): bool
+    {
+        return User::where('telegram_id', $key)->update(['input_state' => $value]);
+    }
+
+    public function delete(string $key): bool
+    {
+        return $this->set($key, null);
+    }
+}
+```
+
+Usage:
+```php
+$bot = new TeleBot([
+    'token' => '<your bot token>',
+    'storage' => \App\DatabaseStorage::class,
+]);
+```
+
+### Callback Queries (CallbackHandler)
+
+```php
+use WeStacks\TeleBot\Foundation\CallbackHandler;
+
+class ButtonPressHandler extends CallbackHandler
+{
+    protected string $match = "/^test:(delete|update):(\d+)$/";
+
+    public function handle()
+    {
+        [$action, $id] = $this->arguments();
+
+        match ($action) {
+            'update' => $this->update($id),
+            'delete' => $this->delete($id),
+        };
+
+        $this->answerCallbackQuery();
+    }
+}
+```
+
+### Webhook
+
+```php
+$bot->setWebhook(['url' => 'https://example.com/webhook.php']);
+$bot->handle(Update::from(file_get_contents('php://input')));
+```
+
+### Polling
+
+```php
+foreach ($bot->poll() as $update) {
+    $bot->handle($update);
+}
+```
+
+---
+
+## Testing
+
+Use the `fake()` method to simulate Telegram API responses:
+
+```php
+use WeStacks\TeleBot\Foundation\TeleBotResponse;
+use WeStacks\TeleBot\Objects;
+
+$bot->fake([
+    TeleBotResponse::make(Objects\Message::from([
+        'message_id' => 2,
+        'date' => 1,
+        'chat' => ['id' => 1, 'type' => 'private'],
+        'text' => 'Please enter your name.',
+    ])),
+    TeleBotResponse::make(Objects\Message::from([
+        'message_id' => 4,
+        'date' => 2,
+        'chat' => ['id' => 1, 'type' => 'private'],
+        'text' => "Sorry, I don't know you.",
+    ])),
+    TeleBotResponse::make(Objects\Message::from([
+        'message_id' => 6,
+        'date' => 4,
+        'chat' => ['id' => 1, 'type' => 'private'],
+        'text' => 'Hello, John!',
+    ])),
+]);
+
+$bot->handler(AskNameHandler::class);
+$bot->handler(function (TeleBot $bot, Objects\Update $update, callable $next) {
+    // handler logic
+});
+
+$res = $bot->handle($initialUpdate);
+expect($res)->toBeInstanceOf(Objects\Message::class);
+expect($res->text)->toBe('Please enter your name.');
+```
+
+---
+
+## Upgrade from 3.x to 4.x
+
+### Configuration Changes
+
+| Old key | New key | Description |
+|---------|---------|-------------|
+| `storage` | `storage` | `JsonStorage` deprecated, use `FileStorage` |
+| `handlers` | `kernel` | Kernel preferred over array; config key renamed |
+| `exceptions` | — | Deprecated. Exceptions always thrown by default |
+| `async` | — | Deprecated. Methods always called synchronously |
+
+### BotManager Constructor
+
+**Old (3.x):**
+```php
+new BotManager([
+    'default' => 'primary',
+    'bots' => [
+        'primary' => new TeleBot('TOKEN1'),
+        'secondary' => ['token' => 'TOKEN2'],
+    ],
+]);
+```
+
+**New (4.x):**
+```php
+new BotManager([
+    'primary' => new TeleBot('TOKEN1'),
+    'secondary' => ['token' => 'TOKEN2'],
+], 'primary');
+```
+
+### Namespace Changes
+
+| Old (3.x) | New (4.x) |
+|-----------|-----------|
+| `WeStacks\TeleBot\Handlers\UpdateHandler` | `WeStacks\TeleBot\Foundation\UpdateHandler` |
+| `WeStacks\TeleBot\Handlers\RequestInputHandler` | `WeStacks\TeleBot\Foundation\RequestInputHandler` |
+| `WeStacks\TeleBot\Handlers\CommandHandler` | `WeStacks\TeleBot\Foundation\CommandHandler` |
+| `WeStacks\TeleBot\Handlers\CallbackHandler` | `WeStacks\TeleBot\Foundation\CallbackHandler` |
+| `WeStacks\TeleBot\Contracts\StorageContract` | `WeStacks\TeleBot\Foundation\StorageContract` |
+
+### TeleBot Method Changes
+
+| Old (3.x) | New (4.x) | Description |
+|-----------|-----------|-------------|
+| `handleUpdate` | `handle` | Renamed |
+| `addHandler` | `handler` | Renamed |
+| `clearHandlers` | `purge` | Renamed |
+| `config` | — | Deprecated. Use read-only property |
+| `async` | — | Deprecated. Use `_promise` parameter |
+| `exceptions` | — | Deprecated. Use `_rescue` parameter |
+
+### BotManager Method Changes
+
+| Old (3.x) | New (4.x) | Description |
+|-----------|-----------|-------------|
+| `delete` | `remove` | Renamed |
+
+### RequestInputHandler Changes
+
+| Old (3.x) | New (4.x) |
+|-----------|-----------|
+| `requestInput` | `request` |
+| `acceptInput` | `accept` |
+
+---
+
+*Full documentation available at https://github.com/westacks/telebot*

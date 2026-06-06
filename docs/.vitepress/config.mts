@@ -28,6 +28,7 @@ export default defineConfig({
           { text: 'Methods', link: '/methods' },
           { text: 'Handling Updates', link: '/updates' },
           { text: 'Testing', link: '/testing' },
+          { text: 'API Examples', link: '/api-examples' },
         ]
       },
       {

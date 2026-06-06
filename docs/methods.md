@@ -40,7 +40,7 @@ $message = $bot->sendMessage([
 
 ## Guzzle Promises
 
-You can comfigure `TeleBot` methods to return Guzzle promises instead of dispatching requests immediately:
+You can configure `TeleBot` methods to return Guzzle promises instead of dispatching requests immediately:
 
 ```php
 $promise = $bot->getMe(_promise: true);
@@ -50,7 +50,7 @@ $promise->then(fn (User $user) => var_dump($user))->wait();
 
 ## Error handling and default values
 
-Instead using try/catch blocks, you can set a default return value or handle exceptions using following syntax:
+Instead of using try/catch blocks, you can set a default return value or handle exceptions using the following syntax:
 
 ```php
 $result = $bot->getMe(_rescue: fn (\Throwable $e) => $e);

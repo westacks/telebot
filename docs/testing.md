@@ -9,6 +9,8 @@ use WeStacks\TeleBot\Foundation\TeleBotResponse;
 use WeStacks\TeleBot\Objects;
 use WeStacks\TeleBot\TeleBot;
 
+$bot = new TeleBot('test');
+
 $bot->fake([
     TeleBotResponse::make(Objects\Message::from([
         'message_id' => 2,
