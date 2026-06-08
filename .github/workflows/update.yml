@@ -16,6 +16,7 @@ jobs:
         uses: php-actions/composer@v6
         with:
           php_version: 8.5
+          php_extensions: dom
 
       - name: Scrap API docs
         run: composer run scrap
