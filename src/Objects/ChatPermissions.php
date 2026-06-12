@@ -6,7 +6,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
  * Describes actions that a non-administrator user is allowed to take in a chat.
- * @property-read ?bool $can_send_messages Optional. True, if the user is allowed to send text messages, contacts, giveaways, giveaway winners, invoices, locations and venues
+ * @property-read ?bool $can_send_messages Optional. True, if the user is allowed to send text messages, rich messages, contacts, giveaways, giveaway winners, invoices, locations and venues
  * @property-read ?bool $can_send_audios Optional. True, if the user is allowed to send audios
  * @property-read ?bool $can_send_documents Optional. True, if the user is allowed to send documents
  * @property-read ?bool $can_send_photos Optional. True, if the user is allowed to send photos

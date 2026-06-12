@@ -838,6 +838,24 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$user_id` __Required: Yes__. Unique identifier of the target user
  *
  *
+ * @method PromiseInterface|true answerChatJoinRequestQuery(...$parameters) Use this method to process a received chat join request query. Returns True on success.
+ *
+ * {@see https://core.telegram.org/bots/api#answerchatjoinrequestquery}
+ *
+ * Parameters:
+ * - _string_ `$chat_join_request_query_id` __Required: Yes__. Unique identifier of the join request query
+ * - _string_ `$result` __Required: Yes__. Result of the query. Must be either “approve” to allow the user to join the chat, “decline” to disallow the user to join the chat, or “queue” to leave the decision to other administrators.
+ *
+ *
+ * @method PromiseInterface|true sendChatJoinRequestWebApp(...$parameters) Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Returns True on success.
+ *
+ * {@see https://core.telegram.org/bots/api#sendchatjoinrequestwebapp}
+ *
+ * Parameters:
+ * - _string_ `$chat_join_request_query_id` __Required: Yes__. Unique identifier of the join request query
+ * - _string_ `$web_app_url` __Required: Yes__. The URL of the Mini App to be opened
+ *
+ *
  * @method PromiseInterface|true setChatPhoto(...$parameters) Use this method to set a new profile photo for the chat. Photos can't be changed for private chats. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns True on success.
  *
  * {@see https://core.telegram.org/bots/api#setchatphoto}
@@ -1599,7 +1617,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _KeyboardButton_ `$button` __Required: Yes__. A JSON-serialized object describing the button to be saved. The button must be of the type request_users, request_chat, or request_managed_bot.
  *
  *
- * @method PromiseInterface|Message|true editMessageText(...$parameters) Use this method to edit text and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
+ * @method PromiseInterface|Message|true editMessageText(...$parameters) Use this method to edit text, rich and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
  *
  * {@see https://core.telegram.org/bots/api#editmessagetext}
  *
@@ -1608,10 +1626,11 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int|string_ `$chat_id` __Required: Optional__. Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.
  * - _int_ `$message_id` __Required: Optional__. Required if inline_message_id is not specified. Identifier of the message to edit.
  * - _string_ `$inline_message_id` __Required: Optional__. Required if chat_id and message_id are not specified. Identifier of the inline message.
- * - _string_ `$text` __Required: Yes__. New text of the message, 1-4096 characters after entities parsing
+ * - _string_ `$text` __Required: Optional__. New text of the message, 1-4096 characters after entity parsing; required if rich_message isn't specified
  * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
  * - _MessageEntity[]_ `$entities` __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
  * - _LinkPreviewOptions_ `$link_preview_options` __Required: Optional__. Link preview generation options for the message
+ * - _InputRichMessage_ `$rich_message` __Required: Optional__. New rich content of the message; required if text isn't specified
  * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for an inline keyboard
  *
  *
@@ -1631,7 +1650,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _InlineKeyboardMarkup_ `$reply_markup` __Required: Optional__. A JSON-serialized object for an inline keyboard
  *
  *
- * @method PromiseInterface|Message|true editMessageMedia(...$parameters) Use this method to edit animation, audio, document, live photo, photo, or video messages, or to add media to text messages. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo, a live photo, or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
+ * @method PromiseInterface|Message|true editMessageMedia(...$parameters) Use this method to edit animation, audio, document, live photo, photo, or video messages, or to replace a text or a rich message with a media. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo, a live photo, or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
  *
  * {@see https://core.telegram.org/bots/api#editmessagemedia}
  *
@@ -1927,6 +1946,36 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  *
  * Parameters:
  * - _string_ `$name` __Required: Yes__. Sticker set name
+ *
+ *
+ * @method PromiseInterface|Message sendRichMessage(...$parameters) Use this method to send rich messages. If the message contains a block with a media element, then the bot must have the right to send the media to the chat. On success, the sent Message is returned.
+ *
+ * {@see https://core.telegram.org/bots/api#sendrichmessage}
+ *
+ * Parameters:
+ * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
+ * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
+ * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+ * - _InputRichMessage_ `$rich_message` __Required: Yes__. The message to be sent
+ * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
+ * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the sent message from forwarding and saving
+ * - _bool_ `$allow_paid_broadcast` __Required: Optional__. Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.
+ * - _string_ `$message_effect_id` __Required: Optional__. Unique identifier of the message effect to be added to the message; for private chats only
+ * - _SuggestedPostParameters_ `$suggested_post_parameters` __Required: Optional__. A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
+ * - _ReplyParameters_ `$reply_parameters` __Required: Optional__. Description of the message to reply to
+ * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
+ *
+ *
+ * @method PromiseInterface|true sendRichMessageDraft(...$parameters) Use this method to stream a partial rich message to a user while the message is being generated. Note that the streamed draft is ephemeral and acts as a temporary 30-second preview - once the output is finalized, you must call sendRichMessage with the complete message to persist it in the user's chat. Returns True on success.
+ *
+ * {@see https://core.telegram.org/bots/api#sendrichmessagedraft}
+ *
+ * Parameters:
+ * - _int_ `$chat_id` __Required: Yes__. Unique identifier for the target private chat
+ * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread
+ * - _int_ `$draft_id` __Required: Yes__. Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated.
+ * - _InputRichMessage_ `$rich_message` __Required: Yes__. The partial message to be streamed
  *
  *
  * @method PromiseInterface|true answerInlineQuery(...$parameters) Use this method to send answers to an inline query. On success, True is returned.No more than 50 results per query are allowed.

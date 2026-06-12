@@ -8,7 +8,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?string $tag Optional. Tag of the member
  * @property-read User $user Information about the user
  * @property-read bool $is_member True, if the user is a member of the chat at the moment of the request
- * @property-read bool $can_send_messages True, if the user is allowed to send text messages, contacts, giveaways, giveaway winners, invoices, locations and venues
+ * @property-read bool $can_send_messages True, if the user is allowed to send text messages, rich messages, contacts, giveaways, giveaway winners, invoices, locations and venues
  * @property-read bool $can_send_audios True, if the user is allowed to send audios
  * @property-read bool $can_send_documents True, if the user is allowed to send documents
  * @property-read bool $can_send_photos True, if the user is allowed to send photos

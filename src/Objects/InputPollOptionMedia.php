@@ -8,6 +8,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
 /**
  * This object represents the content of a poll option to be sent. It should be one of
  * - [InputMediaAnimation](https://core.telegram.org/bots/api#inputmediaanimation)
+ * - [InputMediaLink](https://core.telegram.org/bots/api#inputmedialink)
  * - [InputMediaLivePhoto](https://core.telegram.org/bots/api#inputmedialivephoto)
  * - [InputMediaLocation](https://core.telegram.org/bots/api#inputmedialocation)
  * - [InputMediaPhoto](https://core.telegram.org/bots/api#inputmediaphoto)
@@ -23,6 +24,7 @@ abstract class InputPollOptionMedia extends TelegramObject implements Identifiab
     {
         return match ($parameters['type']) {
             'animation' => InputMediaAnimation::class,
+            'link' => InputMediaLink::class,
             'live_photo' => InputMediaLivePhoto::class,
             'location' => InputMediaLocation::class,
             'photo' => InputMediaPhoto::class,
