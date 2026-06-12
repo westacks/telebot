@@ -162,6 +162,10 @@ class Scrapper
 
     protected static function cleanType(string $type): array
     {
+        if ($type === 'RichText') {
+            return ['String', 'Array<RichText>', 'RichText'];
+        }
+
         if ($isArray = (strpos($type, 'Array of ') === 0)) {
             $type = substr($type, strlen('Array of '));
         }

@@ -14,4 +14,8 @@ class GetMeMethod extends TelegramMethod
 {
     protected string $method = 'getMe';
     protected array $expect = ['User'];
+
+    public function __construct()
+    {
+    }
 }
