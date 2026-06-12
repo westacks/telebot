@@ -9,7 +9,7 @@ use function WeStacks\TeleBot\synthesize;
 /**
  * @mixin \WeStacks\TeleBot\Foundation\UpdateHandler
  */
-trait StreamsReichMessage
+trait StreamsRichMessage
 {
     private int $rmDraftId;
     private float $lastMessageSent;
