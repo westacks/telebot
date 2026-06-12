@@ -44,11 +44,9 @@ trait StreamsRichMessage
     protected function getBufferedMessage(MessageMode $mode = MessageMode::MARKDOWN, bool $rtl = false, bool $entityDetection = true): InputRichMessage
     {
         return synthesize([
-            $mode->value => [
-                'text' => $this->buffer,
-                'is_rtl' => $rtl,
-                'skip_entity_detection' => !$entityDetection
-            ],
+            $mode->value => $this->buffer,
+            'is_rtl' => $rtl,
+            'skip_entity_detection' => !$entityDetection,
         ], InputRichMessage::class);
     }
 
