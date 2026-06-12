@@ -12,25 +12,26 @@ use function WeStacks\TeleBot\synthesize;
 trait StreamsRichMessage
 {
     private int $rmDraftId;
-    private float $lastMessageSent;
+    private float $lastDraftSent;
     private string $buffer = '';
 
     protected function stream(
         string $chunk,
+        ?int $draftId = null,
         ?int $chatId = null,
         ?int $messageThreadId = null,
         MessageMode $mode = MessageMode::MARKDOWN,
         bool $rtl = false,
         bool $entityDetection = true
     ): bool {
-        if (! isset($this->draftId)) {
-            $this->rmDraftId = random_int(1, PHP_INT_MAX);
+        if (! isset($this->rmDraftId)) {
+            $this->rmDraftId = $draftId ?? random_int(1, PHP_INT_MAX);
         }
 
         $this->buffer .= $chunk;
 
         if (!$this->rateLimit()) {
-            return true;
+            return false;
         }
 
         return $this->sendRichMessageDraft([
@@ -52,18 +53,18 @@ trait StreamsRichMessage
 
     protected function rateLimit(): bool
     {
-        if (!isset($this->lastMessageSent)) {
-            $this->lastMessageSent = microtime(true);
+        if (!isset($this->lastDraftSent)) {
+            $this->lastDraftSent = microtime(true);
             return true;
         }
 
         $now = microtime(true);
 
-        if ($now - $this->lastMessageSent < 1) {
+        if ($now - $this->lastDraftSent < 1) {
             return false;
         }
 
-        $this->lastMessageSent = $now;
+        $this->lastDraftSent = $now;
         return true;
     }
 }
