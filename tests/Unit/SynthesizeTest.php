@@ -77,6 +77,7 @@ test('synthesize returns same instance if already correct type', function () {
         has_topics_enabled: null,
         allows_users_to_create_topics: null,
         can_manage_bots: null,
+        supports_join_request_queries: null,
     );
 
     $result = synthesize($user, User::class);

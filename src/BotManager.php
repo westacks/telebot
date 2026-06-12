@@ -41,6 +41,10 @@ class BotManager
             throw new \InvalidArgumentException("Unknown bot: {$name}");
         }
 
+        if (! $this->bots[$name] instanceof TeleBot) {
+            $this->bots[$name] = new TeleBot($this->bots[$name]);
+        }
+
         return $this->bots[$name];
     }
 
