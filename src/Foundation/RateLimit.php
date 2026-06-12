@@ -6,7 +6,7 @@ trait RateLimit
 {
     private float $lastCheck;
 
-    protected function rateLimit(int $seconds = 1): bool
+    protected function rateLimit(float $seconds = 1): bool
     {
         if (!isset($this->lastCheck)) {
             $this->lastCheck = microtime(true);
@@ -15,7 +15,7 @@ trait RateLimit
 
         $now = microtime(true);
 
-        if ($now - $this->lastCheck > $seconds) {
+        if ($now - $this->lastCheck >= $seconds) {
             $this->lastCheck = $now;
             return true;
         }

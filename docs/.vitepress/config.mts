@@ -30,6 +30,7 @@ export default defineConfig({
           { text: 'Methods', link: '/methods' },
           { text: 'Handling Updates', link: '/updates' },
           { text: 'Testing', link: '/testing' },
+          { text: 'Rate Limit', link: '/rate-limit' },
           { text: 'API Examples', link: '/api-examples' },
         ]
       },
