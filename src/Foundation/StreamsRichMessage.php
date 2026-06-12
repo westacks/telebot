@@ -55,11 +55,11 @@ trait StreamsRichMessage
     protected function rateLimit(): bool
     {
         if (!isset($this->lastMessageSent)) {
-            $this->lastMessageSent = microtime();
+            $this->lastMessageSent = microtime(true);
             return true;
         }
 
-        $now = microtime();
+        $now = microtime(true);
 
         if ($now - $this->lastMessageSent < 1) {
             return false;
