@@ -40,6 +40,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?LinkPreviewOptions $link_preview_options Optional. Options used for link preview generation for the message, if it is a text message and link preview options were changed
  * @property-read ?SuggestedPostInfo $suggested_post_info Optional. Information about suggested post parameters if the message is a suggested post in a channel direct messages chat. If the message is an approved or declined suggested post, then it can't be edited.
  * @property-read ?string $effect_id Optional. Unique identifier of the message effect added to the message
+ * @property-read ?RichMessage $rich_message Optional. Message is a rich formatted message
  * @property-read ?Animation $animation Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set.
  * @property-read ?Audio $audio Optional. Message is an audio file, information about the file
  * @property-read ?Document $document Optional. Message is a general file, information about the file
@@ -160,6 +161,7 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?LinkPreviewOptions $link_preview_options,
         public readonly ?SuggestedPostInfo $suggested_post_info,
         public readonly ?string $effect_id,
+        public readonly ?RichMessage $rich_message,
         public readonly ?Animation $animation,
         public readonly ?Audio $audio,
         public readonly ?Document $document,
