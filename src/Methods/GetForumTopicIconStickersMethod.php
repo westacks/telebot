@@ -14,8 +14,4 @@ class GetForumTopicIconStickersMethod extends TelegramMethod
 {
     protected string $method = 'getForumTopicIconStickers';
     protected array $expect = ['Sticker[]'];
-
-    public function __construct()
-    {
-    }
 }

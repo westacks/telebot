@@ -4,7 +4,7 @@ namespace WeStacks\TeleBot\Objects;
 
 /**
  * Represents an HTTP link to be sent.
- * @property-read string $type Type of the result, must be link
+ * @property-read string $type Type of the media, must be link
  * @property-read string $url HTTP URL of the link
  *
  * @see https://core.telegram.org/bots/api#inputmedialink
