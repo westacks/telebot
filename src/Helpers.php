@@ -74,7 +74,7 @@ function synthesize(mixed $data, string $target): mixed
                     $data[$k] = synthesize($v, $target);
                 }
             }
-        
+
             return new $target($data);
         }
 
