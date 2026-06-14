@@ -2856,7 +2856,7 @@
                         "Integer"
                     ],
                     "required": true,
-                    "description": "Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated."
+                    "description": "Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated."
                 },
                 "text": {
                     "type": [
@@ -11033,7 +11033,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the result, must be animation"
+                    "description": "Type of the media, must be animation"
                 },
                 "media": {
                     "type": [
@@ -11109,7 +11109,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the result, must be audio"
+                    "description": "Type of the media, must be audio"
                 },
                 "media": {
                     "type": [
@@ -11173,7 +11173,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the result, must be document"
+                    "description": "Type of the media, must be document"
                 },
                 "media": {
                     "type": [
@@ -11225,7 +11225,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the result, must be live_photo"
+                    "description": "Type of the media, must be live_photo"
                 },
                 "media": {
                     "type": [
@@ -11283,7 +11283,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the result, must be location"
+                    "description": "Type of the media, must be location"
                 },
                 "latitude": {
                     "type": [
@@ -11316,7 +11316,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the result, must be photo"
+                    "description": "Type of the media, must be photo"
                 },
                 "media": {
                     "type": [
@@ -11368,7 +11368,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the result, must be venue"
+                    "description": "Type of the media, must be venue"
                 },
                 "latitude": {
                     "type": [
@@ -11431,7 +11431,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the result, must be video"
+                    "description": "Type of the media, must be video"
                 },
                 "media": {
                     "type": [
@@ -11541,7 +11541,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the result, must be link"
+                    "description": "Type of the media, must be link"
                 },
                 "url": {
                     "type": [
@@ -11562,7 +11562,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the result, must be sticker"
+                    "description": "Type of the media, must be sticker"
                 },
                 "media": {
                     "type": [

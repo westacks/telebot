@@ -4,7 +4,7 @@ namespace WeStacks\TeleBot\Objects;
 
 /**
  * Represents a venue to be sent.
- * @property-read string $type Type of the result, must be venue
+ * @property-read string $type Type of the media, must be venue
  * @property-read float $latitude Latitude of the location
  * @property-read float $longitude Longitude of the location
  * @property-read string $title Name of the venue

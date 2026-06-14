@@ -10,7 +10,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  *
  * @property-read int $chat_id Unique identifier for the target private chat
  * @property-read ?int $message_thread_id Unique identifier for the target message thread
- * @property-read int $draft_id Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated.
+ * @property-read int $draft_id Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated.
  * @property-read ?string $text Text of the message to be sent, 0-4096 characters after entities parsing. Pass an empty text to show a “Thinking…” placeholder.
  * @property-read ?string $parse_mode Mode for parsing entities in the message text. See formatting options for more details.
  * @property-read ?MessageEntity[] $entities A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode

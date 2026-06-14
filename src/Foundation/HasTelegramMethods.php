@@ -580,7 +580,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * Parameters:
  * - _int_ `$chat_id` __Required: Yes__. Unique identifier for the target private chat
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread
- * - _int_ `$draft_id` __Required: Yes__. Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated.
+ * - _int_ `$draft_id` __Required: Yes__. Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated.
  * - _string_ `$text` __Required: Optional__. Text of the message to be sent, 0-4096 characters after entities parsing. Pass an empty text to show a “Thinking…” placeholder.
  * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
  * - _MessageEntity[]_ `$entities` __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode

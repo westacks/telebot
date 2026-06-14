@@ -14,8 +14,4 @@ class GetAvailableGiftsMethod extends TelegramMethod
 {
     protected string $method = 'getAvailableGifts';
     protected array $expect = [];
-
-    public function __construct()
-    {
-    }
 }
