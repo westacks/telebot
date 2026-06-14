@@ -14,4 +14,8 @@ class LogOutMethod extends TelegramMethod
 {
     protected string $method = 'logOut';
     protected array $expect = ['true'];
+
+    public function __construct()
+    {
+    }
 }

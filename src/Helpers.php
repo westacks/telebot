@@ -6,6 +6,7 @@ use WeStacks\TeleBot\Exceptions\UnclosedQuotesException;
 use WeStacks\TeleBot\Foundation\Identifiable;
 use WeStacks\TeleBot\Foundation\TelegramObject;
 use WeStacks\TeleBot\Objects\InputFile;
+use WeStacks\TeleBot\Objects\RichText;
 
 /**
  * @internal Synthesize Telegram objects and methods.
@@ -67,6 +68,16 @@ function synthesize(mixed $data, string $target): mixed
 
     // Abstracts
     if (in_array(Identifiable::class, class_implements($target))) {
+        if ($target === RichText::class && !isset($parameters['type'])) {
+            if (is_array($data)) {
+                foreach ($data as $k => $v) {
+                    $data[$k] = synthesize($v, $target);
+                }
+            }
+        
+            return new $target($data);
+        }
+
         $target = $target::identify($data);
     }
 

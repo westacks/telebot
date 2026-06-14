@@ -35,8 +35,11 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  *
  * @see https://core.telegram.org/bots/api#richtext
  */
-abstract class RichText extends TelegramObject implements Identifiable
+class RichText extends TelegramObject implements Identifiable
 {
+    /** @var string|RichText[] */
+    public array|string $value;
+
     public static function identify(array $parameters): string
     {
         return match ($parameters['type']) {
@@ -67,5 +70,57 @@ abstract class RichText extends TelegramObject implements Identifiable
             'reference_link' => RichTextReferenceLink::class,
             default => throw new \InvalidArgumentException("Unknown RichText: ".$parameters['type']),
         };
+    }
+
+    public function __construct(array|string $value)
+    {
+        $this->value = $value;
+    }
+
+    public function __toString(): string
+    {
+        if (is_string($this->value)) {
+            return $this->value;
+        }
+
+        return parent::__toString();
+    }
+
+    public function offsetExists(mixed $offset): bool
+    {
+        if (is_array($this->value)) {
+            return array_key_exists($offset, $this->value);
+        }
+
+        return parent::offsetExists($offset);
+    }
+
+    public function offsetGet(mixed $offset): mixed
+    {
+        if (is_array($this->value)) {
+            return $this->value[$offset];
+        }
+
+        return parent::offsetGet($offset);
+    }
+
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+        if (is_array($this->value)) {
+            $this->value[$offset] = $value;
+            return;
+        }
+
+        parent::offsetSet($offset, $value);
+    }
+
+    public function offsetUnset(mixed $offset): void
+    {
+        if (is_array($this->value)) {
+            unset($this->value[$offset]);
+            return;
+        }
+
+        parent::offsetUnset($offset);
     }
 }

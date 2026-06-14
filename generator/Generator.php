@@ -81,7 +81,7 @@ class Generator
 
         $class = $namespace->addClass($name)
             ->setExtends($extends)
-            ->setAbstract(isset($data['subtypes']));
+            ->setAbstract(isset($data['subtypes']) && $name !== 'RichText');
 
         foreach ($data['description'] ?? [] as $description) {
             $class->addComment($description);
@@ -406,9 +406,16 @@ class Generator
                 continue;
             }
 
+            $reflectionType = $property->getType();
+            if ($reflectionType instanceof \ReflectionUnionType) {
+                $type = implode('|', array_map(fn ($t) => $t->getName(), $reflectionType->getTypes()));
+            } else {
+                $type = $reflectionType?->getName();
+            }
+
             $prop = [
                 'name' => $property->getName(),
-                'type' => $property->getType()?->getName(),
+                'type' => $type,
                 'public' => $property->isPublic(),
                 'protected' => $property->isProtected(),
                 'private' => $property->isPrivate(),

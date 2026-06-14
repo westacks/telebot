@@ -17427,8 +17427,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17450,8 +17448,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17473,8 +17469,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17496,8 +17490,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17519,8 +17511,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17542,8 +17532,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17577,8 +17565,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17606,8 +17592,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17629,8 +17613,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17652,8 +17634,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17675,8 +17655,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17746,8 +17724,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17775,8 +17751,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17804,8 +17778,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17833,8 +17805,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17862,8 +17832,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17891,8 +17859,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17920,8 +17886,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17949,8 +17913,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The text"
@@ -17999,8 +17961,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The link text"
@@ -18028,8 +17988,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Text of the reference"
@@ -18057,8 +18015,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "The link text"
@@ -18079,16 +18035,12 @@
             "fields": {
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Block caption"
                 },
                 "credit": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Optional. Block credit which corresponds to the HTML tag <cite>"
@@ -18103,8 +18055,6 @@
             "fields": {
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Optional. Text in the cell. If omitted, then the cell is invisible."
@@ -18229,8 +18179,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Text of the block"
@@ -18252,8 +18200,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Text of the block"
@@ -18281,8 +18227,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Text of the block"
@@ -18310,8 +18254,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Text of the block"
@@ -18417,8 +18359,6 @@
                 },
                 "credit": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Optional. Credit of the block"
@@ -18440,16 +18380,12 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Text of the block"
                 },
                 "credit": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Optional. Credit of the block"
@@ -18543,8 +18479,6 @@
                 },
                 "caption": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Optional. Caption of the table"
@@ -18566,8 +18500,6 @@
                 },
                 "summary": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Always shown summary of the block"
@@ -18799,8 +18731,6 @@
                 },
                 "text": {
                     "type": [
-                        "String",
-                        "Array<RichText>",
                         "RichText"
                     ],
                     "description": "Text of the block. See https://t.me/addemoji/AIActions for examples of custom emoji, which are recommended for usage in the block."

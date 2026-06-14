@@ -4,7 +4,7 @@ namespace WeStacks\TeleBot\Foundation;
 
 use function WeStacks\TeleBot\synthesize;
 
-abstract class TelegramObject implements \Stringable, \IteratorAggregate, \JsonSerializable
+abstract class TelegramObject implements \Stringable, \IteratorAggregate, \JsonSerializable, \ArrayAccess
 {
     public static function from(array|string $parameters): static
     {
@@ -85,5 +85,25 @@ abstract class TelegramObject implements \Stringable, \IteratorAggregate, \JsonS
     private function properties(): array
     {
         return array_filter(get_object_vars($this), static fn ($value) => $value !== null);
+    }
+
+    public function offsetExists(mixed $offset): bool
+    {
+        return array_key_exists($offset, $this->properties());
+    }
+
+    public function offsetGet(mixed $offset): mixed
+    {
+        return $this->get($offset);
+    }
+
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+        $this->{$offset} = $value;
+    }
+
+    public function offsetUnset(mixed $offset): void
+    {
+        unset($this->{$offset});
     }
 }
