@@ -14,8 +14,4 @@ class RemoveMyProfilePhotoMethod extends TelegramMethod
 {
     protected string $method = 'removeMyProfilePhoto';
     protected array $expect = ['true'];
-
-    public function __construct()
-    {
-    }
 }

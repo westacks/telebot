@@ -847,7 +847,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _string_ `$result` __Required: Yes__. Result of the query. Must be either “approve” to allow the user to join the chat, “decline” to disallow the user to join the chat, or “queue” to leave the decision to other administrators.
  *
  *
- * @method PromiseInterface|true sendChatJoinRequestWebApp(...$parameters) Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Returns True on success.
+ * @method PromiseInterface|true sendChatJoinRequestWebApp(...$parameters) Use this method to process a received chat join request query by showing a Mini App to the user before deciding the outcome. Call answerChatJoinRequestQuery to resolve the join request query based on the user interaction with the Mini App. Returns True on success.
  *
  * {@see https://core.telegram.org/bots/api#sendchatjoinrequestwebapp}
  *
@@ -1953,7 +1953,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * {@see https://core.telegram.org/bots/api#sendrichmessage}
  *
  * Parameters:
- * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent
+ * - _string_ `$business_connection_id` __Required: Optional__. Unique identifier of the business connection on behalf of which the message will be sent. Bot can send rich messages on behalf of a business account only if the corresponding user can send rich messages.
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
