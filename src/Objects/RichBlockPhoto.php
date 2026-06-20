@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Objects;
 
 /**
- * A block with a photo, corresponding to the HTML tag <photo>.
+ * A block with a photo, corresponding to the HTML tag <img>.
  * @property-read string $type Type of the block, always “photo”
  * @property-read PhotoSize[] $photo Available sizes of the photo
  * @property-read ?true $has_spoiler Optional. True, if the media preview is covered by a spoiler animation

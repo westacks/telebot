@@ -12,7 +12,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read int $date Date the request was sent in Unix time
  * @property-read ?string $bio Optional. Bio of the user
  * @property-read ?ChatInviteLink $invite_link Optional. Chat invite link that was used by the user to send the join request
- * @property-read ?string $query_id Optional. Identifier of the join request query. If present, then the bot must call sendChatJoinRequestWebApp or directly call answerChatJoinRequestQuery within 10 seconds.
+ * @property-read ?string $query_id Optional. Identifier of the join request query; for bots assigned to process join request only. If present, then the bot must call sendChatJoinRequestWebApp or directly call answerChatJoinRequestQuery within 10 seconds.
  *
  * @see https://core.telegram.org/bots/api#chatjoinrequest
  */
