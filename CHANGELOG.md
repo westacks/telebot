@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 4.9.0 - 2026-07-15
+
+### Bot API v10.2
+
+#### What's Changed
+
+* [AUTO] Update Telegram Bot API by @github-actions[bot] in https://github.com/westacks/telebot/pull/148
+* [AUTO] Update Telegram Bot API by @github-actions[bot] in https://github.com/westacks/telebot/pull/149
+* [AUTO] Update Telegram Bot API by @github-actions[bot] in https://github.com/westacks/telebot/pull/150
+
+**Full Changelog**: https://github.com/westacks/telebot/compare/4.8.10...4.9.0
+
 ## 4.8.10 - 2026-06-20
 
 ### What's Changed
