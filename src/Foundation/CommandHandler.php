@@ -20,6 +20,16 @@ abstract class CommandHandler extends UpdateHandler
      */
     abstract protected static function description(?string $locale = null): string;
 
+    /**
+     * Is command ephemeral
+     */
+    protected static ?bool $ephemeral = null;
+
+    protected static function ephemeral(): ?bool
+    {
+        return static::$ephemeral;
+    }
+
     public function trigger(): bool
     {
         if ($this->skip() || ! isset($this->update->message()?->entities)) {
@@ -94,7 +104,7 @@ abstract class CommandHandler extends UpdateHandler
         $description = static::description($locale);
 
         return array_map(
-            static fn (string $command) => new BotCommand($command, $description),
+            static fn (string $command) => new BotCommand($command, $description, static::ephemeral()),
             static::aliases(),
         );
     }
