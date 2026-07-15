@@ -11,7 +11,7 @@ use WeStacks\TeleBot\Objects\InputRichMessage;
  * @property-read int $chat_id Unique identifier for the target private chat
  * @property-read ?int $message_thread_id Unique identifier for the target message thread
  * @property-read int $draft_id Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated.
- * @property-read InputRichMessage $rich_message The partial message to be streamed
+ * @property-read InputRichMessage $rich_message The partial message to be streamed. Direct upload of new files isn't supported.
  *
  * @see https://core.telegram.org/bots/api#sendrichmessagedraft
  */

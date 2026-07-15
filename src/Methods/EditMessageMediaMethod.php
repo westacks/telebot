@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Objects\InputMedia;
  * @property-read null|int|string $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.
  * @property-read ?int $message_id Required if inline_message_id is not specified. Identifier of the message to edit.
  * @property-read ?string $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message.
- * @property-read InputMedia $media A JSON-serialized object for a new media content of the message
+ * @property-read InputMedia $media A JSON-serialized object for the new media content of the message
  * @property-read ?InlineKeyboardMarkup $reply_markup A JSON-serialized object for a new inline keyboard
  *
  * @see https://core.telegram.org/bots/api#editmessagemedia

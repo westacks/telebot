@@ -58,6 +58,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?UniqueGiftColors $unique_gift_colors Optional. The color scheme based on a unique gift that must be used for the chat's name, message replies and link previews
  * @property-read ?int $paid_message_star_count Optional. The number of Telegram Stars a general user has to pay to send a message to the chat
  * @property-read ?User $guard_bot Optional. The bot that processes join request queries in the chat. The field is only available to chat administrators.
+ * @property-read ?Community $community Optional. The Community to which the chat belongs
  *
  * @see https://core.telegram.org/bots/api#chatfullinfo
  */
@@ -116,6 +117,7 @@ class ChatFullInfo extends TelegramObject
         public readonly ?UniqueGiftColors $unique_gift_colors,
         public readonly ?int $paid_message_star_count,
         public readonly ?User $guard_bot,
+        public readonly ?Community $community,
     ) {
     }
 }

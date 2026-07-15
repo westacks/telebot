@@ -20,12 +20,12 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property-read int $star_count The number of Telegram Stars that must be paid to buy access to the media; 1-25000
- * @property-read InputPaidMedia[] $media A JSON-serialized array describing the media to be sent; up to 10 items
+ * @property-read InputPaidMedia[] $media A JSON-serialized Array describing the media to be sent; up to 10 items
  * @property-read ?string $payload Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.
  * @property-read ?string $caption Media caption, 0-1024 characters after entities parsing
  * @property-read ?string $parse_mode Mode for parsing entities in the media caption. See formatting options for more details.
  * @property-read ?MessageEntity[] $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
- * @property-read ?bool $show_caption_above_media Pass True, if the caption must be shown above the message media
+ * @property-read ?bool $show_caption_above_media Pass True if the caption must be shown above the message media
  * @property-read ?bool $disable_notification Sends the message silently. Users will receive a notification with no sound.
  * @property-read ?bool $protect_content Protects the contents of the sent message from forwarding and saving
  * @property-read ?bool $allow_paid_broadcast Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance.

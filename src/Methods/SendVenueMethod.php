@@ -17,6 +17,8 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+ * @property-read ?int $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
+ * @property-read ?string $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
  * @property-read float $latitude Latitude of the venue
  * @property-read float $longitude Longitude of the venue
  * @property-read string $title Name of the venue
@@ -45,6 +47,8 @@ class SendVenueMethod extends TelegramMethod
         public readonly int|string $chat_id,
         public readonly ?int $message_thread_id,
         public readonly ?int $direct_messages_topic_id,
+        public readonly ?int $receiver_user_id,
+        public readonly ?string $callback_query_id,
         public readonly float $latitude,
         public readonly float $longitude,
         public readonly string $title,

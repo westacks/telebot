@@ -13,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?string $caption Optional. Caption of the video to be sent, 0-1024 characters after entities parsing
  * @property-read ?string $parse_mode Optional. Mode for parsing entities in the video caption. See formatting options for more details.
  * @property-read ?MessageEntity[] $caption_entities Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
- * @property-read ?bool $show_caption_above_media Optional. Pass True, if the caption must be shown above the message media
+ * @property-read ?bool $show_caption_above_media Optional. Pass True if the caption must be shown above the message media
  * @property-read ?int $video_width Optional. Video width
  * @property-read ?int $video_height Optional. Video height
  * @property-read ?int $video_duration Optional. Video duration in seconds

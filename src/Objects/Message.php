@@ -4,7 +4,7 @@ namespace WeStacks\TeleBot\Objects;
 
 /**
  * This object represents a message.
- * @property-read int $message_id Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent.
+ * @property-read int $message_id Unique message identifier inside this chat; 0 for ephemeral messages. In specific instances (e.g., a message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent.
  * @property-read ?int $message_thread_id Optional. Unique identifier of a message thread or forum topic to which the message belongs; for supergroups and private chats only
  * @property-read ?DirectMessagesTopic $direct_messages_topic Optional. Information about the direct messages chat topic that contains the message
  * @property-read ?User $from Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility, if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats.
@@ -12,6 +12,8 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?int $sender_boost_count Optional. If the sender of the message boosted the chat, the number of boosts added by the user
  * @property-read ?User $sender_business_bot Optional. The bot that actually sent the message on behalf of the business account. Available only for outgoing messages sent on behalf of the connected business account.
  * @property-read ?string $sender_tag Optional. Tag or custom title of the sender of the message; for supergroups only
+ * @property-read ?User $receiver_user Optional. For ephemeral messages, the user who received the message
+ * @property-read ?int $ephemeral_message_id Optional. For ephemeral messages, identifier of the ephemeral message inside this chat. The identifier may be reused for another ephemeral message after the message is deleted or expires.
  * @property-read int $date Date the message was sent in Unix time. It is always a positive number, representing a valid date.
  * @property-read ?string $guest_query_id Optional. The unique identifier for the guest query. Use this identifier with the method answerGuestQuery to send a response message. If non-empty, the message belongs to the chat where the guest bot was summoned, which may not coincide with other existing bot chats sharing the same identifier.
  * @property-read ?string $business_connection_id Optional. Unique identifier of the business connection from which the message was received. If non-empty, the message belongs to a chat of the corresponding business account that is independent from any potential bot chat which might share the same identifier.
@@ -19,7 +21,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?MessageOrigin $forward_origin Optional. Information about the original message for forwarded messages
  * @property-read ?true $is_topic_message Optional. True, if the message is sent to a topic in a forum supergroup or a private chat with the bot
  * @property-read ?true $is_automatic_forward Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion group
- * @property-read ?Message $reply_to_message Optional. For replies in the same chat and message thread, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
+ * @property-read ?Message $reply_to_message Optional. For replies in the same chat and message thread, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply. If the message is a reply to an ephemeral message, then this field may be omitted.
  * @property-read ?ExternalReplyInfo $external_reply Optional. Information about the message that is being replied to, which may come from another chat or forum topic
  * @property-read ?TextQuote $quote Optional. For replies that quote part of the original message, the quoted part of the message
  * @property-read ?Story $reply_to_story Optional. For replies to a story, the original story
@@ -93,6 +95,8 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?ChatBackground $chat_background_set Optional. Service message: chat background set
  * @property-read ?ChecklistTasksDone $checklist_tasks_done Optional. Service message: some tasks in a checklist were marked as done or not done
  * @property-read ?ChecklistTasksAdded $checklist_tasks_added Optional. Service message: tasks were added to a checklist
+ * @property-read ?CommunityChatAdded $community_chat_added Optional. Service message: chat added to a Community
+ * @property-read ?CommunityChatRemoved $community_chat_removed Optional. Service message: chat removed from a Community
  * @property-read ?DirectMessagePriceChanged $direct_message_price_changed Optional. Service message: the price for paid messages in the corresponding direct messages chat of a channel has changed
  * @property-read ?ForumTopicCreated $forum_topic_created Optional. Service message: forum topic created
  * @property-read ?ForumTopicEdited $forum_topic_edited Optional. Service message: forum topic edited
@@ -133,6 +137,8 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?int $sender_boost_count,
         public readonly ?User $sender_business_bot,
         public readonly ?string $sender_tag,
+        public readonly ?User $receiver_user,
+        public readonly ?int $ephemeral_message_id,
         public readonly int $date,
         public readonly ?string $guest_query_id,
         public readonly ?string $business_connection_id,
@@ -214,6 +220,8 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?ChatBackground $chat_background_set,
         public readonly ?ChecklistTasksDone $checklist_tasks_done,
         public readonly ?ChecklistTasksAdded $checklist_tasks_added,
+        public readonly ?CommunityChatAdded $community_chat_added,
+        public readonly ?CommunityChatRemoved $community_chat_removed,
         public readonly ?DirectMessagePriceChanged $direct_message_price_changed,
         public readonly ?ForumTopicCreated $forum_topic_created,
         public readonly ?ForumTopicEdited $forum_topic_edited,
