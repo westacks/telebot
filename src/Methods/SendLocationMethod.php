@@ -17,10 +17,12 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+ * @property-read ?int $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
+ * @property-read ?string $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
  * @property-read float $latitude Latitude of the location
  * @property-read float $longitude Longitude of the location
  * @property-read ?float $horizontal_accuracy The radius of uncertainty for the location, measured in meters; 0-1500
- * @property-read ?int $live_period Period in seconds during which the location will be updated (see Live Locations, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely
+ * @property-read ?int $live_period Period in seconds during which the location will be updated (see Live Locations), must be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely. Must be 0 for ephemeral messages.
  * @property-read ?int $heading For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
  * @property-read ?int $proximity_alert_radius For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
  * @property-read ?bool $disable_notification Sends the message silently. Users will receive a notification with no sound.
@@ -43,6 +45,8 @@ class SendLocationMethod extends TelegramMethod
         public readonly int|string $chat_id,
         public readonly ?int $message_thread_id,
         public readonly ?int $direct_messages_topic_id,
+        public readonly ?int $receiver_user_id,
+        public readonly ?string $callback_query_id,
         public readonly float $latitude,
         public readonly float $longitude,
         public readonly ?float $horizontal_accuracy,

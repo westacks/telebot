@@ -23,7 +23,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?bool $can_pin_messages Optional. True, if the user is allowed to pin messages; for groups and supergroups only
  * @property-read ?bool $can_manage_topics Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
  * @property-read ?bool $can_manage_direct_messages Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only
- * @property-read ?bool $can_manage_tags Optional. True, if the administrator can edit the tags of regular members; for groups and supergroups only. If omitted defaults to the value of can_pin_messages.
+ * @property-read ?bool $can_manage_tags Optional. True, if the administrator can edit the tags of regular members; for groups and supergroups only. If omitted, defaults to the value of can_pin_messages.
  * @property-read ?string $custom_title Optional. Custom title for this user
  *
  * @see https://core.telegram.org/bots/api#chatmemberadministrator

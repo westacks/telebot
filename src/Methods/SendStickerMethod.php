@@ -18,6 +18,8 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+ * @property-read ?int $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
+ * @property-read ?string $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
  * @property-read InputFile|string $sticker Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files ». Video and animated stickers can't be sent via an HTTP URL.
  * @property-read ?string $emoji Emoji associated with the sticker; only for just uploaded stickers
  * @property-read ?bool $disable_notification Sends the message silently. Users will receive a notification with no sound.
@@ -40,6 +42,8 @@ class SendStickerMethod extends TelegramMethod
         public readonly int|string $chat_id,
         public readonly ?int $message_thread_id,
         public readonly ?int $direct_messages_topic_id,
+        public readonly ?int $receiver_user_id,
+        public readonly ?string $callback_query_id,
         public readonly InputFile|string $sticker,
         public readonly ?string $emoji,
         public readonly ?bool $disable_notification,

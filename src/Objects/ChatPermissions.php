@@ -21,7 +21,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?bool $can_change_info Optional. True, if the user is allowed to change the chat title, photo and other settings. Ignored in public supergroups.
  * @property-read ?bool $can_invite_users Optional. True, if the user is allowed to invite new users to the chat
  * @property-read ?bool $can_pin_messages Optional. True, if the user is allowed to pin messages. Ignored in public supergroups.
- * @property-read ?bool $can_manage_topics Optional. True, if the user is allowed to create forum topics. If omitted defaults to the value of can_pin_messages.
+ * @property-read ?bool $can_manage_topics Optional. True, if the user is allowed to create forum topics. If omitted, defaults to the value of can_pin_messages.
  *
  * @see https://core.telegram.org/bots/api#chatpermissions
  */

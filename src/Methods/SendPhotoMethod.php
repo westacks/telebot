@@ -19,11 +19,13 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+ * @property-read ?int $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
+ * @property-read ?string $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
  * @property-read InputFile|string $photo Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files »
  * @property-read ?string $caption Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
  * @property-read ?string $parse_mode Mode for parsing entities in the photo caption. See formatting options for more details.
  * @property-read ?MessageEntity[] $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
- * @property-read ?bool $show_caption_above_media Pass True, if the caption must be shown above the message media
+ * @property-read ?bool $show_caption_above_media Pass True if the caption must be shown above the message media
  * @property-read ?bool $has_spoiler Pass True if the photo needs to be covered with a spoiler animation
  * @property-read ?bool $disable_notification Sends the message silently. Users will receive a notification with no sound.
  * @property-read ?bool $protect_content Protects the contents of the sent message from forwarding and saving
@@ -45,6 +47,8 @@ class SendPhotoMethod extends TelegramMethod
         public readonly int|string $chat_id,
         public readonly ?int $message_thread_id,
         public readonly ?int $direct_messages_topic_id,
+        public readonly ?int $receiver_user_id,
+        public readonly ?string $callback_query_id,
         public readonly InputFile|string $photo,
         public readonly ?string $caption,
         public readonly ?string $parse_mode,
