@@ -20,7 +20,7 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property-read ?int $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property-read ?string $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * @property-read ?string $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * @property-read InputFile|string $voice Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
  * @property-read ?string $caption Voice message caption, 0-1024 characters after entities parsing
  * @property-read ?string $parse_mode Mode for parsing entities in the voice message caption. See formatting options for more details.

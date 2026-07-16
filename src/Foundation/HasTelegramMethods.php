@@ -98,7 +98,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$receiver_user_id` __Required: Optional__. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * - _string_ `$text` __Required: Yes__. Text of the message to be sent, 1-4096 characters after entities parsing
  * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the message text. See formatting options for more details.
  * - _MessageEntity[]_ `$entities` __Required: Optional__. A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
@@ -192,7 +192,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$receiver_user_id` __Required: Optional__. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * - _InputFile|string_ `$photo` __Required: Yes__. Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20. More information on Sending Files »
  * - _string_ `$caption` __Required: Optional__. Photo caption (may also be used when resending photos by file_id), 0-1024 characters after entities parsing
  * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the photo caption. See formatting options for more details.
@@ -218,7 +218,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$receiver_user_id` __Required: Optional__. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * - _InputFile|string_ `$live_photo` __Required: Yes__. Live photo video to send. The video must be no longer than 10 seconds and must not exceed 10 MB in size. Pass a file_id as String to send a video that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files ». Sending live photos by a URL is currently unsupported.
  * - _InputFile|string_ `$photo` __Required: Yes__. The static photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files ». Sending live photos by a URL is currently unsupported.
  * - _string_ `$caption` __Required: Optional__. Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing
@@ -247,7 +247,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$receiver_user_id` __Required: Optional__. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * - _InputFile|string_ `$audio` __Required: Yes__. Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
  * - _string_ `$caption` __Required: Optional__. Audio caption, 0-1024 characters after entities parsing
  * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the audio caption. See formatting options for more details.
@@ -275,7 +275,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$receiver_user_id` __Required: Optional__. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * - _InputFile|string_ `$document` __Required: Yes__. File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
  * - _InputFile|string_ `$thumbnail` __Required: Optional__. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
  * - _string_ `$caption` __Required: Optional__. Document caption (may also be used when resending documents by file_id), 0-1024 characters after entities parsing
@@ -301,7 +301,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$receiver_user_id` __Required: Optional__. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * - _InputFile|string_ `$video` __Required: Yes__. Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files »
  * - _int_ `$duration` __Required: Optional__. Duration of sent video in seconds
  * - _int_ `$width` __Required: Optional__. Video width
@@ -334,7 +334,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$receiver_user_id` __Required: Optional__. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * - _InputFile|string_ `$animation` __Required: Yes__. Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More information on Sending Files »
  * - _int_ `$duration` __Required: Optional__. Duration of sent animation in seconds
  * - _int_ `$width` __Required: Optional__. Animation width
@@ -364,7 +364,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$receiver_user_id` __Required: Optional__. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * - _InputFile|string_ `$voice` __Required: Yes__. Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
  * - _string_ `$caption` __Required: Optional__. Voice message caption, 0-1024 characters after entities parsing
  * - _string_ `$parse_mode` __Required: Optional__. Mode for parsing entities in the voice message caption. See formatting options for more details.
@@ -389,7 +389,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$receiver_user_id` __Required: Optional__. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * - _InputFile|string_ `$video_note` __Required: Yes__. Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files ». Sending video notes by a URL is currently unsupported.
  * - _int_ `$duration` __Required: Optional__. Duration of sent video in seconds
  * - _int_ `$length` __Required: Optional__. Video width and height, i.e. diameter of the video message
@@ -454,7 +454,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$receiver_user_id` __Required: Optional__. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * - _float_ `$latitude` __Required: Yes__. Latitude of the location
  * - _float_ `$longitude` __Required: Yes__. Longitude of the location
  * - _float_ `$horizontal_accuracy` __Required: Optional__. The radius of uncertainty for the location, measured in meters; 0-1500
@@ -480,7 +480,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$receiver_user_id` __Required: Optional__. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * - _float_ `$latitude` __Required: Yes__. Latitude of the venue
  * - _float_ `$longitude` __Required: Yes__. Longitude of the venue
  * - _string_ `$title` __Required: Yes__. Name of the venue
@@ -508,7 +508,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$receiver_user_id` __Required: Optional__. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * - _string_ `$phone_number` __Required: Yes__. Contact's phone number
  * - _string_ `$first_name` __Required: Yes__. Contact's first name
  * - _string_ `$last_name` __Required: Optional__. Contact's last name
@@ -1883,7 +1883,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$message_thread_id` __Required: Optional__. Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * - _int_ `$direct_messages_topic_id` __Required: Optional__. Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * - _int_ `$receiver_user_id` __Required: Optional__. For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any
+ * - _string_ `$callback_query_id` __Required: Optional__. For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
  * - _InputFile|string_ `$sticker` __Required: Yes__. Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files ». Video and animated stickers can't be sent via an HTTP URL.
  * - _string_ `$emoji` __Required: Optional__. Emoji associated with the sticker; only for just uploaded stickers
  * - _bool_ `$disable_notification` __Required: Optional__. Sends the message silently. Users will receive a notification with no sound.
