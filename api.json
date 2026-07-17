@@ -206,7 +206,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 "text": {
                     "type": [
@@ -689,7 +689,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 "photo": {
                     "type": [
@@ -838,7 +838,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 "live_photo": {
                     "type": [
@@ -996,7 +996,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 "audio": {
                     "type": [
@@ -1160,7 +1160,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 "document": {
                     "type": [
@@ -1310,7 +1310,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 "video": {
                     "type": [
@@ -1510,7 +1510,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 "animation": {
                     "type": [
@@ -1688,7 +1688,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 "voice": {
                     "type": [
@@ -1830,7 +1830,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 "video_note": {
                     "type": [
@@ -2182,7 +2182,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 "latitude": {
                     "type": [
@@ -2330,7 +2330,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 "latitude": {
                     "type": [
@@ -2492,7 +2492,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 "phone_number": {
                     "type": [
@@ -7308,7 +7308,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggerred the message if any"
+                    "description": "For outgoing ephemeral messages, identifier of the callback query which triggered the message if any"
                 },
                 "sticker": {
                     "type": [
@@ -10010,7 +10010,7 @@
                     "type": [
                         "ProximityAlertTriggered"
                     ],
-                    "description": "Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location."
+                    "description": "Optional. Service message: a user in the chat triggered another user's proximity alert while sharing Live Location"
                 },
                 "boost_added": {
                     "type": [

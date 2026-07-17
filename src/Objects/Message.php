@@ -90,7 +90,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?string $connected_website Optional. The domain name of the website on which the user has logged in. More about Telegram Login »
  * @property-read ?WriteAccessAllowed $write_access_allowed Optional. Service message: the user allowed the bot to write messages after adding it to the attachment or side menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess
  * @property-read ?PassportData $passport_data Optional. Telegram Passport data
- * @property-read ?ProximityAlertTriggered $proximity_alert_triggered Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
+ * @property-read ?ProximityAlertTriggered $proximity_alert_triggered Optional. Service message: a user in the chat triggered another user's proximity alert while sharing Live Location
  * @property-read ?ChatBoostAdded $boost_added Optional. Service message: user boosted the chat
  * @property-read ?ChatBackground $chat_background_set Optional. Service message: chat background set
  * @property-read ?ChecklistTasksDone $checklist_tasks_done Optional. Service message: some tasks in a checklist were marked as done or not done
