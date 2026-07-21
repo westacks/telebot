@@ -143,7 +143,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _bool_ `$protect_content` __Required: Optional__. Protects the contents of the forwarded messages from forwarding and saving
  *
  *
- * @method PromiseInterface|MessageId copyMessage(...$parameters) Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
+ * @method PromiseInterface|MessageId copyMessage(...$parameters) Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
  *
  * {@see https://core.telegram.org/bots/api#copymessage}
  *
@@ -167,7 +167,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply_ `$reply_markup` __Required: Optional__. Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user.
  *
  *
- * @method PromiseInterface|MessageId[] copyMessages(...$parameters) Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an Array of MessageId of the sent messages is returned.
+ * @method PromiseInterface|MessageId[] copyMessages(...$parameters) Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an Array of MessageId of the sent messages is returned.
  *
  * {@see https://core.telegram.org/bots/api#copymessages}
  *
