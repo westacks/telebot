@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Foundation\TelegramMethod;
+use WeStacks\TeleBot\Objects\EphemeralMessageParameters;
 use WeStacks\TeleBot\Objects\ForceReply;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
 use WeStacks\TeleBot\Objects\InputFile;
@@ -12,14 +13,13 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
 use WeStacks\TeleBot\Objects\SuggestedPostParameters;
 
 /**
- * As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long. Use this method to send video messages. On success, the sent Message is returned.
+ * Use this method to send a rounded square MPEG4 video of up to 1 minute long. On success, the sent Message is returned.
  *
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
- * @property-read ?int $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property-read ?string $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+ * @property-read ?EphemeralMessageParameters $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
  * @property-read InputFile|string $video_note Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files ». Sending video notes by a URL is currently unsupported.
  * @property-read ?int $duration Duration of sent video in seconds
  * @property-read ?int $length Video width and height, i.e. diameter of the video message
@@ -44,8 +44,7 @@ class SendVideoNoteMethod extends TelegramMethod
         public readonly int|string $chat_id,
         public readonly ?int $message_thread_id,
         public readonly ?int $direct_messages_topic_id,
-        public readonly ?int $receiver_user_id,
-        public readonly ?string $callback_query_id,
+        public readonly ?EphemeralMessageParameters $ephemeral_message_parameters,
         public readonly InputFile|string $video_note,
         public readonly ?int $duration,
         public readonly ?int $length,

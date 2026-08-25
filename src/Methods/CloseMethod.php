@@ -14,4 +14,8 @@ class CloseMethod extends TelegramMethod
 {
     protected string $method = 'close';
     protected array $expect = ['true'];
+
+    public function __construct()
+    {
+    }
 }

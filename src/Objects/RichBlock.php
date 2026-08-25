@@ -16,14 +16,17 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * - [RichBlockAnchor](https://core.telegram.org/bots/api#richblockanchor)
  * - [RichBlockList](https://core.telegram.org/bots/api#richblocklist)
  * - [RichBlockBlockQuotation](https://core.telegram.org/bots/api#richblockblockquotation)
+ * - [RichBlockExpandableBlockQuotation](https://core.telegram.org/bots/api#richblockexpandableblockquotation)
  * - [RichBlockPullQuotation](https://core.telegram.org/bots/api#richblockpullquotation)
  * - [RichBlockCollage](https://core.telegram.org/bots/api#richblockcollage)
  * - [RichBlockSlideshow](https://core.telegram.org/bots/api#richblockslideshow)
  * - [RichBlockTable](https://core.telegram.org/bots/api#richblocktable)
  * - [RichBlockDetails](https://core.telegram.org/bots/api#richblockdetails)
  * - [RichBlockMap](https://core.telegram.org/bots/api#richblockmap)
+ * - [RichBlockButtons](https://core.telegram.org/bots/api#richblockbuttons)
  * - [RichBlockAnimation](https://core.telegram.org/bots/api#richblockanimation)
  * - [RichBlockAudio](https://core.telegram.org/bots/api#richblockaudio)
+ * - [RichBlockDocument](https://core.telegram.org/bots/api#richblockdocument)
  * - [RichBlockPhoto](https://core.telegram.org/bots/api#richblockphoto)
  * - [RichBlockVideo](https://core.telegram.org/bots/api#richblockvideo)
  * - [RichBlockVoiceNote](https://core.telegram.org/bots/api#richblockvoicenote)
@@ -45,14 +48,17 @@ abstract class RichBlock extends TelegramObject implements Identifiable
             'anchor' => RichBlockAnchor::class,
             'list' => RichBlockList::class,
             'blockquote' => RichBlockBlockQuotation::class,
+            'expandable_blockquote' => RichBlockExpandableBlockQuotation::class,
             'pullquote' => RichBlockPullQuotation::class,
             'collage' => RichBlockCollage::class,
             'slideshow' => RichBlockSlideshow::class,
             'table' => RichBlockTable::class,
             'details' => RichBlockDetails::class,
             'map' => RichBlockMap::class,
+            'buttons' => RichBlockButtons::class,
             'animation' => RichBlockAnimation::class,
             'audio' => RichBlockAudio::class,
+            'document' => RichBlockDocument::class,
             'photo' => RichBlockPhoto::class,
             'video' => RichBlockVideo::class,
             'voice_note' => RichBlockVoiceNote::class,

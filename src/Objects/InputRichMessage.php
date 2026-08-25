@@ -9,7 +9,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?InputRichBlock[] $blocks Optional. Content of the rich message to send described as a list of blocks
  * @property-read ?string $html Optional. Content of the rich message to send described using HTML formatting. See rich message formatting options for more details. Use media field to specify the media used in the message.
  * @property-read ?string $markdown Optional. Content of the rich message to send described using Markdown formatting. See rich message formatting options for more details. Use media field to specify the media used in the message.
- * @property-read ?InputRichMessageMedia[] $media Optional. List of media that are specified in the markdown or html fields using tg://photo?id=, tg://video?id=, and tg://audio?id= links
+ * @property-read ?InputRichMessageMedia[] $media Optional. List of media that are specified in the markdown or html fields using tg://photo?id=, tg://video?id=, tg://document?id=, and tg://audio?id= links
  * @property-read ?bool $is_rtl Optional. Pass True if the rich message must be shown right-to-left
  * @property-read ?bool $skip_entity_detection Optional. Pass True to skip automatic detection of entities (e.g., URLs, email addresses, username mentions, hashtags, cashtags, bot commands, or phone numbers) in the text
  *

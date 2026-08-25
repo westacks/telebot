@@ -8,6 +8,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read RichBlockTableCell[][] $cells Cells of the table
  * @property-read ?true $is_bordered Optional. Pass True if the table has borders
  * @property-read ?true $is_striped Optional. Pass True if the table is striped
+ * @property-read ?true $is_compact Optional. Pass True if table cells must have smaller indents
  * @property-read ?RichText $caption Optional. Caption of the table
  *
  * @see https://core.telegram.org/bots/api#inputrichblocktable
@@ -19,6 +20,7 @@ class InputRichBlockTable extends InputRichBlock
         public readonly array $cells,
         public readonly ?true $is_bordered,
         public readonly ?true $is_striped,
+        public readonly ?true $is_compact,
         public readonly ?RichText $caption,
     ) {
     }

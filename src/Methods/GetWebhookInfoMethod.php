@@ -14,4 +14,8 @@ class GetWebhookInfoMethod extends TelegramMethod
 {
     protected string $method = 'getWebhookInfo';
     protected array $expect = ['WebhookInfo'];
+
+    public function __construct()
+    {
+    }
 }

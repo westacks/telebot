@@ -15,6 +15,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * @property-read ?string $caption New caption of the message, 0-1024 characters after entities parsing
  * @property-read ?string $parse_mode Mode for parsing entities in the message caption. See formatting options for more details.
  * @property-read ?MessageEntity[] $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
+ * @property-read ?bool $show_caption_above_media Pass True if the caption must be shown above the message media. Supported only for animation, photo and video messages.
  * @property-read ?InlineKeyboardMarkup $reply_markup A JSON-serialized object for an inline keyboard
  *
  * @see https://core.telegram.org/bots/api#editephemeralmessagecaption
@@ -31,6 +32,7 @@ class EditEphemeralMessageCaptionMethod extends TelegramMethod
         public readonly ?string $caption,
         public readonly ?string $parse_mode,
         public readonly ?array $caption_entities,
+        public readonly ?bool $show_caption_above_media,
         public readonly ?InlineKeyboardMarkup $reply_markup,
     ) {
     }

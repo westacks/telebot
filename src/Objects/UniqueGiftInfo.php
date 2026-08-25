@@ -8,6 +8,9 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * Describes a service message about a unique gift that was sent or received.
  * @property-read UniqueGift $gift Information about the gift
  * @property-read string $origin Origin of the gift. Currently, either “upgrade” for gifts upgraded from regular gifts, “transfer” for gifts transferred from other users or channels, “resale” for gifts bought from other users, “gifted_upgrade” for upgrades purchased after the gift was sent, or “offer” for gifts bought or sold through gift purchase offers.
+ * @property-read ?string $text Optional. Text of the message that was added to the gift
+ * @property-read ?MessageEntity[] $entities Optional. Special entities that appear in the text
+ * @property-read ?true $is_private Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them
  * @property-read ?string $last_resale_currency Optional. For gifts bought from other users, the currency in which the payment for the gift was done. Currently, one of “XTR” for Telegram Stars or “TON” for TON grams.
  * @property-read ?int $last_resale_amount Optional. For gifts bought from other users, the price paid for the gift in either Telegram Stars or nanograms
  * @property-read ?string $owned_gift_id Optional. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts
@@ -23,6 +26,9 @@ class UniqueGiftInfo extends TelegramObject
     public function __construct(
         public readonly UniqueGift $gift,
         public readonly string $origin,
+        public readonly ?string $text,
+        public readonly ?array $entities,
+        public readonly ?true $is_private,
         public readonly ?string $last_resale_currency,
         public readonly ?int $last_resale_amount,
         public readonly ?string $owned_gift_id,

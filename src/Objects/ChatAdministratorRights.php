@@ -22,7 +22,8 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?bool $can_pin_messages Optional. True, if the user is allowed to pin messages; for groups and supergroups only
  * @property-read ?bool $can_manage_topics Optional. True, if the user is allowed to create, rename, close, and reopen forum topics; for supergroups only
  * @property-read ?bool $can_manage_direct_messages Optional. True, if the administrator can manage direct messages of the channel and decline suggested posts; for channels only
- * @property-read ?bool $can_manage_tags Optional. True, if the administrator can edit the tags of regular members; for groups and supergroups only. If omitted, defaults to the value of can_pin_messages.
+ * @property-read ?bool $can_manage_tags Optional. True, if the administrator can edit the tags of regular members; for groups and supergroups only
+ * @property-read bool $can_send_welcome_messages True, if the administrator can manage chat welcome messages or directly send them in the case of bots
  *
  * @see https://core.telegram.org/bots/api#chatadministratorrights
  */
@@ -46,6 +47,7 @@ class ChatAdministratorRights extends TelegramObject
         public readonly ?bool $can_manage_topics,
         public readonly ?bool $can_manage_direct_messages,
         public readonly ?bool $can_manage_tags,
+        public readonly bool $can_send_welcome_messages,
     ) {
     }
 }

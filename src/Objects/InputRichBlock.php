@@ -16,14 +16,17 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * - [InputRichBlockAnchor](https://core.telegram.org/bots/api#inputrichblockanchor)
  * - [InputRichBlockList](https://core.telegram.org/bots/api#inputrichblocklist)
  * - [InputRichBlockBlockQuotation](https://core.telegram.org/bots/api#inputrichblockblockquotation)
+ * - [InputRichBlockExpandableBlockQuotation](https://core.telegram.org/bots/api#inputrichblockexpandableblockquotation)
  * - [InputRichBlockPullQuotation](https://core.telegram.org/bots/api#inputrichblockpullquotation)
  * - [InputRichBlockCollage](https://core.telegram.org/bots/api#inputrichblockcollage)
  * - [InputRichBlockSlideshow](https://core.telegram.org/bots/api#inputrichblockslideshow)
  * - [InputRichBlockTable](https://core.telegram.org/bots/api#inputrichblocktable)
  * - [InputRichBlockDetails](https://core.telegram.org/bots/api#inputrichblockdetails)
  * - [InputRichBlockMap](https://core.telegram.org/bots/api#inputrichblockmap)
+ * - [InputRichBlockButtons](https://core.telegram.org/bots/api#inputrichblockbuttons)
  * - [InputRichBlockAnimation](https://core.telegram.org/bots/api#inputrichblockanimation)
  * - [InputRichBlockAudio](https://core.telegram.org/bots/api#inputrichblockaudio)
+ * - [InputRichBlockDocument](https://core.telegram.org/bots/api#inputrichblockdocument)
  * - [InputRichBlockPhoto](https://core.telegram.org/bots/api#inputrichblockphoto)
  * - [InputRichBlockVideo](https://core.telegram.org/bots/api#inputrichblockvideo)
  * - [InputRichBlockVoiceNote](https://core.telegram.org/bots/api#inputrichblockvoicenote)
@@ -45,14 +48,17 @@ abstract class InputRichBlock extends TelegramObject implements Identifiable
             'anchor' => InputRichBlockAnchor::class,
             'list' => InputRichBlockList::class,
             'blockquote' => InputRichBlockBlockQuotation::class,
+            'expandable_blockquote' => InputRichBlockExpandableBlockQuotation::class,
             'pullquote' => InputRichBlockPullQuotation::class,
             'collage' => InputRichBlockCollage::class,
             'slideshow' => InputRichBlockSlideshow::class,
             'table' => InputRichBlockTable::class,
             'details' => InputRichBlockDetails::class,
             'map' => InputRichBlockMap::class,
+            'buttons' => InputRichBlockButtons::class,
             'animation' => InputRichBlockAnimation::class,
             'audio' => InputRichBlockAudio::class,
+            'document' => InputRichBlockDocument::class,
             'photo' => InputRichBlockPhoto::class,
             'video' => InputRichBlockVideo::class,
             'voice_note' => InputRichBlockVoiceNote::class,

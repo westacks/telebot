@@ -18,7 +18,7 @@ class InputFile extends TelegramObject
      * The contents of the file
      * @var string|resource|null
      */
-    protected $contents;
+    protected $contents = null;
 
     public function __construct(mixed $file, ?string $filename = null)
     {

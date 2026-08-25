@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Foundation\TelegramMethod;
+use WeStacks\TeleBot\Objects\EphemeralMessageParameters;
 use WeStacks\TeleBot\Objects\ForceReply;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
 use WeStacks\TeleBot\Objects\InputFile;
@@ -19,8 +20,7 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
- * @property-read ?int $receiver_user_id For outgoing ephemeral messages, unique identifier of the user who will receive the message; for group and supergroup chats only. It is not guaranteed that the user will receive the message, especially if they are offline. See ephemeral message sending for more details.
- * @property-read ?string $callback_query_id For outgoing ephemeral messages, identifier of the callback query which triggered the message if any
+ * @property-read ?EphemeralMessageParameters $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
  * @property-read InputFile|string $document File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More information on Sending Files »
  * @property-read null|InputFile|string $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
  * @property-read ?string $caption Document caption (may also be used when resending documents by file_id), 0-1024 characters after entities parsing
@@ -47,8 +47,7 @@ class SendDocumentMethod extends TelegramMethod
         public readonly int|string $chat_id,
         public readonly ?int $message_thread_id,
         public readonly ?int $direct_messages_topic_id,
-        public readonly ?int $receiver_user_id,
-        public readonly ?string $callback_query_id,
+        public readonly ?EphemeralMessageParameters $ephemeral_message_parameters,
         public readonly InputFile|string $document,
         public readonly null|InputFile|string $thumbnail,
         public readonly ?string $caption,

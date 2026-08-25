@@ -101,9 +101,11 @@ class Scrapper
             }
 
             if ($x->nodeName() === 'ul') {
-                $x->children('li > a')->each(function (Crawler $n) use (&$result, $currentType, $currentName) {
-                    $result[$currentType][$currentName]['subtypes'][] = $type = $n->text();
-                    $result[$currentType][$type]['extends'] = $currentName;
+                $x->children('li')->each(function (Crawler $li) use (&$result, $currentType, $currentName) {
+                    $li->children('a')->each(function (Crawler $n) use (&$result, $currentType, $currentName) {
+                        $result[$currentType][$currentName]['subtypes'][] = $type = $n->text();
+                        $result[$currentType][$type]['extends'] = $currentName;
+                    });
                 });
             }
 

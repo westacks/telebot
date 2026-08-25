@@ -3,6 +3,7 @@
 namespace WeStacks\TeleBot\Methods;
 
 use WeStacks\TeleBot\Foundation\TelegramMethod;
+use WeStacks\TeleBot\Objects\EphemeralMessageParameters;
 use WeStacks\TeleBot\Objects\ForceReply;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
 use WeStacks\TeleBot\Objects\InputRichMessage;
@@ -18,6 +19,7 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
+ * @property-read ?EphemeralMessageParameters $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
  * @property-read InputRichMessage $rich_message The message to be sent
  * @property-read ?bool $disable_notification Sends the message silently. Users will receive a notification with no sound.
  * @property-read ?bool $protect_content Protects the contents of the sent message from forwarding and saving
@@ -39,6 +41,7 @@ class SendRichMessageMethod extends TelegramMethod
         public readonly int|string $chat_id,
         public readonly ?int $message_thread_id,
         public readonly ?int $direct_messages_topic_id,
+        public readonly ?EphemeralMessageParameters $ephemeral_message_parameters,
         public readonly InputRichMessage $rich_message,
         public readonly ?bool $disable_notification,
         public readonly ?bool $protect_content,

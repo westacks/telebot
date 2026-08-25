@@ -28,6 +28,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * - [RichTextHashtag](https://core.telegram.org/bots/api#richtexthashtag)
  * - [RichTextCashtag](https://core.telegram.org/bots/api#richtextcashtag)
  * - [RichTextBotCommand](https://core.telegram.org/bots/api#richtextbotcommand)
+ * - [RichTextButton](https://core.telegram.org/bots/api#richtextbutton)
  * - [RichTextAnchor](https://core.telegram.org/bots/api#richtextanchor)
  * - [RichTextAnchorLink](https://core.telegram.org/bots/api#richtextanchorlink)
  * - [RichTextReference](https://core.telegram.org/bots/api#richtextreference)
@@ -64,6 +65,7 @@ class RichText extends TelegramObject implements Identifiable
             'hashtag' => RichTextHashtag::class,
             'cashtag' => RichTextCashtag::class,
             'bot_command' => RichTextBotCommand::class,
+            'button' => RichTextButton::class,
             'anchor' => RichTextAnchor::class,
             'anchor_link' => RichTextAnchorLink::class,
             'reference' => RichTextReference::class,
