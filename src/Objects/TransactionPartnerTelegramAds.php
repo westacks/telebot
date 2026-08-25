@@ -2,13 +2,15 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Describes a withdrawal transaction to the Telegram Ads platform.
  * @property-read string $type Type of the transaction partner, always “telegram_ads”
  *
  * @see https://core.telegram.org/bots/api#transactionpartnertelegramads
  */
-class TransactionPartnerTelegramAds extends TransactionPartner
+class TransactionPartnerTelegramAds extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

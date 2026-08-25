@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A text with a phone number.
  * @property-read string $type Type of the rich text, always “phone_number”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextphonenumber
  */
-class RichTextPhoneNumber extends RichText
+class RichTextPhoneNumber extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

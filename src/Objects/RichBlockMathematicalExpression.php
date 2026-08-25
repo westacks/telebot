@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A block with a mathematical expression in LaTeX format, corresponding to the custom HTML tag <tg-math-block>.
  * @property-read string $type Type of the block, always “mathematical_expression”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richblockmathematicalexpression
  */
-class RichBlockMathematicalExpression extends RichBlock
+class RichBlockMathematicalExpression extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

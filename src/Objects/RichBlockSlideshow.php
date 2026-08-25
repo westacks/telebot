@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A slideshow, corresponding to the custom HTML tag <tg-slideshow>.
  * @property-read string $type Type of the block, always “slideshow”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richblockslideshow
  */
-class RichBlockSlideshow extends RichBlock
+class RichBlockSlideshow extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

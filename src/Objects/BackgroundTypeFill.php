@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The background is automatically filled based on the selected colors.
  * @property-read string $type Type of the background, always “fill”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#backgroundtypefill
  */
-class BackgroundTypeFill extends BackgroundType
+class BackgroundTypeFill extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

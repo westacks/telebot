@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
  * @property-read string $type Type of the result, must be gif
@@ -22,7 +24,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultgif
  */
-class InlineQueryResultGif extends InlineQueryResult
+class InlineQueryResultGif extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

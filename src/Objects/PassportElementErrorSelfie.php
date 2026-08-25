@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents an issue with the selfie with a document. The error is considered resolved when the file with the selfie changes.
  * @property-read string $source Error source, must be selfie
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#passportelementerrorselfie
  */
-class PassportElementErrorSelfie extends PassportElementError
+class PassportElementErrorSelfie extends TelegramObject
 {
     public function __construct(
         public readonly string $source,

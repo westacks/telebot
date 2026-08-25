@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A block with an anchor, corresponding to the HTML tag <a> with the attribute name.
  * @property-read string $type Type of the block, always “anchor”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richblockanchor
  */
-class RichBlockAnchor extends RichBlock
+class RichBlockAnchor extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

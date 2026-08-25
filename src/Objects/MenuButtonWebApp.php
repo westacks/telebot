@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a menu button, which launches a Web App.
  * @property-read string $type Type of the button, must be web_app
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#menubuttonwebapp
  */
-class MenuButtonWebApp extends MenuButton
+class MenuButtonWebApp extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

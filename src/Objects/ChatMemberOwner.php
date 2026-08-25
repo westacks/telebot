@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a chat member that owns the chat and has all administrator privileges.
  * @property-read string $status The member's status in the chat, always “creator”
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#chatmemberowner
  */
-class ChatMemberOwner extends ChatMember
+class ChatMemberOwner extends TelegramObject
 {
     public function __construct(
         public readonly string $status,

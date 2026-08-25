@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents the content of a contact message to be sent as the result of an inline query.
  * @property-read string $phone_number Contact's phone number
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputcontactmessagecontent
  */
-class InputContactMessageContent extends InputMessageContent
+class InputContactMessageContent extends TelegramObject
 {
     public function __construct(
         public readonly string $phone_number,

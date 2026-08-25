@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The paid media to send is a video.
  * @property-read string $type Type of the media, must be video
@@ -16,7 +18,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputpaidmediavideo
  */
-class InputPaidMediaVideo extends InputPaidMedia
+class InputPaidMediaVideo extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

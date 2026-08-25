@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The background is a wallpaper in the JPEG format.
  * @property-read string $type Type of the background, always “wallpaper”
@@ -12,7 +14,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#backgroundtypewallpaper
  */
-class BackgroundTypeWallpaper extends BackgroundType
+class BackgroundTypeWallpaper extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A quotation with centered text, loosely corresponding to the HTML tag <aside>.
  * @property-read string $type Type of the block, always “pullquote”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputrichblockpullquotation
  */
-class InputRichBlockPullQuotation extends InputRichBlock
+class InputRichBlockPullQuotation extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

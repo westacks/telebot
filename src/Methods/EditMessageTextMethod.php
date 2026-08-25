@@ -19,7 +19,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * @property-read ?string $parse_mode Mode for parsing entities in the message text. See formatting options for more details.
  * @property-read ?MessageEntity[] $entities A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
  * @property-read ?LinkPreviewOptions $link_preview_options Link preview generation options for the message
- * @property-read ?InputRichMessage $rich_message New rich content of the message; required if text isn't specified. Direct upload of new files isn't supported when an inline message is edited.
+ * @property-read ?InputRichMessage $rich_message New rich content of the message; required if text isn't specified. Direct upload of new files and explicit upload of files by a URL isn't supported when an inline message is edited.
  * @property-read ?InlineKeyboardMarkup $reply_markup A JSON-serialized object for an inline keyboard
  *
  * @see https://core.telegram.org/bots/api#editmessagetext

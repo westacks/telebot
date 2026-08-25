@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a location to be sent.
  * @property-read string $type Type of the media, must be location
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputmedialocation
  */
-class InputMediaLocation extends InputPollOptionMedia
+class InputMediaLocation extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

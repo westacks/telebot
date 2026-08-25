@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * An underlined text.
  * @property-read string $type Type of the rich text, always “underline”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextunderline
  */
-class RichTextUnderline extends RichText
+class RichTextUnderline extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

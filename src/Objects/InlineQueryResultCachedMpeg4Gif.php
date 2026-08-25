@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a link to a video animation (H.264/MPEG-4 AVC video without sound) stored on the Telegram servers. By default, this animated MPEG-4 file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
  * @property-read string $type Type of the result, must be mpeg4_gif
@@ -17,7 +19,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcachedmpeg4gif
  */
-class InlineQueryResultCachedMpeg4Gif extends InlineQueryResult
+class InlineQueryResultCachedMpeg4Gif extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

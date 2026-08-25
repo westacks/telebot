@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A link to an anchor.
  * @property-read string $type Type of the rich text, always “anchor_link”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextanchorlink
  */
-class RichTextAnchorLink extends RichText
+class RichTextAnchorLink extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * An italicized text.
  * @property-read string $type Type of the rich text, always “italic”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextitalic
  */
-class RichTextItalic extends RichText
+class RichTextItalic extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

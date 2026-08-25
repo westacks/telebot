@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Formatted date and time.
  * @property-read string $type Type of the rich text, always “date_time”
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextdatetime
  */
-class RichTextDateTime extends RichText
+class RichTextDateTime extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

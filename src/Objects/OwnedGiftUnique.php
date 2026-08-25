@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Describes a unique gift received and owned by a user or a chat.
  * @property-read string $type Type of the gift, always “unique”
@@ -16,7 +18,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#ownedgiftunique
  */
-class OwnedGiftUnique extends OwnedGift
+class OwnedGiftUnique extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

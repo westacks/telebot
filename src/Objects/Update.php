@@ -33,6 +33,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?ChatBoostRemoved $removed_chat_boost Optional. A boost was removed from a chat. The bot must be an administrator in the chat to receive these updates.
  * @property-read ?ManagedBotUpdated $managed_bot Optional. A new bot was created to be managed by the bot, or token or owner of a managed bot was changed
  * @property-read ?BotSubscriptionUpdated $subscription Optional. User payment subscription has changed
+ * @property-read ?MessageGenerationStopped $stopped_message_generation Optional. A user asked the bot to stop the generation of a message
  *
  * @see https://core.telegram.org/bots/api#update
  */
@@ -66,6 +67,7 @@ class Update extends TelegramObject
         public readonly ?ChatBoostRemoved $removed_chat_boost,
         public readonly ?ManagedBotUpdated $managed_bot,
         public readonly ?BotSubscriptionUpdated $subscription,
+        public readonly ?MessageGenerationStopped $stopped_message_generation,
     ) {
     }
 

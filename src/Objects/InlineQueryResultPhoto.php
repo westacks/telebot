@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
  * @property-read string $type Type of the result, must be photo
@@ -21,7 +23,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultphoto
  */
-class InlineQueryResultPhoto extends InlineQueryResult
+class InlineQueryResultPhoto extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

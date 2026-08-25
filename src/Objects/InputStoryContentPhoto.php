@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Describes a photo to post as a story.
  * @property-read string $type Type of the content, must be photo
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputstorycontentphoto
  */
-class InputStoryContentPhoto extends InputStoryContent
+class InputStoryContentPhoto extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

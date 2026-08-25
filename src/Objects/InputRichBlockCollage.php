@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A collage, corresponding to the custom HTML tag <tg-collage>.
  * @property-read string $type Type of the block, always “collage”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputrichblockcollage
  */
-class InputRichBlockCollage extends InputRichBlock
+class InputRichBlockCollage extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

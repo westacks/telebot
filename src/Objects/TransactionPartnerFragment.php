@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Describes a withdrawal transaction with Fragment.
  * @property-read string $type Type of the transaction partner, always “fragment”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#transactionpartnerfragment
  */
-class TransactionPartnerFragment extends TransactionPartner
+class TransactionPartnerFragment extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

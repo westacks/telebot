@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Describes the affiliate program that issued the affiliate commission received via this transaction.
  * @property-read string $type Type of the transaction partner, always “affiliate_program”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#transactionpartneraffiliateprogram
  */
-class TransactionPartnerAffiliateProgram extends TransactionPartner
+class TransactionPartnerAffiliateProgram extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

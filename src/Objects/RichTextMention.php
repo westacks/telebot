@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A mention by a username.
  * @property-read string $type Type of the rich text, always “mention”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextmention
  */
-class RichTextMention extends RichText
+class RichTextMention extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

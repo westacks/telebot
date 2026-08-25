@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents the content of a venue message to be sent as the result of an inline query.
  * @property-read float $latitude Latitude of the venue in degrees
@@ -15,7 +17,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputvenuemessagecontent
  */
-class InputVenueMessageContent extends InputMessageContent
+class InputVenueMessageContent extends TelegramObject
 {
     public function __construct(
         public readonly float $latitude,

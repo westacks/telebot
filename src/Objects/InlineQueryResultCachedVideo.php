@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a link to a video file stored on the Telegram servers. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.
  * @property-read string $type Type of the result, must be video
@@ -18,7 +20,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcachedvideo
  */
-class InlineQueryResultCachedVideo extends InlineQueryResult
+class InlineQueryResultCachedVideo extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a link to an article or web page.
  * @property-read string $type Type of the result, must be article
@@ -17,7 +19,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultarticle
  */
-class InlineQueryResultArticle extends InlineQueryResult
+class InlineQueryResultArticle extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

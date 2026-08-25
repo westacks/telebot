@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A block with a music file, corresponding to the HTML tag <audio>.
  * @property-read string $type Type of the block, always “audio”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputrichblockaudio
  */
-class InputRichBlockAudio extends InputRichBlock
+class InputRichBlockAudio extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

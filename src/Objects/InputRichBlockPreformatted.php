@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A preformatted text block, corresponding to the nested HTML tags <pre> and <code>.
  * @property-read string $type Type of the block, always “pre”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputrichblockpreformatted
  */
-class InputRichBlockPreformatted extends InputRichBlock
+class InputRichBlockPreformatted extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

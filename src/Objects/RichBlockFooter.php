@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A footer, corresponding to the HTML tag <footer>.
  * @property-read string $type Type of the block, always “footer”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richblockfooter
  */
-class RichBlockFooter extends RichBlock
+class RichBlockFooter extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A cashtag.
  * @property-read string $type Type of the rich text, always “cashtag”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextcashtag
  */
-class RichTextCashtag extends RichText
+class RichTextCashtag extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

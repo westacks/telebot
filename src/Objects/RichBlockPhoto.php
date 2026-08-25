@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A block with a photo, corresponding to the HTML tag <img>.
  * @property-read string $type Type of the block, always “photo”
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richblockphoto
  */
-class RichBlockPhoto extends RichBlock
+class RichBlockPhoto extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

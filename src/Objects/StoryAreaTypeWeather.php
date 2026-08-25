@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Describes a story area containing weather information. Currently, a story can have up to 3 weather areas.
  * @property-read string $type Type of the area, always “weather”
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#storyareatypeweather
  */
-class StoryAreaTypeWeather extends StoryAreaType
+class StoryAreaTypeWeather extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

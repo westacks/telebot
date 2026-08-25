@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A block with a voice note, corresponding to the HTML tag <audio>.
  * @property-read string $type Type of the block, always “voice_note”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputrichblockvoicenote
  */
-class InputRichBlockVoiceNote extends InputRichBlock
+class InputRichBlockVoiceNote extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

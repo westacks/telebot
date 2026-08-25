@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents an issue in an unspecified place. The error is considered resolved when new data is added.
  * @property-read string $source Error source, must be unspecified
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#passportelementerrorunspecified
  */
-class PassportElementErrorUnspecified extends PassportElementError
+class PassportElementErrorUnspecified extends TelegramObject
 {
     public function __construct(
         public readonly string $source,

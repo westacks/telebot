@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A custom emoji.
  * @property-read string $type Type of the rich text, always “custom_emoji”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextcustomemoji
  */
-class RichTextCustomEmoji extends RichText
+class RichTextCustomEmoji extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

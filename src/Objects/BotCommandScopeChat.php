@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents the scope of bot commands, covering a specific chat.
  * @property-read string $type Scope type, must be chat
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#botcommandscopechat
  */
-class BotCommandScopeChat extends BotCommandScope
+class BotCommandScopeChat extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

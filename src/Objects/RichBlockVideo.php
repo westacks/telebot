@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A block with a video, corresponding to the HTML tag <video>.
  * @property-read string $type Type of the block, always “video”
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richblockvideo
  */
-class RichBlockVideo extends RichBlock
+class RichBlockVideo extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

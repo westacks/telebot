@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Describes a transaction with payment for paid broadcasting.
  * @property-read string $type Type of the transaction partner, always “telegram_api”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#transactionpartnertelegramapi
  */
-class TransactionPartnerTelegramApi extends TransactionPartner
+class TransactionPartnerTelegramApi extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

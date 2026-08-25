@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A text with an email address.
  * @property-read string $type Type of the rich text, always “email_address”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextemailaddress
  */
-class RichTextEmailAddress extends RichText
+class RichTextEmailAddress extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

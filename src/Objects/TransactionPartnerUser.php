@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Describes a transaction with a user.
  * @property-read string $type Type of the transaction partner, always “user”
@@ -17,7 +19,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#transactionpartneruser
  */
-class TransactionPartnerUser extends TransactionPartner
+class TransactionPartnerUser extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents an issue with the front side of a document. The error is considered resolved when the file with the front side of the document changes.
  * @property-read string $source Error source, must be front_side
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#passportelementerrorfrontside
  */
-class PassportElementErrorFrontSide extends PassportElementError
+class PassportElementErrorFrontSide extends TelegramObject
 {
     public function __construct(
         public readonly string $source,

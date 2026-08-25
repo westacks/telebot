@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents the content of a location message to be sent as the result of an inline query.
  * @property-read float $latitude Latitude of the location in degrees
@@ -13,7 +15,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputlocationmessagecontent
  */
-class InputLocationMessageContent extends InputMessageContent
+class InputLocationMessageContent extends TelegramObject
 {
     public function __construct(
         public readonly float $latitude,

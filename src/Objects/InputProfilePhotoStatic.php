@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A static profile photo in the .JPG format.
  * @property-read string $type Type of the profile photo, must be static
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputprofilephotostatic
  */
-class InputProfilePhotoStatic extends InputProfilePhoto
+class InputProfilePhotoStatic extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

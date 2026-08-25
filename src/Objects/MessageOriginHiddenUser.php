@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The message was originally sent by an unknown user.
  * @property-read string $type Type of the message origin, always “hidden_user”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#messageoriginhiddenuser
  */
-class MessageOriginHiddenUser extends MessageOrigin
+class MessageOriginHiddenUser extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

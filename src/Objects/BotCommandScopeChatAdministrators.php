@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents the scope of bot commands, covering all administrators of a specific group or supergroup chat.
  * @property-read string $type Scope type, must be chat_administrators
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#botcommandscopechatadministrators
  */
-class BotCommandScopeChatAdministrators extends BotCommandScope
+class BotCommandScopeChatAdministrators extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

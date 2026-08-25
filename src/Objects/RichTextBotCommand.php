@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A bot command.
  * @property-read string $type Type of the rich text, always “bot_command”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextbotcommand
  */
-class RichTextBotCommand extends RichText
+class RichTextBotCommand extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

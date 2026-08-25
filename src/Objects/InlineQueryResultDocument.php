@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.
  * @property-read string $type Type of the result, must be document
@@ -21,7 +23,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultdocument
  */
-class InlineQueryResultDocument extends InlineQueryResult
+class InlineQueryResultDocument extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

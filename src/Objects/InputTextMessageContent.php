@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents the content of a text message to be sent as the result of an inline query.
  * @property-read string $message_text Text of the message to be sent, 1-4096 characters
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputtextmessagecontent
  */
-class InputTextMessageContent extends InputMessageContent
+class InputTextMessageContent extends TelegramObject
 {
     public function __construct(
         public readonly string $message_text,

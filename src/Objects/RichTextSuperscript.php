@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A superscript text.
  * @property-read string $type Type of the rich text, always “superscript”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextsuperscript
  */
-class RichTextSuperscript extends RichText
+class RichTextSuperscript extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

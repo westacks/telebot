@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The message was originally sent by a known user.
  * @property-read string $type Type of the message origin, always “user”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#messageoriginuser
  */
-class MessageOriginUser extends MessageOrigin
+class MessageOriginUser extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

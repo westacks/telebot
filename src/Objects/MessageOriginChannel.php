@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The message was originally sent to a channel chat.
  * @property-read string $type Type of the message origin, always “channel”
@@ -12,7 +14,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#messageoriginchannel
  */
-class MessageOriginChannel extends MessageOrigin
+class MessageOriginChannel extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

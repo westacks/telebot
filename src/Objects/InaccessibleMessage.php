@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * This object describes a message that was deleted or is otherwise inaccessible to the bot.
  * @property-read Chat $chat Chat the message belonged to
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inaccessiblemessage
  */
-class InaccessibleMessage extends MaybeInaccessibleMessage
+class InaccessibleMessage extends TelegramObject
 {
     public function __construct(
         public readonly Chat $chat,

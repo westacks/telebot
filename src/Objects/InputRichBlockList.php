@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A list of blocks, corresponding to the HTML tag <ul> or <ol> with multiple nested tags <li>.
  * @property-read string $type Type of the block, always “list”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputrichblocklist
  */
-class InputRichBlockList extends InputRichBlock
+class InputRichBlockList extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

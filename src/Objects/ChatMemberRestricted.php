@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a chat member that is under certain restrictions in the chat. Supergroups only.
  * @property-read string $status The member's status in the chat, always “restricted”
@@ -28,7 +30,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#chatmemberrestricted
  */
-class ChatMemberRestricted extends ChatMember
+class ChatMemberRestricted extends TelegramObject
 {
     public function __construct(
         public readonly string $status,

@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The boost was obtained by the creation of Telegram Premium gift codes to boost a chat. Each such code boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription.
  * @property-read string $source Source of the boost, always “gift_code”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#chatboostsourcegiftcode
  */
-class ChatBoostSourceGiftCode extends ChatBoostSource
+class ChatBoostSourceGiftCode extends TelegramObject
 {
     public function __construct(
         public readonly string $source,

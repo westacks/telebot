@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The withdrawal succeeded.
  * @property-read string $type Type of the state, always “succeeded”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#revenuewithdrawalstatesucceeded
  */
-class RevenueWithdrawalStateSucceeded extends RevenueWithdrawalState
+class RevenueWithdrawalStateSucceeded extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

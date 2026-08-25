@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a link to an MP3 audio file stored on the Telegram servers. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
  * @property-read string $type Type of the result, must be audio
@@ -15,7 +17,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcachedaudio
  */
-class InlineQueryResultCachedAudio extends InlineQueryResult
+class InlineQueryResultCachedAudio extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

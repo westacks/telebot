@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The paid media isn't available before the payment.
  * @property-read string $type Type of the paid media, always “preview”
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#paidmediapreview
  */
-class PaidMediaPreview extends PaidMedia
+class PaidMediaPreview extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a chat member that was banned in the chat and can't return to the chat or view chat messages.
  * @property-read string $status The member's status in the chat, always “kicked”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#chatmemberbanned
  */
-class ChatMemberBanned extends ChatMember
+class ChatMemberBanned extends TelegramObject
 {
     public function __construct(
         public readonly string $status,

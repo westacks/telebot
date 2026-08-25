@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * An animated profile photo in the MPEG4 format.
  * @property-read string $type Type of the profile photo, must be animated
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputprofilephotoanimated
  */
-class InputProfilePhotoAnimated extends InputProfilePhoto
+class InputProfilePhotoAnimated extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

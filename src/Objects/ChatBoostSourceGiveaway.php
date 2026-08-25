@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The boost was obtained by the creation of a Telegram Premium or a Telegram Star giveaway. This boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription for Telegram Premium giveaways and prize_star_count / 500 times for one year for Telegram Star giveaways.
  * @property-read string $source Source of the boost, always “giveaway”
@@ -12,7 +14,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#chatboostsourcegiveaway
  */
-class ChatBoostSourceGiveaway extends ChatBoostSource
+class ChatBoostSourceGiveaway extends TelegramObject
 {
     public function __construct(
         public readonly string $source,

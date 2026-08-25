@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a chat member that has no additional privileges or restrictions.
  * @property-read string $status The member's status in the chat, always “member”
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#chatmembermember
  */
-class ChatMemberMember extends ChatMember
+class ChatMemberMember extends TelegramObject
 {
     public function __construct(
         public readonly string $status,

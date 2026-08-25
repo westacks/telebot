@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The background is a gradient fill.
  * @property-read string $type Type of the background fill, always “gradient”
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#backgroundfillgradient
  */
-class BackgroundFillGradient extends BackgroundFill
+class BackgroundFillGradient extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

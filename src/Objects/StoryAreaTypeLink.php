@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Describes a story area pointing to an HTTP or tg:// link. Currently, a story can have up to 3 link areas.
  * @property-read string $type Type of the area, always “link”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#storyareatypelink
  */
-class StoryAreaTypeLink extends StoryAreaType
+class StoryAreaTypeLink extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

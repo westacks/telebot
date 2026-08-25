@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Describes a regular gift owned by a user or a chat.
  * @property-read string $type Type of the gift, always “regular”
@@ -22,7 +24,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#ownedgiftregular
  */
-class OwnedGiftRegular extends OwnedGift
+class OwnedGiftRegular extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

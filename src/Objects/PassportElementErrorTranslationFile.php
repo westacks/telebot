@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents an issue with one of the files that constitute the translation of a document. The error is considered resolved when the file changes.
  * @property-read string $source Error source, must be translation_file
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#passportelementerrortranslationfile
  */
-class PassportElementErrorTranslationFile extends PassportElementError
+class PassportElementErrorTranslationFile extends TelegramObject
 {
     public function __construct(
         public readonly string $source,

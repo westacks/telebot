@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a Game.
  * @property-read string $type Type of the result, must be game
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultgame
  */
-class InlineQueryResultGame extends InlineQueryResult
+class InlineQueryResultGame extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

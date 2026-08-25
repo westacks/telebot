@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A block quotation, corresponding to the HTML tag <blockquote>.
  * @property-read string $type Type of the block, always “blockquote”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richblockblockquotation
  */
-class RichBlockBlockQuotation extends RichBlock
+class RichBlockBlockQuotation extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

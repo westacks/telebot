@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Describes a story area pointing to a suggested reaction. Currently, a story can have up to 5 suggested reaction areas.
  * @property-read string $type Type of the area, always “suggested_reaction”
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#storyareatypesuggestedreaction
  */
-class StoryAreaTypeSuggestedReaction extends StoryAreaType
+class StoryAreaTypeSuggestedReaction extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

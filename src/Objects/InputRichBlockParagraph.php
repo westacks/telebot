@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A text paragraph, corresponding to the HTML tag <p>.
  * @property-read string $type Type of the block, always “paragraph”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputrichblockparagraph
  */
-class InputRichBlockParagraph extends InputRichBlock
+class InputRichBlockParagraph extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

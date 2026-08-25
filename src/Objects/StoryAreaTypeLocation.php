@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Describes a story area pointing to a location. Currently, a story can have up to 10 location areas.
  * @property-read string $type Type of the area, always “location”
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#storyareatypelocation
  */
-class StoryAreaTypeLocation extends StoryAreaType
+class StoryAreaTypeLocation extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

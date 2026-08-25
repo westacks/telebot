@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * This object represents a message.
  * @property-read int $message_id Unique message identifier inside this chat; 0 for ephemeral messages. In specific instances (e.g., a message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent.
@@ -95,8 +97,9 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?ChatBackground $chat_background_set Optional. Service message: chat background set
  * @property-read ?ChecklistTasksDone $checklist_tasks_done Optional. Service message: some tasks in a checklist were marked as done or not done
  * @property-read ?ChecklistTasksAdded $checklist_tasks_added Optional. Service message: tasks were added to a checklist
- * @property-read ?CommunityChatAdded $community_chat_added Optional. Service message: chat added to a Community
- * @property-read ?CommunityChatRemoved $community_chat_removed Optional. Service message: chat removed from a Community
+ * @property-read ?CommunityChatAdded $community_chat_added Optional. Service message: chat or bot added to a Community
+ * @property-read ?CommunityChatJoined $community_chat_joined Optional. Service message: chat was joined by a user from a Community
+ * @property-read ?CommunityChatRemoved $community_chat_removed Optional. Service message: chat or bot removed from a Community
  * @property-read ?DirectMessagePriceChanged $direct_message_price_changed Optional. Service message: the price for paid messages in the corresponding direct messages chat of a channel has changed
  * @property-read ?ForumTopicCreated $forum_topic_created Optional. Service message: forum topic created
  * @property-read ?ForumTopicEdited $forum_topic_edited Optional. Service message: forum topic edited
@@ -126,7 +129,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#message
  */
-class Message extends MaybeInaccessibleMessage
+class Message extends TelegramObject
 {
     public function __construct(
         public readonly int $message_id,
@@ -221,6 +224,7 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?ChecklistTasksDone $checklist_tasks_done,
         public readonly ?ChecklistTasksAdded $checklist_tasks_added,
         public readonly ?CommunityChatAdded $community_chat_added,
+        public readonly ?CommunityChatJoined $community_chat_joined,
         public readonly ?CommunityChatRemoved $community_chat_removed,
         public readonly ?DirectMessagePriceChanged $direct_message_price_changed,
         public readonly ?ForumTopicCreated $forum_topic_created,

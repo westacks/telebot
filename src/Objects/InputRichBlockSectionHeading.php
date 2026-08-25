@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A section heading, corresponding to the HTML tags <h1>, <h2>, <h3>, <h4>, <h5>, or <h6>.
  * @property-read string $type Type of the block, always “heading”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputrichblocksectionheading
  */
-class InputRichBlockSectionHeading extends InputRichBlock
+class InputRichBlockSectionHeading extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

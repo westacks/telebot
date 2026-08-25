@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * An expandable block for details disclosure, corresponding to the HTML tag <details>.
  * @property-read string $type Type of the block, always “details”
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputrichblockdetails
  */
-class InputRichBlockDetails extends InputRichBlock
+class InputRichBlockDetails extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

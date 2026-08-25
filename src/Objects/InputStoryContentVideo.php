@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Describes a video to post as a story.
  * @property-read string $type Type of the content, must be video
@@ -12,7 +14,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputstorycontentvideo
  */
-class InputStoryContentVideo extends InputStoryContent
+class InputStoryContentVideo extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

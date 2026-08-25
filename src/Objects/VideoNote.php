@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Objects;
 use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
- * This object represents a video message (available in Telegram apps as of v.4.0).
+ * This object represents a video message.
  * @property-read string $file_id Identifier for this file, which can be used to download or reuse the file
  * @property-read string $file_unique_id Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
  * @property-read int $length Video width and height (diameter of the video message) as defined by the sender

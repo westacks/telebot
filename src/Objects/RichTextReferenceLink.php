@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A link to a reference.
  * @property-read string $type Type of the rich text, always “reference_link”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextreferencelink
  */
-class RichTextReferenceLink extends RichText
+class RichTextReferenceLink extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

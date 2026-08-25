@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents an issue with a list of scans. The error is considered resolved when the list of files containing the scans changes.
  * @property-read string $source Error source, must be files
@@ -11,7 +13,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#passportelementerrorfiles
  */
-class PassportElementErrorFiles extends PassportElementError
+class PassportElementErrorFiles extends TelegramObject
 {
     public function __construct(
         public readonly string $source,

@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The background is a .PNG or .TGV (gzipped subset of SVG with MIME type “application/x-tgwallpattern”) pattern to be combined with the background fill chosen by the user.
  * @property-read string $type Type of the background, always “pattern”
@@ -13,7 +15,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#backgroundtypepattern
  */
-class BackgroundTypePattern extends BackgroundType
+class BackgroundTypePattern extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

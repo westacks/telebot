@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a venue to be sent.
  * @property-read string $type Type of the media, must be venue
@@ -16,7 +18,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputmediavenue
  */
-class InputMediaVenue extends InputPollOptionMedia
+class InputMediaVenue extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

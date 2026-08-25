@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The background is a freeform gradient that rotates after every message in the chat.
  * @property-read string $type Type of the background fill, always “freeform_gradient”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#backgroundfillfreeformgradient
  */
-class BackgroundFillFreeformGradient extends BackgroundFill
+class BackgroundFillFreeformGradient extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

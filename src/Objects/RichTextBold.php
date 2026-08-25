@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A bold text.
  * @property-read string $type Type of the rich text, always “bold”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextbold
  */
-class RichTextBold extends RichText
+class RichTextBold extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

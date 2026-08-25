@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A text with a bank card number.
  * @property-read string $type Type of the rich text, always “bank_card_number”
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#richtextbankcardnumber
  */
-class RichTextBankCardNumber extends RichText
+class RichTextBankCardNumber extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

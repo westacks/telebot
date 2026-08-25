@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents an issue in one of the data fields that was provided by the user. The error is considered resolved when the field's value changes.
  * @property-read string $source Error source, must be data
@@ -12,7 +14,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#passportelementerrordatafield
  */
-class PassportElementErrorDataField extends PassportElementError
+class PassportElementErrorDataField extends TelegramObject
 {
     public function __construct(
         public readonly string $source,

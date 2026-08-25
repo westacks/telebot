@@ -2,23 +2,27 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * A table, corresponding to the HTML tag <table>.
  * @property-read string $type Type of the block, always “table”
  * @property-read RichBlockTableCell[][] $cells Cells of the table
  * @property-read ?true $is_bordered Optional. True, if the table has borders
  * @property-read ?true $is_striped Optional. True, if the table is striped
+ * @property-read ?true $is_compact Optional. True, if table cells have smaller indents
  * @property-read ?RichText $caption Optional. Caption of the table
  *
  * @see https://core.telegram.org/bots/api#richblocktable
  */
-class RichBlockTable extends RichBlock
+class RichBlockTable extends TelegramObject
 {
     public function __construct(
         public readonly string $type,
         public readonly array $cells,
         public readonly ?true $is_bordered,
         public readonly ?true $is_striped,
+        public readonly ?true $is_compact,
         public readonly ?RichText $caption,
     ) {
     }

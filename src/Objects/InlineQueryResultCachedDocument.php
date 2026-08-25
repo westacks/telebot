@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file.
  * @property-read string $type Type of the result, must be document
@@ -17,7 +19,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultcacheddocument
  */
-class InlineQueryResultCachedDocument extends InlineQueryResult
+class InlineQueryResultCachedDocument extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

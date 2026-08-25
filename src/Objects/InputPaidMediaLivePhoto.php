@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The paid media to send is a live photo.
  * @property-read string $type Type of the media, must be live_photo
@@ -10,7 +12,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputpaidmedialivephoto
  */
-class InputPaidMediaLivePhoto extends InputPaidMedia
+class InputPaidMediaLivePhoto extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

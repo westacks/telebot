@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * The background is taken directly from a built-in chat theme.
  * @property-read string $type Type of the background, always “chat_theme”
@@ -9,7 +11,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#backgroundtypechattheme
  */
-class BackgroundTypeChatTheme extends BackgroundType
+class BackgroundTypeChatTheme extends TelegramObject
 {
     public function __construct(
         public readonly string $type,

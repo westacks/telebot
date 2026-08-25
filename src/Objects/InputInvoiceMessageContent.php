@@ -2,6 +2,8 @@
 
 namespace WeStacks\TeleBot\Objects;
 
+use WeStacks\TeleBot\Foundation\TelegramObject;
+
 /**
  * Represents the content of an invoice message to be sent as the result of an inline query.
  * @property-read string $title Product name, 1-32 characters
@@ -27,7 +29,7 @@ namespace WeStacks\TeleBot\Objects;
  *
  * @see https://core.telegram.org/bots/api#inputinvoicemessagecontent
  */
-class InputInvoiceMessageContent extends InputMessageContent
+class InputInvoiceMessageContent extends TelegramObject
 {
     public function __construct(
         public readonly string $title,
