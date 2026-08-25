@@ -13,13 +13,13 @@
     ],
     "require": {
         "php": "^8.2",
-        "guzzlehttp/guzzle": "^7.0"
+        "guzzlehttp/guzzle": "^8.0"
     },
     "require-dev": {
         "doctrine/inflector": "^2.0",
         "laravel/pint": "^1.0",
         "nette/php-generator": "^4.0",
-        "pestphp/pest": "^4.0",
+        "pestphp/pest": "^5.0",
         "psy/psysh": "^0.12",
         "rector/rector": "^2.0",
         "symfony/browser-kit": "^8.0",
