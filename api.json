@@ -18114,7 +18114,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Style of the button. Must be one of \u201cdanger\u201d (red), \u201csuccess\u201d (green), \u201cprimary\u201d (blue) or \u201clink\u201d (the button is shown as a regular link without borders). If omitted, then an app-specific style is used. The style \u201clink\u201d is allowed only for callback buttons."
+                    "description": "Optional. Style of the button. Must be one of \u201cdanger\u201d, \u201csuccess\u201d, \u201cprimary\u201d, or \u201clink\u201d (the button is shown as a regular link without borders). Apps may use theme-specific colors for the button background and text based on the style. The style \u201clink\u201d is allowed only for callback buttons."
                 },
                 "url": {
                     "type": [
@@ -19187,7 +19187,7 @@
             "extends": "RichBlock",
             "href": "https://core.telegram.org/bots/api#richblockexpandableblockquotation",
             "description": [
-                "A block quotation, corresponding to the HTML tag <blockquote> with custom attribute \"collapsed\"."
+                "A block quotation, corresponding to the HTML tag <blockquote> with custom attribute \"expandable\"."
             ],
             "fields": {
                 "type": {
@@ -19917,7 +19917,7 @@
             "extends": "InputRichBlock",
             "href": "https://core.telegram.org/bots/api#inputrichblockexpandableblockquotation",
             "description": [
-                "A block quotation, corresponding to the HTML tag <blockquote> with custom attribute \"collapsed\"."
+                "A block quotation, corresponding to the HTML tag <blockquote> with custom attribute \"expandable\"."
             ],
             "fields": {
                 "type": {
