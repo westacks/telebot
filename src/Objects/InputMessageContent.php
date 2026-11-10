@@ -13,6 +13,8 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * - [InputVenueMessageContent](https://core.telegram.org/bots/api#inputvenuemessagecontent)
  * - [InputContactMessageContent](https://core.telegram.org/bots/api#inputcontactmessagecontent)
  * - [InputInvoiceMessageContent](https://core.telegram.org/bots/api#inputinvoicemessagecontent)
+ * - [InputWidgetMessageContent](https://core.telegram.org/bots/api#inputwidgetmessagecontent)
+ * - [InputSharedWidgetMessageContent](https://core.telegram.org/bots/api#inputsharedwidgetmessagecontent)
  *
  * @see https://core.telegram.org/bots/api#inputmessagecontent
  */

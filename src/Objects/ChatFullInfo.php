@@ -59,6 +59,8 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?int $paid_message_star_count Optional. The number of Telegram Stars a general user has to pay to send a message to the chat
  * @property-read ?User $guard_bot Optional. The bot that processes join request queries in the chat. The field is only available to chat administrators.
  * @property-read ?Community $community Optional. The Community to which the chat belongs
+ * @property-read ?TonWalletCard $ton_wallet_card Optional. For private chats, the TON wallet card of the user, which is shown on their profile page
+ * @property-read ?ChatShareTheme $share_theme Optional. For private chats, supergroups and channels, the theme of the screen for sharing a link to the user or the chat; omitted if the default theme is used
  *
  * @see https://core.telegram.org/bots/api#chatfullinfo
  */
@@ -118,6 +120,8 @@ class ChatFullInfo extends TelegramObject
         public readonly ?int $paid_message_star_count,
         public readonly ?User $guard_bot,
         public readonly ?Community $community,
+        public readonly ?TonWalletCard $ton_wallet_card,
+        public readonly ?ChatShareTheme $share_theme,
     ) {
     }
 }

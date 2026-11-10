@@ -9,7 +9,7 @@ use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
  * Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
  *
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
- * @property-read null|int|string $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username.
+ * @property-read null|int|string $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username.
  * @property-read ?int $message_id Required if inline_message_id is not specified. Identifier of the message to edit.
  * @property-read ?string $inline_message_id Required if chat_id and message_id are not specified. Identifier of the inline message.
  * @property-read float $latitude Latitude of new location

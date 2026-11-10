@@ -54,9 +54,10 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?Video $video Optional. Message is a video, information about the video
  * @property-read ?VideoNote $video_note Optional. Message is a video note, information about the video message
  * @property-read ?Voice $voice Optional. Message is a voice message, information about the file
- * @property-read ?string $caption Optional. Caption for the animation, audio, document, paid media, photo, video or voice
+ * @property-read ?Widget $widget Optional. Message is an HTML widget, information about the widget
+ * @property-read ?string $caption Optional. Caption for the animation, audio, document, live photo, paid media, photo, video, voice, or widget
  * @property-read ?MessageEntity[] $caption_entities Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption
- * @property-read ?true $show_caption_above_media Optional. True, if the caption must be shown above the message media
+ * @property-read ?true $show_caption_above_media Optional. True, if the caption must be shown above the message media or the widget
  * @property-read ?true $has_media_spoiler Optional. True, if the message media is covered by a spoiler animation
  * @property-read ?Checklist $checklist Optional. Message is a checklist
  * @property-read ?Contact $contact Optional. Message is a shared contact, information about the contact
@@ -111,6 +112,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?GiveawayCompleted $giveaway_completed Optional. Service message: a giveaway without public winners was completed
  * @property-read ?ManagedBotCreated $managed_bot_created Optional. Service message: user created a bot that will be managed by the current bot
  * @property-read ?PaidMessagePriceChanged $paid_message_price_changed Optional. Service message: the price for paid messages has changed in the chat
+ * @property-read ?PaidMessagesWaived $paid_messages_waived Optional. Service message: the sender of the message used a link of the other user, which allows sending messages to the user without paying Telegram Stars
  * @property-read ?PollOptionAdded $poll_option_added Optional. Service message: answer option was added to a poll
  * @property-read ?PollOptionDeleted $poll_option_deleted Optional. Service message: answer option was deleted from a poll
  * @property-read ?SuggestedPostApproved $suggested_post_approved Optional. Service message: a suggested post was approved
@@ -118,6 +120,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?SuggestedPostDeclined $suggested_post_declined Optional. Service message: a suggested post was declined
  * @property-read ?SuggestedPostPaid $suggested_post_paid Optional. Service message: payment for a suggested post was received
  * @property-read ?SuggestedPostRefunded $suggested_post_refunded Optional. Service message: payment for a suggested post was refunded
+ * @property-read ?TonWalletTransfer $ton_wallet_transfer Optional. Service message: a transfer with a TON wallet
  * @property-read ?VideoChatScheduled $video_chat_scheduled Optional. Service message: video chat scheduled
  * @property-read ?VideoChatStarted $video_chat_started Optional. Service message: video chat started
  * @property-read ?VideoChatEnded $video_chat_ended Optional. Service message: video chat ended
@@ -180,6 +183,7 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?Video $video,
         public readonly ?VideoNote $video_note,
         public readonly ?Voice $voice,
+        public readonly ?Widget $widget,
         public readonly ?string $caption,
         public readonly ?array $caption_entities,
         public readonly ?true $show_caption_above_media,
@@ -237,6 +241,7 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?GiveawayCompleted $giveaway_completed,
         public readonly ?ManagedBotCreated $managed_bot_created,
         public readonly ?PaidMessagePriceChanged $paid_message_price_changed,
+        public readonly ?PaidMessagesWaived $paid_messages_waived,
         public readonly ?PollOptionAdded $poll_option_added,
         public readonly ?PollOptionDeleted $poll_option_deleted,
         public readonly ?SuggestedPostApproved $suggested_post_approved,
@@ -244,6 +249,7 @@ class Message extends MaybeInaccessibleMessage
         public readonly ?SuggestedPostDeclined $suggested_post_declined,
         public readonly ?SuggestedPostPaid $suggested_post_paid,
         public readonly ?SuggestedPostRefunded $suggested_post_refunded,
+        public readonly ?TonWalletTransfer $ton_wallet_transfer,
         public readonly ?VideoChatScheduled $video_chat_scheduled,
         public readonly ?VideoChatStarted $video_chat_started,
         public readonly ?VideoChatEnded $video_chat_ended,

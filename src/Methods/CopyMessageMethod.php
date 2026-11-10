@@ -12,12 +12,12 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
 use WeStacks\TeleBot\Objects\SuggestedPostParameters;
 
 /**
- * Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
+ * Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, invoice messages, and widget messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
  *
- * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
+ * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
- * @property-read int|string $from_chat_id Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup or channel in the format @username)
+ * @property-read int|string $from_chat_id Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup, or channel in the format @username)
  * @property-read int $message_id Message identifier in the chat specified in from_chat_id
  * @property-read ?int $video_start_timestamp New start timestamp for the copied video in the message
  * @property-read ?string $caption New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept.

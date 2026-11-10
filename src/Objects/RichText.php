@@ -24,6 +24,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * - [RichTextEmailAddress](https://core.telegram.org/bots/api#richtextemailaddress)
  * - [RichTextPhoneNumber](https://core.telegram.org/bots/api#richtextphonenumber)
  * - [RichTextBankCardNumber](https://core.telegram.org/bots/api#richtextbankcardnumber)
+ * - [RichTextTonAddress](https://core.telegram.org/bots/api#richtexttonaddress)
  * - [RichTextMention](https://core.telegram.org/bots/api#richtextmention)
  * - [RichTextHashtag](https://core.telegram.org/bots/api#richtexthashtag)
  * - [RichTextCashtag](https://core.telegram.org/bots/api#richtextcashtag)
@@ -61,6 +62,7 @@ class RichText extends TelegramObject implements Identifiable
             'email_address' => RichTextEmailAddress::class,
             'phone_number' => RichTextPhoneNumber::class,
             'bank_card_number' => RichTextBankCardNumber::class,
+            'ton_address' => RichTextTonAddress::class,
             'mention' => RichTextMention::class,
             'hashtag' => RichTextHashtag::class,
             'cashtag' => RichTextCashtag::class,
