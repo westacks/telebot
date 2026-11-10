@@ -14,7 +14,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?bool $can_send_video_notes Optional. True, if the user is allowed to send video notes
  * @property-read ?bool $can_send_voice_notes Optional. True, if the user is allowed to send voice notes
  * @property-read ?bool $can_send_polls Optional. True, if the user is allowed to send polls and checklists
- * @property-read ?bool $can_send_other_messages Optional. True, if the user is allowed to send animations, games, stickers and use inline bots
+ * @property-read ?bool $can_send_other_messages Optional. True, if the user is allowed to send animations, games, stickers, widgets and use inline bots
  * @property-read ?bool $can_add_web_page_previews Optional. True, if the user is allowed to add web page previews to their messages
  * @property-read ?bool $can_react_to_messages Optional. True, if the user is allowed to react to messages. If omitted, defaults to the value of can_send_messages.
  * @property-read ?bool $can_edit_tag Optional. True, if the user is allowed to edit their own tag. If omitted, defaults to the value of can_pin_messages.

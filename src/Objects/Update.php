@@ -21,6 +21,8 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?InlineQuery $inline_query Optional. New incoming inline query
  * @property-read ?ChosenInlineResult $chosen_inline_result Optional. The result of an inline query that was chosen by a user and sent to their chat partner. Please see our documentation on the feedback collecting for details on how to enable these updates for your bot.
  * @property-read ?CallbackQuery $callback_query Optional. New incoming callback query
+ * @property-read ?WidgetQuery $widget_query Optional. New incoming query from a widget in a message sent by the bot or via the bot
+ * @property-read ?SharedWidgetQuery $shared_widget_query Optional. New incoming query from a forwarded message with a shared widget
  * @property-read ?ShippingQuery $shipping_query Optional. New incoming shipping query. Only for invoices with flexible price.
  * @property-read ?PreCheckoutQuery $pre_checkout_query Optional. New incoming pre-checkout query. Contains full information about checkout.
  * @property-read ?PaidMediaPurchased $purchased_paid_media Optional. A user purchased paid media with a non-empty payload sent by the bot in a non-channel chat
@@ -55,6 +57,8 @@ class Update extends TelegramObject
         public readonly ?InlineQuery $inline_query,
         public readonly ?ChosenInlineResult $chosen_inline_result,
         public readonly ?CallbackQuery $callback_query,
+        public readonly ?WidgetQuery $widget_query,
+        public readonly ?SharedWidgetQuery $shared_widget_query,
         public readonly ?ShippingQuery $shipping_query,
         public readonly ?PreCheckoutQuery $pre_checkout_query,
         public readonly ?PaidMediaPurchased $purchased_paid_media,

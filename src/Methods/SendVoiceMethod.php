@@ -17,7 +17,7 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
  *
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
- * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username
+ * @property-read null|int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
  * @property-read ?int $direct_messages_topic_id Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
  * @property-read ?EphemeralMessageParameters $ephemeral_message_parameters A JSON-serialized object containing the parameters of the ephemeral message to send
@@ -43,7 +43,7 @@ class SendVoiceMethod extends TelegramMethod
 
     public function __construct(
         public readonly ?string $business_connection_id,
-        public readonly int|string $chat_id,
+        public readonly null|int|string $chat_id,
         public readonly ?int $message_thread_id,
         public readonly ?int $direct_messages_topic_id,
         public readonly ?EphemeralMessageParameters $ephemeral_message_parameters,

@@ -1,6 +1,6 @@
 {
-    "version": "Bot API 10.3",
-    "release_date": "August 24, 2026",
+    "version": "Bot API 10.4",
+    "release_date": "November 9, 2026",
     "methods": {
         "getUpdates": {
             "href": "https://core.telegram.org/bots/api#getupdates",
@@ -177,8 +177,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -298,7 +298,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username"
                 },
                 "message_thread_id": {
                     "type": [
@@ -320,7 +320,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup or channel in the format @username)"
+                    "description": "Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup, or channel in the format @username)"
                 },
                 "video_start_timestamp": {
                     "type": [
@@ -381,7 +381,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username"
                 },
                 "message_thread_id": {
                     "type": [
@@ -403,7 +403,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the chat where the original messages were sent (or username of the target bot, supergroup or channel in the format @username)"
+                    "description": "Unique identifier for the chat where the original messages were sent (or username of the target bot, supergroup, or channel in the format @username)"
                 },
                 "message_ids": {
                     "type": [
@@ -431,7 +431,7 @@
         "copyMessage": {
             "href": "https://core.telegram.org/bots/api#copymessage",
             "description": [
-                "Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success."
+                "Use this method to copy messages of any kind. Service messages, paid media messages, giveaway messages, giveaway winners messages, invoice messages, and widget messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success."
             ],
             "returns": [
                 "MessageId"
@@ -443,7 +443,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username"
                 },
                 "message_thread_id": {
                     "type": [
@@ -465,7 +465,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup or channel in the format @username)"
+                    "description": "Unique identifier for the chat where the original message was sent (or username of the target bot, supergroup, or channel in the format @username)"
                 },
                 "message_id": {
                     "type": [
@@ -566,7 +566,7 @@
         "copyMessages": {
             "href": "https://core.telegram.org/bots/api#copymessages",
             "description": [
-                "Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an Array of MessageId of the sent messages is returned."
+                "Use this method to copy messages of any kind. If some of the specified messages can't be found or copied, they are skipped. Service messages, paid media messages, giveaway messages, giveaway winners messages, invoice messages, and widget messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_ids is known to the bot. The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message. Album grouping is kept for copied messages. On success, an Array of MessageId of the sent messages is returned."
             ],
             "returns": [
                 "Array<MessageId>"
@@ -578,7 +578,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username"
                 },
                 "message_thread_id": {
                     "type": [
@@ -600,7 +600,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the chat where the original messages were sent (or username of the target bot, supergroup or channel in the format @username)"
+                    "description": "Unique identifier for the chat where the original messages were sent (or username of the target bot, supergroup, or channel in the format @username)"
                 },
                 "message_ids": {
                     "type": [
@@ -653,8 +653,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -795,8 +795,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -946,8 +946,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -1103,8 +1103,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -1246,8 +1246,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -1439,8 +1439,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -1610,8 +1610,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -1745,8 +1745,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -1853,6 +1853,267 @@
                 }
             }
         },
+        "sendWidget": {
+            "href": "https://core.telegram.org/bots/api#sendwidget",
+            "description": [
+                "Use this method to send a message with an HTML widget. Currently, in the production environment, widgets can be sent only to private chats, and sent widgets automatically have protected content and therefore can't be forwarded. On success, the sent Message is returned."
+            ],
+            "returns": [
+                "Message"
+            ],
+            "parameters": {
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
+                },
+                "message_thread_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
+                },
+                "html": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "HTML code of the widget, 1-32768 bytes. The code must not exceed 4096 bytes when compressed by zlib with the maximum compression level."
+                },
+                "width": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Width of the widget in logical pixels; omit if the widget must occupy the whole width of the message bubble. The width is clamped by the app to the range from 200 to the maximum width of the message bubble."
+                },
+                "height": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Height of the widget in logical pixels; omit if the height of the widget isn't fixed. The height is clamped by the app to the range 50-600."
+                },
+                "public_data": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Public data of the widget, 0-1024 bytes, which will be available wherever the widget is shown. If the widget is shared, then all messages with it will have the same public data."
+                },
+                "chat_data": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Data of the widget, which is specific to the message, 0-1024 bytes"
+                },
+                "caption": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Widget caption, 0-1024 characters after entities parsing"
+                },
+                "parse_mode": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Mode for parsing entities in the widget caption. See formatting options for more details."
+                },
+                "caption_entities": {
+                    "type": [
+                        "Array<MessageEntity>"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode"
+                },
+                "show_caption_above_media": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True if the caption must be shown above the widget"
+                },
+                "allow_queries": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to allow the widget to send queries to the bot"
+                },
+                "is_shared": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to create a shared widget, which can be sent again using the method sendSharedWidget"
+                },
+                "disable_notification": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Sends the message silently. Users will receive a notification with no sound."
+                },
+                "protect_content": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Protects the contents of the sent message from forwarding and saving"
+                },
+                "allow_paid_broadcast": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
+                },
+                "message_effect_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
+                },
+                "reply_parameters": {
+                    "type": [
+                        "ReplyParameters"
+                    ],
+                    "required": false,
+                    "description": "Description of the message to reply to"
+                },
+                "reply_markup": {
+                    "type": [
+                        "InlineKeyboardMarkup",
+                        "ReplyKeyboardMarkup",
+                        "ReplyKeyboardRemove",
+                        "ForceReply"
+                    ],
+                    "required": false,
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user."
+                }
+            }
+        },
+        "sendSharedWidget": {
+            "href": "https://core.telegram.org/bots/api#sendsharedwidget",
+            "description": [
+                "Use this method to send again a shared widget created by the bot. Currently, in the production environment, widgets can be sent only to private chats, and sent widgets automatically have protected content and therefore can't be forwarded. On success, the sent Message is returned."
+            ],
+            "returns": [
+                "Message"
+            ],
+            "parameters": {
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the target chat or username of the target supergroup in the format @username"
+                },
+                "message_thread_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only"
+                },
+                "widget_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the shared widget"
+                },
+                "chat_data": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Data of the widget, which is specific to the message, 0-1024 bytes"
+                },
+                "caption": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Widget caption, 0-1024 characters after entities parsing"
+                },
+                "parse_mode": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Mode for parsing entities in the widget caption. See formatting options for more details."
+                },
+                "caption_entities": {
+                    "type": [
+                        "Array<MessageEntity>"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode"
+                },
+                "show_caption_above_media": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True if the caption must be shown above the widget"
+                },
+                "disable_notification": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Sends the message silently. Users will receive a notification with no sound."
+                },
+                "protect_content": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Protects the contents of the sent message from forwarding and saving"
+                },
+                "allow_paid_broadcast": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "required": false,
+                    "description": "Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance."
+                },
+                "message_effect_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Unique identifier of the message effect to be added to the message; for private chats only"
+                },
+                "reply_parameters": {
+                    "type": [
+                        "ReplyParameters"
+                    ],
+                    "required": false,
+                    "description": "Description of the message to reply to"
+                },
+                "reply_markup": {
+                    "type": [
+                        "InlineKeyboardMarkup",
+                        "ReplyKeyboardMarkup",
+                        "ReplyKeyboardRemove",
+                        "ForceReply"
+                    ],
+                    "required": false,
+                    "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user."
+                }
+            }
+        },
         "sendPaidMedia": {
             "href": "https://core.telegram.org/bots/api#sendpaidmedia",
             "description": [
@@ -1875,7 +2136,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance."
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username. If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance."
                 },
                 "message_thread_id": {
                     "type": [
@@ -2009,7 +2270,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username"
                 },
                 "message_thread_id": {
                     "type": [
@@ -2090,8 +2351,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -2231,8 +2492,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -2386,8 +2647,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -2514,7 +2775,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. Polls can't be sent to channel direct messages chats."
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username. Polls can't be sent to channel direct messages chats."
                 },
                 "message_thread_id": {
                     "type": [
@@ -2835,7 +3096,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username"
                 },
                 "message_thread_id": {
                     "type": [
@@ -3035,7 +3296,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username"
                 },
                 "message_id": {
                     "type": [
@@ -4217,6 +4478,15 @@
                 }
             }
         },
+        "getChatShareThemeBackdrops": {
+            "href": "https://core.telegram.org/bots/api#getchatsharethemebackdrops",
+            "description": [
+                "Use this method to get the list of backdrops, which can be used as the background of a theme of the screen for sharing a link to a user or a chat. Requires no parameters. Returns a ChatShareThemeBackdrops object."
+            ],
+            "returns": [
+                "ChatShareThemeBackdrops"
+            ]
+        },
         "getUserPersonalChatMessages": {
             "href": "https://core.telegram.org/bots/api#getuserpersonalchatmessages",
             "description": [
@@ -4299,7 +4569,7 @@
         "createForumTopic": {
             "href": "https://core.telegram.org/bots/api#createforumtopic",
             "description": [
-                "Use this method to create a topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right. Returns information about the created topic as a ForumTopic object."
+                "Use this method to create a topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right. In the case of a private chat, a link to the topic can be created in the format https://t.me/<bot_username>/<message_thread_id>; the link opens the topic only for the user. Returns information about the created topic as a ForumTopic object."
             ],
             "returns": [
                 "ForumTopic"
@@ -4644,6 +4914,31 @@
                     ],
                     "required": false,
                     "description": "The maximum amount of time in seconds that the result of the callback query may be cached client-side. Defaults to 0."
+                }
+            }
+        },
+        "answerWidgetQuery": {
+            "href": "https://core.telegram.org/bots/api#answerwidgetquery",
+            "description": [
+                "Use this method to send an answer to a query from a widget. The query must be answered within 15 seconds. The answer is received only by the widget that sent the query and doesn't change data of the widget; use editMessageWidgetData or editSharedWidgetData to change it. On success, True is returned."
+            ],
+            "returns": [
+                "True"
+            ],
+            "parameters": {
+                "widget_query_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier for the query to be answered"
+                },
+                "data": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Data to be returned to the widget, 0-1024 bytes"
                 }
             }
         },
@@ -5155,7 +5450,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @username) that will receive the gift."
+                    "description": "Required if user_id is not specified. Unique identifier for the chat that will receive the gift or username of the channel in the format @username."
                 },
                 "gift_id": {
                     "type": [
@@ -5269,6 +5564,20 @@
                     ],
                     "required": false,
                     "description": "Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description."
+                },
+                "custom_description_parse_mode": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Mode for parsing entities in the custom description. See formatting options for more details. Only \u201ctext_link\u201d entities are supported."
+                },
+                "custom_description_entities": {
+                    "type": [
+                        "Array<MessageEntity>"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized list of special entities that appear in the custom description, which can be specified instead of custom_description_parse_mode. Only \u201ctext_link\u201d entities are supported."
                 }
             }
         },
@@ -5287,7 +5596,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username. Channel direct messages chats can't be verified."
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username. Channel direct messages chats can't be verified."
                 },
                 "custom_description": {
                     "type": [
@@ -5295,6 +5604,20 @@
                     ],
                     "required": false,
                     "description": "Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description."
+                },
+                "custom_description_parse_mode": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Mode for parsing entities in the custom description. See formatting options for more details. Only \u201ctext_link\u201d entities are supported."
+                },
+                "custom_description_entities": {
+                    "type": [
+                        "Array<MessageEntity>"
+                    ],
+                    "required": false,
+                    "description": "A JSON-serialized list of special entities that appear in the custom description, which can be specified instead of custom_description_parse_mode. Only \u201ctext_link\u201d entities are supported."
                 }
             }
         },
@@ -5852,6 +6175,24 @@
                 }
             }
         },
+        "getUniqueGift": {
+            "href": "https://core.telegram.org/bots/api#getuniquegift",
+            "description": [
+                "Use this method to get information about a unique gift by its name. Returns a UniqueGift object on success."
+            ],
+            "returns": [
+                "UniqueGift"
+            ],
+            "parameters": {
+                "name": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique name of the gift"
+                }
+            }
+        },
         "convertGiftToStars": {
             "href": "https://core.telegram.org/bots/api#convertgifttostars",
             "description": [
@@ -5952,6 +6293,31 @@
                     ],
                     "required": false,
                     "description": "The amount of Telegram Stars that will be paid for the transfer from the business account balance. If positive, then the can_transfer_stars business bot right is required."
+                }
+            }
+        },
+        "deleteBusinessAccountGift": {
+            "href": "https://core.telegram.org/bots/api#deletebusinessaccountgift",
+            "description": [
+                "Deletes a regular gift owned by a managed business account without receiving Telegram Stars for it. Requires the can_convert_gifts_to_stars business bot right. The gift can be deleted only if it isn't limited (the field total_count of the Gift is omitted) and wasn't refunded. Returns True on success."
+            ],
+            "returns": [
+                "True"
+            ],
+            "parameters": {
+                "business_connection_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the business connection"
+                },
+                "owned_gift_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the regular gift that should be deleted"
                 }
             }
         },
@@ -6293,7 +6659,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username."
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username."
                 },
                 "message_id": {
                     "type": [
@@ -6376,7 +6742,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username."
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username."
                 },
                 "message_id": {
                     "type": [
@@ -6452,7 +6818,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username."
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username."
                 },
                 "message_id": {
                     "type": [
@@ -6507,7 +6873,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username."
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username."
                 },
                 "message_id": {
                     "type": [
@@ -6597,7 +6963,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username."
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username."
                 },
                 "message_id": {
                     "type": [
@@ -6669,6 +7035,85 @@
                 }
             }
         },
+        "editMessageWidgetData": {
+            "href": "https://core.telegram.org/bots/api#editmessagewidgetdata",
+            "description": [
+                "Use this method to edit data of a widget in a message sent by the bot or via the bot (for inline bots). Public data of a shared widget can be changed at most once per second. On success, True is returned."
+            ],
+            "returns": [
+                "True"
+            ],
+            "parameters": {
+                "chat_id": {
+                    "type": [
+                        "Integer",
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target supergroup in the format @username."
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "Required if inline_message_id is not specified. Identifier of the message with the widget."
+                },
+                "inline_message_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "Required if chat_id and message_id are not specified. Identifier of the inline message."
+                },
+                "public_data": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "New public data of the widget, 0-1024 bytes; pass an empty string to remove the public data. If omitted, then the public data isn't changed."
+                },
+                "chat_data": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": false,
+                    "description": "New data of the widget, which is specific to the message, 0-1024 bytes; pass an empty string to remove the data. If omitted, then the data isn't changed."
+                }
+            }
+        },
+        "editSharedWidgetData": {
+            "href": "https://core.telegram.org/bots/api#editsharedwidgetdata",
+            "description": [
+                "Use this method to edit public data of a shared widget created by the bot. A shared widget can be edited at most once per second. On success, True is returned."
+            ],
+            "returns": [
+                "True"
+            ],
+            "parameters": {
+                "widget_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "Unique identifier of the shared widget"
+                },
+                "public_data": {
+                    "type": [
+                        "String"
+                    ],
+                    "required": true,
+                    "description": "New public data of the widget, 0-1024 bytes; pass an empty string to remove the public data"
+                },
+                "cache_time": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "required": false,
+                    "description": "The maximum amount of time in seconds that the public data of the widget may be cached client-side; 5-3600. If omitted, then the current value is kept, which is 30 by default."
+                }
+            }
+        },
         "editMessageReplyMarkup": {
             "href": "https://core.telegram.org/bots/api#editmessagereplymarkup",
             "description": [
@@ -6692,7 +7137,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username."
+                    "description": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username."
                 },
                 "message_id": {
                     "type": [
@@ -6739,7 +7184,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username"
                 },
                 "message_id": {
                     "type": [
@@ -7066,7 +7511,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username"
                 },
                 "message_id": {
                     "type": [
@@ -7092,7 +7537,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username"
                 },
                 "message_ids": {
                     "type": [
@@ -7230,8 +7675,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -7762,8 +8207,8 @@
                         "Integer",
                         "String"
                     ],
-                    "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "required": false,
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query"
                 },
                 "message_thread_id": {
                     "type": [
@@ -7968,7 +8413,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot, supergroup or channel in the format @username"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username"
                 },
                 "message_thread_id": {
                     "type": [
@@ -8815,6 +9260,18 @@
                     ],
                     "description": "Optional. New incoming callback query"
                 },
+                "widget_query": {
+                    "type": [
+                        "WidgetQuery"
+                    ],
+                    "description": "Optional. New incoming query from a widget in a message sent by the bot or via the bot"
+                },
+                "shared_widget_query": {
+                    "type": [
+                        "SharedWidgetQuery"
+                    ],
+                    "description": "Optional. New incoming query from a forwarded message with a shared widget"
+                },
                 "shipping_query": {
                     "type": [
                         "ShippingQuery"
@@ -9452,6 +9909,18 @@
                         "Community"
                     ],
                     "description": "Optional. The Community to which the chat belongs"
+                },
+                "ton_wallet_card": {
+                    "type": [
+                        "TonWalletCard"
+                    ],
+                    "description": "Optional. For private chats, the TON wallet card of the user, which is shown on their profile page"
+                },
+                "share_theme": {
+                    "type": [
+                        "ChatShareTheme"
+                    ],
+                    "description": "Optional. For private chats, supergroups and channels, the theme of the screen for sharing a link to the user or the chat; omitted if the default theme is used"
                 }
             }
         },
@@ -9761,11 +10230,17 @@
                     ],
                     "description": "Optional. Message is a voice message, information about the file"
                 },
+                "widget": {
+                    "type": [
+                        "Widget"
+                    ],
+                    "description": "Optional. Message is an HTML widget, information about the widget"
+                },
                 "caption": {
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Caption for the animation, audio, document, paid media, photo, video or voice"
+                    "description": "Optional. Caption for the animation, audio, document, live photo, paid media, photo, video, voice, or widget"
                 },
                 "caption_entities": {
                     "type": [
@@ -9777,7 +10252,7 @@
                     "type": [
                         "True"
                     ],
-                    "description": "Optional. True, if the caption must be shown above the message media"
+                    "description": "Optional. True, if the caption must be shown above the message media or the widget"
                 },
                 "has_media_spoiler": {
                     "type": [
@@ -10103,6 +10578,12 @@
                     ],
                     "description": "Optional. Service message: the price for paid messages has changed in the chat"
                 },
+                "paid_messages_waived": {
+                    "type": [
+                        "PaidMessagesWaived"
+                    ],
+                    "description": "Optional. Service message: the sender of the message used a link of the other user, which allows sending messages to the user without paying Telegram Stars"
+                },
                 "poll_option_added": {
                     "type": [
                         "PollOptionAdded"
@@ -10144,6 +10625,12 @@
                         "SuggestedPostRefunded"
                     ],
                     "description": "Optional. Service message: payment for a suggested post was refunded"
+                },
+                "ton_wallet_transfer": {
+                    "type": [
+                        "TonWalletTransfer"
+                    ],
+                    "description": "Optional. Service message: a transfer with a TON wallet"
                 },
                 "video_chat_scheduled": {
                     "type": [
@@ -10245,7 +10732,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Type of the entity. Currently, can be \u201cmention\u201d (@username), \u201chashtag\u201d (#hashtag or #hashtag@chatusername), \u201ccashtag\u201d ($USD or $USD@chatusername), \u201cbot_command\u201d (/start@jobs_bot), \u201curl\u201d (https://telegram.org), \u201cemail\u201d (do-not-reply@telegram.org), \u201cphone_number\u201d (+1-212-555-0123), \u201cbold\u201d (bold text), \u201citalic\u201d (italic text), \u201cunderline\u201d (underlined text), \u201cstrikethrough\u201d (strikethrough text), \u201cspoiler\u201d (spoiler message), \u201cblockquote\u201d (block quotation), \u201cexpandable_blockquote\u201d (collapsed-by-default block quotation), \u201ccode\u201d (monowidth string), \u201cpre\u201d (monowidth block), \u201ctext_link\u201d (for clickable text URLs), \u201ctext_mention\u201d (for users without usernames), \u201ccustom_emoji\u201d (for inline custom emoji stickers), or \u201cdate_time\u201d (for formatted date and time)."
+                    "description": "Type of the entity. Currently, can be \u201cmention\u201d (@username), \u201chashtag\u201d (#hashtag or #hashtag@chatusername), \u201ccashtag\u201d ($USD or $USD@chatusername), \u201cbot_command\u201d (/start@jobs_bot), \u201curl\u201d (https://telegram.org), \u201cemail\u201d (do-not-reply@telegram.org), \u201cphone_number\u201d (+1-212-555-0123), \u201cbank_card_number\u201d (bank card number), \u201cton_address\u201d (address in the TON blockchain), \u201cbold\u201d (bold text), \u201citalic\u201d (italic text), \u201cunderline\u201d (underlined text), \u201cstrikethrough\u201d (strikethrough text), \u201cspoiler\u201d (spoiler message), \u201cblockquote\u201d (block quotation), \u201cexpandable_blockquote\u201d (collapsed-by-default block quotation), \u201ccode\u201d (monowidth string), \u201cpre\u201d (monowidth block), \u201ctext_link\u201d (for clickable text URLs), \u201ctext_mention\u201d (for users without usernames), \u201ccustom_emoji\u201d (for inline custom emoji stickers), or \u201cdate_time\u201d (for formatted date and time)."
                 },
                 "offset": {
                     "type": [
@@ -10307,7 +10794,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Text of the quoted part of a message that is replied to by the given message"
+                    "description": "Text of the quoted part of a message that is replied to by the given message; may be empty if the quote was chosen from a rich message"
                 },
                 "entities": {
                     "type": [
@@ -10315,11 +10802,17 @@
                     ],
                     "description": "Optional. Special entities that appear in the quote. Currently, only bold, italic, underline, strikethrough, spoiler, custom_emoji, and date_time entities are kept in quotes."
                 },
+                "rich_texts": {
+                    "type": [
+                        "Array<RichText>"
+                    ],
+                    "description": "Optional. Rich text of the quote if it was chosen from a rich message. May contain only plain text, RichTextBold, RichTextItalic, RichTextUnderline, RichTextStrikethrough, RichTextSpoiler, RichTextSubscript, RichTextSuperscript, RichTextDateTime, RichTextCustomEmoji, RichTextMathematicalExpression, and arrays of them."
+                },
                 "position": {
                     "type": [
                         "Integer"
                     ],
-                    "description": "Approximate quote position in the original message in UTF-16 code units as specified by the sender"
+                    "description": "Approximate quote position in the original message in UTF-16 code units as specified by the sender. For quotes from rich messages, it is the position in the text formed by joining plain texts of all quotable texts of the message, separated by line feeds."
                 },
                 "is_manual": {
                     "type": [
@@ -10425,6 +10918,12 @@
                     ],
                     "description": "Optional. Message is a voice message, information about the file"
                 },
+                "widget": {
+                    "type": [
+                        "Widget"
+                    ],
+                    "description": "Optional. Message is an HTML widget, information about the widget"
+                },
                 "has_media_spoiler": {
                     "type": [
                         "True"
@@ -10510,7 +11009,7 @@
                         "Integer",
                         "String"
                     ],
-                    "description": "Optional. If the message to be replied to is from a different chat, unique identifier for the chat or username of the bot, supergroup or channel in the format @username. Not supported for messages sent on behalf of a business account, messages from channel direct messages chats and ephemeral messages."
+                    "description": "Optional. If the message to be replied to is from a different chat, unique identifier for the chat or username of the bot, supergroup, or channel in the format @username. Not supported for messages sent on behalf of a business account, messages from channel direct messages chats and ephemeral messages."
                 },
                 "ephemeral_message_id": {
                     "type": [
@@ -10542,11 +11041,17 @@
                     ],
                     "description": "Optional. A JSON-serialized list of special entities that appear in the quote. It can be specified instead of quote_parse_mode."
                 },
+                "quote_rich_texts": {
+                    "type": [
+                        "Array<RichText>"
+                    ],
+                    "description": "Optional. A JSON-serialized list of quoted parts of the rich message to be replied to. Must contain one element for each quoted text of the message in the order of their appearance. Each of the following is a separate quoted text: the text of a paragraph, a heading, a preformatted block, a footer, or a mathematical expression; the text and the credit of a block quotation or a pull quotation; the summary of a details block; the caption and each cell of a table; the text and the credit of a caption of a media block, a collage, a slideshow, or a map. Texts of blocks nested in lists, block quotations, details, collages, and slideshows are separate quoted texts too. The first and the last elements can contain only a part of the corresponding text; all other elements must contain the whole text. Formatting of the quoted parts must be kept, and rich texts must be nested in the same way as in the message received from the server. Mathematical expressions must be quoted entirely. Buttons in RichBlockButtons, anchors and dividers can't be quoted. Up to 32 quoted texts with total length up to 1024 characters can be specified. Only plain text, RichTextBold, RichTextItalic, RichTextUnderline, RichTextStrikethrough, RichTextSpoiler, RichTextSubscript, RichTextSuperscript, RichTextDateTime, RichTextCustomEmoji, RichTextMathematicalExpression, and arrays of them are kept in the quote; other rich text types are replaced with their text. If non-empty, then quote, quote_parse_mode and quote_entities are ignored."
+                },
                 "quote_position": {
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. Position of the quote in the original message in UTF-16 code units"
+                    "description": "Optional. Position of the quote in the original message in UTF-16 code units. For quotes from rich messages, it is the position in the text formed by joining plain texts of all quotable texts of the message, separated by line feeds."
                 },
                 "checklist_task_id": {
                     "type": [
@@ -10569,13 +11074,13 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Identifier of the user who will receive the message. It is not guaranteed that the user will receive the message, especially if they are offline. See here for more details."
+                    "description": "Optional. Identifier of the user who will receive the message; required unless the message is sent as an ephemeral reply to a callback query. If omitted, then the parameter chat_id of the method is ignored. If specified together with callback_query_id, then it must be the identifier of the user who pressed the button. Must be omitted for messages sent in chats where the bot isn't a member, unless the message is a reply to an ephemeral message. It is not guaranteed that the user will receive the message, especially if they are offline. See here for more details."
                 },
                 "callback_query_id": {
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Identifier of the callback query which triggered the message, if any"
+                    "description": "Optional. Identifier of the callback query which triggered the message, if any. If specified and receiver_user_id is omitted, then the message is sent as an ephemeral reply to the callback query and will be shown only to the user who pressed the button. Ephemeral replies can't be sent to callback queries from messages in channel direct messages chats. The bot must still answer the callback query using answerCallbackQuery."
                 },
                 "replace_callback_query_message": {
                     "type": [
@@ -11208,6 +11713,50 @@
                         "Integer"
                     ],
                     "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value."
+                }
+            }
+        },
+        "Widget": {
+            "href": "https://core.telegram.org/bots/api#widget",
+            "description": [
+                "This object describes an HTML widget."
+            ],
+            "fields": {
+                "id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Unique identifier of the shared widget, which can be used to send the widget again using the method sendSharedWidget; omitted if the widget isn't shared"
+                },
+                "width": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Width of the widget in logical pixels; omitted if the widget must occupy the whole width of the message bubble"
+                },
+                "height": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Height of the widget in logical pixels; omitted if the height of the widget isn't fixed"
+                },
+                "html": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "HTML code of the widget"
+                },
+                "public_data": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Public data of the widget, which is available wherever the widget is shown. All messages with a shared widget have the same public data."
+                },
+                "chat_data": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Data of the widget, which is specific to the message"
                 }
             }
         },
@@ -13509,6 +14058,44 @@
                 }
             }
         },
+        "PaidMessagesWaived": {
+            "href": "https://core.telegram.org/bots/api#paidmessageswaived",
+            "description": [
+                "Describes a service message about the sender of the message using a link of the other user, which allows sending messages to the user without paying Telegram Stars. Currently holds no information."
+            ]
+        },
+        "TonWalletTransfer": {
+            "href": "https://core.telegram.org/bots/api#tonwallettransfer",
+            "description": [
+                "Describes a service message about a transfer with a TON wallet."
+            ],
+            "fields": {
+                "transaction_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Unique identifier of the transaction; may be empty if the transfer hasn't been sent yet"
+                },
+                "peer_address": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Address of the transfer peer in the TON blockchain"
+                },
+                "amount": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "The amount of transferred cryptocurrency, in the smallest units of the cryptocurrency, as a decimal number; negative for outgoing transfers"
+                },
+                "comment": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Comment added to the transfer; omitted if the comment is encrypted"
+                }
+            }
+        },
         "GiveawayCreated": {
             "href": "https://core.telegram.org/bots/api#giveawaycreated",
             "description": [
@@ -14171,7 +14758,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Suggested username for the bot"
+                    "description": "Optional. Suggested username for the bot. The username must end with \u201cbot\u201d. If the user creating the bot has a Telegram Premium subscription, then the username can also end with \u201cagent\u201d, \u201cai\u201d, \u201capp\u201d, \u201cgame\u201d, or \u201cgay\u201d; in this case, the username will be assigned to the bot as a secondary username, and a regular username ending with \u201cbot\u201d will be assigned to the bot automatically."
                 }
             }
         },
@@ -14269,7 +14856,7 @@
                     "type": [
                         "WebAppInfo"
                     ],
-                    "description": "Optional. Description of the Web App that will be launched when the user presses the button. The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery. Available only in private chats between a user and the bot. Not supported for messages sent on behalf of a business account."
+                    "description": "Optional. Description of the Web App that will be launched when the user presses the button. The Web App will be able to send an arbitrary message on behalf of the user using the method answerWebAppQuery. Available only in private chats between a user and the bot. Not supported for messages sent on behalf of a business account and ephemeral messages."
                 },
                 "login_url": {
                     "type": [
@@ -14458,6 +15045,230 @@
                         "String"
                     ],
                     "description": "Optional. Short name of a Game to be returned, serves as the unique identifier for the game"
+                }
+            }
+        },
+        "WidgetQueryType": {
+            "href": "https://core.telegram.org/bots/api#widgetquerytype",
+            "description": [
+                "This object describes the type of a query from a widget. Currently, it can be one of"
+            ],
+            "subtypes": [
+                "WidgetQueryTypeData",
+                "WidgetQueryTypeSignData",
+                "WidgetQueryTypeSentTransaction"
+            ]
+        },
+        "WidgetQueryTypeData": {
+            "extends": "WidgetQueryType",
+            "href": "https://core.telegram.org/bots/api#widgetquerytypedata",
+            "description": [
+                "The query contains data for the bot."
+            ],
+            "fields": {
+                "type": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Type of the query, always \u201cdata\u201d"
+                },
+                "wallet_card": {
+                    "type": [
+                        "TonWalletCard"
+                    ],
+                    "description": "Optional. TON wallet card of the user who sent the query, if it was sent to the bot along with the query"
+                }
+            }
+        },
+        "WidgetQueryTypeSignData": {
+            "extends": "WidgetQueryType",
+            "href": "https://core.telegram.org/bots/api#widgetquerytypesigndata",
+            "description": [
+                "The query contains data signed by a TON wallet of the user who sent the query. The data is signed for the domain bot<bot_id>, where <bot_id> is the identifier of the bot."
+            ],
+            "fields": {
+                "type": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Type of the query, always \u201csign_data\u201d"
+                },
+                "wallet": {
+                    "type": [
+                        "WidgetQueryWallet"
+                    ],
+                    "description": "The wallet that signed the data"
+                },
+                "sign_data": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "JSON-serialized signed data"
+                }
+            }
+        },
+        "WidgetQueryTypeSentTransaction": {
+            "extends": "WidgetQueryType",
+            "href": "https://core.telegram.org/bots/api#widgetquerytypesenttransaction",
+            "description": [
+                "The query notifies the bot about a transaction sent from a TON wallet of the user who sent the query."
+            ],
+            "fields": {
+                "type": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Type of the query, always \u201csent_transaction\u201d"
+                },
+                "wallet": {
+                    "type": [
+                        "WidgetQueryWallet"
+                    ],
+                    "description": "The wallet from which the transaction was sent"
+                },
+                "msg_hash": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Value of msg_hash of the transaction"
+                }
+            }
+        },
+        "WidgetQueryWallet": {
+            "href": "https://core.telegram.org/bots/api#widgetquerywallet",
+            "description": [
+                "This object describes a TON wallet of the user, which is used in a query from a widget."
+            ],
+            "fields": {
+                "address": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Address of the wallet"
+                },
+                "amount": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Balance of the wallet, in the smallest units of the cryptocurrency, as a decimal number"
+                },
+                "public_key": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Hex-encoded public key of the wallet; omitted if unknown"
+                },
+                "state_init": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Base64-encoded serialized StateInit of the wallet contract; omitted if and only if public_key is omitted"
+                }
+            }
+        },
+        "WidgetQuery": {
+            "href": "https://core.telegram.org/bots/api#widgetquery",
+            "description": [
+                "This object represents an incoming query from a widget in a message sent by the bot or via the bot. Use answerWidgetQuery to answer the query. Each user can send at most 5 queries per 5 seconds to the bot from all its widgets."
+            ],
+            "fields": {
+                "id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Unique identifier for this query"
+                },
+                "from": {
+                    "type": [
+                        "User"
+                    ],
+                    "description": "Sender"
+                },
+                "chat": {
+                    "type": [
+                        "Chat"
+                    ],
+                    "description": "Optional. Chat with the message containing the widget; omitted if the widget is in an inline message"
+                },
+                "message_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Identifier of the message containing the widget; omitted if the widget is in an inline message"
+                },
+                "inline_message_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Identifier of the inline message containing the widget"
+                },
+                "chat_instance": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Global identifier, uniquely corresponding to the chat to which the message with the widget was sent"
+                },
+                "chat_type": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. For widgets in inline messages, type of the chat to which the message was sent. Can be either \u201csender\u201d for a private chat with the inline query sender, \u201cprivate\u201d, \u201cgroup\u201d, \u201csupergroup\u201d, or \u201cchannel\u201d."
+                },
+                "type": {
+                    "type": [
+                        "WidgetQueryType"
+                    ],
+                    "description": "Type of the query"
+                },
+                "data": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Data of the query, 1-64 bytes"
+                },
+                "widget_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Unique identifier of the shared widget, which sent the query; omitted if the widget isn't shared"
+                }
+            }
+        },
+        "SharedWidgetQuery": {
+            "href": "https://core.telegram.org/bots/api#sharedwidgetquery",
+            "description": [
+                "This object represents an incoming query from a forwarded message with a shared widget created by the bot. Use answerWidgetQuery to answer the query. Each user can send at most 5 queries per 5 seconds to the bot from all its widgets."
+            ],
+            "fields": {
+                "id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Unique identifier for this query"
+                },
+                "from": {
+                    "type": [
+                        "User"
+                    ],
+                    "description": "Sender"
+                },
+                "type": {
+                    "type": [
+                        "WidgetQueryType"
+                    ],
+                    "description": "Type of the query"
+                },
+                "data": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Data of the query, 1-64 bytes"
+                },
+                "widget_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Unique identifier of the shared widget, which sent the query"
                 }
             }
         },
@@ -15089,7 +15900,7 @@
                     "type": [
                         "Boolean"
                     ],
-                    "description": "True, if the user is allowed to send animations, games, stickers and use inline bots"
+                    "description": "True, if the user is allowed to send animations, games, stickers, widgets and use inline bots"
                 },
                 "can_add_web_page_previews": {
                     "type": [
@@ -15297,7 +16108,7 @@
                     "type": [
                         "Boolean"
                     ],
-                    "description": "Optional. True, if the user is allowed to send animations, games, stickers and use inline bots"
+                    "description": "Optional. True, if the user is allowed to send animations, games, stickers, widgets and use inline bots"
                 },
                 "can_add_web_page_previews": {
                     "type": [
@@ -15487,35 +16298,35 @@
                 }
             }
         },
-        "StoryAreaPosition": {
-            "href": "https://core.telegram.org/bots/api#storyareaposition",
+        "AreaPosition": {
+            "href": "https://core.telegram.org/bots/api#areaposition",
             "description": [
-                "Describes the position of a clickable area within a story."
+                "Describes the position of a rectangle area on a story media or a TON wallet card."
             ],
             "fields": {
                 "x_percentage": {
                     "type": [
                         "Float"
                     ],
-                    "description": "The abscissa of the area's center, as a percentage of the media width"
+                    "description": "The abscissa of the area's center, as a percentage of the media or the card width"
                 },
                 "y_percentage": {
                     "type": [
                         "Float"
                     ],
-                    "description": "The ordinate of the area's center, as a percentage of the media height"
+                    "description": "The ordinate of the area's center, as a percentage of the media or the card height"
                 },
                 "width_percentage": {
                     "type": [
                         "Float"
                     ],
-                    "description": "The width of the area's rectangle, as a percentage of the media width"
+                    "description": "The width of the area's rectangle, as a percentage of the media or the card width"
                 },
                 "height_percentage": {
                     "type": [
                         "Float"
                     ],
-                    "description": "The height of the area's rectangle, as a percentage of the media height"
+                    "description": "The height of the area's rectangle, as a percentage of the media or the card height"
                 },
                 "rotation_angle": {
                     "type": [
@@ -15527,7 +16338,279 @@
                     "type": [
                         "Float"
                     ],
-                    "description": "The radius of the rectangle corner rounding, as a percentage of the media width"
+                    "description": "The radius of the rectangle corner rounding, as a percentage of the media or the card width"
+                }
+            }
+        },
+        "TonNft": {
+            "href": "https://core.telegram.org/bots/api#tonnft",
+            "description": [
+                "This object represents an NFT in the TON blockchain."
+            ],
+            "fields": {
+                "address": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Address of the NFT"
+                },
+                "collection_address": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Address of the collection to which the NFT belongs; omitted if unknown"
+                },
+                "index": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Index of the NFT among all NFTs from the collection as a decimal number"
+                },
+                "name": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Name of the NFT"
+                },
+                "description": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Description of the NFT"
+                },
+                "attributes": {
+                    "type": [
+                        "Array<TonNftAttribute>"
+                    ],
+                    "description": "Optional. Attributes of the NFT"
+                },
+                "gift": {
+                    "type": [
+                        "UniqueGift"
+                    ],
+                    "description": "Optional. The unique gift corresponding to the NFT"
+                }
+            }
+        },
+        "TonNftAttribute": {
+            "href": "https://core.telegram.org/bots/api#tonnftattribute",
+            "description": [
+                "This object represents an attribute of an NFT in the TON blockchain."
+            ],
+            "fields": {
+                "trait_type": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Trait type of the attribute"
+                },
+                "value": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Value of the attribute"
+                }
+            }
+        },
+        "TonWalletCardSticker": {
+            "href": "https://core.telegram.org/bots/api#tonwalletcardsticker",
+            "description": [
+                "This object describes a sticker on a TON wallet card."
+            ],
+            "fields": {
+                "position": {
+                    "type": [
+                        "AreaPosition"
+                    ],
+                    "description": "Position of the sticker on the card"
+                },
+                "nft": {
+                    "type": [
+                        "TonNft"
+                    ],
+                    "description": "The NFT shown as the sticker"
+                }
+            }
+        },
+        "TonWalletCard": {
+            "href": "https://core.telegram.org/bots/api#tonwalletcard",
+            "description": [
+                "This object describes a TON wallet card, which is shown on the profile page of a user to everyone."
+            ],
+            "fields": {
+                "address": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Address of the wallet"
+                },
+                "amount": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Balance of the wallet, in the smallest units of the cryptocurrency, as a decimal number"
+                },
+                "stickers": {
+                    "type": [
+                        "Array<TonWalletCardSticker>"
+                    ],
+                    "description": "Stickers placed on the card"
+                },
+                "background_nft_address": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Address of the NFT of one of the stickers, whose colors must be used for the card background; omitted if the default background must be used"
+                }
+            }
+        },
+        "EmojiType": {
+            "href": "https://core.telegram.org/bots/api#emojitype",
+            "description": [
+                "This object describes an emoji. Currently, it can be one of"
+            ],
+            "subtypes": [
+                "EmojiTypeEmoji",
+                "EmojiTypeCustomEmoji"
+            ]
+        },
+        "EmojiTypeEmoji": {
+            "extends": "EmojiType",
+            "href": "https://core.telegram.org/bots/api#emojitypeemoji",
+            "description": [
+                "A regular emoji."
+            ],
+            "fields": {
+                "type": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Type of the emoji, always \u201cemoji\u201d"
+                },
+                "emoji": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "The emoji"
+                }
+            }
+        },
+        "EmojiTypeCustomEmoji": {
+            "extends": "EmojiType",
+            "href": "https://core.telegram.org/bots/api#emojitypecustomemoji",
+            "description": [
+                "A custom emoji."
+            ],
+            "fields": {
+                "type": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Type of the emoji, always \u201ccustom_emoji\u201d"
+                },
+                "custom_emoji_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Identifier of the custom emoji. Use getCustomEmojiStickers to get full information about the sticker."
+                }
+            }
+        },
+        "ChatShareTheme": {
+            "href": "https://core.telegram.org/bots/api#chatsharetheme",
+            "description": [
+                "This object describes the theme of the screen for sharing a link to a user or a chat. Currently, it can be one of"
+            ],
+            "subtypes": [
+                "ChatShareThemeEmoji",
+                "ChatShareThemeUniqueGift"
+            ]
+        },
+        "ChatShareThemeEmoji": {
+            "extends": "ChatShareTheme",
+            "href": "https://core.telegram.org/bots/api#chatsharethemeemoji",
+            "description": [
+                "The theme with emoji placed on a background."
+            ],
+            "fields": {
+                "type": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Type of the theme, always \u201cemoji\u201d"
+                },
+                "emojis": {
+                    "type": [
+                        "Array<EmojiType>"
+                    ],
+                    "description": "The emoji; 0-6 regular or custom emoji"
+                },
+                "background_backdrop_id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Identifier of the backdrop used as the background; omitted if the default background is used. Use getChatShareThemeBackdrops to get details about the backdrop."
+                }
+            }
+        },
+        "ChatShareThemeUniqueGift": {
+            "extends": "ChatShareTheme",
+            "href": "https://core.telegram.org/bots/api#chatsharethemeuniquegift",
+            "description": [
+                "The theme based on a unique gift owned by the user or the chat."
+            ],
+            "fields": {
+                "type": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Type of the theme, always \u201cunique_gift\u201d"
+                },
+                "gift": {
+                    "type": [
+                        "UniqueGift"
+                    ],
+                    "description": "The gift"
+                }
+            }
+        },
+        "ChatShareThemeBackdrops": {
+            "href": "https://core.telegram.org/bots/api#chatsharethemebackdrops",
+            "description": [
+                "This object contains a list of backdrops, which can be used as the background of a theme of the screen for sharing a link to a user or a chat."
+            ],
+            "fields": {
+                "backdrops": {
+                    "type": [
+                        "Array<ChatShareThemeBackdrop>"
+                    ],
+                    "description": "The list of backdrops"
+                }
+            }
+        },
+        "ChatShareThemeBackdrop": {
+            "href": "https://core.telegram.org/bots/api#chatsharethemebackdrop",
+            "description": [
+                "This object describes a backdrop, which can be used as the background of a theme of the screen for sharing a link to a user or a chat."
+            ],
+            "fields": {
+                "id": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Unique identifier of the backdrop"
+                },
+                "name": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Name of the backdrop"
+                },
+                "colors": {
+                    "type": [
+                        "UniqueGiftBackdropColors"
+                    ],
+                    "description": "Colors of the backdrop"
                 }
             }
         },
@@ -15725,7 +16808,7 @@
             "fields": {
                 "position": {
                     "type": [
-                        "StoryAreaPosition"
+                        "AreaPosition"
                     ],
                     "description": "Position of the area"
                 },
@@ -18195,6 +19278,7 @@
                 "RichTextEmailAddress",
                 "RichTextPhoneNumber",
                 "RichTextBankCardNumber",
+                "RichTextTonAddress",
                 "RichTextMention",
                 "RichTextHashtag",
                 "RichTextCashtag",
@@ -18608,6 +19692,33 @@
                         "String"
                     ],
                     "description": "The bank card number"
+                }
+            }
+        },
+        "RichTextTonAddress": {
+            "extends": "RichText",
+            "href": "https://core.telegram.org/bots/api#richtexttonaddress",
+            "description": [
+                "An address in the TON blockchain."
+            ],
+            "fields": {
+                "type": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Type of the rich text, always \u201cton_address\u201d"
+                },
+                "text": {
+                    "type": [
+                        "RichText"
+                    ],
+                    "description": "Text of the address"
+                },
+                "address": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "The address"
                 }
             }
         },
@@ -21982,7 +23093,9 @@
                 "InputLocationMessageContent",
                 "InputVenueMessageContent",
                 "InputContactMessageContent",
-                "InputInvoiceMessageContent"
+                "InputInvoiceMessageContent",
+                "InputWidgetMessageContent",
+                "InputSharedWidgetMessageContent"
             ]
         },
         "InputTextMessageContent": {
@@ -22294,6 +23407,126 @@
                         "Boolean"
                     ],
                     "description": "Optional. Pass True if the final price depends on the shipping method. Ignored for payments in Telegram Stars."
+                }
+            }
+        },
+        "InputWidgetMessageContent": {
+            "extends": "InputMessageContent",
+            "href": "https://core.telegram.org/bots/api#inputwidgetmessagecontent",
+            "description": [
+                "Represents the content of a message with an HTML widget to be sent as the result of an inline query. Currently, widgets can't be sent in response to inline queries in the production environment."
+            ],
+            "fields": {
+                "html": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "HTML code of the widget, 1-32768 bytes. The code must not exceed 4096 bytes when compressed by zlib with the maximum compression level."
+                },
+                "width": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Width of the widget in logical pixels; omit if the widget must occupy the whole width of the message bubble. The width is clamped by the app to the range from 200 to the maximum width of the message bubble."
+                },
+                "height": {
+                    "type": [
+                        "Integer"
+                    ],
+                    "description": "Optional. Height of the widget in logical pixels; omit if the height of the widget isn't fixed. The height is clamped by the app to the range 50-600."
+                },
+                "public_data": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Public data of the widget, 0-1024 bytes, which will be available wherever the widget is shown. If the widget is shared, then all messages with it will have the same public data."
+                },
+                "chat_data": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Data of the widget, which is specific to the message, 0-1024 bytes"
+                },
+                "caption": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Widget caption, 0-1024 characters after entities parsing"
+                },
+                "parse_mode": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Mode for parsing entities in the widget caption. See formatting options for more details."
+                },
+                "caption_entities": {
+                    "type": [
+                        "Array<MessageEntity>"
+                    ],
+                    "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode"
+                },
+                "show_caption_above_media": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "Optional. Pass True if the caption must be shown above the widget"
+                },
+                "allow_queries": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "Optional. Pass True to allow the widget to send queries to the bot"
+                },
+                "is_shared": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "Optional. Pass True to create a shared widget. Each message sent from the result creates a separate shared widget, whose identifier is received by the bot only in the field widget_id of queries from the widget. To send an existing shared widget in response to an inline query, use InputSharedWidgetMessageContent instead."
+                }
+            }
+        },
+        "InputSharedWidgetMessageContent": {
+            "extends": "InputMessageContent",
+            "href": "https://core.telegram.org/bots/api#inputsharedwidgetmessagecontent",
+            "description": [
+                "Represents the content of a message with a shared widget to be sent as the result of an inline query. Currently, widgets can't be sent in response to inline queries in the production environment."
+            ],
+            "fields": {
+                "widget_id": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Unique identifier of the shared widget created by the bot"
+                },
+                "chat_data": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Data of the widget, which is specific to the message, 0-1024 bytes"
+                },
+                "caption": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Widget caption, 0-1024 characters after entities parsing"
+                },
+                "parse_mode": {
+                    "type": [
+                        "String"
+                    ],
+                    "description": "Optional. Mode for parsing entities in the widget caption. See formatting options for more details."
+                },
+                "caption_entities": {
+                    "type": [
+                        "Array<MessageEntity>"
+                    ],
+                    "description": "Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode"
+                },
+                "show_caption_above_media": {
+                    "type": [
+                        "Boolean"
+                    ],
+                    "description": "Optional. Pass True if the caption must be shown above the widget"
                 }
             }
         },
