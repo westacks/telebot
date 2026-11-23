@@ -6,6 +6,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 use WeStacks\TeleBot\Objects\BotAccessSettings;
 use WeStacks\TeleBot\Objects\BotCommand;
 use WeStacks\TeleBot\Objects\BotDescription;
+use WeStacks\TeleBot\Objects\BotFullInfo;
 use WeStacks\TeleBot\Objects\BotName;
 use WeStacks\TeleBot\Objects\BotShortDescription;
 use WeStacks\TeleBot\Objects\BusinessConnection;
@@ -34,7 +35,6 @@ use WeStacks\TeleBot\Objects\Story;
 use WeStacks\TeleBot\Objects\Telegram;
 use WeStacks\TeleBot\Objects\UniqueGift;
 use WeStacks\TeleBot\Objects\Update;
-use WeStacks\TeleBot\Objects\User;
 use WeStacks\TeleBot\Objects\UserChatBoosts;
 use WeStacks\TeleBot\Objects\UserProfileAudios;
 use WeStacks\TeleBot\Objects\UserProfilePhotos;
@@ -81,7 +81,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * @method PromiseInterface|WebhookInfo getWebhookInfo(...$parameters) Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty.
  *
  * {@see https://core.telegram.org/bots/api#getwebhookinfo}
- * @method PromiseInterface|User getMe(...$parameters) A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about the bot in form of a User object.
+ * @method PromiseInterface|BotFullInfo getMe(...$parameters) A simple method for testing your bot's authentication token. Requires no parameters. Returns information about the bot in form of a BotFullInfo object.
  *
  * {@see https://core.telegram.org/bots/api#getme}
  * @method PromiseInterface|true logOut(...$parameters) Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters.
@@ -1165,7 +1165,7 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int|string_ `$chat_id` __Required: Yes__. Unique identifier for the target chat or username of the target supergroup in the format @username
  *
  *
- * @method PromiseInterface|true answerCallbackQuery(...$parameters) Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
+ * @method PromiseInterface|true answerCallbackQuery(...$parameters) Use this method to send answers to callback queries sent from inline keyboards or rich messages. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.
  *
  * {@see https://core.telegram.org/bots/api#answercallbackquery}
  *
@@ -1244,6 +1244,28 @@ use WeStacks\TeleBot\Objects\WebhookInfo;
  * - _int_ `$user_id` __Required: Yes__. User identifier of the managed bot whose access settings will be changed
  * - _bool_ `$is_access_restricted` __Required: Yes__. Pass True if only selected users can access the bot. The bot's owner can always access it.
  * - _int[]_ `$added_user_ids` __Required: Optional__. A JSON-serialized list of up to 10 identifiers of users who will have access to the bot in addition to its owner. Ignored if is_access_restricted is False.
+ *
+ *
+ * @method PromiseInterface|true setMySettings(...$parameters) Use this method to change settings of the bot. Settings that aren't specified remain unchanged. Returns True on success.
+ *
+ * {@see https://core.telegram.org/bots/api#setmysettings}
+ *
+ * Parameters:
+ * - _bool_ `$supports_inline_queries` __Required: Optional__. Pass True to enable inline mode for the bot or False to disable it
+ * - _string_ `$inline_query_placeholder` __Required: Optional__. New placeholder for inline queries, which is shown in the input field after the bot's username. Pass an empty string to use the default placeholder.
+ * - _bool_ `$needs_inline_query_location` __Required: Optional__. Pass True to request the location of the user with every inline query to the bot or False to stop requesting it
+ * - _int_ `$inline_feedback_share_denominator` __Required: Optional__. Denominator of the share of chosen inline results received by the bot; the bot receives 1 out of inline_feedback_share_denominator chosen results. Must be one of 1, 10, 100, or 1000. Pass 0 to stop receiving chosen inline results.
+ * - _bool_ `$can_join_groups` __Required: Optional__. Pass True to allow adding the bot to groups or False to disallow it
+ * - _bool_ `$can_read_all_group_messages` __Required: Optional__. Pass True to disable privacy mode for the bot or False to enable it
+ * - _bool_ `$can_connect_to_business` __Required: Optional__. Pass True to allow connecting the bot to user accounts to manage them or False to disallow it
+ * - _bool_ `$can_manage_bots` __Required: Optional__. Pass True to allow creating other bots that will be controlled by the bot or False to disallow it
+ * - _bool_ `$supports_guest_queries` __Required: Optional__. Pass True to allow guest queries to the bot from chats it isn't a member of or False to disallow them
+ * - _bool_ `$supports_join_request_queries` __Required: Optional__. Pass True to allow assigning the bot to process join request queries or False to disallow it
+ * - _bool_ `$has_topics_enabled` __Required: Optional__. Pass True to enable forum topic mode in private chats with the bot or False to disable it
+ * - _bool_ `$allows_users_to_create_topics` __Required: Optional__. Pass True to allow users to create and delete topics in private chats with the bot or False to disallow it
+ * - _bool_ `$has_topic_sidebar` __Required: Optional__. Pass True to show topics in private chats with the bot in a sidebar or False to stop showing them in a sidebar
+ * - _bool_ `$can_communicate_with_bots` __Required: Optional__. Pass True to allow the bot to communicate with other bots in groups, private chats, and through business accounts or False to disallow it
+ * - _string_ `$callback_query_mode` __Required: Optional__. Mode in which the bot receives callback queries from buttons in messages sent by the bot. Must be one of “default” (the field message is always used and contains an InaccessibleMessage if the message is inaccessible to the bot), “auto” (the field inline_message_id is used instead of the field message if the message is inaccessible to the bot; the field message can still contain an inaccessible message if the message has just been deleted), or “inline” (the field inline_message_id is always used instead of the field message).
  *
  *
  * @method PromiseInterface|true setMyCommands(...$parameters) Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success.

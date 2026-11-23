@@ -14,21 +14,22 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?string $language_code Optional. IETF language tag of the user's language
  * @property-read ?true $is_premium Optional. True, if this user is a Telegram Premium user
  * @property-read ?true $added_to_attachment_menu Optional. True, if this user added the bot to the attachment menu
- * @property-read ?bool $can_join_groups Optional. True, if the bot can be invited to groups. Returned only in getMe.
- * @property-read ?bool $can_read_all_group_messages Optional. True, if privacy mode is disabled for the bot. Returned only in getMe.
- * @property-read ?bool $supports_guest_queries Optional. True, if the bot supports guest queries from chats it is not a member of. Returned only in getMe.
- * @property-read ?bool $supports_inline_queries Optional. True, if the bot supports inline queries. Returned only in getMe.
- * @property-read ?bool $can_connect_to_business Optional. True, if the bot can be connected to a user account to manage it. Returned only in getMe.
- * @property-read ?bool $has_main_web_app Optional. True, if the bot has a main Web App. Returned only in getMe.
- * @property-read ?bool $has_topics_enabled Optional. True, if the bot has forum topic mode enabled in private chats. Returned only in getMe.
- * @property-read ?bool $allows_users_to_create_topics Optional. True, if the bot allows users to create and delete topics in private chats. Returned only in getMe.
- * @property-read ?bool $can_manage_bots Optional. True, if other bots can be created to be controlled by the bot. Returned only in getMe.
- * @property-read ?bool $supports_join_request_queries Optional. True, if the bot supports join request queries and can be assigned to process them. Returned only in getMe.
  *
  * @see https://core.telegram.org/bots/api#user
  */
 class User extends TelegramObject
 {
+    public ?bool $can_join_groups;
+    public ?bool $can_read_all_group_messages;
+    public ?bool $supports_guest_queries;
+    public ?bool $supports_inline_queries;
+    public ?bool $can_connect_to_business;
+    public ?bool $has_main_web_app;
+    public ?bool $has_topics_enabled;
+    public ?bool $allows_users_to_create_topics;
+    public ?bool $can_manage_bots;
+    public ?bool $supports_join_request_queries;
+
     public function __construct(
         public readonly int $id,
         public readonly bool $is_bot,
@@ -38,16 +39,6 @@ class User extends TelegramObject
         public readonly ?string $language_code,
         public readonly ?true $is_premium,
         public readonly ?true $added_to_attachment_menu,
-        public readonly ?bool $can_join_groups,
-        public readonly ?bool $can_read_all_group_messages,
-        public readonly ?bool $supports_guest_queries,
-        public readonly ?bool $supports_inline_queries,
-        public readonly ?bool $can_connect_to_business,
-        public readonly ?bool $has_main_web_app,
-        public readonly ?bool $has_topics_enabled,
-        public readonly ?bool $allows_users_to_create_topics,
-        public readonly ?bool $can_manage_bots,
-        public readonly ?bool $supports_join_request_queries,
     ) {
     }
 }
