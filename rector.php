@@ -6,9 +6,9 @@ use Rector\ValueObject\PhpVersion;
 
 return RectorConfig::configure()
     ->withPhpVersion(PhpVersion::PHP_82)
+    ->withPhpSets(php82: true)
     ->withSets([
         SetList::DEAD_CODE,
-        SetList::PHP_82,
     ])
     ->withIndent(' ', 4)
     ->withPaths([
