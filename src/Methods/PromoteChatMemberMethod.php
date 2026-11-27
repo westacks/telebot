@@ -15,7 +15,7 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
  * @property-read ?bool $can_manage_video_chats Pass True if the administrator can manage video chats
  * @property-read ?bool $can_restrict_members Pass True if the administrator can restrict, ban or unban chat members, or access supergroup statistics. For backward compatibility, defaults to True for promotions of channel administrators.
  * @property-read ?bool $can_promote_members Pass True if the administrator can add new administrators with a subset of their own privileges or demote administrators that they have promoted, directly or indirectly (promoted by administrators that were appointed by him)
- * @property-read ?bool $can_change_info Pass True if the administrator can change chat title, photo and other settings
+ * @property-read ?bool $can_change_info Pass True if the administrator can change the chat title, photo and other settings
  * @property-read ?bool $can_invite_users Pass True if the administrator can invite new users to the chat
  * @property-read ?bool $can_post_stories Pass True if the administrator can post stories to the chat
  * @property-read ?bool $can_edit_stories Pass True if the administrator can edit stories posted by other users, post stories to the chat page, pin chat stories, and access the chat's story archive

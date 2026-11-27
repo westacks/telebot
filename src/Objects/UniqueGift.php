@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read UniqueGiftModel $model Model of the gift
  * @property-read UniqueGiftSymbol $symbol Symbol of the gift
  * @property-read UniqueGiftBackdrop $backdrop Backdrop of the gift
- * @property-read ?true $is_premium Optional. True, if the original regular gift was exclusively purchaseable by Telegram Premium subscribers
+ * @property-read ?true $is_premium Optional. True, if the original regular gift was exclusively purchasable by Telegram Premium subscribers
  * @property-read ?true $is_burned Optional. True, if the gift was used to craft another gift and isn't available anymore
  * @property-read ?true $is_from_blockchain Optional. True, if the gift is assigned from the TON blockchain and can't be resold or transferred in Telegram
  * @property-read ?UniqueGiftColors $colors Optional. The color scheme that can be used by the gift's owner for the chat's name, replies to messages and link previews; for business account gifts and gifts that are currently on sale only

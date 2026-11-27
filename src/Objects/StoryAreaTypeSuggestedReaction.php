@@ -7,7 +7,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read string $type Type of the area, always “suggested_reaction”
  * @property-read ReactionType $reaction_type Type of the reaction
  * @property-read ?bool $is_dark Optional. Pass True if the reaction area has a dark background
- * @property-read ?bool $is_flipped Optional. Pass True if reaction area corner is flipped
+ * @property-read ?bool $is_flipped Optional. Pass True if the reaction area corner is flipped
  *
  * @see https://core.telegram.org/bots/api#storyareatypesuggestedreaction
  */

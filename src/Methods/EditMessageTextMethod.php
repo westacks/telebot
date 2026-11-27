@@ -9,7 +9,7 @@ use WeStacks\TeleBot\Objects\LinkPreviewOptions;
 use WeStacks\TeleBot\Objects\MessageEntity;
 
 /**
- * Use this method to edit text, rich and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
+ * Use this method to edit text, rich and game messages. On success, if the edited message is not an inline message, the edited Message is returned; otherwise, True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
  *
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
  * @property-read null|int|string $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username.
@@ -19,7 +19,7 @@ use WeStacks\TeleBot\Objects\MessageEntity;
  * @property-read ?string $parse_mode Mode for parsing entities in the message text. See formatting options for more details.
  * @property-read ?MessageEntity[] $entities A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
  * @property-read ?LinkPreviewOptions $link_preview_options Link preview generation options for the message
- * @property-read ?InputRichMessage $rich_message New rich content of the message; required if text isn't specified. Direct upload of new files and explicit upload of files by a URL isn't supported when an inline message is edited.
+ * @property-read ?InputRichMessage $rich_message New rich content of the message; required if text isn't specified. Direct upload of new files and explicit upload of files by a URL aren't supported when an inline message is edited.
  * @property-read ?InlineKeyboardMarkup $reply_markup A JSON-serialized object for an inline keyboard
  *
  * @see https://core.telegram.org/bots/api#editmessagetext

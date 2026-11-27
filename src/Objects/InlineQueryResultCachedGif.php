@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Objects;
 
 /**
- * Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with specified content instead of the animation.
+ * Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
  * @property-read string $type Type of the result, must be gif
  * @property-read string $id Unique identifier for this result, 1-64 bytes
  * @property-read string $gif_file_id A valid file identifier for the GIF file

@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Methods;
 use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
- * Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
+ * Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as a ChatInviteLink object.
  *
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target channel in the format @username
  * @property-read ?string $name Invite link name; 0-32 characters

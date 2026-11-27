@@ -9,7 +9,7 @@ use WeStacks\TeleBot\Objects\InputChecklist;
 /**
  * Use this method to edit a checklist on behalf of a connected business account. On success, the edited Message is returned.
  *
- * @property-read string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
+ * @property-read string $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot in the format @username
  * @property-read int $message_id Unique identifier for the target message
  * @property-read InputChecklist $checklist A JSON-serialized object for the new checklist

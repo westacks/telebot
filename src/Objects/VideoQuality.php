@@ -11,7 +11,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read int $width Video width
  * @property-read int $height Video height
  * @property-read string $codec Codec that was used to encode the video, for example, “h264”, “h265”, or “av01”
- * @property-read ?int $file_size Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
+ * @property-read ?int $file_size Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this value.
  *
  * @see https://core.telegram.org/bots/api#videoquality
  */

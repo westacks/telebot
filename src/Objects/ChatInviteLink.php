@@ -12,7 +12,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read bool $is_primary True, if the link is primary
  * @property-read bool $is_revoked True, if the link is revoked
  * @property-read ?string $name Optional. Invite link name
- * @property-read ?int $expire_date Optional. Point in time (Unix timestamp) when the link will expire or has been expired
+ * @property-read ?int $expire_date Optional. Point in time (Unix timestamp) when the link will expire or has expired
  * @property-read ?int $member_limit Optional. The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
  * @property-read ?int $pending_join_request_count Optional. Number of pending join requests created using this link
  * @property-read ?int $subscription_period Optional. The number of seconds the subscription will be active for before the next payment

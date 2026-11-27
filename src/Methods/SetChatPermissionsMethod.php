@@ -6,7 +6,7 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
 use WeStacks\TeleBot\Objects\ChatPermissions;
 
 /**
- * Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights. Returns True on success.
+ * Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator right. Returns True on success.
  *
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
  * @property-read ChatPermissions $permissions A JSON-serialized object for new default chat permissions

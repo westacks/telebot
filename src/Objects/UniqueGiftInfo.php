@@ -21,7 +21,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  */
 class UniqueGiftInfo extends TelegramObject
 {
-    public ?int $last_resale_star_count;
+    public ?int $last_resale_star_count = null;
 
     public function __construct(
         public readonly UniqueGift $gift,

@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Objects;
 use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
- * This object represent a list of gifts.
+ * This object represents a list of gifts.
  * @property-read Gift[] $gifts The list of gifts
  *
  * @see https://core.telegram.org/bots/api#gifts

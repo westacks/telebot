@@ -30,7 +30,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive, short polling should be used for testing purposes only."
+                    "description": "Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling. Should be positive; short polling should be used for testing purposes only."
                 },
                 "allowed_updates": {
                     "type": [
@@ -44,7 +44,7 @@
         "setWebhook": {
             "href": "https://core.telegram.org/bots/api#setwebhook",
             "description": [
-                "Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request (a request with response HTTP status code different from 2XY), we will repeat the request and give up after a reasonable amount of attempts. Returns True on success.",
+                "Use this method to specify a URL and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update. In case of an unsuccessful request (a request with response HTTP status code different from 2XY), we will repeat the request and give up after a reasonable number of attempts. Returns True on success.",
                 "If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token. If specified, the request will contain a header \u201cX-Telegram-Bot-Api-Secret-Token\u201d with the secret token as content."
             ],
             "returns": [
@@ -84,7 +84,7 @@
                         "Array<String>"
                     ],
                     "required": false,
-                    "description": "A JSON-serialized list of the update types you want your bot to receive. For example, specify [\"message\", \"edited_channel_post\", \"callback_query\"] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member, message_reaction, and message_reaction_count (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time."
+                    "description": "A JSON-serialized list of the update types you want your bot to receive. For example, specify [\"message\", \"edited_channel_post\", \"callback_query\"] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all update types except chat_member, message_reaction, and message_reaction_count (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to setWebhook, so unwanted updates may be received for a short period of time."
                 },
                 "drop_pending_updates": {
                     "type": [
@@ -123,7 +123,7 @@
         "getWebhookInfo": {
             "href": "https://core.telegram.org/bots/api#getwebhookinfo",
             "description": [
-                "Use this method to get current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, will return an object with the url field empty."
+                "Use this method to get the current webhook status. Requires no parameters. On success, returns a WebhookInfo object. If the bot is using getUpdates, it will return an object with the url field empty."
             ],
             "returns": [
                 "WebhookInfo"
@@ -132,7 +132,7 @@
         "getMe": {
             "href": "https://core.telegram.org/bots/api#getme",
             "description": [
-                "A simple method for testing your bot's authentication token. Requires no parameters. Returns information about the bot in form of a BotFullInfo object."
+                "A simple method for testing your bot's authentication token. Requires no parameters. Returns information about the bot in the form of a BotFullInfo object."
             ],
             "returns": [
                 "BotFullInfo"
@@ -141,7 +141,7 @@
         "logOut": {
             "href": "https://core.telegram.org/bots/api#logout",
             "description": [
-                "Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally, otherwise there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log in back to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters."
+                "Use this method to log out from the cloud Bot API server before launching the bot locally. You must log out the bot before running it locally; otherwise, there is no guarantee that the bot will receive updates. After a successful call, you can immediately log in on a local server, but will not be able to log back in to the cloud Bot API server for 10 minutes. Returns True on success. Requires no parameters."
             ],
             "returns": [
                 "True"
@@ -833,21 +833,21 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "The static photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files \u00bb. Sending live photos by a URL is currently unsupported."
+                    "description": "The static photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended) or upload a new photo using multipart/form-data. More information on Sending Files \u00bb. Sending live photos by a URL is currently unsupported."
                 },
                 "caption": {
                     "type": [
                         "String"
                     ],
                     "required": false,
-                    "description": "Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing"
+                    "description": "Live photo caption (may also be used when resending live photos by file_id), 0-1024 characters after entities parsing"
                 },
                 "parse_mode": {
                     "type": [
                         "String"
                     ],
                     "required": false,
-                    "description": "Mode for parsing entities in the video caption. See formatting options for more details."
+                    "description": "Mode for parsing entities in the live photo caption. See formatting options for more details."
                 },
                 "caption_entities": {
                     "type": [
@@ -868,7 +868,7 @@
                         "Boolean"
                     ],
                     "required": false,
-                    "description": "Pass True if the video needs to be covered with a spoiler animation"
+                    "description": "Pass True if the live photo needs to be covered with a spoiler animation"
                 },
                 "disable_notification": {
                     "type": [
@@ -927,7 +927,7 @@
         "sendAudio": {
             "href": "https://core.telegram.org/bots/api#sendaudio",
             "description": [
-                "Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.",
+                "Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size; this limit may be changed in the future.",
                 "For sending voice messages, use the sendVoice method instead."
             ],
             "returns": [
@@ -1026,7 +1026,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
+                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
                 },
                 "disable_notification": {
                     "type": [
@@ -1085,7 +1085,7 @@
         "sendDocument": {
             "href": "https://core.telegram.org/bots/api#senddocument",
             "description": [
-                "Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future."
+                "Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size; this limit may be changed in the future."
             ],
             "returns": [
                 "Message"
@@ -1141,7 +1141,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
+                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
                 },
                 "caption": {
                     "type": [
@@ -1228,7 +1228,7 @@
         "sendVideo": {
             "href": "https://core.telegram.org/bots/api#sendvideo",
             "description": [
-                "Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future."
+                "Use this method to send video files; Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size; this limit may be changed in the future."
             ],
             "returns": [
                 "Message"
@@ -1305,7 +1305,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
+                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
                 },
                 "cover": {
                     "type": [
@@ -1421,7 +1421,7 @@
         "sendAnimation": {
             "href": "https://core.telegram.org/bots/api#sendanimation",
             "description": [
-                "Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future."
+                "Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size; this limit may be changed in the future."
             ],
             "returns": [
                 "Message"
@@ -1498,14 +1498,14 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
+                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
                 },
                 "caption": {
                     "type": [
                         "String"
                     ],
                     "required": false,
-                    "description": "Animation caption (may also be used when resending animation by file_id), 0-1024 characters after entities parsing"
+                    "description": "Animation caption (may also be used when resending animations by file_id), 0-1024 characters after entities parsing"
                 },
                 "parse_mode": {
                     "type": [
@@ -1592,7 +1592,7 @@
         "sendVoice": {
             "href": "https://core.telegram.org/bots/api#sendvoice",
             "description": [
-                "Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future."
+                "Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .OGG file encoded with OPUS, or in .MP3 format, or in .M4A format (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size; this limit may be changed in the future."
             ],
             "returns": [
                 "Message"
@@ -1727,7 +1727,7 @@
         "sendVideoNote": {
             "href": "https://core.telegram.org/bots/api#sendvideonote",
             "description": [
-                "Use this method to send a rounded square MPEG4 video of up to 1 minute long. On success, the sent Message is returned."
+                "Use this method to send a rounded square MPEG4 video up to 1 minute long. On success, the sent Message is returned."
             ],
             "returns": [
                 "Message"
@@ -1797,7 +1797,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
+                    "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
                 },
                 "disable_notification": {
                     "type": [
@@ -2004,7 +2004,7 @@
         "sendSharedWidget": {
             "href": "https://core.telegram.org/bots/api#sendsharedwidget",
             "description": [
-                "Use this method to send again a shared widget created by the bot. Currently, in the production environment, widgets can be sent only to private chats, and sent widgets automatically have protected content and therefore can't be forwarded. On success, the sent Message is returned."
+                "Use this method to resend a shared widget created by the bot. Currently, in the production environment, widgets can be sent only to private chats, and sent widgets automatically have protected content and therefore can't be forwarded. On success, the sent Message is returned."
             ],
             "returns": [
                 "Message"
@@ -2171,7 +2171,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes."
+                    "description": "Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user; use it for your internal processes."
                 },
                 "caption": {
                     "type": [
@@ -2251,7 +2251,7 @@
         "sendMediaGroup": {
             "href": "https://core.telegram.org/bots/api#sendmediagroup",
             "description": [
-                "Use this method to send a group of photos, live photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an Array of Message objects that were sent is returned."
+                "Use this method to send a group of photos, live photos, videos, documents or audios as an album. Documents and audio files can only be grouped in an album with messages of the same type. On success, an Array of Message objects that were sent is returned."
             ],
             "returns": [
                 "Array<Message>"
@@ -2333,7 +2333,7 @@
         "sendLocation": {
             "href": "https://core.telegram.org/bots/api#sendlocation",
             "description": [
-                "Use this method to send point on the map. On success, the sent Message is returned."
+                "Use this method to send a point on the map. On success, the sent Message is returned."
             ],
             "returns": [
                 "Message"
@@ -2838,7 +2838,7 @@
                         "Boolean"
                     ],
                     "required": false,
-                    "description": "Pass True if the poll allows to change chosen answer options, defaults to False for quizzes and to True for regular polls"
+                    "description": "Pass True if the poll allows changing the chosen answer options, defaults to False for quizzes and to True for regular polls"
                 },
                 "shuffle_options": {
                     "type": [
@@ -3465,7 +3465,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Date when the user will be unbanned; Unix time. If user is banned for more than 366 days or less than 30 seconds from the current time they are considered to be banned forever. Applied for supergroups and channels only."
+                    "description": "Date when the user will be unbanned; Unix time. If the user is banned for more than 366 days or less than 30 seconds from the current time, they are considered to be banned forever. Applied for supergroups and channels only."
                 },
                 "revoke_messages": {
                     "type": [
@@ -3552,7 +3552,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Date when restrictions will be lifted for the user; Unix time. If user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever."
+                    "description": "Date when restrictions will be lifted for the user; Unix time. If the user is restricted for more than 366 days or less than 30 seconds from the current time, they are considered to be restricted forever."
                 }
             }
         },
@@ -3627,7 +3627,7 @@
                         "Boolean"
                     ],
                     "required": false,
-                    "description": "Pass True if the administrator can change chat title, photo and other settings"
+                    "description": "Pass True if the administrator can change the chat title, photo and other settings"
                 },
                 "can_invite_users": {
                     "type": [
@@ -3829,7 +3829,7 @@
         "setChatPermissions": {
             "href": "https://core.telegram.org/bots/api#setchatpermissions",
             "description": [
-                "Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights. Returns True on success."
+                "Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator right. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -3881,7 +3881,7 @@
         "createChatInviteLink": {
             "href": "https://core.telegram.org/bots/api#createchatinvitelink",
             "description": [
-                "Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object."
+                "Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as a ChatInviteLink object."
             ],
             "returns": [
                 "ChatInviteLink"
@@ -3982,7 +3982,7 @@
         "createChatSubscriptionInviteLink": {
             "href": "https://core.telegram.org/bots/api#createchatsubscriptioninvitelink",
             "description": [
-                "Use this method to create a subscription invite link for a channel chat. The bot must have the can_invite_users administrator rights. The link can be edited using the method editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink. Returns the new invite link as a ChatInviteLink object."
+                "Use this method to create a subscription invite link for a channel chat. The bot must have the can_invite_users administrator right. The link can be edited using the method editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink. Returns the new invite link as a ChatInviteLink object."
             ],
             "returns": [
                 "ChatInviteLink"
@@ -4022,7 +4022,7 @@
         "editChatSubscriptionInviteLink": {
             "href": "https://core.telegram.org/bots/api#editchatsubscriptioninvitelink",
             "description": [
-                "Use this method to edit a subscription invite link created by the bot. The bot must have the can_invite_users administrator rights. Returns the edited invite link as a ChatInviteLink object."
+                "Use this method to edit a subscription invite link created by the bot. The bot must have the can_invite_users administrator right. Returns the edited invite link as a ChatInviteLink object."
             ],
             "returns": [
                 "ChatInviteLink"
@@ -4055,7 +4055,7 @@
         "revokeChatInviteLink": {
             "href": "https://core.telegram.org/bots/api#revokechatinvitelink",
             "description": [
-                "Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as ChatInviteLink object."
+                "Use this method to revoke an invite link created by the bot. If the primary link is revoked, a new link is automatically generated. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. Returns the revoked invite link as a ChatInviteLink object."
             ],
             "returns": [
                 "ChatInviteLink"
@@ -4609,7 +4609,7 @@
         "editForumTopic": {
             "href": "https://core.telegram.org/bots/api#editforumtopic",
             "description": [
-                "Use this method to edit name and icon of a topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success."
+                "Use this method to edit the name and icon of a topic in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right, unless it is the creator of the topic. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -4649,7 +4649,7 @@
         "closeForumTopic": {
             "href": "https://core.telegram.org/bots/api#closeforumtopic",
             "description": [
-                "Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success."
+                "Use this method to close an open topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right, unless it is the creator of the topic. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -4675,7 +4675,7 @@
         "reopenForumTopic": {
             "href": "https://core.telegram.org/bots/api#reopenforumtopic",
             "description": [
-                "Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights, unless it is the creator of the topic. Returns True on success."
+                "Use this method to reopen a closed topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right, unless it is the creator of the topic. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -4701,7 +4701,7 @@
         "deleteForumTopic": {
             "href": "https://core.telegram.org/bots/api#deleteforumtopic",
             "description": [
-                "Use this method to delete a forum topic along with all its messages in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights. Returns True on success."
+                "Use this method to delete a forum topic along with all its messages in a forum supergroup chat or a private chat with a user. In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator right. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -4753,7 +4753,7 @@
         "editGeneralForumTopic": {
             "href": "https://core.telegram.org/bots/api#editgeneralforumtopic",
             "description": [
-                "Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success."
+                "Use this method to edit the name of the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -4779,7 +4779,7 @@
         "closeGeneralForumTopic": {
             "href": "https://core.telegram.org/bots/api#closegeneralforumtopic",
             "description": [
-                "Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success."
+                "Use this method to close an open 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -4798,7 +4798,7 @@
         "reopenGeneralForumTopic": {
             "href": "https://core.telegram.org/bots/api#reopengeneralforumtopic",
             "description": [
-                "Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically unhidden if it was hidden. Returns True on success."
+                "Use this method to reopen a closed 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right. The topic will be automatically unhidden if it was hidden. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -4817,7 +4817,7 @@
         "hideGeneralForumTopic": {
             "href": "https://core.telegram.org/bots/api#hidegeneralforumtopic",
             "description": [
-                "Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. The topic will be automatically closed if it was open. Returns True on success."
+                "Use this method to hide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right. The topic will be automatically closed if it was open. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -4836,7 +4836,7 @@
         "unhideGeneralForumTopic": {
             "href": "https://core.telegram.org/bots/api#unhidegeneralforumtopic",
             "description": [
-                "Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator rights. Returns True on success."
+                "Use this method to unhide the 'General' topic in a forum supergroup chat. The bot must be an administrator in the chat for this to work and must have the can_manage_topics administrator right. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -5100,7 +5100,7 @@
         "setMySettings": {
             "href": "https://core.telegram.org/bots/api#setmysettings",
             "description": [
-                "Use this method to change settings of the bot. Settings that aren't specified remain unchanged. Returns True on success."
+                "Use this method to change the settings of the bot. Settings that aren't specified remain unchanged. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -5533,7 +5533,7 @@
                         "Boolean"
                     ],
                     "required": false,
-                    "description": "Pass True to get default administrator rights of the bot in channels. Otherwise, default administrator rights of the bot for groups and supergroups will be returned."
+                    "description": "Pass True to get the default administrator rights of the bot in channels. Otherwise, the default administrator rights of the bot for groups and supergroups will be returned."
                 }
             }
         },
@@ -5770,14 +5770,14 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier for the target chat or username of the target bot or channel in the format @username"
+                    "description": "Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username"
                 }
             }
         },
         "readBusinessMessage": {
             "href": "https://core.telegram.org/bots/api#readbusinessmessage",
             "description": [
-                "Marks incoming message as read on behalf of a business account. Requires the can_read_messages business bot right. Returns True on success."
+                "Marks an incoming message as read on behalf of a business account. Requires the can_read_messages business bot right. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -5809,7 +5809,7 @@
         "deleteBusinessMessages": {
             "href": "https://core.telegram.org/bots/api#deletebusinessmessages",
             "description": [
-                "Delete messages on behalf of a business account. Requires the can_delete_sent_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success."
+                "Deletes messages on behalf of a business account. Requires the can_delete_sent_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -5834,7 +5834,7 @@
         "setBusinessAccountName": {
             "href": "https://core.telegram.org/bots/api#setbusinessaccountname",
             "description": [
-                "Changes the first and last name of a managed business account. Requires the can_change_name business bot right. Returns True on success."
+                "Changes the first and last name of a managed business account. Requires the can_edit_name business bot right. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -5866,7 +5866,7 @@
         "setBusinessAccountUsername": {
             "href": "https://core.telegram.org/bots/api#setbusinessaccountusername",
             "description": [
-                "Changes the username of a managed business account. Requires the can_change_username business bot right. Returns True on success."
+                "Changes the username of a managed business account. Requires the can_edit_username business bot right. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -5891,7 +5891,7 @@
         "setBusinessAccountBio": {
             "href": "https://core.telegram.org/bots/api#setbusinessaccountbio",
             "description": [
-                "Changes the bio of a managed business account. Requires the can_change_bio business bot right. Returns True on success."
+                "Changes the bio of a managed business account. Requires the can_edit_bio business bot right. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -6121,7 +6121,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results"
+                    "description": "Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results"
                 },
                 "limit": {
                     "type": [
@@ -6369,14 +6369,14 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "The amount of Telegram Stars that will be paid for the upgrade from the business account balance. If gift.prepaid_upgrade_star_count > 0, then pass 0, otherwise, the can_transfer_stars business bot right is required and gift.upgrade_star_count must be passed."
+                    "description": "The amount of Telegram Stars that will be paid for the upgrade from the business account balance. If gift.prepaid_upgrade_star_count > 0, then pass 0; otherwise, the can_transfer_stars business bot right is required and gift.upgrade_star_count must be passed."
                 }
             }
         },
         "transferGift": {
             "href": "https://core.telegram.org/bots/api#transfergift",
             "description": [
-                "Transfers an owned unique gift to another user. Requires the can_transfer_and_upgrade_gifts business bot right. Requires can_transfer_stars business bot right if the transfer is paid. Returns True on success."
+                "Transfers an owned unique gift to another user. Requires the can_transfer_and_upgrade_gifts business bot right. Requires the can_transfer_stars business bot right if the transfer is paid. Returns True on success."
             ],
             "returns": [
                 "True"
@@ -6394,14 +6394,14 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier of the regular gift that should be transferred"
+                    "description": "Unique identifier of the unique gift that should be transferred"
                 },
                 "new_owner_chat_id": {
                     "type": [
                         "Integer"
                     ],
                     "required": true,
-                    "description": "Unique identifier of the chat which will own the gift. The chat must be active in the last 24 hours."
+                    "description": "Unique identifier of the chat which will own the gift. The chat must have been active in the last 24 hours."
                 },
                 "star_count": {
                     "type": [
@@ -6755,7 +6755,7 @@
         "editMessageText": {
             "href": "https://core.telegram.org/bots/api#editmessagetext",
             "description": [
-                "Use this method to edit text, rich and game messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
+                "Use this method to edit text, rich and game messages. On success, if the edited message is not an inline message, the edited Message is returned; otherwise, True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
             ],
             "returns": [
                 "Message",
@@ -6824,7 +6824,7 @@
                         "InputRichMessage"
                     ],
                     "required": false,
-                    "description": "New rich content of the message; required if text isn't specified. Direct upload of new files and explicit upload of files by a URL isn't supported when an inline message is edited."
+                    "description": "New rich content of the message; required if text isn't specified. Direct upload of new files and explicit upload of files by a URL aren't supported when an inline message is edited."
                 },
                 "reply_markup": {
                     "type": [
@@ -6838,7 +6838,7 @@
         "editMessageCaption": {
             "href": "https://core.telegram.org/bots/api#editmessagecaption",
             "description": [
-                "Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
+                "Use this method to edit captions of messages. On success, if the edited message is not an inline message, the edited Message is returned; otherwise, True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
             ],
             "returns": [
                 "Message",
@@ -6900,7 +6900,7 @@
                         "Boolean"
                     ],
                     "required": false,
-                    "description": "Pass True if the caption must be shown above the message media. Supported only for animation, photo and video messages."
+                    "description": "Pass True if the caption must be shown above the message media. Supported only for animation, live photo, paid media, photo, video and widget messages."
                 },
                 "reply_markup": {
                     "type": [
@@ -6914,7 +6914,7 @@
         "editMessageMedia": {
             "href": "https://core.telegram.org/bots/api#editmessagemedia",
             "description": [
-                "Use this method to edit animation, audio, document, live photo, photo, or video messages, or to replace a text or a rich message with a media. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo, a live photo, or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
+                "Use this method to edit animation, audio, document, live photo, photo, or video messages, or to replace a text or a rich message with media. If a message is part of a message album, then it can be edited only to an audio for audio albums, only to a document for document albums and to a photo, a live photo, or a video otherwise. When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL. On success, if the edited message is not an inline message, the edited Message is returned; otherwise, True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
             ],
             "returns": [
                 "Message",
@@ -6969,7 +6969,7 @@
         "editMessageLiveLocation": {
             "href": "https://core.telegram.org/bots/api#editmessagelivelocation",
             "description": [
-                "Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned."
+                "Use this method to edit live location messages. A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation. On success, if the edited message is not an inline message, the edited Message is returned; otherwise, True is returned."
             ],
             "returns": [
                 "Message",
@@ -7059,7 +7059,7 @@
         "stopMessageLiveLocation": {
             "href": "https://core.telegram.org/bots/api#stopmessagelivelocation",
             "description": [
-                "Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned."
+                "Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned; otherwise, True is returned."
             ],
             "returns": [
                 "Message",
@@ -7118,7 +7118,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Unique identifier of the business connection on behalf of which the message will be sent"
+                    "description": "Unique identifier of the business connection on behalf of which the message to be edited was sent"
                 },
                 "chat_id": {
                     "type": [
@@ -7233,7 +7233,7 @@
         "editMessageReplyMarkup": {
             "href": "https://core.telegram.org/bots/api#editmessagereplymarkup",
             "description": [
-                "Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
+                "Use this method to edit only the reply markup of messages. On success, if the edited message is not an inline message, the edited Message is returned; otherwise, True is returned. Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent."
             ],
             "returns": [
                 "Message",
@@ -7497,7 +7497,7 @@
                         "Boolean"
                     ],
                     "required": false,
-                    "description": "Pass True if the caption must be shown above the message media. Supported only for animation, photo and video messages."
+                    "description": "Pass True if the caption must be shown above the message media. Supported only for animation, live photo, photo and video messages."
                 },
                 "reply_markup": {
                     "type": [
@@ -7576,7 +7576,7 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future."
+                    "description": "Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must not be more than 2678400 seconds (30 days) in the future."
                 }
             }
         },
@@ -7615,7 +7615,7 @@
         "deleteMessage": {
             "href": "https://core.telegram.org/bots/api#deletemessage",
             "description": [
-                "Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- Service messages about a supergroup, channel, or forum topic creation can't be deleted.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has can_delete_messages administrator right in a supergroup or a channel, it can delete any message there.- If the bot has can_manage_direct_messages administrator right in a channel, it can delete any message in the corresponding direct messages chat.Returns True on success."
+                "Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- Service messages about a supergroup, channel, or forum topic creation can't be deleted.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has the can_delete_messages administrator right in a supergroup or a channel, it can delete any message there.- If the bot has the can_manage_direct_messages administrator right in a channel, it can delete any message in the corresponding direct messages chat.Returns True on success."
             ],
             "returns": [
                 "True"
@@ -8165,7 +8165,7 @@
                         "Array<String>"
                     ],
                     "required": false,
-                    "description": "A JSON-serialized list of 0-20 search keywords for the sticker with total length of up to 64 characters"
+                    "description": "A JSON-serialized list of 0-20 search keywords for the sticker with a total length of up to 64 characters"
                 }
             }
         },
@@ -8316,7 +8316,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Unique identifier of the business connection on behalf of which the message will be sent. Bot can send rich messages on behalf of a business account only if the corresponding user can send rich messages."
+                    "description": "Unique identifier of the business connection on behalf of which the message will be sent. The bot can send rich messages on behalf of a business account only if the corresponding user can send rich messages."
                 },
                 "chat_id": {
                     "type": [
@@ -8443,7 +8443,7 @@
                         "InputRichMessage"
                     ],
                     "required": true,
-                    "description": "The partial message to be streamed. Direct upload of new files and explicit upload of files by a URL isn't supported."
+                    "description": "The partial message to be streamed. Direct upload of new files and explicit upload of files by a URL aren't supported."
                 },
                 "can_stop": {
                     "type": [
@@ -8564,7 +8564,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes."
+                    "description": "Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user; use it for your internal processes."
                 },
                 "provider_token": {
                     "type": [
@@ -8592,14 +8592,14 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in Telegram Stars."
+                    "description": "The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json; it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in Telegram Stars."
                 },
                 "suggested_tip_amounts": {
                     "type": [
                         "Array<Integer>"
                     ],
                     "required": false,
-                    "description": "A JSON-serialized Array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount."
+                    "description": "A JSON-serialized Array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increasing order and must not exceed max_tip_amount."
                 },
                 "start_parameter": {
                     "type": [
@@ -8613,7 +8613,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed description of required fields should be provided by the payment provider."
+                    "description": "JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed description of the required fields should be provided by the payment provider."
                 },
                 "photo_url": {
                     "type": [
@@ -8778,7 +8778,7 @@
                         "String"
                     ],
                     "required": true,
-                    "description": "Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes."
+                    "description": "Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user; use it for your internal processes."
                 },
                 "provider_token": {
                     "type": [
@@ -8806,28 +8806,28 @@
                         "Integer"
                     ],
                     "required": false,
-                    "description": "The number of seconds the subscription will be active for before the next payment. The currency must be set to \u201cXTR\u201d (Telegram Stars) if the parameter is used. Currently, it must always be 2592000 (30 days) if specified. Any number of subscriptions can be active for a given bot at the same time, including multiple concurrent subscriptions from the same user. Subscription price must no exceed 10000 Telegram Stars."
+                    "description": "The number of seconds the subscription will be active for before the next payment. The currency must be set to \u201cXTR\u201d (Telegram Stars) if the parameter is used. Currently, it must always be 2592000 (30 days) if specified. Any number of subscriptions can be active for a given bot at the same time, including multiple concurrent subscriptions from the same user. Subscription price must not exceed 10000 Telegram Stars."
                 },
                 "max_tip_amount": {
                     "type": [
                         "Integer"
                     ],
                     "required": false,
-                    "description": "The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in Telegram Stars."
+                    "description": "The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json; it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in Telegram Stars."
                 },
                 "suggested_tip_amounts": {
                     "type": [
                         "Array<Integer>"
                     ],
                     "required": false,
-                    "description": "A JSON-serialized Array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount."
+                    "description": "A JSON-serialized Array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increasing order and must not exceed max_tip_amount."
                 },
                 "provider_data": {
                     "type": [
                         "String"
                     ],
                     "required": false,
-                    "description": "JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed description of required fields should be provided by the payment provider."
+                    "description": "JSON-serialized data about the invoice, which will be shared with the payment provider. A detailed description of the required fields should be provided by the payment provider."
                 },
                 "photo_url": {
                     "type": [
@@ -8943,7 +8943,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Required if ok is False. Error message in human readable form that explains why it is impossible to complete the order (e.g. \u201cSorry, delivery to your desired address is unavailable\u201d). Telegram will display this message to the user."
+                    "description": "Required if ok is False. Error message in human-readable form that explains why it is impossible to complete the order (e.g. \u201cSorry, delivery to your desired address is unavailable\u201d). Telegram will display this message to the user."
                 }
             }
         },
@@ -8975,7 +8975,7 @@
                         "String"
                     ],
                     "required": false,
-                    "description": "Required if ok is False. Error message in human readable form that explains the reason for failure to proceed with the checkout (e.g. \"Sorry, somebody just bought the last of our amazing black T-shirts while you were busy filling out your payment details. Please choose a different color or garment!\"). Telegram will display this message to the user."
+                    "description": "Required if ok is False. Error message in human-readable form that explains the reason for failure to proceed with the checkout (e.g. \"Sorry, somebody just bought the last of our amazing black T-shirts while you were busy filling out your payment details. Please choose a different color or garment!\"). Telegram will display this message to the user."
                 }
             }
         },
@@ -9073,7 +9073,7 @@
         "setPassportDataErrors": {
             "href": "https://core.telegram.org/bots/api#setpassportdataerrors",
             "description": [
-                "Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.",
+                "Informs a user that some of the Telegram Passport elements they provided contain errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.",
                 "Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues."
             ],
             "returns": [
@@ -9181,7 +9181,7 @@
         "setGameScore": {
             "href": "https://core.telegram.org/bots/api#setgamescore",
             "description": [
-                "Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the Message is returned, otherwise True is returned. Returns an error, if the new score is not greater than the user's current score in the chat and force is False."
+                "Use this method to set the score of the specified user in a game message. On success, if the message is not an inline message, the Message is returned; otherwise, True is returned. Returns an error if the new score is not greater than the user's current score in the chat and force is False."
             ],
             "returns": [
                 "Message",
@@ -9290,7 +9290,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially. This identifier becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then identifier of the next update will be chosen randomly instead of sequentially."
+                    "description": "The update's unique identifier. Update identifiers start from a certain positive number and increase sequentially. This identifier becomes especially handy if you're using webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order. If there are no new updates for at least a week, then the identifier of the next update will be chosen randomly instead of sequentially."
                 },
                 "message": {
                     "type": [
@@ -9356,7 +9356,7 @@
                     "type": [
                         "MessageReactionCountUpdated"
                     ],
-                    "description": "Optional. Reactions to a message with anonymous reactions were changed. The bot must be an administrator in the chat and must explicitly specify \"message_reaction_count\" in the list of allowed_updates to receive these updates. The updates are grouped and can be sent with delay up to a few minutes."
+                    "description": "Optional. Reactions to a message with anonymous reactions were changed. The bot must be an administrator in the chat and must explicitly specify \"message_reaction_count\" in the list of allowed_updates to receive these updates. The updates are grouped and can be sent with a delay of up to a few minutes."
                 },
                 "inline_query": {
                     "type": [
@@ -9410,7 +9410,7 @@
                     "type": [
                         "Poll"
                     ],
-                    "description": "Optional. New poll state. Bots receive only updates about manually stopped polls and polls, which are sent by the bot."
+                    "description": "Optional. New poll state. Bots receive only updates about manually stopped polls and polls which are sent by the bot."
                 },
                 "poll_answer": {
                     "type": [
@@ -9452,7 +9452,7 @@
                     "type": [
                         "ManagedBotUpdated"
                     ],
-                    "description": "Optional. A new bot was created to be managed by the bot, or token or owner of a managed bot was changed"
+                    "description": "Optional. A new bot was created to be managed by the bot, or the token or owner of a managed bot was changed"
                 },
                 "subscription": {
                     "type": [
@@ -9540,7 +9540,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Unique identifier for this bot. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier."
+                    "description": "Unique identifier for this bot. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type is safe for storing this identifier."
                 },
                 "is_bot": {
                     "type": [
@@ -9656,7 +9656,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Unique identifier for this user or bot. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier."
+                    "description": "Unique identifier for this user or bot. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type is safe for storing this identifier."
                 },
                 "is_bot": {
                     "type": [
@@ -9712,7 +9712,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier."
+                    "description": "Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this identifier."
                 },
                 "type": {
                     "type": [
@@ -9768,7 +9768,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier."
+                    "description": "Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this identifier."
                 },
                 "type": {
                     "type": [
@@ -9918,7 +9918,7 @@
                     "type": [
                         "True"
                     ],
-                    "description": "Optional. True, if privacy settings of the other party in the private chat allows to use tg://user?id=<user_id> links only in chats with the user"
+                    "description": "Optional. True, if the privacy settings of the other party in the private chat allow using tg://user?id=<user_id> links only in chats with the user"
                 },
                 "has_restricted_voice_and_video_messages": {
                     "type": [
@@ -10038,7 +10038,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier."
+                    "description": "Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64-bit integer or double-precision float type is safe for storing this identifier."
                 },
                 "location": {
                     "type": [
@@ -10508,7 +10508,7 @@
                     "type": [
                         "Array<PhotoSize>"
                     ],
-                    "description": "Optional. A chat photo was change to this value"
+                    "description": "Optional. A chat photo was changed to this value"
                 },
                 "delete_chat_photo": {
                     "type": [
@@ -10526,13 +10526,13 @@
                     "type": [
                         "True"
                     ],
-                    "description": "Optional. Service message: the supergroup has been created. This field can't be received in a message coming through updates, because bot can't be a member of a supergroup when it is created. It can only be found in reply_to_message if someone replies to a very first message in a directly created supergroup."
+                    "description": "Optional. Service message: the supergroup has been created. This field can't be received in a message coming through updates, because a bot can't be a member of a supergroup when it is created. It can only be found in reply_to_message if someone replies to the very first message in a directly created supergroup."
                 },
                 "channel_chat_created": {
                     "type": [
                         "True"
                     ],
-                    "description": "Optional. Service message: the channel has been created. This field can't be received in a message coming through updates, because bot can't be a member of a channel when it is created. It can only be found in reply_to_message if someone replies to a very first message in a channel."
+                    "description": "Optional. Service message: the channel has been created. This field can't be received in a message coming through updates, because a bot can't be a member of a channel when it is created. It can only be found in reply_to_message if someone replies to the very first message in a channel."
                 },
                 "message_auto_delete_timer_changed": {
                     "type": [
@@ -10544,13 +10544,13 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier."
+                    "description": "Optional. The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this identifier."
                 },
                 "migrate_from_chat_id": {
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. The supergroup has been migrated from a group with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier."
+                    "description": "Optional. The supergroup has been migrated from a group with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this identifier."
                 },
                 "pinned_message": {
                     "type": [
@@ -10853,7 +10853,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Unique message identifier. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent."
+                    "description": "Unique message identifier. In specific instances (e.g., a message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent."
                 }
             }
         },
@@ -10922,7 +10922,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. For \u201ctext_link\u201d only, URL that will be opened after user taps on the text"
+                    "description": "Optional. For \u201ctext_link\u201d only, URL that will be opened after the user taps on the text"
                 },
                 "user": {
                     "type": [
@@ -11217,7 +11217,7 @@
                     "type": [
                         "Array<RichText>"
                     ],
-                    "description": "Optional. A JSON-serialized list of quoted parts of the rich message to be replied to. Must contain one element for each quoted text of the message in the order of their appearance. Each of the following is a separate quoted text: the text of a paragraph, a heading, a preformatted block, a footer, or a mathematical expression; the text and the credit of a block quotation or a pull quotation; the summary of a details block; the caption and each cell of a table; the text and the credit of a caption of a media block, a collage, a slideshow, or a map. Texts of blocks nested in lists, block quotations, details, collages, and slideshows are separate quoted texts too. The first and the last elements can contain only a part of the corresponding text; all other elements must contain the whole text. Formatting of the quoted parts must be kept, and rich texts must be nested in the same way as in the message received from the server. Mathematical expressions must be quoted entirely. Buttons in RichBlockButtons, anchors and dividers can't be quoted. Up to 32 quoted texts with total length up to 1024 characters can be specified. Only plain text, RichTextBold, RichTextItalic, RichTextUnderline, RichTextStrikethrough, RichTextSpoiler, RichTextSubscript, RichTextSuperscript, RichTextDateTime, RichTextCustomEmoji, RichTextMathematicalExpression, and arrays of them are kept in the quote; other rich text types are replaced with their text. If non-empty, then quote, quote_parse_mode and quote_entities are ignored."
+                    "description": "Optional. A JSON-serialized list of quoted parts of the rich message to be replied to. Must contain one element for each quoted text of the message in the order of their appearance. Each of the following is a separate quoted text: the text of a paragraph, a heading, a preformatted block, a footer, or a mathematical expression; the text and the credit of a block quotation or a pull quotation; the summary of a details block; the caption and each cell of a table; the text and the credit of a caption of a media block, a collage, a slideshow, or a map. Texts of blocks nested in lists, block quotations, details, collages, and slideshows are separate quoted texts too. The first and the last elements can contain only a part of the corresponding text; all other elements must contain the whole text. Formatting of the quoted parts must be kept, and rich texts must be nested in the same way as in the message received from the server. Mathematical expressions must be quoted entirely. Buttons in RichBlockButtons, anchors and dividers can't be quoted. Up to 32 quoted texts with a total length of up to 1024 characters can be specified. Only plain text, RichTextBold, RichTextItalic, RichTextUnderline, RichTextStrikethrough, RichTextSpoiler, RichTextSubscript, RichTextSuperscript, RichTextDateTime, RichTextCustomEmoji, RichTextMathematicalExpression, and arrays of them are kept in the quote; other rich text types are replaced with their text. If non-empty, then quote, quote_parse_mode and quote_entities are ignored."
                 },
                 "quote_position": {
                     "type": [
@@ -11241,6 +11241,9 @@
         },
         "EphemeralMessageParameters": {
             "href": "https://core.telegram.org/bots/api#ephemeralmessageparameters",
+            "description": [
+                "Describes the parameters of an ephemeral message to be sent."
+            ],
             "fields": {
                 "receiver_user_id": {
                     "type": [
@@ -11496,7 +11499,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value."
+                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this value."
                 }
             }
         },
@@ -11552,7 +11555,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value."
+                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this value."
                 },
                 "thumbnail": {
                     "type": [
@@ -11602,7 +11605,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value."
+                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this value."
                 }
             }
         },
@@ -11622,13 +11625,13 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Identifier for the video file which can be used to download or reuse the file"
+                    "description": "Identifier for the video file, which can be used to download or reuse the file"
                 },
                 "file_unique_id": {
                     "type": [
                         "String"
                     ],
-                    "description": "Unique identifier for the video file which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file."
+                    "description": "Unique identifier for the video file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file."
                 },
                 "width": {
                     "type": [
@@ -11658,7 +11661,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value."
+                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this value."
                 }
             }
         },
@@ -11722,7 +11725,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value."
+                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this value."
                 }
             }
         },
@@ -11802,7 +11805,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value."
+                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this value."
                 }
             }
         },
@@ -11884,7 +11887,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value."
+                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this value."
                 }
             }
         },
@@ -12088,7 +12091,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. Contact's user identifier in Telegram. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier."
+                    "description": "Optional. Contact's user identifier in Telegram. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type is safe for storing this identifier."
                 },
                 "vcard": {
                     "type": [
@@ -12240,7 +12243,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
+                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
                 },
                 "caption": {
                     "type": [
@@ -12316,7 +12319,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
+                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
                 },
                 "caption": {
                     "type": [
@@ -12380,7 +12383,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
+                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
                 },
                 "caption": {
                     "type": [
@@ -12638,7 +12641,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
+                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
                 },
                 "cover": {
                     "type": [
@@ -12962,13 +12965,13 @@
                     "type": [
                         "Boolean"
                     ],
-                    "description": "True, if the poll allows to change the chosen answer options"
+                    "description": "True, if the poll allows changing the chosen answer options"
                 },
                 "members_only": {
                     "type": [
                         "Boolean"
                     ],
-                    "description": "True if voting is limited to users who have been members of the chat where the poll was originally sent for more than 24 hours"
+                    "description": "True, if voting is limited to users who have been members of the chat where the poll was originally sent for more than 24 hours"
                 },
                 "country_codes": {
                     "type": [
@@ -13224,7 +13227,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. The direction in which user is moving, in degrees; 1-360. For active live locations only."
+                    "description": "Optional. The direction in which the user is moving, in degrees; 1-360. For active live locations only."
                 },
                 "proximity_alert_radius": {
                     "type": [
@@ -13374,7 +13377,7 @@
                     "type": [
                         "User"
                     ],
-                    "description": "Information about the bot. Token of the bot can be fetched using the method getManagedBotToken."
+                    "description": "Information about the bot. The token of the bot can be fetched using the method getManagedBotToken."
                 }
             }
         },
@@ -13899,13 +13902,13 @@
         "GeneralForumTopicHidden": {
             "href": "https://core.telegram.org/bots/api#generalforumtopichidden",
             "description": [
-                "This object represents a service message about General forum topic hidden in the chat. Currently holds no information."
+                "This object represents a service message about the General forum topic hidden in the chat. Currently holds no information."
             ]
         },
         "GeneralForumTopicUnhidden": {
             "href": "https://core.telegram.org/bots/api#generalforumtopicunhidden",
             "description": [
-                "This object represents a service message about General forum topic unhidden in the chat. Currently holds no information."
+                "This object represents a service message about the General forum topic unhidden in the chat. Currently holds no information."
             ]
         },
         "SharedUser": {
@@ -13982,7 +13985,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Identifier of the shared chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot may not have access to the chat and could be unable to use this identifier, unless the chat is already known to the bot by some other means."
+                    "description": "Identifier of the shared chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type is safe for storing this identifier. The bot may not have access to the chat and could be unable to use this identifier, unless the chat is already known to the bot by some other means."
                 },
                 "title": {
                     "type": [
@@ -14310,7 +14313,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "The number of users which are supposed to be selected as winners of the giveaway"
+                    "description": "The number of users who are supposed to be selected as winners of the giveaway"
                 },
                 "only_new_members": {
                     "type": [
@@ -14328,7 +14331,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Description of additional giveaway prize"
+                    "description": "Optional. Description of an additional giveaway prize"
                 },
                 "country_codes": {
                     "type": [
@@ -14426,7 +14429,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Description of additional giveaway prize"
+                    "description": "Optional. Description of an additional giveaway prize"
                 }
             }
         },
@@ -14562,7 +14565,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. Proposed send date of the post. If specified, then the date must be between 300 second and 2678400 seconds (30 days) in the future. If the field is omitted, then the post can be published at any time within 30 days at the sole discretion of the user who approves it."
+                    "description": "Optional. Proposed send date of the post. If specified, then the date must be between 300 seconds and 2678400 seconds (30 days) in the future. If the field is omitted, then the post can be published at any time within 30 days at the sole discretion of the user who approves it."
                 }
             }
         },
@@ -14576,7 +14579,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Unique identifier of the topic. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier."
+                    "description": "Unique identifier of the topic. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type is safe for storing this identifier."
                 },
                 "user": {
                     "type": [
@@ -14589,7 +14592,7 @@
         "UserProfilePhotos": {
             "href": "https://core.telegram.org/bots/api#userprofilephotos",
             "description": [
-                "This object represent a user's profile pictures."
+                "This object represents a user's profile pictures."
             ],
             "fields": {
                 "total_count": {
@@ -14648,7 +14651,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value."
+                    "description": "Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this value."
                 },
                 "file_path": {
                     "type": [
@@ -14712,7 +14715,7 @@
                     "type": [
                         "Boolean"
                     ],
-                    "description": "Optional. Use this parameter if you want to show the keyboard to specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply to a message in the same chat and forum topic, sender of the original message.Example: A user requests to change the bot's language, bot replies to the request with a keyboard to select the new language. Other users in the group don't see the keyboard."
+                    "description": "Optional. Use this parameter if you want to show the keyboard to specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply to a message in the same chat and forum topic, sender of the original message.Example: A user requests to change the bot's language, and the bot replies to the request with a keyboard to select the new language. Other users in the group don't see the keyboard."
                 },
                 "force_reply": {
                     "type": [
@@ -14843,7 +14846,7 @@
         "KeyboardButtonRequestChat": {
             "href": "https://core.telegram.org/bots/api#keyboardbuttonrequestchat",
             "description": [
-                "This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with the bot when the corresponding button is pressed. The bot will be granted requested rights in the chat if appropriate. More about requesting chats \u00bb."
+                "This object defines the criteria used to request a suitable chat. Information about the selected chat will be shared with the bot when the corresponding button is pressed. The bot will be granted the requested rights in the chat if appropriate. More about requesting chats \u00bb."
             ],
             "fields": {
                 "request_id": {
@@ -14943,7 +14946,7 @@
         "KeyboardButtonPollType": {
             "href": "https://core.telegram.org/bots/api#keyboardbuttonpolltype",
             "description": [
-                "This object represents type of a poll, which is allowed to be created and sent when the corresponding button is pressed."
+                "This object represents the type of a poll, which is allowed to be created and sent when the corresponding button is pressed."
             ],
             "fields": {
                 "type": {
@@ -14964,13 +14967,13 @@
                     "type": [
                         "True"
                     ],
-                    "description": "Requests clients to remove the custom keyboard (user will not be able to summon this keyboard; if you want to hide the keyboard from sight but keep it accessible, use one_time_keyboard in ReplyKeyboardMarkup)"
+                    "description": "Requests clients to remove the custom keyboard (the user will not be able to summon this keyboard; if you want to hide the keyboard from sight but keep it accessible, use one_time_keyboard in ReplyKeyboardMarkup)"
                 },
                 "selective": {
                     "type": [
                         "Boolean"
                     ],
-                    "description": "Optional. Use this parameter if you want to remove the keyboard for specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply to a message in the same chat and forum topic, sender of the original message.Example: A user votes in a poll, bot returns confirmation message in reply to the vote and removes the keyboard for that user, while still showing the keyboard with poll options to users who haven't voted yet."
+                    "description": "Optional. Use this parameter if you want to remove the keyboard for specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply to a message in the same chat and forum topic, sender of the original message.Example: A user votes in a poll, and the bot returns a confirmation message in reply to the vote and removes the keyboard for that user, while still showing the keyboard with poll options to users who haven't voted yet."
                 }
             }
         },
@@ -15076,7 +15079,7 @@
                     "type": [
                         "Boolean"
                     ],
-                    "description": "Optional. Specify True, to send a Pay button. Substrings \u201c\u201d and \u201cXTR\u201d in the buttons's text will be replaced with a Telegram Star icon.NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages."
+                    "description": "Optional. Specify True to send a Pay button. Substrings \u201c\u201d and \u201cXTR\u201d in the button's text will be replaced with a Telegram Star icon.NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages."
                 },
                 "disabled": {
                     "type": [
@@ -15216,7 +15219,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Data associated with the callback button. Be aware that the message originated the query can contain no callback buttons with this data."
+                    "description": "Optional. Data associated with the callback button. Be aware that the message that originated the query can contain no callback buttons with this data."
                 },
                 "game_short_name": {
                     "type": [
@@ -15453,7 +15456,7 @@
         "ForceReply": {
             "href": "https://core.telegram.org/bots/api#forcereply",
             "description": [
-                "Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user has selected the bot's message and tapped 'Reply'). This can be extremely useful if you want to create user-friendly step-by-step interfaces without having to sacrifice privacy mode. Not supported in channels and for messages sent on behalf of a user account."
+                "Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user has selected the bot's message and tapped 'Reply'). This can be extremely useful if you want to create user-friendly step-by-step interfaces without having to sacrifice privacy mode. Not supported in channels and for messages sent on behalf of a business account."
             ],
             "fields": {
                 "force_reply": {
@@ -15486,7 +15489,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Unique identifier for this community. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier."
+                    "description": "Unique identifier for this community. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this identifier."
                 },
                 "name": {
                     "type": [
@@ -15574,7 +15577,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. Point in time (Unix timestamp) when the link will expire or has been expired"
+                    "description": "Optional. Point in time (Unix timestamp) when the link will expire or has expired"
                 },
                 "member_limit": {
                     "type": [
@@ -16200,7 +16203,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Identifier of a private chat with the user who sent the join request. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier. The bot can use this identifier for 5 minutes to send messages until the join request is processed, assuming no other administrator contacted the user."
+                    "description": "Identifier of a private chat with the user who sent the join request. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type is safe for storing this identifier. The bot can use this identifier for 5 minutes to send messages until the join request is processed, assuming no other administrator contacted the user."
                 },
                 "date": {
                     "type": [
@@ -16447,14 +16450,14 @@
         "UserRating": {
             "href": "https://core.telegram.org/bots/api#userrating",
             "description": [
-                "This object describes the rating of a user based on their Telegram Star spendings."
+                "This object describes the rating of a user based on their Telegram Star spending."
             ],
             "fields": {
                 "level": {
                     "type": [
                         "Integer"
                     ],
-                    "description": "Current level of the user, indicating their reliability when purchasing digital goods and services. A higher level suggests a more trustworthy customer; a negative level is likely reason for concern."
+                    "description": "Current level of the user, indicating their reliability when purchasing digital goods and services. A higher level suggests a more trustworthy customer; a negative level is likely a reason for concern."
                 },
                 "rating": {
                     "type": [
@@ -16899,7 +16902,7 @@
                     "type": [
                         "Boolean"
                     ],
-                    "description": "Optional. Pass True if reaction area corner is flipped"
+                    "description": "Optional. Pass True if the reaction area corner is flipped"
                 }
             }
         },
@@ -16941,7 +16944,7 @@
                     "type": [
                         "Float"
                     ],
-                    "description": "Temperature, in degree Celsius"
+                    "description": "Temperature, in degrees Celsius"
                 },
                 "emoji": {
                     "type": [
@@ -17341,7 +17344,7 @@
         "Gifts": {
             "href": "https://core.telegram.org/bots/api#gifts",
             "description": [
-                "This object represent a list of gifts."
+                "This object represents a list of gifts."
             ],
             "fields": {
                 "gifts": {
@@ -17406,7 +17409,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "The number of unique gifts that receive this model for every 1000 gifts upgraded"
+                    "description": "The number of unique gifts that receive this symbol for every 1000 gifts upgraded"
                 }
             }
         },
@@ -17564,7 +17567,7 @@
                     "type": [
                         "True"
                     ],
-                    "description": "Optional. True, if the original regular gift was exclusively purchaseable by Telegram Premium subscribers"
+                    "description": "Optional. True, if the original regular gift was exclusively purchasable by Telegram Premium subscribers"
                 },
                 "is_burned": {
                     "type": [
@@ -18337,7 +18340,7 @@
                     "type": [
                         "User"
                     ],
-                    "description": "User for which the gift code was created"
+                    "description": "User for whom the gift code was created"
                 }
             }
         },
@@ -18620,7 +18623,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Identifier of a private chat with the user who created the business connection. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier."
+                    "description": "Identifier of a private chat with the user who created the business connection. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type is safe for storing this identifier."
                 },
                 "date": {
                     "type": [
@@ -18740,7 +18743,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier."
+                    "description": "Optional. The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this identifier."
                 },
                 "retry_after": {
                     "type": [
@@ -18780,7 +18783,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \"attach://<file_attach_name>\" to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files \u00bb"
+                    "description": "File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass \u201cattach://<file_attach_name>\u201d to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files \u00bb"
                 },
                 "caption": {
                     "type": [
@@ -18896,7 +18899,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
+                    "description": "Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can pass \u201cattach://<file_attach_name>\u201d if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files \u00bb"
                 },
                 "cover": {
                     "type": [
@@ -19216,7 +19219,7 @@
                     "type": [
                         "Float"
                     ],
-                    "description": "Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. For example, choosing -1.0 will place mask just to the left of the default mask position."
+                    "description": "Shift by X-axis measured in widths of the mask scaled to the face size, from left to right. For example, choosing -1.0 will place the mask just to the left of the default mask position."
                 },
                 "y_shift": {
                     "type": [
@@ -19266,7 +19269,7 @@
                     "type": [
                         "Array<String>"
                     ],
-                    "description": "Optional. List of 0-20 search keywords for the sticker with total length of up to 64 characters. For \u201cregular\u201d and \u201ccustom_emoji\u201d stickers only."
+                    "description": "Optional. List of 0-20 search keywords for the sticker with a total length of up to 64 characters. For \u201cregular\u201d and \u201ccustom_emoji\u201d stickers only."
                 }
             }
         },
@@ -19306,13 +19309,13 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Content of the rich message to send described using HTML formatting. See rich message formatting options for more details. Use media field to specify the media used in the message."
+                    "description": "Optional. Content of the rich message to send described using HTML formatting. See rich message formatting options for more details. Use the media field to specify the media used in the message."
                 },
                 "markdown": {
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Content of the rich message to send described using Markdown formatting. See rich message formatting options for more details. Use media field to specify the media used in the message."
+                    "description": "Optional. Content of the rich message to send described using Markdown formatting. See rich message formatting options for more details. Use the media field to specify the media used in the message."
                 },
                 "media": {
                     "type": [
@@ -20073,7 +20076,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "The name of the anchor. If the name is empty, then the link brings back to the top of the message."
+                    "description": "The name of the anchor. If the name is empty, then the link brings the user back to the top of the message."
                 }
             }
         },
@@ -20476,7 +20479,7 @@
             "extends": "RichBlock",
             "href": "https://core.telegram.org/bots/api#richblockexpandableblockquotation",
             "description": [
-                "A block quotation, corresponding to the HTML tag <blockquote> with custom attribute \"expandable\"."
+                "A block quotation, corresponding to the HTML tag <blockquote> with the custom attribute \"expandable\"."
             ],
             "fields": {
                 "type": {
@@ -20914,7 +20917,7 @@
             "extends": "RichBlock",
             "href": "https://core.telegram.org/bots/api#richblockthinking",
             "description": [
-                "A block with a \u201cThinking\u2026\u201d placeholder, corresponding to the custom HTML tag <tg-thinking>. The block may be used only in sendRichMessageDraft, therefore it can't be received in messages. See https://t.me/addemoji/AIActions for examples of custom emoji that are recommended for usage in the block."
+                "A block with a \u201cThinking\u2026\u201d placeholder, corresponding to the custom HTML tag <tg-thinking>. The block may be used only in sendRichMessageDraft; therefore, it can't be received in messages. See https://t.me/addemoji/AIActions for examples of custom emoji that are recommended for usage in the block."
             ],
             "fields": {
                 "type": {
@@ -21206,7 +21209,7 @@
             "extends": "InputRichBlock",
             "href": "https://core.telegram.org/bots/api#inputrichblockexpandableblockquotation",
             "description": [
-                "A block quotation, corresponding to the HTML tag <blockquote> with custom attribute \"expandable\"."
+                "A block quotation, corresponding to the HTML tag <blockquote> with the custom attribute \"expandable\"."
             ],
             "fields": {
                 "type": {
@@ -21626,7 +21629,7 @@
             "extends": "InputRichBlock",
             "href": "https://core.telegram.org/bots/api#inputrichblockthinking",
             "description": [
-                "A block with a \u201cThinking\u2026\u201d placeholder, corresponding to the custom HTML tag <tg-thinking>. The block may be used only in sendRichMessageDraft, therefore it can't be received in messages. See https://t.me/addemoji/AIActions for examples of custom emoji that are recommended for usage in the block."
+                "A block with a \u201cThinking\u2026\u201d placeholder, corresponding to the custom HTML tag <tg-thinking>. The block may be used only in sendRichMessageDraft; therefore, it can't be received in messages. See https://t.me/addemoji/AIActions for examples of custom emoji that are recommended for usage in the block."
             ],
             "fields": {
                 "type": {
@@ -21677,7 +21680,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Type of the chat from which the inline query was sent. Can be either \u201csender\u201d for a private chat with the inline query sender, \u201cprivate\u201d, \u201cgroup\u201d, \u201csupergroup\u201d, or \u201cchannel\u201d. The chat type should be always known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat."
+                    "description": "Optional. Type of the chat from which the inline query was sent. Can be either \u201csender\u201d for a private chat with the inline query sender, \u201cprivate\u201d, \u201cgroup\u201d, \u201csupergroup\u201d, or \u201cchannel\u201d. The chat type should always be known for requests sent from official clients and most third-party clients, unless the request was sent from a secret chat."
                 },
                 "location": {
                     "type": [
@@ -21872,7 +21875,7 @@
             "extends": "InlineQueryResult",
             "href": "https://core.telegram.org/bots/api#inlinequeryresultcachedgif",
             "description": [
-                "Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with specified content instead of the animation."
+                "Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation."
             ],
             "fields": {
                 "type": {
@@ -22607,7 +22610,7 @@
             "extends": "InlineQueryResult",
             "href": "https://core.telegram.org/bots/api#inlinequeryresultgif",
             "description": [
-                "Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation."
+                "Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation."
             ],
             "fields": {
                 "type": {
@@ -22799,7 +22802,7 @@
             "extends": "InlineQueryResult",
             "href": "https://core.telegram.org/bots/api#inlinequeryresultmpeg4gif",
             "description": [
-                "Represents a link to a video animation (H.264/MPEG-4 AVC video without sound). By default, this animated MPEG-4 file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation."
+                "Represents a link to a video animation (H.264/MPEG-4 AVC video without sound). By default, this animated MPEG-4 file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation."
             ],
             "fields": {
                 "type": {
@@ -22898,7 +22901,7 @@
             "extends": "InlineQueryResult",
             "href": "https://core.telegram.org/bots/api#inlinequeryresultphoto",
             "description": [
-                "Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo."
+                "Represents a link to a photo. By default, this photo will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo."
             ],
             "fields": {
                 "type": {
@@ -23187,7 +23190,7 @@
                     "type": [
                         "InputMessageContent"
                     ],
-                    "description": "Optional. Content of the message to be sent instead of the video. This field is required if InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video)."
+                    "description": "Optional. Content of the message to be sent instead of the video. This field is required if InlineQueryResultVideo is used to send an HTML page as a result (e.g., a YouTube video)."
                 }
             }
         },
@@ -23195,7 +23198,7 @@
             "extends": "InlineQueryResult",
             "href": "https://core.telegram.org/bots/api#inlinequeryresultvoice",
             "description": [
-                "Represents a link to a voice recording in an .OGG container encoded with OPUS. By default, this voice recording will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the the voice message."
+                "Represents a link to a voice recording in an .OGG container encoded with OPUS. By default, this voice recording will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the voice message."
             ],
             "fields": {
                 "type": {
@@ -23482,7 +23485,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user, use it for your internal processes."
+                    "description": "Bot-defined invoice payload, 1-128 bytes. This will not be displayed to the user; use it for your internal processes."
                 },
                 "provider_token": {
                     "type": [
@@ -23506,13 +23509,13 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Optional. The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in Telegram Stars."
+                    "description": "Optional. The maximum accepted amount for tips in the smallest units of the currency (integer, not float/double). For example, for a maximum tip of US$ 1.45 pass max_tip_amount = 145. See the exp parameter in currencies.json; it shows the number of digits past the decimal point for each currency (2 for the majority of currencies). Defaults to 0. Not supported for payments in Telegram Stars."
                 },
                 "suggested_tip_amounts": {
                     "type": [
                         "Array<Integer>"
                     ],
-                    "description": "Optional. A JSON-serialized Array of suggested amounts of tip in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increased order and must not exceed max_tip_amount."
+                    "description": "Optional. A JSON-serialized Array of suggested amounts of tips in the smallest units of the currency (integer, not float/double). At most 4 suggested tip amounts can be specified. The suggested tip amounts must be positive, passed in a strictly increasing order and must not exceed max_tip_amount."
                 },
                 "provider_data": {
                     "type": [
@@ -23737,7 +23740,7 @@
                     "type": [
                         "String"
                     ],
-                    "description": "Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message. Will be also received in callback queries and can be used to edit the message."
+                    "description": "Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message. Will also be received in callback queries and can be used to edit the message."
                 },
                 "query": {
                     "type": [
@@ -23763,7 +23766,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Price of the product in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies)."
+                    "description": "Price of the product in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json; it shows the number of digits past the decimal point for each currency (2 for the majority of currencies)."
                 }
             }
         },
@@ -23801,7 +23804,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies)."
+                    "description": "Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45, total_amount = 145. See the exp parameter in currencies.json; it shows the number of digits past the decimal point for each currency (2 for the majority of currencies)."
                 }
             }
         },
@@ -23923,7 +23926,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies)."
+                    "description": "Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45, total_amount = 145. See the exp parameter in currencies.json; it shows the number of digits past the decimal point for each currency (2 for the majority of currencies)."
                 },
                 "invoice_payload": {
                     "type": [
@@ -23991,7 +23994,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Total refunded price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45, total_amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies)."
+                    "description": "Total refunded price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45, total_amount = 145. See the exp parameter in currencies.json; it shows the number of digits past the decimal point for each currency (2 for the majority of currencies)."
                 },
                 "invoice_payload": {
                     "type": [
@@ -24041,7 +24044,7 @@
                     "type": [
                         "ShippingAddress"
                     ],
-                    "description": "User specified shipping address"
+                    "description": "User-specified shipping address"
                 }
             }
         },
@@ -24073,7 +24076,7 @@
                     "type": [
                         "Integer"
                     ],
-                    "description": "Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies)."
+                    "description": "Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45, total_amount = 145. See the exp parameter in currencies.json; it shows the number of digits past the decimal point for each currency (2 for the majority of currencies)."
                 },
                 "invoice_payload": {
                     "type": [
@@ -24499,7 +24502,7 @@
                     "type": [
                         "Array<EncryptedPassportElement>"
                     ],
-                    "description": "Array with information about documents and other Telegram Passport elements that was shared with the bot"
+                    "description": "Array with information shared with the bot about documents and other Telegram Passport elements"
                 },
                 "credentials": {
                     "type": [
@@ -24728,7 +24731,7 @@
             "extends": "PassportElementError",
             "href": "https://core.telegram.org/bots/api#passportelementerrorreverseside",
             "description": [
-                "Represents an issue with the reverse side of a document. The error is considered resolved when the file with reverse side of the document changes."
+                "Represents an issue with the reverse side of a document. The error is considered resolved when the file with the reverse side of the document changes."
             ],
             "fields": {
                 "source": {
@@ -24893,7 +24896,7 @@
             "extends": "PassportElementError",
             "href": "https://core.telegram.org/bots/api#passportelementerrortranslationfiles",
             "description": [
-                "Represents an issue with the translated version of a document. The error is considered resolved when a file with the document translation change."
+                "Represents an issue with the translated version of a document. The error is considered resolved when a file with the document translation changes."
             ],
             "fields": {
                 "source": {
@@ -24958,7 +24961,7 @@
         "Game": {
             "href": "https://core.telegram.org/bots/api#game",
             "description": [
-                "This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers."
+                "This object represents a game. Use BotFather to create and edit games; their short names will act as unique identifiers."
             ],
             "fields": {
                 "title": {

@@ -14,7 +14,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
 use WeStacks\TeleBot\Objects\SuggestedPostParameters;
 
 /**
- * Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
+ * Use this method to send video files; Telegram clients support MPEG4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size; this limit may be changed in the future.
  *
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
  * @property-read null|int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query
@@ -25,7 +25,7 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * @property-read ?int $duration Duration of sent video in seconds
  * @property-read ?int $width Video width
  * @property-read ?int $height Video height
- * @property-read null|InputFile|string $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
+ * @property-read null|InputFile|string $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
  * @property-read null|InputFile|string $cover Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »
  * @property-read ?int $start_timestamp Start timestamp for the video in the message
  * @property-read ?string $caption Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing

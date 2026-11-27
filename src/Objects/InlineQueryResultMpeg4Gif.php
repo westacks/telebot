@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Objects;
 
 /**
- * Represents a link to a video animation (H.264/MPEG-4 AVC video without sound). By default, this animated MPEG-4 file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
+ * Represents a link to a video animation (H.264/MPEG-4 AVC video without sound). By default, this animated MPEG-4 file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
  * @property-read string $type Type of the result, must be mpeg4_gif
  * @property-read string $id Unique identifier for this result, 1-64 bytes
  * @property-read string $mpeg4_url A valid URL for the MPEG4 file

@@ -19,7 +19,7 @@ namespace WeStacks\TeleBot\Objects;
  * @property-read ?int $video_duration Optional. Video duration in seconds
  * @property-read ?string $description Optional. Short description of the result
  * @property-read ?InlineKeyboardMarkup $reply_markup Optional. Inline keyboard attached to the message
- * @property-read ?InputMessageContent $input_message_content Optional. Content of the message to be sent instead of the video. This field is required if InlineQueryResultVideo is used to send an HTML-page as a result (e.g., a YouTube video).
+ * @property-read ?InputMessageContent $input_message_content Optional. Content of the message to be sent instead of the video. This field is required if InlineQueryResultVideo is used to send an HTML page as a result (e.g., a YouTube video).
  *
  * @see https://core.telegram.org/bots/api#inlinequeryresultvideo
  */

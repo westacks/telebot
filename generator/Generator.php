@@ -443,9 +443,7 @@ class Generator
 
         $identSize = strlen($strings[0]) - strlen(ltrim($strings[0]));
 
-        $strings = array_map(function ($string) use ($identSize) {
-            return preg_replace('/^'.str_repeat(' ', $identSize).'/', '', $string);
-        }, $strings);
+        $strings = array_map(fn($string) => preg_replace('/^'.str_repeat(' ', $identSize).'/', '', $string), $strings);
 
         return trim(implode('', $strings));
     }

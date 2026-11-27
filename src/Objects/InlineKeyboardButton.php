@@ -18,7 +18,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?SwitchInlineQueryChosenChat $switch_inline_query_chosen_chat Optional. If set, pressing the button will prompt the user to select one of their chats of the specified type, open that chat and insert the bot's username and the specified inline query in the input field. Not supported for messages sent in channel direct messages chats and on behalf of a business account.
  * @property-read ?CopyTextButton $copy_text Optional. Description of the button that copies the specified text to the clipboard
  * @property-read ?CallbackGame $callback_game Optional. Description of the game that will be launched when the user presses the button.NOTE: This type of button must always be the first button in the first row.
- * @property-read ?bool $pay Optional. Specify True, to send a Pay button. Substrings “” and “XTR” in the buttons's text will be replaced with a Telegram Star icon.NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages.
+ * @property-read ?bool $pay Optional. Specify True to send a Pay button. Substrings “” and “XTR” in the button's text will be replaced with a Telegram Star icon.NOTE: This type of button must always be the first button in the first row and can only be used in invoice messages.
  * @property-read ?DisabledButton $disabled Optional. If set, then the button is disabled and does nothing
  *
  * @see https://core.telegram.org/bots/api#inlinekeyboardbutton

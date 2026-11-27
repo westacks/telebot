@@ -9,7 +9,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read string $id Unique query identifier
  * @property-read User $from User who sent the query
  * @property-read string $invoice_payload Bot-specified invoice payload
- * @property-read ShippingAddress $shipping_address User specified shipping address
+ * @property-read ShippingAddress $shipping_address User-specified shipping address
  *
  * @see https://core.telegram.org/bots/api#shippingquery
  */

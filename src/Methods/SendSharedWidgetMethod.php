@@ -11,7 +11,7 @@ use WeStacks\TeleBot\Objects\ReplyKeyboardRemove;
 use WeStacks\TeleBot\Objects\ReplyParameters;
 
 /**
- * Use this method to send again a shared widget created by the bot. Currently, in the production environment, widgets can be sent only to private chats, and sent widgets automatically have protected content and therefore can't be forwarded. On success, the sent Message is returned.
+ * Use this method to resend a shared widget created by the bot. Currently, in the production environment, widgets can be sent only to private chats, and sent widgets automatically have protected content and therefore can't be forwarded. On success, the sent Message is returned.
  *
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target supergroup in the format @username
  * @property-read ?int $message_thread_id Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only

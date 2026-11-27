@@ -6,7 +6,7 @@ use WeStacks\TeleBot\Foundation\TelegramMethod;
 use WeStacks\TeleBot\Objects\InlineKeyboardMarkup;
 
 /**
- * Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.
+ * Use this method to stop updating a live location message before live_period expires. On success, if the message is not an inline message, the edited Message is returned; otherwise, True is returned.
  *
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message to be edited was sent
  * @property-read null|int|string $chat_id Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username.

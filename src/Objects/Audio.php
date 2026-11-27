@@ -13,7 +13,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?string $title Optional. Title of the audio as defined by the sender or by audio tags
  * @property-read ?string $file_name Optional. Original filename as defined by the sender
  * @property-read ?string $mime_type Optional. MIME type of the file as defined by the sender
- * @property-read ?int $file_size Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
+ * @property-read ?int $file_size Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this value.
  * @property-read ?PhotoSize $thumbnail Optional. Thumbnail of the album cover to which the music file belongs
  *
  * @see https://core.telegram.org/bots/api#audio

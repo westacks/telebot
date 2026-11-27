@@ -13,9 +13,7 @@ class UnclosedQuotesException extends \InvalidArgumentException
         int $code = 0,
         ?Throwable $previous = null
     ) {
-        if ($message === null) {
-            $message = 'Still in quotes (' . $quotes  . ') from position ' . $position;
-        }
+        $message ??= 'Still in quotes (' . $quotes  . ') from position ' . $position;
 
         parent::__construct($message, $code, $previous);
     }

@@ -7,9 +7,7 @@ use WeStacks\TeleBot\TeleBot;
 test('can register and remove handlers', function () {
     $bot = new TeleBot('test');
 
-    $handler = function (TeleBot $bot, Objects\Update $update, callable $next) {
-        return 'handled';
-    };
+    $handler = (fn(TeleBot $bot, Objects\Update $update, callable $next) => 'handled');
 
     $bot->handler($handler);
 
@@ -54,9 +52,7 @@ test('handler returns self for chaining', function () {
 test('purge reinitializes kernel', function () {
     $bot = new TeleBot('test');
 
-    $handler = function (TeleBot $bot, Objects\Update $update, callable $next) {
-        return 'test';
-    };
+    $handler = (fn(TeleBot $bot, Objects\Update $update, callable $next) => 'test');
 
     $bot->handler($handler);
     $bot->purge();

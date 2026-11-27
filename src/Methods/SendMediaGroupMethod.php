@@ -7,7 +7,7 @@ use WeStacks\TeleBot\Objects\InputMedia;
 use WeStacks\TeleBot\Objects\ReplyParameters;
 
 /**
- * Use this method to send a group of photos, live photos, videos, documents or audios as an album. Documents and audio files can be only grouped in an album with messages of the same type. On success, an Array of Message objects that were sent is returned.
+ * Use this method to send a group of photos, live photos, videos, documents or audios as an album. Documents and audio files can only be grouped in an album with messages of the same type. On success, an Array of Message objects that were sent is returned.
  *
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
  * @property-read int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username
