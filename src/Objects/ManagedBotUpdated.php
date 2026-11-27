@@ -7,7 +7,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
 /**
  * This object contains information about the creation, token update, or owner update of a bot that is managed by the current bot.
  * @property-read User $user User that created the bot
- * @property-read User $bot Information about the bot. Token of the bot can be fetched using the method getManagedBotToken.
+ * @property-read User $bot Information about the bot. The token of the bot can be fetched using the method getManagedBotToken.
  *
  * @see https://core.telegram.org/bots/api#managedbotupdated
  */

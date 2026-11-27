@@ -14,4 +14,8 @@ class GetChatShareThemeBackdropsMethod extends TelegramMethod
 {
     protected string $method = 'getChatShareThemeBackdrops';
     protected array $expect = ['ChatShareThemeBackdrops'];
+
+    public function __construct()
+    {
+    }
 }

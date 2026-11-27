@@ -44,7 +44,7 @@ class Scrapper
                 $a = $x->filter('a');
                 $name = $a->attr('name');
 
-                if ($name && strpos($name, '-') !== false) {
+                if ($name && str_contains($name, '-')) {
                     $currentName = '';
                     $currentType = '';
 
@@ -54,9 +54,7 @@ class Scrapper
                 $currentType = ctype_upper($x->text()[0]) ? 'types' : 'methods';
                 $currentName = $x->text();
 
-                if (! isset($result[$currentType][$currentName])) {
-                    $result[$currentType][$currentName] = [];
-                }
+                $result[$currentType][$currentName] ??= [];
 
                 if ($href = $a->attr('href')) {
                     $result[$currentType][$currentName]['href'] = $url.$href;
@@ -164,18 +162,18 @@ class Scrapper
 
     protected static function cleanType(string $type): array
     {
-        if ($isArray = (strpos($type, 'Array of ') === 0)) {
+        if ($isArray = (str_starts_with($type, 'Array of '))) {
             $type = substr($type, strlen('Array of '));
         }
 
-        $fixed_ors = array_map('trim', explode(' or ', $type));
+        $fixed_ors = array_map(trim(...), explode(' or ', $type));
         $fixed_ands = [];
         foreach ($fixed_ors as $fo) {
-            $fixed_ands = array_merge($fixed_ands, array_map('trim', explode(' and ', $fo)));
+            $fixed_ands = array_merge($fixed_ands, array_map(trim(...), explode(' and ', $fo)));
         }
         $fixed_commas = [];
         foreach ($fixed_ands as $fa) {
-            $fixed_commas = array_merge($fixed_commas, array_map('trim', explode(', ', $fa)));
+            $fixed_commas = array_merge($fixed_commas, array_map(trim(...), explode(', ', $fa)));
         }
 
         $result = array_map(fn (string $x) => $isArray ? 'Array<'.static::cleanType($x)[0].'>' : $x, $fixed_commas);

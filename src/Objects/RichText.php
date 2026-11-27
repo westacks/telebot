@@ -39,9 +39,6 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  */
 class RichText extends TelegramObject implements Identifiable
 {
-    /** @var string|RichText[] */
-    public array|string $value;
-
     public static function identify(array $parameters): string
     {
         return match ($parameters['type']) {
@@ -76,9 +73,11 @@ class RichText extends TelegramObject implements Identifiable
         };
     }
 
-    public function __construct(array|string $value)
+    public function __construct(
+        /** @var string|RichText[] */
+        public array|string $value
+    )
     {
-        $this->value = $value;
     }
 
     public function __toString(): string

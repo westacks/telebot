@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Methods;
 use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
- * Changes the first and last name of a managed business account. Requires the can_change_name business bot right. Returns True on success.
+ * Changes the first and last name of a managed business account. Requires the can_edit_name business bot right. Returns True on success.
  *
  * @property-read string $business_connection_id Unique identifier of the business connection
  * @property-read string $first_name The new value of the first name for the business account; 1-64 characters

@@ -16,7 +16,7 @@ function cleanupStorage(FileStorage $storage): void
     $path = $reflection->getMethod('path')->invoke($storage);
 
     if (is_dir($path)) {
-        array_map('unlink', glob($path . '/*'));
+        array_map(unlink(...), glob($path . '/*'));
         rmdir($path);
     }
 }

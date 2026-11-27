@@ -8,7 +8,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * This object describes the symbol shown on the pattern of a unique gift.
  * @property-read string $name Name of the symbol
  * @property-read Sticker $sticker The sticker that represents the unique gift
- * @property-read int $rarity_per_mille The number of unique gifts that receive this model for every 1000 gifts upgraded
+ * @property-read int $rarity_per_mille The number of unique gifts that receive this symbol for every 1000 gifts upgraded
  *
  * @see https://core.telegram.org/bots/api#uniquegiftsymbol
  */

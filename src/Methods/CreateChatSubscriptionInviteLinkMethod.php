@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Methods;
 use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
- * Use this method to create a subscription invite link for a channel chat. The bot must have the can_invite_users administrator rights. The link can be edited using the method editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink. Returns the new invite link as a ChatInviteLink object.
+ * Use this method to create a subscription invite link for a channel chat. The bot must have the can_invite_users administrator right. The link can be edited using the method editChatSubscriptionInviteLink or revoked using the method revokeChatInviteLink. Returns the new invite link as a ChatInviteLink object.
  *
  * @property-read int|string $chat_id Unique identifier for the target channel chat or username of the target channel in the format @username
  * @property-read ?string $name Invite link name; 0-32 characters

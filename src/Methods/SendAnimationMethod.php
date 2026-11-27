@@ -14,7 +14,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
 use WeStacks\TeleBot\Objects\SuggestedPostParameters;
 
 /**
- * Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
+ * Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size; this limit may be changed in the future.
  *
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
  * @property-read null|int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query
@@ -25,8 +25,8 @@ use WeStacks\TeleBot\Objects\SuggestedPostParameters;
  * @property-read ?int $duration Duration of sent animation in seconds
  * @property-read ?int $width Animation width
  * @property-read ?int $height Animation height
- * @property-read null|InputFile|string $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
- * @property-read ?string $caption Animation caption (may also be used when resending animation by file_id), 0-1024 characters after entities parsing
+ * @property-read null|InputFile|string $thumbnail Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can only be uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
+ * @property-read ?string $caption Animation caption (may also be used when resending animations by file_id), 0-1024 characters after entities parsing
  * @property-read ?string $parse_mode Mode for parsing entities in the animation caption. See formatting options for more details.
  * @property-read ?MessageEntity[] $caption_entities A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
  * @property-read ?bool $show_caption_above_media Pass True if the caption must be shown above the message media

@@ -6,7 +6,7 @@ namespace WeStacks\TeleBot\Objects;
  * A link to an anchor.
  * @property-read string $type Type of the rich text, always “anchor_link”
  * @property-read RichText $text The link text
- * @property-read string $anchor_name The name of the anchor. If the name is empty, then the link brings back to the top of the message.
+ * @property-read string $anchor_name The name of the anchor. If the name is empty, then the link brings the user back to the top of the message.
  *
  * @see https://core.telegram.org/bots/api#richtextanchorlink
  */

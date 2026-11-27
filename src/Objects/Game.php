@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Objects;
 use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
- * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
+ * This object represents a game. Use BotFather to create and edit games; their short names will act as unique identifiers.
  * @property-read string $title Title of the game
  * @property-read string $description Description of the game
  * @property-read PhotoSize[] $photo Photo that will be displayed in the game message in chats

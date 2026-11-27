@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Methods;
 use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
- * Changes the bio of a managed business account. Requires the can_change_bio business bot right. Returns True on success.
+ * Changes the bio of a managed business account. Requires the can_edit_bio business bot right. Returns True on success.
  *
  * @property-read string $business_connection_id Unique identifier of the business connection
  * @property-read ?string $bio The new value of the bio for the business account; 0-140 characters

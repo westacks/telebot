@@ -25,7 +25,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  */
 class BusinessBotRights extends TelegramObject
 {
-    public ?true $can_delete_outgoing_messages;
+    public ?true $can_delete_outgoing_messages = null;
 
     public function __construct(
         public readonly ?true $can_reply,

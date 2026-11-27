@@ -14,4 +14,8 @@ class GetMyStarBalanceMethod extends TelegramMethod
 {
     protected string $method = 'getMyStarBalance';
     protected array $expect = ['StarAmount'];
+
+    public function __construct()
+    {
+    }
 }

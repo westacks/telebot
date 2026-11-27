@@ -25,7 +25,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
  * @property-read ?bool $is_anonymous True, if the poll needs to be anonymous, defaults to True
  * @property-read ?string $type Poll type, “quiz” or “regular”, defaults to “regular”
  * @property-read ?bool $allows_multiple_answers Pass True if the poll allows multiple answers, defaults to False
- * @property-read ?bool $allows_revoting Pass True if the poll allows to change chosen answer options, defaults to False for quizzes and to True for regular polls
+ * @property-read ?bool $allows_revoting Pass True if the poll allows changing the chosen answer options, defaults to False for quizzes and to True for regular polls
  * @property-read ?bool $shuffle_options Pass True if the poll options must be shown in random order
  * @property-read ?bool $allow_adding_options Pass True if answer options can be added to the poll after creation; not supported for anonymous polls and quizzes
  * @property-read ?bool $hide_results_until_closes Pass True if poll results must be shown only after the poll closes

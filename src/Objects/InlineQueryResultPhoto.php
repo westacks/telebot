@@ -3,7 +3,7 @@
 namespace WeStacks\TeleBot\Objects;
 
 /**
- * Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
+ * Represents a link to a photo. By default, this photo will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
  * @property-read string $type Type of the result, must be photo
  * @property-read string $id Unique identifier for this result, 1-64 bytes
  * @property-read string $photo_url A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB.

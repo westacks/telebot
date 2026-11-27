@@ -17,7 +17,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?int $unclaimed_prize_count Optional. Number of undistributed prizes
  * @property-read ?true $only_new_members Optional. True, if only users who had joined the chats after the giveaway started were eligible to win
  * @property-read ?true $was_refunded Optional. True, if the giveaway was canceled because the payment for it was refunded
- * @property-read ?string $prize_description Optional. Description of additional giveaway prize
+ * @property-read ?string $prize_description Optional. Description of an additional giveaway prize
  *
  * @see https://core.telegram.org/bots/api#giveawaywinners
  */

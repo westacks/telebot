@@ -120,9 +120,7 @@ test('kernel accepts closure handlers', function () {
 test('kernel passes to next closure when current does not handle', function () {
     $bot = createTestBot();
     $kernel = new Kernel([
-        function (TeleBot $bot, Update $update, callable $next) {
-            return $next();
-        },
+        fn(TeleBot $bot, Update $update, callable $next) => $next(),
         TestHandler::class,
     ]);
 

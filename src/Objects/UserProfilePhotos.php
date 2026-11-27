@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Objects;
 use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
- * This object represent a user's profile pictures.
+ * This object represents a user's profile pictures.
  * @property-read int $total_count Total number of profile pictures the target user has
  * @property-read PhotoSize[][] $photos Requested profile pictures (in up to 4 sizes each)
  *

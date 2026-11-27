@@ -209,16 +209,16 @@ function array_pull(array &$data, string $key, mixed $default = null): mixed
 function split(string $command): array
 {
     // whitespace characters count as argument separators
-    static $ws = array(
+    static $ws = [
         ' ',
         "\r",
         "\n",
         "\t",
         "\v",
-    );
+    ];
 
     $i = 0;
-    $args = array();
+    $args = [];
 
     while (true) {
         // skip whitespace between arguments

@@ -11,7 +11,7 @@ use WeStacks\TeleBot\Objects\InputRichMessage;
  * @property-read int $chat_id Unique identifier for the target private chat
  * @property-read ?int $message_thread_id Unique identifier for the target message thread
  * @property-read int $draft_id Unique identifier of the message draft; must be non-zero. Changes to drafts with the same identifier are animated. Otherwise, the draft is replaced without animation.
- * @property-read InputRichMessage $rich_message The partial message to be streamed. Direct upload of new files and explicit upload of files by a URL isn't supported.
+ * @property-read InputRichMessage $rich_message The partial message to be streamed. Direct upload of new files and explicit upload of files by a URL aren't supported.
  * @property-read ?bool $can_stop Pass True to show the user a button to stop further drafts. The bot will receive an Update “stopped_message_generation” if the user presses the button.
  * @property-read ?bool $keep_on_stop Pass True to keep the draft in the chat when the button is pressed. The draft will still disappear after a short time or if the bot sends a message. To fully preserve the partial draft, the bot should send it as a new message.
  *

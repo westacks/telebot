@@ -6,7 +6,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
 
 /**
  * This object contains full information about a chat.
- * @property-read int $id Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
+ * @property-read int $id Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type is safe for storing this identifier.
  * @property-read string $type Type of the chat, can be either “private”, “group”, “supergroup” or “channel”
  * @property-read ?string $title Optional. Title, for supergroups, channels and group chats
  * @property-read ?string $username Optional. Username, for private chats, supergroups and channels if available
@@ -31,7 +31,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?string $emoji_status_custom_emoji_id Optional. Custom emoji identifier of the emoji status of the chat or the other party in a private chat
  * @property-read ?int $emoji_status_expiration_date Optional. Expiration date of the emoji status of the chat or the other party in a private chat, in Unix time, if any
  * @property-read ?string $bio Optional. Bio of the other party in a private chat
- * @property-read ?true $has_private_forwards Optional. True, if privacy settings of the other party in the private chat allows to use tg://user?id=<user_id> links only in chats with the user
+ * @property-read ?true $has_private_forwards Optional. True, if the privacy settings of the other party in the private chat allow using tg://user?id=<user_id> links only in chats with the user
  * @property-read ?true $has_restricted_voice_and_video_messages Optional. True, if the privacy settings of the other party restrict sending voice and video note messages in the private chat
  * @property-read ?true $join_to_send_messages Optional. True, if users need to join the supergroup before they can send messages
  * @property-read ?true $join_by_request Optional. True, if all users directly joining the supergroup without using an invite link need to be approved by supergroup administrators
@@ -51,7 +51,7 @@ use WeStacks\TeleBot\Foundation\TelegramObject;
  * @property-read ?string $sticker_set_name Optional. For supergroups, name of the group sticker set
  * @property-read ?true $can_set_sticker_set Optional. True, if the bot can change the group sticker set
  * @property-read ?string $custom_emoji_sticker_set_name Optional. For supergroups, the name of the group's custom emoji sticker set. Custom emoji from this set can be used by all users and bots in the group.
- * @property-read ?int $linked_chat_id Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier.
+ * @property-read ?int $linked_chat_id Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64-bit integer or double-precision float type is safe for storing this identifier.
  * @property-read ?ChatLocation $location Optional. For supergroups, the location to which the supergroup is connected
  * @property-read ?UserRating $rating Optional. For private chats, the rating of the user if any
  * @property-read ?Audio $first_profile_audio Optional. For private chats, the first audio added to the profile of the user

@@ -12,7 +12,7 @@ use WeStacks\TeleBot\Objects\ReplyParameters;
 use WeStacks\TeleBot\Objects\SuggestedPostParameters;
 
 /**
- * Use this method to send point on the map. On success, the sent Message is returned.
+ * Use this method to send a point on the map. On success, the sent Message is returned.
  *
  * @property-read ?string $business_connection_id Unique identifier of the business connection on behalf of which the message will be sent
  * @property-read null|int|string $chat_id Unique identifier for the target chat or username of the target bot, supergroup, or channel in the format @username; required unless the message is sent as an ephemeral reply to a callback query

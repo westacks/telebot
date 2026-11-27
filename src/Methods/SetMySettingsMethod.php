@@ -5,7 +5,7 @@ namespace WeStacks\TeleBot\Methods;
 use WeStacks\TeleBot\Foundation\TelegramMethod;
 
 /**
- * Use this method to change settings of the bot. Settings that aren't specified remain unchanged. Returns True on success.
+ * Use this method to change the settings of the bot. Settings that aren't specified remain unchanged. Returns True on success.
  *
  * @property-read ?bool $supports_inline_queries Pass True to enable inline mode for the bot or False to disable it
  * @property-read ?string $inline_query_placeholder New placeholder for inline queries, which is shown in the input field after the bot's username. Pass an empty string to use the default placeholder.
